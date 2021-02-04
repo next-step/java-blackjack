@@ -1,22 +1,27 @@
 package domain;
 
-public class Avante extends Car {
+public class Avante extends CarImpl {
 
-    public Avante(int i) {
+    private static final double DISTANCE_PER_LITER = 15;
+    private static final String NAME = "Avante";
+    private final double tripDistance;
+
+    public Avante(double tripDistance) {
+        this.tripDistance = tripDistance;
     }
 
     @Override
-    double getDistancePerLiter() {
-        return 0;
+    public double getDistancePerLiter() {
+        return DISTANCE_PER_LITER;
     }
 
     @Override
-    double getTripDistance() {
-        return 0;
+    public double getTripDistance() {
+        return tripDistance;
     }
 
     @Override
-    String getName() {
-        return null;
+    public String getName() {
+        return NAME;
     }
 }

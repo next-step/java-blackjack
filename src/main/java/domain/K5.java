@@ -1,22 +1,26 @@
 package domain;
 
-public class K5 extends Car {
+public class K5 extends CarImpl {
+    private static final double DISTANCE_PER_LITER = 13;
+    private static final String NAME = "K5";
+    private final double tripDistance;
 
-    public K5(int i) {
+    public K5 (double tripDistance) {
+        this.tripDistance = tripDistance;
     }
 
     @Override
-    double getDistancePerLiter() {
-        return 0;
+    public double getDistancePerLiter() {
+        return DISTANCE_PER_LITER;
     }
 
     @Override
-    double getTripDistance() {
-        return 0;
+    public double getTripDistance() {
+        return tripDistance;
     }
 
     @Override
-    String getName() {
-        return null;
+    public String getName() {
+        return NAME;
     }
 }

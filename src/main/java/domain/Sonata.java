@@ -1,22 +1,27 @@
 package domain;
 
-public class Sonata extends Car {
+public class Sonata extends CarImpl {
+    private static final double DISTANCE_PER_LITER = 10;
+    private static final String NAME = "Sonata";
+    private final double tripDistance;
 
-    public Sonata(int i) {
+    public Sonata (double tripDistance) {
+        this.tripDistance = tripDistance;
     }
 
     @Override
-    double getDistancePerLiter() {
-        return 0;
+    public double getDistancePerLiter() {
+        return DISTANCE_PER_LITER;
     }
 
     @Override
-    double getTripDistance() {
-        return 0;
+    public double getTripDistance() {
+        return tripDistance;
     }
 
     @Override
-    String getName() {
-        return null;
+    public String getName() {
+        return NAME;
     }
+
 }
