@@ -21,6 +21,10 @@ public class RentCompany {
         return report;
     }
 
+    public List<Car> getCarList() {
+        return carList;
+    }
+
     public static RentCompany create () {
         return new RentCompany();
     }
