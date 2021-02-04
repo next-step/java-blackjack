@@ -21,7 +21,7 @@ class PlayerTest {
     @Test
     void requestCard() {
         Player player = new Player(
-            new CardBunch()
+            "Player"
         );
 
         Deck deck = new Deck(
@@ -51,6 +51,7 @@ class PlayerTest {
     @MethodSource("providerIsBustParams")
     void isBust(List<Integer> numbers, boolean expected) {
        Player player = new Player(
+           "player",
            new CardBunch(
                numbers.stream().map(
                    n -> new Card(

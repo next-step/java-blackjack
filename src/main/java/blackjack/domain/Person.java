@@ -2,12 +2,15 @@ package blackjack.domain;
 
 public abstract class Person {
     protected final CardBunch cardBunch;
+    protected final String name;
 
-    public Person() {
+    public Person(String name) {
+        this.name = name;
         this.cardBunch = new CardBunch();
     }
 
-    public Person(CardBunch cardBunch) {
+    public Person(String name, CardBunch cardBunch) {
+        this.name = name;
         this.cardBunch = cardBunch;
     }
 

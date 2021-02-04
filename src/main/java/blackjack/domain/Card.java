@@ -3,8 +3,8 @@ package blackjack.domain;
 import java.util.Objects;
 
 public class Card {
-    private Denomination denomination;
-    private Suit suit;
+    private final Denomination denomination;
+    private final Suit suit;
 
     public Card(Denomination denomination, Suit suit) {
         this.denomination = denomination;

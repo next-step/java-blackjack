@@ -1,7 +1,6 @@
 package blackjack.domain;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -21,6 +20,7 @@ class DealerTest {
     @MethodSource("providerIsBustParams")
     void isBust(List<Integer> numbers, boolean expected) {
         Dealer dealer = new Dealer(
+            "딜러",
             new CardBunch(
                 numbers.stream().map(
                     n -> new Card(

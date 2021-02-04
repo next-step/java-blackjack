@@ -1,12 +1,12 @@
 package blackjack.domain;
 
 public class Player extends Person {
-    public Player() {
-        super();
+    public Player(String name) {
+        super(name);
     }
 
-    public Player(CardBunch cardBunch) {
-        super(cardBunch);
+    public Player(String name, CardBunch cardBunch) {
+        super(name, cardBunch);
     }
 
     @Override
