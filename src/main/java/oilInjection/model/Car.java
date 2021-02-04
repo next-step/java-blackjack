@@ -2,14 +2,14 @@ package oilInjection.model;
 
 public abstract class Car {
     protected double distancePerLiter;
-    protected double tripDistance;
+    protected Distance tripDistance;
     protected String name;
 
     abstract double getDistancePerLiter();
-    abstract double getTripDistance();
+    abstract Distance getTripDistance();
     abstract String getName();
 
     double getChargeQuantity() {
-        return getTripDistance() / getDistancePerLiter();
+        return getTripDistance().getDistance() / getDistancePerLiter();
     }
 }

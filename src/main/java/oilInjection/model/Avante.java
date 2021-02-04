@@ -1,7 +1,7 @@
 package oilInjection.model;
 
 public class Avante extends Car {
-    public Avante(double tripDistance){
+    public Avante(Distance tripDistance){
         this.tripDistance = tripDistance;
         this.distancePerLiter = 15;
         this.name = "Avante";
@@ -13,7 +13,7 @@ public class Avante extends Car {
     }
 
     @Override
-    double getTripDistance() {
+    Distance getTripDistance() {
         return this.tripDistance;
     }
 
