@@ -1,7 +1,7 @@
 package oilInjection.model;
 
-public class Sonata extends Car{
-    public Sonata(Distance tripDistance){
+public class Sonata extends Car {
+    public Sonata(Distance tripDistance) {
         this.tripDistance = tripDistance;
         this.distancePerLiter = 10;
         this.name = "Sonata";
@@ -20,5 +20,9 @@ public class Sonata extends Car{
     @Override
     String getName() {
         return this.name;
+    }
+
+    public static Sonata of(final double distance) {
+        return new Sonata(new Distance(distance));
     }
 }
