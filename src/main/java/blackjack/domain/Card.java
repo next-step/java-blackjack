@@ -1,5 +1,7 @@
 package blackjack.domain;
 
+import blackjack.dto.CardInfo;
+
 import java.util.Objects;
 
 public class Card {
@@ -17,6 +19,13 @@ public class Card {
 
     public boolean isAce() {
         return denomination.isAce();
+    }
+
+    public CardInfo getCardInfo() {
+        return new CardInfo(
+            denomination,
+            suit
+        );
     }
 
     @Override

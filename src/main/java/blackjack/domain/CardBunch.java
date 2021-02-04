@@ -1,8 +1,11 @@
 package blackjack.domain;
 
+import blackjack.dto.CardBunchInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class CardBunch {
     private final List<Card> cardBunch;
@@ -33,6 +36,16 @@ public class CardBunch {
             return score + 10;
         }
         return score;
+    }
+
+    public CardBunchInfo getCardBunchInfo() {
+        return new CardBunchInfo(
+            cardBunch.stream().map(
+                Card::getCardInfo
+            ).collect(
+                Collectors.toList()
+            )
+        );
     }
 
     @Override

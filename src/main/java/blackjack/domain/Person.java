@@ -1,5 +1,8 @@
 package blackjack.domain;
 
+import blackjack.dto.NameInfo;
+import blackjack.dto.PlayerInfo;
+
 import java.util.Objects;
 
 public abstract class Person {
@@ -20,6 +23,13 @@ public abstract class Person {
 
     public boolean isBust() {
         return cardBunch.calcScore() > 21;
+    }
+
+    public PlayerInfo getPlayersInfo() {
+        return new PlayerInfo(
+            new NameInfo(name),
+            cardBunch.getCardBunchInfo()
+        );
     }
 
     @Override
