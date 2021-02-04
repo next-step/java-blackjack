@@ -1,15 +1,23 @@
 package domain;
 
-public class RentCompany {
+import java.util.ArrayList;
+import java.util.List;
 
-    public static RentCompany create() {
-        return new RentCompany();
+public class RentCompany extends Factory {
+    private List<Car> cars;
+
+    @Override
+    protected RentCompany createRentCompany() {
+        RentCompany rentCompany = new RentCompany();
+        rentCompany.cars = new ArrayList<>();
+        return rentCompany;
     }
 
     public String generateReport() {
         return new String();
     }
 
-    public void addCar(Car car) {
+    public void addCar(CarImpl car) {
+
     }
 }
