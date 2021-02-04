@@ -1,7 +1,7 @@
 package oilInjection.model;
 
-public class Kfive extends Car{
-    public Kfive(Distance tripDistance){
+public class K5 extends Car{
+    public K5(Distance tripDistance){
         this.tripDistance = tripDistance;
         this.distancePerLiter = 13;
         this.name = "Kfive";
