@@ -1,8 +1,9 @@
 package blackjack.domain;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Deck {
     private static final String NOT_ENOUGH_DECK_ERR_MSG = "덱에 남아있는 카드가 없습니다";
@@ -13,18 +14,17 @@ public class Deck {
     }
 
     public Deck() {
-        // TODO : make it more clear
-        cards = new ArrayList<>();
-        for (Denomination denomination : Denomination.values()) {
-            for(Suit suit : Suit.values()) {
-                cards.add(
-                    new Card(
-                        denomination,
-                        suit
-                    )
-                );
-            }
-        }
+        cards = Arrays.stream(
+            Denomination.values()
+        ).flatMap(
+            d -> Arrays.stream(
+                Suit.values()
+            ).map(
+                s -> new Card(d, s)
+            )
+        ).collect(
+            Collectors.toList()
+        );
 
         Collections.shuffle(cards);
     }

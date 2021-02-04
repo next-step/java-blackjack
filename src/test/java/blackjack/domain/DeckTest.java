@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -29,10 +30,9 @@ class DeckTest {
     @Test
     void deckSizeTest() {
         Deck deck = new Deck();
-        // TODO :
-        for (int i = 0; i < 52; i++) {
-            deck.drawCard();
-        }
-        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> deck.drawCard());
+        IntStream.range(0, 52).forEach(
+            i -> deck.drawCard()
+        );
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(deck::drawCard);
     }
 }

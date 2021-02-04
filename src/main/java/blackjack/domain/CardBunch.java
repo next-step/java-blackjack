@@ -10,16 +10,12 @@ public class CardBunch {
     }
 
     public Integer calcScore() {
-        int score = 0;
-        Boolean haveAce = false;
-
-        // TODO : make it more clear
-        for(Card card : cardBunch) {
-            score += card.getScore();
-            if (card.isAce())  {
-                haveAce = true;
-            }
-        }
+        int score = cardBunch.stream().mapToInt(
+            Card::getScore
+        ).sum();
+        boolean haveAce = cardBunch.stream().anyMatch(
+            Card::isAce
+        );
 
         if (haveAce && score < 12) {
             return score + 10;
