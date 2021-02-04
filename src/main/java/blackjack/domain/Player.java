@@ -1,21 +1,16 @@
 package blackjack.domain;
 
-public class Player {
-    private final CardBunch cardBunch;
-
+public class Player extends Person {
     public Player() {
-        this.cardBunch = new CardBunch();
+        super();
     }
 
     public Player(CardBunch cardBunch) {
-        this.cardBunch = cardBunch;
+        super(cardBunch);
     }
 
+    @Override
     public void requestCard(Deck deck) {
         cardBunch.drawCard(deck);
-    }
-
-    public boolean isBust() {
-        return cardBunch.calcScore() > 21;
     }
 }
