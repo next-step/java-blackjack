@@ -23,6 +23,11 @@ public class Avante extends Car {
         return this.name;
     }
 
+    @Override
+    void registerTripDistance(Distance tripDistance) {
+        this.tripDistance = tripDistance;
+    }
+
     public static Avante of(final double distance) {
         return new Avante(new Distance(distance));
     }

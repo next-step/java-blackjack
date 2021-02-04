@@ -22,6 +22,11 @@ public class K5 extends Car {
         return this.name;
     }
 
+    @Override
+    void registerTripDistance(Distance tripDistance) {
+        this.tripDistance = tripDistance;
+    }
+
     public static K5 of(final double distance) {
         return new K5(new Distance(distance));
     }

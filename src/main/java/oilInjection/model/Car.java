@@ -8,6 +8,7 @@ public abstract class Car {
     abstract double getDistancePerLiter();
     abstract Distance getTripDistance();
     abstract String getName();
+    abstract void registerTripDistance(Distance tripDistance);
 
     double getChargeQuantity() {
         return getTripDistance().getDistance() / getDistancePerLiter();

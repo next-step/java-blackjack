@@ -22,6 +22,11 @@ public class Sonata extends Car {
         return this.name;
     }
 
+    @Override
+    void registerTripDistance(Distance tripDistance) {
+        this.tripDistance = tripDistance;
+    }
+
     public static Sonata of(final double distance) {
         return new Sonata(new Distance(distance));
     }
