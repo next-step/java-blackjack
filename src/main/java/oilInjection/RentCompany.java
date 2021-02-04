@@ -1,15 +1,24 @@
 package oilInjection;
 
+import oilInjection.model.Avante;
 import oilInjection.model.Car;
+import oilInjection.model.K5;
+import oilInjection.model.Sonata;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RentCompany {
 
-    private final List<Car> carList = new ArrayList<>();
+    private final List<Car> carList;
 
     private RentCompany() {
+        carList = new ArrayList<>();
+        addCar(Sonata.of(0));
+        addCar(K5.of(0));
+        addCar(Sonata.of(0));
+        addCar(Avante.of(0));
+        addCar(K5.of(0));
     }
 
     public void addCar(final Car car) {
