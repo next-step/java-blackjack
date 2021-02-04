@@ -1,5 +1,7 @@
 package blackjack.domain;
 
+import java.util.Arrays;
+
 public enum Denomination {
     ACE(1),
     TWO(2),
@@ -16,6 +18,17 @@ public enum Denomination {
     KING(10);
 
     private final int score;
+
+    public static Denomination of(final int score) {
+//        return Arrays.stream(Denomination.values()).filter(denom -> denom.score == score);
+        // TODO
+        for (Denomination denomination : Denomination.values()) {
+            if (denomination.score == score) {
+                return denomination;
+            }
+        }
+        throw new RuntimeException("");
+    }
 
     Denomination(final int score) {
         this.score = score;
