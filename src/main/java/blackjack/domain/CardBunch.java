@@ -1,12 +1,23 @@
 package blackjack.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CardBunch {
     private final List<Card> cardBunch;
 
+    public CardBunch() {
+        this.cardBunch = new ArrayList<>();
+    }
+
     public CardBunch(List<Card> cardBunch) {
         this.cardBunch = cardBunch;
+    }
+
+    public void drawCard(Deck deck) {
+        cardBunch.add(
+            deck.drawCard()
+        );
     }
 
     public Integer calcScore() {
