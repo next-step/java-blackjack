@@ -2,6 +2,7 @@ package blackjack.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CardBunch {
     private final List<Card> cardBunch;
@@ -32,5 +33,18 @@ public class CardBunch {
             return score + 10;
         }
         return score;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CardBunch cardBunch1 = (CardBunch) o;
+        return Objects.equals(cardBunch, cardBunch1.cardBunch);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cardBunch);
     }
 }

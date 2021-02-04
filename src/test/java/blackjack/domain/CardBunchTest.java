@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CardBunchTest {
 
-    @DisplayName("가지고 있는 카드의 합을 제대로 구하는지 확인한")
+    @DisplayName("Check if the calculated sum is correct")
     @ParameterizedTest
     @MethodSource("providerCalcScoreParams")
     void calcScore(List<Integer> numbers, int expectedScore) {

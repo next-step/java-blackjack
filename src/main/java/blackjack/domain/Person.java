@@ -1,5 +1,7 @@
 package blackjack.domain;
 
+import java.util.Objects;
+
 public abstract class Person {
     protected final CardBunch cardBunch;
     protected final String name;
@@ -18,5 +20,18 @@ public abstract class Person {
 
     public boolean isBust() {
         return cardBunch.calcScore() > 21;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(cardBunch, person.cardBunch) && Objects.equals(name, person.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cardBunch, name);
     }
 }
