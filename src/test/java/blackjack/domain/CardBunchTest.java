@@ -1,6 +1,9 @@
 package blackjack.domain;
 
+import blackjack.dto.CardBunchInfo;
+import blackjack.dto.CardInfo;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -40,6 +43,34 @@ class CardBunchTest {
             Arguments.of(Arrays.asList(1, 10), 21),
             Arguments.of(Arrays.asList(1, 10, 10), 21),
             Arguments.of(Arrays.asList(10, 9), 19)
+        );
+    }
+
+    @DisplayName("Check if CardBunch returns correct information.")
+    @Test
+    void getCardBunchInfo() {
+        // TODO : remove repeat logics
+        assertEquals(
+            new CardBunchInfo(
+                Stream.of(1, 7, 10).map(
+                    n -> new CardInfo(
+                        Denomination.of(n),
+                        Suit.HEARTS
+                    )
+                ).collect(
+                    Collectors.toList()
+                )
+            ),
+            new CardBunch(
+                Stream.of(1, 7, 10).map(
+                    n -> new Card(
+                        Denomination.of(n),
+                        Suit.HEARTS
+                    )
+                ).collect(
+                    Collectors.toList()
+                )
+            ).getCardBunchInfo()
         );
     }
 }

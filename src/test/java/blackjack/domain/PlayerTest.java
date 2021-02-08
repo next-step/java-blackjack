@@ -1,5 +1,10 @@
 package blackjack.domain;
 
+import blackjack.dto.CardBunchInfo;
+import blackjack.dto.CardInfo;
+import blackjack.dto.NameInfo;
+import blackjack.dto.PlayerInfo;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,8 +18,28 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PlayerTest {
+    private static Player testPlayer;
+
+    @BeforeAll
+    static void beforeAll() {
+        testPlayer = new Player(
+            "player",
+            new CardBunch(
+                Stream.of(1, 7, 10).map(
+                    n -> new Card(
+                        Denomination.of(n),
+                        Suit.HEARTS
+                    )
+                ).collect(
+                    Collectors.toList()
+                )
+            )
+        );
+    }
 
     @DisplayName("Check that user is busted after request card")
     @Test
@@ -33,16 +58,16 @@ class PlayerTest {
         );
 
         player.requestCard(deck);
-        assertEquals(false, player.isBust());
+        assertFalse(player.isBust());
 
         player.requestCard(deck);
-        assertEquals(false, player.isBust());
+        assertFalse(player.isBust());
 
         player.requestCard(deck);
-        assertEquals(false, player.isBust());
+        assertFalse(player.isBust());
 
         player.requestCard(deck);
-        assertEquals(true, player.isBust());
+        assertTrue(player.isBust());
     }
 
     @DisplayName("Check if user got busted")
@@ -75,4 +100,33 @@ class PlayerTest {
         );
     }
 
+    @DisplayName("Check if the Player return correct Player information")
+    @Test
+    void getPlayerInfo() {
+        assertEquals(
+            new PlayerInfo(
+                new NameInfo("player"),
+                new CardBunchInfo(
+                    Stream.of(1, 7, 10).map(
+                        n -> new CardInfo(
+                            Denomination.of(n),
+                            Suit.HEARTS
+                        )
+                    ).collect(
+                        Collectors.toList()
+                    )
+                )
+            ),
+            testPlayer.getPlayerInfo()
+        );
+    }
+
+    @DisplayName("Check if the Player return corret Player name information")
+    @Test
+    void getNameInfo() {
+        assertEquals(
+            new NameInfo("player"),
+            testPlayer.getNameInfo()
+        );
+    }
 }
