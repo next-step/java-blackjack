@@ -2,11 +2,11 @@ package blackjack.dto;
 
 import java.util.Objects;
 
-public class PlayerInfo {
+public class PersonInfo {
     private final NameInfo nameInfo;
     private final CardBunchInfo cardBunchInfo;
 
-    public PlayerInfo(NameInfo nameInfo, CardBunchInfo cardBunchInfo) {
+    public PersonInfo(NameInfo nameInfo, CardBunchInfo cardBunchInfo) {
         this.nameInfo = nameInfo;
         this.cardBunchInfo = cardBunchInfo;
     }
@@ -23,7 +23,7 @@ public class PlayerInfo {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PlayerInfo that = (PlayerInfo) o;
+        PersonInfo that = (PersonInfo) o;
         return Objects.equals(nameInfo, that.nameInfo) && Objects.equals(cardBunchInfo, that.cardBunchInfo);
     }
 

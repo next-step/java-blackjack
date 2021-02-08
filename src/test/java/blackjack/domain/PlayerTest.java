@@ -1,7 +1,7 @@
 package blackjack.domain;
 
 import blackjack.dto.NameInfo;
-import blackjack.dto.PlayerInfo;
+import blackjack.dto.PersonInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,7 +30,7 @@ class PlayerTest {
         );
     }
 
-    @DisplayName("Check that user is busted after request card")
+    @DisplayName("Check user draw card well after requestCard")
     @Test
     void requestCard() {
         Player player = new Player(
@@ -45,27 +45,27 @@ class PlayerTest {
         );
 
         assertEquals(
-            new PlayerInfo(
+            new PersonInfo(
                 new NameInfo("player"),
                 new CardBunch(
                     List.of(),
                     Suit.HEARTS
                 ).getCardBunchInfo()
             ),
-            player.getPlayerInfo()
+            player.getPersonInfo()
         );
 
         player.requestCard(deck);
 
         assertEquals(
-            new PlayerInfo(
+            new PersonInfo(
                 new NameInfo("player"),
                 new CardBunch(
                     List.of(1),
                     Suit.HEARTS
                 ).getCardBunchInfo()
             ),
-            player.getPlayerInfo()
+            player.getPersonInfo()
         );
     }
 
@@ -92,16 +92,16 @@ class PlayerTest {
 
     @DisplayName("Check if the Player return correct Player information")
     @Test
-    void getPlayerInfo() {
+    void getPersonInfo() {
         assertEquals(
-            new PlayerInfo(
+            new PersonInfo(
                 new NameInfo("player"),
                 new CardBunch(
                     List.of(1, 7, 10),
                     Suit.HEARTS
                 ).getCardBunchInfo()
             ),
-            testPlayer.getPlayerInfo()
+            testPlayer.getPersonInfo()
         );
     }
 

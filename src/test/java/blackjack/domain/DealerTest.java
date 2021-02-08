@@ -1,9 +1,7 @@
 package blackjack.domain;
 
-import blackjack.dto.CardBunchInfo;
-import blackjack.dto.CardInfo;
 import blackjack.dto.NameInfo;
-import blackjack.dto.PlayerInfo;
+import blackjack.dto.PersonInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,9 +9,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,35 +22,53 @@ class DealerTest {
     @BeforeAll
     static void beforeAll() {
         testDealer = new Dealer(
-            new CardBunch(
-                Stream.of(1, 7, 10).map(
-                    n -> new Card(
-                        Denomination.of(n),
-                        Suit.HEARTS
-                    )
-                ).collect(
-                    Collectors.toList()
-                )
-            )
+            new CardBunch(List.of(1, 7, 10), Suit.HEARTS)
         );
     }
-    // TODO : How to check requestCard method on dealer?
+
+    @DisplayName("Check that dealer draw card well by dealers logic")
+    @ParameterizedTest
+    @MethodSource("providerRequestCardParams")
+    void requestCard(List<Integer> cards, List<Integer> expected) {
+        Dealer dealer = new Dealer(
+            new CardBunch(
+                cards,
+                Suit.HEARTS
+            )
+        );
+
+        Deck deck = new Deck(
+            new ArrayList<>() {{
+                add(new Card(Denomination.FOUR, Suit.HEARTS));
+            }}
+        );
+
+        dealer.requestCard(deck);
+        assertEquals(
+            new PersonInfo(
+                new NameInfo("딜러"),
+                new CardBunch(
+                    expected,
+                    Suit.HEARTS
+                ).getCardBunchInfo()
+            ),
+            dealer.getPersonInfo()
+        );
+    }
+
+    private static Stream<Arguments> providerRequestCardParams() {
+        return Stream.of(
+            Arguments.of(Arrays.asList(3, 10), Arrays.asList(3, 10, 4)),
+            Arguments.of(Arrays.asList(7, 10), Arrays.asList(7, 10))
+        );
+    }
 
     @DisplayName("Check if dealer got busted")
     @ParameterizedTest
     @MethodSource("providerIsBustParams")
     void isBust(List<Integer> numbers, boolean expected) {
         Dealer dealer = new Dealer(
-            new CardBunch(
-                numbers.stream().map(
-                    n -> new Card(
-                        Denomination.of(n),
-                        Suit.HEARTS
-                    )
-                ).collect(
-                    Collectors.toList()
-                )
-            )
+            new CardBunch(numbers, Suit.HEARTS)
         );
         assertEquals(
             expected,
@@ -69,22 +85,16 @@ class DealerTest {
 
     @DisplayName("Check if the Dealer return correct dealer information")
     @Test
-    void getPlayerInfo() {
+    void getPersonInfo() {
         assertEquals(
-            new PlayerInfo(
+            new PersonInfo(
                 new NameInfo("딜러"),
-                new CardBunchInfo(
-                    Stream.of(1, 7, 10).map(
-                        n -> new CardInfo(
-                            Denomination.of(n),
-                            Suit.HEARTS
-                        )
-                    ).collect(
-                        Collectors.toList()
-                    )
-                )
+                new CardBunch(
+                    List.of(1, 7, 10),
+                    Suit.HEARTS
+                ).getCardBunchInfo()
             ),
-            testDealer.getPlayerInfo()
+            testDealer.getPersonInfo()
         );
     }
 

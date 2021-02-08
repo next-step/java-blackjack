@@ -1,7 +1,7 @@
 package blackjack.domain;
 
 import blackjack.dto.NameInfo;
-import blackjack.dto.PlayerInfo;
+import blackjack.dto.PersonInfo;
 
 import java.util.Objects;
 
@@ -26,8 +26,8 @@ public abstract class Person {
         return cardBunch.calcScore() > BUST_LIMIT;
     }
 
-    public PlayerInfo getPlayerInfo() {
-        return new PlayerInfo(
+    public PersonInfo getPersonInfo() {
+        return new PersonInfo(
             new NameInfo(name),
             cardBunch.getCardBunchInfo()
         );
