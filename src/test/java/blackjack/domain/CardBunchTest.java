@@ -21,16 +21,7 @@ class CardBunchTest {
     @ParameterizedTest
     @MethodSource("providerCalcScoreParams")
     void calcScore(List<Integer> numbers, int expectedScore) {
-        CardBunch cardBunch = new CardBunch(
-            numbers.stream().map(
-                n -> new Card(
-                    Denomination.of(n),
-                    Suit.HEARTS
-                )
-            ).collect(
-                Collectors.toList()
-            )
-        );
+        CardBunch cardBunch = new CardBunch(numbers, Suit.HEARTS);
 
         assertEquals(
             expectedScore,
@@ -49,7 +40,6 @@ class CardBunchTest {
     @DisplayName("Check if CardBunch returns correct information.")
     @Test
     void getCardBunchInfo() {
-        // TODO : remove repeat logics
         assertEquals(
             new CardBunchInfo(
                 Stream.of(1, 7, 10).map(
@@ -62,14 +52,8 @@ class CardBunchTest {
                 )
             ),
             new CardBunch(
-                Stream.of(1, 7, 10).map(
-                    n -> new Card(
-                        Denomination.of(n),
-                        Suit.HEARTS
-                    )
-                ).collect(
-                    Collectors.toList()
-                )
+                List.of(1, 7, 10),
+                Suit.HEARTS
             ).getCardBunchInfo()
         );
     }

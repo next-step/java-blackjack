@@ -1,7 +1,5 @@
 package blackjack.domain;
 
-import blackjack.dto.CardBunchInfo;
-import blackjack.dto.CardInfo;
 import blackjack.dto.NameInfo;
 import blackjack.dto.PlayerInfo;
 import org.junit.jupiter.api.BeforeAll;
@@ -14,12 +12,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PlayerTest {
     private static Player testPlayer;
@@ -29,14 +24,8 @@ class PlayerTest {
         testPlayer = new Player(
             "player",
             new CardBunch(
-                Stream.of(1, 7, 10).map(
-                    n -> new Card(
-                        Denomination.of(n),
-                        Suit.HEARTS
-                    )
-                ).collect(
-                    Collectors.toList()
-                )
+                List.of(1, 7, 10),
+                Suit.HEARTS
             )
         );
     }
@@ -45,29 +34,39 @@ class PlayerTest {
     @Test
     void requestCard() {
         Player player = new Player(
-            "Player"
+            "player"
         );
 
         Deck deck = new Deck(
             new ArrayList<>() {{
-                add(new Card(Denomination.ACE, Suit.SPADES));
-                add(new Card(Denomination.TEN, Suit.SPADES));
-                add(new Card(Denomination.SEVEN, Suit.SPADES));
-                add(new Card(Denomination.FIVE, Suit.SPADES));
+                add(new Card(Denomination.ACE, Suit.HEARTS));
+                add(new Card(Denomination.TEN, Suit.HEARTS));
             }}
         );
 
-        player.requestCard(deck);
-        assertFalse(player.isBust());
+        assertEquals(
+            new PlayerInfo(
+                new NameInfo("player"),
+                new CardBunch(
+                    List.of(),
+                    Suit.HEARTS
+                ).getCardBunchInfo()
+            ),
+            player.getPlayerInfo()
+        );
 
         player.requestCard(deck);
-        assertFalse(player.isBust());
 
-        player.requestCard(deck);
-        assertFalse(player.isBust());
-
-        player.requestCard(deck);
-        assertTrue(player.isBust());
+        assertEquals(
+            new PlayerInfo(
+                new NameInfo("player"),
+                new CardBunch(
+                    List.of(1),
+                    Suit.HEARTS
+                ).getCardBunchInfo()
+            ),
+            player.getPlayerInfo()
+        );
     }
 
     @DisplayName("Check if user got busted")
@@ -76,16 +75,7 @@ class PlayerTest {
     void isBust(List<Integer> numbers, boolean expected) {
        Player player = new Player(
            "player",
-           new CardBunch(
-               numbers.stream().map(
-                   n -> new Card(
-                       Denomination.of(n),
-                       Suit.HEARTS
-                   )
-               ).collect(
-                   Collectors.toList()
-               )
-           )
+           new CardBunch(numbers, Suit.HEARTS)
        );
        assertEquals(
             expected,
@@ -106,16 +96,10 @@ class PlayerTest {
         assertEquals(
             new PlayerInfo(
                 new NameInfo("player"),
-                new CardBunchInfo(
-                    Stream.of(1, 7, 10).map(
-                        n -> new CardInfo(
-                            Denomination.of(n),
-                            Suit.HEARTS
-                        )
-                    ).collect(
-                        Collectors.toList()
-                    )
-                )
+                new CardBunch(
+                    List.of(1, 7, 10),
+                    Suit.HEARTS
+                ).getCardBunchInfo()
             ),
             testPlayer.getPlayerInfo()
         );

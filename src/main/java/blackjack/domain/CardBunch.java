@@ -1,11 +1,13 @@
 package blackjack.domain;
 
 import blackjack.dto.CardBunchInfo;
+import blackjack.dto.CardInfo;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CardBunch {
     private final List<Card> cardBunch;
@@ -16,6 +18,17 @@ public class CardBunch {
 
     public CardBunch(List<Card> cardBunch) {
         this.cardBunch = cardBunch;
+    }
+
+    public CardBunch(List<Integer> score, Suit suit) {
+        cardBunch = score.stream().map(
+            n -> new Card(
+                Denomination.of(n),
+                suit
+            )
+        ).collect(
+            Collectors.toList()
+        );
     }
 
     public void drawCard(Deck deck) {
