@@ -1,6 +1,6 @@
 package rentcar;
 
-public abstract class Car {
+public abstract class Car implements Report {
     /**
      * 리터당 이동 거리. 즉, 연비
      */

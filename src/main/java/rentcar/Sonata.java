@@ -23,4 +23,9 @@ public class Sonata extends Car {
     String getName() {
         return CAR_NAME;
     }
+
+    @Override
+    public String report() {
+        return getName() + " : " + getChargeQuantity() + "리터";
+    }
 }

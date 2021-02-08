@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 public class CompanyTest {
     @Test
     void name() {
-        //given
-        //when
-        //then
+        RentCompany rentCompany = RentCompany.create();
+        rentCompany.generateReport();
     }
 }
