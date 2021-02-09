@@ -14,7 +14,7 @@ public enum CardValue {
 
     static {
         //1부터 시작
-        for (int i = MIN_VALUE; i < MAX_VALUE; i++) {
+        for (int i = MIN_VALUE; i < MAX_VALUE + 1; i++) {
             cardValues.put(i, values()[i-1]);
         }
     }
@@ -41,7 +41,7 @@ public enum CardValue {
     }
 
     private static void validate(int value){
-        if(value < MIN_VALUE || value >= MAX_VALUE){
+        if(value < MIN_VALUE || value > MAX_VALUE){
             throw new IllegalArgumentException("카드의 숫자는 1에서 13까지 사용할 수 있습니다.");
         }
     }
