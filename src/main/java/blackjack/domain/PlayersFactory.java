@@ -10,7 +10,7 @@ public class PlayersFactory {
         return new Players(Arrays.stream(
             names.split(COMMA)
         ).map(
-            name -> new Player(name, new PlayerCardBunch())
+            Person::createPlayer
         ).collect(
             Collectors.toList()
         ));

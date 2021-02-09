@@ -4,29 +4,29 @@ import java.util.List;
 import java.util.Objects;
 
 public class Players {
-    private final List<Player> players;
+    private final List<Person> players;
     private Integer currentPlayerIdx;
-    private Player currentPlayer;
+    private Person currentPlayer;
 
-    public Players(List<Player> players) {
+    public Players(List<Person> players) {
         this.players = players;
         this.currentPlayerIdx = 0;
         this.currentPlayer = players.get(currentPlayerIdx);
     }
     
-    public Players(List<Player> players, Integer currentPlayerIdx) {
+    public Players(List<Person> players, Integer currentPlayerIdx) {
         this.players = players;
         this.currentPlayerIdx = currentPlayerIdx;
         this.currentPlayer = players.get(currentPlayerIdx);
     }
 
-    public void doAction(boolean isDrawCard, Deck deck) {
-        if (isDrawCard) {
-            currentPlayer.requestCard(deck);
-        } else {
-            currentPlayer = players.get(++currentPlayerIdx);
-        }
-    }
+//    public void doAction(boolean isDrawCard, Deck deck) {
+//        if (isDrawCard) {
+//            currentPlayer.requestCard(deck);
+//        } else {
+//            currentPlayer = players.get(++currentPlayerIdx);
+//        }
+//    }
 
     @Override
     public boolean equals(Object o) {
