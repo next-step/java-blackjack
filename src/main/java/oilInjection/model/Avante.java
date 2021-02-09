@@ -24,11 +24,11 @@ public class Avante extends Car {
     }
 
     @Override
-    void registerTripDistance(Distance tripDistance) {
+    public void registerTripDistance(Distance tripDistance) {
         this.tripDistance = tripDistance;
     }
 
     public static Avante of(final double distance) {
-        return new Avante(new Distance(distance));
+        return new Avante(Distance.of(distance));
     }
 }
