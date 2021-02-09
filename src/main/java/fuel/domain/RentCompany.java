@@ -14,8 +14,18 @@ public class RentCompany {
         return new RentCompany();
     }
 
-    public void addCar(Car car) {
+    public void reservation(String kindOfCar, int distance) {
+        Car car = selectCar(kindOfCar, distance);
         this.rentCars.add(car);
+    }
+
+    private Car selectCar(String kindOfCar, int distance) {
+        if (kindOfCar.equals("Sonata")) {
+            return new Sonata(distance);
+        } else if (kindOfCar.equals("Avante")) {
+            return new Avante(distance);
+        }
+        return new K5(distance);
     }
 
     public List<Car> getRentCars() {

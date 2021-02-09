@@ -21,19 +21,20 @@ class RentCompanyTest {
     @Test
     void addCarTest() {
         // given & when
-        rentCompany.addCar(new Sonata(150));
+        rentCompany.reservation("Sonata", 150);
+        rentCompany.reservation("K5", 260);
         List<Car> rentCars = rentCompany.getRentCars();
 
         // then
-        assertThat(rentCars.size()).isEqualTo(1);
+        assertThat(rentCars.size()).isEqualTo(2);
     }
 
     @DisplayName("보고서 생셩 결과")
     @Test
     void generateReportTest() {
         // given & when
-        rentCompany.addCar(new Sonata(150));
-        rentCompany.addCar(new K5(260));
+        rentCompany.reservation("Sonata", 150);
+        rentCompany.reservation("K5", 260);
 
         // when
         String report = rentCompany.generateReport();
