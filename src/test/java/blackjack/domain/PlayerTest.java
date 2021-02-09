@@ -69,20 +69,6 @@ class PlayerTest {
         );
     }
 
-    @DisplayName("Check if user got busted")
-    @ParameterizedTest
-    @MethodSource("providerIsBustParams")
-    void isBust(List<Integer> numbers, boolean expected) {
-       Player player = new Player(
-           "player",
-           new CardBunch(numbers, Suit.HEARTS)
-       );
-       assertEquals(
-            expected,
-            player.isBust()
-        );
-    }
-
     private static Stream<Arguments> providerIsBustParams() {
         return Stream.of(
             Arguments.of(Arrays.asList(1, 10), false),

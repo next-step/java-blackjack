@@ -16,24 +16,39 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CardBunchTest {
-
-    @DisplayName("Check if the calculated sum is correct")
+    @DisplayName("Check if cards are under limit")
     @ParameterizedTest
-    @MethodSource("providerCalcScoreParams")
-    void calcScore(List<Integer> numbers, int expectedScore) {
+    @MethodSource("providerIsUnderLimitParams")
+    void isUnderLimit(List<Integer> numbers, boolean expected) {
         CardBunch cardBunch = new CardBunch(numbers, Suit.HEARTS);
-
         assertEquals(
-            expectedScore,
-            cardBunch.calcScore()
+            expected,
+            cardBunch.isUnderLimit(17)
         );
     }
 
-    private static Stream<Arguments> providerCalcScoreParams() {
+    private static Stream<Arguments> providerIsUnderLimitParams() {
         return Stream.of(
-            Arguments.of(Arrays.asList(1, 10), 21),
-            Arguments.of(Arrays.asList(1, 10, 10), 21),
-            Arguments.of(Arrays.asList(10, 9), 19)
+            Arguments.of(Arrays.asList(1, 10), false),
+            Arguments.of(Arrays.asList(10, 6), true)
+        );
+    }
+
+    @DisplayName("Check if cards got busted")
+    @ParameterizedTest
+    @MethodSource("providerIsBustParams")
+    void isBust(List<Integer> numbers, boolean expected) {
+        CardBunch cardBunch = new CardBunch(numbers, Suit.HEARTS);
+        assertEquals(
+            expected,
+            cardBunch.isBust()
+        );
+    }
+
+    private static Stream<Arguments> providerIsBustParams() {
+        return Stream.of(
+            Arguments.of(Arrays.asList(1, 10), false),
+            Arguments.of(Arrays.asList(10, 10, 2), true)
         );
     }
 

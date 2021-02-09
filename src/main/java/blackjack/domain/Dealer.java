@@ -12,10 +12,13 @@ public class Dealer extends Person {
         super(DEALER_NAME, cardBunch);
     }
 
-    @Override
-    public void requestCard(Deck deck) {
-        while (cardBunch.calcScore() < REQUEST_LIMIT) {
+    // TODO: Find Better way
+    public Integer requestCard(Deck deck) {
+        int drawCardCnt = 0;
+        while (cardBunch.isUnderLimit(REQUEST_LIMIT)) {
             cardBunch.drawCard(deck);
+            drawCardCnt++;
         }
+        return drawCardCnt;
     }
 }

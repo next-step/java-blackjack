@@ -6,7 +6,6 @@ import blackjack.dto.PersonInfo;
 import java.util.Objects;
 
 public abstract class Person {
-    private static final Integer BUST_LIMIT = 21;
     protected final CardBunch cardBunch;
     protected final String name;
 
@@ -18,12 +17,6 @@ public abstract class Person {
     public Person(String name, CardBunch cardBunch) {
         this.name = name;
         this.cardBunch = cardBunch;
-    }
-
-    abstract void requestCard(Deck deck);
-
-    public boolean isBust() {
-        return cardBunch.calcScore() > BUST_LIMIT;
     }
 
     public PersonInfo getPersonInfo() {

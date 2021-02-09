@@ -4,16 +4,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PlayerFactory {
+public class PlayersFactory {
     private static final String COMMA = ",";
 
-    public static List<Player> generatePlayers(String names) {
-        return Arrays.stream(
+    public static Players generatePlayers(String names) {
+        return new Players(Arrays.stream(
             names.split(COMMA)
         ).map(
             Player::new
         ).collect(
             Collectors.toList()
-        );
+        ));
     }
 }

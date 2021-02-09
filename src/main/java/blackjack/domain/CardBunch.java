@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CardBunch {
+    private static final Integer BUST_LIMIT = 21;
+
     private final List<Card> cardBunch;
 
     public CardBunch() {
@@ -37,7 +39,15 @@ public class CardBunch {
         );
     }
 
-    public Integer calcScore() {
+    public boolean isUnderLimit(Integer limit) {
+        return calcScore() < limit;
+    }
+
+    public boolean isBust() {
+        return calcScore() > BUST_LIMIT;
+    }
+
+    private Integer calcScore() {
         int score = cardBunch.stream().mapToInt(
             Card::getScore
         ).sum();

@@ -9,7 +9,6 @@ public class Player extends Person {
         super(name, cardBunch);
     }
 
-    @Override
     public void requestCard(Deck deck) {
         cardBunch.drawCard(deck);
     }

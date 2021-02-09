@@ -7,17 +7,19 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PlayerFactoryTest {
+class PlayersFactoryTest {
 
     @DisplayName("Check if the players created correctly")
     @Test
     void generatePlayers() {
         assertEquals(
-            Arrays.asList(
-                new Player("pobi"),
-                new Player("jason")
+            new Players(
+                Arrays.asList(
+                    new Player("pobi"),
+                    new Player("jason")
+                )
             ),
-            PlayerFactory.generatePlayers("pobi,jason")
+            PlayersFactory.generatePlayers("pobi,jason")
          );
     }
 }

@@ -63,26 +63,6 @@ class DealerTest {
         );
     }
 
-    @DisplayName("Check if dealer got busted")
-    @ParameterizedTest
-    @MethodSource("providerIsBustParams")
-    void isBust(List<Integer> numbers, boolean expected) {
-        Dealer dealer = new Dealer(
-            new CardBunch(numbers, Suit.HEARTS)
-        );
-        assertEquals(
-            expected,
-            dealer.isBust()
-        );
-    }
-
-    private static Stream<Arguments> providerIsBustParams() {
-        return Stream.of(
-            Arguments.of(Arrays.asList(1, 10), false),
-            Arguments.of(Arrays.asList(10, 9, 8), true)
-        );
-    }
-
     @DisplayName("Check if the Dealer return correct dealer information")
     @Test
     void getPersonInfo() {
