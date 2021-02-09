@@ -17,13 +17,13 @@
   이 요구사항을 만족하는 테스트 코드는 다음과 같다.
   아래 테스트 코드에서 자동차 인스턴스를 생성할 때의 숫자는 자동차로 여행할 거리를 의미한다.
 
-`public class RentCompanyTest {
+`public class oilInjection.model.RentCompanyTest {
 private static final String NEWLINE = System.getProperty("line.separator");`
 
 ```java
     @Test
     public void report() throws Exception {
-        RentCompanyTest company = RentCompanyTest.create(); // factory method를 사용해 생성
+        oilInjection.model.RentCompanyTest company = oilInjection.model.RentCompanyTest.create(); // factory method를 사용해 생성
         company.addCar(new Sonata(150));
         company.addCar(new K5(260));
         company.addCar(new Sonata(120));
