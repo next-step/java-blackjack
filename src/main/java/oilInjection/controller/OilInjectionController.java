@@ -1,9 +1,9 @@
 package oilInjection.controller;
 
-import oilInjection.RentCompany;
+import oilInjection.model.RentCompany;
 import oilInjection.model.Car;
-import view.InputView;
-import view.OutputView;
+import oilInjection.view.InputView;
+import oilInjection.view.OutputView;
 
 public class OilInjectionController {
 

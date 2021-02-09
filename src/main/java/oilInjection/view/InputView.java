@@ -1,6 +1,5 @@
-package view;
+package oilInjection.view;
 
-import oilInjection.model.Car;
 import oilInjection.model.Distance;
 
 import java.util.Scanner;

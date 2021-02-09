@@ -1,9 +1,4 @@
-package oilInjection;
-
-import oilInjection.model.Avante;
-import oilInjection.model.Car;
-import oilInjection.model.K5;
-import oilInjection.model.Sonata;
+package oilInjection.model;
 
 import java.util.ArrayList;
 import java.util.List;

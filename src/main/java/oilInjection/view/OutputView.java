@@ -1,4 +1,4 @@
-package view;
+package oilInjection.view;
 
 import oilInjection.model.Car;
 
