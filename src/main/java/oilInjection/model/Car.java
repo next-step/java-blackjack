@@ -11,7 +11,7 @@ public abstract class Car {
     public abstract String getName();
     public abstract void registerTripDistance(Distance tripDistance);
 
-    public void InjectOil() {
+    public void injectOil() {
         double oilAmountNeeded = getTripDistance().getDistance() / getDistancePerLiter();
         oil = Oil.of(oilAmountNeeded);
     }
