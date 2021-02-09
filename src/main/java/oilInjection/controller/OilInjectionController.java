@@ -3,8 +3,7 @@ package oilInjection.controller;
 import oilInjection.RentCompany;
 import oilInjection.model.Car;
 import view.InputView;
-
-import java.util.List;
+import view.OutputView;
 
 public class OilInjectionController {
 
@@ -14,6 +13,12 @@ public class OilInjectionController {
        for (Car car : rentCompany.getCarList()) {
            System.out.println(car.getName());
            car.registerTripDistance(InputView.getDistance());
+           car.injectOil();
        }
+    }
+
+    public void makeOilReport(RentCompany rentCompany){
+        rentCompany.getCarList()
+                .forEach(OutputView::printCarInfo);
     }
 }
