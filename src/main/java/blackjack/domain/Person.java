@@ -6,7 +6,7 @@ import blackjack.dto.PersonInfo;
 import java.util.Objects;
 
 public class Person {
-    private static String DEALER_NAME = "딜러";
+    private static final String DEALER_NAME = "딜러";
 
     protected final CardBunch cardBunch;
     protected final String name;
@@ -30,6 +30,14 @@ public class Person {
 
     public static Person createPlayer(String name) {
        return new Person(name, new PlayerCardBunch());
+    }
+
+    public void drawCard(Deck deck) {
+        cardBunch.drawCard(deck);
+    }
+
+    public Result getResult(Person other) {
+        return this.cardBunch.getResult(other.cardBunch);
     }
 
     public PersonInfo getPersonInfo() {

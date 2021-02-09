@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class DeckTest {
-    @DisplayName("첫번째 카드를 잘 뽑는지 확인한다.")
+    @DisplayName("Check if Deck returns first item")
     @Test
     void drawCard() {
         Deck deck = new Deck(
@@ -26,7 +26,7 @@ class DeckTest {
         );
     }
     
-    @DisplayName("카드덱에서 총 52장의 카드를 뽑을수 있는지 확인한다.")
+    @DisplayName("Check Card deck return maximum 52 cards")
     @Test
     void deckSizeTest() {
         Deck deck = new Deck();

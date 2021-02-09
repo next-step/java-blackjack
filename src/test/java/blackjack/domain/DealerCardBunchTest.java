@@ -34,6 +34,26 @@ class DealerCardBunchTest {
         );
     }
 
+    @DisplayName("Check if the function generate correct result")
+    @ParameterizedTest
+    @MethodSource("providerGetResultParams")
+    void getResult(List<Integer> first, List<Integer> second, Result expected) {
+        assertEquals(
+            expected,
+            new DealerCardBunch(first, Suit.HEARTS).getResult(
+                new DealerCardBunch(second, Suit.HEARTS)
+            )
+        );
+    }
+
+    private static Stream<Arguments> providerGetResultParams() {
+        return Stream.of(
+            Arguments.of(List.of(1, 10), List.of(10, 10), Result.WIN),
+            Arguments.of(List.of(1, 10), List.of(1, 10), Result.DRAW),
+            Arguments.of(List.of(9, 10), List.of(1, 10), Result.LOSE)
+        );
+    }
+
     @DisplayName("Check if cards got busted")
     @ParameterizedTest
     @MethodSource("providerIsBustParams")

@@ -41,7 +41,13 @@ public abstract class CardBunch {
         );
     }
 
-    public boolean isBlackJack() { return calcScore().equals(BLACK_JACK_SCORE); }
+    public Result getResult(CardBunch other) {
+        return Result.calcResult(this, other);
+    }
+
+    public boolean isBlackJack() {
+        return calcScore().equals(BLACK_JACK_SCORE);
+    }
 
     public boolean isBust() {
         return calcScore() > BLACK_JACK_SCORE;
