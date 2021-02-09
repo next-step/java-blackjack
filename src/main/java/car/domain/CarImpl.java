@@ -1,4 +1,4 @@
-package domain;
+package car.domain;
 
 public abstract class CarImpl implements Car {
 

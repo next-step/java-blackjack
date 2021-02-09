@@ -1,12 +1,11 @@
-package domain;
+package car.domain;
 
-public class Avante extends CarImpl {
-
-    private static final double DISTANCE_PER_LITER = 15;
-    private static final String NAME = "Avante";
+public class Sonata extends CarImpl {
+    private static final double DISTANCE_PER_LITER = 10;
+    private static final String NAME = "Sonata";
     private final double tripDistance;
 
-    public Avante(double tripDistance) {
+    public Sonata (double tripDistance) {
         this.tripDistance = tripDistance;
     }
 
@@ -24,4 +23,5 @@ public class Avante extends CarImpl {
     public String getName() {
         return NAME;
     }
+
 }

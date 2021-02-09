@@ -1,4 +1,4 @@
-package domain;
+package car.domain;
 
 public class K5 extends CarImpl {
     private static final double DISTANCE_PER_LITER = 13;
