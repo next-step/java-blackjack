@@ -6,6 +6,7 @@ import java.util.List;
 public class RentCompany {
 
     private final List<Car> carList;
+    private final String reportForm = "%s : %f \n";
 
     private RentCompany() {
         carList = new ArrayList<>();
@@ -20,16 +21,19 @@ public class RentCompany {
         carList.add(car);
     }
 
-    public String generateReport () {
-        String report = "";
-        return report;
+    public String generateReport() {
+        StringBuilder report = new StringBuilder();
+        for (Car car : carList) {
+            report.append(String.format(reportForm, car.getName(), car.getOil().getAmount()));
+        }
+        return report.toString();
     }
 
     public List<Car> getCarList() {
         return carList;
     }
 
-    public static RentCompany create () {
+    public static RentCompany create() {
         return new RentCompany();
     }
 }

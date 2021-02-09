@@ -18,7 +18,6 @@ public class OilInjectionController {
     }
 
     public void makeOilReport(RentCompany rentCompany){
-        rentCompany.getCarList()
-                .forEach(OutputView::printCarInfo);
+        OutputView.printCarInfo(rentCompany.generateReport());
     }
 }
