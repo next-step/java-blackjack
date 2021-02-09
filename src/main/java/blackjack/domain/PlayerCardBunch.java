@@ -16,7 +16,7 @@ public class PlayerCardBunch extends CardBunch {
     }
 
     public boolean canDrawCard() {
-        return !isBust();
+        return !isBlackJack() && !isBust();
     }
 
     @Override

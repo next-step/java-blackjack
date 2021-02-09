@@ -21,7 +21,7 @@ public class DealerCardBunch extends CardBunch {
 
     @Override
     public boolean canDrawCard() {
-        return !isBust() && isNeedMoreDraw();
+        return calcScore() < REQUEST_LIMIT;
     }
 
     @Override
@@ -34,11 +34,7 @@ public class DealerCardBunch extends CardBunch {
         return super.hashCode();
     }
 
-    private boolean isNeedMoreDraw() {
-        return calcScore() < REQUEST_LIMIT;
-    }
-
-    public CardBunchInfo getHiddenCardBunchInfo() {
+    public CardBunchInfo getFirstCardBunchInfo() {
         return new CardBunchInfo(
             List.of(
                 cardBunch.get(0).getCardInfo()

@@ -16,6 +16,24 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DealerCardBunchTest {
+    @DisplayName("Check if dealer can draw card")
+    @ParameterizedTest
+    @MethodSource("providerCanDrawCardParams")
+    void canDrawCard(List<Integer> numbers, boolean expected) {
+        CardBunch cardBunch = new DealerCardBunch(numbers, Suit.HEARTS);
+        assertEquals(
+            expected,
+            cardBunch.canDrawCard()
+        );
+    }
+
+    private static Stream<Arguments> providerCanDrawCardParams() {
+        return Stream.of(
+            Arguments.of(Arrays.asList(6, 10), true),
+            Arguments.of(Arrays.asList(10, 7), false)
+        );
+    }
+
     @DisplayName("Check if cards got busted")
     @ParameterizedTest
     @MethodSource("providerIsBustParams")
@@ -52,6 +70,22 @@ class DealerCardBunchTest {
                 List.of(1, 7, 10),
                 Suit.HEARTS
             ).getCardBunchInfo()
+        );
+    }
+
+    @DisplayName("Check if CardBunch returns correct information with first card only")
+    @Test
+    void getFirstCardBunchInfo() {
+        assertEquals(
+            new CardBunchInfo(
+                List.of(
+                    new CardInfo(Denomination.ACE, Suit.HEARTS)
+                )
+            ),
+            new DealerCardBunch(
+                List.of(1, 7),
+                Suit.HEARTS
+            ).getFirstCardBunchInfo()
         );
     }
 }

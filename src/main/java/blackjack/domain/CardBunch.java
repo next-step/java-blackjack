@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public abstract class CardBunch {
-    private static final Integer BUST_LIMIT = 21;
+    private static final Integer BLACK_JACK_SCORE = 21;
 
     protected final List<Card> cardBunch;
 
@@ -31,6 +31,8 @@ public abstract class CardBunch {
         );
     }
 
+    // TODO: 생성자 없애는법 알아보기
+
     public abstract boolean canDrawCard();
 
     public void drawCard(Deck deck) {
@@ -39,8 +41,10 @@ public abstract class CardBunch {
         );
     }
 
+    public boolean isBlackJack() { return calcScore().equals(BLACK_JACK_SCORE); }
+
     public boolean isBust() {
-        return calcScore() > BUST_LIMIT;
+        return calcScore() > BLACK_JACK_SCORE;
     }
 
     protected Integer calcScore() {
