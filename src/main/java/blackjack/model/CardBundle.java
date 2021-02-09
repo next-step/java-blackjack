@@ -32,4 +32,10 @@ public class CardBundle {
         this.cards.addAll(cards);
     }
 
+    public Card pick() {
+        int pickNumber = random.nextInt(cards.size());
+        Card pickedCard = cards.get(pickNumber);
+        cards.remove(pickedCard);
+        return pickedCard;
+    }
 }
