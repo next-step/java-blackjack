@@ -1,4 +1,6 @@
-import oilInjection.RentCompany;
+package oilInjection.model;
+
+import oilInjection.model.RentCompany;
 import oilInjection.model.Avante;
 import oilInjection.model.K5;
 import oilInjection.model.Sonata;
