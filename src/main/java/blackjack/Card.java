@@ -22,4 +22,9 @@ public class Card {
     private String parseCard(CardType cardType, CardValue cardValue) {
         return cardValue.getTag() + cardType.getType();
     }
+
+    @Override
+    public String toString(){
+        return name;
+    }
 }
