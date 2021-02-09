@@ -4,7 +4,7 @@ public class K5 extends Car {
     private K5(Distance tripDistance) {
         this.tripDistance = tripDistance;
         this.distancePerLiter = 13;
-        this.name = "Kfive";
+        this.name = "K5";
     }
 
     @Override
