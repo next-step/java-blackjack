@@ -119,8 +119,19 @@ RentCompany
 
 
 ## 구조 설계
+**카드 클래스**
+- BlackJackCard
+    - List<CardBundle>
+    
+- CardBundle
+    - List<Card>
+- Card
+    - Type
+    - Number
+- Type
+    - Heart, Spade ...
+- Number
+    - ACE,TWO, THREE, ... , KING
 
-        
-            
     
 ![img.png](img.png)
