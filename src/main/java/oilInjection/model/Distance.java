@@ -7,6 +7,7 @@ public class Distance {
 
     private Distance(final double distance){
         this.distance = distance;
+        validate();
     }
 
     public double getDistance() {
@@ -28,5 +29,11 @@ public class Distance {
     @Override
     public int hashCode() {
         return Objects.hash(distance);
+    }
+
+    public void validate(){
+        if(distance < 0){
+            throw new IllegalArgumentException("거리의 값이 0보다 작을 수 없습니다.");
+        }
     }
 }
