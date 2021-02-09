@@ -31,15 +31,15 @@ public class CardTest {
     }
 
     @Test
-    @DisplayName("Card가 K다이아 일 때, 이름이 제대로 나오는 지, 확인하는 테스트")
-    void generate9DiamondCardScoreTest() {
+    @DisplayName("Card가 K다이아 일 때, 점수가 제대로 나오는 지, 확인하는 테스트")
+    void generateKDiamondCardScoreTest() {
         final Card card = new Card(CardType.DIAMOND, CardValue.of(12));
         final int score = card.getScore();
         assertThat(score).isEqualTo(10);
     }
 
     @Test
-    @DisplayName("Card가 1스페이드 일 때, 이름이 제대로 나오는 지, 확인하는 테스트")
+    @DisplayName("Card가 1스페이드 일 때, 점수가 제대로 나오는 지, 확인하는 테스트")
     void generate2HeartCardScoreTest() {
         final Card card = new Card(CardType.SPADE, CardValue.of(1));
         final int score = card.getScore();
