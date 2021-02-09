@@ -1,7 +1,6 @@
 package blackjack.domain;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class PlayersFactory {
@@ -11,7 +10,7 @@ public class PlayersFactory {
         return new Players(Arrays.stream(
             names.split(COMMA)
         ).map(
-            Player::new
+            name -> new Player(name, new PlayerCardBunch())
         ).collect(
             Collectors.toList()
         ));

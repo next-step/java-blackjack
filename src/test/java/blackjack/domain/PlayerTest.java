@@ -23,7 +23,7 @@ class PlayerTest {
     static void beforeAll() {
         testPlayer = new Player(
             "player",
-            new CardBunch(
+            new PlayerCardBunch(
                 List.of(1, 7, 10),
                 Suit.HEARTS
             )
@@ -34,7 +34,8 @@ class PlayerTest {
     @Test
     void requestCard() {
         Player player = new Player(
-            "player"
+            "player",
+            new PlayerCardBunch()
         );
 
         Deck deck = new Deck(
@@ -47,7 +48,7 @@ class PlayerTest {
         assertEquals(
             new PersonInfo(
                 new NameInfo("player"),
-                new CardBunch(
+                new PlayerCardBunch(
                     List.of(),
                     Suit.HEARTS
                 ).getCardBunchInfo()
@@ -60,7 +61,7 @@ class PlayerTest {
         assertEquals(
             new PersonInfo(
                 new NameInfo("player"),
-                new CardBunch(
+                new PlayerCardBunch(
                     List.of(1),
                     Suit.HEARTS
                 ).getCardBunchInfo()
@@ -82,7 +83,7 @@ class PlayerTest {
         assertEquals(
             new PersonInfo(
                 new NameInfo("player"),
-                new CardBunch(
+                new PlayerCardBunch(
                     List.of(1, 7, 10),
                     Suit.HEARTS
                 ).getCardBunchInfo()

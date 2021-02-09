@@ -1,18 +1,16 @@
 package blackjack.domain;
 
 import blackjack.dto.CardBunchInfo;
-import blackjack.dto.CardInfo;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class CardBunch {
+public abstract class CardBunch {
     private static final Integer BUST_LIMIT = 21;
 
-    private final List<Card> cardBunch;
+    protected final List<Card> cardBunch;
 
     public CardBunch() {
         this.cardBunch = new ArrayList<>();
@@ -33,21 +31,19 @@ public class CardBunch {
         );
     }
 
+    public abstract boolean canDrawCard();
+
     public void drawCard(Deck deck) {
         cardBunch.add(
             deck.drawCard()
         );
     }
 
-    public boolean isUnderLimit(Integer limit) {
-        return calcScore() < limit;
-    }
-
     public boolean isBust() {
         return calcScore() > BUST_LIMIT;
     }
 
-    private Integer calcScore() {
+    protected Integer calcScore() {
         int score = cardBunch.stream().mapToInt(
             Card::getScore
         ).sum();

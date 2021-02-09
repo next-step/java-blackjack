@@ -15,8 +15,8 @@ class PlayersFactoryTest {
         assertEquals(
             new Players(
                 Arrays.asList(
-                    new Player("pobi"),
-                    new Player("jason")
+                    new Player("pobi", new PlayerCardBunch()),
+                    new Player("jason", new PlayerCardBunch())
                 )
             ),
             PlayersFactory.generatePlayers("pobi,jason")

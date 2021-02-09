@@ -13,32 +13,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class CardBunchTest {
-    @DisplayName("Check if cards are under limit")
-    @ParameterizedTest
-    @MethodSource("providerIsUnderLimitParams")
-    void isUnderLimit(List<Integer> numbers, boolean expected) {
-        CardBunch cardBunch = new CardBunch(numbers, Suit.HEARTS);
-        assertEquals(
-            expected,
-            cardBunch.isUnderLimit(17)
-        );
-    }
-
-    private static Stream<Arguments> providerIsUnderLimitParams() {
-        return Stream.of(
-            Arguments.of(Arrays.asList(1, 10), false),
-            Arguments.of(Arrays.asList(10, 6), true)
-        );
-    }
-
+class DealerCardBunchTest {
     @DisplayName("Check if cards got busted")
     @ParameterizedTest
     @MethodSource("providerIsBustParams")
     void isBust(List<Integer> numbers, boolean expected) {
-        CardBunch cardBunch = new CardBunch(numbers, Suit.HEARTS);
+        CardBunch cardBunch = new DealerCardBunch(numbers, Suit.HEARTS);
         assertEquals(
             expected,
             cardBunch.isBust()
@@ -66,7 +48,7 @@ class CardBunchTest {
                     Collectors.toList()
                 )
             ),
-            new CardBunch(
+            new DealerCardBunch(
                 List.of(1, 7, 10),
                 Suit.HEARTS
             ).getCardBunchInfo()
