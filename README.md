@@ -133,5 +133,10 @@ RentCompany
 - Number
     - ACE,TWO, THREE, ... , KING
 
-    
+**Player 클래스**
+- Player (interface)
+  - Guest
+  - Dealer
+  
+
 ![img.png](img.png)
