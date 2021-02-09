@@ -1,12 +1,14 @@
 package blackjack.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CardBundle {
-
+    private static final Random random = new Random();
     private final List<Card> cards;
 
-    public CardBundle(List<Card> cards) {
+    private CardBundle(List<Card> cards) {
         this.cards = cards;
     }
 
@@ -17,4 +19,17 @@ public class CardBundle {
     public static CardBundle of(List<Card> cards) {
         return new CardBundle(cards);
     }
+
+    public void generateOneTypeCards(Type type){
+        List<Card> cards = new ArrayList<>();
+        for (Number number : Number.values()) {
+            cards.add(Card.of(type, number));
+        }
+        concat(cards);
+    }
+
+    private void concat(List<Card> cards){
+        this.cards.addAll(cards);
+    }
+
 }
