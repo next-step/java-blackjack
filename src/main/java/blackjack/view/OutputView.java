@@ -3,6 +3,7 @@ package blackjack.view;
 import blackjack.dto.DealerScoreInfo;
 import blackjack.dto.NameInfo;
 import blackjack.dto.NamesInfo;
+import blackjack.dto.PeopleInfo;
 import blackjack.dto.PersonInfo;
 import blackjack.dto.PlayersScoreInfo;
 
@@ -18,7 +19,7 @@ public class OutputView {
 
     private static final String CARD_DELIMITER = ", ";
 
-    private static final String SCORE_GUIDE_MSG = "## 최종 승패";
+    private static final String SCORE_GUIDE_MSG = "\n## 최종 승패";
     private static final String DEALER_SCORE_INFO_DELIMITER = " ";
 
     public void printInitGameMsg(NameInfo dealerNameInfo, NamesInfo playersNameInfo, Integer initCardNum) {
@@ -45,6 +46,13 @@ public class OutputView {
 
     public void printDealerDrawInformation() {
         System.out.println("\n딜러는 16이하라 한장의 카드를 더 받았습니다.\n");
+    }
+
+
+    public void printPeopleInfo(PeopleInfo peopleInfo) {
+        peopleInfo.getPeopleInfo().forEach(
+            personInfo -> printCardInfo(personInfo)
+        );
     }
 
     public void printScoreGuideMsg() {

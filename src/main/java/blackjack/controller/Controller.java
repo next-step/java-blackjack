@@ -8,6 +8,7 @@ import blackjack.domain.Person;
 import blackjack.domain.Player;
 import blackjack.domain.PlayersFactory;
 import blackjack.dto.NameInfo;
+import blackjack.dto.PeopleInfo;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
@@ -40,9 +41,14 @@ public class Controller {
         }
 
         output.printCardInfo(dealer.getPersonInfo());
-        for (Person player : players) {
-            output.printCardInfo(player.getPersonInfo());
-        }
+        output.printPeopleInfo(
+            new PeopleInfo(
+                players
+                    .stream()
+                    .map(p -> p.getPersonInfo())
+                    .collect(Collectors.toList())
+            )
+        );
 
         for (Person player : players) {
             NameInfo name = player.getNameInfo();
@@ -58,9 +64,14 @@ public class Controller {
         }
 
         output.printCardInfo(dealer.getPersonInfo());
-        for (Person player : players) {
-            output.printCardInfo(player.getPersonInfo());
-        }
+        output.printPeopleInfo(
+            new PeopleInfo(
+                players
+                    .stream()
+                    .map(p -> p.getPersonInfo())
+                    .collect(Collectors.toList())
+            )
+        );
 
         MatchScoreBoard matchScoreBoard = new MatchScoreBoard(
             players
