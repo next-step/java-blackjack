@@ -21,10 +21,6 @@ public class MatchScoreBoard {
         matchScoreMap = new HashMap<>();
     }
 
-    public void addMatchScore(Player player, MatchScore matchScore) {
-        matchScoreMap.put(player, matchScore);
-    }
-
     public PlayersScoreInfo getPlayersScoreInfo() {
         return new PlayersScoreInfo(
             matchScoreMap

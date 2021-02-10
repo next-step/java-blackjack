@@ -29,28 +29,6 @@ class MatchScoreBoardTest {
         );
     }
 
-    @DisplayName("Check add match score to scoreboard well")
-    @Test
-    void addMatchScore() {
-        testScoreBoard.addMatchScore(
-            new Player("name5"),
-            MatchScore.WIN
-        );
-
-        assertEquals(
-            new MatchScoreBoard(
-                new HashMap<>() {{
-                    put(new Player("name1"), MatchScore.WIN);
-                    put(new Player("name2"), MatchScore.DRAW);
-                    put(new Player("name3"), MatchScore.LOSE);
-                    put(new Player("name4"), MatchScore.WIN);
-                    put(new Player("name5"), MatchScore.WIN);
-                }}
-            ),
-            testScoreBoard
-        );
-    }
-
     @DisplayName("Check calculated players score information is proper")
     @Test
     void getPlayersScoreInfo() {
