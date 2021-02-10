@@ -14,7 +14,8 @@ public class Player {
         }
     }
 
+    @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 }
