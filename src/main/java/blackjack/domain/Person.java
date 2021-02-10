@@ -32,6 +32,10 @@ public class Person {
        return new Person(name, new PlayerCardBunch());
     }
 
+    public boolean canDrawCard() {
+        return cardBunch.canDrawCard();
+    }
+
     public void drawCard(Deck deck) {
         cardBunch.drawCard(deck);
     }
