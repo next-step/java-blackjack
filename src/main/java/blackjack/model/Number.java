@@ -32,4 +32,8 @@ public enum Number {
     public String getName() {
         return name;
     }
+
+    public int add(Number added) {
+        return number + added.getNumber();
+    }
 }
