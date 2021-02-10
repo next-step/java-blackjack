@@ -1,22 +1,24 @@
 package blackjack.domain;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Deck {
-    private static List<Card> cards = new ArrayList<>();
+    private static LinkedList<Card> cards;
 
-    public Deck(final List<Card> cards) {
+    public Deck(final LinkedList<Card> cards) {
         Deck.cards = cards;
     }
 
-    public static Deck createInitializingCards() {
+    public static Deck createShuffledCards() {
+        cards = new LinkedList<>();
         for (final Denomination denomination : Denomination.values()) {
             for (final Suit suit : Suit.values()) {
                 cards.add(new Card(denomination, suit));
             }
         }
+        shuffleCards();
         return new Deck(cards);
     }
 
@@ -24,7 +26,11 @@ public class Deck {
         return cards;
     }
 
-    public void shuffleCards() {
+    private static void shuffleCards() {
         Collections.shuffle(cards);
+    }
+
+    public Card draw() {
+        return cards.pop();
     }
 }

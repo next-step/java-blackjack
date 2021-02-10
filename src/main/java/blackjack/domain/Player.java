@@ -1,7 +1,12 @@
 package blackjack.domain;
 
-public class Player {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Player implements GameParticipant {
     private final String name;
+    private List<Card> cards = new ArrayList<>();
 
     public Player(final String name) {
         validateNonEmptyName(name);
@@ -14,7 +19,30 @@ public class Player {
         }
     }
 
+    @Override
     public String getName() {
-        return name;
+        return this.name;
+    }
+
+    @Override
+    public List<Card> getCards() {
+        return this.cards;
+    }
+
+    @Override
+    public void addCard(Card card) {
+        this.cards.add(card);
+    }
+
+    @Override
+    public List<Card> getCardsBeforeGameStart() {
+        return Arrays.asList(cards.get(0), cards.get(1));
+    }
+
+    @Override
+    public int getResult() {
+        return this.cards.stream()
+                .mapToInt(card -> card.getDenomination().getNumber())
+                .sum();
     }
 }
