@@ -1,9 +1,11 @@
 package blackjack;
 
+import java.util.Objects;
+
 public class Card {
-    private CardType cardType;
-    private CardValue cardValue;
-    private String name;
+    private final CardType cardType;
+    private final CardValue cardValue;
+    private final String name;
 
     public Card(CardType type, CardValue value) {
         this.cardType = type;
@@ -24,7 +26,20 @@ public class Card {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Card card = (Card) o;
+        return cardType == card.cardType && cardValue == card.cardValue && Objects.equals(name, card.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cardType, cardValue, name);
     }
 }
