@@ -15,10 +15,6 @@ public class Player {
     }
 
     public Score getScore() {
-        int score = 0;
-        for (Card card : cards) {
-            score += card.getDenomination().getScore();
-        }
-        return new Score(score);
+       return cards.getScore();
     }
 }
