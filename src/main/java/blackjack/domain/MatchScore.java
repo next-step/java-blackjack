@@ -34,7 +34,7 @@ public enum MatchScore {
     }
 
     public static MatchScore calcMatchScore(CardBunch player, CardBunch dealer) {
-        // TODO : How to express checking order explicitly?
+        // TODO : Check using Enum is useful? It may downgrade readability
         if (player.isBust() && dealer.isBust()) throw new RuntimeException("Unreachable point");
         if (player.isBust()) return LOSE;
         if (dealer.isBust()) return WIN;

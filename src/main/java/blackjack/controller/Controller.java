@@ -52,7 +52,7 @@ public class Controller {
 
         for (Person player : players) {
             NameInfo name = player.getNameInfo();
-            while (player.canDrawCard() && input.requestCard(name).equals("y")) {
+            while (player.canDrawCard() && input.requestCard(name)) {
                 player.drawCardFromDeck(deck);
                 output.printCardInfo(player.getPersonInfo());
             }
