@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DenominationTest {
 
-    @DisplayName("Check if the denomination is Ace")
+    @DisplayName("Check return denomination is ace status well")
     @ParameterizedTest
     @MethodSource("providerIsAceTestParams")
     void isAceTest(Denomination denomination, boolean expected) {
@@ -46,7 +46,7 @@ class DenominationTest {
         );
     }
 
-    @DisplayName("Check if the function throws error on wrong input")
+    @DisplayName("Check throws error on wrong score of denomination")
     @Test
     void ofWithWrongScore() {
         assertThrows(

@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import rent.Car;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +30,7 @@ class PlayerTest {
         );
     }
 
-    @DisplayName("Check Player return drawable status well")
+    @DisplayName("Check player return drawable status well")
     @ParameterizedTest
     @MethodSource("providerCanDrawCardParams")
     void canDrawCard(List<Integer> numbers, boolean canDrawCard) {
@@ -56,7 +55,7 @@ class PlayerTest {
         );
     }
 
-    @DisplayName("Check Player draw card from deck well")
+    @DisplayName("Check player draw card from deck well")
     @Test
     void drawCardFromDeck() {
         Deck deck = new Deck(
@@ -78,10 +77,10 @@ class PlayerTest {
         );
     }
 
-    @DisplayName("Check player get result")
+    @DisplayName("Check player get proper match score")
     @ParameterizedTest
-    @MethodSource("providerGetResultParams")
-    void getResult(List<Integer> playerNumbers, List<Integer> dealerNubmers, Result result) {
+    @MethodSource("providerGetMatchScoreParams")
+    void getMatchScore(List<Integer> playerNumbers, List<Integer> dealerNubmers, MatchScore result) {
         Player player = new Player(
             "player",
             new CardBunch(
@@ -96,24 +95,24 @@ class PlayerTest {
 
         assertEquals(
             result,
-            player.getResult(dealer)
+            player.getMatchScore(dealer)
         );
     }
 
-    private static Stream<Arguments> providerGetResultParams() {
+    private static Stream<Arguments> providerGetMatchScoreParams() {
         return Stream.of(
-            Arguments.of(List.of(10, 10, 2), List.of(10, 10), Result.LOSE),
-            Arguments.of(List.of(10, 10), List.of(10, 10, 2), Result.WIN),
-            Arguments.of(List.of(1, 10), List.of(1, 10), Result.DRAW),
-            Arguments.of(List.of(1, 10), List.of(10, 10), Result.WIN),
-            Arguments.of(List.of(10, 10), List.of(1, 10), Result.LOSE),
-            Arguments.of(List.of(9, 10), List.of(9, 10), Result.DRAW),
-            Arguments.of(List.of(10, 10), List.of(10, 9), Result.WIN),
-            Arguments.of(List.of(10, 9), List.of(10, 10), Result.LOSE)
+            Arguments.of(List.of(10, 10, 2), List.of(10, 10), MatchScore.LOSE),
+            Arguments.of(List.of(10, 10), List.of(10, 10, 2), MatchScore.WIN),
+            Arguments.of(List.of(1, 10), List.of(1, 10), MatchScore.DRAW),
+            Arguments.of(List.of(1, 10), List.of(10, 10), MatchScore.WIN),
+            Arguments.of(List.of(10, 10), List.of(1, 10), MatchScore.LOSE),
+            Arguments.of(List.of(9, 10), List.of(9, 10), MatchScore.DRAW),
+            Arguments.of(List.of(10, 10), List.of(10, 9), MatchScore.WIN),
+            Arguments.of(List.of(10, 9), List.of(10, 10), MatchScore.LOSE)
         );
     }
 
-    @DisplayName("Check if the Player return correct Player information")
+    @DisplayName("Check player return correct Player information")
     @Test
     void getPersonInfo() {
         assertEquals(
@@ -128,7 +127,7 @@ class PlayerTest {
         );
     }
 
-    @DisplayName("Check if the Player return correct Player name information")
+    @DisplayName("Check player return correct Player name information")
     @Test
     void getNameInfo() {
         assertEquals(

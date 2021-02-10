@@ -2,15 +2,20 @@ package blackjack.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import rent.Car;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class DeckTest {
-    @DisplayName("Check if Deck returns first item")
+    @DisplayName("Check deck returns first card well")
     @Test
     void drawCard() {
         Deck deck = new Deck(
@@ -26,13 +31,20 @@ class DeckTest {
         );
     }
     
-    @DisplayName("Check Card deck return maximum 52 cards")
+    @DisplayName("Check deck is composed with different 52 cards")
     @Test
     void deckSizeTest() {
         Deck deck = new Deck();
-        IntStream.range(0, 52).forEach(
+
+        Set<Card> deckSet = IntStream.range(0, 52).mapToObj(
             i -> deck.drawCard()
+        ).collect(
+            Collectors.toSet()
         );
-        assertThatExceptionOfType(RuntimeException.class).isThrownBy(deck::drawCard);
+
+        assertEquals(
+            52,
+            deckSet.size()
+        );
     }
 }

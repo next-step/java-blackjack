@@ -2,10 +2,10 @@ package blackjack.controller;
 
 import blackjack.domain.Dealer;
 import blackjack.domain.Deck;
+import blackjack.domain.MatchScore;
 import blackjack.domain.Person;
 import blackjack.domain.Player;
 import blackjack.domain.PlayersFactory;
-import blackjack.domain.Result;
 import blackjack.dto.NameInfo;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
@@ -69,15 +69,15 @@ public class Controller {
         );
 
         for (Player player : players) {
-            Result result = player.getResult(dealer);
+            MatchScore result = player.getMatchScore(dealer);
             List<Integer> playerMapEntity = new ArrayList<>(
                 List.of(0, 0, 0)
             );
 
-            if (result == Result.WIN) {
+            if (result == MatchScore.WIN) {
                 playerMapEntity.set(0, 1);
                 dealerMapEntity.set(2, dealerMapEntity.get(2) + 1);
-            } else if (result == Result.DRAW) {
+            } else if (result == MatchScore.DRAW) {
                 playerMapEntity.set(1, 1);
                 dealerMapEntity.set(1, dealerMapEntity.get(1) + 1);
             } else {

@@ -74,7 +74,7 @@ class DealerTest {
         );
     }
 
-    @DisplayName("Check if the Dealer return correct Dealer information")
+    @DisplayName("Check dealer return correct Dealer information")
     @Test
     void getPersonInfo() {
         assertEquals(
@@ -89,7 +89,7 @@ class DealerTest {
         );
     }
 
-    @DisplayName("Check if the Dealer return correct Dealer name information")
+    @DisplayName("Check dealer return correct Dealer name information")
     @Test
     void getNameInfo() {
         assertEquals(

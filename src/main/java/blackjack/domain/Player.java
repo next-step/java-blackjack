@@ -14,8 +14,8 @@ public class Player extends Person {
         return !cardBunch.isBlackJack() && !cardBunch.isBust();
     }
 
-    public Result getResult(Dealer dealer) {
-        return Result.calcResult(
+    public MatchScore getMatchScore(Dealer dealer) {
+        return MatchScore.calcMatchScore(
             this.cardBunch,
             dealer.cardBunch
         );

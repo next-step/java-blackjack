@@ -42,7 +42,7 @@ class CardBunchTest {
         );
     }
 
-    @DisplayName("Check cardBunch check is blackjack well")
+    @DisplayName("Check cardBunch return blackjack status well")
     @ParameterizedTest
     @MethodSource("providerIsBlackJackParams")
     void isBlackJack(List<Integer> numbers, boolean isBlackJack) {
@@ -61,7 +61,7 @@ class CardBunchTest {
         );
     }
 
-    @DisplayName("Check cardBunch check is blackjack well")
+    @DisplayName("Check cardBunch return bust status well")
     @ParameterizedTest
     @MethodSource("providerIsBustParams")
     void isBust(List<Integer> numbers, boolean isBust) {
@@ -98,7 +98,7 @@ class CardBunchTest {
         );
     }
 
-    @DisplayName("Check if CardBunch returns correct information.")
+    @DisplayName("Check cardBunch return correct cardBunch information")
     @Test
     void getCardBunchInfo() {
         assertEquals(

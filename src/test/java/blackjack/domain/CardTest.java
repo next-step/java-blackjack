@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CardTest {
 
-    @DisplayName("Check if card is ace")
+    @DisplayName("Check return card is ace status well")
     @ParameterizedTest
     @MethodSource("providerIsAceTestParams")
     public void isAceTest(Denomination denomination, boolean isAce) {
@@ -30,7 +30,7 @@ class CardTest {
         );
     }
 
-    @DisplayName("Check if the Card return correct information")
+    @DisplayName("Check card return correct card information")
     @Test
     public void getCardInfo() {
         assertEquals(
