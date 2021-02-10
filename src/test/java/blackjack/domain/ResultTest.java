@@ -46,8 +46,8 @@ class ResultTest {
         assertEquals(
             expected,
             Result.calcResult(
-                new PlayerCardBunch(first, Suit.HEARTS),
-                new PlayerCardBunch(second, Suit.HEARTS)
+                new CardBunch(first, Suit.HEARTS),
+                new CardBunch(second, Suit.HEARTS)
             )
         );
     }

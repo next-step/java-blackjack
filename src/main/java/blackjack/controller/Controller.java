@@ -1,7 +1,9 @@
 package blackjack.controller;
 
+import blackjack.domain.Dealer;
 import blackjack.domain.Deck;
 import blackjack.domain.Person;
+import blackjack.domain.Player;
 import blackjack.domain.PlayersFactory;
 import blackjack.domain.Result;
 import blackjack.dto.NameInfo;
@@ -23,19 +25,19 @@ public class Controller {
     }
 
     public void playGame() {
-        List<Person> players = PlayersFactory.generatePlayers(
+        List<Player> players = PlayersFactory.generatePlayers(
             input.requestPlayers()
         );
 
-        Person dealer = Person.createDealer();
+        Dealer dealer = new Dealer();
         Deck deck = new Deck();
 
-        dealer.drawCard(deck);
-        dealer.drawCard(deck);
+        dealer.drawCardFromDeck(deck);
+        dealer.drawCardFromDeck(deck);
 
-        for (Person player : players) {
-            player.drawCard(deck);
-            player.drawCard(deck);
+        for (Player player : players) {
+            player.drawCardFromDeck(deck);
+            player.drawCardFromDeck(deck);
         }
 
         output.printCardInfo(dealer.getPersonInfo());
@@ -46,13 +48,13 @@ public class Controller {
         for (Person player : players) {
             NameInfo name = player.getNameInfo();
             while (player.canDrawCard() && input.requestCard(name).equals("y")) {
-                player.drawCard(deck);
+                player.drawCardFromDeck(deck);
                 output.printCardInfo(player.getPersonInfo());
             }
         }
 
         while(dealer.canDrawCard()) {
-            dealer.drawCard(deck);
+            dealer.drawCardFromDeck(deck);
             output.printDealerDrawInformation();
         }
 
@@ -66,7 +68,7 @@ public class Controller {
             List.of(0, 0, 0)
         );
 
-        for (Person player : players) {
+        for (Player player : players) {
             Result result = player.getResult(dealer);
             List<Integer> playerMapEntity = new ArrayList<>(
                 List.of(0, 0, 0)

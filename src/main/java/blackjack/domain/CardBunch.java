@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public abstract class CardBunch {
+public class CardBunch {
     private static final Integer BLACK_JACK_SCORE = 21;
 
     protected final List<Card> cardBunch;
@@ -31,18 +31,8 @@ public abstract class CardBunch {
         );
     }
 
-    // TODO: 생성자 없애는법 알아보기
-
-    public abstract boolean canDrawCard();
-
-    public void drawCard(Deck deck) {
-        cardBunch.add(
-            deck.drawCard()
-        );
-    }
-
-    public Result getResult(CardBunch other) {
-        return Result.calcResult(this, other);
+    public void addCard(Card card) {
+        cardBunch.add(card);
     }
 
     public boolean isBlackJack() {
@@ -54,17 +44,16 @@ public abstract class CardBunch {
     }
 
     protected Integer calcScore() {
-        int score = cardBunch.stream().mapToInt(
-            Card::getScore
-        ).sum();
-        boolean haveAce = cardBunch.stream().anyMatch(
-            Card::isAce
-        );
+        int score = cardBunch.stream().mapToInt(Card::getScore).sum();
 
-        if (haveAce && score < 12) {
+        if (hasAce() && score < 12) {
             return score + 10;
         }
         return score;
+    }
+
+    private boolean hasAce() {
+        return cardBunch.stream().anyMatch(Card::isAce);
     }
 
     public CardBunchInfo getCardBunchInfo() {

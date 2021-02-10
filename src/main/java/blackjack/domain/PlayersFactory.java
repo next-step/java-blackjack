@@ -7,11 +7,11 @@ import java.util.stream.Collectors;
 public class PlayersFactory {
     private static final String COMMA = ",";
 
-    public static List<Person> generatePlayers(String names) {
+    public static List<Player> generatePlayers(String names) {
         return Arrays.stream(
             names.split(COMMA)
         ).map(
-            Person::createPlayer
+            Player::new
         ).collect(
             Collectors.toList()
         );

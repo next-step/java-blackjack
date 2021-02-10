@@ -5,43 +5,26 @@ import blackjack.dto.PersonInfo;
 
 import java.util.Objects;
 
-public class Person {
-    private static final String DEALER_NAME = "딜러";
-
+public abstract class Person {
     protected final CardBunch cardBunch;
     protected final String name;
 
-    private Person(String name, CardBunch cardBunch) {
+    protected Person(String name) {
+        this.name = name;
+        this.cardBunch = new CardBunch();
+    }
+
+    protected Person(String name, CardBunch cardBunch) {
         this.name = name;
         this.cardBunch = cardBunch;
     }
 
-    public static Person createDealer(CardBunch cardBunch) {
-        return new Person(DEALER_NAME, cardBunch);
-    }
+    public abstract boolean canDrawCard();
 
-    public static Person createDealer() {
-        return new Person(DEALER_NAME, new DealerCardBunch());
-    }
-
-    public static Person createPlayer(String name, CardBunch cardBunch) {
-        return new Person(name, cardBunch);
-    }
-
-    public static Person createPlayer(String name) {
-       return new Person(name, new PlayerCardBunch());
-    }
-
-    public boolean canDrawCard() {
-        return cardBunch.canDrawCard();
-    }
-
-    public void drawCard(Deck deck) {
-        cardBunch.drawCard(deck);
-    }
-
-    public Result getResult(Person other) {
-        return this.cardBunch.getResult(other.cardBunch);
+    public void drawCardFromDeck(Deck deck) {
+        cardBunch.addCard(
+            deck.drawCard()
+        );
     }
 
     public PersonInfo getPersonInfo() {
