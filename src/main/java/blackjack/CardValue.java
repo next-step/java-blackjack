@@ -13,21 +13,21 @@ public enum CardValue {
     private static final Map<Integer, CardValue> cardValues = new HashMap<>();
 
     static {
-        //1부터 시작
+        //TODO : 정해지지 않은 index를 가지고 처리한다.
         for (int i = MIN_VALUE; i < MAX_VALUE + 1; i++) {
-            cardValues.put(i, values()[i-1]);
+            cardValues.put(i, values()[i - 1]);
         }
     }
 
     private final String tag;
     private final int score;
 
-    CardValue(String tag, int score){
+    CardValue(String tag, int score) {
         this.tag = tag;
         this.score = score;
     }
 
-    public String getTag(){
+    public String getTag() {
         return tag;
     }
 
@@ -35,13 +35,13 @@ public enum CardValue {
         return score;
     }
 
-    public static CardValue of(final int value){
+    public static CardValue of(final int value) {
         validate(value);
         return cardValues.get(value);
     }
 
-    private static void validate(int value){
-        if(value < MIN_VALUE || value > MAX_VALUE){
+    private static void validate(int value) {
+        if (value < MIN_VALUE || value > MAX_VALUE) {
             throw new IllegalArgumentException("카드의 숫자는 1에서 13까지 사용할 수 있습니다.");
         }
     }
