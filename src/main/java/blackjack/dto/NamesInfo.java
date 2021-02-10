@@ -12,5 +12,5 @@ import java.util.List;
 @EqualsAndHashCode
 @ToString
 public class NamesInfo {
-    List<String> names;
+    private final List<NameInfo> names;
 }

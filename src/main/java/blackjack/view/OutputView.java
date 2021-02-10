@@ -1,16 +1,12 @@
 package blackjack.view;
 
-import blackjack.dto.CardBunchInfo;
-import blackjack.dto.CardInfo;
 import blackjack.dto.DealerScoreInfo;
 import blackjack.dto.NameInfo;
 import blackjack.dto.NamesInfo;
 import blackjack.dto.PersonInfo;
 import blackjack.dto.PlayersScoreInfo;
 
-import javax.naming.Name;
-import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 
 public class OutputView {
@@ -20,6 +16,8 @@ public class OutputView {
     private static final String INIT_GAME_FMT = "%s와 %s에게 %d장씩 나누었습니다.\n";
     private static final String PLAYER_NAME_DELIMITER = ", ";
 
+    private static final String CARD_DELIMITER = ", ";
+
     private static final String SCORE_GUIDE_MSG = "## 최종 승패";
     private static final String DEALER_SCORE_INFO_DELIMITER = " ";
 
@@ -27,7 +25,10 @@ public class OutputView {
         System.out.format(
             INIT_GAME_FMT,
             dealerNameInfo.getName(),
-            String.join(PLAYER_NAME_DELIMITER, playersNameInfo.getNames()),
+            playersNameInfo.getNames()
+                .stream()
+                .map(NameInfo::getName)
+                .collect(Collectors.joining(PLAYER_NAME_DELIMITER)),
             initCardNum
         );
     }
@@ -35,19 +36,11 @@ public class OutputView {
     public void printCardInfo(PersonInfo personInfo) {
         System.out.printf("%s: %s\n",
             personInfo.getNameInfo().getName(),
-            getCardInfo(personInfo.getCardBunchInfo())
+            personInfo.getCardBunchInfo().getCardsInfo()
+                .stream()
+                .map(cardInfo -> cardInfo.getName())
+                .collect(Collectors.joining(CARD_DELIMITER))
         );
-
-    }
-
-    private String getCardInfo(CardBunchInfo cardBunchInfo) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (CardInfo card : cardBunchInfo.getCardsInfo()) {
-            stringBuilder.append(card.getDenomination().getName())
-                .append(card.getSuit().getName())
-                .append(" ");
-        }
-        return stringBuilder.toString();
     }
 
     public void printDealerDrawInformation() {
