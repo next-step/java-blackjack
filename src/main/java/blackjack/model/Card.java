@@ -2,6 +2,8 @@ package blackjack.model;
 
 import java.util.Objects;
 
+import static blackjack.utils.StringUtils.SPACE;
+
 public class Card {
     private final Type type;
     private final Symbol symbol;
@@ -22,6 +24,11 @@ public class Card {
 
     public static Card of(Type type, Symbol symbol) {
         return new Card(type, symbol);
+    }
+
+    @Override
+    public String toString() {
+        return symbol.getName() + type.getName() + SPACE;
     }
 
     @Override
