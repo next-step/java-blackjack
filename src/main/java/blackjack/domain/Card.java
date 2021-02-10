@@ -22,7 +22,7 @@ public class Card {
     }
 
     public CardInfo getCardInfo() {
-        return new CardInfo(denomination.getName() + suit.getName());
+        return new CardInfo(denomination, suit);
     }
 
     @Override
