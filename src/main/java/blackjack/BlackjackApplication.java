@@ -9,5 +9,6 @@ public class BlackjackApplication {
         blackjackController.start();
         blackjackController.askMoreCardToPlayers();
         blackjackController.dealerTurn();
+        blackjackController.releaseResult();
     }
 }

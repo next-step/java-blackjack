@@ -35,7 +35,7 @@ public class OutputView {
                     .append(", ");
         }
         cardsContent.delete(cardsContent.lastIndexOf(", "), cardsContent.length() - 1);
-        System.out.println(cardsContent.toString());
+        System.out.print(cardsContent.toString());
     }
 
     public static void printNewLine() {
@@ -58,5 +58,20 @@ public class OutputView {
 
     public static void printDealerAddCardMessage() {
         System.out.println("딜러는 16 이하라 한장의 카드를 더 받았습니다.");
+        System.out.println();
+    }
+
+    public static void printGameParticipantResultMessage(final GameParticipant gameParticipant) {
+        printCards(gameParticipant);
+        System.out.print(" - 결과: " + gameParticipant.getResult());
+        System.out.println();
+    }
+
+    public static void printDealerGameResult(final int dealerWin, final int dealerDraw, final int dealerLose) {
+        System.out.println("딜러: " + dealerWin + "승 " + dealerDraw + "무 " + dealerLose + "패");
+    }
+
+    public static void printPlayerGameResult(final String playerName, final String result) {
+        System.out.println(playerName + ": " + result);
     }
 }

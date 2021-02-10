@@ -31,9 +31,19 @@ public class Dealer implements GameParticipant {
 
     @Override
     public int getResult() {
-        return this.cards.stream()
-                .mapToInt(card -> card.getDenomination().getNumber())
-                .sum();
+        int score = 0;
+        boolean hasAce = false;
+        for (Card card : cards) {
+            int cardNumber = card.getDenomination().getNumber();
+            score += cardNumber;
+            if (cardNumber == 1) {
+                hasAce = true;
+            }
+        }
+        if (hasAce && score + 10 <= 21) {
+            score += 10;
+        }
+        return score;
     }
 
     public boolean isActive() {

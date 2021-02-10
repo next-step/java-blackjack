@@ -1,7 +1,7 @@
 package blackjack.domain;
 
 public enum Denomination {
-    ACE(1),
+    ACE(1), // TODO: 1 or 11
     TWO(2),
     THREE(3),
     FOUR(4),
