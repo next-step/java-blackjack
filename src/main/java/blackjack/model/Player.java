@@ -35,7 +35,7 @@ public class Player {
         List<Card> cards = cardHand.getCards();
         int sum = 0;
         for (Card card : cards) {
-            sum += card.getNumber().getNumber();
+            sum += card.getSymbol().getScore();
         }
 
         return sum;

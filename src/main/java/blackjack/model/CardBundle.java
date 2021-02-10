@@ -2,7 +2,6 @@ package blackjack.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class CardBundle {
 
@@ -22,8 +21,8 @@ public class CardBundle {
 
     public void generateOneTypeCards(Type type){
         List<Card> cards = new ArrayList<>();
-        for (Number number : Number.values()) {
-            cards.add(Card.of(type, number));
+        for (Symbol symbol : Symbol.values()) {
+            cards.add(Card.of(type, symbol));
         }
         concat(cards);
     }

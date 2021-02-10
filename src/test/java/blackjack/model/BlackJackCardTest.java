@@ -21,7 +21,7 @@ class BlackJackCardTest {
         CardBundle cardBundle = blackJackCard.getCardBundle();
 
         for (Card card : cardBundle.getCards()) {
-            System.out.println(card.getNumber() + " " + card.getType());
+            System.out.println(card.getSymbol() + " " + card.getType());
         }
         assertThat(cardBundle.getCards().size()).isEqualTo(ALL_CARD_COUNT);
     }

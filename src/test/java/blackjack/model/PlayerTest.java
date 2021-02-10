@@ -17,8 +17,8 @@ class PlayerTest {
         Type diamond = Type.DIAMOND;
 
         CardBundle cardHand = CardBundle.of(Arrays.asList(
-                Card.of(diamond,Number.ACE),
-                Card.of(diamond,Number.JACK)
+                Card.of(diamond, Symbol.ACE),
+                Card.of(diamond, Symbol.JACK)
         ));
         Player player = new Player(cardHand,"test");
 

@@ -15,10 +15,10 @@ public class CardBundleTest {
         Type diamond = Type.DIAMOND;
 
         CardBundle cardBundle = CardBundle.of(Arrays.asList(
-                Card.of(diamond,Number.ACE),
-                Card.of(diamond,Number.JACK)
+                Card.of(diamond, Symbol.ACE),
+                Card.of(diamond, Symbol.JACK)
         ));
 
-        assertThat(cardBundle.getCards().get(0)).isEqualTo(Card.of(diamond,Number.ACE));
+        assertThat(cardBundle.getCards().get(0)).isEqualTo(Card.of(diamond, Symbol.ACE));
     }
 }

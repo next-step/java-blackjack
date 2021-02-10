@@ -4,24 +4,24 @@ import java.util.Objects;
 
 public class Card {
     private final Type type;
-    private final Number number;
+    private final Symbol symbol;
 
 
-    private Card(Type type, Number number) {
+    private Card(Type type, Symbol symbol) {
         this.type = type;
-        this.number = number;
+        this.symbol = symbol;
     }
 
     public Type getType() {
         return type;
     }
 
-    public Number getNumber() {
-        return number;
+    public Symbol getSymbol() {
+        return symbol;
     }
 
-    public static Card of(Type type, Number number) {
-        return new Card(type, number);
+    public static Card of(Type type, Symbol symbol) {
+        return new Card(type, symbol);
     }
 
     @Override
@@ -29,11 +29,11 @@ public class Card {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Card card = (Card) o;
-        return type == card.type && number == card.number;
+        return type == card.type && symbol == card.symbol;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, number);
+        return Objects.hash(type, symbol);
     }
 }

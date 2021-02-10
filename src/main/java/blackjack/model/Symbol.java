@@ -1,7 +1,6 @@
 package blackjack.model;
 
-public enum Number {
-
+public enum Symbol {
     ACE(1,"A"),
     TWO(2,"2"),
     THREE(3,"3"),
@@ -16,24 +15,23 @@ public enum Number {
     QUEEN(10,"Q"),
     KING(10,"K");
 
-    private final int number;
+    private final int score;
     private final String name;
 
-    Number(int number,String name) {
-        this.number = number;
+    Symbol(int score, String name) {
+        this.score = score;
         this.name = name;
-
     }
 
-    public int getNumber() {
-        return number;
+    public int getScore() {
+        return score;
     }
 
     public String getName() {
         return name;
     }
 
-    public int add(Number added) {
-        return number + added.getNumber();
+    public int add(Symbol added) {
+        return score + added.getScore();
     }
 }
