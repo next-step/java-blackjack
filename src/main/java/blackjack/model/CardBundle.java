@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class CardBundle {
-    private static final Random random = new Random();
+
     private final List<Card> cards;
 
     private CardBundle(List<Card> cards) {
@@ -36,10 +36,4 @@ public class CardBundle {
         cards.add(card);
     }
 
-    public Card pick() {
-        int pickNumber = random.nextInt(cards.size());
-        Card pickedCard = cards.get(pickNumber);
-        cards.remove(pickedCard);
-        return pickedCard;
-    }
 }
