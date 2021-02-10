@@ -7,8 +7,16 @@ public class Dealer extends Player{
         super(cardHand, name);
     }
 
-    public Dealer of(CardBundle cardHand, String name) {
+    public Dealer(String name) {
+        super(name);
+    }
+
+    public static Dealer of(CardBundle cardHand, String name) {
         return new Dealer(cardHand,name);
+    }
+
+    public static Dealer of(String name) {
+        return new Dealer(name);
     }
 
     @Override
