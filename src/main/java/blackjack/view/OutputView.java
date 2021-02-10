@@ -5,6 +5,9 @@ import blackjack.dto.CardInfo;
 import blackjack.dto.NameInfo;
 import blackjack.dto.PersonInfo;
 
+import java.util.List;
+import java.util.Map;
+
 
 public class OutputView {
 
@@ -26,9 +29,24 @@ public class OutputView {
         return stringBuilder.toString();
     }
 
+    public void getFinalResult(Map<String, List<Integer>> resultMap) {
+        System.out.println("\n## 최종 승패");
+        resultMap.forEach((name, result) ->
+            System.out.printf("%s: %d승 %d무 %d패\n",
+                name,
+                result.get(0),
+                result.get(1),
+                result.get(2))
+        );
+    }
+
     public void askForMoreCard(NameInfo nameInfo) {
         System.out.println(
             nameInfo.getName() + "는 한장의 카드를 더 받겠습니까?"
        );
+    }
+
+    public void printDealerDrawInformation() {
+        System.out.println("\n딜러는 16이하라 한장의 카드를 더 받았습니다.\n");
     }
 }
