@@ -1,4 +1,4 @@
-package blackjack;
+package blackjack.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ class DealerTest {
     void receiveOneCardStatsTest() {
         final ShuffleStrategy emptyShuffleStrategy = new EmptyShuffleStrategy();
         final Deck deck = new Deck(emptyShuffleStrategy);
-        final Dealer dealer = new Dealer("Dealer", deck);
+        final Dealer dealer = new Dealer(deck);
         dealer.receiveCard();
         final Pocket pocket = dealer.getCardStats();
         final String cardsName = pocket.getCardsName();
@@ -24,7 +24,7 @@ class DealerTest {
     void receiveTwoCardStatsTest() {
         final ShuffleStrategy emptyShuffleStrategy = new EmptyShuffleStrategy();
         final Deck deck = new Deck(emptyShuffleStrategy);
-        final Dealer dealer = new Dealer("Dealer", deck);
+        final Dealer dealer = new Dealer(deck);
         dealer.receiveCard();
         dealer.receiveCard();
         final Pocket pocket = dealer.getCardStats();
@@ -38,7 +38,7 @@ class DealerTest {
     void exportCardStatsTest() {
         final ShuffleStrategy emptyShuffleStrategy = new EmptyShuffleStrategy();
         final Deck deck = new Deck(emptyShuffleStrategy);
-        final Dealer dealer = new Dealer("Dealer", deck);
+        final Dealer dealer = new Dealer(deck);
         dealer.receiveCard();
 
         final String exportCardStats = dealer.exportCardStats();

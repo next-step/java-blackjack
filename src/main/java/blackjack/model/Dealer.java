@@ -1,12 +1,11 @@
-package blackjack;
+package blackjack.model;
 
-public class Gamer implements Player {
+public class Dealer implements Player {
     private final Pocket pocket = new Pocket();
     private final Deck deck;
-    private final String name;
+    private final String name = "Dealer";
 
-    public Gamer(final String name, final Deck deck) {
-        this.name = name;
+    public Dealer(final Deck deck) {
         this.deck = deck;
     }
 

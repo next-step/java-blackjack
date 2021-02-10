@@ -1,5 +1,9 @@
-package blackjack;
+package blackjack.model;
 
+import blackjack.model.Card;
+import blackjack.model.CardType;
+import blackjack.model.CardValue;
+import blackjack.model.Pocket;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
