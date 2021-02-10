@@ -1,14 +1,15 @@
 package blackjack;
 
-import java.util.Collections;
 import java.util.EmptyStackException;
 import java.util.Stack;
 
+//TODO : 어떻게 shuffle 을 막을건지?
 public class Deck {
     private final Stack<Card> cards = new Stack<>();
 
-    public Deck() {
+    public Deck(final ShuffleStrategy shuffleStrategy) {
         collectCards();
+        shuffleStrategy.shuffle(cards);
     }
 
     public Card getCard() {
@@ -33,6 +34,5 @@ public class Deck {
             cards.add(new Card(CardType.SPADE, CardValue.of(value)));
             cards.add(new Card(CardType.CLOVER, CardValue.of(value)));
         }
-        Collections.shuffle(cards);
     }
 }
