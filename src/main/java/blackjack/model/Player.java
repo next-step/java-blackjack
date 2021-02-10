@@ -3,6 +3,9 @@ package blackjack.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import static blackjack.utils.StringUtils.COLON;
+import static blackjack.utils.StringUtils.NEW_LINE;
+
 public class Player {
 
     protected final CardBundle cardHand;
@@ -39,5 +42,15 @@ public class Player {
         }
 
         return sum;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(name);
+        stringBuilder.append(COLON);
+        cardHand.getCards().forEach(card -> stringBuilder.append(card.toString()));
+        stringBuilder.append(NEW_LINE);
+        return stringBuilder.toString();
     }
 }
