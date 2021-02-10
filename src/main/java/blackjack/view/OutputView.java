@@ -2,14 +2,20 @@ package blackjack.view;
 
 import blackjack.dto.CardBunchInfo;
 import blackjack.dto.CardInfo;
+import blackjack.dto.DealerScoreInfo;
 import blackjack.dto.NameInfo;
 import blackjack.dto.PersonInfo;
+import blackjack.dto.PlayersScoreInfo;
 
 import java.util.List;
 import java.util.Map;
 
 
 public class OutputView {
+    private static final String SCORE_GUIDE_MSG = "## 최종 승패";
+    private static final String BETWEEN_NAME_AND_INFO_DELIMITER = ": ";
+    private static final String DEALER_SCORE_INFO_DELIMITER = " ";
+    private static final String SCORE_INFO_FMT = "%s%s%s\n";
 
     public void printCardInfo(PersonInfo personInfo) {
         System.out.printf("%s: %s\n",
@@ -38,6 +44,33 @@ public class OutputView {
                 result.get(1),
                 result.get(2))
         );
+    }
+
+    public void printScoreGuideMsg() {
+        System.out.println(SCORE_GUIDE_MSG);
+    }
+
+    public void printDealerScoreInfo(NameInfo dealerNameInfo, DealerScoreInfo dealerScoreInfo) {
+        printScoreInfo(
+            dealerNameInfo.getName(),
+            String.join(
+                DEALER_SCORE_INFO_DELIMITER,
+                dealerScoreInfo.getScores()
+            )
+        );
+    }
+
+    public void printPlayersScoreInfo(PlayersScoreInfo playersScoreInfo) {
+        playersScoreInfo.getPlayersScoreInfo().forEach(
+            playerScoreInfo -> printScoreInfo(
+                playerScoreInfo.getNameInfo().getName(),
+                playerScoreInfo.getScore()
+            )
+        );
+    }
+
+    private void printScoreInfo(String name, String info) {
+        System.out.format(SCORE_INFO_FMT, name, BETWEEN_NAME_AND_INFO_DELIMITER, info);
     }
 
     public void askForMoreCard(NameInfo nameInfo) {
