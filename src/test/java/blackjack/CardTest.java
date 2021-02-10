@@ -8,26 +8,24 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CardTest {
     @Test
-    @DisplayName("카드가 K위의 숫자인 13의 value로 입력될 때, 에러가 나는 테스트")
+    @DisplayName("카드가 K위의 숫자인 14의 value로 입력될 때, 에러가 나는 테스트")
     void generateCardErrorTest() {
         assertThrows(IllegalArgumentException.class,
-                () -> new Card(CardType.DIAMOND, CardValue.of(13)));
+                () -> new Card(CardType.DIAMOND, CardValue.of(14)));
     }
 
     @Test
     @DisplayName("Card가 9클로버 일 때, 이름이 제대로 나오는 지, 확인하는 테스트")
     void generate9CloverCardNameTest() {
         final Card card = new Card(CardType.CLOVER, CardValue.of(9));
-        final String name = card.getName();
-        assertThat(name).isEqualTo("9클로버");
+        assertThat(card.toString()).isEqualTo("9클로버");
     }
 
     @Test
     @DisplayName("Card가 2하트 일 때, 이름이 제대로 나오는 지, 확인하는 테스트")
     void generate2HeartCardNameTest() {
         final Card card = new Card(CardType.HEART, CardValue.of(2));
-        final String name = card.getName();
-        assertThat(name).isEqualTo("2하트");
+        assertThat(card.toString()).isEqualTo("2하트");
     }
 
     @Test
