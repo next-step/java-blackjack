@@ -1,18 +1,33 @@
 package blackjack;
 
-public class Gamer implements Player{
-    @Override
-    public String getName() {
-        return null;
+public class Gamer implements Player {
+    private final Pocket pocket = new Pocket();
+    private final Deck deck;
+    private final String name;
+
+    public Gamer(final String name, final Deck deck) {
+        this.name = name;
+        this.deck = deck;
     }
 
     @Override
     public void receiveCard() {
-
+        final Card card = deck.getCard();
+        pocket.add(card);
     }
 
     @Override
     public Pocket getCardStats() {
-        return null;
+        return pocket;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String exportCardStats() {
+        return getName() + " : " + pocket.getCardsName();
     }
 }

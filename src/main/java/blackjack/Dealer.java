@@ -26,6 +26,7 @@ public class Dealer implements Player {
         return name;
     }
 
+    @Override
     public String exportCardStats() {
         return getName() + " : " + pocket.getCardsName();
     }

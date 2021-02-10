@@ -6,4 +6,6 @@ public interface Player {
     void receiveCard();
 
     Pocket getCardStats();
+
+    String exportCardStats();
 }
