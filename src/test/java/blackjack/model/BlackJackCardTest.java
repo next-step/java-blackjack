@@ -30,7 +30,7 @@ class BlackJackCardTest {
     @Test
     public void pickTest() {
         CardBundle cardBundle = blackJackCard.getCardBundle();
-        blackJackCard.getCardBundle().pick();
+        blackJackCard.pickOneCard();
         assertThat(cardBundle.getCards().size()).isEqualTo(ALL_CARD_COUNT - 1);
     }
 
