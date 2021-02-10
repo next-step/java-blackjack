@@ -1,16 +1,18 @@
 package blackjack.model;
 
 public enum Type {
-    SPADE,
-    DIAMOND,
-    HEART,
-    CLOVER;
+    SPADE("스페이드"),
+    DIAMOND("다이아몬드"),
+    HEART("하트"),
+    CLOVER("클로버");
 
-    Type() {
+    private final String name;
+
+    Type(String name) {
+        this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
+    public String getName() {
+        return name;
     }
 }
