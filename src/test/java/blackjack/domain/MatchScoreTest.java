@@ -37,5 +37,21 @@ class MatchScoreTest {
         );
     }
 
+    @DisplayName("Check calculated opposite match score is proper")
+    @ParameterizedTest
+    @MethodSource("providerOppositeMatchScore")
+    void oppositeMatchScore(MatchScore score, MatchScore oppositeScore) {
+        assertEquals(
+            oppositeScore,
+            score.oppositeMatchScore()
+        );
+    }
 
+    private static Stream<Arguments> providerOppositeMatchScore() {
+        return Stream.of(
+            Arguments.of(MatchScore.WIN, MatchScore.LOSE),
+            Arguments.of(MatchScore.DRAW, MatchScore.DRAW),
+            Arguments.of(MatchScore.LOSE, MatchScore.WIN)
+        );
+    }
 }

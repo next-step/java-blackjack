@@ -3,14 +3,24 @@ package blackjack.domain;
 import java.util.Arrays;
 
 public enum MatchScore {
-    WIN(1),
-    DRAW(0),
-    LOSE(-1);
+    WIN(1, "승"),
+    DRAW(0, "무"),
+    LOSE(-1, "패");
 
     private final int value;
+    private final String name;
 
-    MatchScore(final int value) {
+    MatchScore(int value, String name) {
         this.value = value;
+        this.name = name;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public String getName() {
+        return name;
     }
 
     private static MatchScore of(final int value) {
@@ -19,7 +29,7 @@ public enum MatchScore {
         ).filter(
             result -> result.value == value
         ).findFirst().orElseThrow(
-            () -> new RuntimeException("")
+            () -> new RuntimeException("Unreachable point")
         );
     }
 
@@ -40,11 +50,7 @@ public enum MatchScore {
         throw new RuntimeException("Unreachable point");
     }
 
-    public MatchScore oppositeResult(MatchScore matchScore) {
-        return MatchScore.of(1 - matchScore.value);
-    }
-
-    public int getValue() {
-        return value;
+    public MatchScore oppositeMatchScore() {
+        return MatchScore.of(-value);
     }
 }

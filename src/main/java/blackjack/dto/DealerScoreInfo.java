@@ -5,10 +5,12 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Getter
 @EqualsAndHashCode
 @ToString
-public class NameInfo {
-    private final String name;
+public class DealerScoreInfo {
+    private final List<String> scores;
 }

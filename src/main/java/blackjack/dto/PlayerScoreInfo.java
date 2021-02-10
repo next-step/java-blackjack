@@ -9,6 +9,7 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode
 @ToString
-public class NameInfo {
-    private final String name;
+public class PlayerScoreInfo {
+    private final NameInfo nameInfo;
+    private final String score;
 }
