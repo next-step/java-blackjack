@@ -10,26 +10,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
-    private static final String INIT_GAME_FMT = "\n%s와 %s에게 %d장씩 나누었습니다.";
-
+    private static final String INIT_GAME_FMT = "\n%s와 %s에게 %d장씩 나누었습니다.\n";
     private static final String NAME_DELIMITER = ", ";
+
     private static final String CARD_DELIMITER = ", ";
 
-    private static final String MATCH_SCORE_GUIDE_MSG = "\n## 최종 승패";
+    private static final String MATCH_SCORE_GUIDE_MSG = "## 최종 승패";
     private static final String DEALER_MATCH_SCORE_DELIMITER = " ";
 
-    public void printInitGameMsg(NameInfo dealerNameInfo, List<NameInfo> playersNameInfo, Integer initCardNum) {
-        System.out.println(
-            String.format(
-                INIT_GAME_FMT,
-                dealerNameInfo.getName(),
-                playersNameInfo
-                    .stream()
-                    .map(NameInfo::getName)
-                    .collect(Collectors.joining(NAME_DELIMITER)),
-                initCardNum
-            )
-        );
+    public void printInitializeGameMsg(NameInfo dealerNameInfo, List<NameInfo> playersNameInfo, Integer cardCnt) {
+        System.out.format(INIT_GAME_FMT, dealerNameInfo.getName(), formatPlayersNameInfo(playersNameInfo), cardCnt);
+    }
+
+    private String formatPlayersNameInfo(List<NameInfo> playersNameInfo) {
+        return playersNameInfo
+            .stream()
+            .map(NameInfo::getName)
+            .collect(Collectors.joining(NAME_DELIMITER));
     }
 
     public void printPersonCardsInfo(PersonCardsInfo personCardsInfo) {
@@ -42,8 +39,9 @@ public class OutputView {
 
     public void printPeopleCardsInfo(List<PersonCardsInfo> peopleCardsInfo) {
         peopleCardsInfo.forEach(
-            personCardsInfo -> printPersonCardsInfo(personCardsInfo)
+            this::printPersonCardsInfo
         );
+        System.out.println();
     }
 
     public void printScoreInfo(ScoreInfo scoreInfo) {
@@ -59,26 +57,30 @@ public class OutputView {
 
     public void printScoresInfo(List<ScoreInfo> scoresInfo) {
         scoresInfo.forEach(
-            scoreInfo -> printScoreInfo(scoreInfo)
+            this::printScoreInfo
         );
+        System.out.println();
     }
 
     private String formatCards(List<String> cards) {
         return String.join(CARD_DELIMITER, cards);
     }
 
-    public void printDealerDrawInformation() {
-        System.out.println("\n딜러는 16이하라 한장의 카드를 더 받았습니다.\n");
+    public void printDealerInfomationMargin() {
+        System.out.println();
+    }
+    public void printDealerDrawInformation(NameInfo dealerNameInfo, Integer limit) {
+        System.out.format("%s는 %s이하라 한장의 카드를 더 받았습니다\n", dealerNameInfo.getName(), limit);
     }
 
     public void printMatchScoreGuideMsg() {
         System.out.println(MATCH_SCORE_GUIDE_MSG);
     }
 
-    public void printDealerMatchScoreInfo(DealerMatchScoreInfo dealerMatchScoreInfo) {
+    public void printDealerMatchScoreInfo(NameInfo dealerNameInfo, DealerMatchScoreInfo dealerMatchScoreInfo) {
         System.out.println(
             formatMatchScore(
-                "딜러",
+                dealerNameInfo.getName(),
                 String.join(
                     DEALER_MATCH_SCORE_DELIMITER,
                     dealerMatchScoreInfo.getMatchScores()
@@ -87,18 +89,16 @@ public class OutputView {
         );
     }
 
-    public void printPlayerMatchScoreInfo(PlayerMatchScoreInfo playerMatchScoreInfo) {
+    public void printPlayersMatchScoreInfo(List<PlayerMatchScoreInfo> playersMatchScoreInfo) {
+        playersMatchScoreInfo.forEach(this::printPlayerMatchScoreInfo);
+    }
+
+    private void printPlayerMatchScoreInfo(PlayerMatchScoreInfo playerMatchScoreInfo) {
         System.out.println(
             formatMatchScore(
                 playerMatchScoreInfo.getName(),
                 playerMatchScoreInfo.getMatchScore()
             )
-        );
-    }
-
-    public void printPlayersMatchScoreInfo(List<PlayerMatchScoreInfo> playersMatchScoreInfo) {
-        playersMatchScoreInfo.forEach(
-            playerMatchScoreInfo -> printPlayerMatchScoreInfo(playerMatchScoreInfo)
         );
     }
 

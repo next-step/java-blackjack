@@ -41,12 +41,12 @@ public class InputView {
 
     private final Scanner scanner = new Scanner(System.in);
 
-    public String[] requestPlayers() {
+    public String[] inputPlayersName() {
         System.out.println(NAMES_PROMPT);
         return scanner.nextLine().split(NAME_DELIMITER);
     }
 
-    public Boolean requestCard(NameInfo nameInfo) {
+    public Boolean inputResponse(NameInfo nameInfo) {
         System.out.format(
             CARD_PROMPT_FMT,
             nameInfo.getName(),
