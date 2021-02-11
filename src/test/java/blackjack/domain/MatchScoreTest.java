@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MatchScoreTest {
-    @DisplayName("Check calculated matchscore between two cardBunch is proper")
+    @DisplayName("Check calculated match score between two cardBunch is proper")
     @ParameterizedTest
     @MethodSource("providerCalcMatchScoreParams")
     void calcMatchScore(List<Integer> playerNumbers, List<Integer> dealerNumbers, MatchScore expected) {

@@ -2,17 +2,13 @@ package blackjack.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import rent.Car;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class DeckTest {
     @DisplayName("Check deck returns first card well")
@@ -30,7 +26,7 @@ class DeckTest {
             deck.drawCard()
         );
     }
-    
+
     @DisplayName("Check deck is composed with different 52 cards")
     @Test
     void deckSizeTest() {

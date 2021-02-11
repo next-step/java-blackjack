@@ -45,7 +45,7 @@ class PlayersTest {
         );
 
         Deck deck = new Deck(
-            new ArrayList<Card>() {{
+            new ArrayList<>() {{
                 add(new Card(Denomination.ACE, Suit.HEARTS));
                 add(new Card(Denomination.ACE, Suit.HEARTS));
                 add(new Card(Denomination.ACE, Suit.HEARTS));
@@ -129,7 +129,7 @@ class PlayersTest {
         );
 
         Deck deck = new Deck(
-            new ArrayList<Card>() {{
+            new ArrayList<>() {{
                 add(new Card(Denomination.ACE, Suit.HEARTS));
             }}
         );
@@ -155,9 +155,9 @@ class PlayersTest {
             List.of(testPlayer1)
         );
 
-        assertEquals(true, players.hasActivePlayer());
+        assertTrue(players.hasActivePlayer());
         players.endActivePlayerTurn();
-        assertEquals(false, players.hasActivePlayer());
+        assertFalse(players.hasActivePlayer());
     }
 
     @DisplayName("Check players return correct players name information")

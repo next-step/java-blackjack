@@ -3,7 +3,7 @@ package blackjack.domain;
 import blackjack.dto.NameInfo;
 import blackjack.dto.PersonCardsInfo;
 import blackjack.dto.ScoreInfo;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,10 +18,10 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PlayerTest {
-    private Player testPlayer;
+    private static Player testPlayer;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void beforeAll() {
         testPlayer = new Player(
             "player",
             new CardBunch(
@@ -59,52 +59,54 @@ class PlayerTest {
     @DisplayName("Check Dealer initialized card from deck well")
     @Test
     void initializeFromDeck() {
+        Player player = new Player("player");
         Deck deck = new Deck(
             new ArrayList<>() {{
                 add(new Card(Denomination.ACE, Suit.HEARTS));
-                add(new Card(Denomination.ACE, Suit.HEARTS));
+                add(new Card(Denomination.SEVEN, Suit.HEARTS));
             }}
         );
-        testPlayer.initializeFromDeck(deck);
+        player.initializeFromDeck(deck);
 
         assertEquals(
             new Player(
                 "player",
                 new CardBunch(
-                    List.of(1, 7, 10, 1, 1),
+                    List.of(1, 7),
                     Suit.HEARTS
                 )
             ).getScoreInfo(),
-            testPlayer.getScoreInfo()
+            player.getScoreInfo()
         );
     }
 
     @DisplayName("Check player draw card from deck well")
     @Test
     void drawCardFromDeck() {
+        Player player = new Player("player");
         Deck deck = new Deck(
             new ArrayList<>() {{
                 add(new Card(Denomination.ACE, Suit.HEARTS));
             }}
         );
-        testPlayer.drawCardFromDeck(deck);
+        player.drawCardFromDeck(deck);
 
         assertEquals(
             new Player(
                 "player",
                 new CardBunch(
-                    List.of(1, 7, 10, 1),
+                    List.of(1),
                     Suit.HEARTS
                 )
             ).getScoreInfo(),
-            testPlayer.getScoreInfo()
+            player.getScoreInfo()
         );
     }
 
     @DisplayName("Check player get proper match score")
     @ParameterizedTest
     @MethodSource("providerGetMatchScoreParams")
-    void getMatchScore(List<Integer> playerNumbers, List<Integer> dealerNubmers, MatchScore result) {
+    void getMatchScore(List<Integer> playerNumbers, List<Integer> dealerNumbers, MatchScore result) {
         Player player = new Player(
             "player",
             new CardBunch(
@@ -113,7 +115,7 @@ class PlayerTest {
         );
         Dealer dealer = new Dealer(
             new CardBunch(
-                dealerNubmers, Suit.HEARTS
+                dealerNumbers, Suit.HEARTS
             )
         );
 

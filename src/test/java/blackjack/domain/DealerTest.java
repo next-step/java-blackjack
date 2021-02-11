@@ -3,7 +3,7 @@ package blackjack.domain;
 import blackjack.dto.NameInfo;
 import blackjack.dto.PersonCardsInfo;
 import blackjack.dto.ScoreInfo;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,10 +18,10 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DealerTest {
-    private Dealer testDealer;
+    private static Dealer testDealer;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void beforeAll() {
         testDealer = new Dealer(
             new CardBunch(
                 List.of(1, 7, 10),
@@ -56,43 +56,45 @@ class DealerTest {
     @DisplayName("Check Dealer initialized card from deck well")
     @Test
     void initializeFromDeck() {
+        Dealer dealer = new Dealer();
         Deck deck = new Deck(
             new ArrayList<>() {{
                 add(new Card(Denomination.ACE, Suit.HEARTS));
-                add(new Card(Denomination.ACE, Suit.HEARTS));
+                add(new Card(Denomination.SEVEN, Suit.HEARTS));
             }}
         );
-        testDealer.initializeFromDeck(deck);
+        dealer.initializeFromDeck(deck);
 
         assertEquals(
             new Dealer(
                 new CardBunch(
-                    List.of(1, 7, 10, 1, 1),
+                    List.of(1, 7),
                     Suit.HEARTS
                 )
             ).getScoreInfo(),
-            testDealer.getScoreInfo()
+            dealer.getScoreInfo()
         );
     }
 
     @DisplayName("Check Dealer draw card from deck well")
     @Test
     void drawCardFromDeck() {
+        Dealer dealer = new Dealer();
         Deck deck = new Deck(
             new ArrayList<>() {{
                 add(new Card(Denomination.ACE, Suit.HEARTS));
             }}
         );
-        testDealer.drawCardFromDeck(deck);
+        dealer.drawCardFromDeck(deck);
 
         assertEquals(
             new Dealer(
                 new CardBunch(
-                    List.of(1, 7, 10, 1),
+                    List.of(1),
                     Suit.HEARTS
                 )
             ).getScoreInfo(),
-            testDealer.getScoreInfo()
+            dealer.getScoreInfo()
         );
     }
 
