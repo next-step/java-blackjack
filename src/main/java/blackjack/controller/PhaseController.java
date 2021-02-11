@@ -55,12 +55,12 @@ public class PhaseController {
     }
 
     private void actionDealerMainPhase(OutputView output) {
-        output.printDealerInfomationMargin();
+        output.printDealerInfoMargin();
         while (dealer.canDrawCard()) {
             dealer.drawCardFromDeck(deck);
             output.printDealerDrawInformation(dealer.getNameInfo(), DEALER_DRAW_LIMIT);
         }
-        output.printDealerInfomationMargin();
+        output.printDealerInfoMargin();
     }
 
     public void actionEndPhase(OutputView output) {
