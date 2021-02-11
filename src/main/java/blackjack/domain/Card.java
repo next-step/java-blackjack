@@ -1,9 +1,8 @@
 package blackjack.domain;
 
-import blackjack.dto.CardInfo;
+import lombok.EqualsAndHashCode;
 
-import java.util.Objects;
-
+@EqualsAndHashCode
 public class Card {
     private final Denomination denomination;
     private final Suit suit;
@@ -21,20 +20,7 @@ public class Card {
         return denomination.isAce();
     }
 
-    public CardInfo getCardInfo() {
-        return new CardInfo(denomination, suit);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Card card = (Card) o;
-        return denomination == card.denomination && suit == card.suit;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(denomination, suit);
+    public String getCardName() {
+        return denomination.getName() + suit.getName();
     }
 }

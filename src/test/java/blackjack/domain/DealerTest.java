@@ -1,7 +1,8 @@
 package blackjack.domain;
 
 import blackjack.dto.NameInfo;
-import blackjack.dto.PersonInfo;
+import blackjack.dto.PersonCardsInfo;
+import blackjack.dto.ScoreInfo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -63,29 +64,13 @@ class DealerTest {
         testDealer.drawCardFromDeck(deck);
 
         assertEquals(
-            new PersonInfo(
-                new NameInfo("딜러"),
+            new Dealer(
                 new CardBunch(
                     List.of(1, 7, 10, 1),
                     Suit.HEARTS
-                ).getCardBunchInfo()
-            ),
-            testDealer.getPersonInfo()
-        );
-    }
-
-    @DisplayName("Check dealer return correct Dealer information")
-    @Test
-    void getPersonInfo() {
-        assertEquals(
-            new PersonInfo(
-                new NameInfo("딜러"),
-                new CardBunch(
-                    List.of(1, 7, 10),
-                    Suit.HEARTS
-                ).getCardBunchInfo()
-            ),
-            testDealer.getPersonInfo()
+                )
+            ).getScoreInfo(),
+            testDealer.getScoreInfo()
         );
     }
 
@@ -95,6 +80,24 @@ class DealerTest {
         assertEquals(
             new NameInfo("딜러"),
             testDealer.getNameInfo()
+        );
+    }
+
+    @DisplayName("Check dealer return correct Dealer cards information")
+    @Test
+    void getPersonCardsInfo() {
+        assertEquals(
+            new PersonCardsInfo("딜러", List.of("A하트", "7하트", "10하트")),
+            testDealer.getPersonCardsInfo()
+        );
+    }
+
+    @DisplayName("Check dealer return correct Dealer score information")
+    @Test
+    void getScoreInfo() {
+        assertEquals(
+            new ScoreInfo("딜러", List.of("A하트", "7하트", "10하트"), 18),
+            testDealer.getScoreInfo()
         );
     }
 }

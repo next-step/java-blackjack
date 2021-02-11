@@ -1,10 +1,11 @@
 package blackjack.domain;
 
 import blackjack.dto.NameInfo;
-import blackjack.dto.PersonInfo;
+import blackjack.dto.PersonCardsInfo;
+import blackjack.dto.ScoreInfo;
+import lombok.EqualsAndHashCode;
 
-import java.util.Objects;
-
+@EqualsAndHashCode
 public abstract class Person {
     protected final CardBunch cardBunch;
     protected final String name;
@@ -27,27 +28,15 @@ public abstract class Person {
         );
     }
 
-    public PersonInfo getPersonInfo() {
-        return new PersonInfo(
-            new NameInfo(name),
-            cardBunch.getCardBunchInfo()
-        );
-    }
-
     public NameInfo getNameInfo() {
         return new NameInfo(name);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return Objects.equals(cardBunch, person.cardBunch) && Objects.equals(name, person.name);
+    public PersonCardsInfo getPersonCardsInfo() {
+        return new PersonCardsInfo(name, cardBunch.getCardsName());
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(cardBunch, name);
+    public ScoreInfo getScoreInfo() {
+        return new ScoreInfo(name, cardBunch.getCardsName(), cardBunch.calcScore());
     }
 }

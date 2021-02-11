@@ -1,71 +1,65 @@
 package blackjack.view;
 
-import blackjack.dto.DealerScoreInfo;
+import blackjack.dto.PersonCardsInfo;
+import blackjack.dto.DealerMatchScoreInfo;
 import blackjack.dto.NameInfo;
-import blackjack.dto.NamesInfo;
-import blackjack.dto.PeopleInfo;
-import blackjack.dto.PersonInfo;
-import blackjack.dto.PlayersScoreInfo;
-import blackjack.dto.PlayingInfo;
+import blackjack.dto.PlayerMatchScoreInfo;
+import blackjack.dto.ScoreInfo;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 public class OutputView {
-    private static final String NAME_AND_INFO_FMT = "%s%s%s\n";
-    private static final String BETWEEN_NAME_AND_INFO_DELIMITER = ": ";
+    private static final String INIT_GAME_FMT = "\n%s와 %s에게 %d장씩 나누었습니다.";
 
-    private static final String INIT_GAME_FMT = "%s와 %s에게 %d장씩 나누었습니다.\n";
-    private static final String PLAYER_NAME_DELIMITER = ", ";
-
+    private static final String NAME_DELIMITER = ", ";
     private static final String CARD_DELIMITER = ", ";
 
-    private static final String SCORE_GUIDE_MSG = "\n## 최종 승패";
-    private static final String DEALER_SCORE_INFO_DELIMITER = " ";
+    private static final String MATCH_SCORE_GUIDE_MSG = "\n## 최종 승패";
+    private static final String DEALER_MATCH_SCORE_DELIMITER = " ";
 
-    public void printInitGameMsg(NameInfo dealerNameInfo, NamesInfo playersNameInfo, Integer initCardNum) {
-        System.out.format(
-            INIT_GAME_FMT,
-            dealerNameInfo.getName(),
-            playersNameInfo.getNames()
-                .stream()
-                .map(NameInfo::getName)
-                .collect(Collectors.joining(PLAYER_NAME_DELIMITER)),
-            initCardNum
+    public void printInitGameMsg(NameInfo dealerNameInfo, List<NameInfo> playersNameInfo, Integer initCardNum) {
+        System.out.println(
+            String.format(
+                INIT_GAME_FMT,
+                dealerNameInfo.getName(),
+                playersNameInfo
+                    .stream()
+                    .map(NameInfo::getName)
+                    .collect(Collectors.joining(NAME_DELIMITER)),
+                initCardNum
+            )
         );
     }
 
-    public void printCardInfo(PersonInfo personInfo) {
-        System.out.printf("%s: %s\n",
-            personInfo.getNameInfo().getName(),
-            personInfo.getCardBunchInfo().getCardsInfo()
-                .stream()
-                .map(cardInfo -> cardInfo.getName())
-                .collect(Collectors.joining(CARD_DELIMITER))
-        );
-    }
-
-    public void printPeopleInfo(PeopleInfo peopleInfo) {
-        peopleInfo.getPeopleInfo().forEach(
-            personInfo -> printCardInfo(personInfo)
-        );
-    }
-
-    public void printPlayingInfoWithoutScore(PlayingInfo info) {
+    public void printPersonCardsInfo(PersonCardsInfo personCardsInfo) {
         System.out.format(
             "%s 카드: %s\n",
-            info.getName(),
-            formatCards(info.getCards())
+            personCardsInfo.getName(),
+            formatCards(personCardsInfo.getCardsName())
         );
     }
 
-    public void printPlayingInfoWithScore(PlayingInfo info) {
-        System.out.format(
-            "%s 카드: %s - 결과: %s\n",
-            info.getName(),
-            formatCards(info.getCards()),
-            info.getScore()
+    public void printPeopleCardsInfo(List<PersonCardsInfo> peopleCardsInfo) {
+        peopleCardsInfo.forEach(
+            personCardsInfo -> printPersonCardsInfo(personCardsInfo)
+        );
+    }
+
+    public void printScoreInfo(ScoreInfo scoreInfo) {
+        System.out.println(
+            String.format(
+                "%s 카드: %s - 결과: %s",
+                scoreInfo.getName(),
+                formatCards(scoreInfo.getCardsName()),
+                scoreInfo.getScore()
+            )
+        );
+    }
+
+    public void printScoresInfo(List<ScoreInfo> scoresInfo) {
+        scoresInfo.forEach(
+            scoreInfo -> printScoreInfo(scoreInfo)
         );
     }
 
@@ -77,32 +71,38 @@ public class OutputView {
         System.out.println("\n딜러는 16이하라 한장의 카드를 더 받았습니다.\n");
     }
 
-    public void printScoreGuideMsg() {
-        System.out.println(SCORE_GUIDE_MSG);
+    public void printMatchScoreGuideMsg() {
+        System.out.println(MATCH_SCORE_GUIDE_MSG);
     }
 
-    public void printDealerScoreInfo(NameInfo dealerNameInfo, DealerScoreInfo dealerScoreInfo) {
-        printNameAndInfo(
-            dealerNameInfo.getName(),
-            String.join(
-                DEALER_SCORE_INFO_DELIMITER,
-                dealerScoreInfo.getScores()
+    public void printDealerMatchScoreInfo(DealerMatchScoreInfo dealerMatchScoreInfo) {
+        System.out.println(
+            formatMatchScore(
+                "딜러",
+                String.join(
+                    DEALER_MATCH_SCORE_DELIMITER,
+                    dealerMatchScoreInfo.getMatchScores()
+                )
             )
         );
     }
 
-    public void printPlayersScoreInfo(PlayersScoreInfo playersScoreInfo) {
-        playersScoreInfo.getPlayersScoreInfo().forEach(
-            playerScoreInfo -> printNameAndInfo(
-                playerScoreInfo.getNameInfo().getName(),
-                playerScoreInfo.getScore()
+    public void printPlayerMatchScoreInfo(PlayerMatchScoreInfo playerMatchScoreInfo) {
+        System.out.println(
+            formatMatchScore(
+                playerMatchScoreInfo.getName(),
+                playerMatchScoreInfo.getMatchScore()
             )
         );
     }
 
-    private void printNameAndInfo(String name, String info) {
-        System.out.format(NAME_AND_INFO_FMT, name, BETWEEN_NAME_AND_INFO_DELIMITER, info);
+    public void printPlayersMatchScoreInfo(List<PlayerMatchScoreInfo> playersMatchScoreInfo) {
+        playersMatchScoreInfo.forEach(
+            playerMatchScoreInfo -> printPlayerMatchScoreInfo(playerMatchScoreInfo)
+        );
     }
 
-
+    private String formatMatchScore(String name, String matchScore) {
+        return String.format("%s: %s", name, matchScore);
+    }
 }

@@ -11,6 +11,6 @@ import java.util.List;
 @Getter
 @EqualsAndHashCode
 @ToString
-public class PeopleInfo {
-    List<PersonInfo> peopleInfo;
+public class DealerMatchScoreInfo {
+    private final List<String> matchScores;
 }

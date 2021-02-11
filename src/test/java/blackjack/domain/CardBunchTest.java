@@ -1,7 +1,5 @@
 package blackjack.domain;
 
-import blackjack.dto.CardBunchInfo;
-import blackjack.dto.CardInfo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,7 +8,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,17 +25,10 @@ class CardBunchTest {
         );
 
         assertEquals(
-            new CardBunchInfo(
-                Stream.of(1, 7, 5).map(
-                    n -> new CardInfo(
-                        Denomination.of(n),
-                        Suit.HEARTS
-                    )
-                ).collect(
-                    Collectors.toList()
-                )
-            ),
-            cardBunch.getCardBunchInfo()
+            new CardBunch(
+                List.of(1, 7, 5), Suit.HEARTS
+            ).getCardsName(),
+            cardBunch.getCardsName()
         );
     }
 
@@ -98,24 +88,15 @@ class CardBunchTest {
         );
     }
 
-    @DisplayName("Check cardBunch return correct cardBunch information")
+    @DisplayName("Check cardBunch return correct cards name information")
     @Test
-    void getCardBunchInfo() {
+    void getCardsName() {
         assertEquals(
-            new CardBunchInfo(
-                Stream.of(1, 7, 10).map(
-                    n -> new CardInfo(
-                        Denomination.of(n),
-                        Suit.HEARTS
-                    )
-                ).collect(
-                    Collectors.toList()
-                )
-            ),
+            List.of("A하트", "7하트", "10하트"),
             new CardBunch(
                 List.of(1, 7, 10),
                 Suit.HEARTS
-            ).getCardBunchInfo()
+            ).getCardsName()
         );
     }
 }

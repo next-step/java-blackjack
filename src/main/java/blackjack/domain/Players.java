@@ -1,9 +1,8 @@
 package blackjack.domain;
 
 import blackjack.dto.NameInfo;
-import blackjack.dto.NamesInfo;
-import blackjack.dto.PeopleInfo;
-import blackjack.dto.PersonInfo;
+import blackjack.dto.PersonCardsInfo;
+import blackjack.dto.ScoreInfo;
 
 import java.util.Arrays;
 import java.util.List;
@@ -73,29 +72,32 @@ public class Players {
         );
     }
 
-    public PersonInfo getActivePlayerInfo() {
-        return getActivePlayer().getPersonInfo();
-    }
-
-    public PeopleInfo getPlayersInfo() {
-        return new PeopleInfo(
-            players
-                .stream()
-                .map(player -> player.getPersonInfo())
-                .collect(Collectors.toList())
-        );
-    }
-
     public NameInfo getActivePlayerNameInfo() {
         return getActivePlayer().getNameInfo();
     }
 
-    public NamesInfo getNamesInfo() {
-        return new NamesInfo(
-            players
-                .stream()
-                .map(player -> player.getNameInfo())
-                .collect(Collectors.toList())
-        );
+    public PersonCardsInfo getActivePlayerCardsInfo() {
+        return getActivePlayer().getPersonCardsInfo();
+    }
+
+    public List<NameInfo> getPlayersNameInfo() {
+        return players
+            .stream()
+            .map(Person::getNameInfo)
+            .collect(Collectors.toList());
+    }
+
+    public List<PersonCardsInfo> getPlayersCardsInfo() {
+        return players
+            .stream()
+            .map(Person::getPersonCardsInfo)
+            .collect(Collectors.toList());
+    }
+
+    public List<ScoreInfo> getPlayersScoreInfo() {
+        return players
+            .stream()
+            .map(Person::getScoreInfo)
+            .collect(Collectors.toList());
     }
 }

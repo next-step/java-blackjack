@@ -26,8 +26,13 @@ public class Controller {
 
         players.initPlayers(deck);
 
-        output.printCardInfo(dealer.getPersonInfo());
-        output.printPeopleInfo(players.getPlayersInfo());
+        output.printInitGameMsg(
+            dealer.getNameInfo(),
+            players.getPlayersNameInfo(),
+            2
+        );
+        output.printPersonCardsInfo(dealer.getPersonCardsInfo());
+        output.printPeopleCardsInfo(players.getPlayersCardsInfo());
 
         while (players.hasActivePlayer()) {
             doActivePlayerTurn(players, deck);
@@ -38,18 +43,17 @@ public class Controller {
             output.printDealerDrawInformation();
         }
 
-        output.printCardInfo(dealer.getPersonInfo());
-        output.printPeopleInfo(players.getPlayersInfo());
+        output.printScoreInfo(dealer.getScoreInfo());
+        output.printScoresInfo(players.getPlayersScoreInfo());
 
         MatchScoreBoard matchScoreBoard = players.playMatch(dealer);
 
-        output.printScoreGuideMsg();
-        output.printDealerScoreInfo(
-            dealer.getNameInfo(),
-            matchScoreBoard.getDealerScoreInfo()
+        output.printMatchScoreGuideMsg();
+        output.printDealerMatchScoreInfo(
+            matchScoreBoard.getDealerMatchScoreInfo()
         );
-        output.printPlayersScoreInfo(
-            matchScoreBoard.getPlayersScoreInfo()
+        output.printPlayersMatchScoreInfo(
+            matchScoreBoard.getPlayersMatchScoreInfo()
         );
     }
 
@@ -58,7 +62,7 @@ public class Controller {
             && input.requestCard(players.getActivePlayerNameInfo())
         ) {
             players.drawActivePlayerFromDeck(deck);
-            output.printCardInfo(players.getActivePlayerInfo());
+            output.printPersonCardsInfo(players.getActivePlayerCardsInfo());
         }
         players.endActivePlayerTurn();
     }

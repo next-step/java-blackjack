@@ -1,41 +1,38 @@
 package blackjack.domain;
 
-import blackjack.dto.DealerScoreInfo;
-import blackjack.dto.PlayerScoreInfo;
-import blackjack.dto.PlayersScoreInfo;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import blackjack.dto.DealerMatchScoreInfo;
+import blackjack.dto.PlayerMatchScoreInfo;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@AllArgsConstructor
-@EqualsAndHashCode
-@ToString
 public class MatchScoreBoard {
     private Map<Player, MatchScore> matchScoreMap;
 
     public MatchScoreBoard() {
-        matchScoreMap = new HashMap<>();
+        matchScoreMap = new LinkedHashMap<>();
     }
 
-    public PlayersScoreInfo getPlayersScoreInfo() {
-        return new PlayersScoreInfo(
-            matchScoreMap
-                .entrySet()
-                .stream()
-                .map(map -> new PlayerScoreInfo(
-                    map.getKey().getNameInfo(),
+    public MatchScoreBoard(Map<Player, MatchScore> matchScoreMap) {
+        this.matchScoreMap = matchScoreMap;
+    }
+
+    public List<PlayerMatchScoreInfo> getPlayersMatchScoreInfo() {
+        return matchScoreMap
+            .entrySet()
+            .stream()
+            .map(map ->
+                new PlayerMatchScoreInfo(
+                    map.getKey().name,
                     map.getValue().getName()
                 ))
-                .collect(Collectors.toSet())
-        );
+            .collect(Collectors.toList());
     }
 
-    public DealerScoreInfo getDealerScoreInfo() {
-        return new DealerScoreInfo(
+    public DealerMatchScoreInfo getDealerMatchScoreInfo() {
+        return new DealerMatchScoreInfo(
             matchScoreMap
                 .entrySet()
                 .stream()

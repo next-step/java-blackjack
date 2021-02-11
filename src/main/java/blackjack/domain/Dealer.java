@@ -16,5 +16,4 @@ public class Dealer extends Person {
     public boolean canDrawCard() {
         return cardBunch.calcScore() <= DEALER_DRAW_LIMIT && !cardBunch.isBust();
     }
-
 }

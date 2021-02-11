@@ -1,6 +1,5 @@
 package blackjack.domain;
 
-import blackjack.dto.CardInfo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -30,12 +29,12 @@ class CardTest {
         );
     }
 
-    @DisplayName("Check card return correct card information")
+    @DisplayName("Check card return correct card name")
     @Test
-    public void getCardInfo() {
+    public void getCardName() {
         assertEquals(
-            new CardInfo(Denomination.ACE, Suit.HEARTS),
-            new Card(Denomination.ACE, Suit.HEARTS).getCardInfo()
+            "A하트",
+            new Card(Denomination.ACE, Suit.HEARTS).getCardName()
         );
     }
 }

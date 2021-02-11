@@ -1,7 +1,5 @@
 package blackjack.domain;
 
-import blackjack.dto.NamesInfo;
-import blackjack.dto.PeopleInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -58,19 +56,17 @@ class PlayersTest {
         players.initPlayers(deck);
 
         assertEquals(
-            new PeopleInfo(
-                List.of(
-                    new Player(
-                        "name1",
-                        new CardBunch(List.of(1, 1), Suit.HEARTS)
-                    ).getPersonInfo(),
-                    new Player(
-                        "name2",
-                        new CardBunch(List.of(1, 1), Suit.HEARTS)
-                    ).getPersonInfo()
-                )
+            List.of(
+                new Player(
+                    "name1",
+                    new CardBunch(List.of(1, 1), Suit.HEARTS)
+                ).getScoreInfo(),
+                new Player(
+                    "name2",
+                    new CardBunch(List.of(1, 1), Suit.HEARTS)
+                ).getScoreInfo()
             ),
-            players.getPlayersInfo()
+            players.getPlayersScoreInfo()
         );
     }
 
@@ -141,16 +137,14 @@ class PlayersTest {
         players.drawActivePlayerFromDeck(deck);
 
         assertEquals(
-            new PeopleInfo(
-                List.of(
-                    new Player(
-                        "name1",
-                        new CardBunch(List.of(1), Suit.HEARTS)
-                    ).getPersonInfo(),
-                    testPlayer2.getPersonInfo()
-                )
+            List.of(
+                new Player(
+                    "name1",
+                    new CardBunch(List.of(1), Suit.HEARTS)
+                ).getScoreInfo(),
+                testPlayer2.getScoreInfo()
             ),
-            players.getPlayersInfo()
+            players.getPlayersScoreInfo()
         );
     }
 
@@ -166,31 +160,39 @@ class PlayersTest {
         assertEquals(false, players.hasActivePlayer());
     }
 
-    @DisplayName("Check players return correct players information")
+    @DisplayName("Check players return correct players name information")
     @Test
-    void getPlayersInfo() {
+    void getPlayersNameInfo() {
         assertEquals(
-            new PeopleInfo(
-                List.of(
-                    testPlayer1.getPersonInfo(),
-                    testPlayer2.getPersonInfo()
-                )
+            List.of(
+                testPlayer1.getNameInfo(),
+                testPlayer2.getNameInfo()
             ),
-            testPlayers.getPlayersInfo()
+            testPlayers.getPlayersNameInfo()
         );
     }
 
-    @DisplayName("Check players return correct players name information")
+    @DisplayName("Check players return correct players cards information")
     @Test
-    void getNamesInfo() {
+    void getPlayersCardsInfo() {
         assertEquals(
-            new NamesInfo(
-                List.of(
-                    testPlayer1.getNameInfo(),
-                    testPlayer2.getNameInfo()
-                )
+            List.of(
+                testPlayer1.getPersonCardsInfo(),
+                testPlayer2.getPersonCardsInfo()
             ),
-            testPlayers.getNamesInfo()
+            testPlayers.getPlayersCardsInfo()
+        );
+    }
+
+    @DisplayName("Check players return correct players score information")
+    @Test
+    void getPlayersScoreInfo() {
+        assertEquals(
+            List.of(
+                testPlayer1.getScoreInfo(),
+                testPlayer2.getScoreInfo()
+            ),
+            testPlayers.getPlayersScoreInfo()
         );
     }
 }

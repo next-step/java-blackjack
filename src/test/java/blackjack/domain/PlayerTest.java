@@ -1,7 +1,8 @@
 package blackjack.domain;
 
 import blackjack.dto.NameInfo;
-import blackjack.dto.PersonInfo;
+import blackjack.dto.PersonCardsInfo;
+import blackjack.dto.ScoreInfo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -66,14 +67,14 @@ class PlayerTest {
         testPlayer.drawCardFromDeck(deck);
 
         assertEquals(
-            new PersonInfo(
-                new NameInfo("player"),
+            new Player(
+                "player",
                 new CardBunch(
                     List.of(1, 7, 10, 1),
                     Suit.HEARTS
-                ).getCardBunchInfo()
-            ),
-            testPlayer.getPersonInfo()
+                )
+            ).getScoreInfo(),
+            testPlayer.getScoreInfo()
         );
     }
 
@@ -112,27 +113,30 @@ class PlayerTest {
         );
     }
 
-    @DisplayName("Check player return correct Player information")
-    @Test
-    void getPersonInfo() {
-        assertEquals(
-            new PersonInfo(
-                new NameInfo("player"),
-                new CardBunch(
-                    List.of(1, 7, 10),
-                    Suit.HEARTS
-                ).getCardBunchInfo()
-            ),
-            testPlayer.getPersonInfo()
-        );
-    }
-
-    @DisplayName("Check player return correct Player name information")
+    @DisplayName("Check player return correct player name information")
     @Test
     void getNameInfo() {
         assertEquals(
             new NameInfo("player"),
             testPlayer.getNameInfo()
+        );
+    }
+
+    @DisplayName("Check player return correct player cards information")
+    @Test
+    void getPersonCardsInfo() {
+        assertEquals(
+            new PersonCardsInfo("player", List.of("A하트", "7하트", "10하트")),
+            testPlayer.getPersonCardsInfo()
+        );
+    }
+
+    @DisplayName("Check player return correct player score information")
+    @Test
+    void getScoreInfo() {
+        assertEquals(
+            new ScoreInfo("player", List.of("A하트", "7하트", "10하트"), 18),
+            testPlayer.getScoreInfo()
         );
     }
 }

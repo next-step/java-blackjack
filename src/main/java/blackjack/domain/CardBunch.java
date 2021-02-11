@@ -1,16 +1,16 @@
 package blackjack.domain;
 
-import blackjack.dto.CardBunchInfo;
+import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
+@EqualsAndHashCode
 public class CardBunch {
     private static final Integer BLACK_JACK_SCORE = 21;
 
-    protected final List<Card> cardBunch;
+    private final List<Card> cardBunch;
 
     public CardBunch() {
         this.cardBunch = new ArrayList<>();
@@ -43,7 +43,7 @@ public class CardBunch {
         return calcScore() > BLACK_JACK_SCORE;
     }
 
-    protected Integer calcScore() {
+    public Integer calcScore() {
         int score = cardBunch.stream().mapToInt(Card::getScore).sum();
 
         if (hasAce() && score < 12) {
@@ -56,26 +56,10 @@ public class CardBunch {
         return cardBunch.stream().anyMatch(Card::isAce);
     }
 
-    public CardBunchInfo getCardBunchInfo() {
-        return new CardBunchInfo(
-            cardBunch.stream().map(
-                Card::getCardInfo
-            ).collect(
-                Collectors.toList()
-            )
-        );
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CardBunch cardBunch1 = (CardBunch) o;
-        return Objects.equals(cardBunch, cardBunch1.cardBunch);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cardBunch);
+    public List<String> getCardsName() {
+        return cardBunch
+            .stream()
+            .map(Card::getCardName)
+            .collect(Collectors.toList());
     }
 }
