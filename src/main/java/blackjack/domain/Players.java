@@ -1,7 +1,9 @@
 package blackjack.domain;
 
+import blackjack.dto.NameInfo;
 import blackjack.dto.NamesInfo;
 import blackjack.dto.PeopleInfo;
+import blackjack.dto.PersonInfo;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,12 +24,13 @@ public class Players {
         this.activePlayerIdx = activePlayerIdx;
     }
 
-    // TODO : Change to create Players
-    public static List<Player> create(String[] names) {
-        return Arrays
-            .stream(names)
-            .map(Player::new)
-            .collect(Collectors.toList());
+    public static Players create(String[] names) {
+        return new Players(
+            Arrays
+                .stream(names)
+                .map(Player::new)
+                .collect(Collectors.toList())
+        );
     }
 
     public void initPlayers(Deck deck) {
@@ -51,12 +54,27 @@ public class Players {
         return getActivePlayer().canDrawCard();
     }
 
-    public void drawActivePlayer(Deck deck) {
+    public void drawActivePlayerFromDeck(Deck deck) {
         getActivePlayer().drawCardFromDeck(deck);
     }
 
-    public void EndActivePlayerTurn() {
+    public void endActivePlayerTurn() {
         activePlayerIdx++;
+    }
+
+    public MatchScoreBoard playMatch(Dealer dealer) {
+        return new MatchScoreBoard(
+            players
+                .stream()
+                .collect(Collectors.toMap(
+                    player -> player,
+                    player -> player.getMatchScore(dealer)
+                ))
+        );
+    }
+
+    public PersonInfo getActivePlayerInfo() {
+        return getActivePlayer().getPersonInfo();
     }
 
     public PeopleInfo getPlayersInfo() {
@@ -66,6 +84,10 @@ public class Players {
                 .map(player -> player.getPersonInfo())
                 .collect(Collectors.toList())
         );
+    }
+
+    public NameInfo getActivePlayerNameInfo() {
+        return getActivePlayer().getNameInfo();
     }
 
     public NamesInfo getNamesInfo() {

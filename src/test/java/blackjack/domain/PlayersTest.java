@@ -124,7 +124,7 @@ class PlayersTest {
 
     @DisplayName("Check active player draw card from deck well")
     @Test
-    void drawActivePlayer() {
+    void drawActivePlayerFromDeck() {
         Players players = new Players(
             List.of(
                 new Player("name1"),
@@ -138,7 +138,7 @@ class PlayersTest {
             }}
         );
 
-        players.drawActivePlayer(deck);
+        players.drawActivePlayerFromDeck(deck);
 
         assertEquals(
             new PeopleInfo(
@@ -156,13 +156,13 @@ class PlayersTest {
 
     @DisplayName("Check active player turn is ended well")
     @Test
-    void EndActivePlayerTurn() {
+    void endActivePlayerTurn() {
         Players players = new Players(
             List.of(testPlayer1)
         );
 
         assertEquals(true, players.hasActivePlayer());
-        players.EndActivePlayerTurn();
+        players.endActivePlayerTurn();
         assertEquals(false, players.hasActivePlayer());
     }
 

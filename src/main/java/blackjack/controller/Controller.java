@@ -3,16 +3,9 @@ package blackjack.controller;
 import blackjack.domain.Dealer;
 import blackjack.domain.Deck;
 import blackjack.domain.MatchScoreBoard;
-import blackjack.domain.Person;
-import blackjack.domain.Player;
 import blackjack.domain.Players;
-import blackjack.dto.NameInfo;
-import blackjack.dto.PeopleInfo;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Controller {
     private final InputView input;
@@ -24,35 +17,20 @@ public class Controller {
     }
 
     public void playGame() {
-        List<Player> players = Players.create(input.requestPlayers());
-
+        Players players = Players.create(input.requestPlayers());
         Dealer dealer = new Dealer();
         Deck deck = new Deck();
 
         dealer.drawCardFromDeck(deck);
         dealer.drawCardFromDeck(deck);
 
-        for (Player player : players) {
-            player.drawCardFromDeck(deck);
-            player.drawCardFromDeck(deck);
-        }
+        players.initPlayers(deck);
 
         output.printCardInfo(dealer.getPersonInfo());
-        output.printPeopleInfo(
-            new PeopleInfo(
-                players
-                    .stream()
-                    .map(p -> p.getPersonInfo())
-                    .collect(Collectors.toList())
-            )
-        );
+        output.printPeopleInfo(players.getPlayersInfo());
 
-        for (Person player : players) {
-            NameInfo name = player.getNameInfo();
-            while (player.canDrawCard() && input.requestCard(name)) {
-                player.drawCardFromDeck(deck);
-                output.printCardInfo(player.getPersonInfo());
-            }
+        while (players.hasActivePlayer()) {
+            doActivePlayerTurn(players, deck);
         }
 
         while (dealer.canDrawCard()) {
@@ -61,23 +39,9 @@ public class Controller {
         }
 
         output.printCardInfo(dealer.getPersonInfo());
-        output.printPeopleInfo(
-            new PeopleInfo(
-                players
-                    .stream()
-                    .map(p -> p.getPersonInfo())
-                    .collect(Collectors.toList())
-            )
-        );
+        output.printPeopleInfo(players.getPlayersInfo());
 
-        MatchScoreBoard matchScoreBoard = new MatchScoreBoard(
-            players
-                .stream()
-                .collect(Collectors.toMap(
-                    player -> player,
-                    player -> player.getMatchScore(dealer)
-                ))
-        );
+        MatchScoreBoard matchScoreBoard = players.playMatch(dealer);
 
         output.printScoreGuideMsg();
         output.printDealerScoreInfo(
@@ -87,5 +51,15 @@ public class Controller {
         output.printPlayersScoreInfo(
             matchScoreBoard.getPlayersScoreInfo()
         );
+    }
+
+    void doActivePlayerTurn(Players players, Deck deck) {
+        while (players.checkActivePlayerCanDrawCard()
+            && input.requestCard(players.getActivePlayerNameInfo())
+        ) {
+            players.drawActivePlayerFromDeck(deck);
+            output.printCardInfo(players.getActivePlayerInfo());
+        }
+        players.endActivePlayerTurn();
     }
 }
