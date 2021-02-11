@@ -2,6 +2,7 @@ package blackjack.model;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Players {
@@ -15,10 +16,26 @@ public class Players {
                 .map(String::trim)
                 .map(cleanName -> new Gamer(cleanName, deck))
                 .collect(Collectors.toList());
-        players.add(new Dealer(deck));
+        players.add(0, new Dealer(deck));
     }
 
     public List<Player> getPlayers() {
         return players;
     }
+
+    public String getPlayerNames(final Predicate<Player> playerPredicate) {
+        return players
+                .stream()
+                .filter(playerPredicate)
+                .map(Player::getName)
+                .collect(Collectors.joining(", "));
+    }
+
+    public void receive(final Predicate<Player> playerPredicate) {
+        players
+                .stream()
+                .filter(playerPredicate)
+                .forEach(Player::receiveCard);
+    }
+
 }
