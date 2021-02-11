@@ -21,6 +21,10 @@ public class Card {
         return cardValue.getScore();
     }
 
+    public CardValue getValue() {
+        return cardValue;
+    }
+
     private String parseCard(CardType cardType, CardValue cardValue) {
         return cardValue.getTag() + cardType.getType();
     }
