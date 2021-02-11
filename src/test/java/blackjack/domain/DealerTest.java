@@ -116,6 +116,15 @@ class DealerTest {
         );
     }
 
+    @DisplayName("Check dealer return correct Dealer cards information with first card only")
+    @Test
+    void getPersonCardsInfoFirstCardOnly() {
+        assertEquals(
+            new PersonCardsInfo("딜러", List.of("A하트")),
+            testDealer.getPersonCardsInfoFirstCardOnly()
+        );
+    }
+
     @DisplayName("Check dealer return correct Dealer score information")
     @Test
     void getScoreInfo() {

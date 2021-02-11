@@ -26,7 +26,7 @@ public class PhaseController {
         players.initializeFromDeck(deck);
 
         output.printInitializeGameMsg(dealer.getNameInfo(), players.getPlayersNameInfo(), INIT_CARD_CNT);
-        output.printPersonCardsInfo(dealer.getPersonCardsInfo());
+        output.printPersonCardsInfo(dealer.getPersonCardsInfoFirstCardOnly());
         output.printPeopleCardsInfo(players.getPlayersCardsInfo());
     }
 

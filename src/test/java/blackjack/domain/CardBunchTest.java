@@ -90,6 +90,18 @@ class CardBunchTest {
 
     @DisplayName("Check cardBunch return correct cards name information")
     @Test
+    void getFirstCardName() {
+        assertEquals(
+            List.of("A하트"),
+            new CardBunch(
+                List.of(1, 7, 10),
+                Suit.HEARTS
+            ).getFirstCardName()
+        );
+    }
+
+    @DisplayName("Check cardBunch return correct cards name information")
+    @Test
     void getCardsName() {
         assertEquals(
             List.of("A하트", "7하트", "10하트"),

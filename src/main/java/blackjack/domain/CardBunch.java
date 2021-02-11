@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class CardBunch {
     private static final int BLACK_JACK_SCORE = 21;
+    private static final String NOT_FIRST_CARD_EXIST_ERR_MSG = "첫번째 카드가 존재하지 않습니다.";
 
     private final List<Card> cardBunch;
 
@@ -46,6 +47,16 @@ public class CardBunch {
 
     private boolean hasAce() {
         return cardBunch.stream().anyMatch(Card::isAce);
+    }
+
+    public List<String> getFirstCardName() {
+        if (cardBunch.size() < 1) {
+            throw new RuntimeException(NOT_FIRST_CARD_EXIST_ERR_MSG);
+        }
+
+        return List.of(
+            cardBunch.get(0).getCardName()
+        );
     }
 
     public List<String> getCardsName() {
