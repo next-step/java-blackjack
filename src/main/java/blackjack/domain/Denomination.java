@@ -17,17 +17,16 @@ public enum Denomination {
     QUEEN(10, "Q"),
     KING(10, "K");
 
+    private static final String WRONG_DENOMINATION_SCORE_ERR_MSG = "잘못된 카드 점수입니다.";
+
     private final int score;
     private final String name;
 
     public static Denomination of(final int score) {
-        return Arrays.stream(
-            Denomination.values()
-        ).filter(
-            d -> d.score == score
-        ).findFirst().orElseThrow(
-            () -> new RuntimeException("")
-        );
+        return Arrays
+            .stream(Denomination.values())
+            .filter(d -> d.score == score)
+            .findFirst().orElseThrow(() -> new RuntimeException(WRONG_DENOMINATION_SCORE_ERR_MSG));
     }
 
     Denomination(final int score, final String name) {

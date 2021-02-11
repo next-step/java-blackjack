@@ -7,11 +7,14 @@ public enum MatchScore {
     DRAW(0, "무"),
     LOSE(-1, "패");
 
-    private final int value;
+    private static final String WRONG_MATCH_SCORE_KEY_ERR_MSG = "잘못된 매치 결과 키값입니다.";
+    private static final String UNREACHABLE_POINT_ERR_MSG = "예기치 않은 오류입니다.";
+
+    private final int key;
     private final String name;
 
-    MatchScore(int value, String name) {
-        this.value = value;
+    MatchScore(int key, String name) {
+        this.key = key;
         this.name = name;
     }
 
@@ -23,9 +26,9 @@ public enum MatchScore {
         return Arrays.stream(
             MatchScore.values()
         ).filter(
-            result -> result.value == value
+            result -> result.key == value
         ).findFirst().orElseThrow(
-            () -> new RuntimeException("Unreachable point")
+            () -> new RuntimeException(WRONG_MATCH_SCORE_KEY_ERR_MSG)
         );
     }
 
@@ -42,10 +45,10 @@ public enum MatchScore {
         if (player.calcScore() > dealer.calcScore()) return WIN;
         if (player.calcScore() < dealer.calcScore()) return LOSE;
 
-        throw new RuntimeException("Unreachable point");
+        throw new RuntimeException(UNREACHABLE_POINT_ERR_MSG);
     }
 
     public MatchScore oppositeMatchScore() {
-        return MatchScore.of(-value);
+        return MatchScore.of(-key);
     }
 }

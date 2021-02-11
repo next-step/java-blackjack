@@ -3,17 +3,12 @@ package blackjack.domain;
 import blackjack.dto.DealerMatchScoreInfo;
 import blackjack.dto.PlayerMatchScoreInfo;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class MatchScoreBoard {
-    private Map<Player, MatchScore> matchScoreMap;
-
-    public MatchScoreBoard() {
-        matchScoreMap = new LinkedHashMap<>();
-    }
+    private final Map<Player, MatchScore> matchScoreMap;
 
     public MatchScoreBoard(Map<Player, MatchScore> matchScoreMap) {
         this.matchScoreMap = matchScoreMap;
@@ -34,9 +29,9 @@ public class MatchScoreBoard {
     public DealerMatchScoreInfo getDealerMatchScoreInfo() {
         return new DealerMatchScoreInfo(
             matchScoreMap
-                .entrySet()
+                .values()
                 .stream()
-                .map(map -> map.getValue().oppositeMatchScore())
+                .map(MatchScore::oppositeMatchScore)
                 .collect(Collectors.groupingBy(o -> o, Collectors.counting()))
                 .entrySet()
                 .stream()
