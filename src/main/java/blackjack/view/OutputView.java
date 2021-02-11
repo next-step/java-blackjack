@@ -6,7 +6,9 @@ import blackjack.dto.NamesInfo;
 import blackjack.dto.PeopleInfo;
 import blackjack.dto.PersonInfo;
 import blackjack.dto.PlayersScoreInfo;
+import blackjack.dto.PlayingInfo;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -44,15 +46,35 @@ public class OutputView {
         );
     }
 
-    public void printDealerDrawInformation() {
-        System.out.println("\n딜러는 16이하라 한장의 카드를 더 받았습니다.\n");
-    }
-
-
     public void printPeopleInfo(PeopleInfo peopleInfo) {
         peopleInfo.getPeopleInfo().forEach(
             personInfo -> printCardInfo(personInfo)
         );
+    }
+
+    public void printPlayingInfoWithoutScore(PlayingInfo info) {
+        System.out.format(
+            "%s 카드: %s\n",
+            info.getName(),
+            formatCards(info.getCards())
+        );
+    }
+
+    public void printPlayingInfoWithScore(PlayingInfo info) {
+        System.out.format(
+            "%s 카드: %s - 결과: %s\n",
+            info.getName(),
+            formatCards(info.getCards()),
+            info.getScore()
+        );
+    }
+
+    private String formatCards(List<String> cards) {
+        return String.join(CARD_DELIMITER, cards);
+    }
+
+    public void printDealerDrawInformation() {
+        System.out.println("\n딜러는 16이하라 한장의 카드를 더 받았습니다.\n");
     }
 
     public void printScoreGuideMsg() {
@@ -81,4 +103,6 @@ public class OutputView {
     private void printNameAndInfo(String name, String info) {
         System.out.format(NAME_AND_INFO_FMT, name, BETWEEN_NAME_AND_INFO_DELIMITER, info);
     }
+
+
 }
