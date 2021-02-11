@@ -2,11 +2,10 @@ package blackjack.controller;
 
 import blackjack.domain.Dealer;
 import blackjack.domain.Deck;
-import blackjack.domain.MatchScore;
 import blackjack.domain.MatchScoreBoard;
 import blackjack.domain.Person;
 import blackjack.domain.Player;
-import blackjack.domain.PlayersFactory;
+import blackjack.domain.Players;
 import blackjack.dto.NameInfo;
 import blackjack.dto.PeopleInfo;
 import blackjack.view.InputView;
@@ -25,9 +24,7 @@ public class Controller {
     }
 
     public void playGame() {
-        List<Player> players = PlayersFactory.generatePlayers(
-            input.requestPlayers()
-        );
+        List<Player> players = Players.create(input.requestPlayers());
 
         Dealer dealer = new Dealer();
         Deck deck = new Deck();
