@@ -100,6 +100,15 @@ class CardBunchTest {
         );
     }
 
+    @DisplayName("Check cardBunch throw error if not exist first card")
+    @Test
+    void getFirstCardNameWithoutFirstCard() {
+        assertThrows(
+            RuntimeException.class,
+            () -> new CardBunch().getFirstCardName()
+        );
+    }
+
     @DisplayName("Check cardBunch return correct cards name information")
     @Test
     void getCardsName() {
