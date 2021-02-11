@@ -36,7 +36,7 @@ class PlayersTest {
 
     @DisplayName("Check players is well initialized with given deck")
     @Test
-    void initPlayers() {
+    void initializeFromDeck() {
         Players players = new Players(
             List.of(
                 new Player("name1"),
@@ -53,7 +53,7 @@ class PlayersTest {
             }}
         );
 
-        players.initPlayers(deck);
+        players.initializeFromDeck(deck);
 
         assertEquals(
             List.of(

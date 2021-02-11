@@ -7,7 +7,6 @@ import blackjack.dto.ScoreInfo;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Players {
     private final List<Player> players;
@@ -32,13 +31,8 @@ public class Players {
         );
     }
 
-    public void initPlayers(Deck deck) {
-        players
-            .forEach(player -> {
-                IntStream
-                    .range(0, 2)
-                    .forEach(i -> player.drawCardFromDeck(deck));
-            });
+    public void initializeFromDeck(Deck deck) {
+        players.forEach(player -> player.initializeFromDeck(deck));
     }
 
     private Player getActivePlayer() {

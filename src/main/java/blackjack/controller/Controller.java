@@ -7,6 +7,8 @@ import blackjack.domain.Players;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
+import static blackjack.domain.Person.INIT_CARD_CNT;
+
 public class Controller {
     private final InputView input;
     private final OutputView output;
@@ -21,15 +23,13 @@ public class Controller {
         Dealer dealer = new Dealer();
         Deck deck = new Deck();
 
-        dealer.drawCardFromDeck(deck);
-        dealer.drawCardFromDeck(deck);
-
-        players.initPlayers(deck);
+        dealer.initializeFromDeck(deck);
+        players.initializeFromDeck(deck);
 
         output.printInitGameMsg(
             dealer.getNameInfo(),
             players.getPlayersNameInfo(),
-            2
+            INIT_CARD_CNT
         );
         output.printPersonCardsInfo(dealer.getPersonCardsInfo());
         output.printPeopleCardsInfo(players.getPlayersCardsInfo());

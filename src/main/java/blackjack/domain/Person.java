@@ -5,8 +5,12 @@ import blackjack.dto.PersonCardsInfo;
 import blackjack.dto.ScoreInfo;
 import lombok.EqualsAndHashCode;
 
+import java.util.stream.IntStream;
+
 @EqualsAndHashCode
 public abstract class Person {
+    public static final int INIT_CARD_CNT = 2;
+
     protected final CardBunch cardBunch;
     protected final String name;
 
@@ -21,6 +25,12 @@ public abstract class Person {
     }
 
     public abstract boolean canDrawCard();
+
+    public void initializeFromDeck(Deck deck) {
+        IntStream
+            .range(0, INIT_CARD_CNT)
+            .forEach(i -> drawCardFromDeck(deck));
+    }
 
     public void drawCardFromDeck(Deck deck) {
         cardBunch.addCard(

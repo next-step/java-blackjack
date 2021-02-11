@@ -53,6 +53,28 @@ class DealerTest {
         );
     }
 
+    @DisplayName("Check Dealer initialized card from deck well")
+    @Test
+    void initializeFromDeck() {
+        Deck deck = new Deck(
+            new ArrayList<>() {{
+                add(new Card(Denomination.ACE, Suit.HEARTS));
+                add(new Card(Denomination.ACE, Suit.HEARTS));
+            }}
+        );
+        testDealer.initializeFromDeck(deck);
+
+        assertEquals(
+            new Dealer(
+                new CardBunch(
+                    List.of(1, 7, 10, 1, 1),
+                    Suit.HEARTS
+                )
+            ).getScoreInfo(),
+            testDealer.getScoreInfo()
+        );
+    }
+
     @DisplayName("Check Dealer draw card from deck well")
     @Test
     void drawCardFromDeck() {

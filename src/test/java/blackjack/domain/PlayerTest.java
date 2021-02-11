@@ -56,6 +56,29 @@ class PlayerTest {
         );
     }
 
+    @DisplayName("Check Dealer initialized card from deck well")
+    @Test
+    void initializeFromDeck() {
+        Deck deck = new Deck(
+            new ArrayList<>() {{
+                add(new Card(Denomination.ACE, Suit.HEARTS));
+                add(new Card(Denomination.ACE, Suit.HEARTS));
+            }}
+        );
+        testPlayer.initializeFromDeck(deck);
+
+        assertEquals(
+            new Player(
+                "player",
+                new CardBunch(
+                    List.of(1, 7, 10, 1, 1),
+                    Suit.HEARTS
+                )
+            ).getScoreInfo(),
+            testPlayer.getScoreInfo()
+        );
+    }
+
     @DisplayName("Check player draw card from deck well")
     @Test
     void drawCardFromDeck() {
