@@ -15,10 +15,6 @@ public enum MatchScore {
         this.name = name;
     }
 
-    public int getValue() {
-        return value;
-    }
-
     public String getName() {
         return name;
     }
@@ -35,7 +31,6 @@ public enum MatchScore {
 
     public static MatchScore calcMatchScore(CardBunch player, CardBunch dealer) {
         // TODO : Check using Enum is useful? It may downgrade readability
-        if (player.isBust() && dealer.isBust()) throw new RuntimeException("Unreachable point");
         if (player.isBust()) return LOSE;
         if (dealer.isBust()) return WIN;
 
