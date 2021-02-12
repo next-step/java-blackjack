@@ -19,8 +19,8 @@ public class Players {
         players.add(0, new Dealer(deck));
     }
 
-    public List<Player> getPlayers() {
-        return players;
+    public List<Player> getPlayers(final Predicate<Player> playerPredicate) {
+        return players.stream().filter(playerPredicate).collect(Collectors.toList());
     }
 
     public String getPlayerNames(final Predicate<Player> playerPredicate) {
@@ -37,5 +37,4 @@ public class Players {
                 .filter(playerPredicate)
                 .forEach(Player::receiveCard);
     }
-
 }
