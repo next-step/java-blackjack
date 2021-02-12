@@ -1,6 +1,8 @@
 package blackjack.model;
 
 public interface Player {
+    Job getJob();
+
     String getName();
 
     void receiveCard();
@@ -8,4 +10,8 @@ public interface Player {
     Pocket getCardStats();
 
     String exportCardStats();
+
+    int getCardsScore();
+
+    boolean hasAce();
 }
