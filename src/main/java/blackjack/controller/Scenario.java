@@ -1,17 +1,22 @@
 package blackjack.controller;
 
-import blackjack.model.Player;
-import blackjack.model.Players;
+import blackjack.model.*;
 import blackjack.view.Exporter;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
+import java.util.List;
+
 public class Scenario {
 
     private final Players players;
+    private final Player DEALER;
+    private final List<Player> GAMERS;
 
     public Scenario(final Players players) {
         this.players = players;
+        DEALER = players.getPlayers(player -> player.getJob() == Job.DEALER).get(0);
+        GAMERS = players.getPlayers(player -> player.getJob() == Job.GAMER);
     }
 
     /**
@@ -19,17 +24,19 @@ public class Scenario {
      * 딜러 1장, 게이머 2장의 카드를 받는다.
      */
     public void prepareGame() {
-        //TODO : eqauls(하드코딩), 하드코딩 유지보수
-        players.receive(player -> player.getName().equals("Dealer"));  //딜러가 카드 한장을 받는다.
-        players.receive(player -> !player.getName().equals("Dealer")); //게이머가 카드 한장을 받는다.
-        players.receive(player -> !player.getName().equals("Dealer")); //게이머가 카드 한장을 받다.
+        DEALER.receiveCard();
+        GAMERS.forEach(Player::receiveCard);
+        GAMERS.forEach(Player::receiveCard);
     }
 
     /**
      * @Description. 게이머가 카드를 받는지 물어본다.
      */
     public void startGame(final InputView inputView) {
-        players.getPlayers().forEach(player -> isPopCard(inputView, player));
+        GAMERS.forEach(player -> isPopCard(inputView, player));
+        if(DEALER.getCardsScore() < 16){
+            DEALER.receiveCard();
+        }
     }
 
     /**
@@ -37,7 +44,7 @@ public class Scenario {
      */
     public void endGame(final OutputView outputView) {
         final Exporter exporter = new Exporter(players);
-        outputView.printResult(exporter.getResult());
+        outputView.winningBoard(exporter);
     }
 
     private void isPopCard(InputView inputView, Player player) {
