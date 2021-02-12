@@ -1,6 +1,5 @@
 package blackjack.view;
 
-import blackjack.controller.AnswerRunnable;
 import blackjack.model.Players;
 
 import java.util.Scanner;

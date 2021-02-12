@@ -3,7 +3,6 @@ package blackjack.model;
 import java.util.EmptyStackException;
 import java.util.Stack;
 
-//TODO : 어떻게 shuffle 을 막을건지?
 public class Deck {
     private final Stack<Card> cards = new Stack<>();
 
