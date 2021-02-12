@@ -44,4 +44,40 @@ class DealerTest {
         final String exportCardStats = dealer.exportCardStats();
         assertThat(exportCardStats).isEqualTo("Dealer : K클로버");
     }
+
+    @Test
+    @DisplayName("갖고 있는 Job이 정상적으로 나오는 지, 출력하는 테스트")
+    void getJobTest() {
+        final ShuffleStrategy emptyShuffleStrategy = new EmptyShuffleStrategy();
+        final Deck deck = new Deck(emptyShuffleStrategy);
+        final Dealer dealer = new Dealer(deck);
+
+        assertThat(dealer.getJob()).isEqualTo(Job.DEALER);
+    }
+
+    @Test
+    @DisplayName("가지고 있는 카드의 총합이 정상적으로 계산되는 지, 확인하는 테스트")
+    void getCardsScoreTest() {
+        final ShuffleStrategy emptyShuffleStrategy = new EmptyShuffleStrategy();
+        final Deck deck = new Deck(emptyShuffleStrategy);
+        final Dealer dealer = new Dealer(deck);
+        dealer.receiveCard();
+        dealer.receiveCard();
+
+        final int cardsScore = dealer.getCardsScore();
+        assertThat(cardsScore).isEqualTo(20);
+    }
+
+    @Test
+    @DisplayName("ACE카드를 가지고있는지 확인하는 테스트")
+    void hasAceTest() {
+        final ShuffleStrategy emptyShuffleStrategy = new EmptyShuffleStrategy();
+        final Deck deck = new Deck(emptyShuffleStrategy);
+        final Dealer dealer = new Dealer(deck);
+        dealer.receiveCard();
+        dealer.receiveCard();
+
+        final boolean hasAce = dealer.hasAce();
+        assertThat(hasAce).isEqualTo(false);
+    }
 }
