@@ -1,7 +1,5 @@
 package blackjack.model;
 
-import blackjack.model.Job;
-
 public class Dealer implements Player {
     private final Pocket pocket = new Pocket();
     private final Deck deck;
