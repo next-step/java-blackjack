@@ -30,7 +30,7 @@ public class Player implements GameParticipant {
     }
 
     @Override
-    public void addCard(Card card) {
+    public void hit(Card card) {
         this.cards.add(card);
     }
 

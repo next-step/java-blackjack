@@ -2,8 +2,10 @@ package blackjack.view;
 
 import blackjack.domain.Card;
 import blackjack.domain.Dealer;
+import blackjack.domain.DealerRecord;
 import blackjack.domain.GameParticipant;
 import blackjack.domain.Player;
+import blackjack.dto.PlayerRecordView;
 
 import java.util.List;
 
@@ -42,7 +44,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printInitializeDealMessage(Dealer dealer, List<Player> players) {
+    public static void printInitializeDealMessage(final Dealer dealer, final List<Player> players) {
         StringBuilder output = new StringBuilder();
         String dealerName = dealer.getName();
         output.append(dealerName)
@@ -67,11 +69,11 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printDealerGameResult(final int dealerWin, final int dealerDraw, final int dealerLose) {
-        System.out.println("딜러: " + dealerWin + "승 " + dealerDraw + "무 " + dealerLose + "패");
+    public static void printDealerGameResult(final DealerRecord dealerRecord) {
+        System.out.println("딜러: " + dealerRecord.getWin() + "승 " + dealerRecord.getDraw() + "무 " + dealerRecord.getLose() + "패");
     }
 
-    public static void printPlayerGameResult(final String playerName, final String result) {
-        System.out.println(playerName + ": " + result);
+    public static void printPlayerGameResult(final PlayerRecordView playerRecordView) {
+        System.out.println(playerRecordView.getName() + ": " + playerRecordView.getRecord());
     }
 }

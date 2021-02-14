@@ -10,7 +10,7 @@ public class Dealer implements GameParticipant {
     private final int CRITERIA = 17;
 
     @Override
-    public void addCard(Card card) {
+    public void hit(Card card) {
         this.cards.add(card);
     }
 
