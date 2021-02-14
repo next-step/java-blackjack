@@ -3,9 +3,9 @@ package blackjack.model;
 import java.util.stream.Collectors;
 
 public class Exporter {
-    private final static int WINNING_CONDITION = 21;
-    private final static String WINNING = "승";
-    private final static String LOSE = "패";
+    private static final int WINNING_CONDITION = 21;
+    private static final String WINNING = "승";
+    private static final String LOSE = "패";
     private final Players players;
 
     public Exporter(final Players players) {
@@ -27,6 +27,11 @@ public class Exporter {
         return cardDistribution.toString();
     }
 
+    // pobi카드: 2하트, 8스페이드, A클로버
+    public String getPlayerCardsStatus(Player player) {
+        return String.format("%s카드: %s", player.getName(), player.getCardStats().getCardsName());
+    }
+
     public String getPlayersCardsStatusWithScore() {
         return players
                 .getPlayers(player -> true)
@@ -38,7 +43,7 @@ public class Exporter {
     public String getResult() {
         final Player dealer = players.getPlayers(player -> player.getJob() == Job.DEALER).get(0);
         final StringBuilder gameResult = new StringBuilder();
-        int totalCount = players.getPlayers(player -> player.getJob()==Job.GAMER).size();
+        int totalCount = players.getPlayers(player -> player.getJob() == Job.GAMER).size();
         int winCount = 0;
 
         for (final Player gamer : players.getPlayers(player -> player.getJob() == Job.GAMER)) {
@@ -50,7 +55,7 @@ public class Exporter {
             gameResult.append(String.format("%s: %s", gamer.getName(), LOSE)).append("\n");
         }
 
-        gameResult.append(String.format("딜러: %d승, %d패", totalCount - winCount, winCount));
+        gameResult.insert(0, String.format("딜러: %d승, %d패\n", totalCount - winCount, winCount));
         return gameResult.toString();
     }
 }
