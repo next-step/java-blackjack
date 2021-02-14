@@ -66,9 +66,9 @@ class ExporterTest {
         final String result = exporter.getResult();
 
         assertThat(result).isEqualTo(
+                "딜러: 2승, 0패\n" +
                 "HAKZZANG: 패\n" +
-                "covenant: 패\n" +
-                "딜러: 2승, 0패"
+                "covenant: 패\n"
         );
     }
 }
