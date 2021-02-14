@@ -23,10 +23,10 @@ public class BlackjackController {
         final String prepareGameResult = scenarioController.prepareGame();
         outputView.printResult(prepareGameResult);
 
-        final String startGameResult = scenarioController.startGame(inputView);
+        final String startGameResult = scenarioController.startGame(inputView, outputView);
         outputView.printResult(startGameResult);
 
         final String endGameResult = scenarioController.endGame();
-        outputView.printResult(endGameResult);
+        outputView.gameScore(endGameResult);
     }
 }
