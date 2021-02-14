@@ -5,6 +5,7 @@ import blackjack.model.Job;
 import blackjack.model.Player;
 import blackjack.model.Players;
 import blackjack.view.InputView;
+import blackjack.view.OutputView;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class ScenarioController {
     private final Player DEALER;
     private final List<Player> GAMERS;
     private final Exporter exporter;
+    private final static int DEALER_HIT_CONDITION = 16;
 
     public ScenarioController(final Players players) {
         DEALER = players.getPlayers(player -> player.getJob() == Job.DEALER).get(0);
@@ -34,9 +36,9 @@ public class ScenarioController {
     /**
      * @Description. 게이머가 카드를 받는지 물어본다.
      */
-    public String startGame(final InputView inputView) {
-        GAMERS.forEach(player -> isPopCard(inputView, player));
-        if (DEALER.getCardsScore() < 16) {
+    public String startGame(final InputView inputView, final OutputView outputView) {
+        GAMERS.forEach(player -> isPopCard(inputView, outputView, player));
+        if (DEALER.getCardsScore() < DEALER_HIT_CONDITION) {
             DEALER.receiveCard();
         }
 
@@ -50,9 +52,11 @@ public class ScenarioController {
         return exporter.getResult();
     }
 
-    private void isPopCard(InputView inputView, Player player) {
+    //TODO : 메소드 인스턴스 변수 줄이기
+    private void isPopCard(final InputView inputView, final OutputView outputView, final Player player) {
         while (inputView.isPopCard(player.getName())) {
             player.receiveCard();
+            outputView.printResult(String.format("%s 카드: %s", player.getName(), player.getCardStats().getCardsName()));
         }
     }
 }
