@@ -22,7 +22,7 @@ public class BlackjackGame {
 
     public void giveCard(GameParticipant gameParticipant) {
         Card drawnCard = deck.draw();
-        gameParticipant.addCard(drawnCard);
+        gameParticipant.hit(drawnCard);
     }
 
     public List<Player> getPlayers() {

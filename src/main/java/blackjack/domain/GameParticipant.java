@@ -3,7 +3,7 @@ package blackjack.domain;
 import java.util.List;
 
 public interface GameParticipant {
-    void addCard(Card card);
+    void hit(Card card);
 
     List<Card> getCardsBeforeGameStart();
 

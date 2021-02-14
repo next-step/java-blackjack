@@ -7,7 +7,7 @@ public class BlackjackApplication {
     public static void main(String[] args) {
         BlackjackController blackjackController = new BlackjackController();
         blackjackController.start();
-        blackjackController.askMoreCardToPlayers();
+        blackjackController.askHitOrStayToPlayers();
         blackjackController.dealerTurn();
         blackjackController.releaseResult();
     }
