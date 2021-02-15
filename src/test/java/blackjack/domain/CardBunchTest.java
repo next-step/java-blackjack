@@ -46,6 +46,25 @@ class CardBunchTest {
     private static Stream<Arguments> providerIsBlackJackParams() {
         return Stream.of(
             Arguments.of(Arrays.asList(1, 10), true),
+            Arguments.of(Arrays.asList(5, 6, 10), false),
+            Arguments.of(Arrays.asList(10, 10), false)
+        );
+    }
+
+    @DisplayName("Check cardBunch return blackjack score only status well")
+    @ParameterizedTest
+    @MethodSource("providerIsBlackJackScoreParams")
+    void isBlackJackScore(List<Integer> numbers, boolean isBlackJack) {
+        CardBunch cardBunch = new CardBunch(numbers, Suit.HEARTS);
+        assertEquals(
+            isBlackJack,
+            cardBunch.isBlackJackScore()
+        );
+    }
+
+    private static Stream<Arguments> providerIsBlackJackScoreParams() {
+        return Stream.of(
+            Arguments.of(Arrays.asList(1, 10), true),
             Arguments.of(Arrays.asList(5, 6, 10), true),
             Arguments.of(Arrays.asList(10, 10), false)
         );

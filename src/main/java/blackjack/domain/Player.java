@@ -25,7 +25,7 @@ public class Player extends Person {
 
     @Override
     public boolean canDrawCard() {
-        return !cardBunch.isBlackJack() && !cardBunch.isBust();
+        return !cardBunch.isBlackJackScore() && !cardBunch.isBust();
     }
 
     public MatchScore getMatchScore(Dealer dealer) {

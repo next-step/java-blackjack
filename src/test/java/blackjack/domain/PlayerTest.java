@@ -52,6 +52,7 @@ class PlayerTest {
         return Stream.of(
             Arguments.of(Arrays.asList(10, 10), true),
             Arguments.of(Arrays.asList(1, 10), false),
+            Arguments.of(Arrays.asList(5, 6, 10), false),
             Arguments.of(Arrays.asList(10, 10, 2), false)
         );
     }
