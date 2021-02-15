@@ -5,16 +5,14 @@ import java.util.Objects;
 public class Card {
     private final CardType cardType;
     private final CardValue cardValue;
-    private final String name;
 
-    public Card(CardType type, CardValue value) {
+    public Card(final CardType type, final CardValue value) {
         this.cardType = type;
         this.cardValue = value;
-        this.name = parseCard(cardType, cardValue);
     }
 
     public String getName() {
-        return name;
+        return parseCard(cardType, cardValue);
     }
 
     public int getScore() {
@@ -25,13 +23,13 @@ public class Card {
         return cardValue;
     }
 
-    private String parseCard(CardType cardType, CardValue cardValue) {
+    private String parseCard(final CardType cardType, final CardValue cardValue) {
         return cardValue.getTag() + cardType.getType();
     }
 
     @Override
     public String toString() {
-        return name;
+        return getName();
     }
 
     @Override
@@ -39,11 +37,11 @@ public class Card {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Card card = (Card) o;
-        return cardType == card.cardType && cardValue == card.cardValue && Objects.equals(name, card.name);
+        return cardType == card.cardType && cardValue == card.cardValue;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cardType, cardValue, name);
+        return Objects.hash(cardType, cardValue);
     }
 }

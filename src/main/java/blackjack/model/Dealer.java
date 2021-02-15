@@ -1,8 +1,8 @@
 package blackjack.model;
 
 public class Dealer implements Player {
-    private final Pocket pocket = new Pocket();
     private final Deck deck;
+    private final Pocket pocket = new Pocket();
     private final String name = "Dealer";
     private final Job job = Job.DEALER;
 
@@ -16,7 +16,6 @@ public class Dealer implements Player {
         pocket.add(card);
     }
 
-    //TODO : 밖에서 안 쓰이면, 지워도 된다.
     @Override
     public Pocket getCardStats() {
         return pocket;
@@ -41,11 +40,11 @@ public class Dealer implements Player {
     public int getCardsScore() {
         int totalScore = 0;
 
-        for(final Card card : pocket.getCards()){
+        for (final Card card : pocket.getCards()) {
             totalScore += card.getScore();
         }
 
-        if(hasAce() && totalScore < 11){
+        if (hasAce() && totalScore < 11) {
             totalScore += 10;
         }
 
@@ -53,9 +52,9 @@ public class Dealer implements Player {
     }
 
     @Override
-    public boolean hasAce(){
+    public boolean hasAce() {
         return pocket.getCards()
                 .stream()
-                .anyMatch(card-> card.getValue()==CardValue.ONE);
+                .anyMatch(card -> card.getValue() == CardValue.ACE);
     }
 }
