@@ -6,10 +6,6 @@ import org.junit.jupiter.api.Test;
 class CardsTest {
 
     @Test
-    void addCard() {
-    }
-
-    @Test
     void getScore() {
         //give
         Cards cards = new Cards();
@@ -21,8 +17,6 @@ class CardsTest {
         Score targetScore = new Score(21);
 
         //then
-        System.out.println(score.getScore());
-        System.out.println(targetScore.getScore());
         Assertions.assertThat(score).isEqualToComparingFieldByField(targetScore);
     }
 }
