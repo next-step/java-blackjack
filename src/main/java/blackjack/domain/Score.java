@@ -10,19 +10,7 @@ public class Score {
         this.score = score;
     }
 
-    public boolean isBigger(Score maxScore) {
-        return maxScore.score < score;
-    }
-
-    public boolean isSmaller(Score minScore) {
-        return minScore.score > score;
-    }
-
-    public Score add(Integer weight) {
-        return new Score(score + weight);
-    }
-
-    public Integer getScore() {
+    public Integer getValue() {
         return score;
     }
 
