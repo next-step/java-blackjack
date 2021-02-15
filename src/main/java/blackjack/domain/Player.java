@@ -1,7 +1,5 @@
 package blackjack.domain;
 
-import blackjack.dto.PersonCardsInfo;
-
 public class Player extends Person {
     public Player(String name) {
         super(name);
