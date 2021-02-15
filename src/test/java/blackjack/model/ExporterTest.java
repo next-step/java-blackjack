@@ -20,9 +20,9 @@ class ExporterTest {
 
         assertThat(initialCardDistribution).isEqualTo(
                 "Dealer와 HAKZZANG, covenant에게 2장을 나누었습니다.\n" +
-                        "Dealer : K클로버\n" +
-                        "HAKZZANG : K스페이드, K하트\n" +
-                        "covenant : K다이아몬드, Q클로버"
+                "Dealer : K클로버\n" +
+                "HAKZZANG : K스페이드, K하트\n" +
+                "covenant : K다이아몬드, Q클로버"
         );
     }
 
@@ -44,8 +44,8 @@ class ExporterTest {
 
         assertThat(playersCardsStatusWithScore).isEqualTo(
                 "Dealer : K클로버, K스페이드 - 결과 : 20\n" +
-                        "HAKZZANG : K하트, K다이아몬드 - 결과 : 20\n" +
-                        "covenant : Q클로버, Q스페이드 - 결과 : 20"
+                "HAKZZANG : K하트, K다이아몬드 - 결과 : 20\n" +
+                "covenant : Q클로버, Q스페이드 - 결과 : 20"
         );
     }
 
@@ -63,12 +63,12 @@ class ExporterTest {
         });
 
         final Exporter exporter = new Exporter(players);
-        final String result = exporter.getResult();
+        final String result = exporter.getResult(new GameResult(players));
 
         assertThat(result).isEqualTo(
-                "딜러: 2승, 0패\n" +
-                "HAKZZANG: 패\n" +
-                "covenant: 패\n"
+                "딜러: 0승, 0패, 2무\n" +
+                "HAKZZANG: 무\n" +
+                "covenant: 무\n"
         );
     }
 }

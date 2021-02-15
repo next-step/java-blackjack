@@ -1,9 +1,5 @@
 package blackjack.model;
 
-import blackjack.model.Card;
-import blackjack.model.CardType;
-import blackjack.model.CardValue;
-import blackjack.model.Pocket;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +11,7 @@ class PocketTest {
     @DisplayName("카드들의 이름을 출력하는 테스트")
     void getCardsTest() {
         final Pocket pocket = new Pocket();
-        pocket.add(new Card(CardType.CLOVER, CardValue.ONE));
+        pocket.add(new Card(CardType.CLOVER, CardValue.ACE));
         final String cardsName = pocket.getCardsName();
         assertThat(cardsName).isEqualTo("1클로버");
     }
