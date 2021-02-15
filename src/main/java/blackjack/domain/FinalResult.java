@@ -14,7 +14,8 @@ public class FinalResult {
 
     public String getFinalResult(Dealer dealer, Gamer gamer) {
         int dealerScore = dealer.getScore().getValue();
-        if (dealerScore > THRESHOLD || dealerScore <= gamer.getScore().getValue()) {
+        int gamerScore = gamer.getScore().getValue();
+        if ( dealerScore > THRESHOLD || gamerScore <= THRESHOLD && dealerScore <= gamerScore) {
             loseCount++;
             return WIN;
         }
