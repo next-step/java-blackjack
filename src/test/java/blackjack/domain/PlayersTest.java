@@ -1,5 +1,7 @@
 package blackjack.domain;
 
+import blackjack.dto.NameInfo;
+import blackjack.dto.PersonCardsInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -158,6 +160,24 @@ class PlayersTest {
         assertTrue(players.hasActivePlayer());
         players.endActivePlayerTurn();
         assertFalse(players.hasActivePlayer());
+    }
+
+    @DisplayName("Check players return correct active players name information")
+    @Test
+    void getActivePlayerNameInfo() {
+        assertEquals(
+            testPlayer1.getNameInfo(),
+            testPlayers.getActivePlayerNameInfo()
+        );
+    }
+
+    @DisplayName("Check players return correct active players cards information")
+    @Test
+    void getActivePlayerCardsInfo() {
+        assertEquals(
+            testPlayer1.getPersonCardsInfo(),
+            testPlayers.getActivePlayerCardsInfo()
+        );
     }
 
     @DisplayName("Check players return correct players name information")
