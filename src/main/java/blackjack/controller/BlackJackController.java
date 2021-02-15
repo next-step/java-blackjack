@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BlackJackController {
+    public static final int DEALER_DRAW_BOUND = 16;
     private List<Player> players;
     private Dealer dealer;
     public void play() {
@@ -83,7 +84,7 @@ public class BlackJackController {
 
     private void dealerDraw() {
         // 딜러 카드 받을지 말지
-        if(dealer.getCards().getSum() <= 16){
+        if(dealer.getCards().getSum() <= DEALER_DRAW_BOUND){
 
             // OutputView
             System.out.println("딜러는 16 이하라 한 장의 카드를 더 받았습니다.");
