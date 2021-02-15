@@ -31,7 +31,7 @@ public class BlackjackController {
     }
 
     public void joinPlayers() {
-        deck = new Deck();
+        deck = new Deck(true);
         dealer = new Dealer(deck);
         gamers = new Gamers(inputView.getGamers(), deck);
         resultView.printGamers(gamers);
