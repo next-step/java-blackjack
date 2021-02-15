@@ -9,7 +9,7 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode
 @ToString
-public class MatchProfitInfo {
+public class PersonMatchProfitInfo {
     private final NameInfo nameInfo;
     private final int profit;
 }

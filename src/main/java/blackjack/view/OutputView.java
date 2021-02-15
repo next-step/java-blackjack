@@ -1,9 +1,8 @@
 package blackjack.view;
 
+import blackjack.dto.PersonMatchProfitInfo;
 import blackjack.dto.PersonCardsInfo;
-import blackjack.dto.DealerMatchScoreInfo;
 import blackjack.dto.NameInfo;
-import blackjack.dto.PlayerMatchScoreInfo;
 import blackjack.dto.ScoreInfo;
 
 import java.util.List;
@@ -19,9 +18,8 @@ public class OutputView {
 
     private static final String DEALER_DRAW_INFO_FMT = "%s는 %s이하라 한장의 카드를 더 받았습니다\n";
 
-    private static final String MATCH_SCORE_GUIDE_MSG = "## 최종 승패";
-    private static final String MATCH_SCORE_INFO_FMT = "%s: %s\n";
-    private static final String DEALER_MATCH_SCORE_DELIMITER = " ";
+    private static final String MATCH_PROFIT_GUIDE_MSG = "## 최종 승패";
+    private static final String MATCH_PROFIT_INFO_FMT = "%s: %d\n";
 
     public void printInitializeGameMsg(NameInfo dealerNameInfo, List<NameInfo> playersNameInfo, Integer cardCnt) {
         System.out.format(INIT_GAME_FMT, dealerNameInfo.getName(), formatPlayersNameInfo(playersNameInfo), cardCnt);
@@ -77,30 +75,19 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printMatchScoreGuideMsg() {
-        System.out.println(MATCH_SCORE_GUIDE_MSG);
+    public void printMatchProfitGuideMsg() {
+        System.out.println(MATCH_PROFIT_GUIDE_MSG);
     }
 
-    public void printDealerMatchScoreInfo(NameInfo dealerNameInfo, DealerMatchScoreInfo dealerMatchScoreInfo) {
+    public void printPeopleMatchProfitInfo(List<PersonMatchProfitInfo> matchProfitsInfo) {
+        matchProfitsInfo.forEach(this::printPersonMatchProfitInfo);
+    }
+
+    private void printPersonMatchProfitInfo(PersonMatchProfitInfo personMatchProfitInfo) {
         System.out.format(
-            MATCH_SCORE_INFO_FMT,
-            dealerNameInfo.getName(),
-            String.join(
-                DEALER_MATCH_SCORE_DELIMITER,
-                dealerMatchScoreInfo.getMatchScores()
-            )
-        );
-    }
-
-    public void printPlayersMatchScoreInfo(List<PlayerMatchScoreInfo> playersMatchScoreInfo) {
-        playersMatchScoreInfo.forEach(this::printPlayerMatchScoreInfo);
-    }
-
-    private void printPlayerMatchScoreInfo(PlayerMatchScoreInfo playerMatchScoreInfo) {
-        System.out.format(
-            MATCH_SCORE_INFO_FMT,
-            playerMatchScoreInfo.getName(),
-            playerMatchScoreInfo.getMatchScore()
+            MATCH_PROFIT_INFO_FMT,
+            personMatchProfitInfo.getNameInfo().getName(),
+            personMatchProfitInfo.getProfit()
         );
     }
 }

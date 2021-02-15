@@ -1,6 +1,6 @@
 package blackjack.domain;
 
-import blackjack.dto.MatchProfitInfo;
+import blackjack.dto.PersonMatchProfitInfo;
 import blackjack.dto.NameInfo;
 import blackjack.dto.PersonCardsInfo;
 import blackjack.dto.ScoreInfo;
@@ -69,9 +69,9 @@ public class Players {
         );
     }
 
-    public List<MatchProfitInfo> _playMatch(Dealer dealer) {
+    public List<PersonMatchProfitInfo> _playMatch(Dealer dealer) {
         return new ArrayList<>() {{
-            add(new MatchProfitInfo(dealer.getNameInfo(), getDealerProfit(dealer)));
+            add(new PersonMatchProfitInfo(dealer.getNameInfo(), getDealerProfit(dealer)));
             addAll(playersMatchProfitMap(dealer));
         }};
     }
@@ -83,10 +83,10 @@ public class Players {
             .reduce(0, Integer::sum);
     }
 
-    private List<MatchProfitInfo> playersMatchProfitMap(Dealer dealer) {
+    private List<PersonMatchProfitInfo> playersMatchProfitMap(Dealer dealer) {
         return players
             .stream()
-            .map(player -> new MatchProfitInfo(
+            .map(player -> new PersonMatchProfitInfo(
                     player.getNameInfo(),
                     player.getMatchProfit(dealer)
                 ))

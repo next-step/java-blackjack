@@ -1,6 +1,6 @@
 package blackjack.domain;
 
-import blackjack.dto.MatchProfitInfo;
+import blackjack.dto.PersonMatchProfitInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -176,11 +176,11 @@ class PlayersTest {
 
         assertEquals(
             List.of(
-                new MatchProfitInfo(dealer.getNameInfo(), -15),
-                new MatchProfitInfo(player1.getNameInfo(), 15),
-                new MatchProfitInfo(player2.getNameInfo(), 10),
-                new MatchProfitInfo(player3.getNameInfo(), 0),
-                new MatchProfitInfo(player4.getNameInfo(), -10)
+                new PersonMatchProfitInfo(dealer.getNameInfo(), -15),
+                new PersonMatchProfitInfo(player1.getNameInfo(), 15),
+                new PersonMatchProfitInfo(player2.getNameInfo(), 10),
+                new PersonMatchProfitInfo(player3.getNameInfo(), 0),
+                new PersonMatchProfitInfo(player4.getNameInfo(), -10)
             ),
             players._playMatch(dealer)
         );
