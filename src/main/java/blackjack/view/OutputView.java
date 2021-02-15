@@ -76,4 +76,8 @@ public class OutputView {
     public static void printPlayerGameResult(final PlayerRecordView playerRecordView) {
         System.out.println(playerRecordView.getName() + ": " + playerRecordView.getRecord());
     }
+
+    public static void printRecordFirstLine() {
+        System.out.println("## 최종 승패");
+    }
 }
