@@ -10,18 +10,16 @@ import blackjack.view.OutputView;
 import static blackjack.domain.Dealer.DEALER_DRAW_LIMIT;
 import static blackjack.domain.Person.INIT_CARD_CNT;
 
-public class PhaseController {
+public class PeopleController {
     private final Players players;
     private final Dealer dealer;
-    private final Deck deck;
 
-    public PhaseController(Players players, Dealer dealer, Deck deck) {
+    public PeopleController(Players players, Dealer dealer) {
         this.players = players;
         this.dealer = dealer;
-        this.deck = deck;
     }
 
-    public void actionStandByPhase(OutputView output) {
+    public void actionStandByPhase(OutputView output, Deck deck) {
         dealer.initializeFromDeck(deck);
         players.initializeFromDeck(deck);
 
@@ -30,21 +28,21 @@ public class PhaseController {
         output.printPeopleCardsInfo(players.getPlayersCardsInfo());
     }
 
-    public void actionMainPhase(InputView input, OutputView output) {
-        actionPlayersMainPhase(input, output);
-        actionDealerMainPhase(output);
+    public void actionMainPhase(InputView input, OutputView output, Deck deck) {
+        actionPlayersMainPhase(input, output, deck);
+        actionDealerMainPhase(output, deck);
 
         output.printScoreInfo(dealer.getScoreInfo());
         output.printScoresInfo(players.getPlayersScoreInfo());
     }
 
-    private void actionPlayersMainPhase(InputView input, OutputView output) {
+    private void actionPlayersMainPhase(InputView input, OutputView output, Deck deck) {
         while (players.hasActivePlayer()) {
-            actionActivePlayerMainPhase(input, output);
+            actionActivePlayerMainPhase(input, output, deck);
         }
     }
 
-    private void actionActivePlayerMainPhase(InputView input, OutputView output) {
+    private void actionActivePlayerMainPhase(InputView input, OutputView output, Deck deck) {
         while (players.checkActivePlayerCanDrawCard()
             && input.inputResponse(players.getActivePlayerNameInfo())
         ) {
@@ -54,7 +52,7 @@ public class PhaseController {
         players.endActivePlayerTurn();
     }
 
-    private void actionDealerMainPhase(OutputView output) {
+    private void actionDealerMainPhase(OutputView output, Deck deck) {
         output.printDealerInfoMargin();
         while (dealer.canDrawCard()) {
             dealer.drawCardFromDeck(deck);
