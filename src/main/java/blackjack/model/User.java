@@ -37,4 +37,11 @@ public class User extends Player {
         }
         return String.format(RESULT_STRING_FORMAT,name,StringUtils.LOSE);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder userString = new StringBuilder(super.toString());
+        cardHand.getCards().forEach(card -> userString.append(card.toString()));
+        return userString.toString();
+    }
 }
