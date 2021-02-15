@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CardBundle {
 
-    private static final int BLACK_JACK = 21;
+    public static final int BLACK_JACK = 21;
     private static final int ACE_BONUS = 10;
     private final List<Card> cards;
 
@@ -44,16 +44,21 @@ public class CardBundle {
                         Integer::sum
                 );
 
-        int expectedSum = sum + ACE_BONUS;
-        sum += cards.stream()
-                .filter(card -> canChangeAceScore(card, expectedSum))
-                .mapToInt(card -> ACE_BONUS)
-                .sum();
+        for (Card card : cards) {
+            sum += checkAceScore(card,sum);
+        }
 
         return sum;
     }
 
-    private boolean canChangeAceScore(Card card, int expectedSum){
-        return card.getSymbol() == Symbol.ACE && expectedSum <= BLACK_JACK;
+    private int checkAceScore(Card card, int expectedSum){
+        if(canChangeAceScore(card,expectedSum)) {
+            return ACE_BONUS;
+        }
+        return 0;
+    }
+
+    private boolean canChangeAceScore(Card card, int expectedSum) {
+        return card.getSymbol() == Symbol.ACE && expectedSum + ACE_BONUS <= BLACK_JACK;
     }
 }

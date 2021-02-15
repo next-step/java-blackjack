@@ -17,8 +17,8 @@ public class CardBundleTest {
     public void beforeEach() {
         cardBundle = CardBundle.of(
                 new ArrayList<>(Arrays.asList(
-                    Card.of(diamond, Symbol.ACE),
-                    Card.of(diamond, Symbol.JACK))
+                        Card.of(diamond, Symbol.ACE),
+                        Card.of(diamond, Symbol.JACK))
                 )
         );
     }
@@ -45,5 +45,26 @@ public class CardBundleTest {
         assertThat(score).isEqualTo(22);
     }
 
+    @DisplayName("black jack calculate with one ace 테스트")
+    @Test
+    public void calculateScoreTest2() {
+        cardBundle.add(Card.of(diamond, Symbol.ACE));
+        int score = cardBundle.calculateScore();
+        assertThat(score).isEqualTo(12);
+    }
+
+    @DisplayName("black jack calculate 3장 이상 테스트")
+    @Test
+    public void calculateScoreTest3() {
+        CardBundle cardBundle1 = CardBundle.of(
+                new ArrayList<>(Arrays.asList(
+                        Card.of(diamond, Symbol.ACE),
+                        Card.of(diamond, Symbol.ACE),
+                        Card.of(diamond, Symbol.EIGHT))
+                )
+        );
+        int score = cardBundle1.calculateScore();
+        assertThat(score).isEqualTo(20);
+    }
 
 }
