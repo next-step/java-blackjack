@@ -3,7 +3,7 @@ package blackjack.model;
 import blackjack.utils.StringUtils;
 
 public class User extends Player {
-    public boolean win = false;
+    private boolean win = false;
     private static final String RESULT_STRING_FORMAT = "%s: %s";
 
     private User(CardBundle cardHand, String name) {
