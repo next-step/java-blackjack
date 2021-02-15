@@ -46,14 +46,20 @@ public class Gamers {
     }
 
     public void calculateResult(){
-        for (User user : users) {
-            if(dealer.getCardHandScore() >= user.getCardHandScore()){
+
+        users.forEach(user -> {
+            if(dealerResultValidation(user)
+                    || user.getCardHandScore() > CardBundle.BLACK_JACK){
                 dealer.setWinningCount(dealer.getWinningCount() + 1);
                 user.setWin(false);
-                continue;
+                return;
             }
             dealer.setLosingCount(dealer.getLosingCount() + 1);
             user.setWin(true);
-        }
+        });
+    }
+
+    private boolean dealerResultValidation(User user) {
+        return dealer.getCardHandScore() <= CardBundle.BLACK_JACK && dealer.getCardHandScore() >= user.getCardHandScore();
     }
 }
