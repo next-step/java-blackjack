@@ -17,7 +17,7 @@ public class OutputView {
         StringBuilder cardsContent = new StringBuilder();
         List<Card> cards = participant.getCardsBeforeGameStart();
         for (final Card card : cards) {
-            cardsContent.append(card.getDenomination().getNumber())
+            cardsContent.append(card.getDenomination().getLetter())
                     .append(card.getSuit().getName())
                     .append(", ");
         }
@@ -32,7 +32,7 @@ public class OutputView {
         StringBuilder cardsContent = new StringBuilder();
         List<Card> cards = participant.getCards();
         for (final Card card : cards) {
-            cardsContent.append(card.getDenomination().getNumber())
+            cardsContent.append(card.getDenomination().getLetter())
                     .append(card.getSuit().getName())
                     .append(", ");
         }
