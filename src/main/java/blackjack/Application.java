@@ -11,6 +11,10 @@ public class Application {
         final OutputView outputView = new OutputView();
         final BlackjackController blackjackController = new BlackjackController(inputView, outputView);
         final Players players = blackjackController.inputGamerNames();
-        blackjackController.play(players);
+
+        blackjackController.prepareGame(players);
+        blackjackController.hitGamer(players);
+        blackjackController.hitDealer(players);
+        blackjackController.standGame(players);
     }
 }

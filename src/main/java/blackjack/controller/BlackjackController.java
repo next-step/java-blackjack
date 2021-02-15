@@ -1,10 +1,12 @@
 package blackjack.controller;
 
-import blackjack.model.Players;
+import blackjack.model.*;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
 public class BlackjackController {
+    private final static int DEALER_HIT_CONDITION = 16;
+
     final private InputView inputView;
     final private OutputView outputView;
 
@@ -17,16 +19,42 @@ public class BlackjackController {
         return inputView.inputGamerNames();
     }
 
-    public void play(Players players) {
-        final ScenarioController scenarioController = new ScenarioController(players);
+    public void prepareGame(final Players players) {
+        final Exporter exporter = new Exporter(players);
 
-        final String prepareGameResult = scenarioController.prepareGame();
-        outputView.printResult(prepareGameResult);
+        players.receiveCards(player -> true);
+        players.receiveCards(player -> true);
 
-        final String startGameResult = scenarioController.startGame(inputView, outputView);
-        outputView.printResult(startGameResult);
+        outputView.printResult(exporter.initialCardDistribution());
+    }
 
-        final String endGameResult = scenarioController.endGame();
+    public void hitGamer(final Players players) {
+        players.getPlayers(player -> player.getJob() == Job.GAMER).forEach(this::isPopCard);
+    }
+
+    public void hitDealer(final Players players) {
+        final Exporter exporter = new Exporter(players);
+        final Player dealer = players.getDealer();
+
+        if (dealer.getCardsScore() < DEALER_HIT_CONDITION) {
+            dealer.receiveCard();
+        }
+
+        outputView.printResult(exporter.getPlayersCardsStatusWithScore());
+    }
+
+    public void standGame(final Players players) {
+        final GameResult gameResult = new GameResult(players);
+        final Exporter exporter = new Exporter(players);
+        final String endGameResult = exporter.getResult(gameResult);
+
         outputView.gameScore(endGameResult);
+    }
+
+    private void isPopCard(final Player player) {
+        while (inputView.isPopCard(player.getName())) {
+            player.receiveCard();
+            outputView.printResult(player.getCardStats().getCardsName());
+        }
     }
 }
