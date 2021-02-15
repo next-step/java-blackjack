@@ -6,6 +6,7 @@ import blackjack.domain.player.Dealer;
 import blackjack.domain.player.Player;
 import blackjack.domain.state.PlayingCard;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static blackjack.view.ViewConstantStrings.*;
@@ -38,10 +39,13 @@ public class OutputView {
         for (Player player : players) {
             message.append(player.getName() + CARD.toString());
             List<PlayingCard> playingCards = player.getState().cards().getCards();
+            List<String> tempMessageList = new ArrayList<>();
             for (PlayingCard card : playingCards) {
-                message.append(card.getDenomination().getScore().toString() + card.getSuit() + WHITE_SPACE.toString());
+                String tempMessage = card.getDenomination().getScore().toString() + card.getSuit() + WHITE_SPACE.toString();
+                tempMessageList.add(tempMessage);
             }
-            message.append(NEW_LINE.toString());
+            String joinedMessage = String.join(",", tempMessageList);
+            message.append(joinedMessage + NEW_LINE.toString());
         }
         System.out.println(message.toString());
     }
@@ -58,26 +62,33 @@ public class OutputView {
     public static void cardStateAfterEnd(Dealer dealer, List<Player> players) {
         StringBuilder message = new StringBuilder();
         message.append(DEALER_CARD.toString());
+        List<String> tempMessageList = new ArrayList<>();
         for (PlayingCard card : dealer.getCards().getCards()) {
-            message.append(card.getSuit() + card.getDenomination().getScore().toString() + WHITE_SPACE.toString());
+            String tempMessage = card.getSuit() + card.getDenomination().getScore().toString() + WHITE_SPACE.toString();
+            tempMessageList.add(tempMessage);
         }
-        message.append(RESULT.toString() + dealer.getCards().getSum().toString() + NEW_LINE.toString());
+        String joinedMessage = String.join(",", tempMessageList);
+        message.append(joinedMessage + RESULT.toString() + dealer.getCards().getSum().toString() + NEW_LINE.toString());
 
         for (Player player : players) {
             message.append(cardStateOnePlayer(player));
             message.append(cardSumOnePlayer(player));
         }
-        System.out.print(message);
+        System.out.println(message);
     }
 
     private static StringBuilder cardStateOnePlayer(Player player) {
         StringBuilder message = new StringBuilder();
         List<PlayingCard> playingCards = player.getState().cards().getCards();
         message.append(player.getName() + CARD.toString());
+
+        List<String> tempMessageList = new ArrayList<>();
         for (PlayingCard card : playingCards) {
-            message.append(card.getDenomination().getScore().toString() + card.getSuit() + WHITE_SPACE.toString());
+            String tempMessage = card.getDenomination().getScore().toString() + card.getSuit() + WHITE_SPACE.toString();
+            tempMessageList.add(tempMessage);
         }
-        return message;
+        String joinedMessage = String.join(",", tempMessageList);
+        return message.append(joinedMessage);
     }
     private static StringBuilder cardSumOnePlayer(Player player) {
         StringBuilder message = new StringBuilder();
@@ -86,10 +97,10 @@ public class OutputView {
     }
 
     public static void award(AwardsResult awardsResult) {
-        StringBuilder message = new StringBuilder();
+        StringBuilder message = new StringBuilder(AWARD.toString() + NEW_LINE);
         message.append(DEALER_RESULT.toString() + awardsResult.getDealer().getWinCount().toString() +
-                WIN.toString() + awardsResult.getDealer().getLossCount().toString() + LOSS.toString() +
-                NEW_LINE.toString());
+                WIN.toString() + WHITE_SPACE.toString() + awardsResult.getDealer().getLossCount().toString() +
+                LOSS.toString() + NEW_LINE.toString());
         for (Player player : awardsResult.getPlayers()) {
             message.append(player.getName() + COLON.toString());
             if (player.getIsWin()) {
@@ -102,10 +113,10 @@ public class OutputView {
     }
 
     public static void dealerUnder16() {
-        System.out.println(DEALER_UNDER_16.toString());
+        System.out.println(DEALER_UNDER_16.toString() + NEW_LINE.toString());
     }
 
     public static void dealerMoreThan17() {
-        System.out.println(DEALER_MORE_THAN_17.toString());
+        System.out.println(DEALER_MORE_THAN_17.toString() + NEW_LINE.toString());
     }
 }

@@ -34,7 +34,7 @@ public class Cards { //카드 리스트를 가진 일급 컬렉션.
         }
         // ACE를 1이 아닌 11로 선택
         for(PlayingCard card : cards){
-            if(card.getDenomination().isAce() && card.getDenomination().getScore() + ACE_PLUS_SCORE <= FINISH_BOUND){
+            if(card.getDenomination().isAce() && cardSum + ACE_PLUS_SCORE <= FINISH_BOUND){
                 cardSum += ACE_PLUS_SCORE;
             }
         }
