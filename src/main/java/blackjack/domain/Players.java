@@ -1,9 +1,11 @@
 package blackjack.domain;
 
+import blackjack.dto.MatchProfitInfo;
 import blackjack.dto.NameInfo;
 import blackjack.dto.PersonCardsInfo;
 import blackjack.dto.ScoreInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -65,6 +67,30 @@ public class Players {
                     player -> player.getMatchScore(dealer)
                 ))
         );
+    }
+
+    public List<MatchProfitInfo> _playMatch(Dealer dealer) {
+        return new ArrayList<>() {{
+            add(new MatchProfitInfo(dealer.getNameInfo(), getDealerProfit(dealer)));
+            addAll(playersMatchProfitMap(dealer));
+        }};
+    }
+
+    private Integer getDealerProfit(Dealer dealer) {
+        return -players
+            .stream()
+            .map(player -> player.getMatchProfit(dealer))
+            .reduce(0, Integer::sum);
+    }
+
+    private List<MatchProfitInfo> playersMatchProfitMap(Dealer dealer) {
+        return players
+            .stream()
+            .map(player -> new MatchProfitInfo(
+                    player.getNameInfo(),
+                    player.getMatchProfit(dealer)
+                ))
+            .collect(Collectors.toList());
     }
 
     public NameInfo getActivePlayerNameInfo() {

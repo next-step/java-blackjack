@@ -1,7 +1,6 @@
 package blackjack.domain;
 
-import blackjack.dto.NameInfo;
-import blackjack.dto.PersonCardsInfo;
+import blackjack.dto.MatchProfitInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -160,6 +159,31 @@ class PlayersTest {
         assertTrue(players.hasActivePlayer());
         players.endActivePlayerTurn();
         assertFalse(players.hasActivePlayer());
+    }
+
+    @DisplayName("Check players return correct match profit information")
+    @Test
+    void _playMatch() {
+        Player player1 = new Player("player1", 10, new CardBunch(List.of(1, 10), Suit.HEARTS));
+        Player player2 = new Player("player2", 10, new CardBunch(List.of(10, 10), Suit.HEARTS));
+        Player player3 = new Player("player3", 10, new CardBunch(List.of(9, 10), Suit.HEARTS));
+        Player player4 = new Player("player4", 10, new CardBunch(List.of(8, 10), Suit.HEARTS));
+        Players players = new Players(List.of(player1, player2, player3, player4));
+
+        Dealer dealer = new Dealer(
+            new CardBunch(List.of(10, 9), Suit.HEARTS)
+        );
+
+        assertEquals(
+            List.of(
+                new MatchProfitInfo(dealer.getNameInfo(), -15),
+                new MatchProfitInfo(player1.getNameInfo(), 15),
+                new MatchProfitInfo(player2.getNameInfo(), 10),
+                new MatchProfitInfo(player3.getNameInfo(), 0),
+                new MatchProfitInfo(player4.getNameInfo(), -10)
+            ),
+            players._playMatch(dealer)
+        );
     }
 
     @DisplayName("Check players return correct active players name information")
