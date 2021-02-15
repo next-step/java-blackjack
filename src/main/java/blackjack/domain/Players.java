@@ -4,8 +4,8 @@ import blackjack.dto.NameInfo;
 import blackjack.dto.PersonCardsInfo;
 import blackjack.dto.ScoreInfo;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Players {
@@ -22,11 +22,12 @@ public class Players {
         this.activePlayerIdx = activePlayerIdx;
     }
 
-    public static Players create(String[] names) {
+    public static Players create(Map<String, Integer> playerItems) {
         return new Players(
-            Arrays
-                .stream(names)
-                .map(Player::new)
+            playerItems
+                .entrySet()
+                .stream()
+                .map(map -> new Player(map.getKey(), map.getValue()))
                 .collect(Collectors.toList())
         );
     }

@@ -16,7 +16,7 @@ public class CasinoController {
     }
 
     public void playGame() {
-        PeopleController peopleController = new PeopleController(Players.create(input.inputPlayersName()), new Dealer());
+        PeopleController peopleController = new PeopleController(Players.create(input.inputPlayersItem()), new Dealer());
         Deck deck = Deck.createRandomDeck();
 
         peopleController.actionStandByPhase(output, deck);
