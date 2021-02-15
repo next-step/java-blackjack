@@ -9,10 +9,12 @@ import java.util.stream.Collectors;
 
 public class InputView {
     public static List<Player> getPlayers() {
+        String DELIMITER = ",";
+
         System.out.println("게임에 참여할 사람의 이름을 입력하세요.");
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        String[] names = input.split(",");
+        String[] names = input.split(DELIMITER);
         return Arrays.stream(names)
                 .map(Player::new)
                 .collect(Collectors.toList());
