@@ -18,9 +18,7 @@ public class Gamers {
 
     private void makeGamers(String[] names, Deck deck) {
         gamers = Arrays.stream(names).map(name -> new Gamer(name, deck))
-                .collect(
-                        Collectors.toList()
-                );
+                .collect(Collectors.toList());
     }
 
     private void validateGamerNames(String[] gamerNames) throws IllegalArgumentException {
