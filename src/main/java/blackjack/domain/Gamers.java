@@ -10,14 +10,14 @@ public class Gamers {
     private static final String COMMA = ",";
     private static final String NAME_PATTERN = "^[a-zA-Z]*$";
 
-    public Gamers(String gamer) throws IllegalArgumentException {
+    public Gamers(String gamer, Deck deck) throws IllegalArgumentException {
         String[] gamerNames = gamer.split(COMMA);
         validateGamerNames(gamerNames);
-        makeGamers(gamerNames);
+        makeGamers(gamerNames, deck);
     }
 
-    private void makeGamers(String[] names) {
-        gamers = Arrays.stream(names).map(Gamer::new)
+    private void makeGamers(String[] names, Deck deck) {
+        gamers = Arrays.stream(names).map(name -> new Gamer(name, deck))
             .collect(
                 Collectors.toList()
             );
@@ -33,5 +33,14 @@ public class Gamers {
         return Arrays.stream(gamerNames)
             .filter(name -> name.matches(NAME_PATTERN))
             .count() == gamerNames.length;
+    }
+
+    public List<Gamer> getGamers() {
+        return gamers;
+    }
+
+    @Override
+    public String toString() {
+        return gamers.stream().map(Gamer::toString).collect(Collectors.joining("\n"));
     }
 }
