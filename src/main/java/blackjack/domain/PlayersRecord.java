@@ -25,7 +25,7 @@ public class PlayersRecord {
         }
     }
 
-    private String winOrLose(final int dealerScore, final int playerScore) {
+    public String winOrLose(final int dealerScore, final int playerScore) {
         if ((playerScore < dealerScore && dealerScore <= 21) || playerScore > 21) {
             return "패";
         }
