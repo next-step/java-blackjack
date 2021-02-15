@@ -2,6 +2,7 @@ package blackjack.model;
 
 public class Dealer extends Player{
 
+    private static final int UPPER_BOUND_TO_DRAW = 16;
 
     private Dealer(CardBundle cardHand, String name) {
         super(cardHand, name);
@@ -21,7 +22,9 @@ public class Dealer extends Player{
 
     @Override
     public void drawCard(Card card) {
-        super.drawCard(card);
+        if (cardHand.calculateScore() <= UPPER_BOUND_TO_DRAW) {
+            super.drawCard(card);
+        }
     }
 
 }
