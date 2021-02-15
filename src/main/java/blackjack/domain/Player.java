@@ -4,16 +4,14 @@ package blackjack.domain;
 public class Player {
 
     private final Cards cards;
-    protected final Deck deck;
     protected Score score;
 
     public Player(Deck deck) {
         cards = new Cards();
-        this.deck = deck;
-        init();
+        init(deck);
     }
 
-    private void init() {
+    private void init(Deck deck) {
         addCard(deck.popCard());
         addCard(deck.popCard());
     }

@@ -19,7 +19,7 @@ public class Gamer extends Player {
         return name + CARD + getCards().toString();
     }
 
-    public void getMoreCard(String answer) {
+    public void getMoreCard(String answer, Deck deck) {
         if (answer.equals("y")) {
             addCard(deck.popCard());
         }

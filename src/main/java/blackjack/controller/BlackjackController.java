@@ -46,13 +46,13 @@ public class BlackjackController {
         String answer;
         do {
             answer = inputView.askMoreCard(gamer.getName());
-            gamer.getMoreCard(answer);
+            gamer.getMoreCard(answer, deck);
         } while (answer.equals("y"));
         resultView.printCards(gamer);
     }
 
     public void getMoreCardDealer() {
-        resultView.printIsGotMoreCard(dealer.addCardUnderScore());
+        resultView.printIsGotMoreCard(dealer.addCardUnderScore(deck));
     }
 
     public void calculateResult() {

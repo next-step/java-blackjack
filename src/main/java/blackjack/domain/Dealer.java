@@ -14,7 +14,7 @@ public class Dealer extends Player {
         return NAME_CARD + getCards().getCardList().get(0).toString();
     }
 
-    public Boolean addCardUnderScore() {
+    public Boolean addCardUnderScore(Deck deck) {
         calculateScore();
         if (getScore().getValue() <= THRESHOLD_MORE_CARD) {
             addCard(deck.popCard());
