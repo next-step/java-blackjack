@@ -1,6 +1,5 @@
 package blackjack.domain;
 
-import car.domain.Car;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
