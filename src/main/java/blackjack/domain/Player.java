@@ -28,6 +28,10 @@ public class Player extends Person {
         return !cardBunch.isBlackJackScore() && !cardBunch.isBust();
     }
 
+    public Integer getMatchProfit(Dealer dealer) {
+        return (int) (getMatchScore(dealer).getDividend() * betMoney);
+    }
+
     public MatchScore getMatchScore(Dealer dealer) {
         return MatchScore.calcMatchScore(
             this.cardBunch,

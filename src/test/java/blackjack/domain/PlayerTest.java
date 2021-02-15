@@ -104,6 +104,42 @@ class PlayerTest {
         );
     }
 
+    @DisplayName("Check player get proper match profit")
+    @ParameterizedTest
+    @MethodSource("providerGetMatchProfitParams")
+    void getMatchProfit(List<Integer> playerNumbers, List<Integer> dealerNumbers, Integer profit) {
+        Player player = new Player(
+            "player",
+            10,
+            new CardBunch(
+                playerNumbers, Suit.HEARTS
+            )
+        );
+        Dealer dealer = new Dealer(
+            new CardBunch(
+                dealerNumbers, Suit.HEARTS
+            )
+        );
+
+        assertEquals(
+            profit,
+            player.getMatchProfit(dealer)
+        );
+    }
+
+    private static Stream<Arguments> providerGetMatchProfitParams() {
+        return Stream.of(
+            Arguments.of(List.of(10, 10, 2), List.of(10, 10), -10),
+            Arguments.of(List.of(10, 10), List.of(10, 10, 2), 10),
+            Arguments.of(List.of(1, 10), List.of(1, 10), 0),
+            Arguments.of(List.of(1, 10), List.of(10, 10), 15),
+            Arguments.of(List.of(10, 10), List.of(1, 10), -10),
+            Arguments.of(List.of(9, 10), List.of(9, 10), 0),
+            Arguments.of(List.of(10, 10), List.of(10, 9), 10),
+            Arguments.of(List.of(10, 9), List.of(10, 10), -10)
+        );
+    }
+
     @DisplayName("Check player get proper match score")
     @ParameterizedTest
     @MethodSource("providerGetMatchScoreParams")
