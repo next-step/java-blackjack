@@ -6,8 +6,17 @@ import blackjack.domain.state.PlayingCard;
 import java.util.List;
 
 public class Dealer extends Human {
-
     private static final String DEALER_NAME = "딜러";
+    private Cards cards;
+
+    public int getWinCount() {
+        return winCount;
+    }
+
+    public int getLossCount() {
+        return lossCount;
+    }
+
     int winCount, lossCount; //TODO: wrapper로 해줘야 함.
 
     public Dealer() {
@@ -31,7 +40,7 @@ public class Dealer extends Human {
     }
 
     private void resultOnce(Player player) {
-        if (player.getIsWin()) {
+        if (!player.getIsWin()) {
             winCount++;
             return;
         }
@@ -43,5 +52,16 @@ public class Dealer extends Human {
         cards.add(popAndGiveCard());
         cards.add(popAndGiveCard());
         return cards;
+    }
+
+    public void initDealerCards() {
+        cards = initCard();
+    }
+    public Cards getCards() {
+        return cards;
+    }
+
+    public void drawMoreCard() {
+        cards.add(popAndGiveCard());
     }
 }

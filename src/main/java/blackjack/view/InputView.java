@@ -16,4 +16,14 @@ public class InputView {
         }
         return rawPlayerNames;
     }
+
+    public static String willDraw() {
+        String selectDraw = null;
+        try{
+            selectDraw = input.readLine();
+        }catch(IOException ioe) {
+            ioe.printStackTrace();
+        }
+        return selectDraw;
+    }
 }
