@@ -1,9 +1,6 @@
 package blackjack.controller;
 
-import blackjack.model.BlackJackCard;
-import blackjack.model.Gamers;
-import blackjack.model.Player;
-import blackjack.model.User;
+import blackjack.model.*;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
@@ -24,7 +21,7 @@ public class BlackJackController {
 
     public void initCardHand() {
         gamers.initGamerCardHand(blackJackCard);
-        gamers.getPlayers().forEach(player -> OutputView.outputPlayerStatus(player));
+        gamers.getPlayers().forEach(OutputView::outputPlayerStatus);
     }
 
     public void decideToDraw() {
@@ -33,29 +30,33 @@ public class BlackJackController {
         }
     }
 
-    private static void drawPhase(BlackJackCard blackJackCard, Player player) {
+    private void drawPhase(BlackJackCard blackJackCard, Player player) {
         if (player instanceof User) {
             decideToDrawCard(blackJackCard, player);
             OutputView.outputPlayerStatus(player);
             return;
         }
-        player.drawCard(blackJackCard.pickOneCard());
-        OutputView.outputDealersDraw();
+
+        if (player.getCardHand().calculateScore() <= Dealer.UPPER_BOUND_TO_DRAW){
+            player.drawCard(blackJackCard.pickOneCard());
+            OutputView.outputDealersDraw();
+        }
     }
-    private static void decideToDrawCard(BlackJackCard blackJackCard, Player player) {
+
+    private void decideToDrawCard(BlackJackCard blackJackCard, Player player) {
         boolean isDraw = InputView.getDecision(player.getName());
-        if(isDraw) {
+        if (isDraw) {
             player.drawCard(blackJackCard.pickOneCard());
         }
     }
 
-    public void printResultOfCard(){
+    public void printResultOfCard() {
         for (Player player : gamers.getPlayers()) {
             OutputView.outputPlayerScore(player);
         }
     }
 
-    public void winOrLoseOfPlayer(){
+    public void winOrLoseOfPlayer() {
         gamers.calculateResult();
         OutputView.outputFinalResult(gamers.getPlayers());
     }

@@ -4,7 +4,7 @@ import blackjack.utils.StringUtils;
 
 public class Dealer extends Player{
 
-    private static final int UPPER_BOUND_TO_DRAW = 16;
+    public static final int UPPER_BOUND_TO_DRAW = 16;
     private static final String RESULT_STRING_FORMAT = "%s: %d%s %d%s";
     private int winningCount = 0;
     private int losingCount = 0;
@@ -47,13 +47,6 @@ public class Dealer extends Player{
                 name,
                 winningCount, StringUtils.WIN,
                 losingCount, StringUtils.LOSE);
-    }
-
-    @Override
-    public void drawCard(Card card) {
-        if (cardHand.calculateScore() <= UPPER_BOUND_TO_DRAW) {
-            super.drawCard(card);
-        }
     }
 
     @Override
