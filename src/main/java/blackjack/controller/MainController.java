@@ -19,7 +19,7 @@ public class MainController {
         PhaseController phaseController = new PhaseController(
             Players.create(input.inputPlayersName()),
             new Dealer(),
-            new Deck()
+            Deck.createRandomDeck()
         );
 
         phaseController.actionStandByPhase(output);

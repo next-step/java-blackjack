@@ -27,10 +27,10 @@ class DeckTest {
         );
     }
 
-    @DisplayName("Check deck is composed with different 52 cards")
+    @DisplayName("Check random deck is composed with different 52 cards")
     @Test
     void deckSizeTest() {
-        Deck deck = new Deck();
+        Deck deck = Deck.createRandomDeck();
 
         Set<Card> deckSet = IntStream.range(0, 52).mapToObj(
             i -> deck.drawCard()
