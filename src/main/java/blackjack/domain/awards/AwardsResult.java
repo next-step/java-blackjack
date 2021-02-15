@@ -2,6 +2,7 @@ package blackjack.domain.awards;
 
 import blackjack.domain.player.Dealer;
 import blackjack.domain.player.Player;
+
 import java.util.List;
 
 public class AwardsResult {

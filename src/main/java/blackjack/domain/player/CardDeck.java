@@ -21,10 +21,6 @@ public class CardDeck {//카드 덱을 저장하며 카드를 딜러에 의해 �
                     .map(s -> new PlayingCard(d, s))
             )
             .collect(Collectors.toList());
-            /*Arrays.stream(Suit.values())
-                .map(suit -> Arrays.stream(Denomination.values())
-                    .map(de -> new PlayingCard(de, suit))
-                    .collect(Collectors.toList()));*/
         shuffle();
     }
 

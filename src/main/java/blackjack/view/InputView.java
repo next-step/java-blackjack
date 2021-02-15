@@ -9,9 +9,9 @@ public class InputView {
 
     public static String inputPlayerNames() {
         String rawPlayerNames = null;
-        try{
+        try {
             rawPlayerNames = input.readLine();
-        }catch(IOException ioe) {
+        } catch (IOException ioe) {
             ioe.printStackTrace();
         }
         return rawPlayerNames;
@@ -19,11 +19,18 @@ public class InputView {
 
     public static String willDraw() {
         String selectDraw = null;
-        try{
+        try {
             selectDraw = input.readLine();
-        }catch(IOException ioe) {
+            validateYesOrNO(selectDraw);
+        } catch (IOException ioe) {
             ioe.printStackTrace();
         }
         return selectDraw;
+    }
+
+    private static void validateYesOrNO(String selectDraw) {
+        if (!selectDraw.equals("y") && !selectDraw.equals("n")) {
+            throw new IllegalArgumentException("y 혹은 n 만 입력해 주세요.");
+        }
     }
 }

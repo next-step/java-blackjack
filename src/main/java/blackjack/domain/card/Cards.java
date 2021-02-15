@@ -1,6 +1,7 @@
 package blackjack.domain.card;
 
 import blackjack.domain.state.PlayingCard;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,13 +16,22 @@ public class Cards { //카드 리스트를 가진 일급 컬렉션.
         this.cards = new ArrayList<>();
     }
 
+    public Integer getSum() {
+        sumCards();
+        return cardSum;
+    }
+
+    public List<PlayingCard> getCards() {
+        return cards;
+    }
+
     public void add(PlayingCard card) {
         cards.add(card);
     }
 
     public boolean isBust() {
         sumCards();
-        if(cardSum > FINISH_BOUND) {
+        if (cardSum > FINISH_BOUND) {
             return true;
         }
         return false;
@@ -33,35 +43,27 @@ public class Cards { //카드 리스트를 가진 일급 컬렉션.
             cardSum += card.getDenomination().getScore();
         }
         // ACE를 1이 아닌 11로 선택
-        for(PlayingCard card : cards){
-            if(card.getDenomination().isAce() && cardSum + ACE_PLUS_SCORE <= FINISH_BOUND){
-                cardSum += ACE_PLUS_SCORE;
-            }
+        changeACEScore();
+    }
+
+    private void changeACEScore() {
+        for (PlayingCard card : cards) {
+            changeValidate(card);
         }
     }
 
-    public Integer getSum() {
-        sumCards();
-        return cardSum;
+    private void changeValidate(PlayingCard card) {
+        if (card.getDenomination().isAce() && cardSum + ACE_PLUS_SCORE <= FINISH_BOUND) {
+            cardSum += ACE_PLUS_SCORE;
+        }
     }
+
 
     public boolean isBlackJack() {
         sumCards();
-        if(cardSum == FINISH_BOUND && cards.size() == BLACKJACK_CARD_NUMBER) {
+        if (cardSum == FINISH_BOUND && cards.size() == BLACKJACK_CARD_NUMBER) {
             return true;
         }
         return false;
-    }
-
-    public Card pop() {
-        return null;
-    }
-
-    public void mergeCards(Cards cards){
-        this.cards.addAll(cards.cards);
-    }
-
-    public List<PlayingCard> getCards(){
-        return cards;
     }
 }

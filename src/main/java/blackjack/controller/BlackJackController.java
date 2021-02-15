@@ -2,12 +2,10 @@ package blackjack.controller;
 
 import blackjack.domain.awards.Awards;
 import blackjack.domain.awards.AwardsResult;
-import blackjack.domain.card.Card;
 import blackjack.domain.card.Cards;
 import blackjack.domain.player.Dealer;
 import blackjack.domain.player.Player;
 import blackjack.domain.state.Hit;
-import blackjack.domain.state.PlayingCard;
 import blackjack.domain.state.State;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
@@ -21,39 +19,53 @@ public class BlackJackController {
     public static final int DEALER_DRAW_BOUND = 16;
     private List<Player> players;
     private Dealer dealer;
+
     public void play() {
         // input player name and return it to player objects
         initGame();
-
-        State state;
         // player 카드 받기 & 게임 진행
-        for(int i = 0; i < players.size(); i++) {
-            Player player = players.get(i);
-            state = player.getState();
-            try{
-                while(!state.isFinished()) {
-                    OutputView.playerDrawCard(player);
-                    String answer = InputView.willDraw();
-
-                    List<PlayingCard> playingCards = player.getState().cards().getCards();
-
-
-                    if(answer.equals("y")) {
-                        state = state.draw(dealer.popAndGiveCard());
-                        // OutputView
-                        OutputView.printCardStateOnePlayer(player);
-                        continue;
-                    }
-                    if(answer.equals("n")) {
-                        state = state.stay();
-                    }
-                }
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-        }
+        playBlackJack();
         dealerDraw();
         result();
+    }
+
+    private void playBlackJack() {
+        for (Player player : players) {
+            OnePlayer(player);
+        }
+    }
+
+    private void OnePlayer(Player player) {
+        State state;
+        state = player.getState();
+        try {
+            playUntilFinish(player, state);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void playUntilFinish(Player player, State state) {
+        while (!state.isFinished()) {
+            OutputView.playerDrawCard(player);
+            String answer = InputView.willDraw();
+
+            state = stateAfterAsk(player, state, answer);
+            continue;
+        }
+    }
+
+    private State stateAfterAsk(Player player, State state, String answer) {
+        if (answer.equals("y")) {
+            state = state.draw(dealer.popAndGiveCard());
+            // OutputView
+            OutputView.printCardStateOnePlayer(player);
+            return state;
+        }
+        if (answer.equals("n")) {
+            state = state.stay();
+        }
+        return state;
     }
 
     private void initGame() {
@@ -74,23 +86,6 @@ public class BlackJackController {
         OutputView.cardStateAfterInit(dealer, players);
     }
 
-    private void dealerDraw() {
-        // 딜러 카드 받을지 말지
-        if(dealer.getCards().getSum() <= DEALER_DRAW_BOUND){
-            OutputView.dealerUnder16();
-            dealer.drawMoreCard();
-            return;
-        }
-        OutputView.dealerMoreThan17();
-
-    }
-
-    private void result() {
-        OutputView.cardStateAfterEnd(dealer, players);
-        AwardsResult awardsResult = Awards.produceResult(dealer, players);// 얘를 output view로 전달.
-        OutputView.award(awardsResult);
-    }
-
     private List<String> splitPlayerNames(String rawPlayerNames) {
         List<String> playerNames = Arrays.asList(rawPlayerNames.split(","));
         playerNames = playerNames.stream().map(raw -> raw.trim()).collect(Collectors.toList());
@@ -99,12 +94,28 @@ public class BlackJackController {
 
     private List<Player> createPlayers(List<String> playerNames) {
         List<Player> players = new ArrayList<>();
-        for(String playerName : playerNames) {
+        for (String playerName : playerNames) {
             Cards cards = dealer.initCard();
-            State state = new Hit(cards); // new Cards를 딜러가 카드 주는 것으로 해야 함.
+            State state = new Hit(cards);
             Player player = new Player(playerName, state);
             players.add(player);
         }
         return players;
+    }
+
+    private void dealerDraw() {
+        // 딜러 카드 받을지 말지
+        if (dealer.getCards().getSum() <= DEALER_DRAW_BOUND) {
+            OutputView.dealerUnder16();
+            dealer.drawMoreCard();
+            return;
+        }
+        OutputView.dealerMoreThan17();
+    }
+
+    private void result() {
+        OutputView.cardStateAfterEnd(dealer, players);
+        AwardsResult awardsResult = Awards.produceResult(dealer, players);// 얘를 output view로 전달.
+        OutputView.award(awardsResult);
     }
 }

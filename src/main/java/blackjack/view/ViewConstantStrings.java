@@ -21,12 +21,13 @@ public enum ViewConstantStrings {
     DEALER_MORE_THAN_17("딜러는 16 이하라 한 장의 카드를 더 받았습니다.");
 
     private String constantString;
-    ViewConstantStrings(String constantString){
+
+    ViewConstantStrings(String constantString) {
         this.constantString = constantString;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return constantString;
     }
 }

@@ -22,11 +22,12 @@ public enum Denomination {
         this.score = score;
     }
 
+    public Integer getScore() {
+        return score;
+    }
+
     public boolean isAce() {
         return this == ACE;
     }
 
-    public Integer getScore() {
-        return score;
-    }
 }
