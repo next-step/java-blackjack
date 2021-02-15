@@ -1,5 +1,5 @@
 package blackjack.domain.player;
 
 public enum Suit {
-    CLUBS, DIAMONDS, HEARTS, SPADES
+    클로버, 다이아, 하트, 스페이드
 }
