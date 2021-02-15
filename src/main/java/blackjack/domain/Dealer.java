@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Dealer implements GameParticipant {
-    private final String name = "딜러";
+    private final String NAME = "딜러";
     private final List<Card> cards = new ArrayList<>();
     private final int CRITERIA = 17;
 
@@ -21,7 +21,7 @@ public class Dealer implements GameParticipant {
 
     @Override
     public String getName() {
-        return this.name;
+        return this.NAME;
     }
 
     @Override
