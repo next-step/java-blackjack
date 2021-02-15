@@ -29,13 +29,6 @@ public class Player extends Person {
     }
 
     public Integer getMatchProfit(Dealer dealer) {
-        return (int) (getMatchScore(dealer).getDividend() * betMoney);
-    }
-
-    public MatchScore getMatchScore(Dealer dealer) {
-        return MatchScore.calcMatchScore(
-            this.cardBunch,
-            dealer.cardBunch
-        );
+        return (int) (MatchScore.calcDividend(this.cardBunch, dealer.cardBunch) * betMoney);
     }
 }

@@ -140,41 +140,6 @@ class PlayerTest {
         );
     }
 
-    @DisplayName("Check player get proper match score")
-    @ParameterizedTest
-    @MethodSource("providerGetMatchScoreParams")
-    void getMatchScore(List<Integer> playerNumbers, List<Integer> dealerNumbers, MatchScore result) {
-        Player player = new Player(
-            "player",
-            new CardBunch(
-                playerNumbers, Suit.HEARTS
-            )
-        );
-        Dealer dealer = new Dealer(
-            new CardBunch(
-                dealerNumbers, Suit.HEARTS
-            )
-        );
-
-        assertEquals(
-            result,
-            player.getMatchScore(dealer)
-        );
-    }
-
-    private static Stream<Arguments> providerGetMatchScoreParams() {
-        return Stream.of(
-            Arguments.of(List.of(10, 10, 2), List.of(10, 10), MatchScore.LOSE),
-            Arguments.of(List.of(10, 10), List.of(10, 10, 2), MatchScore.WIN),
-            Arguments.of(List.of(1, 10), List.of(1, 10), MatchScore.DRAW),
-            Arguments.of(List.of(1, 10), List.of(10, 10), MatchScore.BLACKJACK_WIN),
-            Arguments.of(List.of(10, 10), List.of(1, 10), MatchScore.LOSE),
-            Arguments.of(List.of(9, 10), List.of(9, 10), MatchScore.DRAW),
-            Arguments.of(List.of(10, 10), List.of(10, 9), MatchScore.WIN),
-            Arguments.of(List.of(10, 9), List.of(10, 10), MatchScore.LOSE)
-        );
-    }
-
     @DisplayName("Check player return correct player name information")
     @Test
     void getNameInfo() {
