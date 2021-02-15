@@ -5,7 +5,7 @@ public class Sonata extends CarImpl {
     private static final String NAME = "Sonata";
     private final double tripDistance;
 
-    public Sonata (double tripDistance) {
+    public Sonata(double tripDistance) {
         this.tripDistance = tripDistance;
     }
 

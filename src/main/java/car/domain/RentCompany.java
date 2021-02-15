@@ -19,11 +19,11 @@ public class RentCompany {
 
     public String generateReport() {
         return cars.stream().map(car -> String.join(
-            DELIMITER,
-            car.getName(),
-            COLON,
-            String.format("%d", (int) Math.ceil(car.getChargeQuantity())),
-            LITTER_NEW_LINE
+                DELIMITER,
+                car.getName(),
+                COLON,
+                String.format("%d", (int) Math.ceil(car.getChargeQuantity())),
+                LITTER_NEW_LINE
         )).collect(Collectors.joining());
     }
 

@@ -4,6 +4,7 @@ public class Gamer extends Player {
 
     private final String name;
     private static final String CARD = "카드: ";
+
     public Gamer(String name, Deck deck) {
         super(deck);
         this.name = name;
@@ -15,8 +16,7 @@ public class Gamer extends Player {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        return stringBuilder.append(name).append(CARD).append(getCards().toString()).toString();
+        return name + CARD + getCards().toString();
     }
 
     public void getMoreCard(String answer) {

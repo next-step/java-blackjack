@@ -7,7 +7,6 @@ import blackjack.domain.Gamer;
 import blackjack.domain.Gamers;
 import blackjack.view.InputView;
 import blackjack.view.ResultView;
-import java.util.Arrays;
 
 public class BlackjackController {
 

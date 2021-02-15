@@ -4,6 +4,7 @@ import blackjack.domain.Dealer;
 import blackjack.domain.Gamer;
 import blackjack.domain.Gamers;
 import blackjack.domain.Score;
+
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -22,7 +23,7 @@ public class ResultView {
 
     public void printGamers(Gamers gamers) {
         String gamersNames = gamers.getGamers().stream().map(Gamer::getName).collect(
-            Collectors.joining(", "));
+                Collectors.joining(", "));
         System.out.printf(PRINT_DIVIDED_CARD, gamersNames);
     }
 
@@ -58,8 +59,6 @@ public class ResultView {
     }
 
     public void showWinLoseResultGamers(Map<String, String> finalResult) {
-        finalResult.forEach((name, result) -> {
-            System.out.printf(GAMER_RESULT, name, result);
-        });
+        finalResult.forEach((name, result) -> System.out.printf(GAMER_RESULT, name, result));
     }
 }

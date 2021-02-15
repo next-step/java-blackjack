@@ -1,8 +1,6 @@
 package blackjack.domain;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class FinalResult {
@@ -13,11 +11,10 @@ public class FinalResult {
     private static final String WIN = "승";
     private int winCount = 0;
     private int loseCount = 0;
-    private final List<Score> scores = new ArrayList<>();
 
     public String getFinalResult(Dealer dealer, Gamer gamer) {
         int dealerScore = dealer.getScore().getValue();
-        if ( dealerScore > THRESHOLD || dealerScore <= gamer.getScore().getValue()) {
+        if (dealerScore > THRESHOLD || dealerScore <= gamer.getScore().getValue()) {
             loseCount++;
             return WIN;
         }
@@ -29,13 +26,8 @@ public class FinalResult {
         dealer.calculateScore();
         for (Gamer gamer : gamers.getGamers()) {
             gamer.calculateScore();
-            scores.add(gamer.getScore());
             finalWinner.put(gamer.getName(), getFinalResult(dealer, gamer));
         }
-    }
-
-    public List<Score> getScores() {
-        return scores;
     }
 
     public int getWinCount() {
@@ -46,7 +38,7 @@ public class FinalResult {
         return loseCount;
     }
 
-    public Map<String, String> getFinalWinner () {
+    public Map<String, String> getFinalWinner() {
         return finalWinner;
     }
 }

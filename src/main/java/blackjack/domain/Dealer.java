@@ -11,10 +11,7 @@ public class Dealer extends Player {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        return stringBuilder.append(NAME_CARD).append(
-            getCards().getCardList().get(0).toString()
-        ).toString();
+        return NAME_CARD + getCards().getCardList().get(0).toString();
     }
 
     public Boolean addCardUnderScore() {

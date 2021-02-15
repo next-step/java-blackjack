@@ -2,8 +2,8 @@ package blackjack.domain;
 
 public class Card {
 
-    private Suit suit;
-    private Denomination denomination;
+    private final Suit suit;
+    private final Denomination denomination;
 
     public Card(Suit suit, Denomination denomination) {
         this.suit = suit;
@@ -20,9 +20,6 @@ public class Card {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        return stringBuilder
-            .append(getDenomination().getRankName())
-            .append(getSuit().getKoreanName()).toString();
+        return getDenomination().getRankName() + getSuit().getKoreanName();
     }
 }

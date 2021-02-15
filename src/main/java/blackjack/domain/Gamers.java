@@ -18,9 +18,9 @@ public class Gamers {
 
     private void makeGamers(String[] names, Deck deck) {
         gamers = Arrays.stream(names).map(name -> new Gamer(name, deck))
-            .collect(
-                Collectors.toList()
-            );
+                .collect(
+                        Collectors.toList()
+                );
     }
 
     private void validateGamerNames(String[] gamerNames) throws IllegalArgumentException {
@@ -31,8 +31,8 @@ public class Gamers {
 
     private boolean checkNameCount(String[] gamerNames) {
         return Arrays.stream(gamerNames)
-            .filter(name -> name.matches(NAME_PATTERN))
-            .count() == gamerNames.length;
+                .filter(name -> name.matches(NAME_PATTERN))
+                .count() == gamerNames.length;
     }
 
     public List<Gamer> getGamers() {
