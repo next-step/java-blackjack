@@ -29,7 +29,7 @@ public class PlayersRecord {
         if ((playerScore < dealerScore && dealerScore <= 21) || playerScore > 21) {
             return "패";
         }
-        if (playerScore == dealerScore) {
+        if (playerScore == dealerScore && dealerScore != 21) {
             return "무";
         }
         return "승";
