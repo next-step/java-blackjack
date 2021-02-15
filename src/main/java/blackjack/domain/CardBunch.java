@@ -8,7 +8,7 @@ public class CardBunch {
     private static final int BLACK_JACK_SCORE = 21;
     private static final int BLACK_JACK_CARD_CNT = 2;
 
-    private static final int CONVERTABLE_ACE_LIMIT_SCORE = 11;
+    private static final int CONVERTIBLE_ACE_LIMIT_SCORE = 11;
     private static final int CONVERTED_ACE_ADDITION_SCORE = 10;
     private static final String NOT_FIRST_CARD_EXIST_ERR_MSG = "첫번째 카드가 존재하지 않습니다.";
 
@@ -47,7 +47,7 @@ public class CardBunch {
             .mapToInt(Card::getScore)
             .sum();
 
-        if (hasAce() && score <= CONVERTABLE_ACE_LIMIT_SCORE) {
+        if (hasAce() && score <= CONVERTIBLE_ACE_LIMIT_SCORE) {
             return score + CONVERTED_ACE_ADDITION_SCORE;
         }
         return score;

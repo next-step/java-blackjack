@@ -63,7 +63,7 @@ public class PeopleController {
     public void actionEndPhase(OutputView output) {
         output.printMatchProfitGuideMsg();
         output.printPeopleMatchProfitInfo(
-            players._playMatch(dealer)
+            players.playMatch(dealer)
         );
     }
 }

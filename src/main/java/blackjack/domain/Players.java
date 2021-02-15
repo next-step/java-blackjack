@@ -58,18 +58,7 @@ public class Players {
         activePlayerIdx++;
     }
 
-    public MatchScoreBoard playMatch(Dealer dealer) {
-        return new MatchScoreBoard(
-            players
-                .stream()
-                .collect(Collectors.toMap(
-                    player -> player,
-                    player -> player.getMatchScore(dealer)
-                ))
-        );
-    }
-
-    public List<PersonMatchProfitInfo> _playMatch(Dealer dealer) {
+    public List<PersonMatchProfitInfo> playMatch(Dealer dealer) {
         return new ArrayList<>() {{
             add(new PersonMatchProfitInfo(dealer.getNameInfo(), getDealerProfit(dealer)));
             addAll(playersMatchProfitMap(dealer));

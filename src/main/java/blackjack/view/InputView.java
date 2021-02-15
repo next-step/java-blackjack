@@ -5,7 +5,6 @@ import blackjack.dto.NameInfo;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class InputView {
@@ -49,7 +48,7 @@ public class InputView {
         System.out.println(NAMES_PROMPT);
         return Arrays
             .stream(scanner.nextLine().split(NAME_DELIMITER))
-            .collect(Collectors.toMap(name -> name, name -> inputPlayerBetMoney(name)));
+            .collect(Collectors.toMap(name -> name, this::inputPlayerBetMoney));
     }
 
     private Integer inputPlayerBetMoney(String name) {

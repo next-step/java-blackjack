@@ -3,28 +3,22 @@ package blackjack.domain;
 import java.util.Arrays;
 
 public enum MatchScore {
-    BLACKJACK_WIN(1.5, "승"),
-    WIN(1.0, "승"),
-    DRAW(0.0, "무"),
-    LOSE(-1.0, "패");
+    BLACKJACK_WIN(1.5),
+    WIN(1.0),
+    DRAW(0.0),
+    LOSE(-1.0);
 
     private static final String WRONG_MATCH_SCORE_KEY_ERR_MSG = "잘못된 매치 결과 키값입니다.";
     private static final String UNREACHABLE_POINT_ERR_MSG = "예기치 않은 오류입니다.";
 
     private final double dividend;
-    private final String name;
 
-    MatchScore(double key, String name) {
+    MatchScore(double key) {
         this.dividend = key;
-        this.name = name;
     }
 
     public double getDividend() {
         return dividend;
-    }
-
-    public String getName() {
-        return name;
     }
 
     private static MatchScore of(final double value) {

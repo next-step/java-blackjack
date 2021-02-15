@@ -182,7 +182,7 @@ class PlayersTest {
                 new PersonMatchProfitInfo(player3.getNameInfo(), 0),
                 new PersonMatchProfitInfo(player4.getNameInfo(), -10)
             ),
-            players._playMatch(dealer)
+            players.playMatch(dealer)
         );
     }
 
