@@ -42,11 +42,11 @@ public class Gamer implements Player {
     public int getCardsScore() {
         int totalScore = 0;
 
-        for(final Card card : pocket.getCards()){
+        for (final Card card : pocket.getCards()) {
             totalScore += card.getScore();
         }
 
-        if(hasAce() && totalScore < 11){
+        if (hasAce() && totalScore < 11) {
             totalScore += 10;
         }
 
@@ -54,9 +54,9 @@ public class Gamer implements Player {
     }
 
     @Override
-    public boolean hasAce(){
+    public boolean hasAce() {
         return pocket.getCards()
                 .stream()
-                .anyMatch(card-> card.getValue()==CardValue.ACE);
+                .anyMatch(card -> card.getValue() == CardValue.ACE);
     }
 }

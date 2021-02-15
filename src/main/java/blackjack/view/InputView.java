@@ -9,14 +9,14 @@ public class InputView {
     private static final String DISPLAY_ANSWER_POP_CARD = "%s는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)";
     private static final String YES = "y";
 
-    public Players inputGamerNames(){
+    public Players inputGamerNames() {
         final Scanner scanner = new Scanner(System.in);
         System.out.println(DISPLAY_GAMER_NAME);
 
         return new Players(scanner.nextLine());
     }
 
-    public boolean isPopCard(final String name){
+    public boolean isPopCard(final String name) {
         final Scanner scanner = new Scanner(System.in);
         final String answerText = String.format(DISPLAY_ANSWER_POP_CARD, name);
         System.out.println(answerText);

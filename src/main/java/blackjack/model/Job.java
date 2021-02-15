@@ -1,5 +1,5 @@
 package blackjack.model;
 
-public enum Job{
+public enum Job {
     DEALER, GAMER;
 }

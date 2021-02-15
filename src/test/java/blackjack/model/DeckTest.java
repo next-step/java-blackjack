@@ -18,7 +18,7 @@ public class DeckTest {
 
     @Test
     @DisplayName("카드를 한 장 나눠준 후에, 덱에 남은 카드를 확인하는 테스트")
-    void deckGetCardTest(){
+    void deckGetCardTest() {
         final ShuffleStrategy emptyShuffleStrategy = new EmptyShuffleStrategy();
         final Deck deck = new Deck(emptyShuffleStrategy);
         final Card card = deck.getCard();
