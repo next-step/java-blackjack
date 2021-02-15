@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Dealer implements GameParticipant {
-    private final String NAME = "딜러";
-    private final List<Card> cards = new ArrayList<>();
-    private final int CRITERIA = 17;
+    private static final int CRITERIA = 17;
+    private static final String NAME = "딜러";
+    private static final List<Card> cards = new ArrayList<>();
 
     @Override
     public void hit(Card card) {
