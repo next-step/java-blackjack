@@ -17,4 +17,12 @@ public class Card {
     public Suit getSuit() {
         return suit;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder
+            .append(getDenomination().getScore())
+            .append(getSuit().getKoreanName()).toString();
+    }
 }

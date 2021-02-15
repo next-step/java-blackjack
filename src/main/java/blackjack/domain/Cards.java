@@ -2,14 +2,18 @@ package blackjack.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cards {
+
     protected List<Card> cardList;
-    private Score score;
 
     public Cards() {
         cardList = new ArrayList<>();
-        score = new Score(0);
+    }
+
+    public List<Card> getCardList() {
+        return cardList;
     }
 
     public void addCard(Card card) {
@@ -17,26 +21,18 @@ public class Cards {
     }
 
     public Score getScore() {
-        calculateScore(0, new Score(0));
-        return score;
-    }
-
-    private void calculateScore(int index, Score nowScore) {
-        if (index == cardList.size()){
-            if (nowScore.isBigger(score) && nowScore.isSmaller(new Score(22))) {
-                score = nowScore;
+        int sum = cardList.stream().mapToInt(card -> card.getDenomination().getScore()).sum(); // 13
+        long aceCount = cardList.stream().filter(card -> card.getDenomination().isAce()).count();
+        for (int i = 0; i < aceCount; i++) {
+            if (sum + 10 <= 21) {
+                sum += 10;
             }
-            return;
         }
-        Card nowCard = cardList.get(index);
-        if (nowCard.getDenomination().isAce()) {
-            calculateScore(index+1, nowScore.add(1));
-            calculateScore(index+1, nowScore.add(11));
-        }
-        else {
-            calculateScore(index+1, nowScore.add(nowCard.getDenomination().getScore()));
-        }
+        return new Score(sum);
     }
 
-
+    @Override
+    public String toString() {
+        return cardList.stream().map(Card::toString).collect(Collectors.joining(", "));
+    }
 }
