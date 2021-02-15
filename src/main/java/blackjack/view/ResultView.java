@@ -5,16 +5,17 @@ import blackjack.domain.Gamer;
 import blackjack.domain.Gamers;
 import blackjack.domain.Score;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ResultView {
 
-    private static final String PRINT_DIVIDED_CARD = "딜러와 %s에게 2장의 카드를 나누었습니다.";
+    private static final String PRINT_DIVIDED_CARD = "딜러와 %s에게 2장의 카드를 나누었습니다.\n";
     private static final String PRINT_IS_GOT_MORE_CARD = "딜러는 16이하라 한장의 카드를 더 받았습니다.";
     private static final String RESULT_DEALER = "딜러 카드: %s - 결과: %s\n";
-    private static final String RESULT = "%s - 결과: %s\n";
+    private static final String RESULT_GAMER = "%s - 결과: %s\n";
     private static final String FINAL_RESULT_MESSAGE = "\n## 최종 승패";
     private static final String FINAL_RESULT_DEALER = "딜러: %d승 %d패\n";
     private static final String GAMER_RESULT = "%s: %s\n";
@@ -22,7 +23,7 @@ public class ResultView {
     public void printGamers(Gamers gamers) {
         String gamersNames = gamers.getGamers().stream().map(Gamer::getName).collect(
             Collectors.joining(", "));
-        System.out.printf((PRINT_DIVIDED_CARD) + "%n", gamersNames);
+        System.out.printf(PRINT_DIVIDED_CARD, gamersNames);
     }
 
     public void printInitialCards(Dealer dealer, Gamers gamers) {
@@ -47,9 +48,8 @@ public class ResultView {
         System.out.printf(RESULT_DEALER, dealerResult, dealerScore);
     }
 
-    public void showResultGamers(List<String> gamersResults, List<Score> scores) {
-        IntStream.range(0, gamersResults.size()).forEach(
-            i -> System.out.printf(String.format(RESULT, gamersResults.get(i), scores.get(i).getValue())));
+    public void showResultGamer(String cards, int score) {
+        System.out.printf(RESULT_GAMER, cards, score);
     }
 
     public void showWinLoseCountDealer(int winCount, int loseCount) {
