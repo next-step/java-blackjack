@@ -1,8 +1,5 @@
 package blackjack.domain.player;
 
-import blackjack.domain.card.Cards;
-import blackjack.domain.state.Hit;
-import blackjack.domain.state.Started;
 import blackjack.domain.state.State;
 
 public class Player extends Human {

@@ -1,7 +1,6 @@
 package blackjack.domain.player;
 
 public enum Denomination {
-
     ACE(1),
     TWO(2),
     THREE(3),

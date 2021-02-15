@@ -1,6 +1,5 @@
 package blackjack.domain.player;
 
-import blackjack.domain.card.Card;
 import blackjack.domain.card.Cards;
 import blackjack.domain.state.PlayingCard;
 
@@ -10,20 +9,19 @@ public class Dealer extends Human {
     private static final String DEALER_NAME = "딜러";
     private Cards cards;
 
-    //TODO: wrapper로 해줘야 함.
-    private Integer winCount = 0;
-    private Integer lossCount = 0;
+    private Count winCount = new Count(0);
+    private Count lossCount = new Count(0);
 
     public Dealer() {
         super(DEALER_NAME);
     }
 
     public Integer getWinCount() {
-        return winCount;
+        return winCount.getCount();
     }
 
     public Integer getLossCount() {
-        return lossCount;
+        return lossCount.getCount();
     }
 
     public Cards getCards() {
@@ -47,10 +45,10 @@ public class Dealer extends Human {
 
     private void resultOnce(Player player) {
         if (!player.getIsWin()) {
-            winCount++;
+            winCount.increase();
             return;
         }
-        lossCount++;
+        lossCount.increase();
     }
 
     public Cards initCard() {
