@@ -10,6 +10,6 @@ import lombok.ToString;
 @EqualsAndHashCode
 @ToString
 public class PersonMatchProfitInfo {
-    private final NameInfo nameInfo;
+    private final String name;
     private final int profit;
 }

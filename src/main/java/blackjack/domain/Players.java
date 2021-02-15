@@ -5,7 +5,6 @@ import blackjack.dto.NameInfo;
 import blackjack.dto.PersonCardsInfo;
 import blackjack.dto.ScoreInfo;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -59,27 +58,13 @@ public class Players {
     }
 
     public List<PersonMatchProfitInfo> playMatch(Dealer dealer) {
-        return new ArrayList<>() {{
-            add(new PersonMatchProfitInfo(dealer.getNameInfo(), getDealerProfit(dealer)));
-            addAll(playersMatchProfitMap(dealer));
-        }};
-    }
-
-    private Integer getDealerProfit(Dealer dealer) {
-        return -players
+        List<PersonMatchProfitInfo> peopleProfitInfo = players
             .stream()
-            .map(player -> player.getMatchProfit(dealer))
-            .reduce(0, Integer::sum);
-    }
-
-    private List<PersonMatchProfitInfo> playersMatchProfitMap(Dealer dealer) {
-        return players
-            .stream()
-            .map(player -> new PersonMatchProfitInfo(
-                    player.getNameInfo(),
-                    player.getMatchProfit(dealer)
-                ))
+            .map(player -> player.getPlayerMatchProfitInfo(dealer))
             .collect(Collectors.toList());
+        peopleProfitInfo.add(0, dealer.getDealerProfitInfo());
+
+        return peopleProfitInfo;
     }
 
     public NameInfo getActivePlayerNameInfo() {

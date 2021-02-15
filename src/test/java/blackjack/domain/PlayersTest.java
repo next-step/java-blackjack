@@ -163,7 +163,7 @@ class PlayersTest {
 
     @DisplayName("Check players return correct match profit information")
     @Test
-    void _playMatch() {
+    void playMatch() {
         Player player1 = new Player("player1", 10, new CardBunch(List.of(1, 10), Suit.HEARTS));
         Player player2 = new Player("player2", 10, new CardBunch(List.of(10, 10), Suit.HEARTS));
         Player player3 = new Player("player3", 10, new CardBunch(List.of(9, 10), Suit.HEARTS));
@@ -176,11 +176,11 @@ class PlayersTest {
 
         assertEquals(
             List.of(
-                new PersonMatchProfitInfo(dealer.getNameInfo(), -15),
-                new PersonMatchProfitInfo(player1.getNameInfo(), 15),
-                new PersonMatchProfitInfo(player2.getNameInfo(), 10),
-                new PersonMatchProfitInfo(player3.getNameInfo(), 0),
-                new PersonMatchProfitInfo(player4.getNameInfo(), -10)
+                new PersonMatchProfitInfo("딜러", -15),
+                new PersonMatchProfitInfo("player1", 15),
+                new PersonMatchProfitInfo("player2", 10),
+                new PersonMatchProfitInfo("player3", 0),
+                new PersonMatchProfitInfo("player4", -10)
             ),
             players.playMatch(dealer)
         );

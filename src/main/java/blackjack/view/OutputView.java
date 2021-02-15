@@ -86,7 +86,7 @@ public class OutputView {
     private void printPersonMatchProfitInfo(PersonMatchProfitInfo personMatchProfitInfo) {
         System.out.format(
             MATCH_PROFIT_INFO_FMT,
-            personMatchProfitInfo.getNameInfo().getName(),
+            personMatchProfitInfo.getName(),
             personMatchProfitInfo.getProfit()
         );
     }

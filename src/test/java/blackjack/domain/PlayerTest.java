@@ -2,6 +2,7 @@ package blackjack.domain;
 
 import blackjack.dto.NameInfo;
 import blackjack.dto.PersonCardsInfo;
+import blackjack.dto.PersonMatchProfitInfo;
 import blackjack.dto.ScoreInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -106,8 +107,8 @@ class PlayerTest {
 
     @DisplayName("Check player get proper match profit")
     @ParameterizedTest
-    @MethodSource("providerGetMatchProfitParams")
-    void getMatchProfit(List<Integer> playerNumbers, List<Integer> dealerNumbers, Integer profit) {
+    @MethodSource("providerGetPlayerMatchProfitInfoParams")
+    void getPlayerMatchProfitInfo(List<Integer> playerNumbers, List<Integer> dealerNumbers, Integer profit) {
         Player player = new Player(
             "player",
             10,
@@ -122,12 +123,12 @@ class PlayerTest {
         );
 
         assertEquals(
-            profit,
-            player.getMatchProfit(dealer)
+            new PersonMatchProfitInfo("player", profit),
+            player.getPlayerMatchProfitInfo(dealer)
         );
     }
 
-    private static Stream<Arguments> providerGetMatchProfitParams() {
+    private static Stream<Arguments> providerGetPlayerMatchProfitInfoParams() {
         return Stream.of(
             Arguments.of(List.of(10, 10, 2), List.of(10, 10), -10),
             Arguments.of(List.of(10, 10), List.of(10, 10, 2), 10),
