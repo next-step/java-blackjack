@@ -38,7 +38,7 @@ public class InputView {
     }
 
     private static final String NAMES_PROMPT = "게임에 참여할 사람의 이름을 입력하세요.(쉼표 기준으로 분리)";
-    private static final String BET_MONEY_PROPMPT = "\n%s의 배팅 금액은?\n";
+    private static final String BET_MONEY_PROMPT = "\n%s의 배팅 금액은?\n";
     private static final String NAME_DELIMITER = ",";
     private static final String CARD_PROMPT_FMT = "%s는 한장의 카드를 더 받겠습니까?(예는 %s, 아니오는 %s)\n";
 
@@ -52,7 +52,7 @@ public class InputView {
     }
 
     private Integer inputPlayerBetMoney(String name) {
-        System.out.format(BET_MONEY_PROPMPT, name);
+        System.out.format(BET_MONEY_PROMPT, name);
         Integer betMoney = scanner.nextInt();
         scanner.nextLine();
 
