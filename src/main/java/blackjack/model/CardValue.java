@@ -22,7 +22,7 @@ public enum CardValue {
     private final String tag;
     private final int score;
 
-    CardValue(String tag, int score) {
+    CardValue(final String tag, final int score) {
         this.tag = tag;
         this.score = score;
     }
@@ -40,7 +40,7 @@ public enum CardValue {
         return cardValues.get(value);
     }
 
-    private static void validate(int value) {
+    private static void validate(final int value) {
         if (value < MIN_VALUE || value > MAX_VALUE) {
             throw new IllegalArgumentException("카드의 숫자는 1에서 13까지 사용할 수 있습니다.");
         }

@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class RandomShuffleStrategy implements ShuffleStrategy {
     @Override
-    public void shuffle(Stack<Card> cards) {
+    public void shuffle(final Stack<Card> cards) {
         Collections.shuffle(cards);
     }
 }

@@ -5,7 +5,7 @@ public enum Result {
 
     private String status;
 
-    Result(String status) {
+    Result(final String status) {
         this.status = status;
     }
 

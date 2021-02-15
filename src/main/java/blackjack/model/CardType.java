@@ -5,7 +5,7 @@ public enum CardType {
 
     private final String type;
 
-    CardType(String type) {
+    CardType(final String type) {
         this.type = type;
     }
 
