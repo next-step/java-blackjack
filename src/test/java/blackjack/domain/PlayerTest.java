@@ -131,7 +131,7 @@ class PlayerTest {
             Arguments.of(List.of(10, 10, 2), List.of(10, 10), MatchScore.LOSE),
             Arguments.of(List.of(10, 10), List.of(10, 10, 2), MatchScore.WIN),
             Arguments.of(List.of(1, 10), List.of(1, 10), MatchScore.DRAW),
-            Arguments.of(List.of(1, 10), List.of(10, 10), MatchScore.WIN),
+            Arguments.of(List.of(1, 10), List.of(10, 10), MatchScore.BLACKJACK_WIN),
             Arguments.of(List.of(10, 10), List.of(1, 10), MatchScore.LOSE),
             Arguments.of(List.of(9, 10), List.of(9, 10), MatchScore.DRAW),
             Arguments.of(List.of(10, 10), List.of(10, 9), MatchScore.WIN),

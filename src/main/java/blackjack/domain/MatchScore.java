@@ -3,30 +3,35 @@ package blackjack.domain;
 import java.util.Arrays;
 
 public enum MatchScore {
-    WIN(1, "승"),
-    DRAW(0, "무"),
-    LOSE(-1, "패");
+    BLACKJACK_WIN(1.5, "승"),
+    WIN(1.0, "승"),
+    DRAW(0.0, "무"),
+    LOSE(-1.0, "패");
 
     private static final String WRONG_MATCH_SCORE_KEY_ERR_MSG = "잘못된 매치 결과 키값입니다.";
     private static final String UNREACHABLE_POINT_ERR_MSG = "예기치 않은 오류입니다.";
 
-    private final int key;
+    private final double dividend;
     private final String name;
 
-    MatchScore(int key, String name) {
-        this.key = key;
+    MatchScore(double key, String name) {
+        this.dividend = key;
         this.name = name;
+    }
+
+    public double getDividend() {
+        return dividend;
     }
 
     public String getName() {
         return name;
     }
 
-    private static MatchScore of(final int value) {
+    private static MatchScore of(final double value) {
         return Arrays.stream(
             MatchScore.values()
         ).filter(
-            result -> result.key == value
+            result -> result.dividend == value
         ).findFirst().orElseThrow(
             () -> new RuntimeException(WRONG_MATCH_SCORE_KEY_ERR_MSG)
         );
@@ -38,7 +43,7 @@ public enum MatchScore {
         if (dealer.isBust()) return WIN;
 
         if (player.isBlackJack() && dealer.isBlackJack()) return DRAW;
-        if (player.isBlackJack()) return WIN;
+        if (player.isBlackJack()) return BLACKJACK_WIN;
         if (dealer.isBlackJack()) return LOSE;
 
         if (player.calcScore() == dealer.calcScore()) return DRAW;
@@ -49,6 +54,9 @@ public enum MatchScore {
     }
 
     public MatchScore oppositeMatchScore() {
-        return MatchScore.of(-key);
+        if (dividend == 1.5) {
+            return MatchScore.LOSE;
+        }
+        return MatchScore.of(-dividend);
     }
 }
