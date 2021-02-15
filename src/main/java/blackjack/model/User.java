@@ -25,6 +25,7 @@ public class User extends Player {
         this.win = win;
     }
 
+    @Override
     public String getResult() {
         if(win){
             return StringUtils.WIN;

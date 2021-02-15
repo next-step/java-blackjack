@@ -41,6 +41,7 @@ public class Dealer extends Player{
         this.losingCount = losingCount;
     }
 
+    @Override
     public String getResult(){
         return String.format(RESULT_STRING_FORMAT,
                 winningCount, StringUtils.WIN,

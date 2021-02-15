@@ -1,11 +1,10 @@
 package blackjack.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static blackjack.utils.StringUtils.COLON;
 
-public class Player {
+public abstract class Player {
 
     protected final CardBundle cardHand;
     protected final String name;
@@ -35,6 +34,8 @@ public class Player {
 
         return cardHand.calculateScore();
     }
+
+    public abstract String getResult();
 
     @Override
     public String toString() {
