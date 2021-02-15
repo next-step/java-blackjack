@@ -32,4 +32,8 @@ public class BlackjackGame {
     public Dealer getDealer() {
         return dealer;
     }
+
+    public Deck getDeck() {
+        return deck;
+    }
 }
