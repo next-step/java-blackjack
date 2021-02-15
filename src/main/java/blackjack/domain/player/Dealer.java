@@ -9,15 +9,16 @@ public class Dealer extends Human {
     private static final String DEALER_NAME = "딜러";
     private Cards cards;
 
-    public int getWinCount() {
+    Integer winCount=0, lossCount=0; //TODO: wrapper로 해줘야 함.
+
+    public Integer getWinCount() {
         return winCount;
     }
 
-    public int getLossCount() {
+    public Integer getLossCount() {
         return lossCount;
     }
 
-    int winCount, lossCount; //TODO: wrapper로 해줘야 함.
 
     public Dealer() {
         super(DEALER_NAME);

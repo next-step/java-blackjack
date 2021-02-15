@@ -9,7 +9,7 @@ public class Cards { //카드 리스트를 가진 일급 컬렉션.
     private static final int BLACKJACK_CARD_NUMBER = 2;
     private static final int ACE_PLUS_SCORE = 10;
     private List<PlayingCard> cards;
-    private int cardSum;
+    private Integer cardSum;
 
     public Cards() {
         this.cards = new ArrayList<>();
@@ -40,7 +40,7 @@ public class Cards { //카드 리스트를 가진 일급 컬렉션.
         }
     }
 
-    public int getSum() {
+    public Integer getSum() {
         sumCards();
         return cardSum;
     }

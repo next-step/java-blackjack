@@ -16,7 +16,7 @@ public enum Denomination {
     QUEEN(10),
     KING(10);
 
-    private final int score;
+    private final Integer score;
 
     Denomination(final int score) {
         this.score = score;
@@ -26,7 +26,7 @@ public enum Denomination {
         return this == ACE;
     }
 
-    public int getScore() {
+    public Integer getScore() {
         return score;
     }
 }

@@ -30,28 +30,26 @@ public class BlackJackController {
         for(int i = 0; i < players.size(); i++) {
             Player player = players.get(i);
             state = player.getState();
-            System.out.println(player.getName());
-            while(!state.isFinished()) {
-                // OutputView
-                System.out.printf("%s 는 한 장의 카드를 더 받겠습니까? (예는 y, 아니오는 n)", player.getName());
+            try{
+                while(!state.isFinished()) {
+                    OutputView.playerDrawCard(player);
+                    String answer = InputView.willDraw();
 
-                String answer = InputView.willDraw();
-
-                List<PlayingCard> playingCards = player.getState().cards().getCards();
+                    List<PlayingCard> playingCards = player.getState().cards().getCards();
 
 
-                // OutputView
-                for(PlayingCard card : playingCards){
-                    System.out.printf("%s_%d ",card.getSuit(),card.getDenomination().getScore());
+                    if(answer.equals("y")) {
+                        state = state.draw(dealer.popAndGiveCard());
+                        // OutputView
+                        OutputView.printCardStateOnePlayer(player);
+                        continue;
+                    }
+                    if(answer.equals("n")) {
+                        state = state.stay();
+                    }
                 }
-                System.out.println();
-
-                if("y".equals(answer)) {
-                    state = state.draw(dealer.popAndGiveCard());
-                }
-                if("n".equals(answer)) {
-                    state = state.stay();
-                }
+            }catch(Exception e){
+                e.printStackTrace();
             }
         }
         dealerDraw();
@@ -76,25 +74,21 @@ public class BlackJackController {
         OutputView.cardStateAfterInit(dealer, players);
     }
 
+    private void dealerDraw() {
+        // 딜러 카드 받을지 말지
+        if(dealer.getCards().getSum() <= DEALER_DRAW_BOUND){
+            OutputView.dealerUnder16();
+            dealer.drawMoreCard();
+            return;
+        }
+        OutputView.dealerMoreThan17();
+
+    }
+
     private void result() {
         OutputView.cardStateAfterEnd(dealer, players);
         AwardsResult awardsResult = Awards.produceResult(dealer, players);// 얘를 output view로 전달.
         OutputView.award(awardsResult);
-    }
-
-    private void dealerDraw() {
-        // 딜러 카드 받을지 말지
-        if(dealer.getCards().getSum() <= DEALER_DRAW_BOUND){
-
-            // OutputView
-            System.out.println("딜러는 16 이하라 한 장의 카드를 더 받았습니다.");
-
-            dealer.drawMoreCard();
-            return;
-        }
-        // OutputView
-        System.out.println("딜러는 17 이상이 한 장의 카드를 더 받지 않습니다.");
-
     }
 
     private List<String> splitPlayerNames(String rawPlayerNames) {
