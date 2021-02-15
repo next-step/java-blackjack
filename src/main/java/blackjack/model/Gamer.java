@@ -3,6 +3,7 @@ package blackjack.model;
 public class Gamer implements Player {
     private final Pocket pocket = new Pocket();
     private final Deck deck;
+
     private final String name;
     private final Job job = Job.GAMER;
 
@@ -56,6 +57,6 @@ public class Gamer implements Player {
     public boolean hasAce(){
         return pocket.getCards()
                 .stream()
-                .anyMatch(card-> card.getValue()==CardValue.ONE);
+                .anyMatch(card-> card.getValue()==CardValue.ACE);
     }
 }
