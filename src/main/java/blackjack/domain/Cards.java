@@ -21,7 +21,7 @@ public class Cards {
     }
 
     public Score getScore() {
-        int sum = cardList.stream().mapToInt(card -> card.getDenomination().getScore()).sum(); // 13
+        int sum = cardList.stream().mapToInt(card -> card.getDenomination().getRank()).sum(); // 13
         long aceCount = cardList.stream().filter(card -> card.getDenomination().isAce()).count();
         for (int i = 0; i < aceCount; i++) {
             if (sum + 10 <= 21) {

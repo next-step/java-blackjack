@@ -12,5 +12,4 @@ public class BlackjackApplication {
         BlackjackController blackjackController = new BlackjackController(inputView, resultView);
         blackjackController.gameStart();
     }
-
 }

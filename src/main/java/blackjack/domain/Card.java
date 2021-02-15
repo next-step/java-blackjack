@@ -22,7 +22,7 @@ public class Card {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         return stringBuilder
-            .append(getDenomination().getScore())
+            .append(getDenomination().getRankName())
             .append(getSuit().getKoreanName()).toString();
     }
 }
