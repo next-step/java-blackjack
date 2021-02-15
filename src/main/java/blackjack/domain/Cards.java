@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cards {
+    private static final int TEN = 10;
+    private static final int THRESHOLD_BLACKJACK = 21;
 
     protected List<Card> cardList;
 
@@ -21,14 +23,19 @@ public class Cards {
     }
 
     public Score getScore() {
-        int sum = cardList.stream().mapToInt(card -> card.getDenomination().getRank()).sum(); // 13
+        int sum = cardList.stream().mapToInt(card -> card.getDenomination().getRank()).sum();
         long aceCount = cardList.stream().filter(card -> card.getDenomination().isAce()).count();
         for (int i = 0; i < aceCount; i++) {
-            if (sum + 10 <= 21) {
-                sum += 10;
-            }
+            sum = updateSum(sum);
         }
         return new Score(sum);
+    }
+
+    private int updateSum(int sum) {
+        if (sum + TEN <= THRESHOLD_BLACKJACK) {
+            sum += TEN;
+        }
+        return sum;
     }
 
     @Override
