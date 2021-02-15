@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static blackjack.utils.StringUtils.COLON;
-import static blackjack.utils.StringUtils.NEW_LINE;
 
 public class Player {
 
@@ -32,16 +31,9 @@ public class Player {
     public void drawCard(Card card) {
         cardHand.add(card);
     }
+    public int getCardHandScore() {
 
-    public int calculateScore() {
-     // ACE 의 계산 방식 고려해야함
-        List<Card> cards = cardHand.getCards();
-        int sum = 0;
-        for (Card card : cards) {
-            sum += card.getSymbol().getScore();
-        }
-
-        return sum;
+        return cardHand.calculateScore();
     }
 
     @Override
@@ -50,7 +42,6 @@ public class Player {
         stringBuilder.append(name);
         stringBuilder.append(COLON);
         cardHand.getCards().forEach(card -> stringBuilder.append(card.toString()));
-        stringBuilder.append(NEW_LINE);
         return stringBuilder.toString();
     }
 }

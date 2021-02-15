@@ -22,7 +22,7 @@ class PlayerTest {
         ));
         Player player = new Player(cardHand,"test");
 
-        assertThat(player.calculateScore()).isEqualTo(11);
+        assertThat(player.getCardHand().calculateScore()).isEqualTo(11);
 
     }
 }
