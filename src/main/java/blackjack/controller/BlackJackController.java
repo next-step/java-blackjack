@@ -10,10 +10,11 @@ import blackjack.domain.state.Hit;
 import blackjack.domain.state.PlayingCard;
 import blackjack.domain.state.State;
 import blackjack.view.InputView;
+import blackjack.view.OutputView;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class BlackJackController {
@@ -45,8 +46,6 @@ public class BlackJackController {
                 System.out.println();
 
                 if("y".equals(answer)) {
-                    // 딜러를 틍해서 카드를 받되, 카드의 Bust, Blackjack 상태는 state 를 통해서 알수 있음
-                   // 아래 코드는 플레이어가 가잔 상태에서 카드들을 관리해주는 것
                     state = state.draw(dealer.popAndGiveCard());
                 }
                 if("n".equals(answer)) {
@@ -59,81 +58,27 @@ public class BlackJackController {
     }
 
     private void initGame() {
-        // create Dealer and init
+        // create Dealer and init cards
         dealer = new Dealer();
         dealer.initCard();
 
-
-        // OutputView
-        System.out.println("플레이어 이름 입력");
+        OutputView.inputPlayerNames();
 
         String rawPlayerNames = InputView.inputPlayerNames();
 
-        List<String> playerNames = splitPlayerNames(rawPlayerNames);
-        players = createPlayers(playerNames); //c.f. 플레이어들은 state를 받은 것 까지.
-
-        // 2장의 카드를 나눠줌.
-
-        // OutputView
-        System.out.printf("딜러와 ");
-        for(Player player : players){
-            System.out.printf("%s, ",player.getName());
-        }
-        System.out.println("에게 2장의 카드를 나눴습니다.");
-        // 2장의 카드를 나눠 줬을 때의 상태 출력.
-        // 딜러의 1장의 카드 출력.(다른 한 장은 뒤집어 진 상태)
-        System.out.printf("딜러 : ");
-
-
+        // dealer, players 에게 2장의 카드를 나눠줌.
         dealer.initDealerCards();
-        Card dealerCard = dealer.getCards().getCards().get(0);
+        List<String> playerNames = splitPlayerNames(rawPlayerNames);
+        players = createPlayers(playerNames);
 
-        // OutputView
-        System.out.printf("%s_%d\n",dealerCard.getSuit(),dealerCard.getDenomination().getScore());
-        // 플레이어의 2장의 카드 출력.
-        for(Player player : players) {
-            System.out.printf("%s 카드 : ",player.getName());
-            List<PlayingCard> playingCards = player.getState().cards().getCards();
-            for(PlayingCard card : playingCards){
-                System.out.printf("%s_%d, ",card.getSuit(),card.getDenomination().getScore());
-            }
-            System.out.println();
-        }
-
+        OutputView.messageAfterInit(players);
+        OutputView.cardStateAfterInit(dealer, players);
     }
 
     private void result() {
+        OutputView.cardStateAfterEnd(dealer, players);
         AwardsResult awardsResult = Awards.produceResult(dealer, players);// 얘를 output view로 전달.
-
-
-        // OutputView
-        System.out.printf("딜러 카드 : ");
-        for(PlayingCard card : dealer.getCards().getCards()){
-            System.out.printf("%s_%d, ",card.getSuit(),card.getDenomination().getScore());
-        }
-        System.out.printf("합계 : %d\n",dealer.getCards().getSum());
-
-        // OutputView
-        for(Player player : players) {
-            List<PlayingCard> playingCards = player.getState().cards().getCards();
-            System.out.printf("%s 카드 : ",player.getName());
-            for(PlayingCard card : playingCards){
-                System.out.printf("%s_%d, ",card.getSuit(),card.getDenomination().getScore());
-            }
-            System.out.printf(" - 결과 : %d\n",player.getState().cards().getSum());
-        }
-
-        // OutputView
-        System.out.printf("딜러의 결과 : %d 승 %d 패\n", awardsResult.getDealer().getWinCount(),awardsResult.getDealer().getLossCount());
-        for(Player player : awardsResult.getPlayers()){
-            System.out.printf("%s : ",player.getName());
-            if(player.getIsWin()){
-                System.out.println(" 승");
-            }
-            else{
-                System.out.println(" 패");
-            }
-        }
+        OutputView.award(awardsResult);
     }
 
     private void dealerDraw() {
