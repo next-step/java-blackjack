@@ -36,4 +36,22 @@ class PlayerTest {
         // then
         assertThat(exception.getMessage()).isEqualTo("이름으로 사용할 수 없습니다.");
     }
+
+    @DisplayName("플레이어 카드 결과 테스트")
+    @Test
+    void getResultTest() {
+        // given
+        Player player = new Player("a");
+        Card card1 = new Card(Denomination.ACE, Suit.CLOVER);
+        Card card2 = new Card(Denomination.ACE, Suit.HEART);
+        Card card3 = new Card(Denomination.ACE, Suit.SPADE);
+
+        // when
+        player.hit(card1);
+        player.hit(card2);
+        player.hit(card3);
+
+        // then
+        assertThat(player.getResult()).isEqualTo(13);
+    }
 }
