@@ -16,7 +16,7 @@ public class InputView {
 
     // 카드 더 받을지 물어보기
     public String askMoreCard(String name) {
-        System.out.println(String.format(MORE_CARD_MESSAGE, name));
+        System.out.printf((MORE_CARD_MESSAGE) + "%n", name);
         return scanner.nextLine();
     }
 }
