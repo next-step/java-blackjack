@@ -14,12 +14,16 @@ public class Deck {
     public static Deck createShuffledCards() {
         cards = new LinkedList<>();
         for (final Denomination denomination : Denomination.values()) {
-            for (final Suit suit : Suit.values()) {
-                cards.add(new Card(denomination, suit));
-            }
+            createAllSuitCard(cards, denomination);
         }
         shuffleCards();
         return new Deck(cards);
+    }
+
+    public static void createAllSuitCard(LinkedList<Card> cards, Denomination denomination) {
+        for (final Suit suit : Suit.values()) {
+            cards.add(new Card(denomination, suit));
+        }
     }
 
     public List<Card> getCards() {
