@@ -18,7 +18,7 @@ public class ResultView {
     private static final String FINAL_RESULT_MESSAGE = "\n## 최종 승패";
     private static final String FINAL_RESULT_DEALER = "딜러: %d승 %d패\n";
     private static final String GAMER_RESULT = "%s: %s\n";
-
+    private static final String ERROR_GAMERS_NAME_FORMAT = "이름 형식이 잘못되었습니다. 확인바랍니다.";
     public void printGamers(Gamers gamers) {
         String gamersNames = gamers.getGamers().stream().map(Gamer::getName).collect(
             Collectors.joining(", "));
@@ -49,7 +49,12 @@ public class ResultView {
 
     public void showResultGamers(List<String> gamersResults, List<Score> scores) {
         IntStream.range(0, gamersResults.size()).forEach(
-            i -> System.out.printf(String.format(RESULT, gamersResults.get(i), scores.get(i).getValue())));
+            i -> System.out.printf(RESULT,gamersResults.get(i), scores.get(i).getValue())
+        );
+    }
+
+    public void printErrorGamersNameFormat() {
+        System.out.println(ERROR_GAMERS_NAME_FORMAT);
     }
 
     public void showWinLoseCountDealer(int winCount, int loseCount) {

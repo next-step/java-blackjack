@@ -31,15 +31,23 @@ public class BlackjackController {
         showResult();
     }
 
-    public void joinPlayers() {
+    private void joinPlayers() {
         deck = new Deck();
         dealer = new Dealer(deck);
-        gamers = new Gamers(inputView.getGamers(), deck);
-        resultView.printGamers(gamers);
-        resultView.printInitialCards(dealer, gamers);
+        try {
+            gamers = new Gamers(
+                inputView.getGamers(),
+                deck
+            );
+            resultView.printGamers(gamers);
+            resultView.printInitialCards(dealer, gamers);
+        } catch (IllegalArgumentException e) {
+            resultView.printErrorGamersNameFormat();
+            joinPlayers();
+        }
     }
 
-    public void askMoreCard() {
+    private void askMoreCard() {
         gamers.getGamers().forEach(this::askMoreCardEachGamer);
     }
 
