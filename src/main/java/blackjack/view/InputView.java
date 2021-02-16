@@ -1,6 +1,5 @@
 package blackjack.view;
 
-import blackjack.domain.util.Validator;
 import java.util.Scanner;
 
 public class InputView {
@@ -18,12 +17,6 @@ public class InputView {
     public static String inputGetCardOrNot(String name) {
         System.out.println(String.format(INPUT_GET_CARD_OR_NOT, name));
         String answer = scanner.next();
-        try {
-            Validator.validInput(answer);
-        } catch (IllegalArgumentException e) {
-            System.out.println("y/n 중에 하나를 입력하셔야 합니다.");
-        }
-        // TODO : answer 에 대한 validator
         return answer;
     }
 }

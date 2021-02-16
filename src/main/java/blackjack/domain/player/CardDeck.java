@@ -15,15 +15,9 @@ public class CardDeck {//카드 덱을 저장하며 카드를 딜러에 의해 �
         cardDeck = Arrays
             .stream(Denomination.values())
             .flatMap(
-                d -> Arrays
-                    .stream(Suit.values())
-                    .map(s -> new PlayingCard(d, s))
-            )
+                denomination -> Arrays.stream(Suit.values())
+                    .map(suit -> new PlayingCard(denomination, suit)))
             .collect(Collectors.toList());
-            /*Arrays.stream(Suit.values())
-                .map(suit -> Arrays.stream(Denomination.values())
-                    .map(de -> new PlayingCard(de, suit))
-                    .collect(Collectors.toList()));*/
         shuffle();
     }
 

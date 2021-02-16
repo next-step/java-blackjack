@@ -11,12 +11,10 @@ public class Player extends Human {
         this.state = state;
     }
 
-    // Setter
     public void setIsWin(boolean isWin) {
         this.isWin = isWin;
     }
 
-    // Getter
     public boolean getIsWin() {
         return isWin;
     }

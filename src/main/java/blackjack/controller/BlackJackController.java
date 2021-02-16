@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BlackJackController {
+
     private List<Player> players;
     private Dealer dealer;
 
@@ -26,10 +27,10 @@ public class BlackJackController {
     }
 
     private void initGame() {
-        // create Dealer and init
+        // create Dealer and init dealer card
         dealer = new Dealer();
         dealer.initDealerCard();
-        // get player names from command line and parse it into player objects
+        // get player names and parse it into player objects
         String rawPlayerNames = InputView.inputPlayerNames();
         players = createPlayers(splitPlayerNames(rawPlayerNames));
         OutputView.printGameInitInfo(dealer, players);
@@ -42,34 +43,32 @@ public class BlackJackController {
     }
 
     private List<Player> createPlayers(List<String> playerNames) {
-        players = new ArrayList<>();
-        for(String playerName : playerNames) {
-            State state = new Hit(dealer.initCard());
-            Player player = new Player(playerName, state);
-            players.add(player);
-        }
+        players = playerNames.stream()
+            .map(playerName -> new Player(playerName, new Hit(dealer.initCard())))
+            .collect(Collectors.toList());
         return players;
     }
 
     private void playEachPlayerGame() {
-        for(int i = 0; i < players.size(); i++) {
-            Player player = players.get(i);
-            State state = player.getState();
-            while(!state.isFinished()) {
-                String answer = InputView.inputGetCardOrNot(player.getName());
-                if("y".equals(answer)) {
-                    state = state.draw(dealer.popAndGiveCard());
-                    OutputView.printPlayerCards(player);
-                }
-                if("n".equals(answer)) {
-                    state = state.stay();
-                }
+        players.forEach(this::playLoop);
+    }
+
+    private void playLoop(Player player) {
+        State state = player.getState();
+        while (!state.isFinished()) {
+            String answer = InputView.inputGetCardOrNot(player.getName());
+            if ("y".equals(answer)) {
+                state = state.draw(dealer.popAndGiveCard());
+                OutputView.printPlayerCards(player);
+            }
+            if ("n".equals(answer)) {
+                state = state.stay();
             }
         }
     }
 
     private void printDealerStatus() {
-        if(dealer.getCards().checkDealerCardCondition()) {
+        if (dealer.getCards().checkDealerCardCondition()) {
             dealer.addDealerCard();
             OutputView.printDealerStatusUnder(dealer.getName());
             return;

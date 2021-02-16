@@ -3,7 +3,6 @@ package blackjack.domain.state;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import blackjack.domain.card.Cards;
-import blackjack.domain.card.PlayingCard;
 import blackjack.domain.player.CardDeck;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

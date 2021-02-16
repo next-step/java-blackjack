@@ -30,18 +30,14 @@ public class Dealer extends Human {
         return cards;
     }
 
-    // 카드 뭉치에서 한 장을 꺼내
-    // pop : 카드 뭉치에서 한 장을 뽑아 플레이어/딜러 에게 주는 것.
+    // 카드 뭉치에서 한 장을 꺼내기
     public static PlayingCard popAndGiveCard() {
         PlayingCard playingCard = CardDeck.getPlayingCard();
         return playingCard;
     }
 
     public void winResult(List<Player> players) {
-        // 얘는 humans를 받아 반복
-        for (Player player : players) {
-            resultOnce(player);
-        }
+        players.forEach(player -> resultOnce(player));
     }
 
     private void resultOnce(Player player) {
