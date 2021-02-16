@@ -1,28 +1,37 @@
 package blackjack.domain;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class CardsTest {
 
-    @Test
-    void addCard() {
-    }
-
-    @Test
-    void getScore() {
-        //give
+    @DisplayName("카드 스코어 가져오기 테스트")
+    @ParameterizedTest
+    @MethodSource("provideGetScoreTest")
+    void getScoreTest(List<Card> cardList, Score expected) {
         Cards cards = new Cards();
-        cards.addCard(new Card(Suit.CLUBS, Denomination.ACE));
-        cards.addCard(new Card(Suit.DIAMONDS, Denomination.JACK));
-
-        //when
-        Score score = cards.getScore();
-        Score targetScore = new Score(21);
-
-        //then
-        System.out.println(score.getScore());
-        System.out.println(targetScore.getScore());
-        Assertions.assertThat(score).isEqualToComparingFieldByField(targetScore);
+        cardList.forEach(cards::addCard);
+        assertEquals(cards.getScore(), expected);
     }
+
+    private static Stream<Arguments> provideGetScoreTest() {
+        return Stream.of(
+            Arguments.of(Arrays.asList(
+                new Card(Suit.CLUBS, Denomination.ACE),
+                new Card(Suit.DIAMONDS, Denomination.JACK)
+            ), new Score(21)),
+            Arguments.of(Arrays.asList(
+                new Card(Suit.CLUBS, Denomination.JACK),
+                new Card(Suit.DIAMONDS, Denomination.JACK)
+            ), new Score(20))
+        );
+    }
+
 }
