@@ -68,6 +68,11 @@ public class BlackjackController {
             OutputView.printGameParticipantResultMessage(player);
         }
         OutputView.printNewLine();
+    }
+
+    public void finalResult() {
+        Dealer dealer = blackjackGame.getDealer();
+        List<Player> players = blackjackGame.getPlayers();
 
         OutputView.printRecordFirstLine();
         DealerRecord dealerRecord = new DealerRecord(dealer, players);

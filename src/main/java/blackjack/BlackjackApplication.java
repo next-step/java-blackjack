@@ -10,5 +10,6 @@ public class BlackjackApplication {
         blackjackController.askHitOrStayToPlayers();
         blackjackController.dealerTurn();
         blackjackController.releaseResult();
+        blackjackController.finalResult();
     }
 }
