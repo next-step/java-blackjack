@@ -9,16 +9,16 @@ public class AwardsResult {
     private Dealer dealer;
     private List<Player> players;
 
-    public AwardsResult(Dealer dealer, List<Player> players) {
+    public AwardsResult(final Dealer dealer, final List<Player> players) {
         this.dealer = dealer;
         this.players = players;
     }
 
-    public Dealer getDealer() {
+    public Dealer getDealerGameResult() {
         return dealer;
     }
 
-    public List<Player> getPlayers() {
+    public List<Player> getPlayersGameResult() {
         return players;
     }
 }

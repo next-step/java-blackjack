@@ -1,16 +1,20 @@
 package blackjack.domain.card;
 
-import blackjack.domain.state.PlayingCard;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cards { //카드 리스트를 가진 일급 컬렉션.
-    private static final int FINISH_BOUND = 21;
+
+    private static final int BLACKJACK = 21;
+    private static final int DEALER_CARD_PICK_CONDITION = 16;
     private List<PlayingCard> cards;
-    private int cardSum;
 
     public Cards() {
         this.cards = new ArrayList<>();
+    }
+
+    public List<PlayingCard> getCardsAsList() {
+        return cards;
     }
 
     public void add(PlayingCard card) {
@@ -18,32 +22,30 @@ public class Cards { //카드 리스트를 가진 일급 컬렉션.
     }
 
     public boolean isBust() {
-        cardSum = 0;
-        for(PlayingCard card : cards) {
-            cardSum += card.getDenomination().getScore();
-        }
-        if(cardSum > FINISH_BOUND) {
-            return true;
-        }
-        return false;
+        final int cardSum = sumScore();
+        return cardSum > BLACKJACK;
     }
 
     public boolean isBlackJack() {
-        cardSum = 0;
-        for(PlayingCard card : cards) {
-            cardSum += card.getDenomination().getScore();
-        }
-        if(cardSum == FINISH_BOUND) {
-            return true;
-        }
-        return false;
+        final int cardSum = sumScore();
+        return cardSum == BLACKJACK;
     }
 
-    public Card pop() {
-        return null;
+    public int sumScore() {
+        int sumScore = cards.stream()
+            .mapToInt(card -> card.getDenomination().getScore())
+            .sum();
+        if(hasAce() && sumScore < 12) {
+            sumScore += 10;
+        }
+        return sumScore;
     }
 
-    public void mergeCards(Cards cards){
-        this.cards.addAll(cards.cards);
+    private boolean hasAce() {
+        return cards.stream().anyMatch(card -> card.getDenomination().isAce());
+    }
+
+    public boolean checkDealerCardCondition() {
+        return sumScore() <= DEALER_CARD_PICK_CONDITION;
     }
 }

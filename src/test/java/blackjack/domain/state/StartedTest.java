@@ -3,6 +3,7 @@ package blackjack.domain.state;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import blackjack.domain.card.Cards;
+import blackjack.domain.card.PlayingCard;
 import blackjack.domain.player.CardDeck;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,8 +17,8 @@ class StartedTest {
     @BeforeEach
     void init() {
         cards = new Cards();
-        cards.add((PlayingCard) CardDeck.getPlayingCard());
-        cards.add((PlayingCard) CardDeck.getPlayingCard());
+        cards.add(CardDeck.getPlayingCard());
+        cards.add(CardDeck.getPlayingCard());
         startedState = new Hit(cards);
     }
 

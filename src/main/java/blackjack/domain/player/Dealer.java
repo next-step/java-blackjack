@@ -1,25 +1,39 @@
 package blackjack.domain.player;
 
-import blackjack.domain.card.Card;
 import blackjack.domain.card.Cards;
-import blackjack.domain.state.PlayingCard;
+import blackjack.domain.card.PlayingCard;
+import blackjack.domain.state.Hit;
+import blackjack.domain.state.State;
 import java.util.List;
 
 public class Dealer extends Human {
 
     private static final String DEALER_NAME = "딜러";
-    int winCount, lossCount; //TODO: wrapper로 해줘야 함.
+    private int winCount;
+    private int loseCount; //TODO: wrapper로 해줘야 함.
+
+    private Cards cards;
 
     public Dealer() {
         super(DEALER_NAME);
+    }
+
+    public int getWinCount() {
+        return winCount;
+    }
+
+    public int getLoseCount() {
+        return loseCount;
+    }
+
+    public Cards getCards() {
+        return cards;
     }
 
     // 카드 뭉치에서 한 장을 꺼내
     // pop : 카드 뭉치에서 한 장을 뽑아 플레이어/딜러 에게 주는 것.
     public static PlayingCard popAndGiveCard() {
         PlayingCard playingCard = CardDeck.getPlayingCard();
-        // 딜러에게는 첫 번째만 flipCard를 실행.
-        playingCard.flipCard();
         return playingCard;
     }
 
@@ -32,10 +46,22 @@ public class Dealer extends Human {
 
     private void resultOnce(Player player) {
         if (player.getIsWin()) {
-            winCount++;
+            loseCount++;
             return;
         }
-        lossCount++;
+        winCount++;
+    }
+
+    public void addDealerCard() {
+        cards.add(popAndGiveCard());
+    }
+
+    public void initDealerCard() {
+        cards = new Cards();
+        cards.add(popAndGiveCard());
+        PlayingCard flippedCard = popAndGiveCard();
+        flippedCard.flip();
+        cards.add(flippedCard);
     }
 
     public Cards initCard() {
