@@ -3,7 +3,9 @@ package blackjack.view;
 import blackjack.dto.NameInfo;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InputView {
     enum Answer {
@@ -36,14 +38,25 @@ public class InputView {
     }
 
     private static final String NAMES_PROMPT = "게임에 참여할 사람의 이름을 입력하세요.(쉼표 기준으로 분리)";
+    private static final String BET_MONEY_PROMPT = "\n%s의 배팅 금액은?\n";
     private static final String NAME_DELIMITER = ",";
     private static final String CARD_PROMPT_FMT = "%s는 한장의 카드를 더 받겠습니까?(예는 %s, 아니오는 %s)\n";
 
     private final Scanner scanner = new Scanner(System.in);
 
-    public String[] inputPlayersName() {
+    public Map<String, Integer> inputPlayersItem() {
         System.out.println(NAMES_PROMPT);
-        return scanner.nextLine().split(NAME_DELIMITER);
+        return Arrays
+            .stream(scanner.nextLine().split(NAME_DELIMITER))
+            .collect(Collectors.toMap(name -> name, this::inputPlayerBetMoney));
+    }
+
+    private Integer inputPlayerBetMoney(String name) {
+        System.out.format(BET_MONEY_PROMPT, name);
+        Integer betMoney = scanner.nextInt();
+        scanner.nextLine();
+
+        return betMoney;
     }
 
     public Boolean inputResponse(NameInfo nameInfo) {

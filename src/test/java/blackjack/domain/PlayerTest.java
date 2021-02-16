@@ -2,6 +2,7 @@ package blackjack.domain;
 
 import blackjack.dto.NameInfo;
 import blackjack.dto.PersonCardsInfo;
+import blackjack.dto.PersonMatchProfitInfo;
 import blackjack.dto.ScoreInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -52,6 +53,7 @@ class PlayerTest {
         return Stream.of(
             Arguments.of(Arrays.asList(10, 10), true),
             Arguments.of(Arrays.asList(1, 10), false),
+            Arguments.of(Arrays.asList(5, 6, 10), false),
             Arguments.of(Arrays.asList(10, 10, 2), false)
         );
     }
@@ -103,12 +105,13 @@ class PlayerTest {
         );
     }
 
-    @DisplayName("Check player get proper match score")
+    @DisplayName("Check player get proper match profit")
     @ParameterizedTest
-    @MethodSource("providerGetMatchScoreParams")
-    void getMatchScore(List<Integer> playerNumbers, List<Integer> dealerNumbers, MatchScore result) {
+    @MethodSource("providerGetPlayerMatchProfitInfoParams")
+    void getPlayerMatchProfitInfo(List<Integer> playerNumbers, List<Integer> dealerNumbers, Integer profit) {
         Player player = new Player(
             "player",
+            10,
             new CardBunch(
                 playerNumbers, Suit.HEARTS
             )
@@ -120,21 +123,21 @@ class PlayerTest {
         );
 
         assertEquals(
-            result,
-            player.getMatchScore(dealer)
+            new PersonMatchProfitInfo("player", profit),
+            player.getPlayerMatchProfitInfo(dealer)
         );
     }
 
-    private static Stream<Arguments> providerGetMatchScoreParams() {
+    private static Stream<Arguments> providerGetPlayerMatchProfitInfoParams() {
         return Stream.of(
-            Arguments.of(List.of(10, 10, 2), List.of(10, 10), MatchScore.LOSE),
-            Arguments.of(List.of(10, 10), List.of(10, 10, 2), MatchScore.WIN),
-            Arguments.of(List.of(1, 10), List.of(1, 10), MatchScore.DRAW),
-            Arguments.of(List.of(1, 10), List.of(10, 10), MatchScore.WIN),
-            Arguments.of(List.of(10, 10), List.of(1, 10), MatchScore.LOSE),
-            Arguments.of(List.of(9, 10), List.of(9, 10), MatchScore.DRAW),
-            Arguments.of(List.of(10, 10), List.of(10, 9), MatchScore.WIN),
-            Arguments.of(List.of(10, 9), List.of(10, 10), MatchScore.LOSE)
+            Arguments.of(List.of(10, 10, 2), List.of(10, 10), -10),
+            Arguments.of(List.of(10, 10), List.of(10, 10, 2), 10),
+            Arguments.of(List.of(1, 10), List.of(1, 10), 0),
+            Arguments.of(List.of(1, 10), List.of(10, 10), 15),
+            Arguments.of(List.of(10, 10), List.of(1, 10), -10),
+            Arguments.of(List.of(9, 10), List.of(9, 10), 0),
+            Arguments.of(List.of(10, 10), List.of(10, 9), 10),
+            Arguments.of(List.of(10, 9), List.of(10, 10), -10)
         );
     }
 

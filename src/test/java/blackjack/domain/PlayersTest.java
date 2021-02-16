@@ -1,5 +1,6 @@
 package blackjack.domain;
 
+import blackjack.dto.PersonMatchProfitInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -158,6 +159,49 @@ class PlayersTest {
         assertTrue(players.hasActivePlayer());
         players.endActivePlayerTurn();
         assertFalse(players.hasActivePlayer());
+    }
+
+    @DisplayName("Check players return correct match profit information")
+    @Test
+    void playMatch() {
+        Player player1 = new Player("player1", 10, new CardBunch(List.of(1, 10), Suit.HEARTS));
+        Player player2 = new Player("player2", 10, new CardBunch(List.of(10, 10), Suit.HEARTS));
+        Player player3 = new Player("player3", 10, new CardBunch(List.of(9, 10), Suit.HEARTS));
+        Player player4 = new Player("player4", 10, new CardBunch(List.of(8, 10), Suit.HEARTS));
+        Players players = new Players(List.of(player1, player2, player3, player4));
+
+        Dealer dealer = new Dealer(
+            new CardBunch(List.of(10, 9), Suit.HEARTS)
+        );
+
+        assertEquals(
+            List.of(
+                new PersonMatchProfitInfo("딜러", -15),
+                new PersonMatchProfitInfo("player1", 15),
+                new PersonMatchProfitInfo("player2", 10),
+                new PersonMatchProfitInfo("player3", 0),
+                new PersonMatchProfitInfo("player4", -10)
+            ),
+            players.playMatch(dealer)
+        );
+    }
+
+    @DisplayName("Check players return correct active players name information")
+    @Test
+    void getActivePlayerNameInfo() {
+        assertEquals(
+            testPlayer1.getNameInfo(),
+            testPlayers.getActivePlayerNameInfo()
+        );
+    }
+
+    @DisplayName("Check players return correct active players cards information")
+    @Test
+    void getActivePlayerCardsInfo() {
+        assertEquals(
+            testPlayer1.getPersonCardsInfo(),
+            testPlayers.getActivePlayerCardsInfo()
+        );
     }
 
     @DisplayName("Check players return correct players name information")

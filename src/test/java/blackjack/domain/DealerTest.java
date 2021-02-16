@@ -2,6 +2,7 @@ package blackjack.domain;
 
 import blackjack.dto.NameInfo;
 import blackjack.dto.PersonCardsInfo;
+import blackjack.dto.PersonMatchProfitInfo;
 import blackjack.dto.ScoreInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -50,6 +51,28 @@ class DealerTest {
         return Stream.of(
             Arguments.of(Arrays.asList(6, 10), true),
             Arguments.of(Arrays.asList(10, 7), false)
+        );
+    }
+
+    @DisplayName("Check Dealer add profit well")
+    @Test
+    void addProfit() {
+        Dealer dealer = new Dealer();
+
+        dealer.addProfit(20);
+
+        assertEquals(
+            new PersonMatchProfitInfo("딜러", 20),
+            dealer.getDealerProfitInfo()
+        );
+    }
+
+    @DisplayName("Check Dealer return correct profit information")
+    @Test
+    void getDealerProfitInfo() {
+        assertEquals(
+            new PersonMatchProfitInfo("딜러", 30),
+            new Dealer(30).getDealerProfitInfo()
         );
     }
 

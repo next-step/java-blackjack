@@ -1,11 +1,12 @@
 package blackjack.domain;
 
+import blackjack.dto.PersonMatchProfitInfo;
 import blackjack.dto.NameInfo;
 import blackjack.dto.PersonCardsInfo;
 import blackjack.dto.ScoreInfo;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Players {
@@ -22,11 +23,12 @@ public class Players {
         this.activePlayerIdx = activePlayerIdx;
     }
 
-    public static Players create(String[] names) {
+    public static Players create(Map<String, Integer> playerItems) {
         return new Players(
-            Arrays
-                .stream(names)
-                .map(Player::new)
+            playerItems
+                .entrySet()
+                .stream()
+                .map(map -> new Player(map.getKey(), map.getValue()))
                 .collect(Collectors.toList())
         );
     }
@@ -55,15 +57,14 @@ public class Players {
         activePlayerIdx++;
     }
 
-    public MatchScoreBoard playMatch(Dealer dealer) {
-        return new MatchScoreBoard(
-            players
-                .stream()
-                .collect(Collectors.toMap(
-                    player -> player,
-                    player -> player.getMatchScore(dealer)
-                ))
-        );
+    public List<PersonMatchProfitInfo> playMatch(Dealer dealer) {
+        List<PersonMatchProfitInfo> peopleProfitInfo = players
+            .stream()
+            .map(player -> player.getPlayerMatchProfitInfo(dealer))
+            .collect(Collectors.toList());
+        peopleProfitInfo.add(0, dealer.getDealerProfitInfo());
+
+        return peopleProfitInfo;
     }
 
     public NameInfo getActivePlayerNameInfo() {

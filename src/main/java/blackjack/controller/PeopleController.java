@@ -2,7 +2,6 @@ package blackjack.controller;
 
 import blackjack.domain.Dealer;
 import blackjack.domain.Deck;
-import blackjack.domain.MatchScoreBoard;
 import blackjack.domain.Players;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
@@ -62,10 +61,9 @@ public class PeopleController {
     }
 
     public void actionEndPhase(OutputView output) {
-        MatchScoreBoard matchScoreBoard = players.playMatch(dealer);
-
-        output.printMatchScoreGuideMsg();
-        output.printDealerMatchScoreInfo(dealer.getNameInfo(), matchScoreBoard.getDealerMatchScoreInfo());
-        output.printPlayersMatchScoreInfo(matchScoreBoard.getPlayersMatchScoreInfo());
+        output.printMatchProfitGuideMsg();
+        output.printPeopleMatchProfitInfo(
+            players.playMatch(dealer)
+        );
     }
 }
