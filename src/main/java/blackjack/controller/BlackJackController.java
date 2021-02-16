@@ -29,28 +29,23 @@ public class BlackJackController {
     }
 
     public void decideToDraw() {
-        for (Player player : gamers.getPlayers()) {
-            drawPhase(blackJackCard, player);
+        for(User user: gamers.getUsers()) {
+            userDrawPhase(user);
         }
+        dealerDrawPhase(gamers.getDealer());
     }
 
-    private void drawPhase(BlackJackCard blackJackCard, Player player) {
-        if (player instanceof User) {
-            decideToDrawCard(blackJackCard, player);
-            OutputView.outputPlayerStatus(player);
-            return;
+    private void userDrawPhase(User user) {
+        while(InputView.getDecision(user.getName())){
+            user.drawCard(blackJackCard.pickOneCard());
         }
+        OutputView.outputPlayerStatus(user);
+    }
 
-        if (player.getCardHand().calculateScore() <= Dealer.UPPER_BOUND_TO_DRAW) {
-            player.drawCard(blackJackCard.pickOneCard());
+    private void dealerDrawPhase(Dealer dealer) {
+        if (dealer.getCardHand().calculateScore() <= Dealer.UPPER_BOUND_TO_DRAW) {
+            dealer.drawCard(blackJackCard.pickOneCard());
             OutputView.outputDealersDraw();
-        }
-    }
-
-    private void decideToDrawCard(BlackJackCard blackJackCard, Player player) {
-        boolean isDraw = InputView.getDecision(player.getName());
-        if (isDraw) {
-            player.drawCard(blackJackCard.pickOneCard());
         }
     }
 
