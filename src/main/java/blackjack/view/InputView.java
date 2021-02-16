@@ -33,4 +33,14 @@ public class InputView {
             throw new IllegalArgumentException("y 혹은 n 만 입력해 주세요.");
         }
     }
+
+    public static int betting() {
+        int money = 0;
+        try {
+            money = input.read();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+        return money;
+    }
 }

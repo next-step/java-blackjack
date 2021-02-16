@@ -18,7 +18,8 @@ public enum ViewConstantStrings {
     WIN("승"),
     LOSS("패"),
     DEALER_UNDER_16("딜러는 16 이하라 한 장의 카드를 더 받았습니다."),
-    DEALER_MORE_THAN_17("딜러는 16 이하라 한 장의 카드를 더 받았습니다.");
+    DEALER_MORE_THAN_17("딜러는 16 이하라 한 장의 카드를 더 받았습니다."),
+    ASK_BETTING("의 배팅 금액은?");
 
     private String constantString;
 

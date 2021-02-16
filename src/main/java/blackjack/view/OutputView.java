@@ -136,4 +136,8 @@ public class OutputView {
     public static void dealerMoreThan17() {
         System.out.println(DEALER_MORE_THAN_17.toString() + NEW_LINE.toString());
     }
+
+    public static void batting(Player player) {
+        System.out.println(player.getName() + ASK_BETTING.toString());
+    }
 }
