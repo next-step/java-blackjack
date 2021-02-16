@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RentCompany {
+
     private final List<Car> cars;
 
     private RentCompany() {

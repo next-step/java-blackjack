@@ -1,6 +1,7 @@
 package rent;
 
 public abstract class Car {
+
     private static final String NEWLINE = System.getProperty("line.separator");
     private final Integer distance;
     private final Integer rating;
