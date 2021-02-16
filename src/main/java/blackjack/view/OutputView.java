@@ -1,6 +1,5 @@
 package blackjack.view;
 
-import blackjack.model.Card;
 import blackjack.model.Player;
 
 import java.util.List;

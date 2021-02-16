@@ -1,7 +1,5 @@
 package oilInjection.view;
 
-import oilInjection.model.Distance;
-
 import java.util.Scanner;
 
 public class InputView {
