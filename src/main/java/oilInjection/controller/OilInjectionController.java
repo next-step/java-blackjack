@@ -1,5 +1,6 @@
 package oilInjection.controller;
 
+import oilInjection.model.Distance;
 import oilInjection.model.RentCompany;
 import oilInjection.model.Car;
 import oilInjection.view.InputView;
@@ -12,7 +13,7 @@ public class OilInjectionController {
        InputView.printGetDistanceMessage();
        for (Car car : rentCompany.getCarList()) {
            OutputView.printCarName(car.getName());
-           car.registerTripDistance(InputView.getDistance());
+           car.registerTripDistance(Distance.of(InputView.getDistance()));
            car.injectOil();
        }
     }
