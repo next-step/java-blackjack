@@ -49,11 +49,11 @@ public class Gamers {
         users.forEach(user -> {
             if (dealerResultValidation(user)
                     || user.getCardHandScore() > CardBundle.BLACK_JACK) {
-                dealer.setWinningCount(dealer.getWinningCount() + 1);
+                dealer.increaseWinningCount();
                 user.setWin(false);
                 return;
             }
-            dealer.setLosingCount(dealer.getLosingCount() + 1);
+            dealer.increaseLosingCount();
             user.setWin(true);
         });
     }

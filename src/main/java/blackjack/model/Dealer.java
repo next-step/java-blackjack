@@ -27,16 +27,16 @@ public class Dealer extends Player {
         return winningCount;
     }
 
-    public void setWinningCount(int winningCount) {
-        this.winningCount = winningCount;
-    }
-
     public int getLosingCount() {
         return losingCount;
     }
 
-    public void setLosingCount(int losingCount) {
-        this.losingCount = losingCount;
+    public void increaseWinningCount() {
+        this.winningCount++;
+    }
+
+    public void increaseLosingCount() {
+        this.losingCount++;
     }
 
     @Override
