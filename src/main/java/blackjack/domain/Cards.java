@@ -2,37 +2,76 @@ package blackjack.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Cards {
 
-    protected List<Card> cardList;
+    private static final int BLACKJACK = 21;
+    protected List<Card> cards;
+    private int cardSum;
 
     public Cards() {
-        cardList = new ArrayList<>();
+        cards = new ArrayList<>();
     }
 
-    public List<Card> getCardList() {
-        return cardList;
+    public List<Card> getCards() {
+        return cards;
     }
 
     public void addCard(Card card) {
-        cardList.add(card);
+        cards.add(card);
+    }
+
+    private int getCardSum() {
+        return cards.stream()
+            .mapToInt(
+                card -> card.getDenomination().getScore()
+            ).sum();
+    }
+
+    private int getAceCount() {
+        return Long.valueOf(cards.stream()
+            .filter(
+                card -> card.getDenomination().isAce()
+            ).count()).intValue();
+    }
+
+    private void addScore() {
+        if (cardSum + Denomination.ACE.getScore() <= BLACKJACK) {
+            cardSum += 10;
+        }
     }
 
     public Score getScore() {
-        int sum = cardList.stream().mapToInt(card -> card.getDenomination().getScore()).sum(); // 13
-        long aceCount = cardList.stream().filter(card -> card.getDenomination().isAce()).count();
-        for (int i = 0; i < aceCount; i++) {
-            if (sum + 10 <= 21) {
-                sum += 10;
-            }
-        }
-        return new Score(sum);
+        cardSum = getCardSum();
+        IntStream.range(0, getAceCount())
+            .forEach(i -> addScore());
+        return new Score(cardSum);
     }
 
     @Override
     public String toString() {
-        return cardList.stream().map(Card::toString).collect(Collectors.joining(", "));
+        return cards.stream()
+            .map(Card::toString)
+            .collect(Collectors.joining(", "));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Cards cards = (Cards) o;
+        return cardSum == cards.cardSum && Objects.equals(this.cards, cards.cards);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cards, cardSum);
     }
 }

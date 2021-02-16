@@ -16,7 +16,12 @@ public class Gamer extends Player {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        return stringBuilder.append(name).append(CARD).append(getCards().toString()).toString();
+        return stringBuilder
+            .append(name)
+            .append(CARD)
+            .append(
+                getCards().toString()
+            ).toString();
     }
 
     public void getMoreCard(String answer) {
