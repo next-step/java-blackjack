@@ -60,19 +60,20 @@ public class BlackjackController {
         resultView.printCards(gamer);
     }
 
-    public void getMoreCardDealer() {
+    private void getMoreCardDealer() {
         resultView.printIsGotMoreCard(dealer.addCardUnderScore());
     }
 
-    public void calculateResult() {
+    private void calculateResult() {
         finalResult = new FinalResult();
-        finalResult.calculateFinalWinner(dealer, gamers);
+        finalResult.calculateFinalResult(dealer, gamers);
+        finalResult.calculateGamerScore(gamers);
     }
 
-    public void showResult() {
+    private void showResult() {
         resultView.showResultDealer(dealer.getCards().toString(), dealer.getScore().getValue());
-        resultView.showResultGamers(Arrays.asList(gamers.toString().split("\n")), finalResult.getScores());
-        resultView.showWinLoseCountDealer(finalResult.getWinCount(), finalResult.getLoseCount());
+        resultView.showResultGamers(gamers.getGamerInfo(), finalResult.getScores());
+        resultView.showWinLoseCountDealer(dealer.getWinCount(), dealer.getLoseCount());
         resultView.showWinLoseResultGamers(finalResult.getFinalWinner());
     }
 }
