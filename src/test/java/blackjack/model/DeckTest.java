@@ -1,19 +1,24 @@
 package blackjack.model;
 
-import blackjack.model.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.EmptyStackException;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DeckTest {
     @Test
-    @DisplayName("처음에 카드를 만들었을 때, 카드의 숫자가 52장인 지, 확인하는 테스트")
+    @DisplayName("처음에 카드를 만들고, 52장의 카드를 뽑은 후에, 에러가 나는 지 확인하는 테스트")
     void deckAmountTest() {
         final ShuffleStrategy emptyShuffleStrategy = new EmptyShuffleStrategy();
         final Deck deck = new Deck(emptyShuffleStrategy);
-        final int amount = deck.getAmount();
-        assertThat(amount).isEqualTo(52);
+        for(int i = 0; i< 52; i ++){
+            deck.getCard();
+        }
+
+        assertThrows(EmptyStackException.class, deck::getCard);
     }
 
     @Test

@@ -16,10 +16,6 @@ public class Deck {
         return cards.pop();
     }
 
-    public int getAmount() {
-        return cards.size();
-    }
-
     private void validateSize(Stack<Card> cards) {
         if (cards.size() == 0) {
             throw new EmptyStackException();
