@@ -47,8 +47,6 @@ public class Dealer extends Player {
 
     @Override
     public String toString() {
-        StringBuilder dealerString = new StringBuilder(super.toString());
-        dealerString.append(cardHand.getCards().get(0).toString());
-        return dealerString.toString();
+        return super.toString() + cardHand.getCards().get(0).toString();
     }
 }

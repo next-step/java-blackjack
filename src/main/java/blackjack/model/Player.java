@@ -39,9 +39,6 @@ public abstract class Player {
 
     @Override
     public String toString() {
-        StringBuilder playerString = new StringBuilder();
-        playerString.append(name);
-        playerString.append(COLON);
-        return playerString.toString();
+        return name + COLON;
     }
 }
