@@ -8,5 +8,4 @@ public class RentCarApplication {
         RentCarController rentCarController = new RentCarController();
         rentCarController.startService();
     }
-
 }

@@ -27,10 +27,7 @@ public class RentCompany {
 
     public String generateReport() {
         StringBuilder report = new StringBuilder();
-        for(Car car : carList){
-            report.append(car.getName()+" : "+(int)car.getChargeQuantity()+ LITER + NEW_LINE);
-        }
-        System.out.println(report);
+        carList.forEach(car -> report.append(car.getName() + " : " + (int) car.getChargeQuantity() + LITER + NEW_LINE));
         return report.toString();
     }
 }
