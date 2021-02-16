@@ -40,17 +40,7 @@ public class Gamer implements Player {
 
     @Override
     public int getTotalScore() {
-        int totalScore = 0;
-
-        for (final Card card : pocket.getCards()) {
-            totalScore += card.getScore();
-        }
-
-        if (hasAce() && totalScore < 11) {
-            totalScore += 10;
-        }
-
-        return totalScore;
+        return pocket.getTotalScore();
     }
 
     @Override

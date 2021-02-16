@@ -43,8 +43,6 @@ public class Dealer implements Player {
 
     @Override
     public boolean hasAce() {
-        return pocket.getCards()
-                .stream()
-                .anyMatch(card -> card.getValue() == CardValue.ACE);
+        return pocket.hasAce();
     }
 }
