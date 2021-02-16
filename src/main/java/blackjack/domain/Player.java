@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Player implements GameParticipant {
+    private static final int BLACKJACK = 21;
+    private static final int ACE_BONUS= 10;
     private final String name;
     private List<Card> cards = new ArrayList<>();
 
@@ -46,13 +48,16 @@ public class Player implements GameParticipant {
         for (Card card : cards) {
             int cardNumber = card.getDenomination().getNumber();
             score += cardNumber;
-            if (cardNumber == 1) {
-                hasAce = true;
-            }
+            hasAce = hasAce || checkAce(cardNumber);
         }
-        if (hasAce && score + 10 <= 21) {
-            score += 10;
+        if (hasAce && score + ACE_BONUS <= BLACKJACK) {
+            score += ACE_BONUS;
         }
         return score;
+    }
+
+    @Override
+    public boolean checkAce(int cardNumber) {
+        return cardNumber == 1;
     }
 }

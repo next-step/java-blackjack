@@ -12,4 +12,6 @@ public interface GameParticipant {
     List<Card> getCards();
 
     int getResult();
+
+    boolean checkAce(int cardNumber);
 }

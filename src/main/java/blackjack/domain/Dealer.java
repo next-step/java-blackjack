@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Dealer implements GameParticipant {
+    private static final int BLACKJACK = 21;
+    private static final int ACE_BONUS= 10;
     private static final int CRITERIA = 17;
     private static final String NAME = "딜러";
     private static final List<Card> cards = new ArrayList<>();
@@ -36,14 +38,17 @@ public class Dealer implements GameParticipant {
         for (Card card : cards) {
             int cardNumber = card.getDenomination().getNumber();
             score += cardNumber;
-            if (cardNumber == 1) {
-                hasAce = true;
-            }
+            hasAce = hasAce || checkAce(cardNumber);
         }
-        if (hasAce && score + 10 <= 21) {
-            score += 10;
+        if (hasAce && score + ACE_BONUS <= BLACKJACK) {
+            score += ACE_BONUS;
         }
         return score;
+    }
+
+    @Override
+    public boolean checkAce(int cardNumber) {
+        return cardNumber == 1;
     }
 
     public boolean isActive() {
