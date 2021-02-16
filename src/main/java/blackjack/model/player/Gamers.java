@@ -33,7 +33,11 @@ public class Gamers {
     }
 
     public void addUsers(String[] usersName) {
-        Arrays.stream(usersName).forEach(name -> users.add(User.of(name)));
+        addUsers(Arrays.asList(usersName));
+    }
+
+    public void addUsers(List<String> usersName) {
+        usersName.forEach(name -> users.add(User.of(name)));
     }
 
     public void initGamerCardHand(BlackJackCard blackJackCard) {

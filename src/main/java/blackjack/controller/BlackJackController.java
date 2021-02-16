@@ -8,6 +8,8 @@ import blackjack.model.player.Dealer;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
+import java.util.List;
+
 public class BlackJackController {
     private final Gamers gamers;
     private final BlackJackCard blackJackCard;
@@ -19,7 +21,7 @@ public class BlackJackController {
     }
 
     private void registerUser() {
-        String[] usersName = InputView.getUsersName();
+        List<String> usersName = InputView.getUsersName();
         gamers.addUsers(usersName);
     }
 
