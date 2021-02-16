@@ -6,6 +6,7 @@ import blackjack.domain.Suit;
 import java.util.Objects;
 
 public class CardInfo {
+
     private final Denomination denomination;
     private final Suit suit;
 
@@ -20,6 +21,10 @@ public class CardInfo {
 
     public Suit getSuit() {
         return suit;
+    }
+
+    public String getFullCardInfo() {
+        return denomination.getName() + suit.getName();
     }
 
     @Override

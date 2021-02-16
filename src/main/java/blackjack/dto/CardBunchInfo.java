@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class CardBunchInfo {
+
     private final List<CardInfo> cardsInfo;
 
     public CardBunchInfo(List<CardInfo> cardsInfo) {

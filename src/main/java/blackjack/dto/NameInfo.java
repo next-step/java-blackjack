@@ -3,6 +3,7 @@ package blackjack.dto;
 import java.util.Objects;
 
 public class NameInfo {
+
     private final String name;
 
     public NameInfo(String name) {
