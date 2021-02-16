@@ -33,7 +33,7 @@ public class Exporter {
         return players
                 .getPlayers(player -> true)
                 .stream()
-                .map(player -> String.format(CARD_STATUS_SCORE_MESSAGE, player.exportCardStats(), player.getCardsScore()))
+                .map(player -> String.format(CARD_STATUS_SCORE_MESSAGE, player.exportCardStats(), player.getTotalScore()))
                 .collect(Collectors.joining("\n"));
     }
 

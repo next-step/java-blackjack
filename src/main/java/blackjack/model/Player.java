@@ -11,7 +11,7 @@ public interface Player {
 
     String exportCardStats();
 
-    int getCardsScore();
+    int getTotalScore();
 
     boolean hasAce();
 }

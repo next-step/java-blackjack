@@ -65,7 +65,7 @@ class GamerTest {
         gamer.receiveCard();
         gamer.receiveCard();
 
-        final int cardsScore = gamer.getCardsScore();
+        final int cardsScore = gamer.getTotalScore();
         assertThat(cardsScore).isEqualTo(20);
     }
 

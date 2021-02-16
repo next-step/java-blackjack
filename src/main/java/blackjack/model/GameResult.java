@@ -47,15 +47,15 @@ public class GameResult {
     }
 
     private void putGameResult(final Player gamer, final Player dealer) {
-        if (gamer.getCardsScore() == WINNING_CONDITION && gamer.getCardStats().getCards().size() == BLACKJACK_WINNING_AMOUNT) {
+        if (gamer.getTotalScore() == WINNING_CONDITION && gamer.getCardStats().getCards().size() == BLACKJACK_WINNING_AMOUNT) {
             result.put(gamer, Result.BLACKJACK);
-        } else if (gamer.getCardsScore() > dealer.getCardsScore()) {
+        } else if (gamer.getTotalScore() > dealer.getTotalScore()) {
             result.put(gamer, Result.WIN);
-        } else if (gamer.getCardsScore() > WINNING_CONDITION) {
+        } else if (gamer.getTotalScore() > WINNING_CONDITION) {
             result.put(gamer, Result.BUST);
-        } else if (gamer.getCardsScore() == dealer.getCardsScore()) {
+        } else if (gamer.getTotalScore() == dealer.getTotalScore()) {
             result.put(gamer, Result.PUSH);
-        } else if (gamer.getCardsScore() < dealer.getCardsScore()) {
+        } else if (gamer.getTotalScore() < dealer.getTotalScore()) {
             result.put(gamer, Result.LOSE);
         }
     }

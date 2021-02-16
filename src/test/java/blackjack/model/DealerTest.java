@@ -64,7 +64,7 @@ class DealerTest {
         dealer.receiveCard();
         dealer.receiveCard();
 
-        final int cardsScore = dealer.getCardsScore();
+        final int cardsScore = dealer.getTotalScore();
         assertThat(cardsScore).isEqualTo(20);
     }
 

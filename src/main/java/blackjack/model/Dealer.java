@@ -37,18 +37,8 @@ public class Dealer implements Player {
     }
 
     @Override
-    public int getCardsScore() {
-        int totalScore = 0;
-
-        for (final Card card : pocket.getCards()) {
-            totalScore += card.getScore();
-        }
-
-        if (hasAce() && totalScore < 11) {
-            totalScore += 10;
-        }
-
-        return totalScore;
+    public int getTotalScore() {
+        return pocket.getTotalScore();
     }
 
     @Override

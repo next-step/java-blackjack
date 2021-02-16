@@ -39,7 +39,7 @@ public class Gamer implements Player {
     }
 
     @Override
-    public int getCardsScore() {
+    public int getTotalScore() {
         int totalScore = 0;
 
         for (final Card card : pocket.getCards()) {

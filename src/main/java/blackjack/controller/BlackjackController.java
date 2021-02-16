@@ -36,7 +36,7 @@ public class BlackjackController {
         final Exporter exporter = new Exporter(players);
         final Player dealer = players.getDealer();
 
-        if (dealer.getCardsScore() < DEALER_HIT_CONDITION) {
+        if (dealer.getTotalScore() < DEALER_HIT_CONDITION) {
             dealer.receiveCard();
         }
 
