@@ -8,13 +8,11 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    // 게임 참여자 입력 받기
     public String getGamers() {
         System.out.println(NAME_MESSAGE);
         return scanner.nextLine();
     }
 
-    // 카드 더 받을지 물어보기
     public String askMoreCard(String name) {
         System.out.printf((MORE_CARD_MESSAGE) + "%n", name);
         return scanner.nextLine();
