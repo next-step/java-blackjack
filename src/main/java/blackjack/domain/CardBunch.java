@@ -1,73 +1,76 @@
 package blackjack.domain;
 
 import blackjack.dto.CardBunchInfo;
-import blackjack.dto.CardInfo;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class CardBunch {
-    private static final Integer BUST_LIMIT = 21;
 
-    private final List<Card> cardBunch;
+    private static final Integer BLACKJACK_LIMIT = 21;
+    private static final Integer ACE_LIMIT = 12;
+
+    private final List<Card> cardBunches;
 
     public CardBunch() {
-        this.cardBunch = new ArrayList<>();
+        this.cardBunches = new ArrayList<>();
     }
 
     public CardBunch(List<Card> cardBunch) {
-        this.cardBunch = cardBunch;
+        this.cardBunches = cardBunch;
     }
 
-    public CardBunch(List<Integer> score, Suit suit) {
-        cardBunch = score.stream().map(
-            n -> new Card(
-                Denomination.of(n),
-                suit
-            )
+    public CardBunch(List<Integer> denom, Suit suit) {
+        cardBunches = denom.stream().map(
+                n -> new Card(
+                        Denomination.of(n),
+                        suit
+                )
         ).collect(
-            Collectors.toList()
+                Collectors.toList()
         );
     }
 
     public void drawCard(Deck deck) {
-        cardBunch.add(
-            deck.drawCard()
+        cardBunches.add(
+                deck.drawCard()
         );
-    }
-
-    public boolean isUnderLimit(Integer limit) {
-        return calcScore() < limit;
     }
 
     public boolean isBust() {
-        return calcScore() > BUST_LIMIT;
+        return calcScore() > BLACKJACK_LIMIT;
     }
 
-    private Integer calcScore() {
-        int score = cardBunch.stream().mapToInt(
-            Card::getScore
-        ).sum();
-        boolean haveAce = cardBunch.stream().anyMatch(
-            Card::isAce
-        );
+    public boolean isBlackJack() {
+        return calcScore().equals(BLACKJACK_LIMIT);
+    }
 
-        if (haveAce && score < 12) {
+    public Integer calcScore() {
+        int score = cardBunches.stream().mapToInt(
+                Card::getScore
+        ).sum();
+
+        if (isHaveAce() && score < ACE_LIMIT) {
             return score + 10;
         }
         return score;
     }
 
+    private boolean isHaveAce() {
+        return cardBunches.stream().anyMatch(
+                Card::isAce
+        );
+    }
+
     public CardBunchInfo getCardBunchInfo() {
         return new CardBunchInfo(
-            cardBunch.stream().map(
-                Card::getCardInfo
-            ).collect(
-                Collectors.toList()
-            )
+                cardBunches.stream().map(
+                        Card::getCardInfo
+                ).collect(
+                        Collectors.toList()
+                )
         );
     }
 
@@ -76,11 +79,11 @@ public class CardBunch {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CardBunch cardBunch1 = (CardBunch) o;
-        return Objects.equals(cardBunch, cardBunch1.cardBunch);
+        return Objects.equals(cardBunches, cardBunch1.cardBunches);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cardBunch);
+        return Objects.hash(cardBunches);
     }
 }

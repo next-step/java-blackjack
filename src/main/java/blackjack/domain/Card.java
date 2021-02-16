@@ -5,6 +5,7 @@ import blackjack.dto.CardInfo;
 import java.util.Objects;
 
 public class Card {
+
     private final Denomination denomination;
     private final Suit suit;
 
@@ -23,8 +24,8 @@ public class Card {
 
     public CardInfo getCardInfo() {
         return new CardInfo(
-            denomination,
-            suit
+                denomination,
+                suit
         );
     }
 
