@@ -1,4 +1,7 @@
-package blackjack.model;
+package blackjack.model.player;
+
+import blackjack.model.card.BlackJackCard;
+import blackjack.model.card.CardBundle;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,20 +48,22 @@ public class Gamers {
     }
 
     public void calculateResult() {
-
-        users.forEach(user -> {
-            if (dealerResultValidation(user)
-                    || user.getCardHandScore() > CardBundle.BLACK_JACK) {
-                dealer.increaseWinningCount();
-                user.setWin(false);
-                return;
-            }
-            dealer.increaseLosingCount();
-            user.setWin(true);
-        });
+        users.forEach(user -> dealerWinOrLose(canDealerWin(user), user));
     }
 
-    private boolean dealerResultValidation(User user) {
-        return dealer.getCardHandScore() <= CardBundle.BLACK_JACK && dealer.getCardHandScore() >= user.getCardHandScore();
+    private boolean canDealerWin(User user) {
+        return (dealer.getCardHandScore() <= CardBundle.BLACK_JACK
+                && dealer.getCardHandScore() >= user.getCardHandScore())
+                || user.getCardHandScore() > CardBundle.BLACK_JACK;
+    }
+
+    private void dealerWinOrLose(boolean win, User enemy) {
+        if(win){
+            dealer.increaseWinningCount();
+            enemy.setWin(false);
+            return;
+        }
+        dealer.increaseLosingCount();
+        enemy.setWin(true);
     }
 }
