@@ -1,6 +1,10 @@
 package blackjack.controller;
 
-import blackjack.model.*;
+import blackjack.model.BlackJackCard;
+import blackjack.model.Gamers;
+import blackjack.model.Player;
+import blackjack.model.User;
+import blackjack.model.Dealer;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
@@ -37,7 +41,7 @@ public class BlackJackController {
             return;
         }
 
-        if (player.getCardHand().calculateScore() <= Dealer.UPPER_BOUND_TO_DRAW){
+        if (player.getCardHand().calculateScore() <= Dealer.UPPER_BOUND_TO_DRAW) {
             player.drawCard(blackJackCard.pickOneCard());
             OutputView.outputDealersDraw();
         }

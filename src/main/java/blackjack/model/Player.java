@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import static blackjack.utils.StringUtils.COLON;
 
 public abstract class Player {
-
     protected final CardBundle cardHand;
     protected final String name;
 
@@ -30,6 +29,7 @@ public abstract class Player {
     public void drawCard(Card card) {
         cardHand.add(card);
     }
+
     public int getCardHandScore() {
 
         return cardHand.calculateScore();

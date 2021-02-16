@@ -2,8 +2,7 @@ package blackjack.model;
 
 import blackjack.utils.StringUtils;
 
-public class Dealer extends Player{
-
+public class Dealer extends Player {
     public static final int UPPER_BOUND_TO_DRAW = 16;
     private static final String RESULT_STRING_FORMAT = "%s: %d%s %d%s";
     private int winningCount = 0;
@@ -18,7 +17,7 @@ public class Dealer extends Player{
     }
 
     public static Dealer of(CardBundle cardHand, String name) {
-        return new Dealer(cardHand,name);
+        return new Dealer(cardHand, name);
     }
 
     public static Dealer of(String name) {
@@ -42,7 +41,7 @@ public class Dealer extends Player{
     }
 
     @Override
-    public String getResult(){
+    public String getResult() {
         return String.format(RESULT_STRING_FORMAT,
                 name,
                 winningCount, StringUtils.WIN,

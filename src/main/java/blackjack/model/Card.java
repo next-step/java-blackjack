@@ -8,7 +8,6 @@ public class Card {
     private final Type type;
     private final Symbol symbol;
 
-
     private Card(Type type, Symbol symbol) {
         this.type = type;
         this.symbol = symbol;

@@ -9,7 +9,6 @@ public class Gamers {
     private final Dealer dealer;
     private final List<User> users;
 
-
     public Gamers() {
         dealer = new Dealer("dealer");
         users = new ArrayList<>();
@@ -23,33 +22,33 @@ public class Gamers {
         return users;
     }
 
-    public List<Player> getPlayers(){
+    public List<Player> getPlayers() {
         List<Player> players = new ArrayList<>();
         players.add(dealer);
         players.addAll(users);
         return players;
     }
 
-    public void addUsers(String[] usersName){
+    public void addUsers(String[] usersName) {
         Arrays.stream(usersName).forEach(name -> users.add(User.of(name)));
     }
 
-    public void initGamerCardHand(BlackJackCard blackJackCard){
+    public void initGamerCardHand(BlackJackCard blackJackCard) {
         drawCardAsCount(dealer, blackJackCard);
         users.forEach(user -> drawCardAsCount(user, blackJackCard));
     }
 
     private void drawCardAsCount(Player player, BlackJackCard blackJackCard) {
-        for (int i = 0; i < FIRST_DRAW_CARD_COUNT; ++i){
+        for (int i = 0; i < FIRST_DRAW_CARD_COUNT; ++i) {
             player.drawCard(blackJackCard.pickOneCard());
         }
     }
 
-    public void calculateResult(){
+    public void calculateResult() {
 
         users.forEach(user -> {
-            if(dealerResultValidation(user)
-                    || user.getCardHandScore() > CardBundle.BLACK_JACK){
+            if (dealerResultValidation(user)
+                    || user.getCardHandScore() > CardBundle.BLACK_JACK) {
                 dealer.setWinningCount(dealer.getWinningCount() + 1);
                 user.setWin(false);
                 return;

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardBundle {
-
     public static final int BLACK_JACK = 21;
     private static final int ACE_BONUS = 10;
     private final List<Card> cards;
@@ -21,7 +20,7 @@ public class CardBundle {
         return new CardBundle(cards);
     }
 
-    public void generateOneTypeCards(Type type){
+    public void generateOneTypeCards(Type type) {
         List<Card> cards = new ArrayList<>();
         for (Symbol symbol : Symbol.values()) {
             cards.add(Card.of(type, symbol));
@@ -29,7 +28,7 @@ public class CardBundle {
         concat(cards);
     }
 
-    private void concat(List<Card> cards){
+    private void concat(List<Card> cards) {
         this.cards.addAll(cards);
     }
 
@@ -45,14 +44,14 @@ public class CardBundle {
                 );
 
         for (Card card : cards) {
-            sum += checkAceScore(card,sum);
+            sum += checkAceScore(card, sum);
         }
 
         return sum;
     }
 
-    private int checkAceScore(Card card, int expectedSum){
-        if(canChangeAceScore(card,expectedSum)) {
+    private int checkAceScore(Card card, int expectedSum) {
+        if (canChangeAceScore(card, expectedSum)) {
             return ACE_BONUS;
         }
         return 0;
