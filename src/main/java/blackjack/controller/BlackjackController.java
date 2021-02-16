@@ -7,16 +7,14 @@ import blackjack.domain.Gamer;
 import blackjack.domain.Gamers;
 import blackjack.view.InputView;
 import blackjack.view.ResultView;
-import java.util.Arrays;
 
 public class BlackjackController {
 
-    InputView inputView;
-    ResultView resultView;
-    Deck deck;
-    Gamers gamers;
-    Dealer dealer;
-    FinalResult finalResult;
+    private final InputView inputView;
+    private final ResultView resultView;
+    private Gamers gamers;
+    private Dealer dealer;
+    private FinalResult finalResult;
 
     public BlackjackController(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
@@ -32,7 +30,7 @@ public class BlackjackController {
     }
 
     private void joinPlayers() {
-        deck = new Deck();
+        Deck deck = new Deck();
         dealer = new Dealer(deck);
         try {
             gamers = new Gamers(
