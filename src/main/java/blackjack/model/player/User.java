@@ -1,5 +1,6 @@
-package blackjack.model;
+package blackjack.model.player;
 
+import blackjack.model.card.CardBundle;
 import blackjack.utils.StringUtils;
 
 public class User extends Player {

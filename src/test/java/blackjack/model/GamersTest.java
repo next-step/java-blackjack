@@ -1,12 +1,14 @@
 package blackjack.model;
 
-import blackjack.view.InputView;
-import org.junit.jupiter.api.Assertions;
+import blackjack.model.card.Card;
+import blackjack.model.card.Symbol;
+import blackjack.model.card.Type;
+import blackjack.model.player.Gamers;
+import blackjack.model.player.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class GamersTest {
 
@@ -19,7 +21,7 @@ class GamersTest {
         gamers.addUsers(usersName);
 
 
-        gamers.getDealer().drawCard(Card.of(Type.CLOVER,Symbol.EIGHT));
+        gamers.getDealer().drawCard(Card.of(Type.CLOVER, Symbol.EIGHT));
         gamers.getDealer().drawCard(Card.of(Type.CLOVER,Symbol.ACE));
 
         for (Player player : gamers.getPlayers()) {

@@ -1,5 +1,8 @@
 package blackjack.model;
 
+import blackjack.model.card.BlackJackCard;
+import blackjack.model.card.Card;
+import blackjack.model.card.CardBundle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
