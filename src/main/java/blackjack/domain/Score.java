@@ -4,13 +4,13 @@ import java.util.Objects;
 
 public class Score {
 
-    private final Integer score;
+    private final int score;
 
-    public Score(Integer score) {
+    public Score(int score) {
         this.score = score;
     }
 
-    public Integer getValue() {
+    public int getValue() {
         return score;
     }
 
