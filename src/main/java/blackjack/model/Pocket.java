@@ -8,6 +8,7 @@ public class Pocket {
     private final List<Card> cards = new ArrayList<>();
     private static final int ACE_PLUS_SCORE_BOUNDARY = 11;
     private static final int ACE_PLUS_SCORE = 10;
+    private static final int EMPTY_SIZE = 0;
 
     public void add(Card card) {
         cards.add(card);
@@ -18,7 +19,7 @@ public class Pocket {
     }
 
     public String getCardsName() {
-        if (cards.size() == 0) {
+        if (cards.size() == EMPTY_SIZE) {
             throw new IllegalStateException("포켓에 카드가 없는 상태입니다.");
         }
         return cards.stream()
