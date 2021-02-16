@@ -13,13 +13,13 @@ class PlayersFactoryTest {
     @Test
     void generatePlayers() {
         assertEquals(
-            new Players(
-                Arrays.asList(
-                    new Player("pobi"),
-                    new Player("jason")
-                )
-            ),
-            PlayersFactory.generatePlayers("pobi,jason")
-         );
+                new Players(
+                        Arrays.asList(
+                                new Player("pobi"),
+                                new Player("jason")
+                        )
+                ),
+                PlayersFactory.generatePlayers("pobi,jason")
+        );
     }
 }

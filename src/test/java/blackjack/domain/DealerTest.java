@@ -22,44 +22,7 @@ class DealerTest {
     @BeforeAll
     static void beforeAll() {
         testDealer = new Dealer(
-            new CardBunch(List.of(1, 7, 10), Suit.HEARTS)
-        );
-    }
-
-    @DisplayName("Check that dealer draw card well by dealers logic")
-    @ParameterizedTest
-    @MethodSource("providerRequestCardParams")
-    void requestCard(List<Integer> cards, List<Integer> expected) {
-        Dealer dealer = new Dealer(
-            new CardBunch(
-                cards,
-                Suit.HEARTS
-            )
-        );
-
-        Deck deck = new Deck(
-            new ArrayList<>() {{
-                add(new Card(Denomination.FOUR, Suit.HEARTS));
-            }}
-        );
-
-        dealer.requestCard(deck);
-        assertEquals(
-            new PersonInfo(
-                new NameInfo("딜러"),
-                new CardBunch(
-                    expected,
-                    Suit.HEARTS
-                ).getCardBunchInfo()
-            ),
-            dealer.getPersonInfo()
-        );
-    }
-
-    private static Stream<Arguments> providerRequestCardParams() {
-        return Stream.of(
-            Arguments.of(Arrays.asList(3, 10), Arrays.asList(3, 10, 4)),
-            Arguments.of(Arrays.asList(7, 10), Arrays.asList(7, 10))
+                new CardBunch(List.of(1, 7, 10), Suit.HEARTS)
         );
     }
 
@@ -67,14 +30,14 @@ class DealerTest {
     @Test
     void getPersonInfo() {
         assertEquals(
-            new PersonInfo(
-                new NameInfo("딜러"),
-                new CardBunch(
-                    List.of(1, 7, 10),
-                    Suit.HEARTS
-                ).getCardBunchInfo()
-            ),
-            testDealer.getPersonInfo()
+                new PersonInfo(
+                        new NameInfo("딜러"),
+                        new CardBunch(
+                                List.of(1, 7, 10),
+                                Suit.HEARTS
+                        ).getCardBunchInfo()
+                ),
+                testDealer.getPersonInfo()
         );
     }
 
@@ -82,8 +45,50 @@ class DealerTest {
     @Test
     void getNameInfo() {
         assertEquals(
-            new NameInfo("딜러"),
-            testDealer.getNameInfo()
+                new NameInfo("딜러"),
+                testDealer.getNameInfo()
+        );
+    }
+
+    @DisplayName("Check if dealer can draw card")
+    @ParameterizedTest
+    @MethodSource("providerCanDrawCardParams")
+    void canDrawCard(List<Integer> numbers, boolean expected) {
+        Dealer dealer = new Dealer(new CardBunch(numbers, Suit.HEARTS));
+        assertEquals(
+                expected,
+                dealer.canDraw()
+        );
+    }
+
+    private static Stream<Arguments> providerCanDrawCardParams() {
+        return Stream.of(
+                Arguments.of(Arrays.asList(6, 10), true),
+                Arguments.of(Arrays.asList(10, 7), false)
+        );
+    }
+
+    @DisplayName("Check if the Dealer gets correct initial card bunch")
+    @Test
+    void initCardTest() {
+        Deck deck = new Deck(
+                new ArrayList<>() {{
+                    add(new Card(Denomination.ACE, Suit.HEARTS));
+                    add(new Card(Denomination.FIVE, Suit.SPADES));
+                }}
+        );
+
+        Dealer dealer = new Dealer();
+        dealer.initialCard(deck);
+
+        assertEquals(
+                new CardBunch(
+                        new ArrayList<>() {{
+                            add(new Card(Denomination.ACE, Suit.HEARTS));
+                            add(new Card(Denomination.FIVE, Suit.SPADES));
+                        }}
+                ),
+                dealer.cardBunch
         );
     }
 }

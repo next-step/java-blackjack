@@ -17,15 +17,15 @@ class DenominationTest {
     @MethodSource("providerIsAceTestParams")
     void isAceTest(Denomination denomination, boolean expected) {
         assertEquals(
-            expected,
-            denomination.isAce()
+                expected,
+                denomination.isAce()
         );
     }
 
     private static Stream<Arguments> providerIsAceTestParams() {
         return Stream.of(
-            Arguments.of(Denomination.ACE, true),
-            Arguments.of(Denomination.KING, false)
+                Arguments.of(Denomination.ACE, true),
+                Arguments.of(Denomination.KING, false)
         );
     }
 
@@ -34,15 +34,15 @@ class DenominationTest {
     @MethodSource("providerOfWithProperScoreParams")
     void ofWithProperScore(int score, Denomination denomination) {
         assertEquals(
-            denomination,
-            Denomination.of(score)
+                denomination,
+                Denomination.of(score)
         );
     }
 
     private static Stream<Arguments> providerOfWithProperScoreParams() {
         return Stream.of(
-            Arguments.of(1, Denomination.ACE),
-            Arguments.of(10, Denomination.TEN)
+                Arguments.of(1, Denomination.ACE),
+                Arguments.of(10, Denomination.TEN)
         );
     }
 
@@ -50,8 +50,8 @@ class DenominationTest {
     @Test
     void ofWithWrongScore() {
         assertThrows(
-            RuntimeException.class,
-            () -> Denomination.of(11)
+                RuntimeException.class,
+                () -> Denomination.of(11)
         );
     }
 }

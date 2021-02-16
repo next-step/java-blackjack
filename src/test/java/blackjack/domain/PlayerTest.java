@@ -22,11 +22,11 @@ class PlayerTest {
     @BeforeAll
     static void beforeAll() {
         testPlayer = new Player(
-            "player",
-            new CardBunch(
-                List.of(1, 7, 10),
-                Suit.HEARTS
-            )
+                "player",
+                new CardBunch(
+                        List.of(1, 7, 10),
+                        Suit.HEARTS
+                )
         );
     }
 
@@ -34,45 +34,57 @@ class PlayerTest {
     @Test
     void requestCard() {
         Player player = new Player(
-            "player"
+                "player"
         );
 
         Deck deck = new Deck(
-            new ArrayList<>() {{
-                add(new Card(Denomination.ACE, Suit.HEARTS));
-                add(new Card(Denomination.TEN, Suit.HEARTS));
-            }}
+                new ArrayList<>() {{
+                    add(new Card(Denomination.ACE, Suit.HEARTS));
+                    add(new Card(Denomination.TEN, Suit.HEARTS));
+                }}
         );
 
         assertEquals(
-            new PersonInfo(
-                new NameInfo("player"),
-                new CardBunch(
-                    List.of(),
-                    Suit.HEARTS
-                ).getCardBunchInfo()
-            ),
-            player.getPersonInfo()
+                new PersonInfo(
+                        new NameInfo("player"),
+                        new CardBunch(
+                                List.of(),
+                                Suit.HEARTS
+                        ).getCardBunchInfo()
+                ),
+                player.getPersonInfo()
         );
 
         player.requestCard(deck);
 
         assertEquals(
-            new PersonInfo(
-                new NameInfo("player"),
-                new CardBunch(
-                    List.of(1),
-                    Suit.HEARTS
-                ).getCardBunchInfo()
-            ),
-            player.getPersonInfo()
+                new PersonInfo(
+                        new NameInfo("player"),
+                        new CardBunch(
+                                List.of(1),
+                                Suit.HEARTS
+                        ).getCardBunchInfo()
+                ),
+                player.getPersonInfo()
         );
     }
 
-    private static Stream<Arguments> providerIsBustParams() {
+    @DisplayName("Check if player can draw card")
+    @ParameterizedTest
+    @MethodSource("providerCanDrawCardParams")
+    void canDrawCard(List<Integer> numbers, boolean expected) {
+        Player player = new Player("Player", new CardBunch(numbers, Suit.HEARTS));
+        assertEquals(
+                expected,
+                player.canDraw()
+        );
+    }
+
+    private static Stream<Arguments> providerCanDrawCardParams() {
         return Stream.of(
-            Arguments.of(Arrays.asList(1, 10), false),
-            Arguments.of(Arrays.asList(10, 9, 8), true)
+                Arguments.of(Arrays.asList(6, 10), true),
+                Arguments.of(Arrays.asList(10, 10, 7), false),
+                Arguments.of(Arrays.asList(10, 1), false)
         );
     }
 
@@ -80,23 +92,47 @@ class PlayerTest {
     @Test
     void getPersonInfo() {
         assertEquals(
-            new PersonInfo(
-                new NameInfo("player"),
-                new CardBunch(
-                    List.of(1, 7, 10),
-                    Suit.HEARTS
-                ).getCardBunchInfo()
-            ),
-            testPlayer.getPersonInfo()
+                new PersonInfo(
+                        new NameInfo("player"),
+                        new CardBunch(
+                                List.of(1, 7, 10),
+                                Suit.HEARTS
+                        ).getCardBunchInfo()
+                ),
+                testPlayer.getPersonInfo()
         );
     }
 
-    @DisplayName("Check if the Player return corret Player name information")
+    @DisplayName("Check if the Player return correct Player name information")
     @Test
     void getNameInfo() {
         assertEquals(
-            new NameInfo("player"),
-            testPlayer.getNameInfo()
+                new NameInfo("player"),
+                testPlayer.getNameInfo()
+        );
+    }
+
+    @DisplayName("Check if the player gets correct initial card bunch")
+    @Test
+    void initCardTest() {
+        Deck deck = new Deck(
+                new ArrayList<>() {{
+                    add(new Card(Denomination.ACE, Suit.HEARTS));
+                    add(new Card(Denomination.FIVE, Suit.SPADES));
+                }}
+        );
+
+        Player player = new Player("Player1");
+        player.initialCard(deck);
+
+        assertEquals(
+                new CardBunch(
+                        new ArrayList<>() {{
+                            add(new Card(Denomination.ACE, Suit.HEARTS));
+                            add(new Card(Denomination.FIVE, Suit.SPADES));
+                        }}
+                ),
+                player.cardBunch
         );
     }
 }

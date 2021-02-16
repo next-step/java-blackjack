@@ -16,23 +16,6 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CardBunchTest {
-    @DisplayName("Check if cards are under limit")
-    @ParameterizedTest
-    @MethodSource("providerIsUnderLimitParams")
-    void isUnderLimit(List<Integer> numbers, boolean expected) {
-        CardBunch cardBunch = new CardBunch(numbers, Suit.HEARTS);
-        assertEquals(
-            expected,
-            cardBunch.isUnderLimit(17)
-        );
-    }
-
-    private static Stream<Arguments> providerIsUnderLimitParams() {
-        return Stream.of(
-            Arguments.of(Arrays.asList(1, 10), false),
-            Arguments.of(Arrays.asList(10, 6), true)
-        );
-    }
 
     @DisplayName("Check if cards got busted")
     @ParameterizedTest
@@ -40,15 +23,15 @@ class CardBunchTest {
     void isBust(List<Integer> numbers, boolean expected) {
         CardBunch cardBunch = new CardBunch(numbers, Suit.HEARTS);
         assertEquals(
-            expected,
-            cardBunch.isBust()
+                expected,
+                cardBunch.isBust()
         );
     }
 
     private static Stream<Arguments> providerIsBustParams() {
         return Stream.of(
-            Arguments.of(Arrays.asList(1, 10), false),
-            Arguments.of(Arrays.asList(10, 10, 2), true)
+                Arguments.of(Arrays.asList(1, 10), false),
+                Arguments.of(Arrays.asList(10, 10, 2), true)
         );
     }
 
@@ -56,20 +39,20 @@ class CardBunchTest {
     @Test
     void getCardBunchInfo() {
         assertEquals(
-            new CardBunchInfo(
-                Stream.of(1, 7, 10).map(
-                    n -> new CardInfo(
-                        Denomination.of(n),
+                new CardBunchInfo(
+                        Stream.of(1, 7, 10).map(
+                                n -> new CardInfo(
+                                        Denomination.of(n),
+                                        Suit.HEARTS
+                                )
+                        ).collect(
+                                Collectors.toList()
+                        )
+                ),
+                new CardBunch(
+                        List.of(1, 7, 10),
                         Suit.HEARTS
-                    )
-                ).collect(
-                    Collectors.toList()
-                )
-            ),
-            new CardBunch(
-                List.of(1, 7, 10),
-                Suit.HEARTS
-            ).getCardBunchInfo()
+                ).getCardBunchInfo()
         );
     }
 }

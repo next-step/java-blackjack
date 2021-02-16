@@ -16,26 +16,26 @@ class CardTest {
     @DisplayName("Check if card is ace")
     @ParameterizedTest
     @MethodSource("providerIsAceTestParams")
-    public void isAceTest(Denomination denomination, boolean isAce) {
+    void isAceTest(Denomination denomination, boolean isAce) {
         assertEquals(
-            isAce,
-            new Card(denomination, Suit.HEARTS).isAce()
+                isAce,
+                new Card(denomination, Suit.HEARTS).isAce()
         );
     }
 
     private static Stream<Arguments> providerIsAceTestParams() {
         return Stream.of(
-            Arguments.of(Denomination.ACE, true),
-            Arguments.of(Denomination.KING, false)
+                Arguments.of(Denomination.ACE, true),
+                Arguments.of(Denomination.KING, false)
         );
     }
 
     @DisplayName("Check if the Card return correct information")
     @Test
-    public void getCardInfo() {
+    void getCardInfo() {
         assertEquals(
-            new CardInfo(Denomination.ACE, Suit.HEARTS),
-            new Card(Denomination.ACE, Suit.HEARTS).getCardInfo()
+                new CardInfo(Denomination.ACE, Suit.HEARTS),
+                new Card(Denomination.ACE, Suit.HEARTS).getCardInfo()
         );
     }
 }
