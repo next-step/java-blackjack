@@ -1,6 +1,6 @@
 package car.domain;
 
-public class Avante extends CarImpl {
+public class Avante extends PassengerCar {
 
     private static final double DISTANCE_PER_LITER = 15;
     private static final String NAME = "Avante";

@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class RentCompany {
 
-    private List<CarImpl> cars;
+    private List<PassengerCar> cars;
     private static final String DELIMITER = "";
     private static final String COLON = " : ";
     private static final String LITTER_NEW_LINE = "리터\n";
@@ -27,7 +27,7 @@ public class RentCompany {
         )).collect(Collectors.joining());
     }
 
-    public void addCar(CarImpl car) {
+    public void addCar(PassengerCar car) {
         cars.add(car);
     }
 }
