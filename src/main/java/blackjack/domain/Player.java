@@ -1,6 +1,7 @@
 package blackjack.domain;
 
 public class Player extends Person {
+
     public Player(String name) {
         super(name);
     }
@@ -14,12 +15,8 @@ public class Player extends Person {
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean canDraw() {
+        return !cardBunch.isBust() && !cardBunch.isBlackJack();
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
 }

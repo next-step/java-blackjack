@@ -1,7 +1,10 @@
 package blackjack.domain;
 
+import blackjack.dto.CardInfo;
+
 public class Dealer extends Person {
-    private static final Integer REQUEST_LIMIT = 17;
+
+    private static final Integer REQUEST_LIMIT = 16;
     private static final String DEALER_NAME = "딜러";
 
     public Dealer() {
@@ -12,13 +15,13 @@ public class Dealer extends Person {
         super(DEALER_NAME, cardBunch);
     }
 
-    // TODO: Find Better way
-    public Integer requestCard(Deck deck) {
-        int drawCardCnt = 0;
-        while (cardBunch.isUnderLimit(REQUEST_LIMIT)) {
-            cardBunch.drawCard(deck);
-            drawCardCnt++;
-        }
-        return drawCardCnt;
+    public CardInfo getFirstCard() {
+        return cardBunch.getCardBunchInfo().getCardsInfo().get(0);
     }
+
+    @Override
+    public boolean canDraw() {
+        return !cardBunch.isBust() && cardBunch.calcScore() <= REQUEST_LIMIT;
+    }
+
 }
