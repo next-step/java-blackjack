@@ -5,7 +5,7 @@ import blackjack.dto.PlayerRecordView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayersRecord {
+public class PlayersRecord extends RecordRule {
     private final Dealer dealer;
     private final List<Player> players;
     private final List<PlayerRecordView> playerRecordViews = new ArrayList<>();
@@ -26,10 +26,10 @@ public class PlayersRecord {
     }
 
     public String winOrLose(final int dealerScore, final int playerScore) {
-        if ((playerScore < dealerScore && dealerScore <= 21) || playerScore > 21) {
+        if (playerWin(dealerScore, playerScore)) {
             return "패";
         }
-        if (playerScore == dealerScore && dealerScore != 21) {
+        if (playerDraw(dealerScore, playerScore)) {
             return "무";
         }
         return "승";

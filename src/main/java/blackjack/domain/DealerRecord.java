@@ -2,7 +2,7 @@ package blackjack.domain;
 
 import java.util.List;
 
-public class DealerRecord {
+public class DealerRecord extends RecordRule {
     private final Dealer dealer;
     private final List<Player> players;
     private int win = 0;
@@ -24,11 +24,11 @@ public class DealerRecord {
     }
 
     public void winOrLose(int dealerScore, int playerScore) {
-        if (playerScore > 21 || (dealerScore > playerScore && dealerScore <= 21)) {
+        if (playerWin(dealerScore, playerScore)) {
             win++;
             return;
         }
-        if (dealerScore == playerScore && playerScore != 21) {
+        if (playerDraw(dealerScore, playerScore)) {
             draw++;
             return;
         }
