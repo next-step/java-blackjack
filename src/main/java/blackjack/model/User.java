@@ -4,7 +4,6 @@ import blackjack.utils.StringUtils;
 
 public class User extends Player {
     private boolean win = false;
-    private static final String RESULT_STRING_FORMAT = "%s: %s";
 
     private User(CardBundle cardHand, String name) {
         super(cardHand, name);
@@ -33,9 +32,9 @@ public class User extends Player {
     @Override
     public String getResult() {
         if (win) {
-            return String.format(RESULT_STRING_FORMAT, name, StringUtils.WIN);
+            return String.format(StringUtils.USER_RESULT_STRING_FORMAT, name, StringUtils.WIN);
         }
-        return String.format(RESULT_STRING_FORMAT, name, StringUtils.LOSE);
+        return String.format(StringUtils.USER_RESULT_STRING_FORMAT, name, StringUtils.LOSE);
     }
 
     @Override

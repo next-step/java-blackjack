@@ -4,7 +4,6 @@ import blackjack.utils.StringUtils;
 
 public class Dealer extends Player {
     public static final int UPPER_BOUND_TO_DRAW = 16;
-    private static final String RESULT_STRING_FORMAT = "%s: %d%s %d%s";
     private int winningCount = 0;
     private int losingCount = 0;
 
@@ -42,10 +41,8 @@ public class Dealer extends Player {
 
     @Override
     public String getResult() {
-        return String.format(RESULT_STRING_FORMAT,
-                name,
-                winningCount, StringUtils.WIN,
-                losingCount, StringUtils.LOSE);
+        return String.format(StringUtils.DEALER_RESULT_STRING_FORMAT,
+                name, winningCount, StringUtils.WIN, losingCount, StringUtils.LOSE);
     }
 
     @Override
