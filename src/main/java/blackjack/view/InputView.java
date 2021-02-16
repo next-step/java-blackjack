@@ -2,6 +2,8 @@ package blackjack.view;
 
 import java.util.Scanner;
 
+import static blackjack.utils.StringUtils.COMMA;
+
 public class InputView {
 
     public static final Scanner scanner = new Scanner(System.in);
@@ -12,7 +14,7 @@ public class InputView {
     public static String[] getUsersName() {
         System.out.println(GET_USERS_NAME_MESSAGE);
         String input = scanner.nextLine();
-        return input.split(",");
+        return input.split(COMMA);
 
     }
 
