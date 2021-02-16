@@ -11,7 +11,7 @@ public class Dealer extends Player {
         super(cardHand, name);
     }
 
-    public Dealer(String name) {
+    private Dealer(String name) {
         super(name);
     }
 

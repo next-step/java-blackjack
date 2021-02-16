@@ -10,7 +10,7 @@ public class Gamers {
     private final List<User> users;
 
     public Gamers() {
-        dealer = new Dealer("dealer");
+        dealer = Dealer.of("dealer");
         users = new ArrayList<>();
     }
 

@@ -9,7 +9,7 @@ public class User extends Player {
         super(cardHand, name);
     }
 
-    public User(String name) {
+    private User(String name) {
         super(name);
     }
 
