@@ -3,15 +3,23 @@ package blackjack.model;
 import blackjack.utils.StringUtils;
 
 public class User extends Player {
-    private boolean win = false;
     private static final String RESULT_STRING_FORMAT = "%s: %s";
+    private boolean win = false;
+    private int money;
+
 
     private User(CardBundle cardHand, String name) {
         super(cardHand, name);
     }
 
-    public User(String name) {
+    private User(String name) {
         super(name);
+    }
+
+    public User(CardBundle cardHand, String name, int money) {
+        super(cardHand, name);
+        this.win = win;
+        this.money = money;
     }
 
     public static User of(CardBundle cardHand, String name) {
@@ -22,12 +30,20 @@ public class User extends Player {
         return new User(name);
     }
 
+    public static User of(CardBundle cardHand, String name, int money) {
+        return new User(cardHand,name,money);
+    }
+
     public boolean isWin() {
         return win;
     }
 
     public void setWin(boolean win) {
         this.win = win;
+    }
+
+    public int getMoney() {
+        return money;
     }
 
     @Override
