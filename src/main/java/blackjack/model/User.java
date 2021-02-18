@@ -5,7 +5,6 @@ import blackjack.utils.StringUtils;
 public class User extends Player {
     private static final String RESULT_STRING_FORMAT = "%s: %s";
     private boolean win = false;
-    private Money money;
 
     private User(String name) {
         super(name);

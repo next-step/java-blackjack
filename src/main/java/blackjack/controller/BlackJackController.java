@@ -10,9 +10,11 @@ import java.util.Map;
 public class BlackJackController {
     private final Gamers gamers;
     private final BlackJackCard blackJackCard;
+    private final OutputView outputView;
 
     public BlackJackController() {
         blackJackCard = BlackJackCard.of();
+        outputView = new OutputView();
         gamers = new Gamers();
         registerUser();
     }
@@ -24,7 +26,8 @@ public class BlackJackController {
 
     public void initCardHand() {
         gamers.initGamerCardHand(blackJackCard);
-        gamers.getPlayers().forEach(OutputView::outputPlayerStatus);
+        outputView.outputDealersDraw();
+        gamers.getPlayers().forEach(outputView::outputPlayerStatus);
     }
 
     public void decideToDraw() {
@@ -60,19 +63,19 @@ public class BlackJackController {
         if (isDraw) {
             player.drawCard(blackJackCard.pickOneCard());
         }
-        OutputView.outputPlayerStatus(player);
+        outputView.outputPlayerStatus(player);
         return isDraw;
     }
 
     public void printResultOfCard() {
         for (Player player : gamers.getPlayers()) {
-            OutputView.outputPlayerScore(player);
+            outputView.outputPlayerScore(player);
         }
     }
 
     public void winOrLoseOfPlayer() {
         gamers.calculateResult();
-        OutputView.outputFinalResult(gamers.getPlayers());
+        outputView.outputFinalResult(gamers.getPlayers());
     }
 
     private Map<String,Integer> getMoneyForEachUser(String[] users) {
@@ -82,5 +85,9 @@ public class BlackJackController {
 
         }
         return nameAndMoneys;
+    }
+
+    public void printRevenueByEachPlayers() {
+        outputView.outputFinalRevenue(gamers.getPlayers());
     }
 }
