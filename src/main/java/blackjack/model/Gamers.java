@@ -46,7 +46,9 @@ public class Gamers {
     }
 
     public void calculateResult(){
-
+        //TODO: 승패 외에 무승부?
+        //  단, 카드를 추가로 뽑아 21을 초과할 경우 배팅 금액을 모두 잃게 된다.
+        // 처음 두 장의 카드 합이 21일 경우 블랙잭이 되면 베팅 금액의 1.5 배를 딜러에게 받는다. 딜러와 플레이어가 모두 동시에 블랙잭인 경우 플레이어는 베팅한 금액을 돌려받는다.
         users.forEach(user -> {
             if(dealerResultValidation(user)
                     || user.getCardHandScore() > CardBundle.BLACK_JACK){

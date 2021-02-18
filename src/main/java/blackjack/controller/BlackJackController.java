@@ -28,6 +28,7 @@ public class BlackJackController {
     }
 
     public void decideToDraw() {
+        //TODO: 21을 넘지 않을 경우 원한다면 얼마든지 카드를 계속 뽑을 수 있다.
         for (Player player : gamers.getPlayers()) {
             drawPhase(blackJackCard, player);
         }

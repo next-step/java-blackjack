@@ -17,6 +17,7 @@ public class OutputView {
         System.out.println(DEALERS_DRAW_MESSAGE);
     }
     public static void outputPlayerScore(Player player){
+        //TODO: outputPlayerScore 에서는 딜러 또한 모든 카드를 출력해야 함.
         System.out.print(player.toString());
         System.out.printf(PLAYER_SCORE_FORMAT,player.getCardHandScore());
     }
