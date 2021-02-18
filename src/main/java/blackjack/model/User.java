@@ -5,34 +5,24 @@ import blackjack.utils.StringUtils;
 public class User extends Player {
     private static final String RESULT_STRING_FORMAT = "%s: %s";
     private boolean win = false;
-    private int money;
-
-
-    private User(CardBundle cardHand, String name) {
-        super(cardHand, name);
-    }
+    private Money money;
 
     private User(String name) {
         super(name);
     }
 
-    public User(CardBundle cardHand, String name, int money) {
-        super(cardHand, name);
-        this.win = win;
+    private User(String name, Money money) {
+        super(name);
         this.money = money;
-    }
-
-    public static User of(CardBundle cardHand, String name) {
-        return new User(cardHand, name);
     }
 
     public static User of(String name) {
         return new User(name);
     }
-
-    public static User of(CardBundle cardHand, String name, int money) {
-        return new User(cardHand,name,money);
+    public static User of(String name,Money money) {
+        return new User(name,money);
     }
+
 
     public boolean isWin() {
         return win;
@@ -42,7 +32,7 @@ public class User extends Player {
         this.win = win;
     }
 
-    public int getMoney() {
+    public Money getMoney() {
         return money;
     }
 

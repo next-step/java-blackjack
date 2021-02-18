@@ -1,8 +1,8 @@
 package blackjack.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class Gamers {
     private static final int FIRST_DRAW_CARD_COUNT = 2;
@@ -30,8 +30,8 @@ public class Gamers {
         return players;
     }
 
-    public void addUsers(String[] usersName){
-        Arrays.stream(usersName).forEach(name -> users.add(User.of(name)));
+    public void addUsers(Map<String,Integer> nameAndMoneys){
+        nameAndMoneys.forEach((name,money) -> users.add(User.of(name,Money.of(money))));
     }
 
     public void initGamerCardHand(BlackJackCard blackJackCard){

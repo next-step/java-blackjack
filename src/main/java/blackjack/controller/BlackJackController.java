@@ -4,6 +4,9 @@ import blackjack.model.*;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class BlackJackController {
     private final Gamers gamers;
     private final BlackJackCard blackJackCard;
@@ -16,7 +19,7 @@ public class BlackJackController {
 
     private void registerUser() {
         String[] usersName = InputView.getUsersName();
-        gamers.addUsers(usersName);
+        gamers.addUsers(getMoneyForEachUser(usersName));
     }
 
     public void initCardHand() {
@@ -59,5 +62,14 @@ public class BlackJackController {
     public void winOrLoseOfPlayer() {
         gamers.calculateResult();
         OutputView.outputFinalResult(gamers.getPlayers());
+    }
+
+    private Map<String,Integer> getMoneyForEachUser(String[] users) {
+        Map<String, Integer> nameAndMoneys = new HashMap<>();
+        for (String user : users) {
+            nameAndMoneys.put(user, InputView.getMoney(user));
+
+        }
+        return nameAndMoneys;
     }
 }
