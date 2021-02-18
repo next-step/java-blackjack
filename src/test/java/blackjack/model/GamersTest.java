@@ -1,27 +1,39 @@
 package blackjack.model;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GamersTest {
 
+    private static Map<String,Integer> userAndMoney;
+    private static Gamers gamers;
+
+    @BeforeAll
+    static void init() {
+        gamers = new Gamers();
+        userAndMoney = new HashMap<>();
+        userAndMoney.put("A",20000);
+        userAndMoney.put("B",10000);
+        gamers.addUsers(userAndMoney);
+    }
+
     @DisplayName("점수 계산 테스트")
     @Test
     void calculateResult() {
 
-        Gamers gamers = new Gamers();
-        String[] usersName = {"A","B"};
-        gamers.addUsers(usersName);
 
-
-        gamers.getDealer().drawCard(Card.of(Type.CLOVER,Symbol.EIGHT));
-        gamers.getDealer().drawCard(Card.of(Type.CLOVER,Symbol.ACE));
+        gamers.getDealer().drawCard(Fixtures.HEART_EIGHT_CARD);
+        gamers.getDealer().drawCard(Fixtures.HEART_ACE_CARD);
 
         for (Player player : gamers.getPlayers()) {
-            player.drawCard(Card.of(Type.CLOVER,Symbol.TEN));
-            player.drawCard(Card.of(Type.CLOVER,Symbol.TEN));
+            player.drawCard(Fixtures.HEART_TEN_CARD);
+            player.drawCard(Fixtures.HEART_TEN_CARD);
         }
         gamers.calculateResult();
 
@@ -34,16 +46,13 @@ class GamersTest {
     @Test
     void calculateResult1() {
 
-        Gamers gamers = new Gamers();
-        String[] usersName = {"A"};
-        gamers.addUsers(usersName);
-        gamers.getDealer().drawCard(Card.of(Type.CLOVER,Symbol.EIGHT));
-        gamers.getDealer().drawCard(Card.of(Type.CLOVER,Symbol.SIX));
-        gamers.getDealer().drawCard(Card.of(Type.CLOVER,Symbol.NINE));
+        gamers.getDealer().drawCard(Fixtures.HEART_EIGHT_CARD);
+        gamers.getDealer().drawCard(Fixtures.HEART_SIX_CARD);
+        gamers.getDealer().drawCard(Fixtures.HEART_NINE_CARD);
 
-        gamers.getUsers().get(0).drawCard(Card.of(Type.CLOVER,Symbol.QUEEN));
-        gamers.getUsers().get(0).drawCard(Card.of(Type.CLOVER,Symbol.THREE));
-        gamers.getUsers().get(0).drawCard(Card.of(Type.CLOVER,Symbol.KING));
+        gamers.getUsers().get(0).drawCard(Fixtures.HEART_TEN_CARD);
+        gamers.getUsers().get(0).drawCard(Fixtures.HEART_THREE_CARD);
+        gamers.getUsers().get(0).drawCard(Fixtures.HEART_TEN_CARD);
         gamers.calculateResult();
 
         assertThat(gamers.getDealer().getWinningCount()).isEqualTo(1);
@@ -53,17 +62,16 @@ class GamersTest {
     @Test
     void calculateResult2() {
 
-        Gamers gamers = new Gamers();
-        String[] usersName = {"A"};
-        gamers.addUsers(usersName);
-        gamers.getDealer().drawCard(Card.of(Type.CLOVER,Symbol.ACE));
-        gamers.getDealer().drawCard(Card.of(Type.CLOVER,Symbol.QUEEN));
+        gamers.getDealer().drawCard(Fixtures.HEART_ACE_CARD);
+        gamers.getDealer().drawCard(Fixtures.HEART_TEN_CARD);
 
-        gamers.getUsers().get(0).drawCard(Card.of(Type.CLOVER,Symbol.QUEEN));
-        gamers.getUsers().get(0).drawCard(Card.of(Type.CLOVER,Symbol.ACE));
+        gamers.getUsers().get(0).drawCard(Fixtures.HEART_TEN_CARD);
+        gamers.getUsers().get(0).drawCard(Fixtures.HEART_ACE_CARD);
+        gamers.getUsers().get(1).drawCard(Fixtures.HEART_TEN_CARD);
+        gamers.getUsers().get(1).drawCard(Fixtures.HEART_ACE_CARD);
         gamers.calculateResult();
 
-        assertThat(gamers.getDealer().getWinningCount()).isEqualTo(1);
+        assertThat(gamers.getDealer().getWinningCount()).isEqualTo(2);
         assertThat(gamers.getUsers().get(0).isWin()).isFalse();
     }
 }
