@@ -61,9 +61,9 @@ public class BlackjackController {
     }
 
     public void showResult() {
-        resultView.showResultDealer(dealer.getCards().toString(), dealer.getScore().getValue());
+        resultView.showResultDealer(dealer);
         for (Gamer gamer : gamers.getGamers()) {
-            resultView.showResultGamer(gamer.toString(), gamer.getScore().getValue());
+            resultView.showResultGamer(gamer);
         }
         resultView.showWinLoseCountDealer(finalResult.getWinCount(), finalResult.getLoseCount());
         resultView.showWinLoseResultGamers(finalResult.getFinalWinner());

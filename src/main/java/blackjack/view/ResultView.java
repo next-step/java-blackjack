@@ -45,12 +45,12 @@ public class ResultView {
         System.out.println();
     }
 
-    public void showResultDealer(String dealerResult, int dealerScore) {
-        System.out.printf(RESULT_DEALER, dealerResult, dealerScore);
+    public void showResultDealer(Dealer dealer) {
+        System.out.printf(RESULT_DEALER, dealer.getCards().toString(), dealer.getScore().getValue());
     }
 
-    public void showResultGamer(String cards, int score) {
-        System.out.printf(RESULT_GAMER, cards, score);
+    public void showResultGamer(Gamer gamer) {
+        System.out.printf(RESULT_GAMER, gamer.toString(), gamer.getScore().getValue());
     }
 
     public void showWinLoseCountDealer(int winCount, int loseCount) {
