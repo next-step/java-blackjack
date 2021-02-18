@@ -28,30 +28,40 @@ public class BlackJackController {
     }
 
     public void decideToDraw() {
-        //TODO: 21을 넘지 않을 경우 원한다면 얼마든지 카드를 계속 뽑을 수 있다.
         for (Player player : gamers.getPlayers()) {
-            drawPhase(blackJackCard, player);
+            drawPhase(player);
         }
     }
 
-    private void drawPhase(BlackJackCard blackJackCard, Player player) {
+    private void drawPhase(Player player) {
         if (player instanceof User) {
-            decideToDrawCard(blackJackCard, player);
-            OutputView.outputPlayerStatus(player);
+            drawRepeatedly(player);
             return;
         }
 
         if (player.getCardHand().calculateScore() <= Dealer.UPPER_BOUND_TO_DRAW){
             player.drawCard(blackJackCard.pickOneCard());
-            OutputView.outputDealersDraw();
         }
     }
 
-    private void decideToDrawCard(BlackJackCard blackJackCard, Player player) {
+    private void drawRepeatedly(Player player) {
+        boolean isDraw;
+        do {
+            isDraw = decideToDrawCard(player);
+        } while (isDrawable(isDraw, player));
+    }
+
+    private boolean isDrawable(boolean isDraw, Player player) {
+        return isDraw && player.getCardHandScore() < 21;
+    }
+
+    private boolean decideToDrawCard(Player player) {
         boolean isDraw = InputView.getDecision(player.getName());
         if (isDraw) {
             player.drawCard(blackJackCard.pickOneCard());
         }
+        OutputView.outputPlayerStatus(player);
+        return isDraw;
     }
 
     public void printResultOfCard() {
