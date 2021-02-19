@@ -8,15 +8,18 @@ public abstract class Player {
 
     protected final CardBundle cardHand;
     protected final String name;
+    protected Money money;
 
-    public Player(CardBundle cardHand, String name) {
+    protected Player(CardBundle cardHand, String name) {
         this.cardHand = cardHand;
         this.name = name;
+        this.money = Money.of(0);
     }
 
-    public Player(String name) {
+    protected Player(String name) {
         this.cardHand = CardBundle.of(new ArrayList<>());
         this.name = name;
+        this.money = Money.of(0);
     }
 
     public CardBundle getCardHand() {
@@ -27,12 +30,22 @@ public abstract class Player {
         return name;
     }
 
+    public Money getMoney() {
+        return money;
+    }
+
+
     public void drawCard(Card card) {
         cardHand.add(card);
     }
+
     public int getCardHandScore() {
 
         return cardHand.calculateScore();
+    }
+
+    public int getCardBundleSize() {
+        return cardHand.getCards().size();
     }
 
     public abstract String getResult();
