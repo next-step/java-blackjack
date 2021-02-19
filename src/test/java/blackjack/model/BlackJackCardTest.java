@@ -23,15 +23,14 @@ class BlackJackCardTest {
         for (Card card : cardBundle.getCards()) {
             System.out.println(card.getSymbol() + " " + card.getType());
         }
-        assertThat(cardBundle.getCards().size()).isEqualTo(ALL_CARD_COUNT);
+        assertThat(blackJackCard.getCardBundle().getCards().size()).isEqualTo(ALL_CARD_COUNT);
     }
 
     @DisplayName("Pick 과정 테스트")
     @Test
     public void pickTest() {
-        CardBundle cardBundle = blackJackCard.getCardBundle();
         blackJackCard.pickOneCard();
-        assertThat(cardBundle.getCards().size()).isEqualTo(ALL_CARD_COUNT - 1);
+        assertThat(blackJackCard.getCardBundle().getCards().size()).isEqualTo(ALL_CARD_COUNT - 1);
     }
 
 }
