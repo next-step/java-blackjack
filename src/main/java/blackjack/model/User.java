@@ -1,6 +1,7 @@
 package blackjack.model;
 
-import blackjack.utils.StringUtils;
+import static blackjack.utils.StringUtils.LOSE;
+import static blackjack.utils.StringUtils.WIN;
 
 public class User extends Player {
     private static final String RESULT_STRING_FORMAT = "%s: %s";
@@ -38,9 +39,9 @@ public class User extends Player {
     @Override
     public String getResult() {
         if(win){
-            return String.format(RESULT_STRING_FORMAT,name,StringUtils.WIN);
+            return String.format(RESULT_STRING_FORMAT,name,WIN);
         }
-        return String.format(RESULT_STRING_FORMAT,name,StringUtils.LOSE);
+        return String.format(RESULT_STRING_FORMAT,name,LOSE);
     }
 
     @Override

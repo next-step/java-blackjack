@@ -3,6 +3,7 @@ package blackjack.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static blackjack.utils.StringUtils.LOSE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,8 +37,7 @@ class PlayerTest {
 
     @Test
     void getResult() {
-
         player.drawCard(Fixtures.HEART_TEN_CARD);
-        assertThat(player.getResult()).isEqualTo(player.getName() + ": "+"패");
+        assertThat(player.getResult()).isEqualTo(player.getName() + ": "+LOSE);
     }
 }
