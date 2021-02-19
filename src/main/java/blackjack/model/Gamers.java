@@ -73,6 +73,7 @@ public class Gamers {
         if (isBustedOnlyPlayer(player)) {
             return;
         }
+        dealer.money.subtractAsRevenue(player.money.getMoney());
         player.money.setRevenueToMoney();
 
     }
