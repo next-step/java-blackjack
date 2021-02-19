@@ -46,22 +46,63 @@ public class Gamers {
     }
 
     public void calculateResult(){
-        //TODO: 승패 외에 무승부?
-        //  단, 카드를 추가로 뽑아 21을 초과할 경우 배팅 금액을 모두 잃게 된다.
-        // 처음 두 장의 카드 합이 21일 경우 블랙잭이 되면 베팅 금액의 1.5 배를 딜러에게 받는다. 딜러와 플레이어가 모두 동시에 블랙잭인 경우 플레이어는 베팅한 금액을 돌려받는다.
         users.forEach(user -> {
-            if(dealerResultValidation(user)
-                    || user.getCardHandScore() > CardBundle.BLACK_JACK){
-                dealer.setWinningCount(dealer.getWinningCount() + 1);
+            if(isDealerWin(user) || isBusted(user)){
+                dealer.incrementWinningCount();
                 user.setWin(false);
                 return;
             }
-            dealer.setLosingCount(dealer.getLosingCount() + 1);
+            dealer.incrementLosingCount();
             user.setWin(true);
         });
     }
 
-    private boolean dealerResultValidation(User user) {
-        return dealer.getCardHandScore() <= CardBundle.BLACK_JACK && dealer.getCardHandScore() >= user.getCardHandScore();
+    public void caculateRevenue() {
+        users.forEach(user -> checkStateAndRevenue(user));
+    }
+
+    private void checkStateAndRevenue(Player player) {
+        boolean isBlackjackDealer = isBlackjack(dealer);
+        boolean isBustedDealer = isBusted(dealer);
+        if (isBustedDealer) {
+            return;
+        }
+        if (isBlackjackOnlyPlayer(player, isBlackjackDealer)) {
+            return;
+        }
+        if (isBustedOnlyPlayer(player)) {
+            return;
+        }
+        player.money.setRevenueToMoney();
+
+    }
+
+    private boolean isBustedOnlyPlayer(Player player) {
+        if (isBusted(player) || isDealerWin(player)) {
+            dealer.money.addMoney(player.money.getMoney());
+            player.money.subtractMoney();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isBlackjackOnlyPlayer(Player player, boolean isBlackjackDealer) {
+        if (isBlackjack(player) && !isBlackjackDealer) {
+            dealer.money.subtractAsRevenue(player.money.getMoney());
+            player.money.setRevenueToMoney();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isBusted(Player player) {
+        return player.getCardHandScore() > CardBundle.BLACK_JACK;
+    }
+
+    private boolean isBlackjack(Player player) {
+        return player.getCardHandScore() == CardBundle.BLACK_JACK && player.getCardBundleSize() == FIRST_DRAW_CARD_COUNT;
+    }
+    private boolean isDealerWin(Player player) {
+        return dealer.getCardHandScore() <= CardBundle.BLACK_JACK && dealer.getCardHandScore() >= player.getCardHandScore();
     }
 }
