@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BlackJackController {
+
+    private static final int DEALER_ONE_MORE_DRAW = 3;
+
     private final Gamers gamers;
     private final BlackJackCard blackJackCard;
     private final OutputView outputView;
@@ -26,12 +29,16 @@ public class BlackJackController {
 
     public void initCardHand() {
         gamers.initGamerCardHand(blackJackCard);
-        outputView.outputDealersDraw();
-        gamers.getPlayers().forEach(outputView::outputPlayerStatus);
+        outputView.outputDealerStatus(gamers.getDealer());
+        gamers.getUsers().forEach(outputView::outputPlayerStatus);
     }
 
     public void decideToDraw() {
-        for (Player player : gamers.getPlayers()) {
+        drawPhase(gamers.getDealer());
+        if (gamers.getDealer().getCardBundleSize() == DEALER_ONE_MORE_DRAW) {
+            outputView.outputDealersDraw();
+        }
+        for (Player player : gamers.getUsers()) {
             drawPhase(player);
         }
     }
@@ -55,7 +62,7 @@ public class BlackJackController {
     }
 
     private boolean isDrawable(boolean isDraw, Player player) {
-        return isDraw && player.getCardHandScore() < 21;
+        return isDraw && player.getCardHandScore() < CardBundle.BLACK_JACK;
     }
 
     private boolean decideToDrawCard(Player player) {
@@ -87,7 +94,8 @@ public class BlackJackController {
         return nameAndMoneys;
     }
 
-    public void printRevenueByEachPlayers() {
+    public void printRevenueForEachPlayers() {
+        gamers.caculateRevenue();
         outputView.outputFinalRevenue(gamers.getPlayers());
     }
 }
