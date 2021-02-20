@@ -5,9 +5,9 @@ import java.util.Map;
 
 public class FinalResult {
 
-    private static final Integer THRESHOLD = 21;
     public static final int MINUS = -1;
     public static final double BLACKJACK_RATE = 1.5;
+    private static final Integer THRESHOLD = 21;
     private final Map<String, Integer> finalWinner = new LinkedHashMap<>();
     private int moneyOfDealer = 0;
 
@@ -20,8 +20,8 @@ public class FinalResult {
             return gamerMoney * MINUS;
         }
         if (gamerScore == THRESHOLD && dealerScore < THRESHOLD) {
-            moneyOfDealer += (int)(gamerMoney * BLACKJACK_RATE);
-            return (int)(gamerMoney*MINUS*BLACKJACK_RATE);
+            moneyOfDealer += (int) (gamerMoney * BLACKJACK_RATE);
+            return (int) (gamerMoney * MINUS * BLACKJACK_RATE);
         }
         if (gamerScore == THRESHOLD && dealerScore == THRESHOLD) {
             return 0;
@@ -34,7 +34,7 @@ public class FinalResult {
             return 0;
         }
         moneyOfDealer += gamerMoney;
-        return gamerMoney*MINUS;
+        return gamerMoney * MINUS;
     }
 
     public void calculateFinalWinner(Dealer dealer, Gamers gamers) {

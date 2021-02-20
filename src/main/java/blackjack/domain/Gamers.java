@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 
 public class Gamers {
 
-    private List<Gamer> gamers;
     private static final String COMMA = ",";
     private static final String NAME_PATTERN = "^[a-zA-Z]*$";
+    private List<Gamer> gamers;
 
     public Gamers(String gamer, Deck deck) throws IllegalArgumentException {
         String[] gamerNames = gamer.split(COMMA);

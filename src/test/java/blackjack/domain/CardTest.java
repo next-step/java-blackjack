@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class CardTest {
     @Test
-    void toStringTest () {
+    void toStringTest() {
         // given
         Card card1 = new Card(Suit.CLUBS, Denomination.ACE);
         Card card2 = new Card(Suit.DIAMONDS, Denomination.JACK);

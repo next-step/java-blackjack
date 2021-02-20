@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 
 public class RentCompany {
 
-    private List<PassengerCar> cars;
     private static final String DELIMITER = "";
     private static final String COLON = " : ";
     private static final String LITTER_NEW_LINE = "리터\n";
+    private List<PassengerCar> cars;
 
     public static RentCompany create() {
         RentCompany rentCompany = new RentCompany();
