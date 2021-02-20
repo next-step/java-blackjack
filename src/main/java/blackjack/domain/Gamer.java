@@ -4,6 +4,7 @@ public class Gamer extends Player {
 
     private final String name;
     private static final String CARD = "카드: ";
+    private int money;
 
     public Gamer(String name, Deck deck) {
         super(deck);
@@ -23,5 +24,13 @@ public class Gamer extends Player {
         if (answer.equals("y")) {
             addCard(deck.popCard());
         }
+    }
+
+    public void setMoney(String money) {
+        this.money = Integer.parseInt(money);
+    }
+
+    public int getMoney() {
+        return money;
     }
 }

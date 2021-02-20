@@ -20,6 +20,7 @@ public class ResultView {
     private static final String FINAL_RESULT_MESSAGE = "\n## 최종 승패";
     private static final String FINAL_RESULT_DEALER = "딜러: %d승 %d패\n";
     private static final String GAMER_RESULT = "%s: %s\n";
+    private static final String BUST_MESSAGE = "21을 초과하여 패배하였습니다.";
 
     public void printGamers(Gamers gamers) {
         String gamersNames = gamers.getGamers().stream().map(Gamer::getName).collect(
@@ -60,5 +61,9 @@ public class ResultView {
 
     public void showWinLoseResultGamers(Map<String, String> finalResult) {
         finalResult.forEach((name, result) -> System.out.printf(GAMER_RESULT, name, result));
+    }
+
+    public void printBust() {
+        System.out.println(BUST_MESSAGE);
     }
 }

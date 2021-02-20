@@ -34,6 +34,10 @@ public class BlackjackController {
         deck = new Deck(true);
         dealer = new Dealer(deck);
         gamers = new Gamers(inputView.getGamers(), deck);
+        for (Gamer gamer : gamers.getGamers()) {
+            String money = inputView.askGameMoney(gamer.getName());
+            gamer.setMoney(money);
+        }
         resultView.printGamers(gamers);
         resultView.printInitialCards(dealer, gamers);
     }
@@ -47,8 +51,17 @@ public class BlackjackController {
         do {
             answer = inputView.askMoreCard(gamer.getName());
             gamer.getMoreCard(answer, deck);
+            answer = checkBust(gamer, answer);
         } while (answer.equals("y"));
         resultView.printCards(gamer);
+    }
+
+    private String checkBust(Gamer gamer, String answer) {
+        if (gamer.getScore().getValue() > 21) {
+            resultView.printBust();
+            answer = "y";
+        }
+        return answer;
     }
 
     public void getMoreCardDealer() {
