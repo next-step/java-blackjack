@@ -21,6 +21,7 @@ public class ResultView {
     private static final String FINAL_RESULT_DEALER = "딜러: %d승 %d패\n";
     private static final String GAMER_RESULT = "%s: %s\n";
     private static final String BUST_MESSAGE = "21을 초과하여 패배하였습니다.";
+    public static final String EARNING_MONEY_MESSAGE = "%s: %d\n";
 
     public void printGamers(Gamers gamers) {
         String gamersNames = gamers.getGamers().stream().map(Gamer::getName).collect(
@@ -54,16 +55,11 @@ public class ResultView {
         System.out.printf(RESULT_GAMER, gamer.toString(), gamer.getScore().getValue());
     }
 
-    public void showWinLoseCountDealer(int winCount, int loseCount) {
-        System.out.println(FINAL_RESULT_MESSAGE);
-        System.out.printf(FINAL_RESULT_DEALER, winCount, loseCount);
-    }
-
-    public void showWinLoseResultGamers(Map<String, String> finalResult) {
-        finalResult.forEach((name, result) -> System.out.printf(GAMER_RESULT, name, result));
-    }
-
     public void printBust() {
         System.out.println(BUST_MESSAGE);
+    }
+
+    public void showEarningMoney(String name, int money) {
+        System.out.printf(EARNING_MONEY_MESSAGE, name, money);
     }
 }

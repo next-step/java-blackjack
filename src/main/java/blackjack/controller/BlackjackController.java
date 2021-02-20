@@ -10,8 +10,10 @@ import blackjack.view.ResultView;
 
 public class BlackjackController {
 
-    public static final String YES = "y";
-    public static final int BLACKJACK = 21;
+    private static final int BLACKJACK = 21;
+    private static final String YES = "y";
+    private static final String DEALER_NAME = "\n딜러";
+
     InputView inputView;
     ResultView resultView;
     Deck deck;
@@ -59,6 +61,7 @@ public class BlackjackController {
     }
 
     private String checkBust(Gamer gamer, String answer) {
+        gamer.calculateScore();
         if (gamer.getScore().getValue() > BLACKJACK) {
             resultView.printBust();
             answer = YES;
@@ -80,7 +83,7 @@ public class BlackjackController {
         for (Gamer gamer : gamers.getGamers()) {
             resultView.showResultGamer(gamer);
         }
-        resultView.showWinLoseCountDealer(finalResult.getWinCount(), finalResult.getLoseCount());
-        resultView.showWinLoseResultGamers(finalResult.getFinalWinner());
+        resultView.showEarningMoney(DEALER_NAME, finalResult.getMoneyOfDealer());
+        finalResult.getFinalWinner().forEach((name, result) -> resultView.showEarningMoney(name, result));
     }
 }
