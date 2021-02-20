@@ -10,6 +10,8 @@ import blackjack.view.ResultView;
 
 public class BlackjackController {
 
+    public static final String YES = "y";
+    public static final int BLACKJACK = 21;
     InputView inputView;
     ResultView resultView;
     Deck deck;
@@ -52,14 +54,14 @@ public class BlackjackController {
             answer = inputView.askMoreCard(gamer.getName());
             gamer.getMoreCard(answer, deck);
             answer = checkBust(gamer, answer);
-        } while (answer.equals("y"));
+        } while (answer.equals(YES));
         resultView.printCards(gamer);
     }
 
     private String checkBust(Gamer gamer, String answer) {
-        if (gamer.getScore().getValue() > 21) {
+        if (gamer.getScore().getValue() > BLACKJACK) {
             resultView.printBust();
-            answer = "y";
+            answer = YES;
         }
         return answer;
     }
