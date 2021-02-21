@@ -9,5 +9,6 @@ public class BlackJackMain {
         blackJackController.decideToDraw();
         blackJackController.printResultOfCard();
         blackJackController.winOrLoseOfPlayer();
+        blackJackController.printRevenueForEachPlayers();
     }
 }

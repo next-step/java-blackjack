@@ -1,8 +1,8 @@
 package blackjack.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class Gamers {
     private static final int FIRST_DRAW_CARD_COUNT = 2;
@@ -30,8 +30,8 @@ public class Gamers {
         return players;
     }
 
-    public void addUsers(String[] usersName){
-        Arrays.stream(usersName).forEach(name -> users.add(User.of(name)));
+    public void addUsers(Map<String,Integer> nameAndMoneys){
+        nameAndMoneys.forEach((name,money) -> users.add(User.of(name,Money.of(money))));
     }
 
     public void initGamerCardHand(BlackJackCard blackJackCard){
@@ -46,20 +46,64 @@ public class Gamers {
     }
 
     public void calculateResult(){
-
         users.forEach(user -> {
-            if(dealerResultValidation(user)
-                    || user.getCardHandScore() > CardBundle.BLACK_JACK){
-                dealer.setWinningCount(dealer.getWinningCount() + 1);
+            if(isDealerWin(user) || isBusted(user)){
+                dealer.incrementWinningCount();
                 user.setWin(false);
                 return;
             }
-            dealer.setLosingCount(dealer.getLosingCount() + 1);
+            dealer.incrementLosingCount();
             user.setWin(true);
         });
     }
 
-    private boolean dealerResultValidation(User user) {
-        return dealer.getCardHandScore() <= CardBundle.BLACK_JACK && dealer.getCardHandScore() >= user.getCardHandScore();
+    public void caculateRevenue() {
+        users.forEach(user -> checkStateAndRevenue(user));
+    }
+
+    private void checkStateAndRevenue(Player player) {
+        boolean isBlackjackDealer = isBlackjack(dealer);
+        boolean isBustedDealer = isBusted(dealer);
+        if (isBustedDealer) {
+            return;
+        }
+        if (isBlackjackOnlyPlayer(player, isBlackjackDealer)) {
+            return;
+        }
+        if (isBustedOnlyPlayer(player)) {
+            return;
+        }
+        dealer.money.subtractAsRevenue(player.money.getMoney());
+        player.money.setRevenueToMoney();
+
+    }
+
+    private boolean isBustedOnlyPlayer(Player player) {
+        if (isBusted(player) || isDealerWin(player)) {
+            dealer.money.addMoney(player.money.getMoney());
+            player.money.subtractMoney();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isBlackjackOnlyPlayer(Player player, boolean isBlackjackDealer) {
+        if (isBlackjack(player) && !isBlackjackDealer) {
+            dealer.money.subtractAsRevenue(player.money.getMoney());
+            player.money.setRevenueToMoney();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isBusted(Player player) {
+        return player.getCardHandScore() > CardBundle.BLACK_JACK;
+    }
+
+    private boolean isBlackjack(Player player) {
+        return player.getCardHandScore() == CardBundle.BLACK_JACK && player.getCardBundleSize() == FIRST_DRAW_CARD_COUNT;
+    }
+    private boolean isDealerWin(Player player) {
+        return dealer.getCardHandScore() <= CardBundle.BLACK_JACK && dealer.getCardHandScore() >= player.getCardHandScore();
     }
 }

@@ -9,36 +9,24 @@ public class Dealer extends Player{
     private int winningCount = 0;
     private int losingCount = 0;
 
-    private Dealer(CardBundle cardHand, String name) {
-        super(cardHand, name);
-    }
-
     public Dealer(String name) {
         super(name);
-    }
-
-    public static Dealer of(CardBundle cardHand, String name) {
-        return new Dealer(cardHand,name);
-    }
-
-    public static Dealer of(String name) {
-        return new Dealer(name);
     }
 
     public int getWinningCount() {
         return winningCount;
     }
 
-    public void setWinningCount(int winningCount) {
-        this.winningCount = winningCount;
+    public void incrementWinningCount() {
+        this.winningCount += 1;
     }
 
     public int getLosingCount() {
         return losingCount;
     }
 
-    public void setLosingCount(int losingCount) {
-        this.losingCount = losingCount;
+    public void incrementLosingCount() {
+        this.losingCount += 1;
     }
 
     @Override
@@ -51,6 +39,12 @@ public class Dealer extends Player{
 
     @Override
     public String toString() {
+        StringBuilder dealerString = new StringBuilder(super.toString());
+        cardHand.getCards().forEach(card -> dealerString.append(card.toString()));
+        return dealerString.toString();
+    }
+
+    public String showOnlyOneCard() {
         StringBuilder dealerString = new StringBuilder(super.toString());
         dealerString.append(cardHand.getCards().get(0).toString());
         return dealerString.toString();
