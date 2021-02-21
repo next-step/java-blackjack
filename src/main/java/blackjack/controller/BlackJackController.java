@@ -1,5 +1,6 @@
 package blackjack.controller;
 
+import blackjack.domain.Money;
 import blackjack.domain.awards.Awards;
 import blackjack.domain.awards.AwardsResult;
 import blackjack.domain.card.Cards;
@@ -51,14 +52,12 @@ public class BlackJackController {
             String answer = InputView.willDraw();
 
             state = stateAfterAsk(player, state, answer);
-            continue;
         }
     }
 
     private State stateAfterAsk(Player player, State state, String answer) {
         if (answer.equals("y")) {
             state = state.draw(dealer.popAndGiveCard());
-            // OutputView
             OutputView.printCardStateOnePlayer(player);
             return state;
         }
@@ -82,9 +81,12 @@ public class BlackJackController {
         List<String> playerNames = splitPlayerNames(rawPlayerNames);
         players = createPlayers(playerNames);
 
+        playersBetting();
+
         OutputView.messageAfterInit(players);
         OutputView.cardStateAfterInit(dealer, players);
     }
+
 
     private List<String> splitPlayerNames(String rawPlayerNames) {
         List<String> playerNames = Arrays.asList(rawPlayerNames.split(","));
@@ -103,6 +105,15 @@ public class BlackJackController {
         return players;
     }
 
+    private void playersBetting() {
+        // 배팅
+        for (Player player : players) {
+            OutputView.batting(player);
+            Money bettedMoney = new Money(InputView.betting()); // Money 는 int의 래퍼 클래스
+            player.bet(bettedMoney);
+        }
+    }
+
     private void dealerDraw() {
         // 딜러 카드 받을지 말지
         if (dealer.getCards().getSum() <= DEALER_DRAW_BOUND) {
@@ -116,6 +127,7 @@ public class BlackJackController {
     private void result() {
         OutputView.cardStateAfterEnd(dealer, players);
         AwardsResult awardsResult = Awards.produceResult(dealer, players);// 얘를 output view로 전달.
+
         OutputView.award(awardsResult);
     }
 }
