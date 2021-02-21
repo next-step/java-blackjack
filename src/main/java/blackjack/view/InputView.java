@@ -34,10 +34,11 @@ public class InputView {
         }
     }
 
+    // TODO: 여기서 문제 생겼음.
     public static int betting() {
         int money = 0;
         try {
-            money = input.read();
+            money = Integer.parseInt(input.readLine());
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

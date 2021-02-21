@@ -13,6 +13,8 @@ import static blackjack.view.ViewConstantStrings.*;
 
 public class OutputView {
 
+    public static final int TOGGLE_SIGN = -1;
+
     public static void inputPlayerNames() {
         System.out.println(INPUT_PLAYER_NAMES.toString());
     }
@@ -111,6 +113,7 @@ public class OutputView {
                 awardsResult.getDealer().getWinCount().toString() + WIN.toString() + WHITE_SPACE.toString() +
                 awardsResult.getDealer().getLossCount().toString() + LOSS.toString() + NEW_LINE.toString());
         accumultatePlayersWinLoss(awardsResult, message);
+        message.append(NEW_LINE.toString());
         System.out.println(message);
     }
 
@@ -119,6 +122,20 @@ public class OutputView {
             message.append(player.getName() + COLON.toString());
             appendPlayerWinOrLoss(message, player);
         }
+
+        message.append(NEW_LINE.toString() + FINAL_EARNING.toString() + NEW_LINE.toString());
+        Integer dealerRevenue = 0;
+        StringBuilder revenues = new StringBuilder();
+        for (Player player : awardsResult.getPlayers()) {
+            revenues.append(player.getName() + COLON.toString() + player.revenue().toString() + NEW_LINE.toString());
+            dealerRevenue += player.revenue();
+        }
+        message.append(DEALER_REVENUE.toString() + toggleSignPositiveAndNegative(dealerRevenue).toString() + NEW_LINE.toString() + revenues);
+
+    }
+
+    public static Integer toggleSignPositiveAndNegative(Integer dealerRevenue) {
+        return TOGGLE_SIGN * dealerRevenue;
     }
 
     private static void appendPlayerWinOrLoss(StringBuilder message, Player player) {

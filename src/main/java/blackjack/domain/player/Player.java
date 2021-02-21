@@ -4,10 +4,6 @@ import blackjack.domain.Money;
 import blackjack.domain.state.State;
 
 public class Player extends Human {
-    // 이 두 개를 PlayerState 는 클래스로
-//    private Money bettedMoney;
-//    private boolean isWin;
-
     private PlayerState playerState;
     private State state;
 
@@ -17,9 +13,8 @@ public class Player extends Human {
         this.state = state;
     }
 
-    // Setter
-    public void setIsWin(boolean isWin) {
-        playerState.setIsWin(isWin);
+    public Integer revenue() {
+        return (int) (playerState.getEarningRate() * (double) (playerState.getBettedMoney().getMoney()));
     }
 
     // Getter
@@ -31,7 +26,17 @@ public class Player extends Human {
         return this.state;
     }
 
+    // Setter
+    public void setIsWin(boolean isWin) {
+        playerState.setIsWin(isWin);
+    }
+
     public void bet(Money bettedMoney) {
         playerState.setBettedMoney(bettedMoney);
     }
+
+    public void setEarningRate(double earningRate) {
+        playerState.setEarningRate(earningRate);
+    }
+
 }

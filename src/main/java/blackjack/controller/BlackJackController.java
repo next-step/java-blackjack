@@ -126,10 +126,8 @@ public class BlackJackController {
 
     private void result() {
         OutputView.cardStateAfterEnd(dealer, players);
-        // TODO: dealer, players 에 최종 수익도 추가.
         AwardsResult awardsResult = Awards.produceResult(dealer, players);// 얘를 output view로 전달.
 
-        // TODO: outputview.award 에 최종 수익 print 추가.
         OutputView.award(awardsResult);
     }
 }

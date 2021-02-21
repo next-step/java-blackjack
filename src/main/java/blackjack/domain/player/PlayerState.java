@@ -3,15 +3,15 @@ package blackjack.domain.player;
 import blackjack.domain.Money;
 
 public class PlayerState {
-    private Money bettedMoney;
+    private BettingMoney bettingMoney;
     private boolean isWin;
 
     public Money getBettedMoney() {
-        return bettedMoney;
+        return bettingMoney.getBettedMoney();
     }
 
     public void setBettedMoney(Money bettedMoney) {
-        this.bettedMoney = bettedMoney;
+        bettingMoney = new BettingMoney(bettedMoney);
     }
 
     public boolean getIsWin() {
@@ -20,5 +20,13 @@ public class PlayerState {
 
     public void setIsWin(boolean win) {
         isWin = win;
+    }
+
+    public double getEarningRate(){
+        return bettingMoney.getEarningRate();
+    }
+
+    public void setEarningRate(double earningRate){
+        bettingMoney.setEarningRate(earningRate);
     }
 }
