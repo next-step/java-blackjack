@@ -8,7 +8,7 @@ public class DeckTest {
     void popCardTest() {
         // given
         Deck deck = new Deck(false);
-        Card cardTarget1  = new Card(Suit.SPADES, Denomination.KING);
+        Card cardTarget1 = new Card(Suit.SPADES, Denomination.KING);
         Card cardTarget2 = new Card(Suit.SPADES, Denomination.QUEEN);
 
         // when

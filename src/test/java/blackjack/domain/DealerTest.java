@@ -11,7 +11,7 @@ public class DealerTest {
         Deck deck = new Deck(false);
         // K스페이드, Q스페이드
         Dealer dealer1 = new Dealer(deck);
-        for (int i=0; i<9; i++) {
+        for (int i = 0; i < 9; i++) {
             deck.popCard();
         }
         // 2스페이드, A스페이드

@@ -1,14 +1,14 @@
 package blackjack.controller;
 
-import blackjack.domain.Dealer;
-import blackjack.domain.Deck;
-import blackjack.domain.FinalResult;
-import blackjack.domain.Gamer;
-import blackjack.domain.Gamers;
+import blackjack.domain.*;
 import blackjack.view.InputView;
 import blackjack.view.ResultView;
 
 public class BlackjackController {
+
+    private static final int BLACKJACK = 21;
+    private static final String YES = "y";
+    private static final String DEALER_NAME = "\n딜러";
 
     InputView inputView;
     ResultView resultView;
@@ -34,6 +34,10 @@ public class BlackjackController {
         deck = new Deck(true);
         dealer = new Dealer(deck);
         gamers = new Gamers(inputView.getGamers(), deck);
+        for (Gamer gamer : gamers.getGamers()) {
+            String money = inputView.askGameMoney(gamer.getName());
+            gamer.setMoney(money);
+        }
         resultView.printGamers(gamers);
         resultView.printInitialCards(dealer, gamers);
     }
@@ -47,8 +51,18 @@ public class BlackjackController {
         do {
             answer = inputView.askMoreCard(gamer.getName());
             gamer.getMoreCard(answer, deck);
-        } while (answer.equals("y"));
+            answer = checkBust(gamer, answer);
+        } while (answer.equals(YES));
         resultView.printCards(gamer);
+    }
+
+    private String checkBust(Gamer gamer, String answer) {
+        gamer.calculateScore();
+        if (gamer.getScore().getValue() > BLACKJACK) {
+            resultView.printBust();
+            answer = YES;
+        }
+        return answer;
     }
 
     public void getMoreCardDealer() {
@@ -65,7 +79,7 @@ public class BlackjackController {
         for (Gamer gamer : gamers.getGamers()) {
             resultView.showResultGamer(gamer);
         }
-        resultView.showWinLoseCountDealer(finalResult.getWinCount(), finalResult.getLoseCount());
-        resultView.showWinLoseResultGamers(finalResult.getFinalWinner());
+        resultView.showEarningMoney(DEALER_NAME, finalResult.getMoneyOfDealer());
+        finalResult.getFinalWinner().forEach((name, result) -> resultView.showEarningMoney(name, result));
     }
 }
