@@ -19,7 +19,7 @@ public class LambdaTest {
 
     @Test
     public void sumAll() {
-        final int result = sumAll(numbers, number -> false);
+        final int result = sumAll(numbers, number -> true);
         assertThat(result).isEqualTo(21);
     }
 
@@ -31,7 +31,7 @@ public class LambdaTest {
 
     @Test
     public void sumAllOverThree() {
-        final int result = sumAll(numbers, numbers -> numbers > 0);
+        final int result = sumAll(numbers, numbers -> numbers > 3);
         assertThat(result).isEqualTo(15);
     }
 
