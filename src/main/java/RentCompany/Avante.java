@@ -4,7 +4,10 @@ public class Avante extends Car{
 
     final static private String name = "Avante";
     final static private int perLiter = 15;
-
+    public double tripDistance;
+    public Avante(int tripDistance){
+        this.tripDistance = tripDistance;
+    }
     @Override
     double getDistancePerLiter() {
         return perLiter;
@@ -12,7 +15,7 @@ public class Avante extends Car{
 
     @Override
     double getTripDistance() {
-        return 0;
+        return tripDistance;
     }
 
     @Override

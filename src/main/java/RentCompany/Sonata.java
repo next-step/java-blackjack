@@ -2,9 +2,12 @@ package RentCompany;
 
 public class Sonata extends Car{
 
-    final static private String name = "Sonata";
-    final static private int perLiter = 10;
-
+    final static public String name = "Sonata";
+    final static public int perLiter = 10;
+    public  double tripDistance;
+    public Sonata(int tripDistance){
+        this.tripDistance = tripDistance;
+    }
     @Override
     double getDistancePerLiter() {
         return perLiter;
@@ -12,7 +15,7 @@ public class Sonata extends Car{
 
     @Override
     double getTripDistance() {
-        return 0;
+        return tripDistance;
     }
 
     @Override
