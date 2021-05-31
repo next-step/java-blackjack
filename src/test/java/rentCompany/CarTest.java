@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 public class CarTest {
     @Test
     void createK5() {
-        Car k5 = new K5(100);
+        Car k5 = new K5();
 
         assertAll(
                 () -> assertThat(k5.getName()).isEqualTo("K5"),
@@ -19,7 +19,7 @@ public class CarTest {
 
     @Test
     void createSonata() {
-        Car sonata = new Sonata(100);
+        Car sonata = new Sonata();
 
         assertAll(
                 () -> assertThat(sonata.getName()).isEqualTo("sonata"),
@@ -30,7 +30,7 @@ public class CarTest {
 
     @Test
     void createAvante() {
-        Car avante = new Avante(100);
+        Car avante = new Avante();
 
         assertAll(
                 () -> assertThat(avante.getName()).isEqualTo("avante"),

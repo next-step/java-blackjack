@@ -1,14 +1,17 @@
 package rentCompany;
 
 public class Avante implements Car {
+    public static final int INIT_DISTANCE = 0;
+    private static final int FUEL_EFFICIENCY = 15;
+
     private final String name;
     private final int distance;
     private final int fuelEfficiency;
 
-    public Avante(int distance) {
+    public Avante() {
         this.name = "avante";
-        this.distance = distance;
-        this.fuelEfficiency = 15;
+        this.distance = INIT_DISTANCE;
+        this.fuelEfficiency = FUEL_EFFICIENCY;
 
     }
 
