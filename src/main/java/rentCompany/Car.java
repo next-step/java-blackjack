@@ -6,4 +6,6 @@ public interface Car {
     int getDistance();
 
     int getFuelEfficiency();
+
+    int getFuelRequiredAmount();
 }

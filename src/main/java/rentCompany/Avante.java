@@ -1,18 +1,16 @@
 package rentCompany;
 
 public class Avante implements Car {
-    public static final int INIT_DISTANCE = 0;
     private static final int FUEL_EFFICIENCY = 15;
 
     private final String name;
     private final int distance;
     private final int fuelEfficiency;
 
-    public Avante() {
+    public Avante(int distance) {
         this.name = "avante";
-        this.distance = INIT_DISTANCE;
+        this.distance = distance;
         this.fuelEfficiency = FUEL_EFFICIENCY;
-
     }
 
     @Override
@@ -28,5 +26,10 @@ public class Avante implements Car {
     @Override
     public int getFuelEfficiency() {
         return this.fuelEfficiency;
+    }
+
+    @Override
+    public int getFuelRequiredAmount() {
+        return distance / fuelEfficiency;
     }
 }

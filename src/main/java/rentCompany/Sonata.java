@@ -1,7 +1,5 @@
 package rentCompany;
 
-import static rentCompany.Avante.INIT_DISTANCE;
-
 public class Sonata implements Car {
     private static final int FUEL_EFFICIENCY = 10;
 
@@ -9,9 +7,9 @@ public class Sonata implements Car {
     private final int distance;
     private final int fuelEfficiency;
 
-    public Sonata() {
+    public Sonata(int distance) {
         this.name = "sonata";
-        this.distance = INIT_DISTANCE;
+        this.distance = distance;
         this.fuelEfficiency = FUEL_EFFICIENCY;
     }
 
@@ -28,5 +26,10 @@ public class Sonata implements Car {
     @Override
     public int getFuelEfficiency() {
         return this.fuelEfficiency;
+    }
+
+    @Override
+    public int getFuelRequiredAmount() {
+        return distance / fuelEfficiency;
     }
 }
