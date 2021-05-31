@@ -1,6 +1,6 @@
 package RentCompany;
 
-public class K5 extends Car{
+public class K5 extends AbstractCar {
     public final double FUEL_EFFICIENCY = 13;
     public final String CAR_KIND_NAME = "K5";
     public double travel_distance;
@@ -10,17 +10,17 @@ public class K5 extends Car{
     }
 
     @Override
-    double getDistancePerLiter() {
+    public double getDistancePerLiter() {
         return FUEL_EFFICIENCY;
     }
 
     @Override
-    double getTripDistance() {
-        return 0;
+    public double getTripDistance() {
+        return travel_distance;
     }
 
     @Override
-    String getName() {
+    public String getName() {
         return CAR_KIND_NAME;
     }
 }
