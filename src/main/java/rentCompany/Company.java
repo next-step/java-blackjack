@@ -7,7 +7,7 @@ public class Company {
     private final CompanyCars companyCars;
 
     public Company() {
-        this.companyCars = new CompanyCars(Arrays.asList( new K5(),
+        this.companyCars = new CompanyCars(Arrays.asList(new K5(),
                 new Sonata(),
                 new Sonata(),
                 new Avante(),

@@ -2,7 +2,7 @@ package rentCompany;
 
 import static rentCompany.Avante.INIT_DISTANCE;
 
-public class Sonata implements Car{
+public class Sonata implements Car {
     private static final int FUEL_EFFICIENCY = 10;
 
     private final String name;

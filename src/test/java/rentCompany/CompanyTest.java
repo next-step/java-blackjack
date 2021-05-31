@@ -12,14 +12,14 @@ public class CompanyTest {
         Company company = new Company();
 
         assertAll(
-                ()->assertThat(company.getCars().size()).isEqualTo(5),
-                ()->assertThat(company.getCars().stream()
+                () -> assertThat(company.getCars().size()).isEqualTo(5),
+                () -> assertThat(company.getCars().stream()
                         .filter(Car -> Car.getName() == "sonata")
                         .count()).isEqualTo(2),
-                ()->assertThat(company.getCars().stream()
+                () -> assertThat(company.getCars().stream()
                         .filter(Car -> Car.getName() == "K5")
                         .count()).isEqualTo(1),
-                ()->assertThat(company.getCars().stream()
+                () -> assertThat(company.getCars().stream()
                         .filter(Car -> Car.getName() == "avante")
                         .count()).isEqualTo(2)
         );

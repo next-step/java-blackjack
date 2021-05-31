@@ -68,9 +68,9 @@ public class StreamTest {
     @Test
     void sumDoubleOverThree() {
         final Integer actual = numbers.stream()
-                .filter(number -> number >3)
-                .map(number -> number *2)
-                .reduce(0,(number1,number2) -> number1 + number2);
+                .filter(number -> number > 3)
+                .map(number -> number * 2)
+                .reduce(0, (number1, number2) -> number1 + number2);
 
         assertThat(actual).isEqualTo(30);
     }

@@ -11,7 +11,7 @@ public class Car {
 
     public Car move(final MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
-            return new Car(name,position + 1);
+            return new Car(name, position + 1);
         }
         return this;
     }
