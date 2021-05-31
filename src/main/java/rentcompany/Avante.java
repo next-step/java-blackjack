@@ -1,11 +1,11 @@
-package RentCompany;
+package rentcompany;
 
-public class Sonata extends Car{
+public class Avante extends Car{
 
-    final static public String name = "Sonata";
-    final static public int perLiter = 10;
-    public  double tripDistance;
-    public Sonata(int tripDistance){
+    final static private String name = "Avante";
+    final static private int perLiter = 15;
+    public double tripDistance;
+    public Avante(int tripDistance){
         this.tripDistance = tripDistance;
     }
     @Override

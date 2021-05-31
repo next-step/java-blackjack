@@ -1,9 +1,6 @@
-package RentCompany;
+package rentcompany;
 
 public class K5 extends Car{
-
-
-
     final static private String name = "K5";
     final static private int perLiter = 13;
     public  double tripDistance;
