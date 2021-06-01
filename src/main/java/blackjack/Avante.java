@@ -1,23 +1,19 @@
 package blackjack;
 
-public class Avante {
+public class Avante extends Car{
     private static final double DISTANCE_PER_LITER = 15;
     private static final String NAME = "Avante";
     private double tripDistance;
 
-    private double getDistancePerLiter() {
+    public double getDistancePerLiter() {
         return DISTANCE_PER_LITER;
     }
 
-    private double getTripDistance() {
+    public double getTripDistance() {
         return tripDistance;
     }
 
-    private String getName() {
+    public String getName() {
         return NAME;
-    }
-
-    public double getChargeQuantity() {
-        return getTripDistance()/getDistancePerLiter();
     }
 }
