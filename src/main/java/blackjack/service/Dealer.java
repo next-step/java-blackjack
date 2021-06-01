@@ -1,6 +1,6 @@
 package blackjack.service;
 
-public class Dealer extends Gamer {
+public class Dealer extends Player {
 
     private String name;
 
