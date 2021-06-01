@@ -1,12 +1,12 @@
 package blackjack;
 
 public class Avante {
-    private double distancePerLiter;
+    private static final double DISTANCE_PER_LITER = 15;
+    private static final String NAME = "Avante";
     private double tripDistance;
-    private String name;
 
     public double getDistancePerLiter() {
-        return distancePerLiter;
+        return DISTANCE_PER_LITER;
     }
 
     public double getTripDistance() {
@@ -14,7 +14,7 @@ public class Avante {
     }
 
     public String getName() {
-        return name;
+        return NAME;
     }
 
     public double getChargeQuantity() {
