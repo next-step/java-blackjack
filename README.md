@@ -16,7 +16,7 @@
 ## 2. 블랙잭 1단계
 
 ### 요구사항목록
-- [ ] 카드를 생성한다. -> CardMachine
+- [x] 카드를 생성한다. -> CardMachine#createCards
 - [ ] 플레이어와 딜러를 정할 수 있다. -> Application, Person - Players, Dealer 
 - [ ] 각 플레이어와 딜러에게 카드를 2장씩 발급한다. -> PlayGame#drawcard 
 - [ ] 각 플레이어와 딜러가 2장의 카드를 더한다. -> PlayGame
