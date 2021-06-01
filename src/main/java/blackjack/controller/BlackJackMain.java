@@ -12,8 +12,11 @@ public class BlackJackMain {
     static BlackJackGame blackJackGame = new BlackJackGame();
 
     public static void main(String[] args) {
-        String playNames = inputView.inputPlayerName();
-       blackJackGame.getPlayerName(playNames);
+       String playNames = inputView.inputPlayerName();
+       blackJackGame.getPlayer(playNames);
+       blackJackGame.draw();
+
+
     }
 
 }

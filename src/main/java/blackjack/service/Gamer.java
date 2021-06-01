@@ -14,4 +14,9 @@ public class Gamer extends Player {
     public String getName() {
         return name;
     }
+
+    @Override
+    void addDraw() {
+
+    }
 }
