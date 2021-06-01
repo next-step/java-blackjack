@@ -7,11 +7,11 @@ public class RentCompany {
     private static final String NEWLINE = System.getProperty("line.separator");
     private List<Car> cars = new ArrayList<>();
 
-    public RentCompany() {
+    public static RentCompany create() {
+        return new RentCompany();
     }
 
-    public RentCompany create() {
-        return new RentCompany();
+    public RentCompany() {
     }
 
     public void addCar(Car car) {
