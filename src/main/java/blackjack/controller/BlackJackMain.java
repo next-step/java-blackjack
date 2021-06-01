@@ -12,9 +12,8 @@ public class BlackJackMain {
     static BlackJackGame blackJackGame = new BlackJackGame();
 
     public static void main(String[] args) {
-       String playNames = inputView.inputPlayerName();
-       blackJackGame.getPlayer(playNames);
-       blackJackGame.draw();
+       blackJackGame.getPlayer(inputView.inputPlayerName());
+       resultView.resultStartCard(blackJackGame.startDraw());
 
 
     }

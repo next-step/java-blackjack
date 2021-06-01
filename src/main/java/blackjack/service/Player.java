@@ -21,4 +21,12 @@ public abstract class Player{
         Card card = cardDeck.getCard();
         cards.add(card);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Card> getCards() {
+        return cards;
+    }
 }

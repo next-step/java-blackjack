@@ -6,10 +6,13 @@ public enum CardPattern {
     HEARTS("하트"),
     SPADES("스페이스");
 
-    public String pattern;
+    public String mark;
 
-    CardPattern(String pattern){
-        this.pattern = pattern;
+    CardPattern(String mark){
+        this.mark = mark;
     }
 
+    public String getMark() {
+        return mark;
+    }
 }

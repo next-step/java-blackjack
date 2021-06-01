@@ -9,4 +9,11 @@ public class Card {
         this.cardNumber = cardNumber;
     }
 
+    public CardNumber getCardNumber() {
+        return cardNumber;
+    }
+
+    public CardPattern getCardPattern() {
+        return cardPattern;
+    }
 }

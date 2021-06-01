@@ -20,8 +20,9 @@ public class BlackJackGame {
         players.add(new Dealer());
     }
 
-    public void draw(){
+    public List<Player> startDraw(){
       players.forEach(players -> players.startDraw(cardDeck));
+        return players;
     }
 
 
