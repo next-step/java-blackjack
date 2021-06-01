@@ -7,7 +7,7 @@ public abstract class Player{
     String name;
     List<Card> cards = new ArrayList<>();
 
-    abstract void addDraw();
+    abstract void addDraw(CardDeck cardDeck);
 
 
     public void startDraw(CardDeck cardDeck){

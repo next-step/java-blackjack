@@ -25,9 +25,8 @@ public class BlackJackGame {
         return players;
     }
 
-
-
-
-
+    public void addDraw(){
+        players.forEach(player -> player.addDraw(cardDeck));
+    }
 
 }

@@ -7,7 +7,7 @@ public class Dealer extends Player {
     }
 
     @Override
-    void addDraw() {
+    void addDraw(CardDeck cardDeck) {
 
     }
 }
