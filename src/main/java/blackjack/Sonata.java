@@ -5,6 +5,10 @@ public class Sonata extends Car{
     private static final String NAME = "Sonata";
     private double tripDistance ;
 
+    public Sonata(double tripDistance) {
+        this.tripDistance = tripDistance;
+    }
+
     public double getDistancePerLiter() {
         return DISTANCE_PER_LITER;
     }
