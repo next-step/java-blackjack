@@ -1,14 +1,14 @@
-package rentCompany;
+package rentCompany.model;
 
-public class Avante implements Car {
-    private static final int FUEL_EFFICIENCY = 15;
+public class Sonata implements Car {
+    private static final int FUEL_EFFICIENCY = 10;
 
     private final String name;
     private final int distance;
     private final int fuelEfficiency;
 
-    public Avante(int distance) {
-        this.name = "avante";
+    public Sonata(int distance) {
+        this.name = "sonata";
         this.distance = distance;
         this.fuelEfficiency = FUEL_EFFICIENCY;
     }

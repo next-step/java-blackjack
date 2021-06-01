@@ -1,4 +1,4 @@
-package rentCompany;
+package rentCompany.model;
 
 public interface Car {
     String getName();

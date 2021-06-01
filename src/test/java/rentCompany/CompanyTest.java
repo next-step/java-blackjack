@@ -1,8 +1,7 @@
 package rentCompany;
 
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
+import rentCompany.model.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -11,12 +10,13 @@ public class CompanyTest {
 
     @Test
     void 회사는_5대의_목록을_가진다() {
-        CompanyCars companyCars = new CompanyCars(Arrays.asList(new K5(130),
-                new Sonata(100),
-                new Sonata(200),
-                new Avante(150),
-                new Avante(300)));
-        Company company = new Company(companyCars);
+        Company company = CompanyFactory.createCompany();
+
+        company.addCar(new K5(130));
+        company.addCar(new Sonata(100));
+        company.addCar(new Sonata(200));
+        company.addCar(new Avante(150));
+        company.addCar(new Avante(300));
 
         assertAll(
                 () -> assertThat(company.getCars().size()).isEqualTo(5),

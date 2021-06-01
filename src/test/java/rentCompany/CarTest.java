@@ -1,6 +1,10 @@
 package rentCompany;
 
 import org.junit.jupiter.api.Test;
+import rentCompany.model.Avante;
+import rentCompany.model.Car;
+import rentCompany.model.K5;
+import rentCompany.model.Sonata;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
