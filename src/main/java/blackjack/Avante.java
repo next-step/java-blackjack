@@ -5,15 +5,15 @@ public class Avante {
     private static final String NAME = "Avante";
     private double tripDistance;
 
-    public double getDistancePerLiter() {
+    private double getDistancePerLiter() {
         return DISTANCE_PER_LITER;
     }
 
-    public double getTripDistance() {
+    private double getTripDistance() {
         return tripDistance;
     }
 
-    public String getName() {
+    private String getName() {
         return NAME;
     }
 
