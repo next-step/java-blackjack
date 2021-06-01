@@ -31,7 +31,7 @@ public class PlayGame {
         cardPack.getCards().remove(randomIndexDealer);
     }
 
-    public void playStart(int i) {
+    public void gameStart(int i) {
         for (int j = 0; j < i; j++) {
             this.drawCardPlayer();
             this.drawCardDealer();
