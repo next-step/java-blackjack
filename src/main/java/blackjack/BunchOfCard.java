@@ -17,13 +17,13 @@ public class BunchOfCard {
 
     public List<String> getCardNames() {
         return bunchOfCard.stream()
-                .map((card)->card.getName())
+                .map((card) -> card.getName())
                 .collect(Collectors.toList());
     }
 
     public int getCardValueSum() {
         return bunchOfCard.stream()
-                .mapToInt((card)->card.getValue())
+                .mapToInt((card) -> card.getValue())
                 .sum();
     }
 }

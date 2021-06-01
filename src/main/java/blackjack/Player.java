@@ -27,7 +27,7 @@ public class Player {
     }
 
     public int getCardValueSum() {
-      return this.bunchOfCard.getCardValueSum();
+        return this.bunchOfCard.getCardValueSum();
     }
 
     public List<String> getCardNames() {
