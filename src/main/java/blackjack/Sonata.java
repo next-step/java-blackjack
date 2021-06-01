@@ -1,23 +1,19 @@
 package blackjack;
 
-public class Sonata {
+public class Sonata extends Car{
     private static final double DISTANCE_PER_LITER = 10;
     private static final String NAME = "Sonata";
     private double tripDistance ;
 
-    private double getDistancePerLiter() {
+    public double getDistancePerLiter() {
         return DISTANCE_PER_LITER;
     }
 
-    private double getTripDistance() {
+    public double getTripDistance() {
         return tripDistance;
     }
 
-    private String getName() {
+    public String getName() {
         return NAME;
-    }
-
-    public double getChargeQuantity() {
-        return getTripDistance()/getDistancePerLiter();
     }
 }
