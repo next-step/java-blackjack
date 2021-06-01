@@ -11,13 +11,15 @@ public class BlackJackGame {
 
     CardDeck cardDeck = new CardDeck();
 
-    public void getPlayer(String GamerName){
+    public  List<Player> getPlayer(String GamerName){
 
         players = Arrays.stream(GamerName.split(",| ,"))
                 .map(Gamer::new)//.map(name -> new Gamer(name))
                 .collect(Collectors.toList());
 
         players.add(new Dealer());
+
+        return players;
     }
 
     public List<Player> startDraw(){

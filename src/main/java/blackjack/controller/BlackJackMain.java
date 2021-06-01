@@ -5,7 +5,6 @@ import blackjack.service.Player;
 import blackjack.view.InputView;
 import blackjack.view.ResultView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BlackJackMain {
@@ -16,10 +15,11 @@ public class BlackJackMain {
     static BlackJackGame blackJackGame = new BlackJackGame();
 
     public static void main(String[] args) {
-        blackJackGame.getPlayer(inputView.inputPlayerName());
-
+        List<Player> players = blackJackGame.getPlayer(inputView.inputPlayerName());
         resultView.resultStartCard(blackJackGame.startDraw());
         blackJackGame.addDraw();
+
+        resultView.resultPlayers(players);
 
     }
 

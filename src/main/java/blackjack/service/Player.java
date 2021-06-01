@@ -29,4 +29,9 @@ public abstract class Player{
     public List<Card> getCards() {
         return cards;
     }
+    public Integer getScore() {
+        return cards.stream()
+                .map(card -> card.getCardNumber().getScore())
+                .reduce(0, Integer::sum);
+    }
 }
