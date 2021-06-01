@@ -2,20 +2,23 @@ package blackjack.service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class BlackJackGame {
 
-    Stream<Gamer> Gamers ;
+    List<Player> players;
 
     public void getPlayerName(String GamerName){
 
-      Gamers = Arrays.stream(GamerName.split(",| ,"))
+        players = Arrays.stream(GamerName.split(",| ,"))
                 .map(Gamer::new)//.map(name -> new Gamer(name))
-                ;
+                .collect(Collectors.toList());
 
-      //Gamers.forEach(player -> System.out.println(player.getName()));
+        players.add(new Dealer());
+
     }
+
 
 
 

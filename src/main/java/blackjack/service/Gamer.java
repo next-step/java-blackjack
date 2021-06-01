@@ -1,8 +1,11 @@
 package blackjack.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Gamer extends Player {
 
-    String name;
+
 
     Gamer(String name){
         this.name = name;
