@@ -6,14 +6,17 @@ import java.util.stream.Stream;
 
 public class BlackJackGame {
 
-    public void getPlayerName(String playerName){
+    Stream<Gamer> Gamers ;
 
-        List<String> playerNames = Arrays.asList(playerName.split(",| ,"));
+    public void getPlayerName(String GamerName){
 
-        Stream<Gamer> playerStream = playerNames.stream()
-                .map(name -> new Gamer(name))
+      Gamers = Arrays.stream(GamerName.split(",| ,"))
+                .map(Gamer::new)//.map(name -> new Gamer(name))
                 ;
 
-        //playerStream.forEach(player -> System.out.println(player.getName()));
+      //Gamers.forEach(player -> System.out.println(player.getName()));
     }
+
+
+
 }
