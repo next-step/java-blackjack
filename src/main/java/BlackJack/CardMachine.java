@@ -7,7 +7,8 @@ import java.util.stream.Collectors;
 
 public class CardMachine {
     private CardPack cardPack;
-    private List<Card> cards ;
+    private List<Card> cards;
+
     public List<CardShape> createCardShapes() {
         return Arrays.stream(CardShape.values())
                 .collect(Collectors.toList());
@@ -18,7 +19,7 @@ public class CardMachine {
                 .collect(Collectors.toList());
     }
 
-    public CardPack createCards(){
+    public CardPack createCards() {
         cards = new ArrayList<>();
         for (CardShape cardShape : createCardShapes()) {
             for (CardNumber cardNumber : createCardNumbers()) {
