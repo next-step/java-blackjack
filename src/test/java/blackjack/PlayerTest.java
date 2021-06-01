@@ -28,4 +28,15 @@ public class PlayerTest {
 
         assertThat(player.getName()).isEqualTo("재언");
     }
+
+    @DisplayName("유저는 카드의 이름들을 반환 할 수있다.")
+    @Test
+    void getBunchOfCardTest() {
+        Player player = new Player("재언");
+
+        player.addCard(new Card( CardTypes.CLOVER_1));
+        player.addCard(new Card( CardTypes.DIAMOND_J));
+
+        assertThat(player.getCardNames()).contains("1클로버","J다이아몬드");
+    }
 }
