@@ -11,7 +11,7 @@ public class RentCompanyTest {
     @Test
     @DisplayName("차량별 연료주입 테스트")
     public void report() throws Exception {
-        RentCompany company = RentCompany.create(); // factory method를 사용해 생성
+        RentCompany company = RentCompany.create();
         company.addCar(new Sonata(150));
         company.addCar(new K5(260));
         company.addCar(new Sonata(120));
