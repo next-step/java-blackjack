@@ -16,9 +16,10 @@
 ## 2. 블랙잭 1단계
 
 ### 요구사항목록
+
 - [x] 카드를 생성한다. -> CardMachine#createCards
-- [x] 플레이어와 딜러를 정할 수 있다. -> Application, Person - Players, Dealer 
-- [ ] 각 플레이어와 딜러에게 카드를 2장씩 발급한다. -> PlayGame#drawcard 
+- [x] 플레이어와 딜러를 정할 수 있다. -> Application, Person - Players, Dealer
+- [x] 각 플레이어와 딜러에게 카드를 2장씩 발급한다. -> PlayGame#drawcard
 - [ ] 각 플레이어와 딜러가 2장의 카드를 더한다. -> PlayGame
 - [ ] 에이스가 나올경우 1 또는 11 중 하나를 선택 할 수 있다. -> Application
 - [x] 딜러는 카드 2장의 합이 16이하 이면 무조건 1장을 더 발급 받아야 한다. -> Dealer
@@ -26,5 +27,5 @@
 - [x] 플레이어는 카드 2장의 합이 21이하이면 카드를 계속 발급 받을 수 있다. -> Players
 - [ ] 각 딜러와 플레이어는 가지고 있는 카드의 총합을 계산한다. -> GameResult
 - [ ] 계산한 결과를 바탕으로 딜러와의 결과비교를 통해 승패를 결정한다. -> WinnerResult
-- [ ] 플레이어와 비교를 통해 계산결과 (21 - 총합점수)가 더 낮은 사람이 승.  -> WinnerResult 
+- [ ] 플레이어와 비교를 통해 계산결과 (21 - 총합점수)가 더 낮은 사람이 승. -> WinnerResult
 - [ ] 만약 플레이어의 카드의 총합이 21초과시 참가자가 패한것이다. -> WinnerResult
