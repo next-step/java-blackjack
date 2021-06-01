@@ -5,6 +5,10 @@ public class Avante extends Car{
     private static final String NAME = "Avante";
     private double tripDistance;
 
+    public Avante(double tripDistance) {
+        this.tripDistance = tripDistance;
+    }
+
     public double getDistancePerLiter() {
         return DISTANCE_PER_LITER;
     }
