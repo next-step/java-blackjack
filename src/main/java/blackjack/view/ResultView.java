@@ -30,15 +30,5 @@ public class ResultView {
         System.out.println("딜러는 16이하라 한장의 카드를 더 받았습니다.");
     }
 
-    public void resultPlayers(List<Player> players){
-        players.forEach(this::resultPlayer);//player -> resultPlayer(player)
-    }
 
-    public void resultPlayer(Player player) {
-        System.out.println(player.getName() + " : " +
-                player.getCards()
-                        .stream()
-                        .map(card -> card.getCardPattern().getMark() + card.getCardNumber().getMark())
-                        .collect(Collectors.joining(",")));
-    }
 }
