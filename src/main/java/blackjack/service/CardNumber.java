@@ -1,20 +1,34 @@
 package blackjack.service;
 
 public enum CardNumber {
-//    ACE(1),
-//    TWO(2),
-//    THREE(3),
-//    FOUR(4),
-//    FIVE(5),
-//    SIX(6),
-//    SEVEN(7),
-//    EIGHT(8),
-//    NINE(9),
-//    TEN(10),
-//    JACK(10),
-//    QUEEN(10),
-//    KING(10);
-//
-//    public int score;
+    ACE(1, "A"),
+    TWO(2, "2"),
+    THREE(3, "3"),
+    FOUR(4, "4"),
+    FIVE(5, "5"),
+    SIX(6, "6"),
+    SEVEN(7, "7"),
+    EIGHT(8, "8"),
+    NINE(9, "9"),
+    TEN(10, "10"),
+    JACK(10, "J"),
+    QUEEN(10, "Q"),
+    KING(10, "K");
+
+    public int score;
+    public String mark;
+
+    CardNumber(int score, String mark) {
+        this.score = score;
+        this.mark = mark;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public String getMark() {
+        return mark;
+    }
 
 }

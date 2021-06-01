@@ -6,13 +6,14 @@ import blackjack.view.ResultView;
 
 public class BlackJackMain {
 
-    InputView inputView = new InputView();
-    ResultView resultView = new ResultView();
+    static InputView inputView = new InputView();
+    static ResultView resultView = new ResultView();
 
-    BlackJackGame blackJackGame = new BlackJackGame();
+    static BlackJackGame blackJackGame = new BlackJackGame();
 
     public static void main(String[] args) {
-
+        String playNames = inputView.inputPlayerName();
+       blackJackGame.getPlayerName(playNames);
     }
 
 }
