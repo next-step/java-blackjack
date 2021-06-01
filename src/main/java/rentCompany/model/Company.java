@@ -30,11 +30,11 @@ public class Company {
 
     private StringBuilder makeCarInformation(Car car) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(car.getName());
-        stringBuilder.append(SEPARATOR);
-        stringBuilder.append(car.getFuelRequiredAmount());
-        stringBuilder.append(LITER);
-        stringBuilder.append(NEW_LINE);
+        stringBuilder.append(car.getName())
+                .append(SEPARATOR)
+                .append(car.getFuelRequiredAmount())
+                .append(LITER)
+                .append(NEW_LINE);
 
         return stringBuilder;
     }
