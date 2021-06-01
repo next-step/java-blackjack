@@ -8,7 +8,7 @@ public class Sonata implements Car {
     private final int fuelEfficiency;
 
     public Sonata(int distance) {
-        this.name = "sonata";
+        this.name = "Sonata";
         this.distance = distance;
         this.fuelEfficiency = FUEL_EFFICIENCY;
     }

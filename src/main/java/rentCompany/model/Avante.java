@@ -8,7 +8,7 @@ public class Avante implements Car {
     private final int fuelEfficiency;
 
     public Avante(int distance) {
-        this.name = "avante";
+        this.name = "Avante";
         this.distance = distance;
         this.fuelEfficiency = FUEL_EFFICIENCY;
     }
