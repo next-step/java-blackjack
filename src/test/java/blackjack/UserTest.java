@@ -50,4 +50,14 @@ public class UserTest {
 
         assertThat(user.getCardValueSum()).isEqualTo(12);
     }
+
+    @DisplayName("여러 장의 카드를 입력하면 동일한 이름의 개수를 반환 할 수있다.")
+    @Test
+    void addSeveralCardTest() {
+        User user = new User("재언");
+        CardGenerator cardGenerator = new CardGenerator();
+        user.addSeveralCard(cardGenerator.getSeveralCard(3));
+
+        assertThat(user.getCardNames().size()).isEqualTo(3);
+    }
 }
