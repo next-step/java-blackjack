@@ -5,9 +5,10 @@ import blackjack.view.ResultView;
 
 public class Gamer extends Player {
 
-
     InputView inputView = new InputView();
     ResultView resultView = new ResultView();
+
+    Result result;
 
     Gamer(String name) {
         this.name = name;
@@ -38,4 +39,21 @@ public class Gamer extends Player {
 
         resultView.resultPlayer(this);
     }
+
+    @Override
+    void result(int dealerScore) {
+        if (score > dealerScore) {
+            result = Result.win;
+        } else if (score == dealerScore) {
+            result = Result.draw;
+        } else {
+            result = Result.lose;
+        }
+    }
+
+    @Override
+    boolean isGamer() {
+        return true;
+    }
+
 }

@@ -6,9 +6,12 @@ import java.util.List;
 public abstract class Player{
     String name;
     List<Card> cards = new ArrayList<>();
+    int score;
 
     abstract void addDraw(CardDeck cardDeck);
+    abstract void result(int score);
 
+    abstract boolean isGamer();
 
     public void startDraw(CardDeck cardDeck){
 
@@ -29,9 +32,15 @@ public abstract class Player{
     public List<Card> getCards() {
         return cards;
     }
+
     public Integer getScore() {
-        return cards.stream()
+        score = cards.stream()
                 .map(card -> card.getCardNumber().getScore())
                 .reduce(0, Integer::sum);
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }

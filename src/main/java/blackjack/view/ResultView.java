@@ -26,6 +26,23 @@ public class ResultView {
                         .collect(Collectors.joining(",")));
     }
 
+    public void resultFinalCard(List<Player> players){
+        players.forEach(player -> System.out.println(player.getName() + " : " +
+                player.getCards()
+                        .stream()
+                        .map(card -> card.getCardPattern().getMark() + card.getCardNumber().getMark())
+                        .collect(Collectors.joining(","))
+                +"-결과"+player.getScore())
+                        );
+
+    }
+
+    public void resultFinal(List<Player> players){
+        System.out.println("##최종 승패");
+
+    }
+
+
     public void resultDealer(){
         System.out.println("딜러는 16이하라 한장의 카드를 더 받았습니다.");
     }

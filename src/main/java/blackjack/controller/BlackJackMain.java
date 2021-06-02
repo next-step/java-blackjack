@@ -19,7 +19,7 @@ public class BlackJackMain {
         resultView.resultStartCard(blackJackGame.startDraw());
         blackJackGame.addDraw();
 
-        resultView.resultPlayers(players);
+        resultView.resultFinalCard(players);
 
     }
 
