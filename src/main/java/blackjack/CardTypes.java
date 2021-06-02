@@ -19,7 +19,6 @@ public enum CardTypes {
     private final String name;
     private final int value;
 
-
     CardTypes(String name, int value) {
         this.name = name;
         this.value = value;
