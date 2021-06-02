@@ -15,8 +15,8 @@ public class Dealer implements Player {
     }
 
     @Override
-    public void addSeveralCard(List<Card> cards){
-        for(Card card : cards){
+    public void addSeveralCard(List<Card> cards) {
+        for (Card card : cards) {
             addCard(card);
         }
     }

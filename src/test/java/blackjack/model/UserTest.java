@@ -9,15 +9,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class UserTest {
 
-    @DisplayName("게임 시작시 이름들을 입력하면 유저들이 생성 된다.")
+    @DisplayName("이름을 입력하면 유저가 생성 된다.")
     @Test
-    void playerGenerateTest() {
+    void userGenerateTest() {
         assertDoesNotThrow(() -> new User("현진"));
     }
 
-    @DisplayName("게임 시작시 이름이 없이는 유저를 생성할 수 없다.")
+    @DisplayName("이름 없이는 유저를 생성할 수 없다.")
     @Test
-    void playerGenerateFailTest() {
+    void userGenerateFailTest() {
         assertThrows(IllegalArgumentException.class, () -> new User(" "));
     }
 

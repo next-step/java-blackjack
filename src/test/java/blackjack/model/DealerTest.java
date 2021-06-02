@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class DealerTest {
     @DisplayName("딜러는 카드의 이름들을 반환 할 수있다.")
     @Test
-    void getNamesTest() {
+    void getCardNamesTest() {
         Dealer dealer = new Dealer();
 
         dealer.addCard(new Card(CardTypes.CLOVER_2));
