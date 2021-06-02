@@ -1,4 +1,4 @@
-package blackjack;
+package blackjack.model;
 
 public enum CardTypes {
     CLOVER_A("A클로버", 1), HEART_A("A하트", 1), DIAMOND_A("A다이아몬드", 1), SPADE_A("A스페이드", 1),

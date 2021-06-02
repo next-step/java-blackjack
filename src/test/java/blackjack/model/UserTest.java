@@ -1,4 +1,4 @@
-package blackjack;
+package blackjack.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

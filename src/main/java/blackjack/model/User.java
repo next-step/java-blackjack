@@ -1,12 +1,21 @@
-package blackjack;
+package blackjack.model;
 
 import java.util.List;
 
-public class Dealer implements Player {
+public class User implements Player {
+    private final String name;
     private final BunchOfCard bunchOfCard;
 
-    public Dealer() {
+    public User(String name) {
+        validateNullInput(name);
+        this.name = name;
         this.bunchOfCard = new BunchOfCard();
+    }
+
+    private void validateNullInput(String name) {
+        if (name.trim().isEmpty()) {
+            throw new IllegalArgumentException("이름을 입력하지 않으면 생성할 수 없습니다.");
+        }
     }
 
     @Override
@@ -29,5 +38,9 @@ public class Dealer implements Player {
     @Override
     public List<String> getCardNames() {
         return bunchOfCard.getCardNames();
+    }
+
+    public String getName() {
+        return name;
     }
 }

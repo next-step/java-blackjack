@@ -2,7 +2,7 @@ package rentCompany.view;
 
 import java.util.Scanner;
 
-public class InputView {
+public class Input {
     private final static Scanner scanner = new Scanner(System.in);
 
     public static int inputDistance() {
