@@ -30,7 +30,7 @@ public class CardGeneratorTest {
     void getOneCard() {
         CardGenerator cardGenerator = new CardGenerator();
 
-        assertThat(cardGenerator.getOneCard().getClass()).isEqualTo(CardTypes.class);
+        assertThat(cardGenerator.getOneCard().getClass()).isEqualTo(Card.class);
     }
 
     @DisplayName("카드 생성기는 카드 여러장을 반환 할 수 있다.")

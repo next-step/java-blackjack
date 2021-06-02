@@ -9,7 +9,6 @@ public class CardGenerator {
     private static final int CARD_INITIAL_COUNT = 0;
 
     private int cardIndex;
-
     private final List<CardTypes> cards;
 
     public CardGenerator() {
@@ -19,14 +18,14 @@ public class CardGenerator {
         this.cards = newCards;
     }
 
-    public CardTypes getOneCard() {
+    public Card getOneCard() {
         int nowIndex = cardIndex;
         cardIndex++;
-        return this.cards.get(nowIndex);
+        return new Card(this.cards.get(nowIndex));
     }
 
-    public List<CardTypes> getSeveralCard(int cardCount) {
-        List<CardTypes> cards = new ArrayList<>();
+    public List<Card> getSeveralCard(int cardCount) {
+        List<Card> cards = new ArrayList<>();
 
         for (int i = 0; i < cardCount; i++) {
             cards.add(getOneCard());
