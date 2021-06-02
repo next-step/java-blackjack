@@ -34,10 +34,10 @@ public class UserTest {
     void getNamesTest() {
         User user = new User("재언");
 
-        user.addCard(new Card(CardTypes.CLOVER_1));
+        user.addCard(new Card(CardTypes.CLOVER_2));
         user.addCard(new Card(CardTypes.DIAMOND_J));
 
-        assertThat(user.getCardNames()).contains("1클로버", "J다이아몬드");
+        assertThat(user.getCardNames()).contains("2클로버", "J다이아몬드");
     }
 
     @DisplayName("유저는 카드들의 값의 합을 반환 할 수있다.")
@@ -45,9 +45,9 @@ public class UserTest {
     void getCardValueSumTest() {
         User user = new User("재언");
 
-        user.addCard(new Card(CardTypes.CLOVER_1));
+        user.addCard(new Card(CardTypes.CLOVER_2));
         user.addCard(new Card(CardTypes.DIAMOND_J));
 
-        assertThat(user.getCardValueSum()).isEqualTo(11);
+        assertThat(user.getCardValueSum()).isEqualTo(12);
     }
 }

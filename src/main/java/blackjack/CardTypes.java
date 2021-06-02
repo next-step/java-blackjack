@@ -2,10 +2,9 @@ package blackjack;
 
 public enum CardTypes {
     CLOVER_A("A클로버", 1), HEART_A("A하트", 1), DIAMOND_A("A다이아몬드", 1), SPADE_A("A스페이드", 1),
-    CLOVER_1("1클로버", 1), HEART_1("1하트", 1), DIAMOND_1("1다이아몬드", 1), SPADE_1("1스페이드", 1),
     CLOVER_2("2클로버", 2), HEART_2("2하트", 2), DIAMOND_2("2다이아몬드", 2), SPADE_2("2스페이드", 2),
     CLOVER_3("3클로버", 3), HEART_3("3하트", 3), DIAMOND_3("3다이아몬드", 3), SPADE_3("3스페이드", 3),
-    CLOVER_4("4클로버", 4), HEART_4("4하트", 4), DIAMOND_4("4다이아몬드", 4), SPADE_4("4스페이드", 4),
+    CLOVER_4("4클로z버", 4), HEART_4("4하트", 4), DIAMOND_4("4다이아몬드", 4), SPADE_4("4스페이드", 4),
     CLOVER_5("5클로버", 5), HEART_5("5하트", 5), DIAMOND_5("5다이아몬드", 5), SPADE_5("5스페이드", 5),
     CLOVER_6("6클로버", 6), HEART_6("6하트", 6), DIAMOND_6("6다이아몬드", 6), SPADE_6("6스페이드", 6),
     CLOVER_7("7클로버", 7), HEART_7("7하트", 7), DIAMOND_7("7다이아몬드", 7), SPADE_7("7스페이드", 7),

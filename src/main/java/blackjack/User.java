@@ -2,7 +2,7 @@ package blackjack;
 
 import java.util.List;
 
-public class User implements Player{
+public class User implements Player {
     private final String name;
     private final BunchOfCard bunchOfCard;
 
