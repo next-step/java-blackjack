@@ -7,9 +7,11 @@ public class Dealer implements Player {
     private static final int RECEIVE_CARD_CONDITION = 17;
     private static final int FIRST_INDEX = 0;
 
+    private final String name;
     private final BunchOfCard bunchOfCard;
 
     public Dealer() {
+        this.name = "딜러";
         this.bunchOfCard = new BunchOfCard();
     }
 
@@ -38,6 +40,11 @@ public class Dealer implements Player {
     @Override
     public boolean canReceiveCard() {
         return getCardValueSum() < RECEIVE_CARD_CONDITION;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     public List<String> getCardName() {

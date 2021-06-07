@@ -47,6 +47,7 @@ public class User implements Player {
         return getCardValueSum() < RECEIVE_CARD_CONDITION;
     }
 
+    @Override
     public String getName() {
         return name;
     }

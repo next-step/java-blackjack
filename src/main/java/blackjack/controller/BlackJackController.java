@@ -28,10 +28,13 @@ public class BlackJackController {
         printUsersCardNames(users);
 
         doUsersTurn(users);
-
         doDealerTurn(dealer);
 
+        Output.printPlayerCardInformation(dealer);
+
+        printUsersCardInformation(users);
     }
+
 
     private void doDealerTurn(Dealer dealer) {
         if (dealer.canReceiveCard()) {
@@ -86,5 +89,11 @@ public class BlackJackController {
         }
 
         return false;
+    }
+
+    private void printUsersCardInformation(Users users) {
+        for(User user : users.getUser()){
+            Output.printPlayerCardInformation(user);
+        }
     }
 }

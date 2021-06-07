@@ -12,4 +12,6 @@ public interface Player {
     List<String> getCardNames();
 
     boolean canReceiveCard();
+
+    String getName();
 }
