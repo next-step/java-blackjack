@@ -1,15 +1,20 @@
 package blackjack;
 
+import java.util.List;
+
 public class Gambler {
     String name;
-    String card;
+    List<Card> card;
 
-    public Gambler(String card) {
-        this("dealer",card);
+    public Gambler() {
+        this("dealer");
     }
 
-    public Gambler(String name, String card) {
+    public Gambler(String name) {
         this.name = name;
-        this.card = card;
+    }
+
+    public void drawCard() {
+        card.add(new Card());
     }
 }
