@@ -18,12 +18,6 @@ public class CardGenerator {
         this.cards = newCards;
     }
 
-    public Card getOneCard() {
-        int nowIndex = cardIndex;
-        cardIndex++;
-        return new Card(this.cards.get(nowIndex));
-    }
-
     public List<Card> getSeveralCard(int cardCount) {
         List<Card> cards = new ArrayList<>();
 
@@ -32,6 +26,12 @@ public class CardGenerator {
         }
 
         return cards;
+    }
+
+    public Card getOneCard() {
+        int nowIndex = cardIndex;
+        cardIndex++;
+        return new Card(this.cards.get(nowIndex));
     }
 
     public int getLeftCardCount() {

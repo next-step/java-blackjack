@@ -29,7 +29,7 @@ public class Output {
         stringBuilder.setLength(INITIALIZE_VALUE);
     }
 
-    public static void printDealerCardName(String userName, String card) {
+    public static void printDealerFirstCardName(String userName, String card) {
         stringBuilder.append(userName)
                 .append(COLON)
                 .append(card);

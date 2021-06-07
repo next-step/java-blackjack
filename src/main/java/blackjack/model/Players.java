@@ -14,12 +14,12 @@ public class Players {
     }
 
     public List<Player> getUser() {
-        return users;
+        return this.users;
     }
 
     public List<String> getUserNames() {
 
-        return users.stream()
+        return this.users.stream()
                 .map(Player::getName)
                 .collect(Collectors.toList());
     }

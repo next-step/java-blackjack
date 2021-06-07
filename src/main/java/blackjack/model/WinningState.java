@@ -19,10 +19,10 @@ public class WinningState {
     }
 
     public int getWinCount() {
-        return winCount;
+        return this.winCount;
     }
 
     public int getLoseCount() {
-        return loseCount;
+        return this.loseCount;
     }
 }

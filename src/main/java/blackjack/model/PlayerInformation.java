@@ -16,14 +16,14 @@ public class PlayerInformation {
     }
 
     public int getCardValueSum() {
-        return bunchOfCard.getCardValueSum();
+        return this.bunchOfCard.getCardValueSum();
     }
 
     public List<String> getCardNames() {
-        return bunchOfCard.getCardNames();
+        return this.bunchOfCard.getCardNames();
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 }

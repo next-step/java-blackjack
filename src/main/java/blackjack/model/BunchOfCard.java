@@ -1,10 +1,16 @@
 package blackjack.model;
 
+import blackjack.controller.BlackJackController;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class BunchOfCard {
+    private static final int A_VALUE = 1;
+    private static final int HAVE_A_COUNT = 0;
+    private static final int FOR_HIGH_A_VALUE = 10;
+
     private final List<Card> bunchOfCard;
 
     public BunchOfCard() {
@@ -33,12 +39,12 @@ public class BunchOfCard {
     }
 
     private boolean isContainsA() {
-        return bunchOfCard.stream().filter(card -> card.getValue() == 1).count() > 1;
+        return bunchOfCard.stream().filter(card -> card.getValue() == A_VALUE).count() > HAVE_A_COUNT;
     }
 
     private int getCardValueSumContainsA(int cardValueSum) {
-        if (cardValueSum <= 21) {
-            return cardValueSum + 10;
+        if (cardValueSum + FOR_HIGH_A_VALUE <= BlackJackController.BURST_COUNT) {
+            return cardValueSum + FOR_HIGH_A_VALUE;
         }
 
         return cardValueSum;
