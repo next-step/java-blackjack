@@ -6,17 +6,15 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class PlayerTest {
     Player player;
     CardDeck cardDeck = new CardDeck();
 
     @BeforeEach
-    void set(){
+    void set() {
         player = new Gamer("1");
 
     }
@@ -39,9 +37,9 @@ class PlayerTest {
     @Test
     void sumScore() {
         List<Card> cards = new ArrayList<>();
-        cards.add(new Card(CardPattern.CLUBS,CardNumber.ACE));
-        cards.add(new Card(CardPattern.CLUBS,CardNumber.EIGHT));
-        cards.add(new Card(CardPattern.CLUBS,CardNumber.FIVE));
+        cards.add(new Card(CardPattern.CLUBS, CardNumber.ACE));
+        cards.add(new Card(CardPattern.CLUBS, CardNumber.EIGHT));
+        cards.add(new Card(CardPattern.CLUBS, CardNumber.FIVE));
         player.setCards(cards);
         assertThat(player.sumScore()).isEqualTo(14);
 

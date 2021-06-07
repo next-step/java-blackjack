@@ -17,16 +17,13 @@ public abstract class Player {
     abstract void outputResult();
 
     public void startDraw(CardDeck cardDeck) {
-
         draw(cardDeck);
         draw(cardDeck);
-
     }
 
     public void draw(CardDeck cardDeck) {
         Card card = cardDeck.getCard();
         cards.add(card);
-
     }
 
     public String getName() {

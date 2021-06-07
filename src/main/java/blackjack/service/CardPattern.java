@@ -8,7 +8,7 @@ public enum CardPattern {
 
     public String mark;
 
-    CardPattern(String mark){
+    CardPattern(String mark) {
         this.mark = mark;
     }
 

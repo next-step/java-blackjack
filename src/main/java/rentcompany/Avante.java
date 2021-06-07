@@ -1,13 +1,15 @@
 package rentcompany;
 
-public class Avante extends Car{
+public class Avante extends Car {
 
     final static private String name = "Avante";
     final static private int perLiter = 15;
     public double tripDistance;
-    public Avante(int tripDistance){
+
+    public Avante(int tripDistance) {
         this.tripDistance = tripDistance;
     }
+
     @Override
     double getDistancePerLiter() {
         return perLiter;

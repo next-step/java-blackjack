@@ -2,7 +2,9 @@ package blackjack.service;
 
 import blackjack.view.ResultView;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Dealer extends Player {
@@ -44,7 +46,6 @@ public class Dealer extends Player {
 
     @Override
     void outputResult() {
-
         Map<Result, Long> map = resultList.stream()
                 .collect(Collectors.groupingBy(x -> x, Collectors.counting()));
         System.out.print(name + ": ");

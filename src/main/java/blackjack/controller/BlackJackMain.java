@@ -23,6 +23,7 @@ public class BlackJackMain {
         blackJackGame.aceCheck();
         blackJackGame.setZero();
         blackJackGame.resultGamer();
+        resultView.resultFinal();
         blackJackGame.outputResult();
 
 

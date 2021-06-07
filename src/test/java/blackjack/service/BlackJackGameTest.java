@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BlackJackGameTest {
     BlackJackGame blackJackGame = new BlackJackGame();
@@ -23,7 +22,6 @@ class BlackJackGameTest {
     void getPlayer() {
         assertThat(players).usingElementComparatorOnFields("name").containsExactly(new Dealer(), new Gamer("1"), new Gamer("2"));
     }
-
 
     @DisplayName("뽑기 시작")
     @Test
@@ -44,9 +42,9 @@ class BlackJackGameTest {
     @DisplayName("Ace 존재 여부 테스트")
     @Test
     void aceCheck() {
-        List<Card> cards =  new ArrayList<>();
-        cards.add(new Card(CardPattern.CLUBS,CardNumber.ACE));
-        cards.add(new Card(CardPattern.CLUBS,CardNumber.EIGHT));
+        List<Card> cards = new ArrayList<>();
+        cards.add(new Card(CardPattern.CLUBS, CardNumber.ACE));
+        cards.add(new Card(CardPattern.CLUBS, CardNumber.EIGHT));
         players.get(1).setCards(cards);
         blackJackGame.aceCheck();
         assertThat(players.get(1).getScore()).isEqualTo(19);
@@ -55,10 +53,10 @@ class BlackJackGameTest {
     @DisplayName("Ace 존재 여부 테스트2")
     @Test
     void aceCheck2() {
-        List<Card> cards =  new ArrayList<>();
-        cards.add(new Card(CardPattern.CLUBS,CardNumber.ACE));
-        cards.add(new Card(CardPattern.CLUBS,CardNumber.EIGHT));
-        cards.add(new Card(CardPattern.CLUBS,CardNumber.NINE));
+        List<Card> cards = new ArrayList<>();
+        cards.add(new Card(CardPattern.CLUBS, CardNumber.ACE));
+        cards.add(new Card(CardPattern.CLUBS, CardNumber.EIGHT));
+        cards.add(new Card(CardPattern.CLUBS, CardNumber.NINE));
         players.get(1).setCards(cards);
         blackJackGame.aceCheck();
         assertThat(players.get(1).getScore()).isEqualTo(18);

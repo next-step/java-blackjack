@@ -3,9 +3,11 @@ package rentcompany;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 class RentCompanyTest {
 
     private static final String NEWLINE = System.getProperty("line.separator");
+
     @Test
     public void test() {
         RentCompany company = RentCompany.create(); // factory method를 사용해 생성

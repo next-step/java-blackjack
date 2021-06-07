@@ -6,12 +6,12 @@ import java.util.List;
 
 public class CardDeck {
 
-    private static List<Card> cardDeck =new ArrayList<>();
+    private static List<Card> cardDeck = new ArrayList<>();
 
     static {
-        for(CardPattern cardPattern : CardPattern.values()){
-            for (CardNumber cardNumber : CardNumber.values()){
-                cardDeck.add(new Card(cardPattern,cardNumber));
+        for (CardPattern cardPattern : CardPattern.values()) {
+            for (CardNumber cardNumber : CardNumber.values()) {
+                cardDeck.add(new Card(cardPattern, cardNumber));
             }
         }
         Collections.shuffle(cardDeck);
@@ -22,7 +22,7 @@ public class CardDeck {
     }
 
     public Card getCard() {
-        Card card =  cardDeck.get(0);
+        Card card = cardDeck.get(0);
         cardDeck.remove(0);
         return card;
     }

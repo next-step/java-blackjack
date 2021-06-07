@@ -1,6 +1,6 @@
 package rentcompany;
 
-public abstract class Car{
+public abstract class Car {
 
     abstract double getDistancePerLiter();
 

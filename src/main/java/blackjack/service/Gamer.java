@@ -56,7 +56,7 @@ public class Gamer extends Player {
 
     @Override
     void outputResult() {
-        System.out.println(this.getName()+": " +result.getMarkResult());
+        System.out.println(this.getName() + ": " + result.getMarkResult());
     }
 
     public Result getResult() {

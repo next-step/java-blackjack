@@ -25,8 +25,8 @@ public class RentCompany {
     }
 
     public String generateReport() {
-         String report = rentCar.stream()
-                .map(car -> car.getName() + " : " + (int)car.getChargeQuantity() + "리터" +NEWLINE)
+        String report = rentCar.stream()
+                .map(car -> car.getName() + " : " + (int) car.getChargeQuantity() + "리터" + NEWLINE)
                 .collect(Collectors.joining());
 
         return report;

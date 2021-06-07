@@ -7,19 +7,21 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DealerTest {
 
     Dealer dealer = new Dealer();
 
     @BeforeEach
-    void set(){
+    void set() {
 
         dealer.setScore(20);
     }
+
     @Test
-    void result_win(){
+    void result_win() {
         dealer.result(19);
         Map<Result, Long> map = dealer.getResultList().stream()
                 .collect(Collectors.groupingBy(x -> x, Collectors.counting()));
@@ -28,7 +30,7 @@ class DealerTest {
     }
 
     @Test
-    void result_lose(){
+    void result_lose() {
         dealer.result(21);
 
         Map<Result, Long> map = dealer.getResultList().stream()
@@ -38,7 +40,7 @@ class DealerTest {
     }
 
     @Test
-    void result_draw(){
+    void result_draw() {
         dealer.result(20);
         Map<Result, Long> map = dealer.getResultList().stream()
                 .collect(Collectors.groupingBy(x -> x, Collectors.counting()));
@@ -47,7 +49,7 @@ class DealerTest {
     }
 
     @Test
-    void result_1win_and_1lose(){
+    void result_1win_and_1lose() {
 
         dealer.result(19);
         dealer.result(21);
@@ -58,7 +60,7 @@ class DealerTest {
         assertAll("result",
                 () -> assertEquals(map.get(Result.win), 1),
                 () -> assertEquals(map.get(Result.lose), 1)
-      );
+        );
     }
 
 
