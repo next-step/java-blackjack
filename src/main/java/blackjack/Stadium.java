@@ -10,15 +10,16 @@ public class Stadium {
     }
 
     // 카드 게임
-    public List<Gambler> playCardGame() {
+    public void playCardGame() {
         for (Gambler gambler : gamblers) {
             initialSetting(gambler);
+
             drawNewCard(gambler);
+            System.out.println(gambler.getName()+" 결과 : " + gambler.getCard());
         }
-        return gamblers;
     }
 
-    private void initialSetting(Gambler gambler) {
+    private void initialSetting(Gambler gambler){
         for (int i = 0; i < 2; i++) {
             gambler.drawCard();
         }
