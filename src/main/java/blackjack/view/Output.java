@@ -49,8 +49,7 @@ public class Output {
 
     public static void printDealerReceiveCard() {
         stringBuilder.append(System.lineSeparator())
-                .append(DEALER_RECEIVE_CARD_MESSAGE)
-                .append(System.lineSeparator());
+                .append(DEALER_RECEIVE_CARD_MESSAGE);
 
         System.out.println(stringBuilder);
         stringBuilder.setLength(INITIALIZE_VALUE);

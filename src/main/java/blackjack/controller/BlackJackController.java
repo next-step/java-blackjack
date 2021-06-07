@@ -1,6 +1,9 @@
 package blackjack.controller;
 
-import blackjack.model.*;
+import blackjack.model.CardGenerator;
+import blackjack.model.Player;
+import blackjack.model.PlayerFactory;
+import blackjack.model.Players;
 import blackjack.view.Input;
 import blackjack.view.Output;
 
@@ -62,10 +65,11 @@ public class BlackJackController {
     }
 
     private void doDealerTurn(Player dealer) {
-        if (dealer.canReceiveCard()) {
+        while (dealer.canReceiveCard()) {
             dealer.addCard(cardGenerator.getOneCard());
             Output.printDealerReceiveCard();
         }
+
     }
 
     private void doUserTurn(Player user) {
@@ -102,18 +106,18 @@ public class BlackJackController {
 
     private void makeWinningState2(Player dealer, Players users) {
         for (Player user : users.getUser()) {
-            if(burstCheck(dealer)){
-                if(!burstCheck(user)){
+            if (burstCheck(dealer)) {
+                if (!burstCheck(user)) {
                     dealer.getWinningState().plusLoseCount();
                     user.getWinningState().plusWinCount();
                 }
                 continue;
             }
-            if(burstCheck(user)){
+            if (burstCheck(user)) {
                 dealer.getWinningState().plusWinCount();
                 user.getWinningState().plusLoseCount();
             }
-            if(!burstCheck(user)){
+            if (!burstCheck(user)) {
                 if (dealer.getCardValueSum() > user.getCardValueSum()) {
                     dealer.getWinningState().plusWinCount();
                     user.getWinningState().plusLoseCount();

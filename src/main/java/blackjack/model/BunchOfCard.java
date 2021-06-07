@@ -22,8 +22,25 @@ public class BunchOfCard {
     }
 
     public int getCardValueSum() {
-        return bunchOfCard.stream()
+        int cardValueSum = bunchOfCard.stream()
                 .mapToInt((card) -> card.getValue())
                 .sum();
+
+        if (isContainsA()) {
+            return getCardValueSumContainsA(cardValueSum);
+        }
+        return cardValueSum;
+    }
+
+    private boolean isContainsA() {
+        return bunchOfCard.stream().filter(card -> card.getValue() == 1).count() > 1;
+    }
+
+    private int getCardValueSumContainsA(int cardValueSum) {
+        if (cardValueSum <= 21) {
+            return cardValueSum + 10;
+        }
+
+        return cardValueSum;
     }
 }

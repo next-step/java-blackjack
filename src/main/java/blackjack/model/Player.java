@@ -34,7 +34,7 @@ public class Player {
     }
 
     public boolean canReceiveCard() {
-        return getCardValueSum() < receiveCardStrategy.getReceiveCardCondition();
+        return getCardValueSum() <= receiveCardStrategy.getReceiveCardCondition();
     }
 
     public String getName() {
