@@ -18,9 +18,8 @@ public class BlackJackMain {
         List<Player> players = blackJackGame.getPlayer(inputView.inputPlayerName());
         resultView.resultStartCard(blackJackGame.startDraw());
         blackJackGame.addDraw();
-
-        resultView.resultFinalCard(players);
         blackJackGame.aceCheck();
+        resultView.resultFinalCard(players);
         blackJackGame.setZero();
         blackJackGame.resultGamer();
         resultView.resultFinal();

@@ -50,7 +50,7 @@ public class BlackJackGame {
             for (Card card : player.getCards()) {
                 if (card.getCardNumber().equals(CardNumber.ACE)) {
                     if (player.sumScore() + TEN < TWENTY_ONE) {
-                        player.setScore(player.getScore() + TEN);
+                        player.setScore(player.sumScore() + TEN);
                     }
                 }
             }
