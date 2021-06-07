@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class UserTest {
+public class PlayerTest {
 
     @DisplayName("이름을 입력하면 유저가 생성 된다.")
     @Test
@@ -42,7 +42,7 @@ public class UserTest {
 
     @DisplayName("유저는 카드들의 값의 합을 반환 할 수있다.")
     @Test
-    void getCardValueSumTest() {
+    void getUserCardValueSumTest() {
         Player user = PlayerFactory.of("재언");
 
         user.addCard(new Card(CardTypes.CLOVER_2));
@@ -59,5 +59,27 @@ public class UserTest {
         user.addSeveralCard(cardGenerator.getSeveralCard(3));
 
         assertThat(user.getCardNames().size()).isEqualTo(3);
+    }
+
+    @DisplayName("딜러는 카드의 이름들을 반환 할 수있다.")
+    @Test
+    void getCardNamesTest() {
+        Player dealer = PlayerFactory.of("딜러");
+
+        dealer.addCard(new Card(CardTypes.CLOVER_2));
+        dealer.addCard(new Card(CardTypes.DIAMOND_J));
+
+        assertThat(dealer.getCardNames()).contains("2클로버", "J다이아몬드");
+    }
+
+    @DisplayName("딜러는 카드들의 값의 합을 반환 할 수있다.")
+    @Test
+    void getDealerCardValueSumTest() {
+        Player dealer = PlayerFactory.of("딜러");
+
+        dealer.addCard(new Card(CardTypes.CLOVER_2));
+        dealer.addCard(new Card(CardTypes.DIAMOND_J));
+
+        assertThat(dealer.getCardValueSum()).isEqualTo(12);
     }
 }
