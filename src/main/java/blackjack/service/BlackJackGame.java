@@ -1,5 +1,6 @@
 package blackjack.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,11 +16,12 @@ public class BlackJackGame {
 
     public List<Player> getPlayer(String GamerName) {
 
+
+
         players = Arrays.stream(GamerName.replace(SPACE, EMPTY).split(COMMA_DELIMITER))
                 .map(Gamer::new)//.map(name -> new Gamer(name))
                 .collect(Collectors.toList());
-
-        players.add(dealer);
+        players.add(0,dealer);
 
         return players;
     }

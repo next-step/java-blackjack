@@ -28,6 +28,7 @@ public class Gamer extends Player {
             if (score <= 21) {
                 if (a.equals("y")) {
                     draw(cardDeck);
+                    resultView.resultPlayer(this);
                 } else {
                     break;
                 }
@@ -58,7 +59,7 @@ public class Gamer extends Player {
 
     @Override
     void outputResult() {
-        System.out.println(result.getMarkResult());
+        System.out.println(this.getName()+": " +result.getMarkResult());
     }
 
 }

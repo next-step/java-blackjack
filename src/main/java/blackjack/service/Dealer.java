@@ -48,11 +48,11 @@ public class Dealer extends Player {
     @Override
     void outputResult() {
 
-        Map<Result,Long>  map = resultList.stream()
+        Map<Result, Long> map = resultList.stream()
                 .collect(Collectors.groupingBy(x -> x, Collectors.counting()));
-
-        map.forEach((key, value)
-    -> System.out.print( value +""+ key.getMarkResult() +" "));
+        System.out.print(name + ": ");
+        map.forEach((key, value) -> System.out.print(value + "" + key.getMarkResult() + " "));
+        System.out.println();
     }
 
 }
