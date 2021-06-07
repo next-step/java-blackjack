@@ -21,8 +21,8 @@ public class Gamer extends Player {
     @Override
     void addDraw(CardDeck cardDeck) {
         for (; ; ) {
-            String result = inputView.inputAddCard(name);
             if (sumScore() <= 21) {
+                String result = inputView.inputAddCard(name);
                 if (result.equals("y")) {
                     draw(cardDeck);
                     resultView.resultPlayer(this);
@@ -35,7 +35,6 @@ public class Gamer extends Player {
             }
         }
 
-        resultView.resultPlayer(this);
     }
 
     @Override
