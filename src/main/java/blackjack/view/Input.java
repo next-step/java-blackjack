@@ -18,7 +18,10 @@ public class Input {
 
     public static String inputReceiveCardAnswer(String userName) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(userName).append(INPUT_ANSWER_MESSAGE);
+
+        stringBuilder.append(System.lineSeparator())
+                .append(userName)
+                .append(INPUT_ANSWER_MESSAGE);
         System.out.println(stringBuilder);
 
         return scanner.nextLine();

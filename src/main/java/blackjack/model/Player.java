@@ -1,17 +1,47 @@
 package blackjack.model;
 
+import blackjack.model.strategy.ReceiveCardStrategy;
+
 import java.util.List;
 
-public interface Player {
-    void addCard(Card card);
+public class Player {
+    private final PlayerInformation playerInformation;
+    private final ReceiveCardStrategy receiveCardStrategy;
+    private final WinningState winningState;
 
-    void addSeveralCard(List<Card> cards);
+    public Player(String name, ReceiveCardStrategy receiveCardStrategy) {
+        this.playerInformation = new PlayerInformation(name, new BunchOfCard());
+        this.receiveCardStrategy = receiveCardStrategy;
+        this.winningState = new WinningState();
+    }
 
-    int getCardValueSum();
+    public void addCard(Card card) {
+        this.playerInformation.addCard(card);
+    }
 
-    List<String> getCardNames();
+    public void addSeveralCard(List<Card> cards) {
+        for (Card card : cards) {
+            addCard(card);
+        }
+    }
 
-    boolean canReceiveCard();
+    public int getCardValueSum() {
+        return this.playerInformation.getCardValueSum();
+    }
 
-    String getName();
+    public List<String> getCardNames() {
+        return playerInformation.getCardNames();
+    }
+
+    public boolean canReceiveCard() {
+        return getCardValueSum() < receiveCardStrategy.getReceiveCardCondition();
+    }
+
+    public String getName() {
+        return playerInformation.getName();
+    }
+
+    public WinningState getWinningState() {
+        return this.winningState;
+    }
 }

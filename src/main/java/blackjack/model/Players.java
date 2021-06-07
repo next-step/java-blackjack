@@ -4,23 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Users {
-    private final List<User> users = new ArrayList<>();
+public class Players {
+    private final List<Player> users = new ArrayList<>();
 
-    public Users(List<String> users) {
+    public Players(List<String> users) {
         for (String user : users) {
-            this.users.add(new User(user));
+            this.users.add(PlayerFactory.of(user));
         }
     }
 
-    public List<User> getUser() {
+    public List<Player> getUser() {
         return users;
     }
 
     public List<String> getUserNames() {
 
         return users.stream()
-                .map(User::getName)
+                .map(Player::getName)
                 .collect(Collectors.toList());
     }
 }

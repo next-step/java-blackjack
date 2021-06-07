@@ -9,7 +9,7 @@ public class DealerTest {
     @DisplayName("딜러는 카드의 이름들을 반환 할 수있다.")
     @Test
     void getCardNamesTest() {
-        Dealer dealer = new Dealer();
+        Player dealer = PlayerFactory.of("딜러");
 
         dealer.addCard(new Card(CardTypes.CLOVER_2));
         dealer.addCard(new Card(CardTypes.DIAMOND_J));
@@ -20,7 +20,7 @@ public class DealerTest {
     @DisplayName("딜러는 카드들의 값의 합을 반환 할 수있다.")
     @Test
     void getCardValueSumTest() {
-        Dealer dealer = new Dealer();
+        Player dealer = PlayerFactory.of("딜러");
 
         dealer.addCard(new Card(CardTypes.CLOVER_2));
         dealer.addCard(new Card(CardTypes.DIAMOND_J));
