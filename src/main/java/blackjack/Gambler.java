@@ -5,27 +5,31 @@ import java.util.Scanner;
 
 public class Gambler {
     private String name;
-    private List<Card> card;
+    private String card;
 
     public Gambler() {
-        this("dealer", null);
+        this("dealer", "확인용");
     }
 
     public Gambler(String name) {
-        this(name, null);
+        this(name, "확인용");
     }
 
-    public Gambler(String name, List<Card> card) {
+    public Gambler(String name, String card) {
         this.name = name;
         this.card = card;
     }
 
     public void drawCard() {
-        card.add(new Card());
+        card += " " + new Card().getCard();
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getCard() {
+        return card;
     }
 
     public boolean selectChoice(String name) {
@@ -36,6 +40,4 @@ public class Gambler {
         }
         return false;
     }
-
-
 }
