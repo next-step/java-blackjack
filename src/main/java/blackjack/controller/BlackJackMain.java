@@ -20,6 +20,7 @@ public class BlackJackMain {
         blackJackGame.addDraw();
 
         resultView.resultFinalCard(players);
+        blackJackGame.aceCheck();
         blackJackGame.setZero();
         blackJackGame.resultGamer();
         blackJackGame.outputResult();
