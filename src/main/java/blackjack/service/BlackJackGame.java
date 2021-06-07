@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BlackJackGame {
-
+    final static String SPACE = " ";
+    final static String EMPTY = "";
+    final static String COMMA_DELIMITER = ",";
     List<Player> players;
 
     CardDeck cardDeck = new CardDeck();
@@ -13,7 +15,7 @@ public class BlackJackGame {
 
     public List<Player> getPlayer(String GamerName) {
 
-        players = Arrays.stream(GamerName.split(",| ,"))
+        players = Arrays.stream(GamerName.replace(SPACE, EMPTY).split(COMMA_DELIMITER))
                 .map(Gamer::new)//.map(name -> new Gamer(name))
                 .collect(Collectors.toList());
 

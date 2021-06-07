@@ -20,6 +20,9 @@ public class Dealer extends Player {
             if (score <= 16) {
                 draw(cardDeck);
                 resultView.resultDealer();
+
+            } else {
+                break;
             }
         }
 
@@ -28,11 +31,11 @@ public class Dealer extends Player {
     @Override
     void result(int gamerScore) {
         if (score > gamerScore) {
-            resultList.add( Result.win);
+            resultList.add(Result.win);
         } else if (score == gamerScore) {
-            resultList.add( Result.draw);
+            resultList.add(Result.draw);
         } else {
-            resultList.add( Result.lose);
+            resultList.add(Result.lose);
         }
     }
 
