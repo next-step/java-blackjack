@@ -52,4 +52,7 @@ public class Dealer extends Player {
         System.out.println();
     }
 
+    public List<Result> getResultList() {
+        return resultList;
+    }
 }

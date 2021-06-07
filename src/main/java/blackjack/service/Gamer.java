@@ -59,4 +59,7 @@ public class Gamer extends Player {
         System.out.println(this.getName()+": " +result.getMarkResult());
     }
 
+    public Result getResult() {
+        return result;
+    }
 }

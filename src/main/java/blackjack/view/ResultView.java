@@ -32,7 +32,7 @@ public class ResultView {
                         .stream()
                         .map(card -> card.getCardPattern().getMark() + card.getCardNumber().getMark())
                         .collect(Collectors.joining(","))
-                +"-결과"+player.sumScore())
+                +"-결과"+player.getScore())
                         );
 
     }

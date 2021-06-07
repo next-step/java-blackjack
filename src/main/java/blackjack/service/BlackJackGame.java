@@ -36,7 +36,7 @@ public class BlackJackGame {
     }
 
     public void setZero() {
-        aceCheck();
+
         players.forEach(player -> {
             if (player.getScore() > TWENTY_ONE) {
                 player.setScore(ZERO);
@@ -45,11 +45,11 @@ public class BlackJackGame {
 
     }
 
-    private void aceCheck() {
+    public void aceCheck() {
         for (Player player : players) {
             for (Card card : player.getCards()) {
                 if (card.getCardNumber().equals(CardNumber.ACE)) {
-                    if (player.getScore() + TEN < TWENTY_ONE) {
+                    if (player.sumScore() + TEN < TWENTY_ONE) {
                         player.setScore(player.getScore() + TEN);
                     }
                 }
