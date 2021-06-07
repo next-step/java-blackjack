@@ -12,6 +12,10 @@ public class Card {
         this.card = firstNumber() + secondString();
     }
 
+    public String getCard() {
+        return card;
+    }
+
     private String firstNumber() {
         List<String> firstNumber = new ArrayList<>();
         for (int i = 2; i < 10; i++) {
