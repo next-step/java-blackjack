@@ -3,6 +3,8 @@ package blackjack.model;
 import java.util.List;
 
 public class User implements Player {
+    private static final int RECEIVE_CARD_CONDITION = 21;
+
     private final String name;
     private final BunchOfCard bunchOfCard;
 
@@ -38,6 +40,11 @@ public class User implements Player {
     @Override
     public List<String> getCardNames() {
         return bunchOfCard.getCardNames();
+    }
+
+    @Override
+    public boolean canReceiveCard() {
+        return getCardValueSum() < RECEIVE_CARD_CONDITION;
     }
 
     public String getName() {

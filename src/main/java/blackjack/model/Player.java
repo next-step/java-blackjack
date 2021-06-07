@@ -10,4 +10,6 @@ public interface Player {
     int getCardValueSum();
 
     List<String> getCardNames();
+
+    boolean canReceiveCard();
 }
