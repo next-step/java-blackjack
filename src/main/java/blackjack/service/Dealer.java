@@ -17,16 +17,13 @@ public class Dealer extends Player {
     @Override
     void addDraw(CardDeck cardDeck) {
         for (; ; ) {
-            int score = sumScore(); //(x,y)->x+y
-            if (score <= 16) {
+            if (sumScore() <= 16) {
                 draw(cardDeck);
                 resultView.resultDealer();
-
             } else {
                 break;
             }
         }
-
     }
 
     @Override

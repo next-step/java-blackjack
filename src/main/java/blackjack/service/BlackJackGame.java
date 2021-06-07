@@ -5,17 +5,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BlackJackGame {
-    final static String SPACE = " ";
-    final static String EMPTY = "";
-    final static String COMMA_DELIMITER = ",";
-    List<Player> players;
+    private final static String SPACE = " ";
+    private final static String EMPTY = "";
+    private final static String COMMA_DELIMITER = ",";
+    private final static int TWENTY_ONE = 21;
+    private final static int TEN = 10;
+    private final static int ZERO = 0;
 
+    List<Player> players;
     CardDeck cardDeck = new CardDeck();
     Dealer dealer = new Dealer();
 
-    public List<Player> getPlayer(String GamerName) {
+    public List<Player> getPlayer(String gamerName) {
 
-        players = Arrays.stream(GamerName.replace(SPACE, EMPTY).split(COMMA_DELIMITER))
+        players = Arrays.stream(gamerName.replace(SPACE, EMPTY).split(COMMA_DELIMITER))
                 .map(Gamer::new)//.map(name -> new Gamer(name))
                 .collect(Collectors.toList());
         players.add(0, dealer);
@@ -33,12 +36,10 @@ public class BlackJackGame {
     }
 
     public void setZero() {
-
         aceCheck();
-
         players.forEach(player -> {
-            if (player.getScore() > 21) {
-                player.setScore(0);
+            if (player.getScore() > TWENTY_ONE) {
+                player.setScore(ZERO);
             }
         });
 
@@ -48,8 +49,8 @@ public class BlackJackGame {
         for (Player player : players) {
             for (Card card : player.getCards()) {
                 if (card.getCardNumber().equals(CardNumber.ACE)) {
-                    if (player.getScore() + 10 < 21) {
-                        player.setScore(player.getScore() + 10);
+                    if (player.getScore() + TEN < TWENTY_ONE) {
+                        player.setScore(player.getScore() + TEN);
                     }
                 }
             }
@@ -65,8 +66,6 @@ public class BlackJackGame {
     }
 
     public void outputResult() {
-
-        players.stream()
-                .forEach(player -> player.outputResult());
+        players.forEach(Player::outputResult);
     }
 }
