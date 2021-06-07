@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Card {
     private String card;
+    private int value;
 
     public Card() {
         this.card = firstNumber() + secondString();
@@ -34,5 +35,20 @@ public class Card {
 
         Collections.shuffle(secondString);
         return secondString.get(0);
+    }
+
+    public int convertNumber(String value) {
+        if (value.equals("K")|| value.equals("Q") || value.equals("J")) {
+            this.value = 10;
+        }
+
+        List<Integer> a_value = new ArrayList<>();
+        a_value.add(1);
+        a_value.add(11);
+        if (value.equals("A")) {
+            Collections.shuffle(a_value);
+            this.value = a_value.get(0);
+        }
+        return this.value;
     }
 }
