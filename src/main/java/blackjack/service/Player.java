@@ -26,6 +26,7 @@ public abstract class Player {
     public void draw(CardDeck cardDeck) {
         Card card = cardDeck.getCard();
         cards.add(card);
+
     }
 
     public String getName() {
@@ -47,9 +48,11 @@ public abstract class Player {
         return score;
     }
 
-
-
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
     }
 }

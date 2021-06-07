@@ -15,7 +15,6 @@ public class BlackJackGame {
 
     public List<Player> getPlayer(String GamerName) {
 
-
         players = Arrays.stream(GamerName.replace(SPACE, EMPTY).split(COMMA_DELIMITER))
                 .map(Gamer::new)//.map(name -> new Gamer(name))
                 .collect(Collectors.toList());
