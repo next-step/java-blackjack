@@ -1,6 +1,5 @@
 package blackjack.service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,11 +16,10 @@ public class BlackJackGame {
     public List<Player> getPlayer(String GamerName) {
 
 
-
         players = Arrays.stream(GamerName.replace(SPACE, EMPTY).split(COMMA_DELIMITER))
                 .map(Gamer::new)//.map(name -> new Gamer(name))
                 .collect(Collectors.toList());
-        players.add(0,dealer);
+        players.add(0, dealer);
 
         return players;
     }
@@ -36,12 +34,27 @@ public class BlackJackGame {
     }
 
     public void setZero() {
+
+        aceCheck();
+
         players.forEach(player -> {
             if (player.getScore() > 21) {
                 player.setScore(0);
             }
         });
 
+    }
+
+    private void aceCheck() {
+        for (Player player : players) {
+            for (Card card : player.getCards()) {
+                if (card.getCardNumber().equals(CardNumber.ACE)) {
+                    if (player.getScore() + 10 < 21) {
+                        player.setScore(player.getScore() + 10);
+                    }
+                }
+            }
+        }
     }
 
     public void resultGamer() {
