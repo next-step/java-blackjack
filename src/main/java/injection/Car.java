@@ -1,4 +1,4 @@
-package blackjack;
+package injection;
 
 public abstract class Car {
     abstract double getDistancePerLiter();

@@ -1,5 +1,9 @@
-package blackjack;
+package injection;
 
+import injection.Avante;
+import injection.K5;
+import injection.RentCompany;
+import injection.Sonata;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

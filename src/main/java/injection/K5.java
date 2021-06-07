@@ -1,4 +1,4 @@
-package blackjack;
+package injection;
 
 public class K5 extends Car{
     private static final double DISTANCE_PER_LITER = 13;
