@@ -15,7 +15,7 @@ public class Player extends CasinoPerson {
 
     @Override
     boolean isDrawCard(int score) {
-        return score <= SCORE_LIMIT;
+        return score < SCORE_LIMIT;
     }
 
     @Override
@@ -52,6 +52,10 @@ public class Player extends CasinoPerson {
             return CardNumber.ACE.getMinScore();
         }
         return CardNumber.ACE.getMaxScore();
+    }
+
+    public String getPlayerName() {
+        return playerName;
     }
 
     public List<Card> getHoldingCards() {

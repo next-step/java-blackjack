@@ -1,5 +1,5 @@
 package BlackJack;
 
 public enum CardShape {
-    DIAMOND, CLOVER, SPADE, HEART
+    다이아몬드, 클로버, 스페이드, 하트
 }

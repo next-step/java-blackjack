@@ -18,9 +18,10 @@ public class Dealer extends CasinoPerson {
         this.holdingCards = holdingCards;
     }
 
+
     @Override
     boolean isDrawCard(int score) {
-        return score <= SCORE_LIMIT;
+        return score <= DEALER_SCORE_LIMIT;
     }
 
     @Override
@@ -61,5 +62,9 @@ public class Dealer extends CasinoPerson {
 
     public List<Card> getHoldingCards() {
         return holdingCards;
+    }
+
+    public String getDEALER_NAME() {
+        return DEALER_NAME;
     }
 }

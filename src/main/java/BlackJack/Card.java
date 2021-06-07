@@ -8,17 +8,12 @@ public class Card {
         this.cardShape = cardShape;
         this.cardNumber = cardNumber;
     }
-
-    @Override
-    public String toString() {
-        return "Card{" +
-                "cardShape=" + cardShape +
-                ", cardNumber=" + cardNumber +
-                '}';
-    }
-
+    
     public CardNumber getCardNumber() {
         return cardNumber;
     }
 
+    public CardShape getCardShape() {
+        return cardShape;
+    }
 }

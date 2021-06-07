@@ -15,13 +15,11 @@ public class PlayGame {
         this.dealer = dealer;
     }
 
-    public void drawCardPlayer() {
-        for (Player player : players) {
-            int randomIndexPlayer = random.nextInt(cardPack.getCards().size());
-            Card get_CardPlayer = cardPack.getCards().get(randomIndexPlayer);
-            player.getCard(get_CardPlayer);
-            cardPack.getCards().remove(randomIndexPlayer);
-        }
+    public void drawCardPlayer(Player player) {
+        int randomIndexPlayer = random.nextInt(cardPack.getCards().size());
+        Card get_CardPlayer = cardPack.getCards().get(randomIndexPlayer);
+        player.getCard(get_CardPlayer);
+        cardPack.getCards().remove(randomIndexPlayer);
     }
 
     public void drawCardDealer() {
@@ -33,19 +31,11 @@ public class PlayGame {
 
     public void gameStart(int i) {
         for (int j = 0; j < i; j++) {
-            this.drawCardPlayer();
+            for (Player player : players) {
+                this.drawCardPlayer(player);
+            }
             this.drawCardDealer();
         }
-    }
 
-    @Override
-    public String toString() {
-        return "PlayGame{" +
-                "cardMachine=" + cardMachine +
-                ", cardPack=" + cardPack +
-                ", random=" + random +
-                ", players=" + players +
-                ", dealer=" + dealer +
-                '}';
     }
 }
