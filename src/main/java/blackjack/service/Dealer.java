@@ -2,12 +2,13 @@ package blackjack.service;
 
 import blackjack.view.ResultView;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Dealer extends Player {
 
     ResultView resultView = new ResultView();
-    List<Result> resultList;
+    List<Result> resultList = new ArrayList<>();
 
     Dealer() {
         name = "딜러";
@@ -16,7 +17,7 @@ public class Dealer extends Player {
     @Override
     void addDraw(CardDeck cardDeck) {
         for (; ; ) {
-            int score = getScore(); //(x,y)->x+y
+            int score = sumScore(); //(x,y)->x+y
             if (score <= 16) {
                 draw(cardDeck);
                 resultView.resultDealer();
@@ -42,6 +43,16 @@ public class Dealer extends Player {
     @Override
     boolean isGamer() {
         return false;
+    }
+
+    @Override
+    void outputResult() {
+
+        Map<Result,Long>  map = resultList.stream()
+                .collect(Collectors.groupingBy(x -> x, Collectors.counting()));
+
+        map.forEach((key, value)
+    -> System.out.print( value +""+ key.getMarkResult() +" "));
     }
 
 }

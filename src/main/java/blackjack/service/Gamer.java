@@ -8,7 +8,7 @@ public class Gamer extends Player {
     InputView inputView = new InputView();
     ResultView resultView = new ResultView();
 
-    Result result;
+        Result result;
 
     Gamer(String name) {
         this.name = name;
@@ -24,7 +24,7 @@ public class Gamer extends Player {
 
         for (; ; ) {
             String a = inputView.inputAddCard(name);
-            int score = getScore();
+            int score = sumScore();
             if (score <= 21) {
                 if (a.equals("y")) {
                     draw(cardDeck);
@@ -54,6 +54,11 @@ public class Gamer extends Player {
     @Override
     boolean isGamer() {
         return true;
+    }
+
+    @Override
+    void outputResult() {
+        System.out.println(result.getMarkResult());
     }
 
 }

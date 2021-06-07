@@ -14,4 +14,7 @@ public enum Result {
         this.markResult = markResult;
     }
 
+    public String getMarkResult() {
+        return markResult;
+    }
 }

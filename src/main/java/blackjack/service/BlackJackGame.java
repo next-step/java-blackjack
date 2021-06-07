@@ -39,12 +39,20 @@ public class BlackJackGame {
                 player.setScore(0);
             }
         });
+
     }
+
     public void resultGamer() {
         List<Player> gamers = players.stream()
                 .filter(Player::isGamer)
                 .collect(Collectors.toList());
         gamers.forEach(gamer -> gamer.result(dealer.getScore()));
         gamers.forEach((gamer -> dealer.result(gamer.getScore())));
+    }
+
+    public void outputResult() {
+
+        players.stream()
+                .forEach(player -> player.outputResult());
     }
 }
