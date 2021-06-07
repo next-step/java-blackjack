@@ -20,9 +20,9 @@
 - [x] 카드를 생성한다. -> CardMachine#createCards
 - [x] 플레이어와 딜러를 정할 수 있다. -> Application, Person - Players, Dealer
 - [x] 각 플레이어와 딜러에게 카드를 2장씩 발급한다. -> PlayGame#gameStart#drawcard
-- [ ] 각 플레이어와 딜러가 2장의 카드를 더한다. -> PlayGame
-- [ ] 발급된 카드의 점수를 대입한다. -> Card
-- [ ] 에이스가 나올경우 1 또는 11 중 하나를 선택 할 수 있다. -> Application
+- [x] 각 플레이어와 딜러가 2장의 카드를 더한다. -> PlayGame
+- [x] 발급된 카드의 점수를 대입한다. -> Card
+- [x] 에이스가 나올경우 1 또는 11 중 하나를 선택 할 수 있다. -> Application
 - [x] 플레이어는 카드 2장의 합이 21이하이면 카드를 계속 발급 받을 수 있다. -> Players
 - [x] 딜러는 카드 2장의 합이 16이하 이면 무조건 1장을 더 발급 받아야 한다. -> Dealer
 - [x] 딜러는 카드 2장의 합이 17이상이면 카드를 더이상 발급 받을 수 없다. -> Dealer

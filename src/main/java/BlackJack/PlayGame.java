@@ -38,4 +38,14 @@ public class PlayGame {
         }
     }
 
+    @Override
+    public String toString() {
+        return "PlayGame{" +
+                "cardMachine=" + cardMachine +
+                ", cardPack=" + cardPack +
+                ", random=" + random +
+                ", players=" + players +
+                ", dealer=" + dealer +
+                '}';
+    }
 }

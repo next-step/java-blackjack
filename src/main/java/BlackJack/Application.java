@@ -20,6 +20,12 @@ public class Application {
         Dealer dealer = new Dealer();
         PlayGame playGame = new PlayGame(players, dealer);
         playGame.gameStart(2);
-        System.out.println(NEWLINE + "딜러와 " + names + "에게 2장의 나누었습니다.");
+        System.out.println(NEWLINE + "딜러와 " + names + "에게 2장 나누었습니다.");
+        for (Player player : players) {
+            System.err.println(player.getHoldingCards());
+            System.err.println(player.sumCards());
+        }
+        System.err.println(dealer.getHoldingCards());
+        System.err.println(dealer.sumCards());
     }
 }

@@ -16,4 +16,9 @@ public class Card {
                 ", cardNumber=" + cardNumber +
                 '}';
     }
+
+    public CardNumber getCardNumber() {
+        return cardNumber;
+    }
+
 }
