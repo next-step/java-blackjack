@@ -1,11 +1,11 @@
-package blackjack;
+package injection;
 
-public class Sonata extends Car{
-    private static final double DISTANCE_PER_LITER = 10;
-    private static final String NAME = "Sonata";
-    private double tripDistance ;
+public class Avante extends Car{
+    private static final double DISTANCE_PER_LITER = 15;
+    private static final String NAME = "Avante";
+    private double tripDistance;
 
-    public Sonata(double tripDistance) {
+    public Avante(double tripDistance) {
         this.tripDistance = tripDistance;
     }
 
