@@ -9,12 +9,12 @@ import java.util.List;
 
 public class BlackJackMain {
 
-    static InputView inputView = new InputView();
-    static ResultView resultView = new ResultView();
-
-    static BlackJackGame blackJackGame = new BlackJackGame();
-
     public static void main(String[] args) {
+
+        InputView inputView = new InputView();
+        ResultView resultView = new ResultView();
+        BlackJackGame blackJackGame = new BlackJackGame();
+
         List<Player> players = blackJackGame.getPlayer(inputView.inputPlayerName());
         resultView.resultStartCard(blackJackGame.startDraw());
         blackJackGame.addDraw();
@@ -24,7 +24,6 @@ public class BlackJackMain {
         blackJackGame.resultGamer();
         resultView.resultFinal();
         blackJackGame.outputResult();
-
 
     }
 
