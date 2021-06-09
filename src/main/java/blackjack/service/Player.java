@@ -12,7 +12,7 @@ public abstract class Player {
 
     abstract void result(int score);
 
-    abstract boolean isGamer();
+    public abstract boolean isGamer();
 
     abstract void outputResult();
 

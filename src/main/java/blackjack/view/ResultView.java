@@ -8,12 +8,12 @@ import java.util.stream.Collectors;
 public class ResultView {
 
     public void resultStartCard(List<Player> players) {
-        System.out.println("모두에게 2장을 나누었습니다,");
+        System.out.print("딜러와 ");
+        System.out.print(players.stream().filter(player->player.isGamer()).map(player -> player.getName()).collect(Collectors.joining(",")));
+        System.out.println("에게 2장을 나누었습니다,");
 
         resultPlayers(players);
     }
-
-
     public void resultPlayers(List<Player> players) {
         players.forEach(this::resultPlayer);//player -> resultPlayer(player)
     }

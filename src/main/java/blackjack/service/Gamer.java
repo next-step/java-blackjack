@@ -49,7 +49,7 @@ public class Gamer extends Player {
     }
 
     @Override
-    boolean isGamer() {
+    public boolean isGamer() {
         return true;
     }
 

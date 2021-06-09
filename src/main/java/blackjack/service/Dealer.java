@@ -40,7 +40,7 @@ public class Dealer extends Player {
     }
 
     @Override
-    boolean isGamer() {
+    public boolean isGamer() {
         return false;
     }
 
