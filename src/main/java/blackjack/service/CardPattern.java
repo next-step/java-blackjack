@@ -6,7 +6,7 @@ public enum CardPattern {
     HEARTS("하트"),
     SPADES("스페이스");
 
-    public String mark;
+    private String mark;
 
     CardPattern(String mark) {
         this.mark = mark;
