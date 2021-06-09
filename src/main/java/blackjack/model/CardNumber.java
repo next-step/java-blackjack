@@ -1,4 +1,4 @@
-package blackjack.service;
+package blackjack.model;
 
 public enum CardNumber {
     ACE(1, "A"),

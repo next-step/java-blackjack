@@ -1,7 +1,7 @@
 package blackjack.controller;
 
-import blackjack.service.BlackJackGame;
-import blackjack.service.Players;
+import blackjack.model.BlackJackGame;
+import blackjack.model.Players;
 import blackjack.view.InputView;
 import blackjack.view.ResultView;
 

@@ -1,4 +1,4 @@
-package blackjack.service;
+package blackjack.model;
 
 public enum CardPattern {
     CLUBS("클로버"),

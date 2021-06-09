@@ -1,9 +1,8 @@
 package blackjack.view;
 
-import blackjack.service.Player;
-import blackjack.service.Players;
+import blackjack.model.Player;
+import blackjack.model.Players;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {

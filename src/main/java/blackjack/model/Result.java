@@ -1,4 +1,4 @@
-package blackjack.service;
+package blackjack.model;
 
 public enum Result {
     win("승"),

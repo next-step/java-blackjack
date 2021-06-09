@@ -1,4 +1,4 @@
-package blackjack.service;
+package blackjack.model;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-package blackjack.service;
+package blackjack.model;
 
 public class BlackJackGame {
 

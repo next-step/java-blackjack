@@ -1,4 +1,4 @@
-package blackjack.service;
+package blackjack.model;
 
 import blackjack.view.ResultView;
 
