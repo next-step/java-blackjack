@@ -8,7 +8,7 @@ public class Card {
         this.cardShape = cardShape;
         this.cardNumber = cardNumber;
     }
-    
+
     public CardNumber getCardNumber() {
         return cardNumber;
     }

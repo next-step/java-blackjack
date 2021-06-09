@@ -8,6 +8,7 @@ public class Player extends CasinoPerson {
     private String playerName;
     private List<Card> holdingCards = new ArrayList<>();
     private int addedResult;
+    private String playerResult;
 
     public Player(String playerName) {
         this.playerName = playerName;
@@ -48,17 +49,38 @@ public class Player extends CasinoPerson {
     }
 
     private int gap(int minScore, int maxScore, int addedResult) {
-        if (minScore <= maxScore || addedResult == 11) {
+        if (minScore <= maxScore || addedResult >= 11) {
             return CardNumber.ACE.getMinScore();
         }
         return CardNumber.ACE.getMaxScore();
     }
 
-    public String getPlayerName() {
-        return playerName;
+    public boolean compare(int dealerScore) {
+        bust();
+        int playerDifference = SCORE_LIMIT - this.sumCards();
+        int dealerDifference = SCORE_LIMIT - dealerScore;
+        if (dealerScore <= SCORE_LIMIT && playerDifference < dealerDifference) {
+            this.playerResult = "패";
+            return true;
+        }
+        this.playerResult = "승";
+        return false;
     }
+
+    private void bust() {
+        if (this.sumCards() > SCORE_LIMIT) {
+            this.playerResult = "패";
+        }
+    }
+
+    public String getPlayerName() {
+        return playerName;    }
 
     public List<Card> getHoldingCards() {
         return holdingCards;
+    }
+
+    public String getPlayerResult() {
+        return playerResult;
     }
 }

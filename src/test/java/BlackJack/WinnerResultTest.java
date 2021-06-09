@@ -15,6 +15,7 @@ class WinnerResultTest {
     private CardMachine cardMachine;
     private CardPack cardPack;
     private WinnerResult winnerResult;
+
     @BeforeEach
     void setUp() {
         players = Arrays.asList(new Player("ss"), new Player("yy"));
@@ -22,8 +23,9 @@ class WinnerResultTest {
         playGame = new PlayGame(players, dealer);
         cardMachine = new CardMachine();
         cardPack = cardMachine.createCards();
-        winnerResult = new WinnerResult(players,dealer);
+        winnerResult = new WinnerResult(players, dealer);
     }
+
     @Test
     void loseGame() {
         winnerResult.findWinnerPlayer();

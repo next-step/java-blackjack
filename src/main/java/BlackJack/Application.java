@@ -32,7 +32,7 @@ public class Application {
             isQuestion(player, playGame);
         }
         System.out.println();
-        while(dealer.isDrawCard(dealer.sumCards())) {
+        while (dealer.isDrawCard(dealer.sumCards())) {
             System.out.println("딜러는 16이하라 한장의 카드를 더 받았습니다.\n");
             playGame.drawCardDealer();
         }
@@ -44,20 +44,19 @@ public class Application {
         }
         System.out.println();
         WinnerResult winnerResult = new WinnerResult(players, dealer);
-        winnerResult.countWinLoseDealer();
-        System.out.println(dealer.getDEALER_NAME() + ": " + winnerResult.getWinCount() + "승 " + winnerResult.getLoseCount() + "패");
+        System.out.println(dealer.getDEALER_NAME() + ": " + dealer.getWinCount() + "승 " + dealer.getLoseCount() + "패");
         for (Player player : players) {
-            System.out.println(player.getPlayerName() + ": " + winnerResult.findWinnerPlayer().get(player.getPlayerName()));
+            System.out.println(player.getPlayerName() + ": " + player.getPlayerResult());
         }
     }
 
     private static void isQuestion(Player player, PlayGame playGame) {
         Scanner in = new Scanner(System.in);
         boolean agree = true;
-        while(player.isDrawCard(player.sumCards()) && agree) {
+        while (player.isDrawCard(player.sumCards()) && agree) {
             System.out.println(player.getPlayerName() + "는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)");
             String agreement = in.nextLine();
-            agree = isDraw(agreement,player,playGame);
+            agree = isDraw(agreement, player, playGame);
         }
     }
 

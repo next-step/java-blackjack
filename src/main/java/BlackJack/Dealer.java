@@ -9,7 +9,9 @@ public class Dealer extends CasinoPerson {
     private List<Card> holdingCards = new ArrayList<>();
     private int addedResult;
     private final int DEALER_SCORE_LIMIT = 16;
-    ;
+    private int winCount = 0;
+    private int loseCount = 0;
+
 
     public Dealer() {
     }
@@ -60,11 +62,35 @@ public class Dealer extends CasinoPerson {
         return CardNumber.ACE.getMaxScore();
     }
 
+    public void winOrLose(boolean playerResult) {
+        bust();
+        if (playerResult == true) {
+            loseCount++;
+        }
+        if (playerResult == false) {
+            winCount++;
+        }
+    }
+
+    private void bust() {
+        if (this.sumCards() > SCORE_LIMIT) {
+            loseCount++;
+        }
+    }
+
     public List<Card> getHoldingCards() {
         return holdingCards;
     }
 
     public String getDEALER_NAME() {
         return DEALER_NAME;
+    }
+
+    public int getWinCount() {
+        return winCount;
+    }
+
+    public int getLoseCount() {
+        return loseCount;
     }
 }
