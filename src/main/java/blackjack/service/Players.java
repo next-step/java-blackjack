@@ -28,10 +28,10 @@ public class Players {
     public List<Player> getPlayers() {
         return players;
     }
-    public void startDraw(CardDeck cardDeck) {
+    public void playersStartDrawCard(CardDeck cardDeck) {
         players.forEach(players -> players.startDraw(cardDeck));
     }
-    public void addDraw(CardDeck cardDeck){
+    public void playersAddDrawCard(CardDeck cardDeck){
         players.forEach(player -> player.addDraw(cardDeck));
     }
     public void setZero(){

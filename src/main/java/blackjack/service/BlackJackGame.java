@@ -1,9 +1,5 @@
 package blackjack.service;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class BlackJackGame {
 
     private Players players;
@@ -15,11 +11,11 @@ public class BlackJackGame {
     }
 
     public void startDraw() {
-        players.startDraw(cardDeck);
+        players.playersStartDrawCard(cardDeck);
     }
 
     public void addDraw() {
-        players.addDraw(cardDeck);
+        players.playersAddDrawCard(cardDeck);
     }
 
     public void setZero() {
