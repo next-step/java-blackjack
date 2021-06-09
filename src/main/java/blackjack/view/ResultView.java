@@ -1,21 +1,22 @@
 package blackjack.view;
 
 import blackjack.service.Player;
+import blackjack.service.Players;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
 
-    public void resultStartCard(List<Player> players) {
+    public void resultStartCard(Players players) {
         System.out.print("딜러와 ");
-        System.out.print(players.stream().filter(player->player.isGamer()).map(player -> player.getName()).collect(Collectors.joining(",")));
+        System.out.print(players.getPlayers().stream().filter(player->player.isGamer()).map(player -> player.getName()).collect(Collectors.joining(",")));
         System.out.println("에게 2장을 나누었습니다,");
 
         resultPlayers(players);
     }
-    public void resultPlayers(List<Player> players) {
-        players.forEach(this::resultPlayer);//player -> resultPlayer(player)
+    public void resultPlayers(Players players) {
+        players.getPlayers().forEach(this::resultPlayer);//player -> resultPlayer(player)
     }
 
     public void resultPlayer(Player player) {
@@ -26,8 +27,8 @@ public class ResultView {
                         .collect(Collectors.joining(",")));
     }
 
-    public void resultFinalCard(List<Player> players) {
-        players.forEach(player -> System.out.println(player.getName() + " : " +
+    public void resultFinalCard(Players players) {
+        players.getPlayers().forEach(player -> System.out.println(player.getName() + " : " +
                 player.getCards()
                         .stream()
                         .map(card -> card.getCardPattern().getMark() + card.getCardNumber().getMark())
