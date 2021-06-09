@@ -5,13 +5,10 @@ public class BlackJackGame {
     private Players players;
     private CardDeck cardDeck = new CardDeck();
 
-    public Players getPlayer(String gamerName) {
+    public Players startGame(String gamerName) {
         players =new Players(gamerName);
-        return players;
-    }
-
-    public void startDraw() {
         players.playersStartDrawCard(cardDeck);
+        return players;
     }
 
     public void addDraw() {

@@ -39,12 +39,12 @@ public class Gamer extends Player {
 
     @Override
     void result(int dealerScore) {
-        if (score > dealerScore) {
+        if (score < dealerScore || score > 21) {
+            result = Result.lose;
+        } else if (score > dealerScore) {
             result = Result.win;
         } else if (score == dealerScore) {
             result = Result.draw;
-        } else {
-            result = Result.lose;
         }
     }
 

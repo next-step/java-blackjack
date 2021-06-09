@@ -30,12 +30,12 @@ public class Dealer extends Player {
 
     @Override
     void result(int gamerScore) {
-        if (score > gamerScore) {
+        if (score < gamerScore || score > 21) {
+            resultList.add(Result.lose);
+        } else if (score > gamerScore) {
             resultList.add(Result.win);
         } else if (score == gamerScore) {
             resultList.add(Result.draw);
-        } else {
-            resultList.add(Result.lose);
         }
     }
 
