@@ -12,9 +12,10 @@ public class BlackJackGame {
     private final static int TEN = 10;
     private final static int ZERO = 0;
 
-    List<Player> players;
-    CardDeck cardDeck = new CardDeck();
-    Dealer dealer = new Dealer();
+    private List<Player> players;
+    private CardDeck cardDeck = new CardDeck();
+    private List<Player> gamers;
+    private Dealer dealer = new Dealer();
 
     public List<Player> getPlayer(String gamerName) {
 
@@ -57,12 +58,13 @@ public class BlackJackGame {
         }
     }
 
-    public void resultGamer() {
-        List<Player> gamers = players.stream()
+    public List<Player> resultGamer() {
+        gamers = players.stream()
                 .filter(Player::isGamer)
                 .collect(Collectors.toList());
         gamers.forEach(gamer -> gamer.result(dealer.getScore()));
         gamers.forEach((gamer -> dealer.result(gamer.getScore())));
+        return gamers;
     }
 
     public void outputResult() {
