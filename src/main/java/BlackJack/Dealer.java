@@ -62,20 +62,23 @@ public class Dealer extends CasinoPerson {
         return CardNumber.ACE.getMaxScore();
     }
 
-    public void winOrLose(boolean playerResult) {
-        bust();
-        if (playerResult == true) {
+    public void winOrLose(boolean compare, boolean isPlayerBust) {
+        if(isPlayerBust&&bust()){
             loseCount++;
-        }
-        if (playerResult == false) {
-            winCount++;
+        }else{
+            if(compare){
+                loseCount++;
+            }else{
+                winCount++;
+            }
         }
     }
 
-    private void bust() {
+    public boolean bust() {
         if (this.sumCards() > SCORE_LIMIT) {
-            loseCount++;
+            return true;
         }
+        return false;
     }
 
     public List<Card> getHoldingCards() {

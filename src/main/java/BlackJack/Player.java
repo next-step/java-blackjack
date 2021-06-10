@@ -55,23 +55,52 @@ public class Player extends CasinoPerson {
         return CardNumber.ACE.getMaxScore();
     }
 
-    public boolean compare(int dealerScore) {
-        bust();
+    public boolean compare(int dealerScore, boolean dealerBust) {
+        if(dealerBust){
+            return isDealerBust();
+        }
+        return isNotDealerBust(dealerScore);
+    }
+
+    private boolean isNotDealerBust(int dealerScore) {
+        if(bust()){
+            this.playerResult = "패";
+            return false;
+        }
+        this.playerResult = "승";
+        return isNotPlayerBust(dealerScore);
+    }
+
+    private boolean isNotPlayerBust(int dealerScore) {
         int playerDifference = SCORE_LIMIT - this.sumCards();
         int dealerDifference = SCORE_LIMIT - dealerScore;
-        if (dealerScore <= SCORE_LIMIT && playerDifference < dealerDifference) {
+        if (playerDifference > dealerDifference) {
+            this.playerResult = "패";
+            return false;
+        }
+        this.playerResult = "승";
+        return true;
+    }
+
+    private boolean isDealerBust() {
+        if(bust()){
+            this.playerResult = "패";
+            return false;
+        }
+        this.playerResult = "승";
+        return true;
+    }
+
+    public boolean bust() {
+        if (this.sumCards() > SCORE_LIMIT) {
             this.playerResult = "패";
             return true;
         }
-        this.playerResult = "승";
         return false;
     }
 
-    private void bust() {
-        if (this.sumCards() > SCORE_LIMIT) {
-            this.playerResult = "패";
-        }
-    }
+
+
 
     public String getPlayerName() {
         return playerName;    }

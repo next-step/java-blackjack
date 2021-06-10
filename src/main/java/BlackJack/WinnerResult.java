@@ -12,7 +12,7 @@ public class WinnerResult {
         this.players = players;
         this.dealer = dealer;
         for (Player player : players) {
-            dealer.winOrLose(player.compare(dealer.sumCards()));
+            dealer.winOrLose(player.compare(dealer.sumCards(), dealer.bust()),player.bust());
         }
     }
 
