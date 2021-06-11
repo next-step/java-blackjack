@@ -24,8 +24,4 @@ class WinnerResultTest {
         winnerResult = new WinnerResult(players, dealer);
     }
 
-    @Test
-    void loseGame() {
-        winnerResult.findWinnerPlayer();
-    }
 }
