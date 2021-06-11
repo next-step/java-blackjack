@@ -1,19 +1,16 @@
 package BlackJack;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class WinnerResult {
-    private List<Player> players;
-    private Dealer dealer;
+    private final List<Player> players;
+    private final Dealer dealer;
 
     public WinnerResult(List<Player> players, Dealer dealer) {
         this.players = players;
         this.dealer = dealer;
-        for (Player player : players) {
-            dealer.winOrLose(player.compare(dealer.sumCards(), dealer.bust()),player.bust());
+        for (Player player : this.players) {
+            this.dealer.countWinLose(player);
         }
     }
-
 }

@@ -15,11 +15,6 @@ public enum CardNumber {
         this.outputScore = outputScore;
     }
 
-    CardNumber(int minScore, int maxScore) {
-        this.minScore = minScore;
-        this.maxScore = maxScore;
-    }
-
     CardNumber(int minScore, int maxScore, String outputScore) {
         this.minScore = minScore;
         this.maxScore = maxScore;

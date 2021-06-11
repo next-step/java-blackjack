@@ -6,20 +6,11 @@ import java.util.List;
 public class Dealer extends CasinoPerson {
     private final String DEALER_NAME = "딜러";
     private final int SCORE_LIMIT = 21;
+    private final int DEALER_SCORE_LIMIT = 16;
     private List<Card> holdingCards = new ArrayList<>();
     private int addedResult;
-    private final int DEALER_SCORE_LIMIT = 16;
     private int winCount = 0;
     private int loseCount = 0;
-
-
-    public Dealer() {
-    }
-
-    public Dealer(List<Card> holdingCards) {
-        this.holdingCards = holdingCards;
-    }
-
 
     @Override
     boolean isDrawCard(int score) {
@@ -39,7 +30,6 @@ public class Dealer extends CasinoPerson {
         return addedResult;
     }
 
-
     private int findCardNumber(CardNumber cardNumber) {
         if (cardNumber.equals(CardNumber.ACE)) {
             return findAceCondition(addedResult);
@@ -48,11 +38,7 @@ public class Dealer extends CasinoPerson {
     }
 
     private int findAceCondition(int addedResult) {
-        int aceScore = 0;
-        int minScore = SCORE_LIMIT - (addedResult + CardNumber.ACE.getMinScore());
-        int maxScore = SCORE_LIMIT - (addedResult + CardNumber.ACE.getMaxScore());
-        aceScore = gap(minScore, maxScore);
-        return aceScore;
+        return gap(SCORE_LIMIT - (addedResult + CardNumber.ACE.getMinScore()), SCORE_LIMIT - (addedResult + CardNumber.ACE.getMaxScore()));
     }
 
     private int gap(int minScore, int maxScore) {
@@ -62,24 +48,22 @@ public class Dealer extends CasinoPerson {
         return CardNumber.ACE.getMaxScore();
     }
 
-    public boolean winOrLose(boolean compare, boolean isPlayerBust) {
-        if (isPlayerBust && bust()) {
+    // 딜러가 bust 무조건 패
+    // 딜러가 bust 아닐 때
+    // 패) 플레이어 bust X OR 플레이어 > 딜러
+    // 승) 플레이어 bust O OR 플레이어 < 딜러
+    public boolean countWinLose(Player player) {
+        if (player.compare(this)) {
             loseCount++;
             return true;
         }
-        if (compare) {
-            loseCount++;
-            return true;
-        }
+
         winCount++;
         return true;
     }
 
     public boolean bust() {
-        if (this.sumCards() > SCORE_LIMIT) {
-            return true;
-        }
-        return false;
+        return addedResult > SCORE_LIMIT;
     }
 
     public List<Card> getHoldingCards() {

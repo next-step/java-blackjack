@@ -5,6 +5,9 @@ import java.util.List;
 
 public class Player extends CasinoPerson {
     private final int SCORE_LIMIT = 21;
+    private final int ACE_MAX_SCORE = 11;
+    private final String WIN = "승";
+    private final String LOSE = "패";
     private String playerName;
     private List<Card> holdingCards = new ArrayList<>();
     private int addedResult;
@@ -40,70 +43,37 @@ public class Player extends CasinoPerson {
     }
 
     private int findAceCondition(int addedResult) {
-        int aceScore = 0;
-        int minScore = SCORE_LIMIT - (addedResult + CardNumber.ACE.getMinScore());
-        int maxScore = SCORE_LIMIT - (addedResult + CardNumber.ACE.getMaxScore());
-
-        aceScore = gap(minScore, maxScore, addedResult);
-        return aceScore;
+        return gap(SCORE_LIMIT - (addedResult + CardNumber.ACE.getMinScore()), SCORE_LIMIT - (addedResult + CardNumber.ACE.getMaxScore()),
+                addedResult);
     }
 
     private int gap(int minScore, int maxScore, int addedResult) {
-        if (minScore <= maxScore || addedResult >= 11) {
+        if (minScore <= maxScore || addedResult >= ACE_MAX_SCORE) {
             return CardNumber.ACE.getMinScore();
         }
         return CardNumber.ACE.getMaxScore();
     }
 
-    public boolean compare(int dealerScore, boolean dealerBust) {
-        if(dealerBust){
-            return isDealerBust();
-        }
-        return isNotDealerBust(dealerScore);
-    }
-
-    private boolean isNotDealerBust(int dealerScore) {
-        if(bust()){
-            this.playerResult = "패";
-            return false;
-        }
-        this.playerResult = "승";
-        return isNotPlayerBust(dealerScore);
-    }
-
-    private boolean isNotPlayerBust(int dealerScore) {
-        int playerDifference = SCORE_LIMIT - this.sumCards();
-        int dealerDifference = SCORE_LIMIT - dealerScore;
-        if (playerDifference > dealerDifference) {
-            this.playerResult = "패";
-            return false;
-        }
-        this.playerResult = "승";
-        return true;
-    }
-
-    private boolean isDealerBust() {
-        if(bust()){
-            this.playerResult = "패";
-            return false;
-        }
-        this.playerResult = "승";
-        return true;
-    }
-
-    public boolean bust() {
-        if (this.sumCards() > SCORE_LIMIT) {
-            this.playerResult = "패";
+    // 플레이어가 bust 무조건 패
+    // 플레이어가 bust 아닐 때
+    // 패) 딜러 bust X OR 플레이어 > 딜러
+    // 승) 딜러 bust O OR 플레이어 < 딜러
+    public boolean compare(Dealer dealer) {
+        if (!this.bust() && (dealer.bust() || dealer.sumCards() < sumCards())) {
+            this.playerResult = WIN;
             return true;
         }
+        this.playerResult = LOSE;
         return false;
     }
 
-
-
+    private boolean bust() {
+        return addedResult > SCORE_LIMIT;
+    }
 
     public String getPlayerName() {
-        return playerName;    }
+        return playerName;
+    }
 
     public List<Card> getHoldingCards() {
         return holdingCards;

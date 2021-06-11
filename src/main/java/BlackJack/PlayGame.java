@@ -29,13 +29,12 @@ public class PlayGame {
         cardPack.getCards().remove(randomIndexDealer);
     }
 
-    public void gameStart(int i) {
-        for (int j = 0; j < i; j++) {
+    public void gameStart(int count) {
+        for (int i = 0; i < count; i++) {
             for (Player player : players) {
                 this.drawCardPlayer(player);
             }
             this.drawCardDealer();
         }
-
     }
 }
