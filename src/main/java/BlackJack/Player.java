@@ -54,10 +54,6 @@ public class Player extends CasinoPerson {
         return CardNumber.ACE.getMaxScore();
     }
 
-    // 플레이어가 bust 무조건 패
-    // 플레이어가 bust 아닐 때
-    // 패) 딜러 bust X OR 플레이어 > 딜러
-    // 승) 딜러 bust O OR 플레이어 < 딜러
     public boolean compare(Dealer dealer) {
         if (!this.bust() && (dealer.bust() || dealer.sumCards() < sumCards())) {
             this.playerResult = WIN;
