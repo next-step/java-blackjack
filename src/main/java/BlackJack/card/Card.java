@@ -1,4 +1,4 @@
-package BlackJack;
+package BlackJack.card;
 
 public class Card {
     private CardShape cardShape;
@@ -15,5 +15,9 @@ public class Card {
 
     public CardShape getCardShape() {
         return cardShape;
+    }
+
+    public boolean isAce() {
+        return cardNumber == CardNumber.ACE;
     }
 }

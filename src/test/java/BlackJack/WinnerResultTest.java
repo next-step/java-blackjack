@@ -1,27 +1,30 @@
 package BlackJack;
 
+import BlackJack.actor.Dealer;
+import BlackJack.actor.Player;
+import BlackJack.actor.Players;
+import BlackJack.card.CardMachine;
+import BlackJack.card.CardPack;
+import BlackJack.game.PlayGame;
+import BlackJack.game.WinnerResultPlayer;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.List;
 
 class WinnerResultTest {
-    private List<Player> players;
+    private Players players;
     private Dealer dealer;
     private PlayGame playGame;
     private CardMachine cardMachine;
     private CardPack cardPack;
-    private WinnerResult winnerResult;
+    private WinnerResultPlayer winnerResult;
 
     @BeforeEach
     void setUp() {
-        players = Arrays.asList(new Player("ss"), new Player("yy"));
+        players.add( new Player("ss"));
+        players.add( new Player("yy"));
         dealer = new Dealer();
         playGame = new PlayGame(players, dealer);
         cardMachine = new CardMachine();
         cardPack = cardMachine.createCards();
-        winnerResult = new WinnerResult(players, dealer);
     }
 
 }

@@ -1,4 +1,4 @@
-package BlackJack;
+package BlackJack.card;
 
 import java.util.ArrayList;
 import java.util.Arrays;

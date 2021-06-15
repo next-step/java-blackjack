@@ -1,5 +1,12 @@
 package BlackJack;
 
+import BlackJack.actor.Dealer;
+import BlackJack.actor.Player;
+import BlackJack.actor.Players;
+import BlackJack.card.Card;
+import BlackJack.card.CardMachine;
+import BlackJack.card.CardPack;
+import BlackJack.game.PlayGame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,7 +17,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class DealerTest {
-    private List<Player> players;
+    private Players players;
     private Dealer dealer;
     private PlayGame playGame;
     private CardMachine cardMachine;
@@ -18,7 +25,8 @@ class DealerTest {
 
     @BeforeEach
     void setUp() {
-        players = Arrays.asList(new Player("ss"), new Player("yy"));
+        players.add( new Player("ss"));
+        players.add( new Player("yy"));
         dealer = new Dealer();
         playGame = new PlayGame(players, dealer);
         cardMachine = new CardMachine();

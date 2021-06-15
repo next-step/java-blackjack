@@ -1,16 +1,22 @@
-package BlackJack;
+package BlackJack.game;
 
-import java.util.List;
+import BlackJack.actor.Dealer;
+import BlackJack.actor.Player;
+import BlackJack.actor.Players;
+import BlackJack.card.Card;
+import BlackJack.card.CardMachine;
+import BlackJack.card.CardPack;
+
 import java.util.Random;
 
 public class PlayGame {
     private CardMachine cardMachine = new CardMachine();
     private final CardPack cardPack = cardMachine.createCards();
     private Random random = new Random();
-    private List<Player> players;
+    private Players players;
     private Dealer dealer;
 
-    public PlayGame(List<Player> players, Dealer dealer) {
+    public PlayGame(Players players, Dealer dealer) {
         this.players = players;
         this.dealer = dealer;
     }
@@ -31,7 +37,7 @@ public class PlayGame {
 
     public void gameStart(int count) {
         for (int i = 0; i < count; i++) {
-            for (Player player : players) {
+            for (Player player : players.getPlayers()) {
                 this.drawCardPlayer(player);
             }
             this.drawCardDealer();
