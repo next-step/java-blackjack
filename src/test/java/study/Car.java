@@ -1,9 +1,8 @@
 package study;
 
-
 public class Car {
-    private final int position;
     private final String name;
+    private final int position;
 
     public Car(final String name, final int position) {
         this.name = name;
