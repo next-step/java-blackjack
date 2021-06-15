@@ -13,9 +13,18 @@ public class Stadium {
     public void playCardGame() {
         for (Gambler gambler : gamblers) {
             initialSetting(gambler);
+            System.out.print(gambler.getName()+" 첫번째 결과 : ");
+            for(Card card : gambler.getCards()) {
+                System.out.print(card.getDenomination() + " " + card.getSuit() + " ");
+            }
+            System.out.println();
 
             drawNewCard(gambler);
-            System.out.println(gambler.getName()+" 결과 : " + gambler.getCard());
+            System.out.print(gambler.getName()+" 두번째 결과 : ");
+            for(Card card : gambler.getCards()) {
+                System.out.print(card.getDenomination() + " " + card.getSuit() + " ");
+            }
+            System.out.println();
         }
     }
 
