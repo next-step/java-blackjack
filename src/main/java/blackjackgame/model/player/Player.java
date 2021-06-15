@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Player {
-    private String name;
-    private List<Card> cards = new ArrayList<>();
-    private int score;
+    String name;
+    List<Card> cards = new ArrayList<>();
+    int score;
 
 }
