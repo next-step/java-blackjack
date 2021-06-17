@@ -1,47 +1,44 @@
 package blackjack.model;
 
-import blackjack.model.strategy.ReceiveCardStrategy;
+import blackjack.model.state.State;
 
 import java.util.List;
 
-public class Player {
-    private final PlayerInformation playerInformation;
-    private final ReceiveCardStrategy receiveCardStrategy;
-    private final WinningState winningState;
+public class Player implements PlayerFunction{
+    private State state;
+    private final WinningState winningState = new WinningState();
 
-    public Player(String name, ReceiveCardStrategy receiveCardStrategy) {
-        this.playerInformation = new PlayerInformation(name, new BunchOfCard());
-        this.receiveCardStrategy = receiveCardStrategy;
-        this.winningState = new WinningState();
+    protected Player(State state) {
+        this.state = state;
     }
 
-    public void addCard(Card card) {
-        this.playerInformation.addCard(card);
-    }
-
-    public void addSeveralCard(List<Card> cards) {
-        for (Card card : cards) {
-            addCard(card);
-        }
-    }
-
+    @Override
     public int getCardValueSum() {
-        return this.playerInformation.getCardValueSum();
+        return this.state.getBunchOfCard().getCardValueSum();
     }
 
+    @Override
     public List<String> getCardNames() {
-        return playerInformation.getCardNames();
+        return this.state.getBunchOfCard().getCardNames();
     }
 
-    public boolean canReceiveCard() {
-        return getCardValueSum() <= receiveCardStrategy.getReceiveCardCondition();
-    }
-
-    public String getName() {
-        return playerInformation.getName();
-    }
-
+    @Override
     public WinningState getWinningState() {
         return this.winningState;
+    }
+
+    @Override
+    public State getState() {
+        return this.state;
+    }
+
+    @Override
+    public void drawCard(Card card) {
+        this.state = state.draw(card);
+    }
+
+    @Override
+    public boolean isBust() {
+        return this.state.getBunchOfCard().isBust();
     }
 }

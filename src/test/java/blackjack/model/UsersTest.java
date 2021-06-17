@@ -16,15 +16,15 @@ public class UsersTest {
     void usersGenerateTest() {
         List<String> userNames = Arrays.asList("pobi", "jason");
 
-        assertDoesNotThrow(() -> new Players(userNames));
+        assertDoesNotThrow(() -> PlayerGenerator.makeUsers(userNames));
     }
 
     @DisplayName("Users 생성시 유저 개수를 반환 할 수있다.")
     @Test
     void usersSizeTest() {
         List<String> userNames = Arrays.asList("pobi", "jason");
-        Players users = new Players(userNames);
+        Users users = PlayerGenerator.makeUsers(userNames);
 
-        Assertions.assertThat(users.getUser().size()).isEqualTo(2);
+        Assertions.assertThat(users.getUsers().size()).isEqualTo(2);
     }
 }
