@@ -27,6 +27,15 @@ public class CardGenerator {
 
         return cards;
     }
+    public BunchOfCard getSeveralCard2(int cardCount) {
+        BunchOfCard bunchOfCard = new BunchOfCard();
+
+        for (int i = 0; i < cardCount; i++) {
+            bunchOfCard.addCard(getOneCard());
+        }
+
+        return bunchOfCard;
+    }
 
     public Card getOneCard() {
         int nowIndex = cardIndex;

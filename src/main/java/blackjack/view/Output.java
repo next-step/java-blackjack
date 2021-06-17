@@ -1,6 +1,7 @@
 package blackjack.view;
 
-import blackjack.model.Player;
+import blackjack.model.Dealer;
+import blackjack.model.User;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Output {
     private static final int INITIALIZE_VALUE = 0;
 
 
-    protected Output() {
+    private Output() {
     }
 
     public static void printInitMessage(List<String> userNames) {
@@ -55,12 +56,22 @@ public class Output {
         stringBuilder.setLength(INITIALIZE_VALUE);
     }
 
-    public static void printPlayerCardInformation(Player player) {
-        stringBuilder.append(player.getName())
+    public static void printDealerCardInformation(Dealer dealer) {
+        stringBuilder.append(dealer.getName())
                 .append(SEPARATOR)
-                .append(String.join(CARD_SEPARATOR, player.getCardNames()))
+                .append(String.join(CARD_SEPARATOR, dealer.getCardNames()))
                 .append(FINAL_VALUE)
-                .append(player.getCardValueSum());
+                .append(dealer.getCardValueSum());
+
+        System.out.println(stringBuilder);
+        stringBuilder.setLength(INITIALIZE_VALUE);
+    }
+    public static void printUserCardInformation(User user) {
+        stringBuilder.append(user.getName())
+                .append(SEPARATOR)
+                .append(String.join(CARD_SEPARATOR, user.getCardNames()))
+                .append(FINAL_VALUE)
+                .append(user.getCardValueSum());
 
         System.out.println(stringBuilder);
         stringBuilder.setLength(INITIALIZE_VALUE);

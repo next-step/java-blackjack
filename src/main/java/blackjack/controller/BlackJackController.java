@@ -1,9 +1,6 @@
 package blackjack.controller;
 
-import blackjack.model.CardGenerator;
-import blackjack.model.Player;
-import blackjack.model.PlayerFactory;
-import blackjack.model.Players;
+import blackjack.model.*;
 import blackjack.view.Input;
 import blackjack.view.Output;
 
@@ -11,127 +8,67 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BlackJackController {
-    public static final int BURST_COUNT = 21;
-    private static final int FIRST_CARD_INDEX = 0;
-    private static final int STARTING_CARD_COUNT = 2;
     private static final int HAVE_COUNT = 0;
     private static final String SPLIT_SEPARATOR = ",";
-    private static final String GET_RECEIVE_CARD = "y";
     private static final String WINNING_STATE_SEPARATOR = ": ";
     private static final String WIN = "승 ";
     private static final String LOSE = "패 ";
-    private static final CardGenerator cardGenerator = new CardGenerator();
 
     public void blankJackStart() {
-        Player dealer = PlayerFactory.of(PlayerFactory.DEALER);
+        Dealer dealer = PlayerGenerator.makeDealer();
         List<String> userNames = Arrays.asList(Input.inputNames().split(SPLIT_SEPARATOR));
-        Players users = new Players(userNames);
+        Users users = PlayerGenerator.makeUsers(userNames);
 
-        doInitialLogic(dealer, users);
+        Output.printInitMessage(users.getUserNames());
+
         doPlayersInitialPrintLogic(dealer, users);
-        doPlayersTurnLogic(dealer, users);
+        doPlayersTurnLogic(dealer,users);
+
         doPlayersCardInformationPrintLogic(dealer, users);
         doMakeWinningStateLogic(dealer, users);
         doMakeResultLogic(dealer, users);
     }
 
-    private void doInitialLogic(Player dealer, Players users) {
-        initPlayer(dealer);
-        initUsers(users.getUser());
-        Output.printInitMessage(users.getUserNames());
-
+    private void doPlayersInitialPrintLogic(Dealer dealer, Users users) {
+        Output.printDealerFirstCardName("딜러", dealer.getFirstCard());
+        printUsersCardNames1(users);
     }
 
-    private void initPlayer(Player player) {
-        player.addSeveralCard(cardGenerator.getSeveralCard(STARTING_CARD_COUNT));
-    }
-
-    private void initUsers(List<Player> users) {
-        for (Player user : users) {
-            initPlayer(user);
-        }
-    }
-
-    private void doPlayersInitialPrintLogic(Player dealer, Players users) {
-        Output.printDealerFirstCardName(dealer.getName(), dealer.getCardNames().get(FIRST_CARD_INDEX));
-        printUsersCardNames(users);
-    }
-
-    private void printUsersCardNames(Players users) {
-        for (Player user : users.getUser()) {
+    private void printUsersCardNames1(Users users) {
+        for (User user : users.getUsers()) {
             Output.printCardNames(user.getName(), user.getCardNames());
         }
     }
 
-    private void doPlayersTurnLogic(Player dealer, Players users) {
-        doUsersTurn(users);
-        doDealerTurn(dealer);
+    private void doPlayersTurnLogic(Dealer dealer, Users users) {
+        CardSeparator.doUsersTurn(users);
+        CardSeparator.doDealerTurn(dealer);
     }
 
-    private void doUsersTurn(Players users) {
-        for (Player user : users.getUser()) {
-            doUserTurn(user);
-        }
-    }
-
-    private void doDealerTurn(Player dealer) {
-        while (dealer.canReceiveCard()) {
-            dealer.addCard(cardGenerator.getOneCard());
-            Output.printDealerReceiveCard();
-        }
-
-    }
-
-    private void doUserTurn(Player user) {
-        boolean userTurn = true;
-
-        while (userTurn) {
-            userTurn = isUserTurn(user);
-        }
-    }
-
-    private boolean isUserTurn(Player user) {
-        if (user.canReceiveCard()) {
-            return isReceiveCard(user);
-        }
-
-        return false;
-    }
-
-    private boolean isReceiveCard(Player user) {
-        if (Input.inputReceiveCardAnswer(user.getName()).equals(GET_RECEIVE_CARD)) {
-            user.addCard(cardGenerator.getOneCard());
-            Output.printCardNames(user.getName(), user.getCardNames());
-            return true;
-        }
-
-        return false;
-    }
-
-    private void doPlayersCardInformationPrintLogic(Player dealer, Players users) {
-        Output.printPlayerCardInformation(dealer);
+    private void doPlayersCardInformationPrintLogic(Dealer dealer, Users users) {
+        Output.printDealerCardInformation(dealer);
         printUsersCardInformation(users);
     }
 
-    private void printUsersCardInformation(Players users) {
-        for (Player user : users.getUser()) {
-            Output.printPlayerCardInformation(user);
+    private void printUsersCardInformation(Users users) {
+        for (User user : users.getUsers()) {
+            Output.printUserCardInformation(user);
         }
     }
 
-    private void doMakeWinningStateLogic(Player dealer, Players users) {
-        for (Player user : users.getUser()) {
+    private void doMakeWinningStateLogic(Dealer dealer, Users users) {
+        for (User user : users.getUsers()) {
             makeWinningState(dealer, user);
         }
     }
 
-    private void makeWinningState(Player dealer, Player user) {
-        if (isDealerBurst(dealer)) {
+    private void makeWinningState(Dealer dealer, User user) {
+        if (dealer.isBust()) {
             dealerLoseLogic(dealer, user);
             return;
         }
 
-        if (isUserBurst(user)) {
+        if (user.isBust()) {
             userLoseLogic(dealer, user);
             return;
         }
@@ -139,27 +76,21 @@ public class BlackJackController {
         comparePlayersLogic(dealer, user);
     }
 
-    private boolean isDealerBurst(Player dealer) {
-        return burstCheck(dealer);
-    }
+    private void dealerLoseLogic(Dealer dealer, User user) {
+        boolean isNotUserBust = !user.isBust();
 
-    private boolean isUserBurst(Player user) {
-        return burstCheck(user);
-    }
-
-    private void dealerLoseLogic(Player dealer, Player user) {
-        if (!burstCheck(user)) {
+        if (isNotUserBust) {
             dealer.getWinningState().plusLoseCount();
             user.getWinningState().plusWinCount();
         }
     }
 
-    private void userLoseLogic(Player dealer, Player user) {
+    private void userLoseLogic(Dealer dealer, User user) {
         dealer.getWinningState().plusWinCount();
         user.getWinningState().plusLoseCount();
     }
 
-    private void comparePlayersLogic(Player dealer, Player user) {
+    private void comparePlayersLogic(Dealer dealer, User user) {
         if (dealer.getCardValueSum() > user.getCardValueSum()) {
             dealer.getWinningState().plusWinCount();
             user.getWinningState().plusLoseCount();
@@ -170,23 +101,18 @@ public class BlackJackController {
         }
     }
 
-    private boolean burstCheck(Player player) {
-        return player.getCardValueSum() > BURST_COUNT;
-    }
-
-
-    private void doMakeResultLogic(Player dealer, Players users) {
-        String result = makeResult(dealer, users.getUser());
+    private void doMakeResultLogic(Dealer dealer, Users users) {
+        String result = makeResult(dealer, users.getUsers());
         Output.printResult(result);
     }
 
-    private String makeResult(Player dealer, List<Player> users) {
+    private String makeResult(Dealer dealer, List<User> users) {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append(dealer.getName()).append(WINNING_STATE_SEPARATOR)
                 .append(makeDealerResult(dealer));
 
-        for (Player user : users) {
+        for (User user : users) {
             stringBuilder.append(user.getName())
                     .append(WINNING_STATE_SEPARATOR)
                     .append(makeUserResult(user));
@@ -195,7 +121,7 @@ public class BlackJackController {
         return stringBuilder.toString();
     }
 
-    private StringBuilder makeDealerResult(Player dealer) {
+    private StringBuilder makeDealerResult(Dealer dealer) {
         StringBuilder stringBuilder = new StringBuilder();
         if (dealer.getWinningState().getWinCount() > HAVE_COUNT) {
             stringBuilder.append(dealer.getWinningState().getWinCount())
@@ -210,7 +136,7 @@ public class BlackJackController {
         return stringBuilder;
     }
 
-    private StringBuilder makeUserResult(Player user) {
+    private StringBuilder makeUserResult(User user) {
         StringBuilder stringBuilder = new StringBuilder();
 
         if (user.getWinningState().getWinCount() > HAVE_COUNT) {
