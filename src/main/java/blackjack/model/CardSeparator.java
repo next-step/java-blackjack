@@ -3,16 +3,16 @@ package blackjack.model;
 import blackjack.view.Input;
 import blackjack.view.Output;
 
-// TODO  딜러턴, 유저턴에서 인풋값 받아오는걸 컨트롤러로 어떻게 뺼지 고민
 public class CardSeparator {
     private static final CardGenerator cardGenerator = new CardGenerator();
     private static final int INITIAL_CARD_COUNT = 2;
     private static final int DEALER_CARD_RECEIVE_COUNT = 16;
     private static final String GET_RECEIVE_CARD = "y";
 
-    private CardSeparator(){}
+    private CardSeparator() {
+    }
 
-    public static BunchOfCard drawInitialCard(){
+    public static BunchOfCard drawInitialCard() {
         return cardGenerator.getSeveralCard2(INITIAL_CARD_COUNT);
     }
 

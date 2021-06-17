@@ -44,18 +44,18 @@ public class UserTest {
     @DisplayName("유저는 카드의 이름들을 반환 할 수있다.")
     @Test
     void getNamesTest() {
-           assertThat(user.getCardNames()).contains("2클로버", "J다이아몬드");
+        assertThat(user.getCardNames()).contains("2클로버", "J다이아몬드");
     }
 
     @DisplayName("유저는 카드들의 값의 합을 반환 할 수있다.")
     @Test
     void getUserCardValueSumTest() {
-           assertThat(user.getCardValueSum()).isEqualTo(12);
+        assertThat(user.getCardValueSum()).isEqualTo(12);
     }
 
     @DisplayName("여러 장의 카드를 입력하면 동일한 이름의 개수를 반환 할 수있다.")
     @Test
     void addSeveralCardTest() {
-             assertThat(user.getCardNames().size()).isEqualTo(2);
+        assertThat(user.getCardNames().size()).isEqualTo(2);
     }
 }

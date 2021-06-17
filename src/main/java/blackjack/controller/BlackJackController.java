@@ -22,7 +22,7 @@ public class BlackJackController {
         Output.printInitMessage(users.getUserNames());
 
         doPlayersInitialPrintLogic(dealer, users);
-        doPlayersTurnLogic(dealer,users);
+        doPlayersTurnLogic(dealer, users);
 
         doPlayersCardInformationPrintLogic(dealer, users);
         doMakeWinningStateLogic(dealer, users);

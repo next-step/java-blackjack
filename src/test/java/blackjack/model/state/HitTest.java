@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class HitTest {
-   private BunchOfCard bunchOfCard;
+    private BunchOfCard bunchOfCard;
 
     @BeforeEach
     void setUpUser() {
@@ -24,13 +24,13 @@ public class HitTest {
 
     @DisplayName("Hit 상태를 생성 할 수 있다")
     @Test
-    void generateHit(){
+    void generateHit() {
         assertDoesNotThrow(() -> new Hit(bunchOfCard));
     }
 
     @DisplayName("Hit 상태는 게임이 끝나지 않은 상태이다(= 진행중).")
     @Test
-    void hitIsNotFinished(){
+    void hitIsNotFinished() {
         State state = new Hit(bunchOfCard);
 
         assertThat(state.isFinished()).isEqualTo(false);
@@ -38,7 +38,7 @@ public class HitTest {
 
     @DisplayName("게임이 끝나지 않은 상태에서(=진행 중) 보상을 받을 수 없다.")
     @Test
-    void hitCanNotGetProfit(){
+    void hitCanNotGetProfit() {
         State state = new Hit(bunchOfCard);
 
         assertThrows(IllegalArgumentException.class, () -> state.profit(1));
@@ -46,7 +46,7 @@ public class HitTest {
 
     @DisplayName("Hit 상태에서 드로우를 한 후 카드값의 합이 21 이하이면 Hit 상태가 유지된다")
     @Test
-    void keepHit(){
+    void keepHit() {
         State state = new Hit(bunchOfCard);
         state = state.draw(new Card(CardTypes.CLOVER_4));
 
@@ -55,7 +55,7 @@ public class HitTest {
 
     @DisplayName("Hit 상태에서 드로우를 한 후 카드값의 합이 21 이상이면 Bust 상태로 변경된다")
     @Test
-    void hitToBust(){
+    void hitToBust() {
         State state = new Hit(bunchOfCard);
         state = state.draw(new Card(CardTypes.CLOVER_K));
 
@@ -64,7 +64,7 @@ public class HitTest {
 
     @DisplayName("Hit 상태에서 Stay를 하면 Stay 태로 변경된다.")
     @Test
-    void hitToStay(){
+    void hitToStay() {
         State state = new Hit(bunchOfCard);
         state = state.stay();
 

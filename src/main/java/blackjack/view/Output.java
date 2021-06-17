@@ -66,6 +66,7 @@ public class Output {
         System.out.println(stringBuilder);
         stringBuilder.setLength(INITIALIZE_VALUE);
     }
+
     public static void printUserCardInformation(User user) {
         stringBuilder.append(user.getName())
                 .append(SEPARATOR)

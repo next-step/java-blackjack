@@ -6,7 +6,8 @@ import blackjack.model.state.Hit;
 import java.util.List;
 
 public class PlayerGenerator {
-    private PlayerGenerator(){}
+    private PlayerGenerator() {
+    }
 
     public static Dealer makeDealer() {
         BunchOfCard bunchOfCard = CardSeparator.drawInitialCard();
@@ -18,7 +19,7 @@ public class PlayerGenerator {
 
     public static Users makeUsers(List<String> userNames) {
         Users users = new Users();
-        for( String name : userNames){
+        for (String name : userNames) {
             users.addUser(makeUser(name));
         }
         return users;

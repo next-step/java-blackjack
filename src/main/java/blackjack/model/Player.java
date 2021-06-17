@@ -4,7 +4,7 @@ import blackjack.model.state.State;
 
 import java.util.List;
 
-public class Player implements PlayerFunction{
+public class Player implements PlayerFunction {
     private State state;
     private final WinningState winningState = new WinningState();
 

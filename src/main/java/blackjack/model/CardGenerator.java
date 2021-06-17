@@ -27,6 +27,7 @@ public class CardGenerator {
 
         return cards;
     }
+
     public BunchOfCard getSeveralCard2(int cardCount) {
         BunchOfCard bunchOfCard = new BunchOfCard();
 
