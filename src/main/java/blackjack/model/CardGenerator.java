@@ -4,16 +4,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CardGenerator {
     private static final int CARD_INITIAL_COUNT = 0;
 
     private int cardIndex;
-    private final List<CardTypes> cards;
+    private final List<Card> cards;
 
     public CardGenerator() {
         this.cardIndex = CARD_INITIAL_COUNT;
-        List<CardTypes> newCards = Arrays.asList(CardTypes.values());
+        List<Card> newCards = Arrays.stream(CardTypes.values())
+                .map((cardTypes)->new Card(cardTypes))
+                .collect(Collectors.toList())
+                ;
         Collections.shuffle(newCards);
         this.cards = newCards;
     }
@@ -41,7 +45,7 @@ public class CardGenerator {
     public Card getOneCard() {
         int nowIndex = cardIndex;
         cardIndex++;
-        return new Card(this.cards.get(nowIndex));
+        return this.cards.get(nowIndex);
     }
 
     public int getLeftCardCount() {
@@ -52,5 +56,4 @@ public class CardGenerator {
         Collections.shuffle(cards);
         this.cardIndex = CARD_INITIAL_COUNT;
     }
-
 }
