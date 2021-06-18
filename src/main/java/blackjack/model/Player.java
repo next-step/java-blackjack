@@ -41,4 +41,19 @@ public class Player implements PlayerFunction {
     public boolean isBust() {
         return this.state.getBunchOfCard().isBust();
     }
+
+    @Override
+    public int getWinCount() {
+        return winningState.getWinCount();
+    }
+
+    @Override
+    public int getDrawCount() {
+        return winningState.getDrawCount();
+    }
+
+    @Override
+    public int getLoseCount() {
+        return winningState.getLoseCount();
+    }
 }

@@ -22,10 +22,12 @@ public class WinningStateTest {
 
         winningState.plusWinCount();
         winningState.plusLoseCount();
+        winningState.plusDrawCount();
 
         assertAll(
                 () -> assertThat(winningState.getLoseCount()).isEqualTo(1),
-                () -> assertThat(winningState.getWinCount()).isEqualTo(1)
+                () -> assertThat(winningState.getWinCount()).isEqualTo(1),
+                () -> assertThat(winningState.getDrawCount()).isEqualTo(1)
         );
     }
 }
