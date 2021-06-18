@@ -42,6 +42,7 @@ public class BunchOfCard {
         if (isContainsA()) {
             return getCardValueSumContainsA(cardValueSum);
         }
+
         return cardValueSum;
     }
 

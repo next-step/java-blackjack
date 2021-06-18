@@ -17,5 +17,4 @@ public class Dealer extends Player {
     public String getName() {
         return DEALER_NAME;
     }
-
 }

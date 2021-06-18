@@ -1,6 +1,5 @@
 package blackjack.model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -15,24 +14,13 @@ public class CardGenerator {
     public CardGenerator() {
         this.cardIndex = CARD_INITIAL_COUNT;
         List<Card> newCards = Arrays.stream(CardTypes.values())
-                .map((cardTypes)->new Card(cardTypes))
-                .collect(Collectors.toList())
-                ;
+                .map((cardTypes) -> new Card(cardTypes))
+                .collect(Collectors.toList());
         Collections.shuffle(newCards);
         this.cards = newCards;
     }
 
-    public List<Card> getSeveralCard(int cardCount) {
-        List<Card> cards = new ArrayList<>();
-
-        for (int i = 0; i < cardCount; i++) {
-            cards.add(getOneCard());
-        }
-
-        return cards;
-    }
-
-    public BunchOfCard getSeveralCard2(int cardCount) {
+    public BunchOfCard getSeveralCard(int cardCount) {
         BunchOfCard bunchOfCard = new BunchOfCard();
 
         for (int i = 0; i < cardCount; i++) {

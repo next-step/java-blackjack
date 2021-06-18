@@ -38,6 +38,6 @@ public class CardGeneratorTest {
     void getTwoCards() {
         CardGenerator cardGenerator = new CardGenerator();
 
-        assertThat(cardGenerator.getSeveralCard(2).size()).isEqualTo(2);
+        assertThat(cardGenerator.getSeveralCard(2).getCards().size()).isEqualTo(2);
     }
 }

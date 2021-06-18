@@ -16,4 +16,10 @@ public interface PlayerFunction {
     void drawCard(Card card);
 
     boolean isBust();
+
+    int getWinCount();
+
+    int getDrawCount();
+
+    int getLoseCount();
 }
