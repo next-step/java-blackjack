@@ -56,4 +56,19 @@ public class Player implements PlayerFunction {
     public int getLoseCount() {
         return winningState.getLoseCount();
     }
+
+    @Override
+    public void losing() {
+        this.winningState.plusLoseCount();
+    }
+
+    @Override
+    public void winning() {
+        this.winningState.plusWinCount();
+    }
+
+    @Override
+    public void drawing() {
+        this.winningState.plusDrawCount();
+    }
 }

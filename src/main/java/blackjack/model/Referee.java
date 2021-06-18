@@ -21,35 +21,35 @@ public class Referee {
 
     private static void dealerBustLogic(Dealer dealer, User user) {
         if (user.isBust()) {
-            dealer.getWinningState().plusDrawCount();
-            user.getWinningState().plusDrawCount();
+            dealer.drawing();
+            user.drawing();
         }
 
         boolean isNotUserBust = !user.isBust();
 
         if (isNotUserBust) {
-            dealer.getWinningState().plusLoseCount();
-            user.getWinningState().plusWinCount();
+            dealer.losing();
+            user.winning();
         }
     }
 
     private static void userBustLogic(Dealer dealer, User user) {
-        dealer.getWinningState().plusWinCount();
-        user.getWinningState().plusLoseCount();
+        dealer.winning();
+        user.losing();
     }
 
     private static void comparePlayersLogic(Dealer dealer, User user) {
         if (dealer.getCardValueSum() > user.getCardValueSum()) {
-            dealer.getWinningState().plusWinCount();
-            user.getWinningState().plusLoseCount();
+            dealer.winning();
+            user.losing();
         }
         if (dealer.getCardValueSum() < user.getCardValueSum()) {
-            dealer.getWinningState().plusLoseCount();
-            user.getWinningState().plusWinCount();
+            dealer.losing();
+            user.winning();
         }
         if (dealer.getCardValueSum() == user.getCardValueSum()) {
-            dealer.getWinningState().plusDrawCount();
-            user.getWinningState().plusDrawCount();
+            dealer.drawing();
+            user.drawing();
         }
     }
 }

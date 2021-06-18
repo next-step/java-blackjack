@@ -22,4 +22,10 @@ public interface PlayerFunction {
     int getDrawCount();
 
     int getLoseCount();
+
+    void losing();
+
+    void winning();
+
+    void drawing();
 }
