@@ -45,7 +45,7 @@ public class RefereeTest {
     @Test
     void userLosingTest() {
         Dealer dealer = new Dealer(new Stay(notBustCards));
-        User user = new User("J",new Bust(bustCards));
+        User user = new User("J", new Bust(bustCards));
 
         Referee.makeWinningState(dealer, user);
 

@@ -42,7 +42,6 @@ public class BlackJackController {
             dealer.drawCard(CardSeparator.drawCard());
             Output.printDealerReceiveCard();
         }
-
     }
 
     private static void doUserTurn(User user) {
