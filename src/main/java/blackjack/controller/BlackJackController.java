@@ -10,12 +10,7 @@ import java.util.List;
 import static blackjack.model.CardSeparator.canUserReceiveCard;
 
 public class BlackJackController {
-    private static final int HAVE_COUNT = 0;
     private static final String SPLIT_SEPARATOR = ",";
-    private static final String WINNING_STATE_SEPARATOR = ": ";
-    private static final String WIN = "승 ";
-    private static final String DRAW = "무 ";
-    private static final String LOSE = "패 ";
     private static final String GET_RECEIVE_CARD = "y";
 
     public void blankJackStart() {
@@ -30,9 +25,9 @@ public class BlackJackController {
         doDealerTurn(dealer);
 
         Output.printFinalInformation(dealer, users);
-        makeWinningStates(dealer, users);
+        Referee.makeWinningStates(dealer, users);
 
-        String result = makeResult(dealer, users);
+        String result = Referee.makeResult(dealer, users);
         Output.printResult(result);
     }
 
@@ -74,63 +69,5 @@ public class BlackJackController {
         }
 
         return false;
-    }
-
-    private void makeWinningStates(Dealer dealer, Users users) {
-        for (User user : users.getUsers()) {
-            Referee.makeWinningState(dealer, user);
-        }
-    }
-
-    private String makeResult(Dealer dealer, Users users) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append(dealer.getName()).append(WINNING_STATE_SEPARATOR)
-                .append(makeDealerResult(dealer));
-
-        for (User user : users.getUsers()) {
-            stringBuilder.append(user.getName())
-                    .append(WINNING_STATE_SEPARATOR)
-                    .append(makeUserResult(user));
-        }
-
-        return stringBuilder.toString();
-    }
-
-    private StringBuilder makeDealerResult(Dealer dealer) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        if (dealer.getWinCount() > HAVE_COUNT) {
-            stringBuilder.append(dealer.getWinCount())
-                    .append(WIN);
-        }
-        if (dealer.getDrawCount() > HAVE_COUNT) {
-            stringBuilder.append(dealer.getDrawCount())
-                    .append(DRAW);
-        }
-        if (dealer.getLoseCount() > HAVE_COUNT) {
-            stringBuilder.append(dealer.getLoseCount())
-                    .append(LOSE);
-        }
-        stringBuilder.append(System.lineSeparator());
-
-        return stringBuilder;
-    }
-
-    private StringBuilder makeUserResult(User user) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        if (user.getWinCount() > HAVE_COUNT) {
-            stringBuilder.append(WIN);
-        }
-        if (user.getDrawCount() > HAVE_COUNT) {
-            stringBuilder.append(DRAW);
-        }
-        if (user.getLoseCount() > HAVE_COUNT) {
-            stringBuilder.append(LOSE);
-        }
-        stringBuilder.append(System.lineSeparator());
-
-        return stringBuilder;
     }
 }
