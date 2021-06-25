@@ -2,6 +2,7 @@ package blackjack.view;
 
 import blackjack.model.Dealer;
 import blackjack.model.User;
+import blackjack.model.Users;
 
 import java.util.List;
 
@@ -30,7 +31,18 @@ public class Output {
         stringBuilder.setLength(INITIALIZE_VALUE);
     }
 
-    public static void printDealerFirstCardName(String userName, String card) {
+    public static void printInitialInformation(Dealer dealer, Users users) {
+        Output.printDealerFirstCardName(dealer.getName(), dealer.getFirstCard());
+        printUsersCardNames(users);
+    }
+
+    private static void printUsersCardNames(Users users) {
+        for (User user : users.getUsers()) {
+            Output.printCardNames(user.getName(), user.getCardNames());
+        }
+    }
+
+    private static void printDealerFirstCardName(String userName, String card) {
         stringBuilder.append(userName)
                 .append(COLON)
                 .append(card);
@@ -56,7 +68,19 @@ public class Output {
         stringBuilder.setLength(INITIALIZE_VALUE);
     }
 
-    public static void printDealerCardInformation(Dealer dealer) {
+
+    public static void printFinalInformation(Dealer dealer, Users users) {
+        Output.printDealerCardInformation(dealer);
+        printUsersCardInformation(users);
+    }
+
+    private static void printUsersCardInformation(Users users) {
+        for (User user : users.getUsers()) {
+            Output.printUserCardInformation(user);
+        }
+    }
+
+    private static void printDealerCardInformation(Dealer dealer) {
         stringBuilder.append(dealer.getName())
                 .append(SEPARATOR)
                 .append(String.join(CARD_SEPARATOR, dealer.getCardNames()))

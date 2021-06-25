@@ -24,27 +24,16 @@ public class BlackJackController {
         Users users = PlayerGenerator.makeUsers(userNames);
 
         Output.printInitMessage(users.getUserNames());
-        printInitialInformation(dealer, users);
+        Output.printInitialInformation(dealer, users);
 
         doUsersTurn(users);
         doDealerTurn(dealer);
 
-        printFinalInformation(dealer, users);
+        Output.printFinalInformation(dealer, users);
         makeWinningStates(dealer, users);
 
         String result = makeResult(dealer, users);
         Output.printResult(result);
-    }
-
-    private void printInitialInformation(Dealer dealer, Users users) {
-        Output.printDealerFirstCardName(dealer.getName(), dealer.getFirstCard());
-        printUsersCardNames(users);
-    }
-
-    private void printUsersCardNames(Users users) {
-        for (User user : users.getUsers()) {
-            Output.printCardNames(user.getName(), user.getCardNames());
-        }
     }
 
     public static void doUsersTurn(Users users) {
@@ -85,17 +74,6 @@ public class BlackJackController {
         }
 
         return false;
-    }
-
-    private void printFinalInformation(Dealer dealer, Users users) {
-        Output.printDealerCardInformation(dealer);
-        printUsersCardInformation(users);
-    }
-
-    private void printUsersCardInformation(Users users) {
-        for (User user : users.getUsers()) {
-            Output.printUserCardInformation(user);
-        }
     }
 
     private void makeWinningStates(Dealer dealer, Users users) {
