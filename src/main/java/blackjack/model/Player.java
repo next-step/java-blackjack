@@ -23,11 +23,6 @@ public class Player implements PlayerFunction {
     }
 
     @Override
-    public WinningState getWinningState() {
-        return this.winningState;
-    }
-
-    @Override
     public State getState() {
         return this.state;
     }

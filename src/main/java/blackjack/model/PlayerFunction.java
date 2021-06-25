@@ -9,8 +9,6 @@ public interface PlayerFunction {
 
     List<String> getCardNames();
 
-    WinningState getWinningState();
-
     State getState();
 
     void drawCard(Card card);
