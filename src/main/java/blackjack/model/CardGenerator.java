@@ -14,7 +14,7 @@ public class CardGenerator {
     public CardGenerator() {
         this.cardIndex = CARD_INITIAL_COUNT;
         List<Card> newCards = Arrays.stream(CardTypes.values())
-                .map((cardTypes) -> new Card(cardTypes))
+                .map(Card::new)
                 .collect(Collectors.toList());
         Collections.shuffle(newCards);
         this.cards = newCards;

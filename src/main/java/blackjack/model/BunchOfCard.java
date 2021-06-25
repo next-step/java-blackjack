@@ -10,7 +10,6 @@ public class BunchOfCard {
     private static final int BLACK_JACK_VALUE = 21;
     private static final int BLACK_JACK_SIZE = 2;
     private static final int A_VALUE = 1;
-    private static final int HAVE_A_COUNT = 0;
     private static final int FOR_HIGH_A_VALUE = 10;
 
     private final List<Card> bunchOfCard = new ArrayList<>();
@@ -19,9 +18,7 @@ public class BunchOfCard {
     }
 
     public BunchOfCard(BunchOfCard bunchOfCard) {
-        for (Card card : bunchOfCard.getCards()) {
-            this.bunchOfCard.add(card);
-        }
+        this.bunchOfCard.addAll(bunchOfCard.getCards());
     }
 
     public void addCard(Card card) {
@@ -30,13 +27,13 @@ public class BunchOfCard {
 
     public List<String> getCardNames() {
         return bunchOfCard.stream()
-                .map((card) -> card.getName())
+                .map(Card::getName)
                 .collect(Collectors.toList());
     }
 
     public int getCardValueSum() {
         int cardValueSum = bunchOfCard.stream()
-                .mapToInt((card) -> card.getValue())
+                .mapToInt(Card::getValue)
                 .sum();
 
         if (isContainsA()) {
@@ -47,7 +44,7 @@ public class BunchOfCard {
     }
 
     private boolean isContainsA() {
-        return bunchOfCard.stream().filter(card -> card.getValue() == A_VALUE).count() > HAVE_A_COUNT;
+        return bunchOfCard.stream().anyMatch(card -> card.getValue() == A_VALUE);
     }
 
     private int getCardValueSumContainsA(int cardValueSum) {
