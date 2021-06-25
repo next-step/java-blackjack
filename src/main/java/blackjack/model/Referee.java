@@ -20,6 +20,11 @@ public class Referee {
     }
 
     private static void dealerBustLogic(Dealer dealer, User user) {
+        if (user.isBust()) {
+            dealer.winning();
+            user.losing();
+        }
+
         boolean isNotUserBust = !user.isBust();
 
         if (isNotUserBust) {

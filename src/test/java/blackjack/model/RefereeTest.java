@@ -55,7 +55,7 @@ public class RefereeTest {
         );
     }
 
-    @DisplayName("딜러와 유저가 둘 다 버스트이면 무승부이다.")
+    @DisplayName("딜러와 유저가 둘 다 버스트이면 유저의 패배이다.")
     @Test
     void userDrawingTest() {
         Dealer dealer = new Dealer(new Bust(bustCards));
@@ -64,8 +64,8 @@ public class RefereeTest {
         Referee.makeWinningState(dealer, user);
 
         assertAll(
-                () -> assertThat(dealer.getDrawCount()).isEqualTo(1),
-                () -> assertThat(user.getDrawCount()).isEqualTo(1)
+                () -> assertThat(dealer.getWinCount()).isEqualTo(1),
+                () -> assertThat(user.getLoseCount()).isEqualTo(1)
         );
     }
 
