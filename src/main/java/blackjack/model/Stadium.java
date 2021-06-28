@@ -3,40 +3,40 @@ package blackjack.model;
 import java.util.List;
 
 public class Stadium {
-    List<Gambler> gamblers;
+    List<Participant> participants;
 
-    public Stadium(List<Gambler> gamblers) {
-        this.gamblers = gamblers;
+    public Stadium(List<Participant> participants) {
+        this.participants = participants;
     }
 
     // 카드 게임
     public void playCardGame() {
-        for (Gambler gambler : gamblers) {
-            initialSetting(gambler);
-            System.out.print(gambler.getName() + " 첫번째 결과 : ");
-            for (Card card : gambler.getCards()) {
+        for (Participant participant : participants) {
+            initialSetting(participant);
+            System.out.print(participant.getName() + " 첫번째 결과 : ");
+            for (Card card : participant.getCards()) {
                 System.out.print(card.getDenomination() + " " + card.getSuit() + " ");
             }
             System.out.println();
 
-            drawNewCard(gambler);
-            System.out.print(gambler.getName() + " 두번째 결과 : ");
-            for (Card card : gambler.getCards()) {
+            drawNewCard(participant);
+            System.out.print(participant.getName() + " 두번째 결과 : ");
+            for (Card card : participant.getCards()) {
                 System.out.print(card.getDenomination() + " " + card.getSuit() + " ");
             }
             System.out.println();
         }
     }
 
-    private void initialSetting(Gambler gambler) {
+    private void initialSetting(Participant participant) {
         for (int i = 0; i < 2; i++) {
-            gambler.drawCard();
+            participant.drawCard();
         }
     }
 
-    private void drawNewCard(Gambler gambler) {
-        if (gambler.selectChoice(gambler.getName())) {
-            gambler.drawCard();
+    private void drawNewCard(Participant participant) {
+        if (participant.selectChoice(participant.getName())) {
+            participant.drawCard();
         }
     }
 }

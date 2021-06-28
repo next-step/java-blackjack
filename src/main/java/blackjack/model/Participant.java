@@ -5,15 +5,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class Gambler {
+public class Participant {
     private String name;
     private List<Card> cards;
 
-    public Gambler() {
+    public Participant() {
         this("dealer");
     }
 
-    public Gambler(String name) {
+    public Participant(String name) {
         this.name = name;
         this.cards = new ArrayList<>();
     }

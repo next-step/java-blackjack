@@ -5,16 +5,16 @@ import java.util.List;
 
 public class Ready {
 
-    public List<Gambler> createGamblers(String inputName) {
+    public List<Participant> createGamblers(String inputName) {
         return createGamblers(splitName(inputName));
     }
 
-    public List<Gambler> createGamblers(String[] playerList) {
-        List<Gambler> gamblers = new ArrayList<>();
+    public List<Participant> createGamblers(String[] playerList) {
+        List<Participant> participants = new ArrayList<>();
         for (String player : playerList) {
-            gamblers.add(new Gambler(player));
+            participants.add(new Participant(player));
         }
-        return gamblers;
+        return participants;
     }
 
     public String[] splitName(String name) {
