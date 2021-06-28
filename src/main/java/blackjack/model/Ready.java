@@ -8,7 +8,7 @@ public class Ready {
     public List<Gambler> createGamblers(String inputName) {
         return createGamblers(splitName(inputName));
     }
-    
+
     public List<Gambler> createGamblers(String[] playerList) {
         List<Gambler> gamblers = new ArrayList<>();
         for (String player : playerList) {

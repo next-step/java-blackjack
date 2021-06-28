@@ -1,9 +1,9 @@
 package injection;
 
-public class Sonata extends Car{
+public class Sonata extends Car {
     private static final double DISTANCE_PER_LITER = 10;
     private static final String NAME = "Sonata";
-    private double tripDistance ;
+    private double tripDistance;
 
     public Sonata(double tripDistance) {
         this.tripDistance = tripDistance;

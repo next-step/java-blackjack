@@ -1,8 +1,5 @@
 package blackjack.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public enum Denomination {
     ACE(1),
     TWO(2),

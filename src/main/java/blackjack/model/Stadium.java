@@ -13,22 +13,22 @@ public class Stadium {
     public void playCardGame() {
         for (Gambler gambler : gamblers) {
             initialSetting(gambler);
-            System.out.print(gambler.getName()+" 첫번째 결과 : ");
-            for(Card card : gambler.getCards()) {
+            System.out.print(gambler.getName() + " 첫번째 결과 : ");
+            for (Card card : gambler.getCards()) {
                 System.out.print(card.getDenomination() + " " + card.getSuit() + " ");
             }
             System.out.println();
 
             drawNewCard(gambler);
-            System.out.print(gambler.getName()+" 두번째 결과 : ");
-            for(Card card : gambler.getCards()) {
+            System.out.print(gambler.getName() + " 두번째 결과 : ");
+            for (Card card : gambler.getCards()) {
                 System.out.print(card.getDenomination() + " " + card.getSuit() + " ");
             }
             System.out.println();
         }
     }
 
-    private void initialSetting(Gambler gambler){
+    private void initialSetting(Gambler gambler) {
         for (int i = 0; i < 2; i++) {
             gambler.drawCard();
         }

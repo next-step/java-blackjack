@@ -20,9 +20,9 @@ public class RentCompany {
 
     public String generateReport() {
         StringBuilder result = new StringBuilder();
-        for(Car car : cars) {
-            result.append(car.getName() + " : " + (int)car.getChargeQuantity() + "리터" + NEWLINE);
+        for (Car car : cars) {
+            result.append(car.getName() + " : " + (int) car.getChargeQuantity() + "리터" + NEWLINE);
         }
-        return  result.toString();
+        return result.toString();
     }
 }

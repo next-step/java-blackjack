@@ -8,6 +8,6 @@ public abstract class Car {
     abstract String getName();
 
     public double getChargeQuantity() {
-        return getTripDistance()/getDistancePerLiter();
+        return getTripDistance() / getDistancePerLiter();
     }
 }

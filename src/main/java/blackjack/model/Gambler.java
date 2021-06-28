@@ -18,7 +18,7 @@ public class Gambler {
         this.cards = new ArrayList<>();
     }
 
-    public void drawCard(){
+    public void drawCard() {
         List<Card> cardList = Cards.getCards();
         Collections.shuffle(cardList);
         this.cards.add(cardList.remove(0));

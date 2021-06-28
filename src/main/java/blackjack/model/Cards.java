@@ -1,7 +1,7 @@
 package blackjack.model;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cards {
     private static final List<Card> cards = new ArrayList<>();
