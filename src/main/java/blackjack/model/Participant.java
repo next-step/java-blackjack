@@ -9,10 +9,6 @@ public class Participant {
     private String name;
     private List<Card> cards;
 
-    public Participant() {
-        this("dealer");
-    }
-
     public Participant(String name) {
         this.name = name;
         this.cards = new ArrayList<>();
