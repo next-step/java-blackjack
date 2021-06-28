@@ -23,6 +23,7 @@ public class Controller {
 
     private Participants createParticipants(String names) {
         List<Participant> participants = new ArrayList<>();
+        participants.add(new Participant("딜러"));
         for (String name : names.split(",")) {
             participants.add(new Participant(name));
         }
