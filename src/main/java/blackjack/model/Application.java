@@ -1,14 +1,16 @@
 package blackjack.model;
 
+import blackjack.view.InputView;
+
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         // 1. 게임 참가자 이름 입력(","구분)
-        Input input = new Input();
+        InputView inputView = new InputView();
         Ready ready = new Ready();
 
-        String inputName = input.inputName();
+        String inputName = inputView.inputName();
         List<Gambler> gamblers = ready.createGamblers(inputName);
 
         Stadium stadium = new Stadium(gamblers);
