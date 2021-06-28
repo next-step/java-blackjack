@@ -20,14 +20,6 @@ public class Participant {
         this.cards.add(cardList.remove(0));
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public List<Card> getCards() {
-        return cards;
-    }
-
     public boolean selectChoice(String name) {
         System.out.println(name + "는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)");
         Scanner scanner = new Scanner(System.in);
@@ -35,5 +27,13 @@ public class Participant {
             return true;
         }
         return false;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Card> getCards() {
+        return cards;
     }
 }
