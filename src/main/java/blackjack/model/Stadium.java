@@ -12,7 +12,7 @@ public class Stadium {
     // 카드 게임
     public void playCardGame() {
         for (Participant participant : participants) {
-            initialSetting(participant);
+            //initialSetting(participant);
             System.out.print(participant.getName() + " 첫번째 결과 : ");
             for (Card card : participant.getCards()) {
                 System.out.print(card.getDenomination() + " " + card.getSuit() + " ");
@@ -25,12 +25,6 @@ public class Stadium {
                 System.out.print(card.getDenomination() + " " + card.getSuit() + " ");
             }
             System.out.println();
-        }
-    }
-
-    private void initialSetting(Participant participant) {
-        for (int i = 0; i < 2; i++) {
-            participant.drawCard();
         }
     }
 

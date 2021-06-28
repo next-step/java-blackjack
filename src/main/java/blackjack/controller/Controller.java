@@ -17,6 +17,7 @@ public class Controller {
         String names = inputView.inputName();
         Participants participants = createParticipants(names);
 
+        participants.initialCardSetting();
 //        Stadium stadium = new Stadium(participants);
 //        stadium.playCardGame();
     }
