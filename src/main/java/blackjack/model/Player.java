@@ -4,66 +4,26 @@ import blackjack.model.state.State;
 
 import java.util.List;
 
-public class Player implements PlayerFunction {
-    private State state;
-    private final WinningState winningState = new WinningState();
+public interface Player {
+    int getCardValueSum();
 
-    protected Player(State state) {
-        this.state = state;
-    }
+    List<String> getCardNames();
 
-    @Override
-    public int getCardValueSum() {
-        return this.state.getBunchOfCard().getCardValueSum();
-    }
+    State getState();
 
-    @Override
-    public List<String> getCardNames() {
-        return this.state.getBunchOfCard().getCardNames();
-    }
+    void drawCard(Card card);
 
-    @Override
-    public State getState() {
-        return this.state;
-    }
+    boolean isBust();
 
-    @Override
-    public void drawCard(Card card) {
-        this.state = state.draw(card);
-    }
+    int getWinCount();
 
-    @Override
-    public boolean isBust() {
-        return this.state.getBunchOfCard().isBust();
-    }
+    int getDrawCount();
 
-    @Override
-    public int getWinCount() {
-        return winningState.getWinCount();
-    }
+    int getLoseCount();
 
-    @Override
-    public int getDrawCount() {
-        return winningState.getDrawCount();
-    }
+    void losing();
 
-    @Override
-    public int getLoseCount() {
-        return winningState.getLoseCount();
-    }
+    void winning();
 
-    @Override
-    public void losing() {
-        this.winningState.plusLoseCount();
-    }
-
-    @Override
-    public void winning() {
-        this.winningState.plusWinCount();
-    }
-
-    @Override
-    public void drawing() {
-        this.winningState.plusDrawCount();
-    }
+    void drawing();
 }
