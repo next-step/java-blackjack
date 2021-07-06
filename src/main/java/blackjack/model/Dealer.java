@@ -7,10 +7,6 @@ import java.util.List;
 public class Dealer {
     private List<Card> cards = new ArrayList<>();
 
-    public Dealer() {
-
-    }
-
     public int score() {
         int score = 0;
         for (Card card : cards) {
