@@ -1,33 +1,32 @@
 package blackjack.controller;
 
-import blackjack.model.Participant;
-import blackjack.model.Participants;
-import blackjack.model.Stadium;
+import blackjack.model.*;
 import blackjack.view.InputView;
-import blackjack.view.OutputView;
+import com.sun.org.apache.xerces.internal.impl.dv.util.ByteListImpl;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
     private InputView inputView = new InputView();
-    private OutputView outputView = new OutputView();
 
     public void start() {
         String names = inputView.inputName();
-        Participants participants = createParticipants(names);
+        Dealer dealer = new Dealer();
+        Players players = createPlayers(names);
 
         participants.initialCardSetting();
+        participants.additionalCardSetting(inputView);
 //        Stadium stadium = new Stadium(participants);
 //        stadium.playCardGame();
     }
 
-    private Participants createParticipants(String names) {
-        List<Participant> participants = new ArrayList<>();
-        participants.add(new Participant("딜러"));
+    private Players createPlayers(String names) {
+        List<Player> players = new ArrayList<>();
         for (String name : names.split(",")) {
-            participants.add(new Participant(name));
+            players.add(new Player(name));
         }
-        return new Participants(participants);
+        return new Players(players);
     }
 }
