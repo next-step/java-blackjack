@@ -1,5 +1,7 @@
 package blackjack.view;
 
+import blackjack.model.Player;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -10,8 +12,11 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    public String inputAdditionalCard() {
-        System.out.println("pobi는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)");
-        return scanner.nextLine();
+    public boolean inputAdditionalCard(Player player) {
+        System.out.println(player.getName() + "는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)");
+        if (scanner.nextLine().equals("y")) {
+            return true;
+        }
+        return false;
     }
 }

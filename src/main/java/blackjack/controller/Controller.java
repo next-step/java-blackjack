@@ -23,7 +23,21 @@ public class Controller {
         }
         outputView.printInitialCardSetting(dealer, players);
 
-//        participants.additionalCardSetting(inputView);
+        for (Player player : players) {
+            boolean additionalCard = false;
+            while (inputView.inputAdditionalCard(player)) {
+                player.additionalCardSetting();
+                outputView.printAdditionalPlayerCards(player);
+                additionalCard = true;
+            }
+            if (!additionalCard) {
+                outputView.printAdditionalPlayerCards(player);
+            }
+        }
+        if (dealer.score() < 16) {
+            dealer.additionalCardSetting();
+            outputView.printAdditionalDealerCards();
+        }
 //        Stadium stadium = new Stadium(participants);
 //        stadium.playCardGame();
     }

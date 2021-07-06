@@ -9,11 +9,15 @@ public class Card {
         this.suit = suit;
     }
 
-    public String getDenomination() {
+    public Denomination getDenomination() {
+        return denomination;
+    }
+
+    public String getDenominationName() {
         return denomination.name();
     }
 
-    public String getSuit() {
+    public String getSuitName() {
         return suit.name();
     }
 }

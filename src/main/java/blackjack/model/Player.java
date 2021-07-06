@@ -19,9 +19,16 @@ public class Player {
         this.cards.add(cardList.remove(0));
     }
 
+    public void additionalCardSetting() {
+        List<Card> cardList = Cards.getCards();
+        Collections.shuffle(cardList);
+        this.cards.add(cardList.remove(0));
+    }
+
     public String getName() {
         return name;
     }
+
     public List<Card> getCards() {
         return cards;
     }
