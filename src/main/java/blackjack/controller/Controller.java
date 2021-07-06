@@ -2,6 +2,7 @@ package blackjack.controller;
 
 import blackjack.model.Dealer;
 import blackjack.model.Player;
+import blackjack.model.Players;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
@@ -9,21 +10,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
-    private InputView inputView = new InputView();
-    private OutputView outputView = new OutputView();
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
 
     public void start() {
         String names = inputView.inputName();
         Dealer dealer = new Dealer();
-        List<Player> players = createPlayers(names);
+        Players players = createPlayers(names);
 
         dealer.initialCardSetting();
-        for (Player player : players) {
-            player.initialCardSetting();
-        }
-        outputView.printInitialCardSetting(dealer, players);
+        players.initialCardSetting();
 
-        for (Player player : players) {
+        outputView.printInitialCardSetting(dealer, players.getPlayers());
+
+        for (Player player : players.getPlayers()) {
             boolean additionalCard = false;
             while (inputView.inputAdditionalCard(player)) {
                 player.additionalCardSetting();
@@ -39,26 +39,17 @@ public class Controller {
             outputView.printAdditionalDealerCards();
         }
 
-        outputView.printResult(dealer, players);
+        outputView.printResult(dealer, players.getPlayers());
 
-        List<Integer> scores = new ArrayList<>();
-        for (Player player : players) {
-            scores.add(player.score());
-        }
-        int maxScore = 0;
-        for (int score : scores) {
-            if (score <= 21) {
-                maxScore = Math.max(maxScore, score);
-            }
-        }
-        outputView.printWinOrLose(dealer, players, maxScore);
+        int maxScore = players.findMaxScore();
+        outputView.printWinOrLose(dealer, players.getPlayers(), maxScore);
     }
 
-    private List<Player> createPlayers(String names) {
+    private Players createPlayers(String names) {
         List<Player> players = new ArrayList<>();
         for (String name : names.split(",")) {
             players.add(new Player(name));
         }
-        return players;
+        return new Players(players);
     }
 }
