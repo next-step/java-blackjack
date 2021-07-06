@@ -12,6 +12,14 @@ public class Player {
         this.name = name;
     }
 
+    public int score() {
+        int score = 0;
+        for (Card card : cards) {
+            score += card.getDenomination().getValue();
+        }
+        return score;
+    }
+
     public void initialCardSetting() {
         List<Card> cardList = Cards.getCards();
         Collections.shuffle(cardList);

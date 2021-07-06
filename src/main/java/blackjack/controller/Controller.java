@@ -38,8 +38,8 @@ public class Controller {
             dealer.additionalCardSetting();
             outputView.printAdditionalDealerCards();
         }
-//        Stadium stadium = new Stadium(participants);
-//        stadium.playCardGame();
+
+        outputView.printResult(dealer, players);
     }
 
     private List<Player> createPlayers(String names) {
