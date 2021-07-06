@@ -25,7 +25,7 @@ public class Controller {
 
         for (Player player : players.getPlayers()) {
             boolean additionalCard = false;
-            while (inputView.inputAdditionalCard(player)) {
+            while (player.score() < 21 && inputView.inputAdditionalCard(player)) {
                 player.additionalCardSetting();
                 outputView.printAdditionalPlayerCards(player);
                 additionalCard = true;
