@@ -84,10 +84,30 @@ public class OutputView {
         System.out.println(" - 결과: " + player.score());
     }
 
-    public void printWinOrLose() {
-//        System.out.println("최종 승패");
-//        for(Participant participant : participants) {
-//            participant.getName() + ": " + participant.getWinOrLose();
-//        }
+    public void printWinOrLose(Dealer dealer, List<Player> players, int maxScore) {
+        System.out.println("최종 승패");
+        int dealerWin = 0;
+        int dealerLose = 0;
+        int dealerSame = 0;
+        for (Player player : players) {
+            if (dealer.score() > player.score()) {
+                dealerWin++;
+            }
+            if (dealer.score() < player.score()) {
+                dealerLose++;
+            }
+            if (dealer.score() == player.score()) {
+                dealerSame++;
+            }
+        }
+        System.out.println("딜러: " + dealerWin + "승 " + dealerLose + "패 " + dealerSame + "무");
+        for (Player player : players) {
+            if (player.score() == maxScore) {
+                System.out.println(player.getName() + ": 승");
+            }
+            if (player.score() != maxScore) {
+                System.out.println(player.getName() + ": 패");
+            }
+        }
     }
 }

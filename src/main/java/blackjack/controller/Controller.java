@@ -40,6 +40,18 @@ public class Controller {
         }
 
         outputView.printResult(dealer, players);
+
+        List<Integer> scores = new ArrayList<>();
+        for (Player player : players) {
+            scores.add(player.score());
+        }
+        int maxScore = 0;
+        for (int score : scores) {
+            if (score <= 21) {
+                maxScore = Math.max(maxScore, score);
+            }
+        }
+        outputView.printWinOrLose(dealer, players, maxScore);
     }
 
     private List<Player> createPlayers(String names) {
