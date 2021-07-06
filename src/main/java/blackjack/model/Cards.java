@@ -14,9 +14,6 @@ public class Cards {
         }
     }
 
-    public Cards() {
-    }
-
     public static List<Card> getCards() {
         return cards;
     }
