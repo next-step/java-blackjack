@@ -18,36 +18,21 @@ public class OutputView {
 
         printInitialDealerCards(dealer);
         for (Player player : players) {
-            printInitialPlayerCards(player);
+            printPlayerCards(player);
         }
         System.out.println();
     }
 
     private void printInitialDealerCards(Dealer dealer) {
         System.out.print("딜러: ");
-        List<String> cards = new ArrayList<>();
-        for (Card dealerCard : dealer.getCards()) {
-            cards.add(dealerCard.getDenominationName() + dealerCard.getSuitName());
-        }
-        System.out.println(String.join(", ", cards));
+        printCards(dealer.getCards());
+        System.out.println();
     }
 
-    private void printInitialPlayerCards(Player player) {
+    public void printPlayerCards(Player player) {
         System.out.print(player.getName() + "카드: ");
-        List<String> cards = new ArrayList<>();
-        for (Card playerCard : player.getCards()) {
-            cards.add(playerCard.getDenominationName() + playerCard.getSuitName());
-        }
-        System.out.println(String.join(", ", cards));
-    }
-
-    public void printAdditionalPlayerCards(Player player) {
-        System.out.print(player.getName() + "카드: ");
-        List<String> cards = new ArrayList<>();
-        for (Card playerCard : player.getCards()) {
-            cards.add(playerCard.getDenominationName() + playerCard.getSuitName());
-        }
-        System.out.println(String.join(", ", cards));
+        printCards(player.getCards());
+        System.out.println();
     }
 
     public void printAdditionalDealerCards() {
@@ -66,22 +51,22 @@ public class OutputView {
 
     private void printResultDealerCards(Dealer dealer) {
         System.out.print("딜러 카드: ");
-        List<String> cards = new ArrayList<>();
-        for (Card dealerCard : dealer.getCards()) {
-            cards.add(dealerCard.getDenominationName() + dealerCard.getSuitName());
-        }
-        System.out.print(String.join(", ", cards));
+        printCards(dealer.getCards());
         System.out.println(" - 결과: " + dealer.score());
     }
 
     private void printResultPlayerCards(Player player) {
         System.out.print(player.getName() + "카드: ");
-        List<String> cards = new ArrayList<>();
-        for (Card playerCard : player.getCards()) {
-            cards.add(playerCard.getDenominationName() + playerCard.getSuitName());
-        }
-        System.out.print(String.join(", ", cards));
+        printCards(player.getCards());
         System.out.println(" - 결과: " + player.score());
+    }
+
+    private void printCards(List<Card> cards) {
+        List<String> cardnames = new ArrayList<>();
+        for (Card card : cards) {
+            cardnames.add(card.getDenominationName() + card.getSuitName());
+        }
+        System.out.print(String.join(", ", cardnames));
     }
 
     public void printWinOrLose(Dealer dealer, List<Player> players, int maxScore) {

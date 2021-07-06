@@ -27,11 +27,11 @@ public class Controller {
             boolean additionalCard = false;
             while (player.score() < 21 && inputView.inputAdditionalCard(player)) {
                 player.additionalCardSetting();
-                outputView.printAdditionalPlayerCards(player);
+                outputView.printPlayerCards(player);
                 additionalCard = true;
             }
             if (!additionalCard) {
-                outputView.printAdditionalPlayerCards(player);
+                outputView.printPlayerCards(player);
             }
         }
         if (dealer.score() < 16) {
