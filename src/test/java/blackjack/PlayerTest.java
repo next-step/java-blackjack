@@ -30,7 +30,7 @@ public class PlayerTest {
     @Test
     void show_cards() {
         List<Card> cards = player.getCards();
-        for(Card card : cards) {
+        for (Card card : cards) {
             System.out.println(card.getDenominationName() + " " + card.getSuitName());
         }
     }
@@ -39,7 +39,7 @@ public class PlayerTest {
     @Test
     void add_score() {
         List<Card> cards = player.getCards();
-        for(Card card : cards) {
+        for (Card card : cards) {
             System.out.println(card.getDenominationName() + " " + card.getSuitName());
         }
         System.out.println(player.score());
@@ -49,14 +49,14 @@ public class PlayerTest {
     @Test
     void additional_card_setting() {
         List<Card> cards = player.getCards();
-        for(Card card : cards) {
+        for (Card card : cards) {
             System.out.println(card.getDenominationName() + " " + card.getSuitName());
         }
         System.out.println();
 
         player.additionalCardSetting();
         cards = player.getCards();
-        for(Card card : cards) {
+        for (Card card : cards) {
             System.out.println(card.getDenominationName() + " " + card.getSuitName());
         }
     }

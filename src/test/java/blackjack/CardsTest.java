@@ -12,7 +12,7 @@ public class CardsTest {
     @Test
     void show_cards() {
         List<Card> cards = Cards.getCards();
-        for(Card card : cards) {
+        for (Card card : cards) {
             System.out.println(card.getDenominationName() + " " + card.getSuitName());
         }
     }

@@ -2,7 +2,6 @@ package blackjack;
 
 import blackjack.model.Card;
 import blackjack.model.Dealer;
-import blackjack.model.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,7 +21,7 @@ public class DealerTest {
     @Test
     void show_cards() {
         List<Card> cards = dealer.getCards();
-        for(Card card : cards) {
+        for (Card card : cards) {
             System.out.println(card.getDenominationName() + " " + card.getSuitName());
         }
     }
@@ -31,7 +30,7 @@ public class DealerTest {
     @Test
     void add_score() {
         List<Card> cards = dealer.getCards();
-        for(Card card : cards) {
+        for (Card card : cards) {
             System.out.println(card.getDenominationName() + " " + card.getSuitName());
         }
         System.out.println(dealer.score());
@@ -41,14 +40,14 @@ public class DealerTest {
     @Test
     void additional_card_setting() {
         List<Card> cards = dealer.getCards();
-        for(Card card : cards) {
+        for (Card card : cards) {
             System.out.println(card.getDenominationName() + " " + card.getSuitName());
         }
         System.out.println();
 
         dealer.additionalCardSetting();
         cards = dealer.getCards();
-        for(Card card : cards) {
+        for (Card card : cards) {
             System.out.println(card.getDenominationName() + " " + card.getSuitName());
         }
     }
