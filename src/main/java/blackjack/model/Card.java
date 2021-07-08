@@ -20,4 +20,12 @@ public class Card {
     public String getSuitName() {
         return suit.name();
     }
+
+    public String getDenominationValue() {
+        return Integer.toString(denomination.getValue());
+    }
+
+    public String getSuitValue() {
+        return suit.getValue();
+    }
 }
