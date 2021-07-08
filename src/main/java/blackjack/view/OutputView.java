@@ -64,7 +64,7 @@ public class OutputView {
     private void printCards(List<Card> cards) {
         List<String> cardnames = new ArrayList<>();
         for (Card card : cards) {
-            cardnames.add(card.getDenominationName() + card.getSuitName());
+            cardnames.add(card.getDenominationValue() + card.getSuitValue());
         }
         System.out.print(String.join(", ", cardnames));
     }
