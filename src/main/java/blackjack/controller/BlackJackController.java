@@ -27,15 +27,15 @@ public class BlackJackController {
         List<String> userNames = Arrays.asList(Input.inputNames().split(SPLIT_SEPARATOR));
         Players users = new Players(userNames);
 
-        doInitialLogic(dealer, users);
-        doPlayersInitialPrintLogic(dealer, users);
+        initialGame(dealer, users);
+        startGameLogic(dealer, users);
         doPlayersTurnLogic(dealer, users);
         doPlayersCardInformationPrintLogic(dealer, users);
         doMakeWinningStateLogic(dealer, users);
         doMakeResultLogic(dealer, users);
     }
 
-    private void doInitialLogic(Player dealer, Players users) {
+    private void initialGame(Player dealer, Players users) {
         initPlayer(dealer);
         initUsers(users.getUser());
         Output.printInitMessage(users.getUserNames());
@@ -52,14 +52,14 @@ public class BlackJackController {
         }
     }
 
-    private void doPlayersInitialPrintLogic(Player dealer, Players users) {
+    private void startGameLogic(Player dealer, Players users) {
         Output.printDealerFirstCardName(dealer.getName(), dealer.getCardNames().get(FIRST_CARD_INDEX));
         printUsersCardNames(users);
     }
 
     private void printUsersCardNames(Players users) {
         for (Player user : users.getUser()) {
-            Output.printCardNames(user.getName(), user.getCardNames());
+            Output.printCardNames(user);
         }
     }
 
@@ -101,7 +101,7 @@ public class BlackJackController {
     private boolean isReceiveCard(Player user) {
         if (Input.inputReceiveCardAnswer(user.getName()).equals(GET_RECEIVE_CARD)) {
             user.addCard(cardGenerator.getOneCard());
-            Output.printCardNames(user.getName(), user.getCardNames());
+            Output.printCardNames(user);
             return true;
         }
 
