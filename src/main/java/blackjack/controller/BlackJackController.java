@@ -30,9 +30,9 @@ public class BlackJackController {
         initialGame(dealer, users);
         startGameLogic(dealer, users);
         progressPlayersTurnLogic(dealer, users);
-        doPlayersCardInformationPrintLogic(dealer, users);
-        doMakeWinningStateLogic(dealer, users);
-        doMakeResultLogic(dealer, users);
+        showPlayersCardInformationLogic(dealer, users);
+        makeWinningStateLogic(dealer, users);
+        makeResultLogic(dealer, users);
     }
 
     private void initialGame(Player dealer, Players users) {
@@ -54,10 +54,10 @@ public class BlackJackController {
 
     private void startGameLogic(Player dealer, Players users) {
         Output.printDealerFirstCardName(dealer.getName(), dealer.getCardNames().get(FIRST_CARD_INDEX));
-        printUsersCardNames(users);
+        showUsersCardNames(users);
     }
 
-    private void printUsersCardNames(Players users) {
+    private void showUsersCardNames(Players users) {
         for (Player user : users.getUser()) {
             Output.printCardNames(user);
         }
@@ -108,18 +108,18 @@ public class BlackJackController {
         return false;
     }
 
-    private void doPlayersCardInformationPrintLogic(Player dealer, Players users) {
+    private void showPlayersCardInformationLogic(Player dealer, Players users) {
         Output.printPlayerCardInformation(dealer);
-        printUsersCardInformation(users);
+        showUsersCardInformation(users);
     }
 
-    private void printUsersCardInformation(Players users) {
+    private void showUsersCardInformation(Players users) {
         for (Player user : users.getUser()) {
             Output.printPlayerCardInformation(user);
         }
     }
 
-    private void doMakeWinningStateLogic(Player dealer, Players users) {
+    private void makeWinningStateLogic(Player dealer, Players users) {
         for (Player user : users.getUser()) {
             makeWinningState(dealer, user);
         }
@@ -175,7 +175,7 @@ public class BlackJackController {
     }
 
 
-    private void doMakeResultLogic(Player dealer, Players users) {
+    private void makeResultLogic(Player dealer, Players users) {
         String result = makeResult(dealer, users.getUser());
         Output.printResult(result);
     }
