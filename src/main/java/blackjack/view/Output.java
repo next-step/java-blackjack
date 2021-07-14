@@ -1,6 +1,7 @@
 package blackjack.view;
 
 import blackjack.model.Player;
+import blackjack.model.Players;
 
 import java.util.List;
 
@@ -38,10 +39,10 @@ public class Output {
         stringBuilder.setLength(INITIALIZE_VALUE);
     }
 
-    public static void printCardNames(String userName, List<String> cards) {
-        stringBuilder.append(userName)
+    public static void printCardNames(Player user) {
+        stringBuilder.append(user.getName())
                 .append(SEPARATOR)
-                .append(String.join(CARD_SEPARATOR, cards));
+                .append(String.join(CARD_SEPARATOR, user.getCardNames()));
 
         System.out.println(stringBuilder);
         stringBuilder.setLength(INITIALIZE_VALUE);
