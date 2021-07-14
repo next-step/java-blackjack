@@ -29,7 +29,7 @@ public class BlackJackController {
 
         initialGame(dealer, users);
         startGameLogic(dealer, users);
-        doPlayersTurnLogic(dealer, users);
+        progressPlayersTurnLogic(dealer, users);
         doPlayersCardInformationPrintLogic(dealer, users);
         doMakeWinningStateLogic(dealer, users);
         doMakeResultLogic(dealer, users);
@@ -63,7 +63,7 @@ public class BlackJackController {
         }
     }
 
-    private void doPlayersTurnLogic(Player dealer, Players users) {
+    private void progressPlayersTurnLogic(Player dealer, Players users) {
         doUsersTurn(users);
         doDealerTurn(dealer);
     }
