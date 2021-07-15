@@ -15,16 +15,6 @@ public class CardGeneratorTest {
         assertThat(cardGenerator.getLeftCardCount()).isEqualTo(51);
     }
 
-    @DisplayName("카드덱을 교체한 후 남은 카드는 52장이다")
-    @Test
-    void test() {
-        CardGenerator cardGenerator = new CardGenerator();
-        cardGenerator.getOneCard();
-        cardGenerator.resetCards();
-
-        assertThat(cardGenerator.getLeftCardCount()).isEqualTo(52);
-    }
-
     @DisplayName("카드 생성기는 카드 1장을 반환 할 수 있다.")
     @Test
     void getOneCard() {

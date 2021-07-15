@@ -38,9 +38,4 @@ public class CardGenerator {
         return this.cards.size() - this.cardIndex;
     }
 
-    public void resetCards() {
-        Collections.shuffle(cards);
-        this.cardIndex = CARD_INITIAL_COUNT;
-    }
-
 }
