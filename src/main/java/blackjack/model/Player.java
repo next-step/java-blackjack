@@ -7,12 +7,10 @@ import java.util.List;
 public class Player {
     private final PlayerInformation playerInformation;
     private final ReceiveCardStrategy receiveCardStrategy;
-    private final WinningState winningState;
 
     public Player(String name, ReceiveCardStrategy receiveCardStrategy) {
         this.playerInformation = new PlayerInformation(name, new BunchOfCard());
         this.receiveCardStrategy = receiveCardStrategy;
-        this.winningState = new WinningState();
     }
 
     public void addCard(Card card) {
@@ -41,7 +39,4 @@ public class Player {
         return playerInformation.getName();
     }
 
-    public WinningState getWinningState() {
-        return this.winningState;
-    }
 }

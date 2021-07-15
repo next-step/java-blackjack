@@ -3,6 +3,7 @@ package blackjack.view;
 import blackjack.model.Player;
 import blackjack.model.Players;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Output {
@@ -67,8 +68,9 @@ public class Output {
         stringBuilder.setLength(INITIALIZE_VALUE);
     }
 
-    public static void printResult(String result) {
+    public static void printResult(HashMap<String,String> dealerResult, HashMap<String,String> userResult) {
         System.out.println("\n" + RESULT_MESSAGE);
-        System.out.println(result);
+        dealerResult.forEach((name,result)-> System.out.print(name + COLON + result));
+        userResult.forEach((name,result)-> System.out.print(name + COLON + result));
     }
 }

@@ -5,6 +5,7 @@ import blackjack.view.Input;
 import blackjack.view.Output;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class BlackJackController {
@@ -26,9 +27,16 @@ public class BlackJackController {
         startGameLogic(dealer, users);
         progressPlayersTurnLogic(dealer, users);
         showPlayersCardInformationLogic(dealer, users);
-        WinningLogic winningLogic = new WinningLogic(dealer,users);
-        GameResult gameResult = new GameResult(dealer,users);
-        Output.printResult(gameResult.makeResultLogic(dealer, users));
+
+        WinningLogic winningLogic = new WinningLogic();
+        HashMap<String,String> dealerResult = new HashMap<>();
+        HashMap<String,String> userResult = new HashMap<>();
+        for (Player user : users.getUser()) {
+            winningLogic.makeUsersWinningState(dealer, user);
+            userResult.put(user.getName(),winningLogic.makeUserResult());
+        }
+        dealerResult.put(dealer.getName(), winningLogic.makeDealerResult());
+        Output.printResult(dealerResult,userResult);
     }
 
     private void initialGame(Player dealer, Players users) {

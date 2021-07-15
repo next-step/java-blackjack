@@ -2,30 +2,26 @@ package blackjack.model;
 
 import blackjack.controller.BlackJackController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class WinningLogic {
-    private Player dealer;
-    private Players users;
+    private WinningState dealerWinningState;
+    private WinningState userWinningState;
 
-    public WinningLogic(Player dealer,Players users){
-        this.dealer = dealer;
-        this.users = users;
-        makeWinningStateLogic(dealer,users);
+    public WinningLogic(){
+        this.dealerWinningState = new WinningState();
     }
 
-    private void makeWinningStateLogic(Player dealer, Players users) {
-        for (Player user : users.getUser()) {
-            makeWinningState(dealer, user);
-        }
-    }
-
-    private void makeWinningState(Player dealer, Player user) {
+    public void makeUsersWinningState(Player dealer, Player user) {
+        this.userWinningState = new WinningState();
         if (isDealerBurst(dealer)) {
-            dealerLoseLogic(dealer, user);
+            dealerLoseLogic(user);
             return;
         }
 
         if (isUserBurst(user)) {
-            userLoseLogic(dealer, user);
+            userLoseLogic();
             return;
         }
 
@@ -40,30 +36,39 @@ public class WinningLogic {
         return burstCheck(user);
     }
 
-    private void dealerLoseLogic(Player dealer, Player user) {
+    private void dealerLoseLogic(Player user) {
         if (!burstCheck(user)) {
-            dealer.getWinningState().plusLoseCount();
-            user.getWinningState().plusWinCount();
+            dealerWinningState.plusLoseCount();
+            userWinningState.plusWinCount();
         }
     }
 
-    private void userLoseLogic(Player dealer, Player user) {
-        dealer.getWinningState().plusWinCount();
-        user.getWinningState().plusLoseCount();
+    private void userLoseLogic() {
+        dealerWinningState.plusWinCount();
+        userWinningState.plusLoseCount();
     }
 
     private void comparePlayersLogic(Player dealer, Player user) {
         if (dealer.getCardValueSum() > user.getCardValueSum()) {
-            dealer.getWinningState().plusWinCount();
-            user.getWinningState().plusLoseCount();
+            dealerWinningState.plusWinCount();
+            userWinningState.plusLoseCount();
         }
         if (dealer.getCardValueSum() < user.getCardValueSum()) {
-            dealer.getWinningState().plusLoseCount();
-            user.getWinningState().plusWinCount();
+            dealerWinningState.plusLoseCount();
+            userWinningState.plusWinCount();
         }
     }
 
     private boolean burstCheck(Player player) {
         return player.getCardValueSum() > BlackJackController.BURST_COUNT;
     }
+
+    public String makeDealerResult(){
+        return String.valueOf(GameResult.makeDealerResult(dealerWinningState));
+    }
+
+    public String makeUserResult(){
+        return String.valueOf(GameResult.makeUserResult(userWinningState));
+    }
+
 }
