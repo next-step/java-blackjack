@@ -17,6 +17,7 @@ public class BlackJackController {
     private static final String GET_RECEIVE_CARD = "y";
 
     private static final CardGenerator cardGenerator = new CardGenerator();
+    private static final WinningLogic winningLogic = new WinningLogic();
 
     public void blankJackStart() {
         Player dealer = PlayerFactory.of(PlayerFactory.DEALER);
@@ -27,16 +28,7 @@ public class BlackJackController {
         startGameLogic(dealer, users);
         progressPlayersTurnLogic(dealer, users);
         showPlayersCardInformationLogic(dealer, users);
-
-        WinningLogic winningLogic = new WinningLogic();
-        HashMap<String,String> dealerResult = new HashMap<>();
-        HashMap<String,String> userResult = new HashMap<>();
-        for (Player user : users.getUser()) {
-            winningLogic.makeUsersWinningState(dealer, user);
-            userResult.put(user.getName(),winningLogic.makeUserResult());
-        }
-        dealerResult.put(dealer.getName(), winningLogic.makeDealerResult());
-        Output.printResult(dealerResult,userResult);
+        Output.printResult(makeDealerWinningState(dealer),makeUserWinningState(dealer,users));
     }
 
     private void initialGame(Player dealer, Players users) {
@@ -125,6 +117,21 @@ public class BlackJackController {
         for (Player user : users.getUser()) {
             Output.printPlayerCardInformation(user);
         }
+    }
+
+    private HashMap<String,String> makeUserWinningState(Player dealer,Players users){
+        HashMap<String,String> userResult = new HashMap<>();
+        for (Player user : users.getUser()) {
+            winningLogic.makeUsersWinningState(dealer, user);
+            userResult.put(user.getName(),winningLogic.makeUserResult());
+        }
+        return userResult;
+    }
+
+    private HashMap<String,String> makeDealerWinningState(Player dealer){
+        HashMap<String,String> dealerResult = new HashMap<>();
+        dealerResult.put(dealer.getName(), winningLogic.makeDealerResult());
+        return dealerResult;
     }
 
 }
