@@ -1,9 +1,6 @@
 package blackjack.controller;
 
-import blackjack.model.CardGenerator;
-import blackjack.model.Player;
-import blackjack.model.PlayerFactory;
-import blackjack.model.Players;
+import blackjack.model.*;
 import blackjack.view.Input;
 import blackjack.view.Output;
 
@@ -14,12 +11,10 @@ public class BlackJackController {
     public static final int BURST_COUNT = 21;
     private static final int FIRST_CARD_INDEX = 0;
     private static final int STARTING_CARD_COUNT = 2;
-    private static final int HAVE_COUNT = 0;
+
     private static final String SPLIT_SEPARATOR = ",";
     private static final String GET_RECEIVE_CARD = "y";
-    private static final String WINNING_STATE_SEPARATOR = ": ";
-    private static final String WIN = "승 ";
-    private static final String LOSE = "패 ";
+
     private static final CardGenerator cardGenerator = new CardGenerator();
 
     public void blankJackStart() {
@@ -32,7 +27,9 @@ public class BlackJackController {
         progressPlayersTurnLogic(dealer, users);
         showPlayersCardInformationLogic(dealer, users);
         makeWinningStateLogic(dealer, users);
-        makeResultLogic(dealer, users);
+
+        GameResult gameResult = new GameResult(dealer,users);
+        Output.printResult(gameResult.makeResultLogic(dealer, users));
     }
 
     private void initialGame(Player dealer, Players users) {
@@ -174,53 +171,4 @@ public class BlackJackController {
         return player.getCardValueSum() > BURST_COUNT;
     }
 
-
-    private void makeResultLogic(Player dealer, Players users) {
-        String result = makeResult(dealer, users.getUser());
-        Output.printResult(result);
-    }
-
-    private String makeResult(Player dealer, List<Player> users) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append(dealer.getName()).append(WINNING_STATE_SEPARATOR)
-                .append(makeDealerResult(dealer));
-
-        for (Player user : users) {
-            stringBuilder.append(user.getName())
-                    .append(WINNING_STATE_SEPARATOR)
-                    .append(makeUserResult(user));
-        }
-
-        return stringBuilder.toString();
-    }
-
-    private StringBuilder makeDealerResult(Player dealer) {
-        StringBuilder stringBuilder = new StringBuilder();
-        if (dealer.getWinningState().getWinCount() > HAVE_COUNT) {
-            stringBuilder.append(dealer.getWinningState().getWinCount())
-                    .append(WIN);
-        }
-        if (dealer.getWinningState().getLoseCount() > HAVE_COUNT) {
-            stringBuilder.append(dealer.getWinningState().getLoseCount())
-                    .append(LOSE);
-        }
-        stringBuilder.append(System.lineSeparator());
-
-        return stringBuilder;
-    }
-
-    private StringBuilder makeUserResult(Player user) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        if (user.getWinningState().getWinCount() > HAVE_COUNT) {
-            stringBuilder.append(WIN);
-        }
-        if (user.getWinningState().getLoseCount() > HAVE_COUNT) {
-            stringBuilder.append(LOSE);
-        }
-        stringBuilder.append(System.lineSeparator());
-
-        return stringBuilder;
-    }
 }
