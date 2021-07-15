@@ -2,14 +2,11 @@ package blackjack.model;
 
 import blackjack.controller.BlackJackController;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class WinningLogic {
     private WinningState dealerWinningState;
     private WinningState userWinningState;
 
-    public WinningLogic(){
+    public WinningLogic() {
         this.dealerWinningState = new WinningState();
     }
 
@@ -63,11 +60,11 @@ public class WinningLogic {
         return player.getCardValueSum() > BlackJackController.BURST_COUNT;
     }
 
-    public String makeDealerResult(){
+    public String makeDealerResult() {
         return String.valueOf(GameResult.makeDealerResult(dealerWinningState));
     }
 
-    public String makeUserResult(){
+    public String makeUserResult() {
         return String.valueOf(GameResult.makeUserResult(userWinningState));
     }
 

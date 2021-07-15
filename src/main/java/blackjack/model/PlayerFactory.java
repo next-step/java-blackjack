@@ -7,7 +7,8 @@ public class PlayerFactory {
     public static final String DEALER = "딜러";
     private static final String DO_NOT_INPUT_NULL_MESSAGE = "이름을 입력하지 않으면 생성할 수 없습니다.";
 
-    private PlayerFactory(){}
+    private PlayerFactory() {
+    }
 
     public static Player of(String name) {
         validateNullInput(name);

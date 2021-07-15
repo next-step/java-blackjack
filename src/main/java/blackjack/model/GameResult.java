@@ -1,9 +1,5 @@
 package blackjack.model;
 
-import blackjack.view.Output;
-
-import java.util.List;
-
 public class GameResult {
     private static final int HAVE_COUNT = 0;
     private static final String WIN = "승";

@@ -28,7 +28,7 @@ public class BlackJackController {
         startGameLogic(dealer, users);
         progressPlayersTurnLogic(dealer, users);
         showPlayersCardInformationLogic(dealer, users);
-        Output.printResult(makeDealerWinningState(dealer),makeUserWinningState(dealer,users));
+        Output.printResult(makeDealerWinningState(dealer), makeUserWinningState(dealer, users));
     }
 
     private void initialGame(Player dealer, Players users) {
@@ -103,7 +103,7 @@ public class BlackJackController {
         return false;
     }
 
-    private void showUserCardNames(Player user){
+    private void showUserCardNames(Player user) {
         user.addCard(cardGenerator.getOneCard());
         Output.printCardNames(user);
     }
@@ -119,17 +119,17 @@ public class BlackJackController {
         }
     }
 
-    private HashMap<String,String> makeUserWinningState(Player dealer,Players users){
-        HashMap<String,String> userResult = new HashMap<>();
+    private HashMap<String, String> makeUserWinningState(Player dealer, Players users) {
+        HashMap<String, String> userResult = new HashMap<>();
         for (Player user : users.getUser()) {
             winningLogic.makeUsersWinningState(dealer, user);
-            userResult.put(user.getName(),winningLogic.makeUserResult());
+            userResult.put(user.getName(), winningLogic.makeUserResult());
         }
         return userResult;
     }
 
-    private HashMap<String,String> makeDealerWinningState(Player dealer){
-        HashMap<String,String> dealerResult = new HashMap<>();
+    private HashMap<String, String> makeDealerWinningState(Player dealer) {
+        HashMap<String, String> dealerResult = new HashMap<>();
         dealerResult.put(dealer.getName(), winningLogic.makeDealerResult());
         return dealerResult;
     }
