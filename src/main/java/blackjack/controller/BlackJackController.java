@@ -96,12 +96,16 @@ public class BlackJackController {
 
     private boolean isReceiveCard(Player user) {
         if (Input.inputReceiveCardAnswer(user.getName()).equals(GET_RECEIVE_CARD)) {
-            user.addCard(cardGenerator.getOneCard());
-            Output.printCardNames(user);
+            showUserCardNames(user);
             return true;
         }
 
         return false;
+    }
+
+    private void showUserCardNames(Player user){
+        user.addCard(cardGenerator.getOneCard());
+        Output.printCardNames(user);
     }
 
     private void showPlayersCardInformationLogic(Player dealer, Players users) {
