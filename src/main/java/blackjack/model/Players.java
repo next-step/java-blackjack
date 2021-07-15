@@ -5,9 +5,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Players {
-    private final List<Player> users = new ArrayList<>();
+    private final List<Player> users;
 
     public Players(List<String> users) {
+        this.users = new ArrayList<>();
         for (String user : users) {
             this.users.add(PlayerFactory.of(user));
         }
