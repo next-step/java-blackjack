@@ -3,12 +3,22 @@ package fuelInjection;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import fuelInjection.domain.Avante;
+import fuelInjection.domain.K5;
 import fuelInjection.domain.Sonata;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class RentCompanyTest {
     private static final String NEWLINE = System.getProperty("line.separator");
+
+    @Test
+    void Car의_List를_가져야한다() {
+        RentCompany company = RentCompany.create();
+
+        assertThat(company.getCars().size())
+            .isEqualTo(0);
+    }
 
 //    @Test
 //    public void report() throws Exception {
