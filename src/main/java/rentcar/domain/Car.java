@@ -1,5 +1,10 @@
 package rentcar.domain;
 
+import static rentcar.util.Constant.UNIT;
+import static rentcar.util.Constant.DELIMITER;
+
+import java.math.BigDecimal;
+
 public abstract class Car {
 
     /**
@@ -23,4 +28,11 @@ public abstract class Car {
     double getChargeQuantity() {
         return getTripDistance() / getDistancePerLiter();
     }
+
+    @Override
+    public String toString() {
+        return getName() + DELIMITER + BigDecimal.valueOf(getChargeQuantity()).stripTrailingZeros().toPlainString() + UNIT;
+    }
+
+
 }
