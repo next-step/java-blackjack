@@ -14,4 +14,6 @@ public class Constant {
     public static final String K5_NAME = "K5";
 
     public static final String NEWLINE = "\n";
+    public static final String DELIMITER = " : ";
+    public static final String UNIT = "리터";
 }
