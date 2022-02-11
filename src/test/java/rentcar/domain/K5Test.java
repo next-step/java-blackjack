@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class K5Test {
@@ -28,5 +29,12 @@ class K5Test {
         final double distance = 150;
         assertThat(new K5(distance).getName())
             .isEqualTo("K5");
+    }
+
+    @ParameterizedTest
+    @CsvSource({"130,10", "260, 20", "390,30"})
+    void testChargeQuantity(double tripDistance, double liter) {
+        assertThat(new K5(tripDistance).getChargeQuantity())
+            .isEqualTo(liter);
     }
 }
