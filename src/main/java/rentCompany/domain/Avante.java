@@ -2,10 +2,11 @@ package rentCompany.domain;
 
 public class Avante extends Car {
 
+    private static final String CAR_NAME = "Avante";
     private static final double FUEL_EFFICIENCY = 15;
 
     public Avante(int tripDistance) {
-        super("Avante", tripDistance);
+        super(CAR_NAME, tripDistance);
     }
 
     @Override
