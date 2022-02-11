@@ -1,10 +1,19 @@
 package rentCompany.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RentCompany {
+
+    private static List<Car> cars;
+
+    private RentCompany() {
+        cars = new ArrayList<>();
+    }
 
     public static RentCompany create() {
 
-        return null;
+        return new RentCompany();
     }
 
     public String generateReport() {
@@ -13,7 +22,7 @@ public class RentCompany {
     }
 
     public void addCar(Car car) {
-
+        cars.add(car);
     }
 
 }

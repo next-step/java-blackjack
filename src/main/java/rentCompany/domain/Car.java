@@ -1,6 +1,13 @@
 package rentCompany.domain;
 
 public abstract class Car {
+    protected String name;
+    protected double tripDistance;
+
+    protected Car(String name, int distance) {
+        this.name = name;
+        this.tripDistance = distance;
+    }
 
     /**
      * 리터당 이동 거리. 즉, 연비

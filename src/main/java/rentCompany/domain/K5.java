@@ -2,22 +2,24 @@ package rentCompany.domain;
 
 public class K5 extends Car {
 
-    public K5(int distance) {
-        super();
+    private static final double FUEL_EFFICIENCY = 13;
+
+    public K5(int tripDistance) {
+        super("K5", tripDistance);
     }
 
     @Override
     double getDistancePerLiter() {
-        return 0;
+        return tripDistance / FUEL_EFFICIENCY;
     }
 
     @Override
     double getTripDistance() {
-        return 0;
+        return tripDistance;
     }
 
     @Override
     String getName() {
-        return null;
+        return name;
     }
 }
