@@ -1,6 +1,7 @@
 package fuelInjection.domain;
 
 public abstract class Car {
+
     /**
      * 리터당 이동 거리. 즉, 연비
      */
@@ -9,7 +10,7 @@ public abstract class Car {
     /**
      * 여행하려는 거리
      */
-//    abstract double getTripDistance();
+    abstract double getTripDistance();
 
     /**
      * 차종의 이름
