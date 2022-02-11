@@ -10,15 +10,6 @@ import org.junit.jupiter.api.Test;
 public class RentCompanyTest {
     private static final String NEWLINE = System.getProperty("line.separator");
 
-    @DisplayName("`Sonata` String Type 이름을 가져야한다.")
-    @Test
-    public void givenSonataClass_whenCreateInstance_thenInstanceNameIsSonata () {
-        Sonata sonata = new Sonata();
-
-        assertThat(sonata.getName())
-            .isEqualTo("Sonata");
-    }
-
 //    @Test
 //    public void report() throws Exception {
 //        RentCompany company = RentCompany.create(); // factory method를 사용해 생성
