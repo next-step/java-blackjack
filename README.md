@@ -25,10 +25,10 @@
   - [x] `List<Car>`을 가져야한다.
   - [x] `List<Car>`에 대한 getter를 가져야한다.
   - [x] `create()`, 팩토리 메서드를 구현한다.
-  - [ ] `addCar()`, 차를 추가할 수 있다.
-    - [] `List<Car>`에 Sonata를 추가할 수 있다.
-    - [] `List<Car>`에 Avante를 추가할 수 있다.
-    - [] `List<Car>`에 K5를 추가할 수 있다.
+  - [x] `addCar()`, 차를 추가할 수 있다.
+    - [x] `List<Car>`에 Sonata를 추가할 수 있다.
+    - [x] `List<Car>`에 Avante를 추가할 수 있다.
+    - [x] `List<Car>`에 K5를 추가할 수 있다.
   - [ ] `generateReport()`는 전체 결과를 출력한다.
 - [ ] InputView
   - [ ] 이동거리와 차를 입력 받을 수 있다.
