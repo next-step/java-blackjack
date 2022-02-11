@@ -14,4 +14,11 @@ class K5Test {
         assertThat(new K5(number).getDistancePerLiter())
             .isEqualTo(13.0);
     }
+
+    @ValueSource(ints = {150,200,300,400})
+    @ParameterizedTest
+    void testK5TripDistance(final double number){
+        assertThat(new K5(number).getTripDistance())
+            .isEqualTo(number);
+    }
 }

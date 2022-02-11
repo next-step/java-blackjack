@@ -4,7 +4,10 @@ import static rentcar.util.Constant.K5_DISTANCE_PER_LITER;
 
 public class K5 extends Car {
 
+    private final double tripDistance;
+
     public K5(double tripDistance) {
+        this.tripDistance = tripDistance;
     }
 
     @Override
@@ -14,7 +17,7 @@ public class K5 extends Car {
 
     @Override
     double getTripDistance() {
-        return 0;
+        return tripDistance;
     }
 
     @Override
