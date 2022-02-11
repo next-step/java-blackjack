@@ -1,6 +1,7 @@
 package rentcar.domain;
 
 import static rentcar.util.Constant.SONATA_DISTANCE_PER_LITER;
+import static rentcar.util.Constant.SONATA_NAME;
 
 public class Sonata extends Car {
 
@@ -21,6 +22,6 @@ public class Sonata extends Car {
 
     @Override
     String getName() {
-        return null;
+        return SONATA_NAME;
     }
 }

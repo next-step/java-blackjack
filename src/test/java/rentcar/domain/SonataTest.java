@@ -23,4 +23,12 @@ class SonataTest {
         assertThat(new Sonata(number).getTripDistance())
             .isEqualTo(number);
     }
+
+    @Test
+    void testSonataName() {
+        //given
+        final double distance = 150;
+        assertThat(new Sonata(distance).getName())
+            .isEqualTo("Sonata");
+    }
 }
