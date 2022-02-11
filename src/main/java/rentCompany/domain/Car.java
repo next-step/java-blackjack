@@ -1,6 +1,7 @@
 package rentCompany.domain;
 
 public abstract class Car {
+
     protected String name;
     protected double tripDistance;
 

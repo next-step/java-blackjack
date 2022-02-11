@@ -13,7 +13,7 @@ class K5Test {
 
     @BeforeAll
     static void setup() {
-        K5= new K5(260);
+        K5 = new K5(260);
     }
 
     @DisplayName("리터당 이동 거리(연비)를 가져온다.")
