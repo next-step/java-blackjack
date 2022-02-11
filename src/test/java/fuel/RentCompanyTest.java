@@ -2,6 +2,10 @@ package fuel;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import fuel.domain.Avante;
+import fuel.domain.K5;
+import fuel.domain.RentCompany;
+import fuel.domain.Sonata;
 import org.junit.jupiter.api.Test;
 
 class RentCompanyTest {

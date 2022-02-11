@@ -1,13 +1,13 @@
-package fuel;
+package fuel.domain;
 
-public class Avante extends Car{
+public class Sonata extends Car {
 
-    private static final String NAME = "Avante";
-    private static final int DISTANCE_PER_LITER = 15;
+    private static final String NAME = "Sonata";
+    private static final int DISTANCE_PER_LITER = 10;
 
     private final double tripDistance;
 
-    public Avante(double tripDistance) {
+    public Sonata(double tripDistance) {
         this.tripDistance = tripDistance;
     }
 

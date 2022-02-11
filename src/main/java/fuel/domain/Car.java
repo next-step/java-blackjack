@@ -1,4 +1,4 @@
-package fuel;
+package fuel.domain;
 
 abstract public class Car {
 

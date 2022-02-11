@@ -1,4 +1,4 @@
-package fuel;
+package fuel.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,8 @@ public class RentCompany {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (Car car : cars) {
-            stringBuilder.append(String.format(REPORT_VIEW, car.getName(), (int) car.getChargeQuantity()));
+            stringBuilder.append(
+                String.format(REPORT_VIEW, car.getName(), (int) car.getChargeQuantity()));
         }
 
         return stringBuilder.toString();
