@@ -3,6 +3,7 @@ package fuelInjection.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,21 +33,19 @@ class SonataTest {
 
     @DisplayName("거리 가져야한다.")
     @ParameterizedTest
-    @ValueSource(ints = {10 ,20 ,30})
-    public void givenValidDistance_whenGetTripDistance_thenNotThrowException (int tripDistance) {
+    @ValueSource(ints = {10, 30, 100})
+    public void givenTripDistanceOverZeroTypeWithInt_whenGetTripDistance_thenNotThrowException (int tripDistance) {
         Sonata sonata = new Sonata(tripDistance);
 
         assertThat(sonata.getTripDistance())
             .isEqualTo(tripDistance);
     }
 
-    @DisplayName("거리 가져야한다.")
+    @DisplayName("0이하 정수 값이 TripDistanceUnder으로 주어졌을때, IllegalArgumentException이 발생한다.")
     @ParameterizedTest
-    @ValueSource(ints = {0 ,-1 ,-2})
-    public void givenInvalidDistance_whenGetTripDistance_thenThrowException (int tripDistance) {
-        Sonata sonata = new Sonata(tripDistance);
-
-        assertThatThrownBy(() -> sonata.getTripDistance())
+    @ValueSource(ints = {0, -1, -10, -100})
+    public void givenTripDistanceBelowZeroTypeWithInt_whenGetTripDistance_thenThrowIllegalArgumentException (int tripDistance) {
+        assertThatThrownBy(() -> new Sonata(tripDistance))
             .isInstanceOf(IllegalArgumentException.class);
     }
 }
