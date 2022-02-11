@@ -54,6 +54,11 @@
 
 # java-blackjack
 
+### git pull pair
+
+```bash
+git pull pair step1
+```
 
 ### git multiple author
 
