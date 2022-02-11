@@ -3,12 +3,12 @@ package fuelInjection.domain;
 public class Sonata extends Car {
 
     private static final String NAME = "Sonata";
-    private static final int DISTANCE_PER_LITER = 10;
-    private static final int TRIP_DISTANCE_MIN = 1;
+    private static final double DISTANCE_PER_LITER = 10;
+    private static final double TRIP_DISTANCE_MIN = 0;
 
-    private final int tripDistance;
+    private final double tripDistance;
 
-    public Sonata(int tripDistance) {
+    public Sonata(double tripDistance) {
         this.tripDistance = tripDistance;
 
         validTripDistance();
@@ -26,9 +26,13 @@ public class Sonata extends Car {
         return tripDistance;
     }
 
+    public double getChargeQuantity() {
+        return getTripDistance() / getDistancePerLiter();
+    }
+
     private void validTripDistance() {
         if (isInvalidTripDistance()) {
-            throw new IllegalArgumentException("[ERROR] 거리 값을 1이상 정수값을 입력해주세요.");
+            throw new IllegalArgumentException("[ERROR] 거리 값을 0 이상 양수값을 입력해주세요.");
         }
     }
 
