@@ -13,7 +13,7 @@ public class RentCompanyTest {
     private static final String NEWLINE = System.getProperty("line.separator");
 
     @Test
-    void Carì˜_Listë¥¼_ê°€ì ¸ì•¼í•œë‹¤() {
+    void CarÀÇ_List¸¦_°¡Á®¾ßÇÑ´Ù() {
         RentCompany company = RentCompany.create();
 
         assertThat(company.getRentCars().size())
@@ -22,7 +22,7 @@ public class RentCompanyTest {
 
 //    @Test
 //    public void report() throws Exception {
-//        RentCompany company = RentCompany.create(); // factory methodë¥¼ ì‚¬ìš©í•´ ìƒì„±
+//        RentCompany company = RentCompany.create(); // factory method¸¦ »ç¿ëÇØ »ı¼º
 //        company.addCar(new Sonata(150));
 //        company.addCar(new K5(260));
 //        company.addCar(new Sonata(120));
@@ -31,11 +31,11 @@ public class RentCompanyTest {
 //
 //        String report = company.generateReport();
 //        assertThat(report).isEqualTo(
-//            "Sonata : 15ë¦¬í„°" + NEWLINE +
-//                "K5 : 20ë¦¬í„°" + NEWLINE +
-//                "Sonata : 12ë¦¬í„°" + NEWLINE +
-//                "Avante : 20ë¦¬í„°" + NEWLINE +
-//                "K5 : 30ë¦¬í„°" + NEWLINE
+//            "Sonata : 15¸®ÅÍ" + NEWLINE +
+//                "K5 : 20¸®ÅÍ" + NEWLINE +
+//                "Sonata : 12¸®ÅÍ" + NEWLINE +
+//                "Avante : 20¸®ÅÍ" + NEWLINE +
+//                "K5 : 30¸®ÅÍ" + NEWLINE
 //        );
 //    }
 }
