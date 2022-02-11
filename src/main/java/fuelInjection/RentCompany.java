@@ -19,4 +19,8 @@ public class RentCompany {
     public List<Car> getRentCars() {
         return rentCars;
     }
+
+    public void addCar(Car car) {
+        rentCars.add(car);
+    }
 }
