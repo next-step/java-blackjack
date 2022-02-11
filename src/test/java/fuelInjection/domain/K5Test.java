@@ -17,7 +17,7 @@ class K5Test {
 
     @DisplayName("`K5` String Type 이름을 가져야한다.")
     @Test
-    public void givenSonataClass_whenCreateInstance_thenInstanceNameIsSonata () {
+    public void givenK5Class_whenCreateInstance_thenInstanceNameIsK5 () {
         K5 k5 = new K5(TEMP_DISTANCE);
 
         assertThat(k5.getName())
@@ -26,7 +26,7 @@ class K5Test {
 
     @DisplayName("`13km/리터`의 연비 가져야한다.")
     @Test
-    public void givenSonataClass_whenCreateInstance_thenDistancePerLiterIs10 () {
+    public void givenK5Class_whenCreateInstance_thenDistancePerLiterIs10 () {
         K5 k5 = new K5(TEMP_DISTANCE);
 
         assertThat(k5.getDistancePerLiter())

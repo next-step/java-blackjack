@@ -17,7 +17,7 @@ class AvanteTest {
 
     @DisplayName("`Avante` String Type 이름을 가져야한다.")
     @Test
-    public void givenSonataClass_whenCreateInstance_thenInstanceNameIsSonata () {
+    public void givenAvanteClass_whenCreateInstance_thenInstanceNameIsAvante () {
         Avante avante = new Avante(TEMP_DISTANCE);
 
         assertThat(avante.getName())
@@ -26,7 +26,7 @@ class AvanteTest {
 
     @DisplayName("`15km/리터`의 연비 가져야한다.")
     @Test
-    public void givenSonataClass_whenCreateInstance_thenDistancePerLiterIs10 () {
+    public void givenAvanteClass_whenCreateInstance_thenDistancePerLiterIs10 () {
         Avante avante = new Avante(TEMP_DISTANCE);
 
         assertThat(avante.getDistancePerLiter())
