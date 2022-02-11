@@ -2,8 +2,6 @@ package fuelInjection.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
@@ -65,7 +63,7 @@ class SonataTest {
     @DisplayName("주입해야할 연료량을 구할 수 있다.")
     @ParameterizedTest
     @MethodSource("generateTripDistanceAndChargeQuantity")
-    public void givenTripDistanceOverZeroTypeWithDouble_whenGetChargeQuantity_then (double tripDistance, double chargeQuantity) {
+    public void givenTripDistanceOverZeroTypeWithDouble_whenGetChargeQuantity_thenCanCalculateChargeQuantity (double tripDistance, double chargeQuantity) {
         assertThat(new Sonata(tripDistance).getChargeQuantity())
             .isEqualTo(chargeQuantity);
     }
