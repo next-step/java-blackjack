@@ -1,28 +1,64 @@
 package fuelInjection;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import fuelInjection.domain.Avante;
+import fuelInjection.domain.Car;
 import fuelInjection.domain.K5;
 import fuelInjection.domain.Sonata;
-import org.junit.jupiter.api.DisplayName;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class RentCompanyTest {
+
     private static final String NEWLINE = System.getProperty("line.separator");
+    int TEMP_DISTANCE = 10;
 
     @Test
-    void CarÀÇ_List¸¦_°¡Á®¾ßÇÑ´Ù() {
+    void Carì˜_Listë¥¼_ê°€ì ¸ì•¼í•œë‹¤() {
         RentCompany company = RentCompany.create();
 
         assertThat(company.getRentCars().size())
             .isEqualTo(0);
     }
 
-//    @Test
+    @Test
+    void Carì˜_Listì—_Sonataë¥¼_ì¶”ê°€í• _ìˆ˜_ìˆë‹¤() {
+        RentCompany company = RentCompany.create();
+        Sonata sonata = new Sonata(TEMP_DISTANCE);
+        List<Car> cars = Arrays.asList(sonata);
+
+        company.addCar(sonata);
+        assertThat(company.getRentCars().equals(cars))
+            .isTrue();
+    }
+
+    @Test
+    void Carì˜_Listì—_Avanteë¥¼_ì¶”ê°€í• _ìˆ˜_ìˆë‹¤() {
+        RentCompany company = RentCompany.create();
+        Avante avante = new Avante(TEMP_DISTANCE);
+        List<Car> cars = Arrays.asList(avante);
+
+        company.addCar(avante);
+        assertThat(company.getRentCars().equals(cars))
+            .isTrue();
+    }
+
+    @Test
+    void Carì˜_Listì—_K5ë¥¼_ì¶”ê°€í• _ìˆ˜_ìˆë‹¤() {
+        RentCompany company = RentCompany.create();
+        K5 k5 = new K5(TEMP_DISTANCE);
+        List<Car> cars = Arrays.asList(k5);
+
+        company.addCar(k5);
+        assertThat(company.getRentCars().equals(cars))
+            .isTrue();
+    }
+
+    //    @Test
 //    public void report() throws Exception {
-//        RentCompany company = RentCompany.create(); // factory method¸¦ »ç¿ëÇØ »ı¼º
+//        RentCompany company = RentCompany.create(); // factory methodë¥¼ ì‚¬ìš©í•´ ìƒì„±
 //        company.addCar(new Sonata(150));
 //        company.addCar(new K5(260));
 //        company.addCar(new Sonata(120));
@@ -31,11 +67,11 @@ public class RentCompanyTest {
 //
 //        String report = company.generateReport();
 //        assertThat(report).isEqualTo(
-//            "Sonata : 15¸®ÅÍ" + NEWLINE +
-//                "K5 : 20¸®ÅÍ" + NEWLINE +
-//                "Sonata : 12¸®ÅÍ" + NEWLINE +
-//                "Avante : 20¸®ÅÍ" + NEWLINE +
-//                "K5 : 30¸®ÅÍ" + NEWLINE
+//            "Sonata : 15ë¦¬í„°" + NEWLINE +
+//                "K5 : 20ë¦¬í„°" + NEWLINE +
+//                "Sonata : 12ë¦¬í„°" + NEWLINE +
+//                "Avante : 20ë¦¬í„°" + NEWLINE +
+//                "K5 : 30ë¦¬í„°" + NEWLINE
 //        );
 //    }
 }
