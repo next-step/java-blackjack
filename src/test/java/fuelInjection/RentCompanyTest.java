@@ -16,7 +16,7 @@ public class RentCompanyTest {
     void Car의_List를_가져야한다() {
         RentCompany company = RentCompany.create();
 
-        assertThat(company.getCars().size())
+        assertThat(company.getRentCars().size())
             .isEqualTo(0);
     }
 
