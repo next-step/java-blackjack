@@ -1,6 +1,7 @@
 package rentcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RentCompany {
@@ -15,6 +16,11 @@ public class RentCompany {
         return new RentCompany();
     }
 
+    public void addCar(Car car) {
+        cars.add(car);
+    }
+
+    public List<Car> cars() { return Collections.unmodifiableList(cars); }
 
 
 }
