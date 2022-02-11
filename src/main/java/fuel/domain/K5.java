@@ -5,10 +5,8 @@ public class K5 extends Car {
     private static final String NAME = "K5";
     private static final int DISTANCE_PER_LITER = 13;
 
-    private final double tripDistance;
-
     public K5(double tripDistance) {
-        this.tripDistance = tripDistance;
+        super(tripDistance);
     }
 
     @Override
