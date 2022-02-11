@@ -16,4 +16,11 @@ class AvanteTest {
         assertThat(new Avante(number).getDistancePerLiter())
             .isEqualTo(15.0);
     }
+
+    @ValueSource(ints = {150,200,300,400})
+    @ParameterizedTest
+    void testAvanteTripDistance(final double number){
+        assertThat(new Avante(number).getTripDistance())
+            .isEqualTo(number);
+    }
 }

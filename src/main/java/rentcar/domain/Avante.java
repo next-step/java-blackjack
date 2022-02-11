@@ -18,7 +18,7 @@ public class Avante extends Car {
 
     @Override
     double getTripDistance() {
-        return 0;
+        return tripDistance;
     }
 
     @Override
