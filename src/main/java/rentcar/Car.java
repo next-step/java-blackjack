@@ -1,10 +1,13 @@
 package rentcar;
 
 public abstract class Car implements MotorVehicle {
-    private final int distance;
 
-    public Car (int distance) {
+    public final double distance;
+    public final String name;
+
+    public Car(double distance, String name) {
         this.distance = distance;
+        this.name = name;
     }
 
     double getChargeQuantity() {
