@@ -6,7 +6,7 @@ public class Avante extends PassengerCar {
 
     private final int distance;
 
-    public Avante(int distance) {
+    public Avante(final int distance) {
         this.distance = distance;
     }
 

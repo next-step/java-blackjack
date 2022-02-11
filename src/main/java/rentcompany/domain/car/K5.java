@@ -6,7 +6,7 @@ public class K5 extends PassengerCar {
 
     private final int distance;
 
-    public K5(int distance) {
+    public K5(final int distance) {
         this.distance = distance;
     }
 
