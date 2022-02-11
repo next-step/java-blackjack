@@ -11,6 +11,7 @@ public class Constant {
 
     public static final String SONATA_NAME = "Sonata";
     public static final String AVANTE_NAME = "Avante";
+    public static final String K5_NAME = "K5";
 
     public static final String NEWLINE = "\n";
 }

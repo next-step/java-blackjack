@@ -3,6 +3,7 @@ package rentcar.domain;
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -20,5 +21,12 @@ class K5Test {
     void testK5TripDistance(final double number){
         assertThat(new K5(number).getTripDistance())
             .isEqualTo(number);
+    }
+
+    @Test
+    void testK5Name() {
+        final double distance = 150;
+        assertThat(new K5(distance).getName())
+            .isEqualTo("K5");
     }
 }

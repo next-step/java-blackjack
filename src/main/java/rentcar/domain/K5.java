@@ -1,6 +1,7 @@
 package rentcar.domain;
 
 import static rentcar.util.Constant.K5_DISTANCE_PER_LITER;
+import static rentcar.util.Constant.K5_NAME;
 
 public class K5 extends Car {
 
@@ -22,6 +23,6 @@ public class K5 extends Car {
 
     @Override
     String getName() {
-        return "0";
+        return K5_NAME;
     }
 }
