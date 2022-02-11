@@ -9,4 +9,5 @@ public class Constant {
     public static final double AVANTE_DISTANCE_PER_LITER = 15;
 
     public static final String SONATA_NAME = "Sonata";
+    public static final String AVANTE_NAME = "Avante";
 }

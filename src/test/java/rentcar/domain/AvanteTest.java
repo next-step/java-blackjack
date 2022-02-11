@@ -23,4 +23,11 @@ class AvanteTest {
         assertThat(new Avante(number).getTripDistance())
             .isEqualTo(number);
     }
+
+    @Test
+    void testAvanteName() {
+        final double distance = 150;
+        assertThat(new Avante(distance).getName())
+            .isEqualTo("Avante");
+    }
 }
