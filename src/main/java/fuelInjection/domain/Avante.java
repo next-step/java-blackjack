@@ -1,6 +1,8 @@
 package fuelInjection.domain;
 
-public class Avante {
+import java.util.Objects;
+
+public class Avante extends Car {
 
     private static final String NAME = "Avante";
     private static final double DISTANCE_PER_LITER = 15;
@@ -38,5 +40,22 @@ public class Avante {
 
     private boolean isInvalidTripDistance() {
         return tripDistance < TRIP_DISTANCE_MIN;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Avante)) {
+            return false;
+        }
+        Avante avante = (Avante) o;
+        return Double.compare(avante.tripDistance, tripDistance) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tripDistance);
     }
 }

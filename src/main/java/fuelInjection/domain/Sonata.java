@@ -1,5 +1,7 @@
 package fuelInjection.domain;
 
+import java.util.Objects;
+
 public class Sonata extends Car {
 
     private static final String NAME = "Sonata";
@@ -38,5 +40,22 @@ public class Sonata extends Car {
 
     private boolean isInvalidTripDistance() {
         return tripDistance < TRIP_DISTANCE_MIN;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Sonata)) {
+            return false;
+        }
+        Sonata sonata = (Sonata) o;
+        return Double.compare(sonata.tripDistance, tripDistance) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tripDistance);
     }
 }
