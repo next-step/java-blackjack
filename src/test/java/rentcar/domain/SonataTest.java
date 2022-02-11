@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class SonataTest {
@@ -30,5 +31,12 @@ class SonataTest {
         final double distance = 150;
         assertThat(new Sonata(distance).getName())
             .isEqualTo("Sonata");
+    }
+
+    @ParameterizedTest
+    @CsvSource({"150,15", "200, 20", "60,6"})
+    void testChargeQuantity(double tripDistance, double liter) {
+        assertThat(new Sonata(tripDistance).getChargeQuantity())
+            .isEqualTo(liter);
     }
 }
