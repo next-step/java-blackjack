@@ -24,21 +24,21 @@
 
 ## 기능 구현 사항
 
-- [ ] `Car` 클래스 추상화 (`Car`)
-  - [ ] 주입해야할 연료량 계산 (`Car.getChargeQuantity()`)
-- [ ] 파생 클래스 구현
+- [x] `Car` 클래스 추상화 (`Car`)
+  - [x] 주입해야할 연료량 계산 (`Car.getChargeQuantity()`)
+- [x] 파생 클래스 구현
 
-  - [ ] `Sonata` 클래스 구현 (`Sonata`)
-    - [ ] 리터당 이동 거리 계산 (`Sonata.getDistancePerLiter()`)
-    - [ ] 여행하려는 거리 반환 (`Sonata.getTripDistance()`)
-    - [ ] 차종의 이름 반환 (`Sonata.getName()`)
+  - [x] `Sonata` 클래스 구현 (`Sonata`)
+    - [x] 리터당 이동 거리 계산 (`Sonata.getDistancePerLiter()`)
+    - [x] 여행하려는 거리 반환 (`Sonata.getTripDistance()`)
+    - [x] 차종의 이름 반환 (`Sonata.getName()`)
     
-  - [ ] `Avante` 클래스 구현 (`Avante`)
-    - [ ] 리터당 이동 거리 계산 (`Avante.getDistancePerLiter()`)
-    - [ ] 여행하려는 거리 반환 (`Avante.getTripDistance()`)
-    - [ ] 차종의 이름 반환 (`Avante.getName()`)
+  - [x] `Avante` 클래스 구현 (`Avante`)
+    - [x] 리터당 이동 거리 계산 (`Avante.getDistancePerLiter()`)
+    - [x] 여행하려는 거리 반환 (`Avante.getTripDistance()`)
+    - [x] 차종의 이름 반환 (`Avante.getName()`)
     
-  - [ ] `K5` 클래스 구현 (`K5`)
-    - [ ] 리터당 이동 거리 계산 (`K5.getDistancePerLiter()`)
-    - [ ] 여행하려는 거리 반환 (`K5.getTripDistance()`)
-    - [ ] 차종의 이름 반환 (`K5.getName()`)
+  - [x] `K5` 클래스 구현 (`K5`)
+    - [x] 리터당 이동 거리 계산 (`K5.getDistancePerLiter()`)
+    - [x] 여행하려는 거리 반환 (`K5.getTripDistance()`)
+    - [x] 차종의 이름 반환 (`K5.getName()`)
