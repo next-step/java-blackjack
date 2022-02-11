@@ -12,4 +12,17 @@ class RentCompanyTest {
         RentCompany company = RentCompany.create();
         assertThat(company).isNotNull();
     }
+
+    @DisplayName("RentCompany_Car_추가_테스트")
+    @Test
+    public void addCarTest() {
+        RentCompany company = RentCompany.create();
+        company.addCar(new Sonata(150));
+        company.addCar(new Sonata(150));
+        company.addCar(new K5(260));
+        company.addCar(new Sonata(120));
+        company.addCar(new Avante(300));
+        company.addCar(new K5(390));
+        assertThat(company.cars().size()).isEqualTo(6);
+    }
 }
