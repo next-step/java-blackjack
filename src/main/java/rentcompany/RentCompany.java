@@ -14,4 +14,9 @@ public class RentCompany {
     public static RentCompany create() {
         return new RentCompany();
     }
+
+    public void addCar(Car car) {
+        cars.add(car);
+    }
+
 }
