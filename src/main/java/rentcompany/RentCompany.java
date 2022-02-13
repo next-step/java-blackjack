@@ -10,4 +10,8 @@ public class RentCompany {
     private RentCompany() {
         cars = new ArrayList<>();
     }
+
+    public static RentCompany create() {
+        return new RentCompany();
+    }
 }
