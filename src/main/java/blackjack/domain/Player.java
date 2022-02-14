@@ -14,4 +14,17 @@ public class Player {
         this.score = 0;
         this.cards = new ArrayList<>();
     }
+
+    public void addCard(final Card card) {
+        score += card.getPoint();
+        this.cards.add(card);
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getScore() {
+        return this.score;
+    }
 }
