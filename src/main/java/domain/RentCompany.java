@@ -1,7 +1,9 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RentCompany {
 
@@ -17,5 +19,17 @@ public class RentCompany {
         cars.add(new K5(distance));
         cars.add(new Sonata(distance));
         return new RentCompany(cars);
+    }
+
+    public Map<String, Double> generateChargeQuantityByName() {
+        Map<String, Double> map = new HashMap<>();
+
+        for (Car car : cars) {
+            String name = car.getCarName();
+            double chargeQuantity = car.getChargeQuantity();
+
+            map.put(name, chargeQuantity);
+        }
+        return map;
     }
 }
