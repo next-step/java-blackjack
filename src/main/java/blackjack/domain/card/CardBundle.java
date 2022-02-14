@@ -1,6 +1,7 @@
 package blackjack.domain.card;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CardBundle {
@@ -10,6 +11,7 @@ public class CardBundle {
         for (Suit suit : Suit.values()) {
             createBySuit(cards, suit);
         }
+        Collections.shuffle(cards);
         return cards;
     }
 
