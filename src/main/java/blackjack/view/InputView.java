@@ -16,9 +16,7 @@ public class InputView {
         String input = scanner.nextLine();
         validateEmpty(input);
 
-        List<String> players = splitPlayerName(input);
-
-        return players;
+        return splitPlayerName(input);
     }
 
     private static void validateEmpty(String input) {
