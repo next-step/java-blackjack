@@ -19,7 +19,7 @@ public abstract class Car {
     }
 
     public double getChargeQuantity() {
-        return getTripDistance() / getDistancePerLiter();
+        return Math.ceil(getTripDistance() / getDistancePerLiter());
     }
 
     @Override
