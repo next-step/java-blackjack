@@ -37,6 +37,13 @@ public class CarFactoryTest {
     @Test
     void 이름_없음() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> CarFactory.create("none", 00D));
+            .isThrownBy(() -> CarFactory.create("none", 10D));
+    }
+
+    @DisplayName("예약 하는 여행 거리가 최소 거리(1) 보다 작으면 예외가 발생한다.")
+    @Test
+    void 최소_거리보다_작음() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> CarFactory.create("avante", 0D));
     }
 }
