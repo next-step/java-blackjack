@@ -12,10 +12,10 @@
 * K5 : 13km/리터
 
 ## 기능 구현 사항
-- [ ] 자동차를 보유하는 렌터카 회사는 factory method를 사용해 생성한다. RentCompany#create()
-- [ ] 자동차 인스턴스를 생성할 시 이동할 거리를 인자로 받는다.
-- [ ] 렌터카 회사에 있는 자동차들은 Car 추상클래스를 상속받는다. Car - Sonata, Avante, K5
-- [ ] 차량 별로 주입해야 할 연료량을 확인할 수 있는 보고서를 생성한다. OutputView
+- [x] 자동차를 보유하는 렌터카 회사는 factory method를 사용해 생성한다. RentCompany#create()
+- [x] 자동차 인스턴스를 생성할 시 이동할 거리를 인자로 받는다.
+- [x] RentCar 추상 클래스는 필드에 대한 getter 메소드를 가지는 Car 인터페이스를 구현한다.
+- [x] 렌터카 회사에 있는 자동차들은 RentCar 추상클래스를 상속받는다. RentCar - Sonata, Avante, K5
 
 # 블랙잭
 ## 기능 요구 사항
