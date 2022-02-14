@@ -21,7 +21,7 @@
   - [x] 거리 가져야한다.
     - [x] 거리는 `0` 이상 정수이어야한다.  
   - [x] 주입해야할 연료량을 구할 수 있다.
-- [ ] RentCompany
+- [x] RentCompany
   - [x] `List<Car>`을 가져야한다.
   - [x] `List<Car>`에 대한 getter를 가져야한다.
   - [x] `create()`, 팩토리 메서드를 구현한다.
