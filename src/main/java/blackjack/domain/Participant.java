@@ -1,18 +1,22 @@
 package blackjack.domain;
 
-import java.util.List;
+import java.util.ArrayList;
 
 abstract public class Participant {
     protected final String name;
-    protected final List<Card> cards;
+    protected final Cards cards;
     protected final int winCount, loseCount;
 
-    public Participant(String name, List<Card> cards, int winCount, int loseCount) {
+    public Participant(String name, Cards cards, int winCount, int loseCount) {
         this.name = name;
         this.cards = cards;
         this.winCount = winCount;
         this.loseCount = loseCount;
     }
 
-    abstract void drawCard();
+    public Participant(String name) {
+        this(name, new Cards(new ArrayList<>()), 0, 0);
+    }
+
+    abstract void drawCard(int number);
 }
