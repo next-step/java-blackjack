@@ -4,10 +4,8 @@ public class Sonata extends Car {
 
     private static final int DISTANCE_PER_LITER = 10;
 
-    private final int distance;
-
     public Sonata(final int distance) {
-        this.distance = distance;
+        super(distance);
     }
 
     @Override

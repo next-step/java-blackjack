@@ -4,10 +4,8 @@ public class Avante extends Car {
 
     private static final int DISTANCE_PER_LITER = 15;
 
-    private final int distance;
-
     public Avante(final int distance) {
-        this.distance = distance;
+        super(distance);
     }
 
     @Override
