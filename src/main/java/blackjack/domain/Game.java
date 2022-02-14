@@ -15,22 +15,16 @@ public class Game {
         Participant dealer = new Dealer("dealer");
 
         // 사용자 추가
-        List<Participant> players = new ArrayList<>();
-        players.add(new Player(name.get(0)));
-        players.add(new Player(name.get(1)));
+        Players players = Players.from(name);
 
         // 딜러 , 사용자 에게 카드 2장씩 분배
         dealer.drawCard(2);
-        for (Participant player : players) {
-            player.drawCard(2);
-        }
+        players.drawAll(2);
 
         // 받은 카드 상태 출력
 
         // 사용자 1장씩 뽑기
-        for (Participant player : players) {
-            player.drawCard(1);
-        }
+        players.drawAll(1);
 
         // 딜러 1장 뽑기
         dealer.drawCard(1);
