@@ -34,9 +34,12 @@ public class CardPack {
         for (Player player : players) {
             for (int i = 0; i < 2; i++) {
                 int symbolIndex = CardShuffler.pickIndexIn(4);
-                List<Card> cards = map.get(symbols.get(symbolIndex));
+                String symbol = symbols.get(symbolIndex);
+                List<Card> cards = map.get(symbol);
+
                 int cardIndex = CardShuffler.pickIndexIn(cards.size());
-                player.addCard(cards.remove(cardIndex));
+                Card pickedCard = map.get(symbol).remove(cardIndex);
+                player.addCard(pickedCard);
             }
         }
     }
@@ -50,5 +53,4 @@ public class CardPack {
             dealer.addCard(cards.remove(cardIndex));
         }
     }
-
 }
