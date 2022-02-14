@@ -1,7 +1,5 @@
 package domain;
 
-import javax.print.attribute.standard.MediaSize.NA;
-
 public class Sonata extends Car {
 
     private static final String NAME = "Sonata";
