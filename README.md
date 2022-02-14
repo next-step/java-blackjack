@@ -53,7 +53,59 @@
 - [x] 위 요구사항을 if/else 절을 쓰지 않고 구현해야 한다.
 - [ ] 인터페이스를 적용해 구현한다.
 
+---
+
 # java-blackjack
+
+## TDD 기능 구현 사항
+
+- [] User
+  - [] Deck을 가지고 있다.
+  - [] UserName을 가지고 있다.
+  - [] Deck에 카드를 추가할 수 있다.
+  - [] Deck의 현재 score가 21을 넘는지에 대한 boolean 계산을 할 수 있다. 
+- [] Dealer
+  - [] 총 score가 16이하일 경우, 1장의 카드를 추가로 받는다.
+- [] Player
+- [] Deck - 딜러 또는 플레이어가 가진 Card의 집합
+  - [] List<Card>를 가지고 있다.
+  - [] 현재 List<Card>의 총 score를 계산할 수 있다.
+  - [] 현재 가진 Card 중에서 Ace가 있는 경우, 해당 Card에 대한 Score를 1 또는 11로 계산할 수 있다.
+    - [] 21을 초과하지 않으면서, 21에 가깝게 계산할 수 있다.
+- [] Card - Game에서 사용할 카드의 객체
+  - [] CardType type을 가지고 있다. (e.g 다이아몬드, 클로버, 스페이드, 하트 ...)
+  - [] CardNumber number을 가지고 있다. (e.g 1, 2, 3, A, K, Q ...)
+- [] CardType - Card의 타입
+- [] CardNumber - Card의 숫자
+  - [] 해당 카드의 점수인 score를 가지고 있다.
+- [] GameCard - 게임에서 사용될 모든 Card의 집합
+  - [] 모든 Card는 중복이 없어야한다.
+- [] GameUser - BlackJack을 수행한는 User의 집합
+  - [] List<User>를 가지고 있다.
+  - [] User를 추가할 수 있다.
+  - [] List<User>를 반환할 수 있다.
+- [] BlackJack - 게임 로직 수행
+  - [] GameUser를 가지고 있다.
+  - [] GameCard를 가지고 있다.
+  - [] 게임 진행시 최초로 GameCard를 셔플할 수 있다.
+  - [] User별로 턴을 진행할 수 있게 한다.
+  - [] GameCard에서 Card를 하나 뽑을 수 있다.
+  - [] User에 카드를 전달할 수 있다.
+  - [] 21을 넘지 않는 경우, User에게 카드를 지속적으로 전달할 수 있다.
+- [] UserStats - User별 승/패에 대한 정보
+  - [] GameUser를 인자로 받아 User별, 승/패 정보를 계산한다.
+- [] GameController - 전체적인 게임을 진행할 Controller 
+  - [] 이름의 배열을 BlackJack에 전달한다.
+- [] UserName - 게임 참여자의 이름
+- [] InputParser - String -> List<String>의 이름의 배열로 반환한다.
+  - [] 이름의 중복을 확인한다.
+  - [] 이름의 공백을 확인한다.
+- [] InputView
+  - [] 게임에 참여할 이름을 입력받는다.
+- [] OutputView
+
+## 기능 구현 사항
+
 
 ### git pull pair
 
