@@ -8,7 +8,8 @@ public class InputView {
     private static final String RESERVATION_INFO_INPUT_MESSAGE = "대여할 자동차와 예상 거리를 입력해 주세요. (eg. carName1:distance, carName2:distance)";
     private static final String ALL_SPACE = "\\s+";
     private static final String EMPTY_STRING = "";
-    private static final String EMPTY_STRING_EXCEPTION_MESSAGE = "[ERROR] 공백일 수 없습니다.";
+
+    private InputView() {}
 
     public static String inputReservationInfo() {
         System.out.println(RESERVATION_INFO_INPUT_MESSAGE);
