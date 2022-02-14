@@ -44,4 +44,8 @@ public enum RentCar {
     private Car createCar(final double tripDistance) {
         return this.createCar.apply(tripDistance);
     }
+
+    public boolean isImpossibleReservation(Integer count) {
+        return count > this.quantity;
+    }
 }
