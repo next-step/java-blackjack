@@ -6,6 +6,8 @@ import java.util.List;
 
 public class RentCompany {
 
+    private static final String NEWLINE = System.getProperty("line.separator");
+    private static final String REPORT_FORM = "%s : %.0f리터";
     private final List<Car> rentCars;
 
     private RentCompany() {
@@ -22,5 +24,16 @@ public class RentCompany {
 
     public void addCar(Car car) {
         rentCars.add(car);
+    }
+
+    public String generateReport() {
+        StringBuilder report = new StringBuilder();
+
+        rentCars.forEach(
+            car -> report.append(String.format(REPORT_FORM, car.getName(), car.getChargeQuantity()))
+                .append(NEWLINE)
+        );
+
+        return report.toString();
     }
 }

@@ -29,11 +29,7 @@
     - [x] `List<Car>`에 Sonata를 추가할 수 있다.
     - [x] `List<Car>`에 Avante를 추가할 수 있다.
     - [x] `List<Car>`에 K5를 추가할 수 있다.
-  - [ ] `generateReport()`는 전체 결과를 출력한다.
-- [ ] InputView
-  - [ ] 이동거리와 차를 입력 받을 수 있다.
-- [ ] OutputView
-  - [ ] `printRequiredFuel()` 하나의 차에 대해 연비를 출력할 수 있다.
+  - [x] `generateReport()`는 전체 결과를 출력한다.
   
 ## 기능 구현 사항
 
@@ -53,8 +49,8 @@
 
 ## 프로그래밍 요구 사항
 
-- [ ] 상속과 추상 메서드를 활용한다.
-- [ ] 위 요구사항을 if/else 절을 쓰지 않고 구현해야 한다.
+- [x] 상속과 추상 메서드를 활용한다.
+- [x] 위 요구사항을 if/else 절을 쓰지 않고 구현해야 한다.
 - [ ] 인터페이스를 적용해 구현한다.
 
 # java-blackjack
