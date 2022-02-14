@@ -1,4 +1,4 @@
-package view;
+package rentcar.view;
 
 import java.util.Scanner;
 

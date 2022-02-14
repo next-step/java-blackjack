@@ -1,11 +1,11 @@
-package domain;
+package rentcar.domain;
 
-public class Avante extends Car {
+public class Sonata extends Car {
 
-    private static final String NAME = "Avante";
-    private static final int DISTANCE_PER_LITER = 15;
+    private static final String NAME = "Sonata";
+    private static final int DISTANCE_PER_LITER = 10;
 
-    public Avante(final int distance) {
+    public Sonata(final int distance) {
         super(distance);
     }
 

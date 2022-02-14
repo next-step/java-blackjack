@@ -1,8 +1,8 @@
-package controller;
+package rentcar.controller;
 
-import domain.RentCompany;
-import view.InputView;
-import view.ReportView;
+import rentcar.domain.RentCompany;
+import rentcar.view.InputView;
+import rentcar.view.ReportView;
 
 public class RentController {
 

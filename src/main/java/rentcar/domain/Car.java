@@ -1,4 +1,4 @@
-package domain;
+package rentcar.domain;
 
 public abstract class Car {
 

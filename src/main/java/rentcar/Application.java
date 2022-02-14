@@ -1,4 +1,6 @@
-import controller.RentController;
+package rentcar;
+
+import rentcar.controller.RentController;
 
 public class Application {
 
