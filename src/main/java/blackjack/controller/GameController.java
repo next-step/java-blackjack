@@ -4,6 +4,7 @@ import blackjack.domain.CardPack;
 import blackjack.domain.Dealer;
 import blackjack.domain.Player;
 import blackjack.view.InputView;
+import blackjack.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,5 +22,11 @@ public class GameController {
         CardPack cardPack = CardPack.create();
         cardPack.removeCard(players);
         cardPack.removeCard(dealer);
+
+        OutputView.printInitialMessage(players);
+
+        for (Player player : players) {
+            OutputView.printCardStatus(player);
+        }
     }
 }
