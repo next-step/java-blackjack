@@ -12,6 +12,8 @@ public abstract class Car {
 
     abstract double getDistancePerLiter();
 
+    abstract String getCarName();
+
     double getChargeQuantity() {
         return getTripDistance() / getDistancePerLiter();
     }
