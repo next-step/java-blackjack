@@ -1,7 +1,9 @@
 package blackjack.domain;
 
-public class Card {
+import java.util.HashMap;
+import java.util.Map;
 
+public class Card {
     private final Suit suit;
     private final Denomination denomination;
 
@@ -9,5 +11,6 @@ public class Card {
         this.suit = suit;
         this.denomination = denomination;
     }
+
 
 }
