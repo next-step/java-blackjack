@@ -10,10 +10,10 @@ public class Parser {
 
     private static final String RESERVATION_DELIMITER = ",";
     private static final String INFO_DELIMITER = ":";
-    private static final int NAME = 0;
+    private static final int TYPE = 0;
     private static final int TRIP_DISTANCE = 1;
     private static final String INPUT_FORMAT_REGEX = "[a-zA-z0-9]+:[0-9]+";
-    private static final String INVALID_FORMAT_EXCEPTION_MESSAGE = "[ERROR] 입력 형식이 맞지 않습니다(eg.${carName}:${tripDistance})";
+    private static final String INVALID_FORMAT_EXCEPTION_MESSAGE = "[ERROR] 입력 형식이 맞지 않습니다(eg.${carType}:${tripDistance})";
 
     public static List<RentInfo> parse(final String input) {
 
@@ -24,7 +24,7 @@ public class Parser {
                 .map(rent -> {
                     validateInfoFormat(rent);
                     final String[] split = rent.split(INFO_DELIMITER);
-                    return new RentInfo(split[NAME], Double.parseDouble(split[TRIP_DISTANCE]));
+                    return new RentInfo(split[TYPE], Double.parseDouble(split[TRIP_DISTANCE]));
                 })
                 .collect(Collectors.toList()));
     }

@@ -17,16 +17,16 @@ class ParserTest {
     @DisplayName("올바른 입력이 들어오면, 정상적으로 실행된다.")
     @Test
     void 정상_입력1() {
-        final String input = "carName1:200";
-        final RentInfo rent = new RentInfo("carName1", 200);
+        final String input = "car1:200";
+        final RentInfo rent = new RentInfo("car1", 200);
         assertThat(Parser.parse(input)).isEqualTo(Arrays.asList(rent));
     }
 
     @DisplayName("두 개 이상의 rent 정보가 올바른 입력 형식으로 들어와도 정상적으로 실행된다.")
     @Test
     void 정상_입력2() {
-        final String input = "carName1:200,carName2:300";
-        final List<RentInfo> rents = Arrays.asList(new RentInfo("carName1", 200), new RentInfo("carName2", 300));
+        final String input = "car1:200,car2:300";
+        final List<RentInfo> rents = Arrays.asList(new RentInfo("car1", 200), new RentInfo("car2", 300));
         assertThat(Parser.parse(input)).isEqualTo(rents);
     }
 

@@ -2,7 +2,7 @@ package oilinjection.domain.car;
 
 public class K5 extends Car {
 
-    private static final String CAR_NAME = "K5";
+    private static final String CAR_TYPE = "K5";
     private static final double K5_DISTANCE_PER_LITER = 13D;
 
     public K5(final double tripDistance) {
@@ -15,7 +15,7 @@ public class K5 extends Car {
     }
 
     @Override
-    public String getName() {
-        return CAR_NAME;
+    public String getType() {
+        return CAR_TYPE;
     }
 }

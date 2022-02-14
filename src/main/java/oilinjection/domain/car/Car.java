@@ -12,7 +12,7 @@ public abstract class Car {
 
     abstract double getDistancePerLiter();
 
-    public abstract String getName();
+    public abstract String getType();
 
     double getTripDistance() {
         return this.tripDistance;

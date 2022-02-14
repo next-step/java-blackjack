@@ -35,9 +35,9 @@ public class RentCarTest {
         assertThat(sonata).isEqualTo(new Sonata(200D));
     }
 
-    @DisplayName("해당하는 이름이 없으면 예외를 발생시킨다.")
+    @DisplayName("해당하는 차종이 없으면 예외를 발생시킨다.")
     @Test
-    void 이름_없음() {
+    void 차종_없음() {
         assertThatExceptionOfType(IllegalArgumentException.class)
             .isThrownBy(() -> RentCar.rent("none", 10D));
     }
@@ -49,7 +49,7 @@ public class RentCarTest {
             .isThrownBy(() -> RentCar.rent("avante", 0D));
     }
 
-    @DisplayName("자동차의 이름은 대소문자를 구분하지 않는다.")
+    @DisplayName("자동차의 차종은 대소문자를 구분하지 않는다.")
     @ValueSource(strings = {"Sonata", "sOnAtA", "SONATA"})
     @ParameterizedTest
     void 소나타_대소문자_구분없이_생성(final String name) {

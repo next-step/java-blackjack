@@ -2,7 +2,7 @@ package oilinjection.domain.car;
 
 public class Avante extends Car {
 
-    private static final String CAR_NAME = "Avante";
+    private static final String CAR_TYPE = "Avante";
     private static final double AVANTE_DISTANCE_PER_LITER = 15D;
 
     public Avante(final double tripDistance) {
@@ -15,7 +15,7 @@ public class Avante extends Car {
     }
 
     @Override
-    public String getName() {
-        return CAR_NAME;
+    public String getType() {
+        return CAR_TYPE;
     }
 }

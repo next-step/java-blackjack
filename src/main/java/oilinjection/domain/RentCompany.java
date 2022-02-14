@@ -22,7 +22,7 @@ public class RentCompany {
         validateIsPossibleReservation(rentInfos);
 
         final List<Car> rentCars = rentInfos.stream()
-            .map(rentInfo -> RentCar.rent(rentInfo.getName(), rentInfo.getTripDistance()))
+            .map(rentInfo -> RentCar.rent(rentInfo.getType(), rentInfo.getTripDistance()))
             .collect(Collectors.toList());
 
         rents.addAll(Collections.unmodifiableList(rentCars));
@@ -30,24 +30,24 @@ public class RentCompany {
 
     private void validateIsPossibleReservation(final List<RentInfo> rentInfos) {
         rentInfos.stream()
-            .collect(Collectors.groupingBy(RentInfo::getName, Collectors.summingInt(x -> 1)))
+            .collect(Collectors.groupingBy(RentInfo::getType, Collectors.summingInt(x -> 1)))
             .forEach(this::validatePerCarType);
     }
 
-    private void validatePerCarType(final String name, final Integer count) {
-        if (findRentCar(name).isImpossibleReservation(count)) {
+    private void validatePerCarType(final String type, final Integer count) {
+        if (findRentCar(type).isImpossibleReservation(count)) {
             throw new IllegalArgumentException(
-                String.format(QUANTITY_OVER_EXCEPTION_MESSAGE_FORMAT, name));
+                String.format(QUANTITY_OVER_EXCEPTION_MESSAGE_FORMAT, type));
         }
     }
 
-    private RentCar findRentCar(final String name) {
-        return RentCar.valueOf(name.toUpperCase());
+    private RentCar findRentCar(final String type) {
+        return RentCar.valueOf(type.toUpperCase());
     }
 
     public String createReport() {
         StringBuilder report = new StringBuilder();
-        rents.forEach(car -> report.append(String.format(REPORT_FORMAT, car.getName(), car.getChargeQuantity())));
+        rents.forEach(car -> report.append(String.format(REPORT_FORMAT, car.getType(), car.getChargeQuantity())));
         return report.toString();
 
     }

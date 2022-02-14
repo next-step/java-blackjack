@@ -4,16 +4,16 @@ import java.util.Objects;
 
 public class RentInfo {
 
-    private final String name;
+    private final String type;
     private final double tripDistance;
 
-    public RentInfo(final String name, final double tripDistance) {
-        this.name = name;
+    public RentInfo(final String type, final double tripDistance) {
+        this.type = type;
         this.tripDistance = tripDistance;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
     public double getTripDistance() {
@@ -30,11 +30,11 @@ public class RentInfo {
         }
         RentInfo rent = (RentInfo) o;
         return Double.compare(rent.tripDistance, tripDistance) == 0
-            && Objects.equals(name, rent.name);
+            && Objects.equals(type, rent.type);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, tripDistance);
+        return Objects.hash(type, tripDistance);
     }
 }
