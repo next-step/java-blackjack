@@ -8,9 +8,11 @@
 * K5 : 13km/리터
 
 ## 기능 목록
-- [x] 자동차를 생성한다.
-  - 종류 : Sonata, Avante, k5
-  - 개수 : Sonata 2대, Avante 1대, K5 2대
-- [x] 주입해야할 연료량을 계산한다.
-- [x] 차량 별로 주입해야할 보고서를 생성한다.
-- [x] 회사를 생성한다.
+
+- [x] 회사를 생성한다. - RentCompany
+  - [x] 자동차를 생성한다. - RentCompany.addCar
+    - 종류 : Sonata, Avante, k5
+    - 개수 : Sonata 2대, Avante 1대, K5 2대
+    - [x] 주입해야할 연료량을 계산한다. - Car.getChargeQuantity()
+  - [x] 차량 별로 주입해야할 보고서를 생성한다. - RentCompany.generateReport()
+  
