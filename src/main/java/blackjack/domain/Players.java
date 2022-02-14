@@ -15,7 +15,7 @@ public class Players {
         return new Players(names.stream().map(Player::new).collect(Collectors.toList()));
     }
 
-    public void drawAll(int number) {
+    public void drawCardAll(int number) {
         for (Participant player : players) {
             player.drawCard(number);
         }

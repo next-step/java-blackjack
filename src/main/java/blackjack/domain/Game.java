@@ -19,12 +19,12 @@ public class Game {
 
         // 딜러 , 사용자 에게 카드 2장씩 분배
         dealer.drawCard(2);
-        players.drawAll(2);
+        players.drawCardAll(2);
 
         // 받은 카드 상태 출력
 
         // 사용자 1장씩 뽑기
-        players.drawAll(1);
+        players.drawCardAll(1);
 
         // 딜러 1장 뽑기
         dealer.drawCard(1);
