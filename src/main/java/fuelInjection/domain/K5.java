@@ -28,10 +28,6 @@ public class K5 extends Car {
         return tripDistance;
     }
 
-    public double getChargeQuantity() {
-        return getTripDistance() / getDistancePerLiter();
-    }
-
     private void validTripDistance() {
         if (isInvalidTripDistance()) {
             throw new IllegalArgumentException("[ERROR] 거리 값을 0 이상 양수값을 입력해주세요.");
