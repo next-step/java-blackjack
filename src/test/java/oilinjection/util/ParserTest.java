@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
-import oilinjection.domain.vo.Rent;
+import oilinjection.domain.vo.RentInfo;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,7 @@ class ParserTest {
     @Test
     void 정상_입력1() {
         final String input = "carName1:200";
-        final Rent rent = new Rent("carName1", 200);
+        final RentInfo rent = new RentInfo("carName1", 200);
         assertThat(Parser.parse(input)).isEqualTo(Arrays.asList(rent));
     }
 
@@ -26,7 +26,7 @@ class ParserTest {
     @Test
     void 정상_입력2() {
         final String input = "carName1:200,carName2:300";
-        final List<Rent> rents = Arrays.asList(new Rent("carName1", 200), new Rent("carName2", 300));
+        final List<RentInfo> rents = Arrays.asList(new RentInfo("carName1", 200), new RentInfo("carName2", 300));
         assertThat(Parser.parse(input)).isEqualTo(rents);
     }
 

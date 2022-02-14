@@ -2,12 +2,12 @@ package oilinjection.domain.vo;
 
 import java.util.Objects;
 
-public class Rent {
+public class RentInfo {
 
     private final String name;
     private final double tripDistance;
 
-    public Rent(String name, double tripDistance) {
+    public RentInfo(String name, double tripDistance) {
         this.name = name;
         this.tripDistance = tripDistance;
     }
@@ -28,7 +28,7 @@ public class Rent {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Rent rent = (Rent) o;
+        RentInfo rent = (RentInfo) o;
         return Double.compare(rent.tripDistance, tripDistance) == 0
             && Objects.equals(name, rent.name);
     }
