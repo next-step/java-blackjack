@@ -1,5 +1,7 @@
 package oilinjection.domain.car;
 
+import java.util.Objects;
+
 public abstract class Car {
 
     final double tripDistance;
@@ -18,5 +20,22 @@ public abstract class Car {
 
     double getChargeQuantity() {
         return getTripDistance() / getDistancePerLiter();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return Double.compare(car.tripDistance, tripDistance) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tripDistance);
     }
 }
