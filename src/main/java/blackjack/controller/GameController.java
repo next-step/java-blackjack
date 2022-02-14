@@ -1,5 +1,10 @@
 package blackjack.controller;
 
-public class Controller {
+import blackjack.view.InputView;
 
+public class GameController {
+
+    public void start() {
+        InputView.getPlayerName();
+    }
 }
