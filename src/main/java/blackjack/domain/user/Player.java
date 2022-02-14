@@ -1,12 +1,17 @@
 package blackjack.domain.user;
 
-public class Player extends User {
+import blackjack.domain.card.Card;
+import java.util.ArrayList;
+import java.util.List;
 
+public class Player {
+
+    private final List<Card> cards;
     private final String name;
 
     public Player(String name) {
-        super();
         validateName(name);
+        this.cards = new ArrayList<>();
         this.name = name;
     }
 
@@ -14,6 +19,10 @@ public class Player extends User {
         if (name == null || name.trim().length() == 0) {
             throw new IllegalArgumentException("[ERROR]");
         }
+    }
+
+    public void addCard(Card card) {
+        this.cards.add(card);
     }
 
     public String name() {

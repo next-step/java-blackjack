@@ -1,8 +1,8 @@
 package blackjack.domain.user;
 
-public class Dealer extends User {
+public class Dealer extends Player {
 
     public Dealer() {
-        super();
+        super("딜러");
     }
 }
