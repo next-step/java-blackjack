@@ -10,7 +10,7 @@ public class Sonata extends Car {
     }
 
     @Override
-    public double getDistancePerLiter() {
+    double getDistancePerLiter() {
         return SONATA_DISTANCE_PER_LITER;
     }
 

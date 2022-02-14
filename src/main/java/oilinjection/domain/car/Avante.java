@@ -10,7 +10,7 @@ public class Avante extends Car {
     }
 
     @Override
-    public double getDistancePerLiter() {
+    double getDistancePerLiter() {
         return AVANTE_DISTANCE_PER_LITER;
     }
 

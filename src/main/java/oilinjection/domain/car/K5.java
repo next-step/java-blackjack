@@ -10,7 +10,7 @@ public class K5 extends Car {
     }
 
     @Override
-    public double getDistancePerLiter() {
+    double getDistancePerLiter() {
         return K5_DISTANCE_PER_LITER;
     }
 
