@@ -31,4 +31,7 @@ public class CardDeck {
         return card;
     }
 
+    public boolean contains(Card target) {
+        return cardDeck.contains(target);
+    }
 }
