@@ -7,7 +7,7 @@ import java.util.List;
 
 public class RentCompany {
 
-    private static List<Car> rentCars;
+    private static List<RentCar> rentCars;
 
     private RentCompany() {
         rentCars = new ArrayList<>();
@@ -17,13 +17,13 @@ public class RentCompany {
         return new RentCompany();
     }
 
-    public void addCar(Car car) {
+    public void addCar(RentCar car) {
         rentCars.add(car);
     }
 
     public String generateReport() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (Car car : rentCars) {
+        for (RentCar car : rentCars) {
             stringBuilder.append(car.toString()).append(NEWLINE);
         }
         return stringBuilder.toString();

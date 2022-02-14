@@ -4,7 +4,7 @@ package rentcar.domain;
 import static rentcar.util.Constant.AVANTE_DISTANCE_PER_LITER;
 import static rentcar.util.Constant.AVANTE_NAME;
 
-public class Avante extends Car {
+public class Avante extends RentCar {
 
     private final double tripDistance;
 
@@ -13,17 +13,17 @@ public class Avante extends Car {
     }
 
     @Override
-    double getDistancePerLiter() {
+    public double getDistancePerLiter() {
         return AVANTE_DISTANCE_PER_LITER;
     }
 
     @Override
-    double getTripDistance() {
+    public double getTripDistance() {
         return tripDistance;
     }
 
     @Override
-    String getName() {
+    public String getName() {
         return AVANTE_NAME;
     }
 }
