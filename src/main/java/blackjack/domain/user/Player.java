@@ -1,10 +1,11 @@
 package blackjack.domain.user;
 
-public class Player {
+public class Player extends User {
 
     private final String name;
 
     public Player(String name) {
+        super();
         validateName(name);
         this.name = name;
     }
