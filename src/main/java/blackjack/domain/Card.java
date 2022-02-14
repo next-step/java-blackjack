@@ -12,6 +12,10 @@ public class Card {
         this.point = point;
     }
 
+    public String getSymbol() {
+        return this.symbol;
+    }
+
     public String getName() {
         return this.name;
     }
