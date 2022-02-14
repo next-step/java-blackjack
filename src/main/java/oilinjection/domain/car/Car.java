@@ -6,19 +6,19 @@ public abstract class Car {
 
     final double tripDistance;
 
-    public Car(double tripDistance) {
+    Car(double tripDistance) {
         this.tripDistance = tripDistance;
     }
 
     abstract double getDistancePerLiter();
 
-    abstract String getName();
+    public abstract String getName();
 
     double getTripDistance() {
         return this.tripDistance;
     }
 
-    double getChargeQuantity() {
+    public double getChargeQuantity() {
         return getTripDistance() / getDistancePerLiter();
     }
 
