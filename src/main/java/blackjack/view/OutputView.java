@@ -7,9 +7,8 @@ public class OutputView {
 
     private OutputView() {}
 
-    public static void requestPlayersName(String[] players) {
+    public static void requestPlayersName() {
         System.out.println(REQUEST_PLAYERS_NAME);
-        printGamePlayer(players);
     }
 
     public static void printGamePlayer(String[] players) {
