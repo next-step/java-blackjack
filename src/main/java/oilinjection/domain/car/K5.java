@@ -5,7 +5,7 @@ public class K5 extends Car {
     private static final String CAR_NAME = "K5";
     private static final double K5_DISTANCE_PER_LITER = 13D;
 
-    public K5(double tripDistance) {
+    public K5(final double tripDistance) {
         super(tripDistance);
     }
 

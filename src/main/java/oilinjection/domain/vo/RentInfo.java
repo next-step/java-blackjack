@@ -7,7 +7,7 @@ public class RentInfo {
     private final String name;
     private final double tripDistance;
 
-    public RentInfo(String name, double tripDistance) {
+    public RentInfo(final String name, final double tripDistance) {
         this.name = name;
         this.tripDistance = tripDistance;
     }

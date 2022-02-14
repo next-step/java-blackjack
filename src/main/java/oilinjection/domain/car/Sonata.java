@@ -5,7 +5,7 @@ public class Sonata extends Car {
     private static final String CAR_NAME = "Sonata";
     private static final double SONATA_DISTANCE_PER_LITER = 10D;
 
-    public Sonata(double tripDistance) {
+    public Sonata(final double tripDistance) {
         super(tripDistance);
     }
 

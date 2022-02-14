@@ -6,7 +6,7 @@ public abstract class Car {
 
     final double tripDistance;
 
-    Car(double tripDistance) {
+    Car(final double tripDistance) {
         this.tripDistance = tripDistance;
     }
 

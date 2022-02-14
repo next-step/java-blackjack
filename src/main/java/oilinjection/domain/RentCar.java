@@ -19,7 +19,7 @@ public enum RentCar {
     private final int quantity;
     private final Function<Double, Car> createCar;
 
-    RentCar(final String name, int quantity, final Function<Double, Car> createCar) {
+    RentCar(final String name, final int quantity, final Function<Double, Car> createCar) {
         this.name = name;
         this.quantity = quantity;
         this.createCar = createCar;
@@ -35,7 +35,7 @@ public enum RentCar {
             .createCar(tripDistance);
     }
 
-    private static void validateOverMinTripDistance(double tripDistance) {
+    private static void validateOverMinTripDistance(final double tripDistance) {
         if (tripDistance < MIN_TRIP_DISTANCE) {
             throw new IllegalArgumentException(UNDER_MIN_TRIP_DISTANCE_EXCEPTION_MESSAGE);
         }
@@ -45,7 +45,7 @@ public enum RentCar {
         return this.createCar.apply(tripDistance);
     }
 
-    public boolean isImpossibleReservation(Integer count) {
+    public boolean isImpossibleReservation(final Integer count) {
         return count > this.quantity;
     }
 }
