@@ -27,7 +27,7 @@ public class RentCompany {
 
         for (Car car : cars) {
             stringBuilder.append(
-                String.format(REPORT_VIEW, car.getName(), (int) car.getChargeQuantity()));
+                String.format(REPORT_VIEW, car.getName(), (int) car.calculateChargeQuantity()));
         }
 
         return stringBuilder.toString();

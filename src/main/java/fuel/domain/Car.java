@@ -8,13 +8,13 @@ abstract public class Car {
         this.tripDistance = tripDistance;
     }
 
+    final double calculateChargeQuantity() {
+        return getTripDistance() / getDistancePerLiter();
+    }
+
     abstract double getDistancePerLiter();
 
     abstract double getTripDistance();
 
     abstract String getName();
-
-    final double getChargeQuantity() {
-        return getTripDistance() / getDistancePerLiter();
-    }
 }
