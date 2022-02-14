@@ -8,12 +8,12 @@ public class InputView {
     private final static String TRIP_MANAGER = "여행 거리를 입력해 주세요.";
     private final static String ERROR_LOG = "[ERROR] 0이나 빈 값이 들어올 수 없습니다";
 
-    public static String getTripDistance() {
+    public static int getTripDistance() {
         try {
             System.out.println(TRIP_MANAGER);
             String input = scanner.nextLine();
             validateEmptyOrZero(input);
-            return input;
+            return Integer.parseInt(input);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             return getTripDistance();
