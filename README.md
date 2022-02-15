@@ -100,7 +100,7 @@
   - [] GameUser를 인자로 받아 User별, 승/패 정보를 계산한다.
 - [] GameController - 전체적인 게임을 진행할 Controller 
   - [] 이름의 배열을 BlackJack에 전달한다.
-- [] UserName - 게임 참여자의 이름
+- [x] UserName - 게임 참여자의 이름
 - [] InputParser - String -> List<String>의 이름의 배열로 반환한다.
   - [] 이름의 중복을 확인한다.
   - [] 이름의 공백을 확인한다.
