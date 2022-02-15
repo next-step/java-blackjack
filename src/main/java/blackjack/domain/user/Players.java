@@ -11,4 +11,16 @@ public class Players {
         this.players.add(dealer);
         this.players.addAll(players);
     }
+
+    public List<Player> findOnlyPlayers() {
+        return null;
+    }
+
+    public Player findDealer() {
+        return null;
+    }
+
+    public boolean hasBlackJack() {
+        return false;
+    }
 }
