@@ -1,6 +1,7 @@
 package blackjack.domain.card;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -19,4 +20,15 @@ class CardDeckTest {
         assertThat(cardDeck.getCards().size()).isEqualTo(52);
     }
 
+    @Test
+    void 전달받은_개수만큼_카드를_뽑아서_반환한다() {
+        CardDeck cardDeck = new CardDeck();
+        int initialSize = cardDeck.getCards().size();
+        List<Card> pickedCards = cardDeck.pickCards(5);
+
+        assertAll(
+            () -> assertThat(pickedCards.size()).isEqualTo(5),
+            () -> assertThat(cardDeck.getCards().size()).isEqualTo(initialSize - 5)
+        );
+    }
 }
