@@ -15,5 +15,5 @@ public abstract class Person {
 
     }
 
-    public abstract Card drawCard();
+    public abstract boolean canDrawCard();
 }
