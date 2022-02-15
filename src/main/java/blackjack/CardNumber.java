@@ -13,6 +13,7 @@ public enum CardNumber {
     SEVEN("7", 7),
     EIGHT("8", 8),
     NINE("9", 9),
+    TEN("10", 10),
     JACK("J", 10),
     QUEEN("Q", 10),
     KING("K", 10);
