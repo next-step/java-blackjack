@@ -67,7 +67,7 @@
 ## 기능 구현 사항
 
 - [ ] 사람 이름 입력받기(`Input.getPlayerNames`)
-- [ ] 카드는 문양값(`Suit`)과 숫자값(`Denomination`)을 가진다 (Card)
+- [x] 카드는 문양값(`Suit`)과 숫자값(`Denomination`)을 가진다 (Card)
     - [x] 문양값(`Suit`)과 숫자값(`Denomination`)은 `enum`으로 구현한다
 - [ ] 카드리스트를 가진 일급 컬렉션 Deck 구현
     - [ ] 카드를 생성한다 (`Deck.setupCard()`)
