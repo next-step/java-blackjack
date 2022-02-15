@@ -2,7 +2,24 @@ package blackjack.domain.user;
 
 public class Dealer extends Player {
 
+    private static final int DEALER_MUST_DRAW_SCORE = 16;
+
     public Dealer() {
         super("딜러");
+    }
+
+    @Override
+    public boolean isPlayer() {
+        return false;
+    }
+
+    @Override
+    public boolean isDealer() {
+        return true;
+    }
+
+    @Override
+    public boolean isDrawable() {
+        return score() <= DEALER_MUST_DRAW_SCORE;
     }
 }
