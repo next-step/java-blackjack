@@ -1,6 +1,7 @@
 package blackjack.controller;
 
 import blackjack.domain.CardPack;
+import blackjack.domain.Dealer;
 import blackjack.domain.Player;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
@@ -12,6 +13,23 @@ import java.util.stream.Stream;
 public class GameController {
 
     public void start() {
+        CardPack cardPack = CardPack.create();
+        Dealer dealer = new Dealer(cardPack);
+
+        List<Player> players = makePlayers();
+
+        cardPack.removeCard(players);
+
+        OutputView.printInitialMessage(players);
+
+        for (Player player : players) {
+            OutputView.printCardStatus(player);
+        }
+
+        dealer.game(players);
+    }
+
+    private List<Player> makePlayers() {
         List<String> playerNames = InputView.getPlayerName();
 
         Player dealerPlayer = new Player("딜러", true);
@@ -22,17 +40,8 @@ public class GameController {
             .map(player -> new Player(player, false))
             .collect(Collectors.toList());
 
-        List<Player> players = Stream.of(dealerPlayers, commonPlayers)
+        return Stream.of(dealerPlayers, commonPlayers)
             .flatMap(lotto -> lotto.stream())
             .collect(Collectors.toList());
-
-        CardPack cardPack = CardPack.create();
-        cardPack.removeCard(players);
-
-        OutputView.printInitialMessage(players);
-
-        for (Player player : players) {
-            OutputView.printCardStatus(player);
-        }
     }
 }
