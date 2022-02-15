@@ -64,8 +64,8 @@
   - [x] 카드를 받을 지에 대한 여부 입력 (`y`, `n`으로 구분)
     - [ ] 'y' 와 'n'이 아닐 경우 exception이 발생한다.
 
-- [ ] Parser
-  - [ ] 플레이어 이름 입력 형식에 맞는지 확인한다.
+- [x] Parser
+  - [x] 플레이어 이름이 비어있는지 확인한다. 
 
 - [ ] Deck
   - Cards(set<Card>: pattern, number) 
