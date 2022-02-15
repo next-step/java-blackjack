@@ -36,6 +36,10 @@ public class Deck {
         return deck;
     }
 
+    public boolean isScoreOver21() {
+        return getScore() > MATCH_SCORE;
+    }
+
     public int getScore() {
         int score = 0;
         int count = 0;
