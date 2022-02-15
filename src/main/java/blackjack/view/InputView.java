@@ -19,9 +19,14 @@ public class InputView {
         return splitPlayerName(input);
     }
 
-    private static void validateEmpty(String input) {
-        if (input.isEmpty()) {
-            throw new IllegalArgumentException();
+    public static boolean getPlayerChoice() {
+        try {
+            String input = scanner.nextLine();
+            validateEmpty(input);
+            return input.equals("y");
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return getPlayerChoice();
         }
     }
 
@@ -31,5 +36,11 @@ public class InputView {
             .map(name -> name.trim())
             .filter(name -> !name.isEmpty())
             .collect(Collectors.toList());
+    }
+
+    private static void validateEmpty(String input) {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
     }
 }
