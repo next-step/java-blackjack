@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 class CardPackTest {
@@ -34,6 +35,29 @@ class CardPackTest {
         for (String symbol : cardMapKeys) {
             final int cardQuantity = cardMap.get(symbol).size();
             assertThat(cardQuantity).isEqualTo(12);
+        }
+    }
+
+    @Test
+    public void 각_심볼별_카드의_종류는_Enum_CardType을_모두_포함한다() {
+        //given
+        List<String> cardMapKeys = new ArrayList<>(cardMap.keySet());
+
+        //when
+        //then
+        for (String symbol : cardMapKeys) {
+            final List<Card> cards = cardMap.get(symbol);
+
+            List<String> cardNames = cards.stream()
+                .map(Card::getName)
+                .collect(Collectors.toList());
+
+            List<String> expectedCards = Arrays.stream(CardType.values())
+                .map(x -> new Card(symbol, x.getName(), x.getPoint()))
+                .map(Card::getName)
+                .collect(Collectors.toList());
+
+            assertThat(cardNames).contains(expectedCards.toArray(new String[0]));
         }
     }
 }
