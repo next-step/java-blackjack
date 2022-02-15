@@ -13,7 +13,7 @@ public class Cards {
 
     private final List<Card> cards;
 
-    protected Cards(final List<Card> cards) {
+    private Cards(final List<Card> cards) {
         this.cards = new ArrayList<>(cards);
     }
 
