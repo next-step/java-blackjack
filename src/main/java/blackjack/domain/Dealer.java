@@ -1,26 +1,18 @@
 package blackjack.domain;
 
-import java.util.ArrayList;
+public class Dealer extends Player {
 
-public class Dealer extends Gambler{
+    private static final String DEALER = "딜러";
 
-    public Dealer(String name){
-        this.name = name;
-        this.cards=new ArrayList<>();
+    private final Deck deck;
+    public Dealer() {
+        super(DEALER);
+        this.deck= new Deck();
     }
 
-    @Override
-    protected int calculateScore() {
-        return 0;
-    }
-
-    @Override
-    protected void receiveCard() {
-
-    }
-
-    public Card allocateCard(){
-        return null;
+    public void allocateCard(Player player) {
+        Card popped = deck.popCard();
+        player.receiveCard (popped);
     }
 
 }

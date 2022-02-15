@@ -73,9 +73,10 @@
     - [x] 카드를 생성한다 (`Deck.setupCard()`)
     - [x] 카드를 섞는다 (`Deck.shuffle()`)
     - [x] 카드 한 장을 꺼낸다 (`Deck.popCard()`)
-- [x] `Dealer`와 `Player`는 `Gambler` 클래스로부터 상속을 받는다
-- [ ] 딜러가 플레이어에게 카드 배분한다 (`Dealer.allocateCard()`)
+- [x] `Dealer`는 `Player` 클래스로부터 상속을 받는다
+- [ ] 카드 숫자를 계산한다 (`Player.calculateScore()`)
+- [x] 딜러가 플레이어에게 카드 배분한다 (`Dealer.allocateCard()`)
+- [ ] 딜러의 처음 받은 2장의 카드 합계가 16이하라면 카드 한 장을 추가로 받는다 (`Dealer.addOneMoreCard`)
 - [ ] 카드 추가 여부 묻기 (`Input.askAddCard()`)
-- [ ] 카드 숫자를 계산한다 (`Gambler.calculateScore()`)
 - [ ] 우승자를 찾는다 (`Judgement.findWinner()`)
 - [ ] 최종 승패 계산하기 (`Judgement.calculateWinningRate()`)
