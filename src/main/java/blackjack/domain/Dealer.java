@@ -68,7 +68,7 @@ public class Dealer {
     }
 
     private void giveCardAfterPick(Player player) {
-        Card pickedCard = cardPack.pickCard(player);
+        Card pickedCard = cardPack.pickCard();
         player.receiveCard(pickedCard);
     }
 
