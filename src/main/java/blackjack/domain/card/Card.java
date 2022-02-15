@@ -4,7 +4,7 @@ public class Card {
     private final Pattern pattern;
     private final Rank rank;
 
-    public Card(final Pattern pattern, final Rank rank) {
+    protected Card(final Pattern pattern, final Rank rank) {
         this.pattern = pattern;
         this.rank = rank;
     }
