@@ -1,31 +1,35 @@
 package blackjack.domain;
 
+
+import blackjack.view.InputView;
+import blackjack.view.OutputView;
 import java.util.List;
 
 public class Dealer {
 
-    private static final String DEALER = "딜러";
+    private static final int BLACKJACK = 21;
+    private final CardPack cardPack;
 
-    private final String name;
-    private int score;
-    private List<Card> cards;
-
-    public Dealer(int score, List<Card> cards) {
-        this.name = DEALER;
-        this.score = score;
-        this.cards = cards;
+    public Dealer(CardPack cardPack) {
+        this.cardPack = cardPack;
     }
 
-    public void addCard(final Card card) {
-        score += card.getPoint();
-        this.cards.add(card);
+    public void game(List<Player> players) {
+        for (Player player : players) {
+            if (player.isDealer()) continue;
+
+            if(isLowerThanBlackJack(player)) {
+                OutputView.printQuestionAcceptCard(player);
+
+                while (InputView.getPlayerChoice()) {
+                    cardPack.giveCard(player);
+                    OutputView.printCardStatus(player);
+                }
+            }
+        }
     }
 
-    public String getName() {
-        return this.name;
-    }
-
-    public int getScore() {
-        return this.score;
+    public boolean isLowerThanBlackJack(Player player) {
+        return player.getScore() < BLACKJACK;
     }
 }
