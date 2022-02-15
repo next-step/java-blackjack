@@ -21,4 +21,8 @@ public enum Number {
     Number(int score) {
         this.score = score;
     }
+
+    public int score() {
+        return score;
+    }
 }

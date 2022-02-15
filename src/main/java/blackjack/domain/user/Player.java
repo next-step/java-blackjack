@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Player {
 
+    private static final int BLACK_JACK_SCORE = 21;
+
     protected final List<Card> cards;
     private final String name;
 
@@ -17,7 +19,7 @@ public class Player {
 
     private void validateName(String name) {
         if (name == null || name.trim().length() == 0) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException("[ERROR] 올바르지 않은 이름의 입력 값입니다.");
         }
     }
 
@@ -38,18 +40,20 @@ public class Player {
     }
 
     public int score() {
-        return 0;
+        return cards.stream()
+            .mapToInt(Card::value)
+            .sum();
     }
 
     public boolean isDrawable() {
-        return true;
+        return !isBurst();
     }
 
     public boolean isBurst() {
-        return false;
+        return score() > BLACK_JACK_SCORE;
     }
 
     public boolean isBlackJack() {
-        return false;
+        return score() == BLACK_JACK_SCORE;
     }
 }

@@ -12,6 +12,10 @@ public class Card {
         this.number = number;
     }
 
+    public int value() {
+        return number.score();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
