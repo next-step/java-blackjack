@@ -26,7 +26,7 @@ public class OutputView {
 
         List<Card> cards = player.getCards();
         for (Card card : cards) {
-            stringBuilder.append(card.getPoint())
+            stringBuilder.append(card.getName())
                 .append(card.getSymbol())
                 .append(COMMA);
         }
