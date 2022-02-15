@@ -64,15 +64,15 @@
   - [] UserName을 가지고 있다.
   - [] Deck에 카드를 추가할 수 있다.
   - [] Deck의 현재 score가 21을 넘는지에 대한 boolean 계산을 할 수 있다. 
-  - [] 해당 카드의 점수인 score를 계산 할 수 있다.
+  - [] 해당 카드의 점수인 score를 반환할 수 있다. 
 - [] Dealer
   - [] 총 score가 16이하일 경우, 1장의 카드를 추가로 받는다.
 - [] Player
-- [] Deck - 딜러 또는 플레이어가 가진 Card의 집합
-  - [] List<Card>를 가지고 있다.
-  - [] 현재 List<Card>의 총 score를 계산할 수 있다.
-  - [] 현재 가진 Card 중에서 Ace가 있는 경우, 해당 Card에 대한 Score를 1 또는 11로 계산할 수 있다.
-    - [] 21을 초과하지 않으면서, 21에 가깝게 계산할 수 있다.
+- [x] Deck - 딜러 또는 플레이어가 가진 Card의 집합
+  - [x] List<Card>를 가지고 있다.
+  - [x] 현재 List<Card>의 총 score를 계산할 수 있다.
+  - [x] 현재 가진 Card 중에서 Ace가 있는 경우, 해당 Card에 대한 Score를 1 또는 11로 계산할 수 있다.
+    - [x] 21을 초과하지 않으면서, 21에 가깝게 계산할 수 있다.
 - [x] Card - Game에서 사용할 카드의 객체
   - [x] CardType type을 가지고 있다. (e.g 다이아몬드, 클로버, 스페이드, 하트 ...)
   - [x] CardNumber _String을_ 가지고 있다. (e.g 2, 3, A, K, Q, J ...)
