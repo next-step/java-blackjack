@@ -12,4 +12,8 @@ public class Card {
     public String getName() {
         return denomination.getName() + pattern.getName();
     }
+
+    public boolean isAce() {
+        return this.denomination == Denomination.ACE;
+    }
 }
