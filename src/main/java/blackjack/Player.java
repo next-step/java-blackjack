@@ -11,7 +11,7 @@ public class Player extends Person {
     }
 
     @Override
-    public Card drawCard() {
-        return null;
+    public boolean canDrawCard() {
+        return cards.isNearTwentyOne();
     }
 }
