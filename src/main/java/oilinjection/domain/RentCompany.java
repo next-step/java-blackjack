@@ -34,7 +34,7 @@ public class RentCompany {
             .forEach(this::validatePerCarType);
     }
 
-    private void validatePerCarType(final String type, final Integer count) {
+    private void validatePerCarType(final String type, final int count) {
         if (findRentCar(type).isImpossibleReservation(count)) {
             throw new IllegalArgumentException(
                 String.format(QUANTITY_OVER_EXCEPTION_MESSAGE_FORMAT, type));
