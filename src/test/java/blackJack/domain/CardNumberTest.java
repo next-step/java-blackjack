@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class CardNumberTest {
 
-    @DisplayName("주어진 정수로 CardNumber 생성 후 getCardNumber() 호출시, 주어진 정수와 동일하다.")
+    @DisplayName("주어진 String으로 CardNumber 생성 후 getCardNumber() 호출시, 주어진 정수와 동일하다.")
     @ParameterizedTest
     @ValueSource(strings = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"})
     void givenNumberWithString_WhenGetCardNumber_ThenEqualToGivenNumber(String number) {
