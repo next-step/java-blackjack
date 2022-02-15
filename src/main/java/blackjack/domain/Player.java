@@ -6,6 +6,9 @@ import java.util.List;
 
 public class Player {
 
+    private static final String ACE = "A";
+    private static final int BLACK_JACK = 21;
+
     private final String name;
     private int score;
     private List<Card> cards;
@@ -23,12 +26,28 @@ public class Player {
         addScore(card);
     }
 
-    public void addCard(final Card card) {
+    private void addCard(final Card card) {
         this.cards.add(card);
     }
 
-    public void addScore(final Card card) {
+    private void addScore(final Card card) {
+        if (isAceCard(card)) {
+            this.score = getBetterPointForAce(card);
+            return;
+        }
         this.score += card.getPoint();
+    }
+
+    private boolean isAceCard(final Card card) {
+        return card.getName().equals(ACE);
+    }
+
+    private int getBetterPointForAce(Card card) {
+        int curScore = this.score;
+        if (curScore + card.getPoint() < BLACK_JACK) {
+            return curScore + card.getPoint();
+        }
+        return curScore + card.getLowerAcePoint();
     }
 
     public String getName() {
