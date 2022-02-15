@@ -1,11 +1,24 @@
 package blackjack.domain;
 
+import blackjack.domain.Card.CardType;
+import blackjack.domain.Card.CardValue;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
 
     public void start() {
+        // 덱만들기
+        List<CardType> types = Arrays.asList(CardType.values());
+        Collections.shuffle(types);
+
+        List<CardValue> values = Arrays.asList(CardValue.values());
+        Collections.shuffle(values);
+
+        Deck deck = new Deck(types, values);
+
         // 사용자 입력
         List<String> name = new ArrayList<>();
         name.add("pobi");
