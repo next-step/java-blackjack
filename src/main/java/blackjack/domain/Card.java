@@ -9,4 +9,13 @@ public class Card {
         this.cardNumber = cardNumber;
         this.cardPattern = cardPattern;
     }
+
+    @Override
+    public String toString() {
+        return cardNumber.getName() + cardPattern.getName();
+    }
+
+    public CardNumber getCardNumber() {
+        return cardNumber;
+    }
 }
