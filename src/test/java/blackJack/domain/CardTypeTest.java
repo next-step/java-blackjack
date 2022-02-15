@@ -15,7 +15,7 @@ class CardTypeTest {
     void givenCardTypeWithString_WhenGetCardType_ThenEqualToGivenCardType(String type) {
         CardType cardType = CardType.from(type);
 
-        assertThat(cardType.getCardType())
+        assertThat(cardType.getType())
             .isEqualTo(type);
     }
 

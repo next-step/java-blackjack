@@ -15,7 +15,7 @@ class CardNumberTest {
     void givenNumberWithString_WhenGetCardNumber_ThenEqualToGivenNumber(String number) {
         CardNumber cardNumber = CardNumber.from(number);
 
-        assertThat(cardNumber.getCardNumber())
+        assertThat(cardNumber.getNumber())
             .isEqualTo(number);
     }
 
