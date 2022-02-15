@@ -32,28 +32,13 @@ public class CardPack {
 
     //TODO: removeCard 로직분리, 네이명 수정, 테스트코드 작성
 
-    public void pickCard(List<Player> players) {
-        for (Player player : players) {
-            for (int i = 0; i < 2; i++) {
-                int symbolIndex = CardShuffler.pickIndexIn(4);
-                String symbol = symbols.get(symbolIndex);
-                List<Card> cards = map.get(symbol);
-
-                int cardIndex = CardShuffler.pickIndexIn(cards.size());
-                Card pickedCard = map.get(symbol).remove(cardIndex);
-                player.addCard(pickedCard);
-            }
-        }
-    }
-
-    public void giveCard(Player player) {
+    public Card pickCard(Player player) {
         int symbolIndex = CardShuffler.pickIndexIn(4);
         String symbol = symbols.get(symbolIndex);
         List<Card> cards = map.get(symbol);
 
         int cardIndex = CardShuffler.pickIndexIn(cards.size());
-        Card pickedCard = map.get(symbol).remove(cardIndex);
-        player.addCard(pickedCard);
+        return map.get(symbol).remove(cardIndex);
     }
 
     public Map<String, List<Card>> getMap() {
