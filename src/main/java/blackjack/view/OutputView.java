@@ -10,6 +10,7 @@ public class OutputView {
     private static final String GAME_INITIAL_MANAGER = "딜러와 %s에게 2장의 카드를 나누었습니다.";
     private static final String COMMA = ", ";
     private static final String CARDS_LOG = "%s: %s";
+    private static final String QUESTION_ACCEPT_CARD_MESSAGE = "%s는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)";
 
     public static void printInitialMessage(List<Player> players) {
         String playerNames = players.stream()
@@ -29,5 +30,9 @@ public class OutputView {
                 .append(COMMA);
         }
         System.out.println(String.format(CARDS_LOG, player.getName(), stringBuilder.toString()));
+    }
+
+    public static void printQuestionAcceptCard(Player player) {
+        System.out.println(String.format(QUESTION_ACCEPT_CARD_MESSAGE, player.getName()));
     }
 }
