@@ -4,7 +4,7 @@ import blackjack.domain.card.Card;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Person {
+public class Person {
 
     protected List<Card> cards;
 
