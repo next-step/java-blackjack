@@ -19,7 +19,7 @@ class CardNumberTest {
             .isEqualTo(number);
     }
 
-    @DisplayName("유효하지 않는 CarNumber 범위로 인스턴스가 생성될때, RuntimeException 발생한다.")
+    @DisplayName("유효하지 않는 CardNumber 범위로 인스턴스가 생성될때, RuntimeException 발생한다.")
     @ParameterizedTest
     @ValueSource(strings = {"1", "11", "12", "13", "B"})
     void givenInValidCardNumberRange_WhenCreateInstance_ThenThrowRuntimeException(
