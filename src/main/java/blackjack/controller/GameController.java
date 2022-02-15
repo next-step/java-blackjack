@@ -20,7 +20,8 @@ public class GameController {
         printInitialStatus(gamePlayers);
         dealer.playGame(gamePlayers);
 
-        OutputView.printResult(gamePlayers);
+        OutputView.printCardResult(gamePlayers);
+        OutputView.printGameResult(gamePlayers);
     }
 
     private void printInitialStatus(GamePlayers gamePlayers) {
