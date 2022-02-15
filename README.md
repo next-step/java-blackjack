@@ -73,8 +73,9 @@
   - [] 현재 가진 Card 중에서 Ace가 있는 경우, 해당 Card에 대한 Score를 1 또는 11로 계산할 수 있다.
     - [] 21을 초과하지 않으면서, 21에 가깝게 계산할 수 있다.
 - [] Card - Game에서 사용할 카드의 객체
-  - [] CardType type을 가지고 있다. (e.g 다이아몬드, 클로버, 스페이드, 하트 ...)
-  - [] CardNumber number을 가지고 있다. (e.g 1, 2, 3, A, K, Q ...)
+  - [x] CardType type을 가지고 있다. (e.g 다이아몬드, 클로버, 스페이드, 하트 ...)
+  - [x] CardNumber _String을_ 가지고 있다. (e.g 2, 3, A, K, Q, J ...)
+    - [x]  CardNumber는 `"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"` 이 범위안에 반드시 있어야한다.
 - [] CardType - Card의 타입
 - [] CardNumber - Card의 숫자
   - [] 해당 카드의 점수인 score를 가지고 있다.
