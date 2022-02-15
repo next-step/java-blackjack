@@ -15,7 +15,7 @@ class ParserTest {
     @DisplayName("플레이어의 이름을 정상적으로 반환한다.")
     @Test
     void Given유효한값_When파싱_Then이름_반환() {
-        List<String> names = Parser.parse(" json, pobi ");
+        final List<String> names = Parser.parse(" json, pobi ");
         assertThat(names).isEqualTo(Arrays.asList("json","pobi"));
     }
 
