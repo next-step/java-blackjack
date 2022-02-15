@@ -68,11 +68,17 @@
   - [x] 플레이어 이름이 비어있는지 확인한다. 
 
 
-- [ ] Deck
+- [x] Deck
   - Cards(set<Card>: pattern, rank)
-  - [ ] 카드 뽑기 - draw
+  - [x] 카드 뽑기 - draw
     - 카드 제거 - Cards without(Card card)
-
+  
+- [x] Cards
+  - [x] Card 생성
+  - [x] Card 하나 뽑기
+    - [x] 빈 덱이라면 예외 발생
+  - [x] 전체 Card에서 한 개의 Card 제거
+ 
 - [x] Card
   - [x] ACE 인지 확인.
   - [x] 이름(patter + rank)
