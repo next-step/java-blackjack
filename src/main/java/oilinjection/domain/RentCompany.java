@@ -22,10 +22,14 @@ public class RentCompany {
         validateIsPossibleReservation(rentInfos);
 
         final List<Car> rentCars = rentInfos.stream()
-            .map(rentInfo -> RentCar.rent(rentInfo.getType(), rentInfo.getTripDistance()))
+            .map(this::rent)
             .collect(Collectors.toList());
 
         rents.addAll(Collections.unmodifiableList(rentCars));
+    }
+
+    private Car rent(RentInfo rentInfo) {
+        return RentCar.rent(rentInfo.getType(), rentInfo.getTripDistance());
     }
 
     private void validateIsPossibleReservation(final List<RentInfo> rentInfos) {
@@ -47,8 +51,9 @@ public class RentCompany {
 
     public String createReport() {
         StringBuilder report = new StringBuilder();
-        rents.forEach(car -> report.append(String.format(REPORT_FORMAT, car.getType(), car.getChargeQuantity())));
-        return report.toString();
+        rents.forEach(car -> report.append(
+            String.format(REPORT_FORMAT, car.getType(), car.getChargeQuantity())));
 
+        return report.toString();
     }
 }
