@@ -12,4 +12,16 @@ class CardTest {
     void When카드이름_얻기_Then이름_반환() {
         assertThat(new Card(Pattern.SPADE, Denomination.SEVEN).getName()).isEqualTo("7스페이드");
     }
+
+    @DisplayName("ACE이면 true 반환한다.")
+    @Test
+    void Given에이스_When판단_Then참 () {
+        assertThat(new Card(Pattern.SPADE, Denomination.ACE).isAce()).isTrue();
+    }
+
+    @DisplayName("ACE가 아니면 false를 반환한다.")
+    @Test
+    void Given에이스_이외의_카드_When판단_Then거짓 () {
+        assertThat(new Card(Pattern.SPADE, Denomination.KING).isAce()).isFalse();
+    }
 }
