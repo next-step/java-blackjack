@@ -12,4 +12,8 @@ public class Player {
         cards.addCard(deck.popCard());
         cards.addCard(deck.popCard());
     }
+
+    public int getScore() {
+        return cards.getScore();
+    }
 }
