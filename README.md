@@ -69,10 +69,10 @@
 - [ ] 사람 이름 입력받기(`Input.getPlayerNames`)
 - [x] 카드는 문양값(`Suit`)과 숫자값(`Denomination`)을 가진다 (Card)
     - [x] 문양값(`Suit`)과 숫자값(`Denomination`)은 `enum`으로 구현한다
-- [ ] 카드리스트를 가진 일급 컬렉션 Deck 구현
-    - [ ] 카드를 생성한다 (`Deck.setupCard()`)
-    - [ ] 카드를 섞는다 (`Deck.shuffle()`)
-    - [ ] 카드 한 장을 Gambler에게 준다 (`Deck.popCard()`)
+- [x] 카드리스트를 가진 일급 컬렉션 Deck 구현
+    - [x] 카드를 생성한다 (`Deck.setupCard()`)
+    - [x] 카드를 섞는다 (`Deck.shuffle()`)
+    - [x] 카드 한 장을 꺼낸다 (`Deck.popCard()`)
 - [x] `Dealer`와 `Player`는 `Gambler` 클래스로부터 상속을 받는다
 - [ ] 딜러가 플레이어에게 카드 배분한다 (`Dealer.allocateCard()`)
 - [ ] 카드 추가 여부 묻기 (`Input.askAddCard()`)
