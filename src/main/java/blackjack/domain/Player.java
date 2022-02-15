@@ -18,9 +18,17 @@ public class Player {
         this.isDealer = isDealer;
     }
 
+    public void receiveCard(Card card) {
+        addCard(card);
+        addScore(card);
+    }
+
     public void addCard(final Card card) {
-        score += card.getPoint();
         this.cards.add(card);
+    }
+
+    public void addScore(final Card card) {
+        this.score += card.getPoint();
     }
 
     public String getName() {
