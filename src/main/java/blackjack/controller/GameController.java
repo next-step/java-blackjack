@@ -18,7 +18,7 @@ public class GameController {
 
         List<Player> players = makePlayers();
 
-        cardPack.removeCard(players);
+        cardPack.pickCard(players);
 
         OutputView.printInitialMessage(players);
 
