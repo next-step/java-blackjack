@@ -5,7 +5,8 @@ import java.util.List;
 
 public class CardNumber {
 
-    private static final List<String> CARD_NUMBER_LIST = Arrays.asList("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
+    private static final List<String> CARD_NUMBER_LIST = Arrays.asList("A", "2", "3", "4", "5", "6",
+        "7", "8", "9", "10", "J", "Q", "K");
 
     private String cardNumber;
 
@@ -19,11 +20,11 @@ public class CardNumber {
         return new CardNumber(cardNumber);
     }
 
-    public String getCardNumber() {
+    public String getNumber() {
         return cardNumber;
     }
 
-    private void validateCardNumberRange () {
+    private void validateCardNumberRange() {
         if (!CARD_NUMBER_LIST.contains(cardNumber)) {
             throw new RuntimeException("[ERROR] CardNumber 범위인 String을 입력해주세요.");
         }

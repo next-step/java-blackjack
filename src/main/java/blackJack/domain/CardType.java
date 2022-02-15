@@ -19,7 +19,7 @@ public class CardType {
         return new CardType(cardType);
     }
 
-    public String getCardType() {
+    public String getType() {
         return cardType;
     }
 
