@@ -46,6 +46,16 @@ public class CardPack {
         }
     }
 
+    public void giveCard(Player player) {
+        int symbolIndex = CardShuffler.pickIndexIn(4);
+        String symbol = symbols.get(symbolIndex);
+        List<Card> cards = map.get(symbol);
+
+        int cardIndex = CardShuffler.pickIndexIn(cards.size());
+        Card pickedCard = map.get(symbol).remove(cardIndex);
+        player.addCard(pickedCard);
+    }
+
     public Map<String, List<Card>> getMap() {
         return map;
     }
