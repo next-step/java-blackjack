@@ -53,4 +53,8 @@ public class CardPack {
             dealer.addCard(cards.remove(cardIndex));
         }
     }
+
+    public Map<String, List<Card>> getMap() {
+        return map;
+    }
 }
