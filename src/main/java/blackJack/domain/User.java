@@ -1,13 +1,19 @@
-//package blackJack.domain;
-//
-//public interface User {
-//
-//    private final Deck deck;
-//    private final UserName userName;
-//
-//    private void addDeck () {}
-//
-//    private boolean isScoreOver21 (){
-//
-//    }
-//}
+package blackJack.domain;
+
+public interface User {
+
+    final Deck deck = Deck.create();
+    final UserName userName = UserName.from("");
+
+    public default Deck getDeck() {
+        return deck;
+    };
+
+    public default UserName getUserName() {
+        return userName;
+    };
+
+    public default void appendToDeck(Card card) {
+        deck.append(card);
+    };
+}
