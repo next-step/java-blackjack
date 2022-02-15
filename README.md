@@ -64,6 +64,7 @@
   - [] UserName을 가지고 있다.
   - [] Deck에 카드를 추가할 수 있다.
   - [] Deck의 현재 score가 21을 넘는지에 대한 boolean 계산을 할 수 있다. 
+  - [] 해당 카드의 점수인 score를 계산 할 수 있다.
 - [] Dealer
   - [] 총 score가 16이하일 경우, 1장의 카드를 추가로 받는다.
 - [] Player
@@ -72,14 +73,14 @@
   - [] 현재 List<Card>의 총 score를 계산할 수 있다.
   - [] 현재 가진 Card 중에서 Ace가 있는 경우, 해당 Card에 대한 Score를 1 또는 11로 계산할 수 있다.
     - [] 21을 초과하지 않으면서, 21에 가깝게 계산할 수 있다.
-- [] Card - Game에서 사용할 카드의 객체
+- [x] Card - Game에서 사용할 카드의 객체
   - [x] CardType type을 가지고 있다. (e.g 다이아몬드, 클로버, 스페이드, 하트 ...)
   - [x] CardNumber _String을_ 가지고 있다. (e.g 2, 3, A, K, Q, J ...)
-- [] CardType - Card의 타입
+  - [x] 카드 숫자와 카드 타입을 입력할때, 주어진 숫자와 타입으로 카드가 생성된다.
+- [x] CardType - Card의 타입
   - [x]  CardType은 `"다이아몬드", "하트", "클로버", "스페이드"` 이 범위안에 반드시 있어야한다.
-- [] CardNumber - Card의 숫자
-  - [x]  CardNumber는 `"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"` 이 범위안에 반드시 있어야한다. 
-  - [] 해당 카드의 점수인 score를 가지고 있다.
+- [x] CardNumber - Card의 숫자
+  - [x]  CardNumber는 `"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"` 이 범위안에 반드시 있어야한다.
 - [] GameCard - 게임에서 사용될 모든 Card의 집합
   - [] 모든 Card는 중복이 없어야한다.
 - [] GameUser - BlackJack을 수행한는 User의 집합
