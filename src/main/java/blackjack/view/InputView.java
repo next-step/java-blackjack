@@ -13,16 +13,15 @@ public class InputView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public List<String> inputParticipants() {
-        String participants = getInputValueWithMessage(PARTICIPANTS_MESSAGE);
-        return Arrays.stream(participants.split(","))
+    public List<String> inputPlayers() {
+        String players = getInputValueWithMessage(PARTICIPANTS_MESSAGE);
+        return Arrays.stream(players.split(","))
             .map(String::trim)
             .collect(Collectors.toList());
     }
 
-    public Boolean inputYesOrNo(String name) {
-        String yesOrNo = getInputValueWithMessage(name + YES_OR_NO_MESSAGE);
-        return Objects.equals(yesOrNo, "y");
+    public String inputYesOrNo(String name) {
+        return getInputValueWithMessage(name + YES_OR_NO_MESSAGE);
     }
 
     public String getInputValueWithMessage(String message) {
