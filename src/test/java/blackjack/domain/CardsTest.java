@@ -1,6 +1,9 @@
 package blackjack.domain;
 
 import static blackjack.domain.Denomination.ACE;
+import static blackjack.domain.Denomination.FIVE;
+import static blackjack.domain.Denomination.FOUR;
+import static blackjack.domain.Denomination.THREE;
 import static blackjack.domain.Denomination.TWO;
 import static blackjack.domain.Suit.CLUBS;
 import static blackjack.domain.Suit.HEARTS;
@@ -35,4 +38,18 @@ class CardsTest {
         assertThat(testCards.size()).isEqualTo(2);
     }
 
+    @DisplayName("카드들의 점수 합을 반환한다")
+    @Test
+    void getScore() {
+        List<Card> cards = Arrays.asList(
+            new Card(CLUBS, ACE),
+            new Card(CLUBS, TWO),
+            new Card(CLUBS, THREE),
+            new Card(CLUBS, FOUR),
+            new Card(CLUBS, FIVE)
+        );
+
+        Cards testCards = new Cards(cards);
+        assertThat(testCards.getScore()).isEqualTo(15);
+    }
 }
