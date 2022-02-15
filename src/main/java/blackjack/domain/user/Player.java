@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Player {
 
-    private final List<Card> cards;
+    protected final List<Card> cards;
     private final String name;
 
     public Player(String name) {
@@ -21,11 +21,35 @@ public class Player {
         }
     }
 
-    public void addCard(Card card) {
+    public void drawCard(Card card) {
         this.cards.add(card);
     }
 
     public String name() {
         return name;
+    }
+
+    public boolean isPlayer() {
+        return true;
+    }
+
+    public boolean isDealer() {
+        return false;
+    }
+
+    public int score() {
+        return 0;
+    }
+
+    public boolean isDrawable() {
+        return true;
+    }
+
+    public boolean isBurst() {
+        return false;
+    }
+
+    public boolean isBlackJack() {
+        return false;
     }
 }
