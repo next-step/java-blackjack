@@ -1,19 +1,12 @@
 package blackJack.domain;
 
+import java.util.List;
+
 public interface User {
 
-    final Deck deck = Deck.create();
-    final UserName userName = UserName.from("");
+    List<Card> getDeck();
 
-    public default Deck getDeck() {
-        return deck;
-    };
+    String getName();
 
-    public default UserName getUserName() {
-        return userName;
-    };
-
-    public default void appendToDeck(Card card) {
-        deck.append(card);
-    };
+    void appendToDeck(Card card);
 }

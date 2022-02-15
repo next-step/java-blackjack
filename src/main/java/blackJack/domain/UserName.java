@@ -12,7 +12,7 @@ public class UserName {
         return new UserName(userName);
     }
 
-    public String getUserName() {
+    public String getName() {
         return userName;
     }
 }
