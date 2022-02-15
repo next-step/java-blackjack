@@ -17,14 +17,13 @@ public class Parser {
 
     public static List<RentInfo> parse(final String input) {
 
-        final String[] rentInfo = input.split(RESERVATION_DELIMITER);
+        final String[] rentInfos = input.split(RESERVATION_DELIMITER);
 
         return Collections.unmodifiableList(
-            Arrays.stream(rentInfo)
-                .map(rent -> {
-                    validateInfoFormat(rent);
-                    final String[] split = rent.split(INFO_DELIMITER);
-                    return new RentInfo(split[TYPE], Double.parseDouble(split[TRIP_DISTANCE]));
+            Arrays.stream(rentInfos)
+                .map(rentInfo -> {
+                    validateInfoFormat(rentInfo);
+                    return createRentInfo(rentInfo);
                 })
                 .collect(Collectors.toList()));
     }
@@ -33,5 +32,10 @@ public class Parser {
         if (!rent.matches(INPUT_FORMAT_REGEX)) {
             throw new IllegalArgumentException(INVALID_FORMAT_EXCEPTION_MESSAGE);
         }
+    }
+
+    private static RentInfo createRentInfo(final String rentInfo) {
+        final String[] split = rentInfo.split(INFO_DELIMITER);
+        return new RentInfo(split[TYPE], Double.parseDouble(split[TRIP_DISTANCE]));
     }
 }
