@@ -1,27 +1,33 @@
 package blackjack.controller;
 
 import blackjack.domain.CardPack;
-import blackjack.domain.Dealer;
 import blackjack.domain.Player;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class GameController {
 
     public void start() {
         List<String> playerNames = InputView.getPlayerName();
-        List<Player> players = playerNames.stream()
-            .map(Player::new)
+
+        Player dealerPlayer = new Player("딜러", true);
+
+        List<Player> dealerPlayers = Arrays.asList(dealerPlayer);
+
+        List<Player> commonPlayers = playerNames.stream()
+            .map(player -> new Player(player, false))
             .collect(Collectors.toList());
 
-        Dealer dealer = new Dealer(0, new ArrayList<>());
+        List<Player> players = Stream.of(dealerPlayers, commonPlayers)
+            .flatMap(lotto -> lotto.stream())
+            .collect(Collectors.toList());
 
         CardPack cardPack = CardPack.create();
         cardPack.removeCard(players);
-        cardPack.removeCard(dealer);
 
         OutputView.printInitialMessage(players);
 
