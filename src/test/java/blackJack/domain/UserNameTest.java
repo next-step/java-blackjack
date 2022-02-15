@@ -14,7 +14,7 @@ class UserNameTest {
     void givenNameWithString_WhenGetUserName_ThenEqualToGivenName(String name) {
         UserName userName = UserName.from(name);
 
-        assertThat(userName.getUserName())
+        assertThat(userName.getName())
             .isEqualTo(name);
     }
 }
