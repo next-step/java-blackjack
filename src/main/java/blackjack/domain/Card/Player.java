@@ -1,8 +1,6 @@
 package blackjack.domain.Card;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Player extends Gamer{
 
@@ -14,6 +12,11 @@ public class Player extends Gamer{
     public Player(String name) {
         this.name = name;
         cards = initSetting();
+    }
+
+    public int getPlayerCardSum(Player player) {
+       return player.getCards().stream().map(Card::getDenomination)
+            .mapToInt(Denomination::getValue).sum();
     }
 
     public List<Card> getCards() {
