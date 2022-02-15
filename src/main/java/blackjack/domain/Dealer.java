@@ -61,7 +61,7 @@ public class Dealer {
     private void giveCardToDealerPlayer(Player player){
         int score = player.getScore();
         while (isLowerThanDealerBound(score)) {
-            OutputView.printDealrAcceptCard();
+            OutputView.printDealerAcceptCard();
             giveCardAfterPick(player);
             score = player.getScore();
         }
