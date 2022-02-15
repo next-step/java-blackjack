@@ -30,7 +30,7 @@ public class OutputView {
         printPlayerCards(dealer.getCards());
     }
 
-    public static void printPlayerStatus(Players players) {
+    public static void printPlayersStatus(Players players) {
         for(Player player : players.getPlayers()) {
             System.out.print(player.getName() + "카드: ");
             printPlayerCards(player.getCards());
@@ -44,6 +44,12 @@ public class OutputView {
         System.out.println();
     }
 
+    public static void requestAddCardOrNot(Player player) {
+        System.out.println(player.getName() + REQUEST_RECEIVE_CARD);
+    }
 
+    public static void printPlayerStatus(Player player) {
+        System.out.print(player.getName() + ": ");
+        printPlayerCards(player.getCards());
+    }
 }
-
