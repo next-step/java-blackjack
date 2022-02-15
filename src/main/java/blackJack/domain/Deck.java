@@ -40,7 +40,7 @@ public class Deck {
         int score = 0;
         int count = 0;
         for (Card card : deck) {
-            String number = card.getCardNumber().getNumber();
+            String number = card.getCardNumber();
             if (Util.isNumber(number)) {
                 score += Integer.parseInt(number);
             }

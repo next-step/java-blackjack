@@ -31,7 +31,7 @@ class CardTest {
         Card card = Card.of(cardParameter.get(0), cardParameter.get(1));
 
         assertThat(
-            Arrays.asList(card.getCardType().getType(), card.getCardNumber().getNumber()))
+            Arrays.asList(card.getCardType(), card.getCardNumber()))
             .isEqualTo(cardParameter);
     }
 }

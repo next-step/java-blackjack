@@ -14,12 +14,12 @@ public class Card {
         return new Card(cardType, cardNumber);
     }
 
-    public CardType getCardType() {
-        return cardType;
+    public String getCardType() {
+        return cardType.getType();
     }
 
-    public CardNumber getCardNumber() {
-        return cardNumber;
+    public String getCardNumber() {
+        return cardNumber.getNumber();
     }
 }
 
