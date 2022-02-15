@@ -2,18 +2,18 @@ package blackjack.domain.card;
 
 public class Card {
     private final Pattern pattern;
-    private final Denomination denomination;
+    private final Rank rank;
 
-    public Card(final Pattern pattern, final Denomination denomination) {
+    public Card(final Pattern pattern, final Rank rank) {
         this.pattern = pattern;
-        this.denomination = denomination;
+        this.rank = rank;
     }
 
     public String getName() {
-        return denomination.getName() + pattern.getName();
+        return rank.getName() + pattern.getName();
     }
 
     public boolean isAce() {
-        return this.denomination == Denomination.ACE;
+        return this.rank == Rank.ACE;
     }
 }
