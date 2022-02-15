@@ -8,29 +8,28 @@ import blackjack.domain.card.Shape;
 import org.junit.jupiter.api.Test;
 
 class DealerTest {
-    @Test
-    void 딜러를_생성하면_카드목록의_사이즈가_2여야_한다() {
-        //given
-        Dealer dealer = new Dealer(
-            new Card(Shape.HEART, Denomination.EIGHT),
-            new Card(Shape.HEART, Denomination.FIVE)
-        );
 
-        //when
+    @Test
+    void 카드를_init하면_2장의_카드를_가져야_한다() {
+        Dealer dealer = new Dealer();
+        dealer.initCards(
+            new Card(Shape.CLUB, Denomination.FOUR),
+            new Card(Shape.SPADE, Denomination.KING));
+
         int cardSize = dealer.getCards().size();
 
-        //then
         assertThat(cardSize).isEqualTo(2);
     }
 
     @Test
-    void 플레이어는_받은_카드_1장을_목록에_추가해야_한다() {
+    void 딜러는_받은_카드_1장을_목록에_추가해야_한다() {
         //given
-        Dealer dealer = new Dealer(
-            new Card(Shape.HEART, Denomination.EIGHT),
-            new Card(Shape.HEART, Denomination.FIVE)
+        Dealer dealer = new Dealer();
+        dealer.initCards(
+            new Card(Shape.HEART, Denomination.NINE),
+            new Card(Shape.HEART, Denomination.NINE)
         );
-         dealer.addCard(new Card(Shape.HEART, Denomination.NINE));
+        dealer.addCard(new Card(Shape.HEART, Denomination.NINE));
 
         //when
         int cardSize =  dealer.getCards().size();
