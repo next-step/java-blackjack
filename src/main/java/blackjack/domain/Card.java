@@ -12,5 +12,7 @@ public class Card {
         this.denomination = denomination;
     }
 
-
+    public Denomination getDenomination() {
+        return denomination;
+    }
 }
