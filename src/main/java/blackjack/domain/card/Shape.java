@@ -9,6 +9,10 @@ public enum Shape {
 
     private final String name;
 
+    public String getName() {
+        return name;
+    }
+
     Shape(String name) {
         this.name = name;
     }
