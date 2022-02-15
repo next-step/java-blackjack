@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 public class CardPack {
 
     private static final List<String> symbols = Arrays.asList("스페이드", "다이아몬드", "클로버", "하트");
+    private static final int SYMBOL_SIZE = symbols.size();
+    private static final String ACE = "A";
 
     private final Map<String, List<Card>> map;
 
@@ -21,7 +23,12 @@ public class CardPack {
         Map<String, List<Card>> map = new HashMap<>();
         for (String symbol : symbols) {
             List<Card> cards = Arrays.stream(CardType.values())
-                .map(card -> new Card(symbol, card.getName(), card.getPoint()))
+                .map(card -> {
+                    if (card.getName().equals(ACE)) {
+                        return new Card(symbol, card.getName(), card.getPoint(), card.getLowerAcePoint());
+                    }
+                    return new Card(symbol, card.getName(), card.getPoint());
+                })
                 .collect(Collectors.toList());
 
             map.put(symbol, cards);
@@ -30,9 +37,8 @@ public class CardPack {
         return new CardPack(map);
     }
 
-    //TODO: removeCard 로직분리, 네이명 수정, 테스트코드 작성
-    public Card pickCard(Player player) {
-        int symbolIndex = CardShuffler.pickIndexIn(4);
+    public Card pickCard() {
+        int symbolIndex = CardShuffler.pickIndexIn(SYMBOL_SIZE);
         String symbol = symbols.get(symbolIndex);
         List<Card> cards = map.get(symbol);
 
