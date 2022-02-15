@@ -46,16 +46,6 @@ public class CardPack {
         }
     }
 
-    public void removeCard(Dealer dealer) {
-        for (int i = 0; i < 2; i++) {
-            int symbolIndex = CardShuffler.pickIndexIn(4);
-            List<Card> cards = map.get(symbols.get(symbolIndex));
-            int cardIndex = CardShuffler.pickIndexIn(cards.size());
-
-            dealer.addCard(cards.remove(cardIndex));
-        }
-    }
-
     public Map<String, List<Card>> getMap() {
         return map;
     }
