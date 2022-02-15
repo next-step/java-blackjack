@@ -7,6 +7,7 @@ public class Players {
 
     private List<Player> players = new ArrayList<>();
     private String[] playernames;
+
     public Players(String[] playernames) {
         this.playernames = playernames;
         init();

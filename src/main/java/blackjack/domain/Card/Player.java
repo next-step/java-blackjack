@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Player {
+public class Player extends Gamer{
 
     private static final int INIT_CARD_COUNT = 2;
 
@@ -13,20 +13,15 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
-        initSetting();
-    }
-
-    private void initSetting() {
-        List<Card> cards = Cards.getCardList();
-        Collections.shuffle(cards);
-        this.cards = cards.stream()
-            .limit(INIT_CARD_COUNT)
-            .collect(Collectors.toList());
-        cards.remove(0);
-        cards.remove(0);
+        cards = initSetting();
     }
 
     public List<Card> getCards() {
         return cards;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }
