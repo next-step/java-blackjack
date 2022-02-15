@@ -1,10 +1,14 @@
-package blackjack.domain;
+package blackjack.domain.person;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import blackjack.domain.card.Card;
+import blackjack.domain.card.Denomination;
+import blackjack.domain.card.Shape;
 import org.junit.jupiter.api.Test;
 
 class PlayerTest {
+
     @Test
     void 플레이어를_생성하면_카드목록의_사이즈가_2여야_한다() {
         //given
