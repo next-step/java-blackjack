@@ -19,6 +19,8 @@ public class GameController {
         dealer.initializeGame(gamePlayers);
         printInitialStatus(gamePlayers);
         dealer.playGame(gamePlayers);
+
+        OutputView.printResult(gamePlayers);
     }
 
     private void printInitialStatus(GamePlayers gamePlayers) {
