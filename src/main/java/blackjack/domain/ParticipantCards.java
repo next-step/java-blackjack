@@ -2,10 +2,10 @@ package blackjack.domain;
 
 import java.util.List;
 
-public class Cards {
+public class ParticipantCards {
     private final List<Card> cards;
 
-    public Cards(List<Card> cards) {
+    public ParticipantCards(List<Card> cards) {
         this.cards = cards;
     }
 

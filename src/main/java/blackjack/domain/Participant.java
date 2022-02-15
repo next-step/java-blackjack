@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 abstract public class Participant {
     protected final String name;
-    protected final Cards cards;
+    protected final ParticipantCards cards;
     protected final int winCount, loseCount;
 
-    public Participant(String name, Cards cards, int winCount, int loseCount) {
+    public Participant(String name, ParticipantCards cards, int winCount, int loseCount) {
         this.name = name;
         this.cards = cards;
         this.winCount = winCount;
@@ -15,7 +15,7 @@ abstract public class Participant {
     }
 
     public Participant(String name) {
-        this(name, new Cards(new ArrayList<>()), 0, 0);
+        this(name, new ParticipantCards(new ArrayList<>()), 0, 0);
     }
 
     abstract void drawCard(int number);
