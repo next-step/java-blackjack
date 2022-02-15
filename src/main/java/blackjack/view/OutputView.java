@@ -11,6 +11,7 @@ public class OutputView {
     private static final String COMMA = ", ";
     private static final String CARDS_LOG = "%s: %s";
     private static final String QUESTION_ACCEPT_CARD_MESSAGE = "%s는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)";
+    private static final String DEALER_RECEIVE_ONE_CARD_MESSAGE = "딜러는 한장의 카드를 더 받았습니다.";
 
     public static void printInitialMessage(List<Player> players) {
         String playerNames = players.stream()
@@ -34,5 +35,9 @@ public class OutputView {
 
     public static void printQuestionAcceptCard(Player player) {
         System.out.println(String.format(QUESTION_ACCEPT_CARD_MESSAGE, player.getName()));
+    }
+
+    public static void printDealrAcceptCard() {
+        System.out.println(DEALER_RECEIVE_ONE_CARD_MESSAGE);
     }
 }
