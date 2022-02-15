@@ -4,8 +4,6 @@ import java.util.List;
 
 public class Player extends Gamer{
 
-    private static final int INIT_CARD_COUNT = 2;
-
     private List<Card> cards;
     private final String name;
 
