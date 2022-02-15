@@ -9,10 +9,10 @@ public enum CardType {
     SEVEN("7", 7),
     EIGHT("8", 8),
     NINE("9", 9),
-    ACE("11", 11),
-    QUEEN("10", 10),
-    KING("10", 10),
-    JACK("10", 10);
+    ACE("A", 11),
+    QUEEN("Q", 10),
+    KING("K", 10),
+    JACK("J", 10);
 
     private final String name;
     private final int point;
