@@ -8,7 +8,7 @@ public class Person {
 
     protected List<Card> cards;
 
-    protected void initTwoCards(Card card1, Card card2) {
+    protected void initCards(Card card1, Card card2) {
         cards = new ArrayList<>();
         cards.add(card1);
         cards.add(card2);
