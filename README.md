@@ -66,7 +66,9 @@
   - [x] 해당 카드의 점수인 score를 반환할 수 있다. 
 - [] Dealer
   - [] 총 score가 16이하일 경우, 1장의 카드를 추가로 받는다.
-- [] Player
+- [x] Player
+  - [x] Deck
+  - [x] name
 - [x] Deck - 딜러 또는 플레이어가 가진 Card의 집합
   - [x] List<Card>를 가지고 있다.
   - [x] 현재 List<Card>의 총 score를 계산할 수 있다.
