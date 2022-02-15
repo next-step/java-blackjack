@@ -34,4 +34,8 @@ public class Player {
     public List<Card> getCards() {
         return Collections.unmodifiableList(cards);
     }
+
+    public boolean isDealer() {
+        return this.isDealer;
+    }
 }
