@@ -30,6 +30,8 @@ public class CardPack {
         return new CardPack(map);
     }
 
+    //TODO: removeCard 로직분리, 네이명 수정, 테스트코드 작성
+
     public void removeCard(List<Player> players) {
         for (Player player : players) {
             for (int i = 0; i < 2; i++) {
