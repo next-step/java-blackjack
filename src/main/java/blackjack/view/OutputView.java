@@ -1,5 +1,11 @@
 package blackjack.view;
 
+import blackjack.domain.Card.Card;
+import blackjack.domain.Card.Dealer;
+import blackjack.domain.Card.Player;
+import blackjack.domain.Card.Players;
+import java.util.List;
+
 public class OutputView {
     private static final String REQUEST_PLAYERS_NAME = "게임에 참여할 사람의 이름을 입력하세요";
     private static final String DELIMITER = ", ";
@@ -19,6 +25,25 @@ public class OutputView {
         System.out.println("딜러와 " + String.join(DELIMITER, players) + "에게 2장의 카드를 나누었습니다.");
     }
 
+    public static void printDealerCardsSetting(Dealer dealer) {
+        System.out.print(dealer.getName() + ": ");
+        printPlayerCards(dealer.getCards());
+    }
+
+    public static void printPlayerStatus(Players players) {
+        for(Player player : players.getPlayers()) {
+            System.out.print(player.getName() + "카드: ");
+            printPlayerCards(player.getCards());
+        }
+    }
+
+    public static void printPlayerCards(List<Card> cards) {
+        for(Card card : cards) {
+            System.out.print(card.getDenomination().getName() + card.getSuit().getValue());
+        }
+        System.out.println();
+    }
+
 
 }
-// 다이아몬드, 하트, spade, clover
+
