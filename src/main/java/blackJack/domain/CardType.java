@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CardType {
 
-    private static final List<String> CARD_TYPE_LIST = Arrays.asList("다이아몬드", "하트", "클로버", "스페이드");
+    public static final List<String> CARD_TYPE_LIST = Arrays.asList("다이아몬드", "하트", "클로버", "스페이드");
 
     private String cardType;
 
