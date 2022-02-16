@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Dealer {
 
-    private static final int INITIAL_CARD_QUANTITY = 2;
     private final CardPack cardPack;
 
     public Dealer(CardPack cardPack) {
@@ -17,10 +16,11 @@ public class Dealer {
     public void initializeGame(GamePlayers gamePlayers) {
         List<GamePlayer> players = gamePlayers.getAllPlayers();
 
-        for (int i = 0; i < INITIAL_CARD_QUANTITY; i++) {
-            players.stream()
-                .forEach(player -> giveCardAfterPick(player));
-        }
+        players.forEach(player -> {
+            player.receiveCard(cardPack.remove());
+            player.receiveCard(cardPack.remove());
+        });
+
         for (GamePlayer gamePlayer : players) {
             System.out.println(gamePlayer.getName() + ", "+ gamePlayer.getScore());
         }
@@ -35,7 +35,7 @@ public class Dealer {
 
     private void playerGameProcess(final GamePlayer player) {
         while (player.isContinue() && InputView.getPlayerChoice(player)) {
-            giveCardAfterPick(player);
+            player.receiveCard(cardPack.remove());
             OutputView.printCardStatus(player);
         }
         if (!player.isContinue()) {
@@ -47,12 +47,8 @@ public class Dealer {
     private void dealerGameProcess(final GamePlayer dealer) {
         while (dealer.isLowerThanBound()) {
             OutputView.printDealerAcceptCard();
-            giveCardAfterPick(dealer);
+            dealer.receiveCard(cardPack.remove());
             System.out.println(dealer.getScore());
         }
-    }
-
-    private void giveCardAfterPick(GamePlayer player) {
-        player.receiveCard(cardPack.remove());
     }
 }
