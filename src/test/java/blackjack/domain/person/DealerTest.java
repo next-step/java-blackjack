@@ -17,7 +17,7 @@ class DealerTest {
         dealer.addCard(new Card(Shape.HEART, Denomination.NINE));
 
         //when then
-        assertThat(dealer.getCards()).hasSize(3);
+        assertThat(dealer.getCards()).hasSize(1);
     }
 
     @Test
