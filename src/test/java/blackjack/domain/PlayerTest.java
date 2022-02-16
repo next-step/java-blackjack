@@ -32,5 +32,19 @@ class PlayerTest {
         assertThat(player.isBusted()).isTrue();
     }
 
+    @DisplayName("플레이어가 받은 카드 한 장을 출력한다")
+    @Test
+    void printCardAfterFirstDeal() {
+        List<Card> cards = Arrays.asList(
+            new Card(CLUBS, KING),
+            new Card(CLUBS, QUEEN)
+        );
+
+        Cards testCards = new Cards(cards);
+        Player player = new Player(testCards, "test");
+
+        assertThat(player.openCard()).isEqualTo("test카드: K클로버, Q클로버");
+    }
+
 
 }
