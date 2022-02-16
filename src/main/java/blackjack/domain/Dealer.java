@@ -69,11 +69,11 @@ public class Dealer {
         player.receiveCard(pickedCard);
     }
 
-    public boolean isLowerThanBlackJack(int score) {
+    private boolean isLowerThanBlackJack(int score) {
         return score < BLACKJACK;
     }
 
-    public boolean isLowerThanDealerBound(int score) {
+    private boolean isLowerThanDealerBound(int score) {
         return score < DEALER_BOUND;
     }
 }
