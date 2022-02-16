@@ -16,7 +16,7 @@ public class Player extends GamePlayer {
     @Override
     public boolean isLowerThanBound() {
         //여기가 문제입니다
-        return getScore() < BLACKJACK;
+        return isContinue();
     }
 
     @Override
