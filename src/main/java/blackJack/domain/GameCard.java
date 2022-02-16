@@ -4,6 +4,7 @@ import static blackJack.domain.CardNumber.CARD_NUMBER_LIST;
 import static blackJack.domain.CardType.CARD_TYPE_LIST;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class GameCard {
@@ -12,7 +13,6 @@ public class GameCard {
 
     private GameCard() {
         this.gameCard = new ArrayList<>();
-
         generateGameCard();
     }
 
@@ -30,5 +30,9 @@ public class GameCard {
                 gameCard.add(Card.of(type, number));
             });
         });
+    }
+
+    public void shuffle() {
+        Collections.shuffle(gameCard);
     }
 }
