@@ -9,7 +9,11 @@ public class Player {
     }
 
     public void deal(CardDeck deck) {
-        cards.addCard(deck.popCard());
+        hit(deck);
+        hit(deck);
+    }
+
+    public void hit(CardDeck deck) {
         cards.addCard(deck.popCard());
     }
 
