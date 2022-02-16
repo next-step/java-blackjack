@@ -17,12 +17,14 @@ public class Game {
     }
 
     public Card draw() {
-        return deck.draw();
+        Card card =  deck.draw();
+        deck.deduction(card);
+        return card;
     }
 
     public List<Card> dealCards() {
         return IntStream.range(0, NUMBER_OF_INIT_HANDS)
-            .mapToObj(i -> deck.draw())
+            .mapToObj(i -> draw())
             .collect(Collectors.toList());
     }
 }
