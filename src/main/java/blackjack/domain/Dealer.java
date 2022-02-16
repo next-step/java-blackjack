@@ -15,4 +15,12 @@ public class Dealer extends Player {
         player.receiveCard (popped);
     }
 
+    public void addOneMoreCard() {
+        int score = calculateScore();
+        if (score <= SCORE_THRESHOLD) {
+            cards.add(deck.popCard());
+        }
+    }
+
+
 }
