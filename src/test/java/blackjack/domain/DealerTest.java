@@ -16,4 +16,24 @@ class DealerTest {
         dealer.allocateCard(player);
         assertThat(player.getCards().size()).isEqualTo(ONE);
     }
+
+    @DisplayName("처음 받은 2장의 카드 합계가 16이하라면 카드 한 장을 추가로 받는다")
+    @Test
+    void testAddOneMoreCard() {
+        Dealer dealer = new Dealer();
+        dealer.receiveCard(new Card(Suit.SPADES, Denomination.FIVE));
+        dealer.receiveCard(new Card(Suit.SPADES, Denomination.SIX));
+        dealer.addOneMoreCard();
+        assertThat(dealer.getCards().size()).isEqualTo(3);
+    }
+
+    @DisplayName("처음 받은 2장의 카드 합계가 16이상이면 카드 한 장을 추가로 받지 않는다")
+    @Test
+    void testAddOneMoreCardFail() {
+        Dealer dealer = new Dealer();
+        dealer.receiveCard(new Card(Suit.SPADES, Denomination.NINE));
+        dealer.receiveCard(new Card(Suit.SPADES, Denomination.EIGHT));
+        dealer.addOneMoreCard();
+        assertThat(dealer.getCards().size()).isEqualTo(2);
+    }
 }
