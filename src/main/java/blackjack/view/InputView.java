@@ -24,22 +24,22 @@ public class InputView {
         return Spliter.commaSplit(input);
     }
 
-    public static String getUserResponse() {
-        System.out.println(MORE_CARD_MESSAGE);
-        String input = scanner.nextLine();
+    public static boolean askHitOrStand(String playerName) {
+        System.out.printf((MORE_CARD_MESSAGE) + "%n", playerName);
+        String input = scanner.nextLine().trim();
         checkResponse(input);
-        return input;
+        return input.equals("y");
     }
 
     private static void checkResponse(String input) {
         checkBlank(input);
-        if (!input.contains("y") && !input.contains("n")) {
+        if (!input.equals("y") && !input.equals("n")) {
             throw new IllegalArgumentException(WRONG_ANSWER_EXCEPTION);
         }
     }
 
     private static void checkBlank(String text) {
-        if (text == null || text.trim().equals("")) {
+        if (text == null || text.equals("")) {
             throw new IllegalArgumentException(BLANK_EXCEPTION);
         }
     }
