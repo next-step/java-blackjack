@@ -16,6 +16,10 @@ public class Card {
         return this.cardValue.intUnaryOperator.applyAsInt(currentScore);
     }
 
+    public CardValue getCardValue() {
+        return cardValue;
+    }
+
     enum CardType {
         SPADE,
         CLOVER,
@@ -44,6 +48,10 @@ public class Card {
         CardValue(String number, IntUnaryOperator intUnaryOperator) {
             this.number = number;
             this.intUnaryOperator = intUnaryOperator;
+        }
+
+        public boolean isEqualCardValue(Card card){
+            return this.equals(card.getCardValue());
         }
     }
 }
