@@ -19,10 +19,10 @@ class DealerTest {
 
         //when
         dealer.initializeGame(gamePlayers);
-        List<Player> players = gamePlayers.getPlayers();
+        List<GamePlayer> players = gamePlayers.getPlayers();
 
         //then
-        for (Player player : players) {
+        for (GamePlayer player : players) {
             List<Card> cards = player.getCards();
             assertThat(cards.size()).isEqualTo(2);
         }

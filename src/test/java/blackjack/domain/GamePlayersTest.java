@@ -17,7 +17,7 @@ class GamePlayersTest {
         //when
         GamePlayers gamePlayers = GamePlayers.makePlayers(Arrays.asList("pobi", "jason"));
         List<String> players = gamePlayers.getPlayers().stream()
-            .map(Player::getName)
+            .map(GamePlayer::getName)
             .collect(Collectors.toList());
 
         //then

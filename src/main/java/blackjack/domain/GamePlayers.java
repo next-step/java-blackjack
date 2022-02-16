@@ -1,32 +1,37 @@
 package blackjack.domain;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class GamePlayers {
 
-    private final List<Player> players;
+    private final List<GamePlayer> players;
 
-    public GamePlayers(List<Player> players) {
-        this.players = players;
+    public GamePlayers(final List<String> players) {
+        this.players = makePlayers(players);
     }
 
-    public List<Player> getPlayers() {
-        return this.players;
+    public List<GamePlayer> makePlayers(List<String> playerNames) {
+        final List<GamePlayer> players = playerNames.stream()
+            .map(Player::new)
+            .collect(Collectors.toList());
+
+        players.add(0, new DealerPlayer("딜러"));
+
+        return new ArrayList<>(players);
     }
 
-    public static GamePlayers makePlayers(List<String> playerNames) {
-        List<Player> dealerPlayers = Arrays.asList(new Player("딜러", true));
-        List<Player> commonPlayers = playerNames.stream()
-            .map(player -> new Player(player, false))
-            .collect(Collectors.toList());
+    public GamePlayer getDealer() {
+        return players.get(0);
+    }
 
-        List<Player> players = Stream.of(dealerPlayers, commonPlayers)
-            .flatMap(lotto -> lotto.stream())
-            .collect(Collectors.toList());
+    public List<GamePlayer> getPlayers() {
+        return Collections.unmodifiableList(players.subList(1, players.size()));
+    }
 
-        return new GamePlayers(players);
+    public List<GamePlayer> getAllPlayers() {
+        return Collections.unmodifiableList(players);
     }
 }
