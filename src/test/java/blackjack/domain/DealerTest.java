@@ -53,6 +53,6 @@ class DealerTest {
         Cards testCards = new Cards(cards);
         Dealer dealer = new Dealer(testCards);
 
-        assertThat(dealer.openCard()).isEqualTo("딜러 카드: K클로버");
+        assertThat(dealer.openOneCard()).isEqualTo("K클로버");
     }
 }

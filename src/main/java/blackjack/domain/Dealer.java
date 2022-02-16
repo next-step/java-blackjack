@@ -19,7 +19,7 @@ public class Dealer extends Participant {
         return getScore() <= LIMIT_MORE_CARD;
     }
 
-    public String openCard() {
-        return NAME_TAG + getCardNames().get(0);
+    public String openOneCard() {
+        return getCardNames().get(0);
     }
 }
