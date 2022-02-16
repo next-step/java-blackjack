@@ -9,4 +9,6 @@ public interface User {
     String getName();
 
     void appendToDeck(Card card);
+
+    void appendToDeck(List<Card> cards);
 }
