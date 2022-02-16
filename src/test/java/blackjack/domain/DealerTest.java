@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class DealerTest {
+
     public static final int ONE = 1;
 
     @DisplayName("딜러는 카드를 한 장씩 꺼낼 수 있다")
