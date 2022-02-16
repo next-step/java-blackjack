@@ -1,8 +1,5 @@
 package blackjack.domain;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Card {
     private final Suit suit;
     private final Denomination denomination;
@@ -14,5 +11,10 @@ public class Card {
 
     public Denomination getDenomination() {
         return denomination;
+    }
+
+    @Override
+    public String toString() {
+        return denomination.getAlias() + suit.getName();
     }
 }
