@@ -17,13 +17,13 @@ public class GameResult {
     public List<Integer> getGameResult() {
         List<Integer> gameResultList = new ArrayList<>();
         for(Player player : players.getPlayers()) {
-            if(player.getPlayerCardSum(player) > dealer.getPlayerCardSum(dealer)) {
+            if(player.getPlayerCardSum(player) > dealer.getDealerCardSum(dealer)) {
                 gameResultList.add(1);
             }
-            if(player.getPlayerCardSum(player) < dealer.getPlayerCardSum(dealer)) {
+            if(player.getPlayerCardSum(player) < dealer.getDealerCardSum(dealer)) {
                 gameResultList.add(0);
             }
-            if(player.getPlayerCardSum(player) == dealer.getPlayerCardSum(dealer)) {
+            if(player.getPlayerCardSum(player) == dealer.getDealerCardSum(dealer)) {
                 gameResultList.add(2);
             }
         }

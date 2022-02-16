@@ -12,7 +12,7 @@ public class Dealer extends Gamer{
         this.cards = initSetting();
     }
 
-    public int getPlayerCardSum(Dealer dealer) {
+    public int getDealerCardSum(Dealer dealer) {
         int score = dealer.getCards().stream()
             .map(Card::getDenomination)
             .mapToInt(Denomination::getValue)

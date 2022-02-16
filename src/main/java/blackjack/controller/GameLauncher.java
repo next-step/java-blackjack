@@ -29,7 +29,7 @@ public class GameLauncher {
             getCardOrNot(player);
         }
 
-        if (dealer.getPlayerCardSum(dealer) < DEALER_SUM_LIMIT) { // ace 10 11
+        if (dealer.getDealerCardSum(dealer) < DEALER_SUM_LIMIT) { // ace 10 11
             dealer.addCard(dealer.getCards());
             OutputView.printDealerAddCard();
         }

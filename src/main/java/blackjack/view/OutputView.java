@@ -62,7 +62,7 @@ public class OutputView {
 
     public static void printDealerCardSum(Dealer dealer) {
         printDealerCardsSetting(dealer, false);
-        System.out.println("- 결과:" + dealer.getPlayerCardSum(dealer));
+        System.out.println("- 결과:" + dealer.getDealerCardSum(dealer));
 
     }
 
