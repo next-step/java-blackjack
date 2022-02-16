@@ -45,4 +45,8 @@ public class Hands {
     public int getScore() {
         return score.getValue();
     }
+
+    public boolean isUnderScore(int value) {
+        return score.isUnder(value);
+    }
 }

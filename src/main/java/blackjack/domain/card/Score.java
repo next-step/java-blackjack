@@ -21,4 +21,8 @@ public class Score {
     public int getValue() {
         return value;
     }
+
+    public boolean isUnder(int value) {
+        return this.value < value;
+    }
 }
