@@ -9,12 +9,6 @@ import org.junit.jupiter.api.Test;
 class CardDeckTest {
 
     @Test
-    void 카드덱은_52가지_카드를_생성해야_한다() {
-        List<Card> cards = CardDeck.createCardDeck();
-        assertThat(cards).hasSize(52);
-    }
-
-    @Test
     void 인스턴스를_생성하면_52가지_카드를_가진다() {
         CardDeck cardDeck = new CardDeck();
         assertThat(cardDeck.getCards()).hasSize(52);
