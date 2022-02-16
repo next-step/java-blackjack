@@ -1,12 +1,11 @@
 package blackjack.controller;
 
 import blackjack.domain.Card.Dealer;
-import blackjack.domain.Card.GameResult;
+import blackjack.domain.Card.MatchInfo.MatchResultBoard;
 import blackjack.domain.Card.Player;
 import blackjack.domain.Card.Players;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
-import java.util.List;
 
 public class GameLauncher {
     private static final int DEALER_SUM_LIMIT = 16;
@@ -28,7 +27,7 @@ public class GameLauncher {
             getCardOrNot(player);
         }
 
-        if (dealer.getDealerCardSum(dealer) < DEALER_SUM_LIMIT) {
+        if (dealer.calcScore(dealer) < DEALER_SUM_LIMIT) {
             dealer.addCard(dealer.getCards());
             OutputView.printDealerAddCard();
         }
@@ -36,20 +35,17 @@ public class GameLauncher {
         OutputView.printDealerCardSum(dealer);
         OutputView.printPlayerCardSum(players);
 
-        // TODO 21이 다넘을 때
         OutputView.printFinalGameResult();
-        GameResult gameResult = new GameResult(players, dealer);
-        List<Integer> gameResultList = gameResult.getGameResult();
-        OutputView.printGameResult(gameResultList, players);
+        MatchResultBoard matchResultBoard = players.playMatch(dealer);
+        OutputView.printDealerMatchResult(dealer, matchResultBoard.getDealerMatchScoreInfo());
+        OutputView.printPlayersMatchResult(matchResultBoard.getPlayersMatchScoreInfo());
+
     }
 
     private void getCardOrNot(Player player) {
-        while (InputView.readAddCardOrNot(player) && player.getPlayerCardSum(player) < BLACK_JACK_SUM_LIMIT) {
+        while (InputView.readAddCardOrNot(player) && player.calcScore(player) < BLACK_JACK_SUM_LIMIT) {
             player.addCard(player.getCards());
             OutputView.printPlayerStatus(player);
         }
     }
-
 }
-
-

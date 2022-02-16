@@ -12,7 +12,7 @@ public class Dealer extends Gamer{
         this.cards = initSetting();
     }
 
-    public int getDealerCardSum(Dealer dealer) {
+    public int calcScore(Dealer dealer) {
         int score = dealer.getCards().stream()
             .map(Card::getDenomination)
             .mapToInt(Denomination::getValue)
@@ -30,6 +30,14 @@ public class Dealer extends Gamer{
             score += TEN;
         }
         return score;
+    }
+
+    public boolean isBlackJack(Dealer dealer) {
+        return calcScore(dealer) == THRESHOLD;
+    }
+
+    public boolean isBust(Dealer dealer) {
+        return calcScore(dealer) > THRESHOLD;
     }
 
     public List<Card> getCards() {

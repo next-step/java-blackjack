@@ -1,7 +1,9 @@
 package blackjack.domain.Card;
 
+import blackjack.domain.Card.MatchInfo.MatchResultBoard;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Players {
 
@@ -14,9 +16,14 @@ public class Players {
     }
 
     private void init() {
-        for(String playerName : playernames) {
+        for (String playerName : playernames) {
             players.add(new Player(playerName));
         }
+    }
+
+    public MatchResultBoard playMatch(Dealer dealer) {
+        return new MatchResultBoard(players.stream().
+            collect(Collectors.toMap(player -> player, player -> player.getMatchResult(player, dealer))));
     }
 
     public List<Player> getPlayers() {

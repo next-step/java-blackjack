@@ -1,5 +1,6 @@
 package blackjack.domain.Card;
 
+import blackjack.domain.Card.MatchInfo.MatchResult;
 import java.util.List;
 
 public class Player extends Gamer {
@@ -14,11 +15,15 @@ public class Player extends Gamer {
         cards = initSetting();
     }
 
+    public MatchResult getMatchResult(Player player, Dealer dealer) {
+        return MatchResult.calcMatchScore(player, dealer);
+    }
+
     public List<Card> getCards() {
         return cards;
     }
 
-    public int getPlayerCardSum(Player player) {
+    public int calcScore(Player player) {
         int score = player.getCards().stream()
             .map(Card::getDenomination)
             .mapToInt(Denomination::getValue)
@@ -36,6 +41,14 @@ public class Player extends Gamer {
             score += TEN;
         }
         return score;
+    }
+
+    public boolean isBlackJack(Player player) {
+        return calcScore(player) == THRESHOLD;
+    }
+
+    public boolean isBust(Player player) {
+        return calcScore(player) > THRESHOLD;
     }
 
     @Override

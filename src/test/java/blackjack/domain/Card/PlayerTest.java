@@ -1,7 +1,6 @@
 package blackjack.domain.Card;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +18,6 @@ class PlayerTest {
     void ACE는_1이나_11로_계산될_수_있다() {
         Player player = new Player("yang");
         player.getCards().add(new Card(Denomination.ACE, Suit.DIAMONDS));
-        player.getPlayerCardSum(player);
+        player.calcScore(player);
     }
 }
