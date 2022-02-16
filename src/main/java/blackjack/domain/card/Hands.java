@@ -2,6 +2,7 @@ package blackjack.domain.card;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Hands {
 
@@ -42,11 +43,15 @@ public class Hands {
         return ELEVEN_ACE_VALUE;
     }
 
+    public boolean isUnderScore(int value) {
+        return score.isUnder(value);
+    }
+
     public int getScore() {
         return score.getValue();
     }
 
-    public boolean isUnderScore(int value) {
-        return score.isUnder(value);
+    public List<String> getCardNames() {
+        return cards.stream().map(Card::getName).collect(Collectors.toList());
     }
 }

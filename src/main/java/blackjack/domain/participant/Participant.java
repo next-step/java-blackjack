@@ -1,6 +1,8 @@
 package blackjack.domain.participant;
 
 import blackjack.domain.card.Hands;
+import java.util.Arrays;
+import java.util.List;
 
 public abstract class Participant {
 
@@ -16,5 +18,9 @@ public abstract class Participant {
 
     public int getScore() {
         return hands.getScore();
+    }
+
+    public List<String> getCardNames() {
+        return hands.getCardNames();
     }
 }
