@@ -78,5 +78,5 @@
 - [x] 딜러가 플레이어에게 카드 배분한다 (`Dealer.allocateCard()`)
 - [x] 딜러의 처음 받은 2장의 카드 합계가 16이하라면 카드 한 장을 추가로 받는다 (`Dealer.addOneMoreCard`)
 - [ ] 카드 추가 여부 묻기 (`Input.askAddCard()`)
-- [ ] 우승자를 찾는다 (`Judgement.findWinner()`)
-- [ ] 최종 승패 계산하기 (`Judgement.calculateWinningRate()`)
+- [x] 우승자를 찾는다 (`Judgement.findWinner()`)
+- [x] 최종 승패 계산하기 (`Judgement.judgeResult()`)
