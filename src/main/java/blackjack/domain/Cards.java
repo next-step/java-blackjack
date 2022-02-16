@@ -27,7 +27,7 @@ public class Cards {
     public int calculateCards() {
         final int aceCount = (int) cards.stream()
             .map(Card::getCardType)
-            .map(CardType::isAce)
+            .filter(CardType::isAce)
             .count();
 
         if (aceCount == 0) {
@@ -75,7 +75,4 @@ public class Cards {
             .max()
             .orElse(LOSE);
     }
-
-
-
 }
