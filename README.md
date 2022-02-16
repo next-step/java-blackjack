@@ -99,19 +99,19 @@
   - [ ] 결과 구하기
   - [ ] 승패 구하기
   
-- [ ] abstract Participant (딜러, 플레이어)
-  - [ ] 자신의 패를 가진다. 
-  - [ ] 카드패의 합산을 구한다. (구현)
-  - [ ] 카드를 더 받을 수 있는지.
+- [x] abstract Participant (딜러, 플레이어)
+  - [x] 자신의 패를 가진다. 
+  - [x] 카드패의 합산을 구한다. (구현)
+  - [x] 카드를 더 받을 수 있는지.
 
-- [ ] Player extends Participant
-  - [ ] 카드를 더 받을 수 있는지. (Override) -> 카드의 합이 21을 초과하면 턴을 종료한다.
+- [x] Player extends Participant
+  - [x] 카드를 더 받을 수 있는지. (Override) -> 카드의 합이 21을 초과하면 턴을 종료한다.
 
 - [ ] Players
   - [ ] 플레이어들
 
-- [ ] Dealer extends Participant
-  - [ ] 카드를 더 받을 수 있는지. (Override) -> 카드의 합이 16을 초과하면 턴을 종료한다.
+- [x] Dealer extends Participant
+  - [x] 카드를 더 받을 수 있는지. (Override) -> 카드의 합이 16을 초과하면 턴을 종료한다.
   
 - [ ] OutputView
   - 참가자 패
