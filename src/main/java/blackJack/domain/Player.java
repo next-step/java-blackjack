@@ -37,4 +37,8 @@ public class Player implements User {
     public boolean isCardDraw() {
         return deck.getScore() <= ADDITIONAL_CARD_DRAW_SCORE_THRESHOLD;
     }
+
+    public String convertStatus() {
+        return String.format("%s카드: %s", userName.getName(), deck.convertDeckFormat());
+    }
 }

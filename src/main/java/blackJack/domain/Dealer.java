@@ -42,4 +42,8 @@ public class Dealer implements User {
     public void additionalCardDraw(Card card) {
         appendToDeck(card);
     }
+
+    public String convertStatus() {
+        return String.format("%s: %s", userName.getName(), deck.convertDeckFormat());
+    }
 }

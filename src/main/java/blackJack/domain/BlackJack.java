@@ -1,6 +1,7 @@
 package blackJack.domain;
 
 import blackJack.view.InputView;
+import blackJack.view.OutputView;
 import java.util.List;
 
 public class BlackJack {
@@ -20,6 +21,10 @@ public class BlackJack {
         return new BlackJack(userNames);
     }
 
+    public GameUser getGameUser() {
+        return gameUser;
+    }
+
     public List<Player> getPlayers() {
         return gameUser.getPlayers();
     }
@@ -32,13 +37,7 @@ public class BlackJack {
         gameCard.shuffle();
     }
 
-    public void run() {
-        initCardDraw();
-        dealerPhase();
-        playerPhase();
-    }
-
-    private void initCardDraw() {
+    public void initCardDraw() {
         initDealerDraw();
         initPlayerDraw();
     }
@@ -52,13 +51,13 @@ public class BlackJack {
             .forEach(player -> player.appendToDeck(gameCard.drawCard(INITIAL_DRAW_CARD_COUNT)));
     }
 
-    private void dealerPhase() {
+    public void dealerPhase() {
         if (gameUser.getDealer().isCardDraw()) {
             gameUser.getDealer().additionalCardDraw(gameCard.drawCard());
         }
     }
 
-    private void playerPhase() {
+    public void playerPhase() {
         for (Player player : gameUser.getPlayers()) {
             useTurn(player);
         }
@@ -66,7 +65,8 @@ public class BlackJack {
 
     private void useTurn(Player player) {
         while (player.isCardDraw()) {
-            if (InputView.readYN(player.getName())) {
+            OutputView.printRequestAdditionalCardDrawFormat(player);
+            if (InputView.readYN()) {
                 player.appendToDeck(gameCard.drawCard());
             }
         }

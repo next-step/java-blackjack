@@ -3,6 +3,7 @@ package blackJack.domain;
 import blackJack.util.Util;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Deck {
 
@@ -36,10 +37,6 @@ public class Deck {
         return deck;
     }
 
-    public boolean isScoreOver21() {
-        return getScore() > MATCH_SCORE;
-    }
-
     public int getScore() {
         int score = 0;
         int count = 0;
@@ -57,6 +54,12 @@ public class Deck {
             }
         }
         return calculateAceScore(score, count);
+    }
+
+    public String convertDeckFormat() {
+        return deck.stream()
+            .map(card -> String.format("%s%s", card.getCardNumber(), card.getCardType()))
+            .collect(Collectors.joining(", "));
     }
 
     private int calculateAceScore(int score, int count) {

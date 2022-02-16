@@ -11,4 +11,6 @@ public interface User {
     void appendToDeck(Card card);
 
     void appendToDeck(List<Card> cards);
+
+    String convertStatus();
 }
