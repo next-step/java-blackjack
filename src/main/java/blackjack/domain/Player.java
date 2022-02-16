@@ -14,8 +14,21 @@ public class Player {
     }
 
     protected int calculateScore() {
-        return 0;
+        int score = cards.stream().mapToInt(card -> card.getDenomination().getCount()).sum();
+        long aceCount = cards.stream().filter(card -> card.getDenomination().isAce()).count();
+        for (int i = 0; i < aceCount; i++) {
+            score = adjustScore(score);
+        }
+        return score;
     }
+
+    private int adjustScore(int score) {
+        if (score + TEN <= BUST_THRESHOLD) {
+            score += TEN;
+        }
+        return score;
+    }
+
     protected void receiveCard(Card card) {
         cards.add(card);
     }
