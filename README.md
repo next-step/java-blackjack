@@ -74,7 +74,7 @@
     - [x] 카드를 섞는다 (`Deck.shuffle()`)
     - [x] 카드 한 장을 꺼낸다 (`Deck.popCard()`)
 - [x] `Dealer`는 `Player` 클래스로부터 상속을 받는다
-- [ ] 카드 숫자를 계산한다 (`Player.calculateScore()`)
+- [x] 카드 숫자를 계산한다 (`Player.calculateScore()`)
 - [x] 딜러가 플레이어에게 카드 배분한다 (`Dealer.allocateCard()`)
 - [ ] 딜러의 처음 받은 2장의 카드 합계가 16이하라면 카드 한 장을 추가로 받는다 (`Dealer.addOneMoreCard`)
 - [ ] 카드 추가 여부 묻기 (`Input.askAddCard()`)
