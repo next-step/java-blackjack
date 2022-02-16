@@ -35,4 +35,10 @@ public class Cards {
     public List<Card> getCards() {
         return cards;
     }
+
+    public List<String> getCardNames() {
+        return cards.stream()
+            .map(Card::toString)
+            .collect(Collectors.toList());
+    }
 }
