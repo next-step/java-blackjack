@@ -1,20 +1,19 @@
 package blackjack.domain.user;
 
 import blackjack.domain.card.Card;
-import java.util.ArrayList;
-import java.util.List;
+import blackjack.domain.card.CardBundle;
 
 public class Player {
 
     private static final int BLACK_JACK_SCORE = 21;
 
-    protected final List<Card> cards;
+    protected final CardBundle cardBundle;
     private final String name;
 
     public Player(String name) {
         validateName(name);
-        this.cards = new ArrayList<>();
         this.name = name;
+        this.cardBundle = CardBundle.emptyBundle();
     }
 
     private void validateName(String name) {
@@ -24,7 +23,7 @@ public class Player {
     }
 
     public void drawCard(Card card) {
-        this.cards.add(card);
+        this.cardBundle.addCard(card);
     }
 
     public String name() {
@@ -40,9 +39,7 @@ public class Player {
     }
 
     public int score() {
-        return cards.stream()
-            .mapToInt(Card::value)
-            .sum();
+        return cardBundle.calculateScore();
     }
 
     public boolean isDrawable() {
