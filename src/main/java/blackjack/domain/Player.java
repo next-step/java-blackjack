@@ -3,28 +3,20 @@ package blackjack.domain;
 
 import static blackjack.utils.Constant.BUST_LIMIT;
 
-public class Player {
+import java.util.ArrayList;
 
-    private final Cards cards;
+public class Player extends Participant {
 
-    public Player(Cards cards) {
-        this.cards = cards;
+    private final String name;
+
+    public Player(Cards cards, String name) {
+        super(cards);
+        this.name = name;
     }
 
-    public void deal(CardDeck deck) {
-        hit(deck);
-        hit(deck);
+    public static Player from(String name) {
+        Cards cards = new Cards(new ArrayList<>());
+        return new Player(cards, name);
     }
 
-    public void hit(CardDeck deck) {
-        cards.addCard(deck.popCard());
-    }
-
-    public int getScore() {
-        return cards.getScore();
-    }
-
-    public boolean isBusted() {
-        return cards.getScore() >= BUST_LIMIT;
-    }
 }

@@ -22,7 +22,7 @@ class PlayerTest {
 
     @BeforeEach
     void setUp() {
-        player = new Player(new Cards(new ArrayList<>(Arrays.asList(new Card(CLUBS, ACE)))));
+        player = new Player(new Cards(new ArrayList<>(Arrays.asList(new Card(CLUBS, ACE)))), "james");
         cardDeck = new CardDeck();
     }
 
@@ -36,9 +36,10 @@ class PlayerTest {
         );
 
         Cards testCards = new Cards(cards);
-        Player player = new Player(testCards);
+        Player player = new Player(testCards, "james");
 
         assertThat(player.isBusted()).isTrue();
     }
+
 
 }

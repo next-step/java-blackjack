@@ -11,30 +11,34 @@ public class InputView {
     private static final String BLANK_EXCEPTION = "1명 이상의 플레이어 이름을 입력해주세요.";
     private static final String WRONG_ANSWER_EXCEPTION = "응답은 y 또는 n이어야 합니다.";
 
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
-    public List<String> inputPlayerNames() {
+    private InputView() {
+
+    }
+
+    public static List<String> inputPlayerNames() {
         System.out.println(INIT_PLAYER_MESSAGE);
         String input = scanner.nextLine();
         checkBlank(input);
         return Spliter.commaSplit(input);
     }
 
-    public String getUserResponse() {
+    public static String getUserResponse() {
         System.out.println(MORE_CARD_MESSAGE);
         String input = scanner.nextLine();
         checkResponse(input);
         return input;
     }
 
-    private void checkResponse(String input) {
+    private static void checkResponse(String input) {
         checkBlank(input);
         if (!input.contains("y") && !input.contains("n")) {
             throw new IllegalArgumentException(WRONG_ANSWER_EXCEPTION);
         }
     }
 
-    private void checkBlank(String text) {
+    private static void checkBlank(String text) {
         if (text == null || text.trim().equals("")) {
             throw new IllegalArgumentException(BLANK_EXCEPTION);
         }

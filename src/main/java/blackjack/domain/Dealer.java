@@ -1,6 +1,6 @@
 package blackjack.domain;
 
-public class Dealer extends Player {
+public class Dealer extends Participant {
     private static final int LIMIT_MORE_CARD = 16;
 
     public Dealer(Cards cards) {
