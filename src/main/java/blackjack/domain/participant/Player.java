@@ -8,14 +8,14 @@ public class Player extends Participant {
 
     private final String name;
 
-    public Player(final String name ,final Hands hands) {
+    public Player(final String name, final Hands hands) {
         super(hands);
         this.name = name;
     }
 
     @Override
     boolean canDraw() {
-         return hands.isUnderScore(DRAWABLE_SCORE_LIMIT);
+        return hands.isUnderScore(DRAWABLE_SCORE_LIMIT);
     }
 
     @Override
