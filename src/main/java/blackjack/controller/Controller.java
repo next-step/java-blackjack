@@ -13,31 +13,28 @@ import java.util.stream.Collectors;
 
 public class Controller {
 
-    private static final InputView inputView = new InputView();
-    private static final OutputView outputView = new OutputView();
-
     public static void run() {
-        List<String> playerNames = inputView.inputPlayers();
 
-        List<Player> players = playerNames.stream()
+
+        List<Player> players = InputView.inputPlayers().stream()
             .map(name -> new Player(name, new Cards(CardDeck.pop(2))))
             .collect(Collectors.toList());
 
         Dealer dealer = new Dealer(new Cards(CardDeck.pop(2)));
 
-        outputView.printStartMessage(playerNames);
+        OutputView.printStartMessage(players);
         System.out.println("딜러 : " + dealer.getCards().cards().get(0)); // 하나만 뽑혀야 함
 
-        players.forEach(player -> outputView.printCurrentCardsState(player.getName(),
+        players.forEach(player -> OutputView.printCurrentCardsState(player.getName(),
             player.getCards().cards()));
 
         for (Player player : players) {
             String yesOrNo = "";
             do {
-                yesOrNo = inputView.inputYesOrNo(player.getName());
+                yesOrNo = InputView.inputYesOrNo(player.getName());
                 if (yesOrNo.equals("y")) {
                     player.getCards().addCard(CardDeck.pop());
-                    outputView.printCurrentCardsState(player.getName(), player.getCards().cards());
+                    OutputView.printCurrentCardsState(player.getName(), player.getCards().cards());
                     int totalScore = player.getCards().cards().stream()
                         .filter(card -> !card.getCardNumber().name().equals("A"))
                         .mapToInt(card -> card.getCardNumber().getScore()).sum();
@@ -93,7 +90,7 @@ public class Controller {
                 dealerTotalScore += card.getCardNumber().getScore();
             }
         }
-        outputView.printResult("딜러", dealer.getCards().cards(), dealerTotalScore);
+        OutputView.printResult("딜러", dealer.getCards().cards(), dealerTotalScore);
 
         List<Integer> playerResults = new ArrayList<>();
         for (Player player : players) {
@@ -113,7 +110,7 @@ public class Controller {
                 }
             }
             playerResults.add(playerTotalScore);
-            outputView.printResult(player.getName(), player.getCards().cards(), playerTotalScore);
+            OutputView.printResult(player.getName(), player.getCards().cards(), playerTotalScore);
         }
 
         int finalDealerTotalScore = dealerTotalScore;

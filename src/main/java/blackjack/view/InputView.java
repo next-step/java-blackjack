@@ -13,18 +13,18 @@ public class InputView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public List<String> inputPlayers() {
+    public static List<String> inputPlayers() {
         String players = getInputValueWithMessage(PARTICIPANTS_MESSAGE);
         return Arrays.stream(players.split(","))
             .map(String::trim)
             .collect(Collectors.toList());
     }
 
-    public String inputYesOrNo(String name) {
+    public static String inputYesOrNo(String name) {
         return getInputValueWithMessage(name + YES_OR_NO_MESSAGE);
     }
 
-    public String getInputValueWithMessage(String message) {
+    public static String getInputValueWithMessage(String message) {
         System.out.println(message);
         return SCANNER.nextLine().trim();
     }
