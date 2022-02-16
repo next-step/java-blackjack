@@ -100,17 +100,20 @@
   - [ ] 승패 구하기
   
 - [x] abstract Participant (딜러, 플레이어)
+  - [x] 이름을 가진다. 
   - [x] 자신의 패를 가진다. 
   - [x] 카드패의 합산을 구한다. (구현)
   - [x] 카드를 더 받을 수 있는지.
 
 - [x] Player extends Participant
+  - [x] 플레이어 이름을 반환한다. (Override)
   - [x] 카드를 더 받을 수 있는지. (Override) -> 카드의 합이 21을 초과하면 턴을 종료한다.
 
 - [ ] Players
   - [ ] 플레이어들
 
 - [x] Dealer extends Participant
+  - '딜러' 를 반환한다. (Override)
   - [x] 카드를 더 받을 수 있는지. (Override) -> 카드의 합이 16을 초과하면 턴을 종료한다.
   
 - [ ] OutputView
