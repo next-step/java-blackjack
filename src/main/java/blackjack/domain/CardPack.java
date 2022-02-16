@@ -1,6 +1,5 @@
 package blackjack.domain;
 
-import blackjack.util.CardShuffler;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +11,7 @@ public class CardPack {
     private static final List<String> symbols = Arrays.asList("스페이드", "다이아몬드", "클로버", "하트");
     private static final int SYMBOL_SIZE = symbols.size();
     private static final String ACE = "A";
+    private static final int EMPTY = 0;
 
     private final Map<String, List<Card>> map;
 
@@ -37,16 +37,19 @@ public class CardPack {
         return new CardPack(map);
     }
 
-    public Card pickCard() {
-        int symbolIndex = CardShuffler.pickIndexIn(SYMBOL_SIZE);
-        String symbol = symbols.get(symbolIndex);
-        List<Card> cards = map.get(symbol);
-
-        int cardIndex = CardShuffler.pickIndexIn(cards.size());
+    public Card pickCard(String symbol, int cardIndex) {
         return map.get(symbol).remove(cardIndex);
     }
 
     public Map<String, List<Card>> getMap() {
         return map;
+    }
+
+    public int getCardSizeBy(String symbol) {
+        return map.get(symbol).size();
+    }
+
+    public List<Card> getCardsBy(String symbol) {
+        return map.get(symbol);
     }
 }
