@@ -11,14 +11,15 @@ import java.util.List;
 public class GameController {
 
     public void start() {
-        CardPack cardPack = new CardPack();
+        final CardPack cardPack = new CardPack();
 
         Dealer dealer = new Dealer(cardPack);
 
-        GamePlayers gamePlayers = GamePlayers.makePlayers(InputView.getPlayerName());
+        final GamePlayers gamePlayers = new GamePlayers(InputView.getPlayerName());
 
         dealer.initializeGame(gamePlayers);
         printInitialStatus(gamePlayers);
+
         dealer.playGame(gamePlayers.getPlayers(), gamePlayers.getDealer());
 
         OutputView.printCardResult(gamePlayers);
