@@ -17,15 +17,6 @@ import org.junit.jupiter.api.Test;
 
 class PlayerTest {
 
-    private Player player;
-    private CardDeck cardDeck;
-
-    @BeforeEach
-    void setUp() {
-        player = new Player(new Cards(new ArrayList<>(Arrays.asList(new Card(CLUBS, ACE)))), "james");
-        cardDeck = new CardDeck();
-    }
-
     @DisplayName("카드 숫자의 총합이 21이상이면 player는 bust한다")
     @Test
     void bustWhenCardsScoreIsOver21() {
