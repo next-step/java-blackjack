@@ -19,11 +19,11 @@ class BlackJackTest {
         GameUser gameUser = GameUser.from(userNames);
 
         List<String> blackJackUserNames = blackJack.getPlayers().stream()
-            .map(player -> player.getName())
+            .map(Player::getName)
             .collect(Collectors.toList());
 
         List<String> gameUserNames = gameUser.getPlayers().stream()
-            .map(player -> player.getName())
+            .map(Player::getName)
             .collect(Collectors.toList());
 
         assertThat(blackJackUserNames)
