@@ -7,12 +7,15 @@ public class GameUser {
 
     private final List<User> gameUsers;
 
-    private GameUser() {
+    private GameUser(List<String> userNames) {
         this.gameUsers = new ArrayList<>();
+
+        this.append(Dealer.create());
+        userNames.forEach(userName -> this.append(Player.of(userName)));
     }
 
-    public static GameUser create() {
-        return new GameUser();
+    public static GameUser from(List<String> userNames) {
+        return new GameUser(userNames);
     }
 
     public List<User> getGameUsers() {
