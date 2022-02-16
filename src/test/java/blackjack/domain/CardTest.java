@@ -1,30 +1,15 @@
 package blackjack.domain;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
-import java.util.HashSet;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class CardDeckTest {
-
-    private CardDeck cardDeck;
-
-    @BeforeEach
-    void setUp() {
-        cardDeck = new CardDeck();
-    }
-
+class CardTest {
+    @DisplayName("카드 속성에 따라 이름을 표기한다")
     @Test
-    void 초기_카드덱은_문양숫자조합으로_구별되는_52가지의_카드를_가진다() {
-        assertThat(new HashSet<>(cardDeck.initDeck()).size()).isEqualTo(52);
-    }
-
-    @Test
-    void 한_번_뽑힌_카드는_덱에_존재하지_않아야_한다() {
-        Card target = cardDeck.popCard();
-        assertThat(cardDeck.contains(target)).isFalse();
+    void givenCard_whenCallToString_ThenReturnName() {
+        Card card = new Card(Suit.HEARTS, Denomination.FIVE);
+        assertThat(card.toString()).isEqualTo("5하트");
     }
 }
