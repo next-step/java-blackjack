@@ -3,6 +3,8 @@ package blackjack.domain.Card;
 import java.util.List;
 
 public class Player extends Gamer {
+    private static final int TEN = 10;
+    private static final int THRESHOLD = 21;
 
     private List<Card> cards;
     private final String name;
@@ -12,25 +14,28 @@ public class Player extends Gamer {
         cards = initSetting();
     }
 
+    public List<Card> getCards() {
+        return cards;
+    }
+
     public int getPlayerCardSum(Player player) {
-        int cardSum = player.getCards().stream()
+        int score = player.getCards().stream()
             .map(Card::getDenomination)
             .mapToInt(Denomination::getValue)
             .sum();
 
-        if (player.getCards().contains(new Card(Denomination.ACE, Suit.CLUBS)) ||
-            player.getCards().contains(new Card(Denomination.ACE, Suit.HEARTS)) ||
-            player.getCards().contains(new Card(Denomination.ACE, Suit.DIAMONDS)) ||
-            player.getCards().contains(new Card(Denomination.ACE, Suit.SPADES))) {
-            if (cardSum <= 11) {
-                return cardSum + 10;
-            }
+        long aceCount = player.getCards().stream().filter(card -> card.getDenomination().isAce()).count();
+        for(int i = 0; i< aceCount; i++) {
+            score = adjustScore(score);
         }
-        return cardSum;
+        return score;
     }
 
-    public List<Card> getCards() {
-        return cards;
+    private int adjustScore(int score) {
+        if(score + TEN <= THRESHOLD) {
+            score += TEN;
+        }
+        return score;
     }
 
     @Override
