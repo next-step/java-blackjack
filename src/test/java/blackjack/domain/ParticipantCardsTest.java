@@ -9,8 +9,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ParticipantCardsTest {
+
     @Test
-    void 카드총합_구하기(){
+    void 카드총합_구하기() {
         // given
         List<Card> cards = new ArrayList<>();
         cards.add(new Card(CardType.CLOVER, CardValue.FIVE));
@@ -24,7 +25,7 @@ class ParticipantCardsTest {
     }
 
     @Test
-    void 카드총합_구하기2(){
+    void 카드총합_구하기2() {
         // given
         List<Card> cards = new ArrayList<>();
         cards.add(new Card(CardType.CLOVER, CardValue.FIVE));
@@ -37,7 +38,7 @@ class ParticipantCardsTest {
     }
 
     @Test
-    void 카드총합_구하기3(){
+    void 카드총합_구하기3() {
         // given
         List<Card> cards = new ArrayList<>();
         cards.add(new Card(CardType.CLOVER, CardValue.FIVE));

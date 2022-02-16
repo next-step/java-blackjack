@@ -3,6 +3,7 @@ package blackjack.domain;
 import java.util.ArrayList;
 
 abstract public class Participant {
+
     protected final String name;
     protected final ParticipantCards cards;
     protected final int winCount, loseCount;
@@ -16,6 +17,10 @@ abstract public class Participant {
 
     public Participant(String name) {
         this(name, new ParticipantCards(new ArrayList<>()), 0, 0);
+    }
+
+    public final int sumCardScore() {
+        return cards.sumCardScore();
     }
 
     public abstract void drawCardMultiple(Deck deck, int number);
