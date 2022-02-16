@@ -1,9 +1,11 @@
 package blackjack.domain;
 
-public class Dealer {
+public class Dealer extends Person{
+
     private final CardAddible cards;
 
-    public Dealer(CardAddible cards) {
+    public Dealer(String name, CardAddible cards) {
+        super(name);
         this.cards = cards;
     }
 
