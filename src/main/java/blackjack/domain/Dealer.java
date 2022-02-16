@@ -31,9 +31,6 @@ public class Dealer {
         for (Player player : players) {
             giveCardToPlayer(player);
         }
-        for (Player player : players) {
-            System.out.println(player.getName()+"의 점수 : "+player.getScore());
-        }
     }
 
     private void giveCardToPlayer(Player player) {
