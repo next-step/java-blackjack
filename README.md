@@ -87,10 +87,10 @@
 - [x] GameCard - 게임에서 사용될 모든 Card의 집합
   - [x] 모든 Card는 중복이 없어야한다.
   - [x] 총 52 장이 있어야한다.
-- [] GameUser - BlackJack을 수행하는 User의 집합
-  - [] List<User>를 가지고 있다.
-  - [] User를 추가할 수 있다.
-  - [] List<User>를 반환할 수 있다.
+- [x] GameUser - BlackJack을 수행하는 User의 집합
+  - [x] List<User>를 가지고 있다.
+  - [x] User를 추가할 수 있다.
+  - [x] List<User>를 반환할 수 있다.
 - [] BlackJack - 게임 로직 수행
   - [] Dealer는 총 score가 16이하일 경우, 1장의 카드를 추가로 받는다.
   - [] GameUser를 가지고 있다.
