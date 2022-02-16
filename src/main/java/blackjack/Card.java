@@ -4,11 +4,22 @@ import java.util.Objects;
 
 public class Card {
 
-    private final Suit suit;
+    private static final String CARD_NAME_FORMAT = "%d%s";
+
     private final CardNumber cardNumber;
-    public Card(Suit suit,CardNumber cardNumber) {
+    private final Suit suit;
+
+    public Card(CardNumber cardNumber, Suit suit) {
+        this.cardNumber = cardNumber;
         this.suit = suit;
-        this.cardNumber=cardNumber;
+    }
+
+    public boolean isAce() {
+        return cardNumber.isAce();
+    }
+
+    public String getCardName() {
+        return String.format(CARD_NAME_FORMAT, cardNumber.name(), suit.getName());
     }
 
     public int getCardScore() {

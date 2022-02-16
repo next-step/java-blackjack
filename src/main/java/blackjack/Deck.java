@@ -41,6 +41,6 @@ public class Deck {
 
     private static Stream<Card> createEntireSuitCards(final CardNumber cardNumber) {
         return Arrays.stream(Suit.values())
-            .map(suit -> new Card(suit, cardNumber));
+            .map(suit -> new Card(cardNumber, suit));
     }
 }

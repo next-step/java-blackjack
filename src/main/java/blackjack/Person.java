@@ -6,14 +6,25 @@ public abstract class Person {
 
     protected final String userName;
     protected final Cards cards;
-    protected final Score score;
 
     public Person(String userName, Cards cards) {
         this.userName = userName;
         this.cards = cards;
-        this.score = new Score(0);
+    }
 
+    public void drawCard(Deck deck) {
+        cards.add(deck.drawCard());
     }
 
     public abstract boolean canDrawCard();
+
+    public int cardSize() {
+        return cards.size();
+    }
+
+    public void initializeDeck(Deck deck) {
+        for (int i = 0; i < INIT_CARD_COUNT; i++) {
+            cards.add(deck.drawCard());
+        }
+    }
 }

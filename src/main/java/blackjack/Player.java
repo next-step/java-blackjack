@@ -2,7 +2,7 @@ package blackjack;
 
 public class Player extends Person {
 
-    public Player(String userName,Cards cards) {
+    public Player(String userName, Cards cards) {
         super(userName,cards);
     }
 
@@ -13,5 +13,9 @@ public class Player extends Person {
     @Override
     public boolean canDrawCard() {
         return cards.isNearTwentyOne();
+    }
+
+    public Score compareScore(Dealer dealer) {
+        return Score.judge(cards, dealer.cards);
     }
 }
