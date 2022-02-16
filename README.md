@@ -65,10 +65,11 @@
   - [x] Deck에 카드를 추가할 수 있다.
   - [x] 해당 카드의 점수인 score를 반환할 수 있다. 
 - [] Dealer
-  - [] 총 score가 16이하일 경우, 1장의 카드를 추가로 받는다.
+  - [x] Deck을 가지고 있다.
+  - [x] UserName을 가지고 있다. - name은 `dealer`라는 기본 이름을 가진다.
 - [x] Player
-  - [x] Deck
-  - [x] name
+  - [x] Deck을 가지고 있다.
+  - [x] UserName을 가지고 있다.
 - [x] Deck - 딜러 또는 플레이어가 가진 Card의 집합
   - [x] List<Card>를 가지고 있다.
   - [x] 현재 List<Card>의 총 score를 계산할 수 있다.
@@ -86,11 +87,12 @@
 - [x] GameCard - 게임에서 사용될 모든 Card의 집합
   - [x] 모든 Card는 중복이 없어야한다.
   - [x] 총 52 장이 있어야한다.
-- [] GameUser - BlackJack을 수행한는 User의 집합
+- [] GameUser - BlackJack을 수행하는 User의 집합
   - [] List<User>를 가지고 있다.
   - [] User를 추가할 수 있다.
   - [] List<User>를 반환할 수 있다.
 - [] BlackJack - 게임 로직 수행
+  - [] Dealer는 총 score가 16이하일 경우, 1장의 카드를 추가로 받는다.
   - [] GameUser를 가지고 있다.
   - [] GameCard를 가지고 있다.
   - [] 게임 진행시 최초로 GameCard를 셔플할 수 있다.
