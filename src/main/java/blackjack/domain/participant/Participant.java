@@ -10,7 +10,7 @@ public abstract class Participant {
         this.hands = hands;
     }
 
-    abstract boolean canDraw();
+    abstract public boolean canDraw();
 
     abstract public String getName();
 

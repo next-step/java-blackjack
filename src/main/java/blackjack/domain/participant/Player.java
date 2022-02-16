@@ -14,7 +14,7 @@ public class Player extends Participant {
     }
 
     @Override
-    boolean canDraw() {
+    public boolean canDraw() {
         return hands.isUnderScore(DRAWABLE_SCORE_LIMIT);
     }
 
