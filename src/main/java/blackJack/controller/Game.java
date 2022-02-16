@@ -30,6 +30,8 @@ public class Game {
 
         blackJack.playerPhase();
         blackJack.dealerPhase();
+
+
     }
 
     private List<String> getPlayerName() {

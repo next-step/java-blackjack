@@ -54,6 +54,7 @@ public class BlackJack {
     public void dealerPhase() {
         if (gameUser.getDealer().isCardDraw()) {
             gameUser.getDealer().additionalCardDraw(gameCard.drawCard());
+            OutputView.printDealerAdditionalCardDraw();
         }
     }
 
@@ -69,10 +70,7 @@ public class BlackJack {
             if (InputView.readYN()) {
                 player.appendToDeck(gameCard.drawCard());
             }
+            OutputView.printPlayerStatus(player);
         }
-        player.getDeck().forEach(card -> {
-            System.out.println(card.getCardNumber() + card.getCardType());
-        });
-        System.out.println("--------------------");
     }
 }
