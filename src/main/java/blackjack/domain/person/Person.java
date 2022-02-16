@@ -6,15 +6,9 @@ import java.util.List;
 
 public class Person {
 
-    protected List<Card> cards;
+    protected List<Card> cards = new ArrayList<>();
 
-    protected void initCards(Card card1, Card card2) {
-        cards = new ArrayList<>();
-        cards.add(card1);
-        cards.add(card2);
-    }
-
-    protected void addCard(Card card) {
+    public void addCard(Card card) {
         cards.add(card);
     }
 
