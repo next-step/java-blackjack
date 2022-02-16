@@ -15,8 +15,13 @@ public class Player {
     private boolean isDealer;
 
     public Player(String name, boolean isDealer) {
+        this(name, 0, isDealer);
+        this.cards = new ArrayList<>();
+    }
+
+    public Player(String name, int score, boolean isDealer) {
         this.name = name;
-        this.score = 0;
+        this.score = score;
         this.cards = new ArrayList<>();
         this.isDealer = isDealer;
     }
