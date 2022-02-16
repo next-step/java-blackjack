@@ -1,5 +1,6 @@
 package blackjack.domain.card;
 
+import blackjack.domain.score.ScoreCalculator;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class CardBundle {
     }
 
     public static CardBundle emptyBundle() {
-        return null;
+        return new CardBundle();
     }
 
     public void addCard(Card card) {
@@ -20,6 +21,7 @@ public class CardBundle {
     }
 
     public int calculateScore() {
-        return 0;
+        return ScoreCalculator.findByCards(cards)
+            .calculateScore(cards);
     }
 }
