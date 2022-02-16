@@ -65,8 +65,7 @@
     - [ ] 'y' 와 'n'이 아닐 경우 exception이 발생한다.
 
 - [x] Parser
-  - [x] 플레이어 이름이 비어있는지 확인한다. 
-
+  - [x] 플레이어 이름이 비어있는지 확인한다.
 
 - [x] Deck
   - Cards(set<Card>: pattern, rank)
@@ -82,6 +81,16 @@
 - [x] Card
   - [x] ACE 인지 확인.
   - [x] 이름(patter + rank)
+
+- [x] Hands
+  - [x] 두 장의 카드로 초기화
+  - [x] 카드 관리
+  - [ ] 현재 점수 관리
+  - [x] ACE의 값을 결정한다. 
+
+- [x] Score
+  - [x] Card의 합
+  - [x] 기존 합에 한장의 Card의 값을 더한 값을 반환한다.
 
 - [ ] Game
   - [ ] 카드 분배
