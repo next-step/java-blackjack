@@ -5,13 +5,37 @@ import java.util.List;
 
 public class AceScoreStrategy implements ScoreStrategy {
 
+    private static final int BLACK_JACK_SCORE = 21;
+    private static final int ACE_WEIGHT_SCORE = 10;
+
+    private int getAceCount(List<Card> cards) {
+        return (int) cards.stream()
+            .filter(Card::isAce)
+            .count();
+    }
+
+    private int convertScore(Card card) {
+        if (card.isAce()) {
+            return card.value() + ACE_WEIGHT_SCORE;
+        }
+        return card.value();
+    }
+
     @Override
     public boolean isSupportable(List<Card> cards) {
-        return false;
+        return getAceCount(cards) > 0;
     }
 
     @Override
     public int calculateScore(List<Card> cards) {
-        return 0;
+        int score = cards.stream()
+            .mapToInt(this::convertScore)
+            .sum();
+        int aceCount = getAceCount(cards);
+        while (score > BLACK_JACK_SCORE && aceCount > 0) {
+            score -= ACE_WEIGHT_SCORE;
+            aceCount--;
+        }
+        return score;
     }
 }
