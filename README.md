@@ -96,11 +96,14 @@
   - [x] GameUser를 가지고 있다.
   - [x] GameCard를 가지고 있다.
   - [x] 게임 진행시 최초로 GameCard를 셔플할 수 있다.
-  - [] Dealer는 총 score가 16이하일 경우, 1장의 카드를 추가로 받는다.
+  - [x] User별로 초기 카드를 나눠준다.
+    - [x] GameCard에서 Card를 두 장 뽑기
+    - [x] User에게 Card 전달하기
+    - [] Dealer는 총 score가 16이하일 경우, 1장의 카드를 추가로 받는다.
   - [] User별로 턴을 진행할 수 있게 한다.
-  - [] GameCard에서 Card를 하나 뽑을 수 있다.
-  - [] User에 카드를 전달할 수 있다.
-  - [] 21을 넘지 않는 경우, User에게 카드를 지속적으로 전달할 수 있다.
+    - [] GameCard에서 Card를 한 장 뽑기
+    - [] User에게 Card 전달하기
+    - [] 21을 넘지 않는 경우를 판단할 수 있다.
 - [] UserStats - User별 승/패에 대한 정보
   - [] GameUser를 인자로 받아 User별, 승/패 정보를 계산한다.
 - [] GameController - 전체적인 게임을 진행할 Controller 
