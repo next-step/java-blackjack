@@ -3,6 +3,7 @@ package blackjack.domain;
 import java.util.ArrayList;
 
 public class Dealer extends Participant {
+    private static final String NAME_TAG = "딜러 카드: ";
     private static final int LIMIT_MORE_CARD = 16;
 
     public Dealer(Cards cards) {
@@ -18,4 +19,7 @@ public class Dealer extends Participant {
         return getScore() <= LIMIT_MORE_CARD;
     }
 
+    public String openCard() {
+        return NAME_TAG + getCardNames().get(0);
+    }
 }
