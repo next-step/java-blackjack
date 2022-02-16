@@ -7,11 +7,12 @@ public class Dealer extends Participant{
     }
 
     @Override
-    void drawCard(int number) {
+    public Card drawCardMultiple(Deck deck, int number) {
         if(cards.sumCardScore() > 17)
-            return;
+            return null;
 
         // for문 - number
         //this.cards.add(Card.random());
+        return null;
     }
 }

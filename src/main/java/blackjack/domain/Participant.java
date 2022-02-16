@@ -18,5 +18,5 @@ abstract public class Participant {
         this(name, new ParticipantCards(new ArrayList<>()), 0, 0);
     }
 
-    abstract void drawCard(int number);
+    public abstract Card drawCardMultiple(Deck deck, int number);
 }

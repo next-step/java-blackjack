@@ -8,7 +8,7 @@ public class Player extends Participant{
     }
 
     @Override
-    void drawCard(int number) {
-
+    public Card drawCardMultiple(Deck deck, int number) {
+        return null;
     }
 }

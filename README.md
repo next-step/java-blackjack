@@ -16,7 +16,6 @@
     - [x] 주입해야할 연료량을 계산한다. - Car.getChargeQuantity()
   - [x] 차량 별로 주입해야할 보고서를 생성한다. - RentCompany.generateReport()
 
-
 # 블랙잭
 
 ## 기능 요구사항

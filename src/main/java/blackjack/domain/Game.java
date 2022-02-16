@@ -31,16 +31,16 @@ public class Game {
         Players players = Players.from(name);
 
         // 딜러 , 사용자 에게 카드 2장씩 분배
-        dealer.drawCard(2);
-        players.drawCardAll(2);
+        dealer.drawCardMultiple(deck, 2);
+        players.drawCardMultiple(deck, 2);
 
         // 받은 카드 상태 출력
 
         // 사용자 1장씩 뽑기
-        players.drawCardAll(1);
+        players.drawCardMultiple(deck, 1);
 
         // 딜러 1장 뽑기
-        dealer.drawCard(1);
+        dealer.drawCardMultiple(deck, 1);
 
         // 사용자별 카드 최종 상태 출력
 
