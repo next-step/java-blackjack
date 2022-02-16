@@ -64,7 +64,7 @@
   - [x] UserName을 가지고 있다.
   - [x] Deck에 카드를 추가할 수 있다.
   - [x] 해당 카드의 점수인 score를 반환할 수 있다. 
-- [] Dealer
+- [x] Dealer
   - [x] Deck을 가지고 있다.
   - [x] UserName을 가지고 있다. - name은 `dealer`라는 기본 이름을 가진다.
 - [x] Player
