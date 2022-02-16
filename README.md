@@ -55,7 +55,7 @@ RentCompany
 
 - [x] 생성 시에 CardDeck을 초기화한다.
 - [x] 인자로 전달 받은 1장의 카드를 자신의 카드 목록에 추가한다. (Person 기능)
-- [ ] 전달 인자로 받은 장수만큼 카드를 반환한다.
+- [x] 전달 인자로 받은 장수만큼 카드를 반환한다.
 
 [CardDeck]
 
@@ -65,8 +65,8 @@ RentCompany
 
 [GameSetup]
 
-- [ ] 딜러를 생성하고 카드 두 장을 나눠준 뒤 반환한다. (createDealer)
-- [ ] 플레이어 이름 List<>를 받아서 플레이어를 생성하고 카드 두장 나눠준 뒤 플레이어를 반환한다. (createPlayers)
+- [x] 생성 시 딜러와 플레이어를 생성하고 저장한다.
+- [x] 플레이어 이름 List<>를 받아서 플레이어를 생성하고 플레이어를 반환한다. (createPlayers)
 
 [GameController]
 
