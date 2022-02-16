@@ -11,12 +11,16 @@ public class Card {
         this.rank = rank;
     }
 
+    public boolean isAce() {
+        return this.rank == Rank.ACE;
+    }
+
     public String getName() {
         return rank.getName() + pattern.getName();
     }
 
-    public boolean isAce() {
-        return this.rank == Rank.ACE;
+    public int getRank() {
+        return rank.getValue();
     }
 
     @Override
