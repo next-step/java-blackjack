@@ -2,45 +2,38 @@ package blackjack.view;
 
 import blackjack.domain.Card;
 import blackjack.domain.GamePlayers;
-import blackjack.domain.Player;
+import blackjack.domain.GamePlayer;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class OutputView {
 
-    private static final String GAME_INITIAL_MANAGER = "딜러와 %s에게 2장의 카드를 나누었습니다.";
+    private static final String GAME_INITIAL_MANAGER = "%s에게 2장의 카드를 나누었습니다.";
     private static final String COMMA = ", ";
     private static final String CARDS_LOG = "%s: %s";
-    private static final String QUESTION_ACCEPT_CARD_MESSAGE = "%s는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)";
     private static final String DEALER_RECEIVE_ONE_CARD_MESSAGE = "딜러는 한장의 카드를 더 받았습니다.";
     private static final String RESULT_CARDS_LOG = "%s카드: %s - 결과: %d";
     private static final String RESULT_GAME_LOG = "%s: %s";
-    private static final String WIN = "승";
-    private static final String LOSE = "패";
 
-    public static void printInitialMessage(List<Player> players) {
+    public static void printInitialMessage(List<GamePlayer> players) {
         String playerNames = players.stream()
-            .map(Player::getName)
+            .map(GamePlayer::getName)
             .collect(Collectors.joining(COMMA));
 
         System.out.println(String.format(GAME_INITIAL_MANAGER, playerNames));
     }
 
-    public static void printCardStatus(Player player) {
+    public static void printCardStatus(GamePlayer player) {
         StringBuilder stringBuilder = new StringBuilder();
 
         List<Card> cards = player.getCards();
         for (Card card : cards) {
-            stringBuilder.append(card.getName())
-                .append(card.getSymbol())
+
+            stringBuilder.append(card.getCardType().getName())
+                .append(card.getCardSymbol().getSymbol())
                 .append(COMMA);
         }
         System.out.println(String.format(CARDS_LOG, player.getName(), stringBuilder.toString()));
-    }
-
-    public static void printQuestionAcceptCard(Player player) {
-        System.out.println(String.format(QUESTION_ACCEPT_CARD_MESSAGE, player.getName()));
     }
 
     public static void printDealerAcceptCard() {
@@ -48,11 +41,11 @@ public class OutputView {
     }
 
     public static void printCardResult(GamePlayers gamePlayers) {
-        List<Player> players = gamePlayers.getPlayers();
+        List<GamePlayer> players = gamePlayers.getAllPlayers();
 
-        for (Player player : players) {
+        for (GamePlayer player : players) {
             String cardNameWithSymbol = player.getCards().stream()
-                .map(card -> card.getName() + card.getSymbol())
+                .map(card -> card.getCardType().getName() + card.getCardSymbol().getSymbol())
                 .collect(Collectors.joining(COMMA));
 
             System.out.println(String.format(RESULT_CARDS_LOG, player.getName(), cardNameWithSymbol, player.getScore()));
@@ -60,29 +53,9 @@ public class OutputView {
     }
 
     public static void printGameResult(GamePlayers gamePlayers) {
-        List<Player> players = gamePlayers.getPlayers();
-        int maxScore = getWinnerScore(players);
-
-        for (Player player : players) {
-            System.out.println(String.format(RESULT_GAME_LOG, player.getName(), getGameResult(player, maxScore)));
+        List<GamePlayer> players = gamePlayers.getAllPlayers();
+        for (GamePlayer player : players) {
+            System.out.println(String.format(RESULT_GAME_LOG, player.getName(), player.getGameResult(players)));
         }
-    }
-
-    private static int getWinnerScore(List<Player> players) {
-        return players.stream()
-            .map(Player::getScore)
-            .max(Integer::compareTo)
-            .orElseThrow(NoSuchElementException::new);
-    }
-
-    private static String getGameResult(Player player, int maxScore) {
-        if (isPlayerWinner(player, maxScore)) {
-            return WIN;
-        }
-        return LOSE;
-    }
-
-    private static boolean isPlayerWinner(Player player, int maxScore) {
-        return player.getScore() == maxScore;
     }
 }

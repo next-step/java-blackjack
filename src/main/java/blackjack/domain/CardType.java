@@ -1,6 +1,7 @@
 package blackjack.domain;
 
 public enum CardType {
+    ACE("A", 11, 1),
     TWO("2", 2),
     THREE("3", 3),
     FOUR("4", 4),
@@ -9,10 +10,10 @@ public enum CardType {
     SEVEN("7", 7),
     EIGHT("8", 8),
     NINE("9", 9),
-    ACE("A", 11, 1),
+    TEN("10", 10),
+    JACK("J", 10),
     QUEEN("Q", 10),
-    KING("K", 10),
-    JACK("J", 10);
+    KING("K", 10);
 
     private final String name;
     private final int point;
@@ -39,5 +40,9 @@ public enum CardType {
 
     public int getLowerAcePoint() {
         return this.lowerAcePoint;
+    }
+
+    public boolean isAce() {
+        return this == CardType.ACE;
     }
 }

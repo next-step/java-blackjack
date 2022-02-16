@@ -1,73 +1,34 @@
 package blackjack.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
-public class Player {
+public class Player extends GamePlayer {
 
-    private static final String ACE = "A";
-    private static final int BLACK_JACK = 21;
+    private static final int BLACKJACK = 21;
+    private static final String WIN = "승";
+    private static final String LOSE = "패";
 
-    private final String name;
-    private int score;
-    private List<Card> cards;
-    private boolean isDealer;
-
-    public Player(String name, boolean isDealer) {
-        this(name, 0, isDealer);
-        this.cards = new ArrayList<>();
+    public Player(String name) {
+        super(name);
     }
 
-    public Player(String name, int score, boolean isDealer) {
-        this.name = name;
-        this.score = score;
-        this.cards = new ArrayList<>();
-        this.isDealer = isDealer;
+    @Override
+    public boolean isLowerThanBound() {
+        //여기가 문제입니다
+        return getScore() < BLACKJACK;
     }
 
-    public void receiveCard(Card card) {
-        addCard(card);
-        addScore(card);
-    }
+    @Override
+    public String getGameResult(List<GamePlayer> allPlayers) {
+        int winnerScore = allPlayers.stream()
+            .map(GamePlayer::getScore)
+            .max(Integer::compareTo)
+            .orElseThrow(NoSuchElementException::new);
 
-    private void addCard(final Card card) {
-        this.cards.add(card);
-    }
-
-    private void addScore(final Card card) {
-        if (isAceCard(card)) {
-            this.score = getBetterPointForAce(card);
-            return;
+        if(this.getScore() == winnerScore){
+            return WIN;
         }
-        this.score += card.getPoint();
-    }
-
-    private boolean isAceCard(final Card card) {
-        return card.getName().equals(ACE);
-    }
-
-    private int getBetterPointForAce(Card card) {
-        int curScore = this.score;
-        if (curScore + card.getPoint() < BLACK_JACK) {
-            return curScore + card.getPoint();
-        }
-        return curScore + card.getLowerAcePoint();
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public int getScore() {
-        return this.score;
-    }
-
-    public List<Card> getCards() {
-        return Collections.unmodifiableList(cards);
-    }
-
-    public boolean isDealer() {
-        return this.isDealer;
+        return LOSE;
     }
 }
