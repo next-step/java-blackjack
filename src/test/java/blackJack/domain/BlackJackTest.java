@@ -13,17 +13,17 @@ class BlackJackTest {
     public static final int GAME_CARD_SIZE = 52;
 
     @Test
-    void GameUser를_가진다() {
+    void GamePlayer를_가진다() {
         List<String> userNames = Arrays.asList("박찬우", "제이슨");
         BlackJack blackJack = BlackJack.from(userNames);
         GameUser gameUser = GameUser.from(userNames);
 
-        List<String> blackJackUserNames = blackJack.getGameUsers().stream()
-            .map(user -> user.getName())
+        List<String> blackJackUserNames = blackJack.getPlayers().stream()
+            .map(player -> player.getName())
             .collect(Collectors.toList());
 
-        List<String> gameUserNames = gameUser.getGameUsers().stream()
-            .map(user -> user.getName())
+        List<String> gameUserNames = gameUser.getPlayers().stream()
+            .map(player -> player.getName())
             .collect(Collectors.toList());
 
         assertThat(blackJackUserNames)

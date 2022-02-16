@@ -5,12 +5,13 @@ import java.util.List;
 
 public class GameUser {
 
-    private final List<User> gameUsers;
+    private final Dealer dealer;
+    private final List<Player> players;
 
     private GameUser(List<String> userNames) {
-        this.gameUsers = new ArrayList<>();
+        this.dealer = Dealer.create();
+        this.players = new ArrayList<>();
 
-        this.append(Dealer.create());
         userNames.forEach(userName -> this.append(Player.of(userName)));
     }
 
@@ -18,12 +19,16 @@ public class GameUser {
         return new GameUser(userNames);
     }
 
-    public List<User> getGameUsers() {
-        return gameUsers;
+    public List<Player> getPlayers() {
+        return players;
     }
 
-    public GameUser append(User user) {
-        gameUsers.add(user);
+    public Dealer getDealer() {
+        return dealer;
+    }
+
+    public GameUser append(Player user) {
+        players.add(user);
         return this;
     }
 }

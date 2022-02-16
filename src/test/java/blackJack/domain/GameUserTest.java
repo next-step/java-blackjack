@@ -12,26 +12,23 @@ class GameUserTest {
     private static final String DEALER_DEFAULT_NAME = "dealer";
 
     @Test
-    void 유저_리스트는_기본적으로_dealer를_가진다() {
+    void GameUser의_Dealer의_이름은_dealer이다() {
         GameUser gameUser = GameUser.from(Arrays.asList());
+        String dealerName = gameUser.getDealer().getName();
 
-        List<String> gameUserNames = gameUser.getGameUsers().stream()
-            .map(User::getName)
-            .collect(Collectors.toList());
-
-        assertThat(gameUserNames.get(0))
+        assertThat(dealerName)
             .isEqualTo(DEALER_DEFAULT_NAME);
     }
 
     @Test
-    void 유저_리스트를_가진다() {
+    void GameUser는_Player_리스트를_가진다() {
         List<String> userNames = Arrays.asList("제이슨", "박찬우");
         GameUser gameUser = GameUser.from(userNames);
-        List<String> gameUserNames = gameUser.getGameUsers().stream()
+        List<String> gameUserNames = gameUser.getPlayers().stream()
             .map(User::getName)
             .collect(Collectors.toList());
 
         assertThat(userNames)
-            .isSubsetOf(gameUserNames);
+            .isEqualTo(gameUserNames);
     }
 }

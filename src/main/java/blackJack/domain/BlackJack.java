@@ -19,8 +19,8 @@ public class BlackJack {
         return new BlackJack(userNames);
     }
 
-    public List<User> getGameUsers() {
-        return gameUser.getGameUsers();
+    public List<Player> getPlayers() {
+        return gameUser.getPlayers();
     }
 
     public List<Card> getGameCard() {
@@ -37,8 +37,8 @@ public class BlackJack {
     }
 
     public void initCardDraw() {
-        gameUser.getGameUsers()
-            .forEach(user -> user.appendToDeck(gameCard.drawCard(INITIAL_DRAW_CARD_COUNT)));
+        gameUser.getPlayers()
+            .forEach(player -> player.appendToDeck(gameCard.drawCard(INITIAL_DRAW_CARD_COUNT)));
         // Dealer의 score가 16이하일떄 한 장 더 받기
     }
 
