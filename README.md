@@ -87,15 +87,16 @@
 - [x] GameCard - 게임에서 사용될 모든 Card의 집합
   - [x] 모든 Card는 중복이 없어야한다.
   - [x] 총 52 장이 있어야한다.
+  - [] 모든 Card를 셔플할 수 있다.
 - [x] GameUser - BlackJack을 수행하는 User의 집합
   - [x] List<User>를 가지고 있다.
   - [x] User를 추가할 수 있다.
   - [x] List<User>를 반환할 수 있다.
 - [] BlackJack - 게임 로직 수행
+  - [x] GameUser를 가지고 있다.
+  - [x] GameCard를 가지고 있다.
+  - [x] 게임 진행시 최초로 GameCard를 셔플할 수 있다.
   - [] Dealer는 총 score가 16이하일 경우, 1장의 카드를 추가로 받는다.
-  - [] GameUser를 가지고 있다.
-  - [] GameCard를 가지고 있다.
-  - [] 게임 진행시 최초로 GameCard를 셔플할 수 있다.
   - [] User별로 턴을 진행할 수 있게 한다.
   - [] GameCard에서 Card를 하나 뽑을 수 있다.
   - [] User에 카드를 전달할 수 있다.
