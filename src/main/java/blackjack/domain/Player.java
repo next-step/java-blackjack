@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public class Player extends Participant {
 
+    private static final String CARD_TAG = "카드: ";
+
     private final String name;
 
     public Player(Cards cards, String name) {
@@ -19,4 +21,7 @@ public class Player extends Participant {
         return new Player(cards, name);
     }
 
+    public String openCard() {
+        return name + CARD_TAG + String.join(", ", getCardNames());
+    }
 }
