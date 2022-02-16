@@ -2,6 +2,7 @@ package blackjack.domain.user;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Players {
 
@@ -13,14 +14,20 @@ public class Players {
     }
 
     public List<Player> findOnlyPlayers() {
-        return null;
+        return players.stream()
+            .filter(Player::isPlayer)
+            .collect(Collectors.toList());
     }
 
     public Player findDealer() {
-        return null;
+        return players.stream()
+            .filter(Player::isDealer)
+            .findFirst()
+            .orElseThrow(() -> new IllegalArgumentException("[ERROR] 딜러가 존재하지 않습니다."));
     }
 
     public boolean hasBlackJack() {
-        return false;
+        return players.stream()
+            .anyMatch(Player::isBlackJack);
     }
 }
