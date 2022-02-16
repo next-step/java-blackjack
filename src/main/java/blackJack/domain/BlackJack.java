@@ -1,5 +1,6 @@
 package blackJack.domain;
 
+import blackJack.view.InputView;
 import java.util.List;
 
 public class BlackJack {
@@ -33,14 +34,45 @@ public class BlackJack {
 
     public void run() {
         initCardDraw();
-
+        dealerPhase();
+        playerPhase();
     }
 
-    public void initCardDraw() {
+    private void initCardDraw() {
+        initDealerDraw();
+        initPlayerDraw();
+    }
+
+    private void initDealerDraw() {
+        gameUser.getDealer().appendToDeck(gameCard.drawCard(INITIAL_DRAW_CARD_COUNT));
+    }
+
+    private void initPlayerDraw() {
         gameUser.getPlayers()
             .forEach(player -> player.appendToDeck(gameCard.drawCard(INITIAL_DRAW_CARD_COUNT)));
-        // Dealer의 score가 16이하일떄 한 장 더 받기
     }
 
+    private void dealerPhase() {
+        if (gameUser.getDealer().isCardDraw()) {
+            gameUser.getDealer().additionalCardDraw(gameCard.drawCard());
+        }
+    }
 
+    private void playerPhase() {
+        for (Player player : gameUser.getPlayers()) {
+            useTurn(player);
+        }
+    }
+
+    private void useTurn(Player player) {
+        while (player.isCardDraw()) {
+            if (InputView.readYN(player.getName())) {
+                player.appendToDeck(gameCard.drawCard());
+            }
+        }
+        player.getDeck().forEach(card -> {
+            System.out.println(card.getCardNumber() + card.getCardType());
+        });
+        System.out.println("--------------------");
+    }
 }

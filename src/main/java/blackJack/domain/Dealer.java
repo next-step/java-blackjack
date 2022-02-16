@@ -4,9 +4,11 @@ import java.util.List;
 
 public class Dealer implements User {
 
+    private static final String DEALER_DEFAULT_NAME = "dealer";
+    private static final int ADDITIONAL_CARD_DRAW_SCORE_THRESHOLD = 16;
+
     private final Deck deck;
     private final UserName userName;
-    private static final String DEALER_DEFAULT_NAME = "dealer";
 
     private Dealer() {
         this.deck = Deck.create();
@@ -31,5 +33,13 @@ public class Dealer implements User {
 
     public void appendToDeck(List<Card> cards) {
         cards.forEach(deck::append);
+    }
+
+    public boolean isCardDraw() {
+        return deck.getScore() <= ADDITIONAL_CARD_DRAW_SCORE_THRESHOLD;
+    }
+
+    public void additionalCardDraw(Card card) {
+        appendToDeck(card);
     }
 }

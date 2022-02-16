@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class BlackJackTest {
@@ -43,11 +42,5 @@ class BlackJackTest {
         GameCard gameCard = GameCard.create();
 
         assertThat(blackJack.getGameCard()).isNotEqualTo(gameCard.getGameCard());
-    }
-
-    @DisplayName("Dealer는 총 score가 16이하일 경우, 1장의 카드를 추가로 받는다.")
-    @Test
-    void Dealer는_Score가_16이상일떄_1장을_더_받는다() {
-
     }
 }

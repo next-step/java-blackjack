@@ -32,6 +32,10 @@ public class GameCard {
         return cards;
     }
 
+    public Card drawCard() {
+        return gameCard.remove(0);
+    }
+
     private void generateGameCard() {
         CARD_TYPE_LIST.forEach(
             type -> CARD_NUMBER_LIST.forEach(

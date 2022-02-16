@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Player implements User {
 
+    private static final int ADDITIONAL_CARD_DRAW_SCORE_THRESHOLD = 21;
+
     private final Deck deck;
     private final UserName userName;
 
@@ -30,5 +32,9 @@ public class Player implements User {
 
     public void appendToDeck(List<Card> cards) {
         cards.forEach(deck::append);
+    }
+
+    public boolean isCardDraw() {
+        return deck.getScore() <= ADDITIONAL_CARD_DRAW_SCORE_THRESHOLD;
     }
 }
