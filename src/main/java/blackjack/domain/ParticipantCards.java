@@ -14,6 +14,14 @@ public class ParticipantCards {
     }
 
     public int sumCardScore() {
+
+
+        int score = 0;
+
+        for(Card card : cards){
+
+        }
+
         return 1;
     }
 }

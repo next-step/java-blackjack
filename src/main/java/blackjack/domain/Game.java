@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Game {
 
-    public void start() {
+    public Participant start() {
         // 덱만들기
         List<CardType> types = Arrays.asList(CardType.values());
         Collections.shuffle(types);
@@ -45,5 +45,8 @@ public class Game {
         // 사용자별 카드 최종 상태 출력
 
         // 최종 승패
+
+        // 승자 반환
+        return null;
     }
 }

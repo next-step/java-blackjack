@@ -1,5 +1,7 @@
 package blackjack.domain;
 
+import java.util.function.IntUnaryOperator;
+
 public class Card {
 
     private final CardType cardType;
@@ -10,6 +12,10 @@ public class Card {
         this.cardValue = cardValue;
     }
 
+    public int getScore(int currentScore) {
+        return this.cardValue.intUnaryOperator.applyAsInt(currentScore);
+    }
+
     enum CardType {
         SPADE,
         CLOVER,
@@ -18,26 +24,26 @@ public class Card {
     }
 
     enum CardValue {
-        ACE("A", -1),
-        TWO("2", 2),
-        THREE("3", 3),
-        FOUR("4", 4),
-        FIVE("5", 5),
-        SIX("6", 6),
-        SEVEN("7", 7),
-        EIGHT("8", 8),
-        NINE("9", 9),
-        TEN("10", 10),
-        QUEEN("Q", 10),
-        JACK("J", 10),
-        KING("K", 10);
+        ACE("A", currentScore -> currentScore < 15 ? 11 : 1),
+        TWO("2", currentScore -> 2),
+        THREE("3", currentScore -> 3),
+        FOUR("4", currentScore -> 4),
+        FIVE("5", currentScore -> 5),
+        SIX("6", currentScore -> 6),
+        SEVEN("7", currentScore -> 7),
+        EIGHT("8", currentScore -> 8),
+        NINE("9", currentScore -> 9),
+        TEN("10", currentScore -> 10),
+        QUEEN("Q", currentScore -> 10),
+        JACK("J", currentScore -> 10),
+        KING("K", currentScore -> 10);
 
         private final String number;
-        private final int score;
+        private final IntUnaryOperator intUnaryOperator;
 
-        CardValue(String number, int score) {
+        CardValue(String number, IntUnaryOperator intUnaryOperator) {
             this.number = number;
-            this.score = score;
+            this.intUnaryOperator = intUnaryOperator;
         }
     }
 }
