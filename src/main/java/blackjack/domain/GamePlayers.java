@@ -9,19 +9,18 @@ public class GamePlayers {
 
     private final List<GamePlayer> players;
 
-    public GamePlayers(List<GamePlayer> players) {
-        this.players = players;
+    public GamePlayers(final List<String> players) {
+        this.players = makePlayers(players);
     }
 
-    public static GamePlayers makePlayers(List<String> playerNames) {
-
-        List<GamePlayer> players = playerNames.stream()
-            .map(player -> new Player(player))
+    public List<GamePlayer> makePlayers(List<String> playerNames) {
+        final List<GamePlayer> players = playerNames.stream()
+            .map(Player::new)
             .collect(Collectors.toList());
 
-        players.add(0, new Player("딜러"));
+        players.add(0, new DealerPlayer("딜러"));
 
-        return new GamePlayers(new ArrayList<>(players));
+        return new ArrayList<>(players);
     }
 
     public GamePlayer getDealer() {
