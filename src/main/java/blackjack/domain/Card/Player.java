@@ -25,7 +25,7 @@ public class Player extends Gamer {
             .sum();
 
         long aceCount = player.getCards().stream().filter(card -> card.getDenomination().isAce()).count();
-        for(int i = 0; i< aceCount; i++) {
+        for(int i = 0; i < aceCount; i++) {
             score = adjustScore(score);
         }
         return score;

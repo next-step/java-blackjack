@@ -24,12 +24,11 @@ public class GameLauncher {
 
         Players players = new Players(playerNames);
         OutputView.printPlayersStatus(players);
-        // ace가 포함되어있으면 11을 더해서 21아래면 11로 해주고 아니면 1을 해준다.
         for (Player player : players.getPlayers()) {
             getCardOrNot(player);
         }
 
-        if (dealer.getDealerCardSum(dealer) < DEALER_SUM_LIMIT) { // ace 10 11
+        if (dealer.getDealerCardSum(dealer) < DEALER_SUM_LIMIT) {
             dealer.addCard(dealer.getCards());
             OutputView.printDealerAddCard();
         }
