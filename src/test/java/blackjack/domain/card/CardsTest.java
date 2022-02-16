@@ -21,7 +21,6 @@ class CardsTest {
         cards = Cards.create();
     }
 
-    // 카드 하나 뽑는
     @DisplayName("카드 한장을 뽑는다.")
     @Test
     void GivenNothing_When카드_뽑기_Then카드() {
@@ -32,10 +31,10 @@ class CardsTest {
         assertThat(card).isNotNull();
     }
 
-    // 빈 거 뽑는거
     @DisplayName("빈 카드 목록에서 예외가 발생한다.")
     @Test
     void GivenNothing_When카드_뽑기_Then예외_발생() {
+        // Given
         final List<Card> allCards = Arrays.stream(Pattern.values())
             .flatMap(pattern ->
                 Arrays.stream(Rank.values())
