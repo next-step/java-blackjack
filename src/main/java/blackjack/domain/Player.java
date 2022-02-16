@@ -5,6 +5,9 @@ import java.util.List;
 
 public class Player {
 
+    private static final int TEN = 10;
+    private static final int BUST_THRESHOLD = 21;
+
     protected String name;
     protected List<Card> cards;
 
