@@ -6,11 +6,11 @@ public class Dealer implements User {
 
     private final Deck deck;
     private final UserName userName;
-    private static final String DEALER_NAME = "dealer";
+    private static final String DEALER_DEFAULT_NAME = "dealer";
 
     private Dealer() {
         this.deck = Deck.create();
-        this.userName = UserName.from(DEALER_NAME);
+        this.userName = UserName.from(DEALER_DEFAULT_NAME);
     }
 
     public static Dealer create() {
