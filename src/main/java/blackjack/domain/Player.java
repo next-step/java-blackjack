@@ -1,5 +1,8 @@
 package blackjack.domain;
 
+
+import static blackjack.utils.Constant.BUST_LIMIT;
+
 public class Player {
 
     private final Cards cards;
@@ -19,5 +22,9 @@ public class Player {
 
     public int getScore() {
         return cards.getScore();
+    }
+
+    public boolean isBusted() {
+        return cards.getScore() >= BUST_LIMIT;
     }
 }
