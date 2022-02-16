@@ -67,9 +67,12 @@
 - [x] Dealer
   - [x] Deck을 가지고 있다.
   - [x] UserName을 가지고 있다. - name은 `dealer`라는 기본 이름을 가진다.
+  - [x] 현재 score가 16이하 인지를 판단하여 반환할 수 있다.
+  - [x] 1장의 카드를 추가로 받을 수 있다.
 - [x] Player
   - [x] Deck을 가지고 있다.
   - [x] UserName을 가지고 있다.
+  - [x] 현재 score가 21을 넘지 않는지를 판단하여 반환할 수 있다.
 - [x] Deck - 딜러 또는 플레이어가 가진 Card의 집합
   - [x] List<Card>를 가지고 있다.
   - [x] 현재 List<Card>의 총 score를 계산할 수 있다.
@@ -92,18 +95,18 @@
   - [x] List<User>를 가지고 있다.
   - [x] User를 추가할 수 있다.
   - [x] List<User>를 반환할 수 있다.
-- [] BlackJack - 게임 로직 수행
+- [x] BlackJack - 게임 로직 수행
   - [x] GameUser를 가지고 있다.
   - [x] GameCard를 가지고 있다.
   - [x] 게임 진행시 최초로 GameCard를 셔플할 수 있다.
   - [x] User별로 초기 카드를 나눠준다.
     - [x] GameCard에서 Card를 두 장 뽑기
     - [x] User에게 Card 전달하기
-    - [] Dealer는 총 score가 16이하일 경우, 1장의 카드를 추가로 받는다.
-  - [] User별로 턴을 진행할 수 있게 한다.
-    - [] GameCard에서 Card를 한 장 뽑기
-    - [] User에게 Card 전달하기
-    - [] 21을 넘지 않는 경우를 판단할 수 있다.
+    - [x] Dealer는 총 score가 16이하일 경우, 1장의 카드를 추가로 받는다.
+  - [x] User별로 턴을 진행할 수 있게 한다.
+    - [x] GameCard에서 Card를 한 장 뽑기
+    - [x] User에게 Card 전달하기
+    - [x] Player는 총 score가 21이하일 경우, 1장의 카드를 추가로 받을 수 있다. 
 - [] UserStats - User별 승/패에 대한 정보
   - [] GameUser를 인자로 받아 User별, 승/패 정보를 계산한다.
 - [] GameController - 전체적인 게임을 진행할 Controller 
