@@ -90,7 +90,7 @@
 - [x] GameCard - 게임에서 사용될 모든 Card의 집합
   - [x] 모든 Card는 중복이 없어야한다.
   - [x] 총 52 장이 있어야한다.
-  - [] 모든 Card를 셔플할 수 있다.
+  - [x] 모든 Card를 셔플할 수 있다.
 - [x] GameUser - BlackJack을 수행하는 User의 집합
   - [x] List<User>를 가지고 있다.
   - [x] User를 추가할 수 있다.
@@ -109,15 +109,16 @@
     - [x] Player는 총 score가 21이하일 경우, 1장의 카드를 추가로 받을 수 있다. 
 - [] UserStats - User별 승/패에 대한 정보
   - [] GameUser를 인자로 받아 User별, 승/패 정보를 계산한다.
-- [] GameController - 전체적인 게임을 진행할 Controller 
-  - [] 이름의 배열을 BlackJack에 전달한다.
+- [x] Game - 전체적인 게임을 진행할 Controller 
+  - [x] 이름의 배열을 BlackJack에 전달한다.
+  - [x] 싱글턴 패턴 적용
 - [x] UserName - 게임 참여자의 이름
 - [] InputParser - String -> List<String>의 이름의 배열로 반환한다.
   - [] 이름의 중복을 확인한다.
   - [] 이름의 공백을 확인한다.
-- [] InputView
-  - [] 게임에 참여할 이름을 입력받는다.
-- [] OutputView
+- [x] InputView
+  - [x] 게임에 참여할 이름을 입력받는다.
+- [x] OutputView
 
 ## 최초 PR 마감 기한
 
