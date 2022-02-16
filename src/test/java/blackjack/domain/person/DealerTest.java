@@ -1,7 +1,6 @@
 package blackjack.domain.person;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
+import static org.assertj.core.api.Assertions.assertThat;
 import blackjack.domain.card.Card;
 import blackjack.domain.card.Denomination;
 import blackjack.domain.card.Shape;
@@ -17,9 +16,7 @@ class DealerTest {
             new Card(Shape.CLUB, Denomination.FOUR),
             new Card(Shape.SPADE, Denomination.KING));
 
-        int cardSize = dealer.getCards().size();
-
-        assertThat(cardSize).isEqualTo(2);
+        assertThat(dealer.getCards()).hasSize(2);
     }
 
     @Test
@@ -31,9 +28,6 @@ class DealerTest {
             new Card(Shape.HEART, Denomination.NINE)
         );
         dealer.addCard(new Card(Shape.HEART, Denomination.NINE));
-
-        //when
-        int cardSize =  dealer.getCards().size();
 
         //when then
         assertThat(dealer.getCards()).hasSize(3);
