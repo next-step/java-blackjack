@@ -15,7 +15,7 @@ public class CardDeck {
         cards = createCardDeck();
     }
 
-    public static List<Card> createCardDeck() {
+    private List<Card> createCardDeck() {
         List<Card> cards = new ArrayList<>();
 
         for (Shape shape : Shape.values()) {
