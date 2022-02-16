@@ -13,4 +13,15 @@ public class Players {
             .map(Player::from)
             .collect(Collectors.toList());
     }
+
+    public void deal(CardDeck deck) {
+        for (Player player : players) {
+            player.deal(deck);
+        }
+    }
+
+    public List<Player> get() {
+        return players;
+    }
+    
 }
