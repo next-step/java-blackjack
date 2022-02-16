@@ -17,14 +17,37 @@ public class Judgement {
     private Map<String, String> playerResults;
 
     public Judgement(List<Player> players) {
-        this.players = players;
+        this.playerScores = new LinkedHashMap<>();
+        this.playerResults = new LinkedHashMap<>();
+        updatePlayersMap(players);
+
     }
 
-    public List<String> findWinners() {
-        int max = findMaxScore();
-        return players.stream().filter(player -> player.calculateScore() == max)
-            .map(Player::getName)
-            .collect(Collectors.toList());
+    private void updatePlayersMap(List<Player> players) {
+        players.forEach(player -> {
+            playerScores.put(player.getName(), player.calculateScore());
+        });
+    }
+
+    public Map<String, String> findWinners() {
+        int dealerScore = playerScores.get(DEALER);
+        playerScores.remove(DEALER);
+        playerScores.forEach((name, score) -> {
+            playerResults.put(name, checkWinOrLose(dealerScore, score));
+        });
+
+        playerResults.put(DEALER, getDealerResult());
+        return Collections.synchronizedMap(new LinkedHashMap<>(playerResults));
+    }
+
+    private String checkWinOrLose(int dealerScore, Integer score) {
+        if (score > THRESHOLD) {
+            return LOSE;
+        }
+        if (dealerScore > THRESHOLD || dealerScore <= score) {  // 동점이면 플레이어가 이기게 설정
+            return WIN;
+        }
+        return LOSE;
     }
 
     private String getDealerResult() {
