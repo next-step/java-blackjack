@@ -18,15 +18,15 @@ public class DeckTest {
 
     @Test
     void 덱에서_한장의_카드를_뽑을_수_있다() {
-        Card clubEight = new Card(Suit.CLUB, CardNumber.EIGHT);
-        Card clubSeven = new Card(Suit.CLUB, CardNumber.SEVEN);
+        Card clubEight = new Card(CardNumber.EIGHT, Suit.CLUB);
+        Card clubSeven = new Card(CardNumber.SEVEN, Suit.CLUB);
 
         List<Card> cards = new ArrayList<>(Arrays.asList(clubEight, clubSeven));
 
         Deck deck = new Deck(cards);
 
         Card card = deck.drawCard();
-        Card expected = new Card(Suit.CLUB, CardNumber.EIGHT);
+        Card expected = new Card(CardNumber.EIGHT, Suit.CLUB);
 
         assertThat(card).isEqualTo(expected);
     }
