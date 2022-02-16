@@ -24,7 +24,7 @@ public class GameLauncher {
 
         Players players = new Players(playerNames);
         OutputView.printPlayersStatus(players);
-
+        // ace가 포함되어있으면 11을 더해서 21아래면 11로 해주고 아니면 1을 해준다.
         for (Player player : players.getPlayers()) {
             getCardOrNot(player);
         }
@@ -37,6 +37,7 @@ public class GameLauncher {
         OutputView.printDealerCardSum(dealer);
         OutputView.printPlayerCardSum(players);
 
+        // TODO 21이 다넘을 때
         OutputView.printFinalGameResult();
         GameResult gameResult = new GameResult(players, dealer);
         List<Integer> gameResultList = gameResult.getGameResult();

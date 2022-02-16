@@ -14,4 +14,11 @@ class PlayerTest {
         Player player1 = new Player("seungyun");
         assertThat(player1.getCards().size()).isEqualTo(2);
     }
+
+    @Test
+    void ACE는_1이나_11로_계산될_수_있다() {
+        Player player = new Player("yang");
+        player.getCards().add(new Card(Denomination.ACE, Suit.DIAMONDS));
+        player.getPlayerCardSum(player);
+    }
 }
