@@ -16,7 +16,7 @@ class GameUserTest {
         GameUser gameUser = GameUser.from(Arrays.asList());
 
         List<String> gameUserNames = gameUser.getGameUsers().stream()
-            .map(user -> user.getName())
+            .map(User::getName)
             .collect(Collectors.toList());
 
         assertThat(gameUserNames.get(0))
@@ -26,14 +26,9 @@ class GameUserTest {
     @Test
     void 유저_리스트를_가진다() {
         List<String> userNames = Arrays.asList("제이슨", "박찬우");
-
         GameUser gameUser = GameUser.from(userNames);
-        Dealer dealer = Dealer.create();
-        Player p1 = Player.of("제이슨");
-        Player p2 = Player.of("박찬우");
-
         List<String> gameUserNames = gameUser.getGameUsers().stream()
-            .map(user -> user.getName())
+            .map(User::getName)
             .collect(Collectors.toList());
 
         assertThat(userNames)

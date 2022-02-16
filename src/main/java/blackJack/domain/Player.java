@@ -27,4 +27,8 @@ public class Player implements User {
     public void appendToDeck(Card card) {
         deck.append(card);
     }
+
+    public void appendToDeck(List<Card> cards) {
+        cards.forEach(deck::append);
+    }
 }

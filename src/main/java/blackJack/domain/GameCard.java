@@ -24,12 +24,20 @@ public class GameCard {
         return gameCard;
     }
 
+    public List<Card> drawCard(int count) {
+        final List<Card> cards = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            cards.add(gameCard.remove(0));
+        }
+        return cards;
+    }
+
     private void generateGameCard() {
-        CARD_TYPE_LIST.forEach(type -> {
-            CARD_NUMBER_LIST.forEach(number -> {
-                gameCard.add(Card.of(type, number));
-            });
-        });
+        CARD_TYPE_LIST.forEach(
+            type -> CARD_NUMBER_LIST.forEach(
+                number -> gameCard.add(Card.of(type, number))
+            )
+        );
     }
 
     public void shuffle() {
