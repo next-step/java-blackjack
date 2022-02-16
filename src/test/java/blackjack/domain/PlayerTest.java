@@ -43,7 +43,7 @@ class PlayerTest {
         Cards testCards = new Cards(cards);
         Player player = new Player(testCards, "test");
 
-        assertThat(player.openCard()).isEqualTo("test카드: K클로버, Q클로버");
+        assertThat(player.getAllCards()).isEqualTo("K클로버, Q클로버");
     }
 
 

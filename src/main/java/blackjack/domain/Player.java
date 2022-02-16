@@ -1,8 +1,5 @@
 package blackjack.domain;
 
-
-import static blackjack.utils.Constant.BUST_LIMIT;
-
 import java.util.ArrayList;
 
 public class Player extends Participant {
@@ -21,7 +18,7 @@ public class Player extends Participant {
         return new Player(cards, name);
     }
 
-    public String openCard() {
-        return name + CARD_TAG + String.join(", ", getCardNames());
+    public String getName() {
+        return name;
     }
 }
