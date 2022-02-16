@@ -9,6 +9,10 @@ public class ParticipantCards {
         this.cards = cards;
     }
 
+    public void addCards(List<Card> drawCards) {
+        cards.addAll(drawCards);
+    }
+
     public int sumCardScore() {
         return 1;
     }
