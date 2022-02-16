@@ -6,10 +6,10 @@ import java.util.List;
 
 public class Dealer extends Person {
 
-    CardDeck cardDeck;
+    private final CardDeck cardDeck = new CardDeck();
 
     public Dealer() {
-        cardDeck = new CardDeck();
+        this.cards.addAll(getPickedCard(2));
     }
 
     public List<Card> getPickedCard(int numberOfCards) {
