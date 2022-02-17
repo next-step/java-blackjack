@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import blackjack.domain.gameplayer.GamePlayer;
 import blackjack.domain.gameplayer.GamePlayers;
+import blackjack.domain.gameplayer.Name;
+import blackjack.domain.gameplayer.Names;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,7 +19,7 @@ class GamePlayersTest {
         List<String> names = Arrays.asList("pobi", "jason");
 
         //when
-        GamePlayers gamePlayers = GamePlayers.makePlayers(Arrays.asList("pobi", "jason"));
+        GamePlayers gamePlayers = GamePlayers.makePlayers(new Names(Arrays.asList(new Name("pobi"), new Name("jason"))));
         List<String> players = gamePlayers.getPlayers().stream()
             .map(GamePlayer::getName)
             .collect(Collectors.toList());
