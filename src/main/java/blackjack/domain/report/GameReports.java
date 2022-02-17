@@ -1,22 +1,35 @@
 package blackjack.domain.report;
 
+import java.util.Collections;
 import java.util.List;
 
 public class GameReports {
 
-    public GameReports(List<GameReport> reports) {
+    private final List<GameReport> reports;
 
+    public GameReports(List<GameReport> reports) {
+        this.reports = reports;
     }
 
     public int getPlayerWinCount() {
-        return 0;
+        return (int) reports.stream()
+            .filter(GameReport::isWin)
+            .count();
     }
 
     public int getPlayerDrawCount() {
-        return 0;
+        return (int) reports.stream()
+            .filter(GameReport::isDraw)
+            .count();
     }
 
     public int getPlayerLoseCount() {
-        return 0;
+        return (int) reports.stream()
+            .filter(GameReport::isLose)
+            .count();
+    }
+
+    public List<GameReport> reports() {
+        return Collections.unmodifiableList(reports);
     }
 }
