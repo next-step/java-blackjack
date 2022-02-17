@@ -2,6 +2,7 @@ package blackjack.domain.user;
 
 import blackjack.domain.card.Card;
 import blackjack.domain.card.CardBundle;
+import java.util.List;
 
 public class Player {
 
@@ -43,7 +44,7 @@ public class Player {
     }
 
     public boolean isDrawable() {
-        return !isBurst();
+        return !isBurst() && !isBlackJack();
     }
 
     public boolean isBurst() {
