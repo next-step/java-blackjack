@@ -14,7 +14,7 @@ public class Dealer extends GamePlayers {
     }
 
     public boolean isAvailDraw() {
-        return false;
+        return ownCards.getTotalScore() <= DEALER_DRAW_LIMIT && !ownCards.isScoreLimit();
     }
 
 }

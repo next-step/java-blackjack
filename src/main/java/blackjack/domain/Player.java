@@ -10,6 +10,6 @@ public class Player extends GamePlayers {
 
     @Override
     public boolean isAvailDraw() {
-        return false;
+        return ownCards.getTotalScore() <= DEALER_DRAW_LIMIT && !ownCards.isScoreLimit();
     }
 }
