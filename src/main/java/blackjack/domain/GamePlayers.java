@@ -25,6 +25,10 @@ public abstract class GamePlayers {
         }
     }
 
+    public void drawOneCards(Deck deck) {
+        ownCards.addCard(deck.cardDraw());
+    }
+
     public String getPlayerName() {
         return playerName;
     }
