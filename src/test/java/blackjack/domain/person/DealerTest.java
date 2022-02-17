@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import blackjack.domain.card.Card;
 import blackjack.domain.card.Denomination;
 import blackjack.domain.card.Shape;
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -31,14 +30,5 @@ class DealerTest {
 
         //when then
         assertThat(dealer.getCards()).hasSize(3);
-    }
-
-    @Test
-    void 딜러는_전달_받은_수만큼_카드덱에서_카드를_뽑아_반환한다() {
-        //when
-        List<Card> pickedCard = dealer.getPickedCard(4);
-
-        //then
-        assertThat(pickedCard).hasSize(4);
     }
 }

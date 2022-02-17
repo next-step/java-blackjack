@@ -26,15 +26,11 @@ public class CardDeck {
         return cards;
     }
 
-    public List<Card> pickCards(int numberOfCards) {
+    public Card pickOneCard() {
         Collections.shuffle(cards);
-        List<Card> pickedCards = new ArrayList<>();
-
-        for (int i = 0; i < numberOfCards; i++) {
-            pickedCards.add(cards.get(FIRST_INDEX));
-            cards.remove(FIRST_INDEX);
-        }
-        return pickedCards;
+        Card pickedCard = cards.get(FIRST_INDEX);
+        cards.remove(FIRST_INDEX);
+        return pickedCard;
     }
 
     public List<Card> getCards() {
