@@ -43,7 +43,7 @@ public class GameLauncher {
 
     }
 
-    private void getCardOrNot(Player player) {
+    private void getCardOrNot(Gamer player) {
         while (InputView.readAddCardOrNot(player) && player.calcScore(player) < BLACK_JACK_SUM_LIMIT) {
             player.addCard(player.getCards());
             OutputView.printPlayerStatus(player);

@@ -1,5 +1,6 @@
 package blackjack.view;
 
+import blackjack.domain.gamer.Gamer;
 import blackjack.domain.gamer.Player;
 import java.util.Scanner;
 
@@ -17,7 +18,7 @@ public class InputView {
         return readPlayerName();
     }
 
-    public static final boolean readAddCardOrNot(Player player) {
+    public static final boolean readAddCardOrNot(Gamer player) {
         Scanner scanner = new Scanner(System.in);
         OutputView.requestAddCardOrNot(player);
 

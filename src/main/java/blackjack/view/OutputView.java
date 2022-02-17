@@ -51,11 +51,11 @@ public class OutputView {
         if(flag) System.out.println();
     }
 
-    public static void requestAddCardOrNot(Player player) {
+    public static void requestAddCardOrNot(Gamer player) {
         System.out.println(player.getName() + REQUEST_RECEIVE_CARD);
     }
 
-    public static void printPlayerStatus(Player player) {
+    public static void printPlayerStatus(Gamer player) {
         System.out.print(player.getName() + ": ");
         printPlayerCards(player.getCards(), true);
     }
