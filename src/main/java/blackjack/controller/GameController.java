@@ -1,13 +1,17 @@
-package blackjack.domain;
+package blackjack.controller;
 
 import blackjack.domain.Card.CardType;
 import blackjack.domain.Card.CardValue;
+import blackjack.domain.Dealer;
+import blackjack.domain.Deck;
+import blackjack.domain.Participant;
+import blackjack.domain.Players;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Game {
+public class GameController {
 
     public Participant start() {
         // 덱만들기
