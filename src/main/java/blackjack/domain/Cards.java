@@ -29,10 +29,6 @@ public class Cards {
         return score;
     }
 
-    public boolean isNearTwentyOne() {
-        return totalScore() < REFERENCE_POINT;
-    }
-
     public void add(Card drawCard) {
         cards.add(drawCard);
     }
@@ -50,5 +46,13 @@ public class Cards {
 
     public List<String> openCardAll() {
         return cards.stream().map(Card::getCardName).collect(Collectors.toList());
+    }
+
+    public boolean isBust() {
+        return totalScore() > REFERENCE_POINT;
+    }
+
+    public boolean blackjack() {
+        return totalScore() == REFERENCE_POINT;
     }
 }
