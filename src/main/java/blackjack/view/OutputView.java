@@ -19,12 +19,12 @@ public class OutputView {
     private OutputView() {
     }
 
-    public static void printInitProgress(final List<Participant> participants) {
-        printDistributeInfo(participants);
+    public static void printStartStatus(final List<Participant> participants) {
+        printDealResult(participants);
         printParticipantsStatus(participants);
     }
 
-    private static void printDistributeInfo(final List<Participant> participants) {
+    private static void printDealResult(final List<Participant> participants) {
         System.out.printf(DISTRIBUTE_MESSAGE_FORMAT, getNames(participants), NUMBER_OF_INIT_HANDS);
     }
 
@@ -48,9 +48,9 @@ public class OutputView {
             .collect(Collectors.joining(DELIMITER));
     }
 
-    public static void printResult(List<Participant> participants, Map<String, String> result) {
+    public static void printGameResult(List<Participant> participants, Map<String, String> result) {
         printFinalStatus(participants);
-        printWinning(result);
+        printWinOrLose(result);
     }
 
     private static void printFinalStatus(List<Participant> participants) {
@@ -62,17 +62,17 @@ public class OutputView {
         System.out.println(status);
     }
 
-    private static void printWinning(Map<String, String> results) {
-        StringBuilder winningOrLose = new StringBuilder(WINNING_OR_LOSE_HEADER_MESSAGE);
+    private static void printWinOrLose(Map<String, String> results) {
+        StringBuilder winOrLose = new StringBuilder(WINNING_OR_LOSE_HEADER_MESSAGE);
 
         results.forEach((name, result)->
-            winningOrLose.append(String.format(
+            winOrLose.append(String.format(
                 WINNING_OR_LOSE_FORMAT, name, result)));
 
-        System.out.println(winningOrLose);
+        System.out.println(winOrLose);
     }
 
-    public static void printDealerDraw() {
+    public static void printDealerDrawMessage() {
         System.out.println(DEALER_DRAW_MESSAGE);
     }
 }

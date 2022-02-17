@@ -19,19 +19,19 @@ public class BlackJackApplication {
     public static void main(String[] args) {
         final Deck deck = new Deck();
 
-        final List<String> playerNames = Parser.parse(InputView.inputPlayers());
-        final Participant dealer = new Dealer(new Hands(deck.dealInitCards()));
+        final List<String> playerNames = Parser.parse(InputView.inputPlayerNames());
+        final Participant dealer = new Dealer(new Hands(deck.dealCards()));
         final List<Participant> players = playerNames.stream()
-            .map(name -> new Player(name, new Hands(deck.dealInitCards())))
+            .map(name -> new Player(name, new Hands(deck.dealCards())))
             .collect(Collectors.toList());
 
-        OutputView.printInitProgress(combine(dealer, players));
+        OutputView.printStartStatus(combine(dealer, players));
 
         drawCardsIfWant(deck, players);
         drawCardIfCan(deck, dealer);
 
         final Judge judge = new Judge();
-        OutputView.printResult(combine(dealer, players), judge.getWinOrLose(dealer, players));
+        OutputView.printGameResult(combine(dealer, players), judge.getWinOrLose(dealer, players));
     }
 
     private static void drawCardsIfWant(final Deck deck, final List<Participant> players) {
@@ -52,7 +52,7 @@ public class BlackJackApplication {
     private static void drawCardIfCan(final Deck deck, final Participant dealer) {
         if (dealer.canDraw()) {
             dealer.addCard(deck.draw());
-            OutputView.printDealerDraw();
+            OutputView.printDealerDrawMessage();
         }
     }
 

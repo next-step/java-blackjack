@@ -20,7 +20,7 @@ public class Deck {
         return card;
     }
 
-    public List<Card> dealInitCards() {
+    public List<Card> dealCards() {
         return IntStream.range(0, NUMBER_OF_INIT_HANDS)
             .mapToObj(i -> draw())
             .collect(Collectors.toList());

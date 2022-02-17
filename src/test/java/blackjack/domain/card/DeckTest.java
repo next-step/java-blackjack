@@ -27,7 +27,7 @@ class DeckTest {
     @DisplayName("참가자들의 초기 패를 뽑는다.")
     @Test
     void Given_When_Then() {
-        assertThat(sut.dealInitCards().size()).isEqualTo(2);
+        assertThat(sut.dealCards().size()).isEqualTo(2);
     }
 
     @DisplayName("중복없이 모든 카드가 뽑힌다.")

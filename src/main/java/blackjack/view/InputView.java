@@ -11,7 +11,7 @@ public class InputView {
 
     private InputView() {}
 
-    public static String inputPlayers() {
+    public static String inputPlayerNames() {
         System.out.println(PLAYERS_INPUT_MESSAGE);
         return input();
     }
