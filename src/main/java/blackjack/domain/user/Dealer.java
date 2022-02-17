@@ -1,5 +1,6 @@
 package blackjack.domain.user;
 
+import blackjack.domain.report.GameResult;
 import blackjack.domain.report.GameReport;
 
 public class Dealer extends Player {
@@ -11,7 +12,8 @@ public class Dealer extends Player {
     }
 
     public GameReport createReport(Player player) {
-        return null;
+        GameResult gameResult = GameResult.comparing(player.cardBundle, this.cardBundle);
+        return new GameReport(player.name(), gameResult);
     }
 
     @Override
