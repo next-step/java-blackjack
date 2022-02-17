@@ -68,6 +68,7 @@ public class BlackJack {
         Dealer dealer = players.findDealer();
         while (dealer.isDrawable()) {
             dealer.drawCard(deck.spreadCard());
+            OutputView.printDealerGetCard();
         }
     }
 }
