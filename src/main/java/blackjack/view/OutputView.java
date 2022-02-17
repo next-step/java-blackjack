@@ -2,6 +2,7 @@ package blackjack.view;
 
 import blackjack.domain.participant.Participant;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OutputView {
@@ -10,6 +11,10 @@ public class OutputView {
     private static final int NUMBER_OF_INIT_HANDS = 2;
     private static final String DISTRIBUTE_MESSAGE_FORMAT = "%s에게 카드를 %d장씩 분배하였습니다.%n";
     private static final String PARTICIPANT_STATUS_FORMAT = "%s카드: %s%n";
+    private static final String PARTICIPANT_FINAL_STATUS_FORMAT = "%s카드: %s - 결과: %d%n";
+    private static final String WINNING_OR_LOSE_HEADER_MESSAGE = "## 최종 승패\n";
+    private static final String WINNING_OR_LOSE_FORMAT = "%s: %s%n";
+    private static final String DEALER_DRAW_MESSAGE = "딜러는 16이하라 한장의 카드를 더 받았습니다.\n";
 
     private OutputView() {
     }
@@ -29,7 +34,7 @@ public class OutputView {
             .collect(Collectors.joining(DELIMITER));
     }
 
-    private static void printParticipantsStatus(final List<Participant> participants) {
+    public static void printParticipantsStatus(final List<Participant> participants) {
         StringBuilder status = new StringBuilder();
         participants.forEach(participant ->
             status.append(String.format(
@@ -42,6 +47,31 @@ public class OutputView {
         return participant.getCardNames().stream()
             .collect(Collectors.joining(DELIMITER));
     }
+
+    public static void printResult(List<Participant> participants, Map<String, String> result) {
+        printFinalStatus(participants);
+        printWinning(result);
+    }
+
+    private static void printFinalStatus(List<Participant> participants) {
+        StringBuilder status = new StringBuilder();
+        participants.forEach(participant ->
+            status.append(String.format(
+                PARTICIPANT_FINAL_STATUS_FORMAT, participant.getName(), getCardNames(participant), participant.getScore())));
+
+        System.out.println(status);
+    }
+
+    private static void printWinning(Map<String, String> results) {
+        StringBuilder winningOrLose = new StringBuilder(WINNING_OR_LOSE_HEADER_MESSAGE);
+
+        results.forEach((name, result)->
+            winningOrLose.append(String.format(
+                WINNING_OR_LOSE_FORMAT, name, result)));
+
+        System.out.println(winningOrLose);
+    }
+
     public static void printDealerDraw() {
         System.out.println(DEALER_DRAW_MESSAGE);
     }

@@ -1,5 +1,6 @@
 package blackjack;
 
+import blackjack.domain.judge.Judge;
 import blackjack.domain.card.Deck;
 import blackjack.domain.card.Hands;
 import blackjack.domain.participant.Dealer;
@@ -29,6 +30,8 @@ public class BlackJackApplication {
         drawCardsIfWant(deck, players);
         drawCardIfCan(deck, dealer);
 
+        final Judge judge = new Judge();
+        OutputView.printResult(combine(dealer, players), judge.getWinOrLose(dealer, players));
     }
 
     private static void drawCardsIfWant(final Deck deck, final List<Participant> players) {
