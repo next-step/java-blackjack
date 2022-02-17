@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class GameUserTest {
 
-    private static final String DEALER_DEFAULT_NAME = "dealer";
+    private static final String DEALER_DEFAULT_NAME = "딜러";
 
     @Test
     void GameUser의_Dealer의_이름은_dealer이다() {

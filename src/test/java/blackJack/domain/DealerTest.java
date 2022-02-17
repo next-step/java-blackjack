@@ -14,7 +14,7 @@ class DealerTest {
         Dealer dealer = Dealer.create();
 
         assertThat(dealer.getName())
-            .isEqualTo("dealer");
+            .isEqualTo("딜러");
     }
 
     @DisplayName("String 이름과 Card가 주어질때 appendToDeck 메소드를 실행시, Card로 만든 리스트와 일치한다.")
