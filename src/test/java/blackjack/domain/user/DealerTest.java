@@ -31,13 +31,4 @@ public class DealerTest {
         dealer.drawCard(new Card(Suit.CLOVER, Number.SIX));
         assertThat(dealer.isDrawable()).isTrue();
     }
-
-    @Test
-    void 딜러가_가진_패의_합이_21이상이라면_패배한다() {
-        Dealer dealer = new Dealer();
-        dealer.drawCard(new Card(Suit.CLOVER, Number.FIVE));
-        dealer.drawCard(new Card(Suit.CLOVER, Number.SEVEN));
-        dealer.drawCard(new Card(Suit.DIAMOND, Number.JACK));
-        assertThat(dealer.isBurst()).isTrue();
-    }
 }

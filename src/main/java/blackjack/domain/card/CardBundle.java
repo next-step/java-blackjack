@@ -7,6 +7,8 @@ import java.util.List;
 
 public class CardBundle {
 
+    private static final int BLACK_JACK_SCORE = 21;
+
     private final List<Card> cards;
 
     private CardBundle() {
@@ -28,5 +30,13 @@ public class CardBundle {
 
     public List<Card> getCards() {
         return Collections.unmodifiableList(cards);
+    }
+
+    public boolean isBurst() {
+        return calculateScore() > BLACK_JACK_SCORE;
+    }
+
+    public boolean isBlackJack() {
+        return calculateScore() == BLACK_JACK_SCORE;
     }
 }

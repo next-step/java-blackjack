@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Player {
 
-    private static final int BLACK_JACK_SCORE = 21;
 
     protected final CardBundle cardBundle;
     private final String name;
@@ -44,18 +43,14 @@ public class Player {
     }
 
     public boolean isDrawable() {
-        return !isBurst() && !isBlackJack();
-    }
-
-    public boolean isBurst() {
-        return score() > BLACK_JACK_SCORE;
-    }
-
-    public boolean isBlackJack() {
-        return score() == BLACK_JACK_SCORE;
+        return !cardBundle.isBlackJack() && !cardBundle.isBurst();
     }
 
     public List<Card> getCardBundle() {
         return cardBundle.getCards();
+    }
+
+    public boolean isBlackJack() {
+        return cardBundle.isBlackJack();
     }
 }

@@ -42,15 +42,6 @@ class PlayerTest {
     }
 
     @Test
-    void 플레이어_카드의_합이_21초과라면_패배한다() {
-        Player player = new Player("name");
-        player.drawCard(new Card(Suit.CLOVER, Number.EIGHT));
-        player.drawCard(new Card(Suit.CLOVER, Number.SEVEN));
-        player.drawCard(new Card(Suit.CLOVER, Number.NINE));
-        assertThat(player.isBurst()).isTrue();
-    }
-
-    @Test
     void 플레이어_카드의_합이_21이라면_승리한다() {
         Player player = new Player("name");
         player.drawCard(new Card(Suit.CLOVER, Number.FIVE));
