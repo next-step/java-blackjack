@@ -4,6 +4,8 @@ import blackjack.domain.Card.CardType;
 import blackjack.domain.Card.CardValue;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Deque;
 import java.util.List;
 
@@ -17,6 +19,16 @@ public class Deck {
                 deck.add(new Card(cardType, cardValue));
             }
         }
+    }
+
+    public static Deck create() {
+        List<CardType> types = Arrays.asList(CardType.values());
+        Collections.shuffle(types);
+
+        List<CardValue> values = Arrays.asList(CardValue.values());
+        Collections.shuffle(values);
+
+        return new Deck(types, values);
     }
 
     public List<Card> drawMultiple(int num) {
