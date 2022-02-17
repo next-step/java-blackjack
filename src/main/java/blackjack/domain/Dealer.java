@@ -49,7 +49,6 @@ public class Dealer {
         while (dealer.isLowerThanBound()) {
             OutputView.printDealerAcceptCard();
             dealer.receiveCard(cardPack.remove());
-            System.out.println(dealer.getScore());
         }
     }
 }
