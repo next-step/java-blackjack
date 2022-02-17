@@ -2,6 +2,7 @@ package blackjack.controller;
 
 import blackjack.domain.card.CardFactory;
 import blackjack.domain.card.Deck;
+import blackjack.domain.report.GameReports;
 import blackjack.domain.request.DrawRequest;
 import blackjack.domain.request.UserNamesRequest;
 import blackjack.domain.user.Dealer;
@@ -9,6 +10,7 @@ import blackjack.domain.user.Player;
 import blackjack.domain.user.Players;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class BlackJack {
@@ -39,6 +41,8 @@ public class BlackJack {
             drawPlayers();
             drawDealer();
         }
+        GameReports reports = getResult();
+        showResult(reports);
     }
 
     private void spreadStartCards() {
@@ -71,5 +75,18 @@ public class BlackJack {
             dealer.drawCard(deck.spreadCard());
             OutputView.printDealerGetCard();
         }
+    }
+
+    private GameReports getResult() {
+        Dealer dealer = players.findDealer();
+        List<Player> candidates = players.findOnlyPlayers();
+        return candidates.stream()
+            .map(dealer::createReport)
+            .collect(Collectors.collectingAndThen(Collectors.toList(), GameReports::new));
+    }
+
+    private void showResult(GameReports reports) {
+        OutputView.printResultStatus(players.all());
+        OutputView.printReports(reports);
     }
 }

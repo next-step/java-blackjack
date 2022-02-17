@@ -2,6 +2,7 @@ package blackjack.view;
 
 import static blackjack.domain.user.Players.START_CARD_INIT_SIZE;
 
+import blackjack.domain.report.GameReports;
 import blackjack.domain.card.Card;
 import blackjack.domain.user.Player;
 import blackjack.domain.user.Players;
@@ -28,7 +29,28 @@ public class OutputView {
     }
 
     public static void printDealerGetCard() {
-        System.out.println("\n딜러는 16이하라 한장의 카드를 더 받았습니다.\n");
+        System.out.println("\n딜러는 16이하라 한장의 카드를 더 받았습니다.");
+    }
+
+    public static void printResultStatus(List<Player> players) {
+        System.out.println();
+        players.forEach(OutputView::showEachResult);
+    }
+
+    public static void printReports(GameReports reports) {
+        System.out.println("\n## 최종 승패");
+        showDealerReports(reports);
+        reports.reports()
+            .stream()
+            .map(report -> String.format("%s: %s", report.name(), report.message()))
+            .forEach(System.out::println);
+    }
+
+    private static void showDealerReports(GameReports reports) {
+        int dealerWinCount = reports.getPlayerLoseCount();
+        int drawCount = reports.getPlayerDrawCount();
+        int dealerLoseCount = reports.getPlayerWinCount();
+        System.out.printf("딜러: %d승 %d무 %d패\n", dealerWinCount, drawCount, dealerLoseCount);
     }
 
     private static String collectPlayerNames(List<Player> candiates) {
@@ -51,5 +73,10 @@ public class OutputView {
         return cards.stream()
             .map(OutputView::makeCardInfo)
             .collect(Collectors.joining(", "));
+    }
+
+    private static void showEachResult(Player player) {
+        System.out.printf("%s카드: %s - 결과 : %d\n", player.name(), collectPlayerCard(player),
+            player.score());
     }
 }
