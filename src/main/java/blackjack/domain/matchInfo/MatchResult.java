@@ -1,8 +1,6 @@
 package blackjack.domain.matchInfo;
 
-import blackjack.domain.gamer.Dealer;
 import blackjack.domain.gamer.Gamer;
-import blackjack.domain.gamer.Player;
 import java.util.Arrays;
 
 public enum MatchResult {

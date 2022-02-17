@@ -2,6 +2,7 @@ package blackjack.domain.gamer;
 
 import blackjack.domain.matchInfo.MatchResultBoard;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,8 +23,9 @@ public class Players {
     }
 
     public MatchResultBoard playMatch(Gamer dealer) {
-        return new MatchResultBoard(players.stream()
-            .collect(Collectors.toMap(player -> player, player -> player.getMatchResult(player, dealer))));
+        return new MatchResultBoard(players.stream().collect(
+            Collectors.toMap(player -> player, player -> player.getMatchResult(player, dealer),
+                (player1, player2) -> player1, LinkedHashMap::new)));
     }
 
     public List<Player> getPlayers() {
