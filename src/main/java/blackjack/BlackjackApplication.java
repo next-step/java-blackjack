@@ -1,14 +1,14 @@
 package blackjack;
 
 import blackjack.controller.BlackJack;
+import blackjack.domain.request.UserNamesRequest;
 import blackjack.view.InputView;
-import java.util.List;
 
 public class BlackjackApplication {
 
     public static void main(String[] args) {
-        List<String> playerNames = InputView.getPlayerNames();
-        BlackJack blackJack = BlackJack.init(playerNames);
+        String playerNames = InputView.getPlayerNames();
+        BlackJack blackJack = BlackJack.init(UserNamesRequest.from(playerNames));
         blackJack.runGame();
     }
 }

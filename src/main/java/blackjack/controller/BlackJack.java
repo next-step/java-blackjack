@@ -2,13 +2,13 @@ package blackjack.controller;
 
 import blackjack.domain.card.CardFactory;
 import blackjack.domain.card.Deck;
+import blackjack.domain.request.DrawRequest;
+import blackjack.domain.request.UserNamesRequest;
 import blackjack.domain.user.Dealer;
 import blackjack.domain.user.Player;
 import blackjack.domain.user.Players;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
-import blackjack.domain.request.DrawRequest;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class BlackJack {
@@ -21,9 +21,10 @@ public class BlackJack {
         this.deck = deck;
     }
 
-    public static BlackJack init(List<String> playerNames) {
+    public static BlackJack init(UserNamesRequest playerNames) {
         Dealer dealer = new Dealer();
-        Players candidates = playerNames.stream()
+        Players candidates = playerNames.userNames()
+            .stream()
             .map(Player::new)
             .collect(Collectors.collectingAndThen(Collectors.toList(),
                 players -> new Players(dealer, players)));
