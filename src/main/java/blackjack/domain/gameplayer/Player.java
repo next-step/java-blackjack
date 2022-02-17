@@ -9,7 +9,7 @@ public class Player extends GamePlayer {
     private static final String WIN = "승";
     private static final String LOSE = "패";
 
-    public Player(String name) {
+    public Player(Name name) {
         super(name);
     }
 

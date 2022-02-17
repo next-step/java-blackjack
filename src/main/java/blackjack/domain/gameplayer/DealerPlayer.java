@@ -8,7 +8,7 @@ public class DealerPlayer extends GamePlayer {
     private static final String WIN = "승";
     private static final String LOSE = "패";
 
-    public DealerPlayer(final String name) {
+    public DealerPlayer(final Name name) {
         super(name);
     }
 

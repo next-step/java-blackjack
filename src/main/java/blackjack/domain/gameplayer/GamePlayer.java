@@ -7,10 +7,10 @@ public abstract class GamePlayer {
 
     private static final int BLACK_JACK = 21;
 
-    private final String name;
+    private final Name name;
     private final Cards cards;
 
-    public GamePlayer(final String name) {
+    public GamePlayer(final Name name) {
         this.name = name;
         this.cards = new Cards();
     }
@@ -20,7 +20,7 @@ public abstract class GamePlayer {
     }
 
     public String getName() {
-        return this.name;
+        return name.getName();
     }
 
     public int getScore() {
