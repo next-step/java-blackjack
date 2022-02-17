@@ -1,4 +1,4 @@
-package blackjack.domain;
+package blackjack.domain.card;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -6,22 +6,19 @@ import java.util.List;
 
 public class Cards {
 
-    private List<Card> cards;
+    private final List<Card> cards;
+    private final static int BLACKJACK = 21;
 
-    public Cards(List<Card> cards) {
+    public Cards(final List<Card> cards) {
         this.cards = cards;
     }
 
-    public void add(Card card) {
+    public void add(final Card card) {
         cards.add(card);
     }
 
-    public List<Card> getCards() {
-        return cards;
-    }
-
-    public boolean sum(){
-        return sumScore()>=21;
+    public boolean sum() {
+        return sumScore() >= BLACKJACK;
     }
 
     public int sumScore() {
@@ -36,15 +33,14 @@ public class Cards {
             .reduce(0, (a, b) -> a + getScoreToSum(a, b));
     }
 
-
-    public static int getScoreToSum(int score1, int score2) {
+    private static int getScoreToSum(final int score1, final int score2) {
         if ((score2 == CardNumber.ACE.getScore()) && (score1 + CardNumber.ACE.getScore() > 21)) {
             return 1;
         }
         return score2;
     }
 
-    public int getTotalScore() {
-        return cards.stream().mapToInt(card -> card.getCardNumber().getScore()).sum();
+    public List<Card> getCards() {
+        return cards;
     }
 }
