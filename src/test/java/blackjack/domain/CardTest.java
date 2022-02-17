@@ -65,4 +65,17 @@ class CardTest {
         // then
         assertThat(result).isEqualTo(11);
     }
+
+    @DisplayName("카드 정보 확인")
+    @Test
+    void cardInfo() {
+        // given
+        Card card = new Card(CardType.SPADE, CardValue.KING);
+
+        // when
+        String result = card.toString();
+
+        // then
+        assertThat(result).isEqualTo("K스페이드");
+    }
 }

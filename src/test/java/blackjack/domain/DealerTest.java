@@ -20,9 +20,9 @@ class DealerTest {
         Deck deck = new Deck(types, values);
 
         Participant dealer = new Dealer("dealer");
-        dealer.drawCardMultiple(deck, 1);
-        dealer.drawCardMultiple(deck, 1);
-        dealer.drawCardMultiple(deck, 1);
+        dealer.drawCardContinue(deck);
+        dealer.drawCardContinue(deck);
+        dealer.drawCardContinue(deck);
 
         // when
         int result = dealer.sumCardScore();
@@ -40,9 +40,9 @@ class DealerTest {
         Deck deck = new Deck(types, values);
 
         Participant dealer = new Dealer("dealer");
-        dealer.drawCardMultiple(deck, 1);
-        dealer.drawCardMultiple(deck, 1);
-        dealer.drawCardMultiple(deck, 1);
+        dealer.drawCardContinue(deck);
+        dealer.drawCardContinue(deck);
+        dealer.drawCardContinue(deck);
 
         // when
         int result = dealer.sumCardScore();
