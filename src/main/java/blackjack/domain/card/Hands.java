@@ -43,10 +43,9 @@ public class Hands {
         return ELEVEN_ACE_VALUE;
     }
 
-    public boolean isUnderScore(int value) {
+    public boolean isUnderScore(final int value) {
         return score.isUnder(value);
     }
-
     public int getScore() {
         return score.getValue();
     }

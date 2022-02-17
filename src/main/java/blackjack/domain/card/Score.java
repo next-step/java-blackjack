@@ -10,11 +10,11 @@ public class Score {
         this(INIT_VALUE);
     }
 
-    public Score(int value) {
+    public Score(final int value) {
         this.value = value;
     }
 
-    public Score sum(int value) {
+    public Score sum(final int value) {
         return new Score(this.value + value);
     }
 
@@ -22,7 +22,7 @@ public class Score {
         return value;
     }
 
-    public boolean isUnder(int value) {
+    public boolean isUnder(final int value) {
         return this.value < value;
     }
 }
