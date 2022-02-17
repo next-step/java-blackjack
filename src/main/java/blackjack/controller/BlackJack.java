@@ -5,6 +5,7 @@ import blackjack.domain.card.Deck;
 import blackjack.domain.user.Dealer;
 import blackjack.domain.user.Player;
 import blackjack.domain.user.Players;
+import blackjack.view.OutputView;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,10 @@ public class BlackJack {
     }
 
     public void runGame() {
+        spreadStartCards();
+    }
 
+    private void spreadStartCards() {
+        players.drawStartCards(deck);
     }
 }
