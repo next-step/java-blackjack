@@ -2,8 +2,6 @@ package blackjack.domain.card;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import blackjack.domain.card.Card;
-import blackjack.domain.card.Deck;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

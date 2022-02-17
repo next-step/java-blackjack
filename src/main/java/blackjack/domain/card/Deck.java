@@ -1,7 +1,5 @@
 package blackjack.domain.card;
 
-import blackjack.domain.card.Card;
-import blackjack.domain.card.Cards;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -17,7 +15,7 @@ public class Deck {
     }
 
     public Card draw() {
-        final Card card =  cards.draw();
+        final Card card = cards.draw();
         cards.remove(card);
         return card;
     }
