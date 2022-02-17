@@ -33,4 +33,24 @@ public class Dealer extends Person {
     public Card getOpenedCard() {
         return cards.get(FIRST_INDEX);
     }
+
+    public int getSumOfCards() {
+        return cards.stream()
+            .mapToInt(card -> card.getDenomination().getValue())
+            .sum();
+    }
+
+    @Override
+    public void addCard(Card card) {
+        cards.add(card);
+        if (card.getDenomination().equals(Denomination.ACE) && sum < 10) {
+            sum += 11;
+            return;
+        }
+        sum += card.getDenomination().getValue();
+    }
+
+    public boolean canGetCard() {
+        return sum <= DEALER_MAXIMUM_SUM;
+    }
 }
