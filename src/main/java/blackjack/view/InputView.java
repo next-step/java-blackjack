@@ -14,10 +14,9 @@ public class InputView {
     private static String YES = "y";
     private static String NO = "n";
     private static String ANSWER_ERROR_MESSAGE = "잘못된 입력입니다. y 또는 n을 입력해 주세요.";
-    private static final Scanner SCANNER = new Scanner(System.in);
-
 
     public static List<String> getPlayersName() {
+        Scanner SCANNER = new Scanner(System.in);
         System.out.println(GET_USER_NAMES_MESSAGE);
         String[] parsedInput = SCANNER.nextLine().split(",");
         Stream<String> players = Arrays.stream(parsedInput).map(String::trim);
@@ -25,6 +24,7 @@ public class InputView {
     }
 
     public static boolean askAddCard(Player player) {
+        Scanner SCANNER = new Scanner(System.in);
         System.out.println(player.getName() + ASK_PLAYER_TO_ADD_CARD);
         String answer = SCANNER.nextLine();
         if (YES.equals(answer)) {
