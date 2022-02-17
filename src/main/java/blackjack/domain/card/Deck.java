@@ -1,45 +1,30 @@
 package blackjack.domain.card;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import blackjack.domain.card.Card;
+import blackjack.domain.card.Cards;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Deck {
 
-    private static final String EMPTY_DECK_EXCEPTION_MESSAGE = "[ERROR] 덱에 남은 카드가 없습니다.";
-    private static final int SELECTED_CARD = 0;
+    private static final int NUMBER_OF_INIT_HANDS = 2;
 
-    private final List<Card> cards;
+    private final Cards cards;
 
     public Deck() {
-        this(Arrays.stream(Pattern.values())
-            .flatMap(pattern ->
-                Arrays.stream(Rank.values())
-                    .map(rank -> new Card(pattern, rank))
-                    .collect(Collectors.toList()).stream())
-            .collect(Collectors.toList()));
-    }
-
-    private Deck(final List<Card> cards) {
-        this.cards = new ArrayList<>(cards);
+        this.cards = new Cards();
     }
 
     public Card draw() {
-        validateIsEmpty();
-        Collections.shuffle(cards);
-        return cards.get(SELECTED_CARD);
+        final Card card =  cards.draw();
+        cards.remove(card);
+        return card;
     }
 
-    private void validateIsEmpty() {
-        if (this.cards.isEmpty()) {
-            throw new IllegalArgumentException(EMPTY_DECK_EXCEPTION_MESSAGE);
-        }
-    }
-
-    public Deck deduction(final Card card) {
-        this.cards.remove(card);
-        return new Deck(this.cards);
+    public List<Card> dealInitCards() {
+        return IntStream.range(0, NUMBER_OF_INIT_HANDS)
+            .mapToObj(i -> draw())
+            .collect(Collectors.toList());
     }
 }

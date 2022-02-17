@@ -1,7 +1,7 @@
 package blackjack;
 
+import blackjack.domain.card.Deck;
 import blackjack.domain.card.Hands;
-import blackjack.domain.game.Game;
 import blackjack.domain.participant.Dealer;
 import blackjack.domain.participant.Participant;
 import blackjack.domain.participant.Player;
@@ -14,11 +14,12 @@ import java.util.stream.Collectors;
 public class BlackJackApplication {
 
     public static void main(String[] args) {
-        final Game game = new Game();
+        final Deck deck = new Deck();
 
-        final List<String> players = Parser.parse(InputView.inputPlayers());
-        final List<Participant> participants = players.stream()
-            .map(name -> new Player(name, new Hands(game.dealCards())))
+        final List<String> playerNames = Parser.parse(InputView.inputPlayers());
+        final Participant dealer = new Dealer(new Hands(deck.dealInitCards()));
+        final List<Participant> players = playerNames.stream()
+            .map(name -> new Player(name, new Hands(deck.dealInitCards())))
             .collect(Collectors.toList());
 
         participants.add(new Dealer(new Hands(game.dealCards())));
