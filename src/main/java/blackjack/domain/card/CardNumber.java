@@ -17,7 +17,7 @@ public enum CardNumber {
     private final String name;
     private final int score;
 
-    CardNumber(String name, int score) {
+    CardNumber(final String name, final int score) {
         this.name = name;
         this.score = score;
     }
