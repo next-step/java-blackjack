@@ -7,18 +7,20 @@ import java.util.List;
 
 public class CardPack {
 
-    private final List<Card> cardPack = new ArrayList<>();
+    private final List<Card> cardPack;
 
-    public CardPack() {
-        create();
+    public CardPack(List<Card> cardPack) {
+        this.cardPack = cardPack;
     }
 
-    public void create() {
+    public static CardPack create() {
+        final List<Card> cards = new ArrayList<>();
         for (final CardSymbol symbol : CardSymbol.values()) {
             Arrays.stream(CardType.values())
-                .forEach(type -> cardPack.add(new Card(symbol, type)));
+                .forEach(type -> cards.add(new Card(symbol, type)));
         }
-        Collections.shuffle(cardPack);
+        Collections.shuffle(cards);
+        return new CardPack(new ArrayList<>(cards));
     }
 
     public List<Card> getCardPack() {

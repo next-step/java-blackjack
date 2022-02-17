@@ -11,7 +11,7 @@ import java.util.List;
 public class GameController {
 
     public void start() {
-        final CardPack cardPack = new CardPack();
+        final CardPack cardPack = CardPack.create();
         final Dealer dealer = new Dealer(cardPack);
         final GamePlayers gamePlayers = new GamePlayers(InputView.getPlayerName());
 
