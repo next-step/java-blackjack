@@ -2,6 +2,7 @@ package blackjack.domain.user;
 
 import blackjack.domain.card.Deck;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,5 +39,9 @@ public class Players {
         for (int i = 0; i < START_CARD_INIT_SIZE; i++) {
             players.forEach(player -> player.drawCard(deck.spreadCard()));
         }
+    }
+
+    public List<Player> all() {
+        return Collections.unmodifiableList(players);
     }
 }
