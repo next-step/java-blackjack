@@ -18,13 +18,16 @@ public class DealerPlayer extends GamePlayer {
     }
 
     @Override
-    public String getGameResult(List<GamePlayer> allPlayers) {
+    public String getGameResult(GamePlayers gamePlayers) {
+        List<GamePlayer> players = gamePlayers.getPlayers();
+
         int winCount = 0;
         int loseCount = 0;
 
-        for (GamePlayer gamePlayer : allPlayers) {
+        for (GamePlayer gamePlayer : players) {
             if (this.getScore() > gamePlayer.getScore()) {
                 winCount++;
+                continue;
             }
             loseCount++;
         }

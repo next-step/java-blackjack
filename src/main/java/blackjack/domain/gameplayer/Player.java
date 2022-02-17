@@ -19,7 +19,9 @@ public class Player extends GamePlayer {
     }
 
     @Override
-    public String getGameResult(List<GamePlayer> allPlayers) {
+    public String getGameResult(GamePlayers gamePlayers) {
+
+        List<GamePlayer> allPlayers = gamePlayers.getAllPlayers();
         int winnerScore = allPlayers.stream()
             .map(GamePlayer::getScore)
             .max(Integer::compareTo)

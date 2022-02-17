@@ -62,7 +62,7 @@ public class OutputView {
         System.out.println(RESULT_HEADER_LOG);
         List<GamePlayer> players = gamePlayers.getAllPlayers();
         for (GamePlayer player : players) {
-            System.out.println(String.format(RESULT_GAME_LOG, player.getName(), player.getGameResult(players)));
+            System.out.println(String.format(RESULT_GAME_LOG, player.getName(), player.getGameResult(gamePlayers)));
         }
     }
 }
