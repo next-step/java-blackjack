@@ -1,12 +1,12 @@
 package blackjack.domain;
 
-import java.util.List;
-
 public interface CardAddible {
 
-    List<Card> cards();
+    Cards cards();
 
     void addCard(Card card);
 
-    int getTotalScore();
+    boolean isEnd();
+
+    CardAddible judge();
 }

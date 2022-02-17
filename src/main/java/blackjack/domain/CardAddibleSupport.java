@@ -1,27 +1,19 @@
 package blackjack.domain;
 
-import java.util.List;
-
 public abstract class CardAddibleSupport implements CardAddible {
-    List<Card> cards;
+    Cards cards;
 
-    public CardAddibleSupport(List<Card> cards) {
+    public CardAddibleSupport(Cards cards) {
         this.cards = cards;
     }
 
     @Override
-    public List<Card> cards() {
+    public Cards cards() {
         return cards;
     }
 
     @Override
     public void addCard(Card card) {
         cards.add(card);
-    }
-
-    @Override
-    public int getTotalScore() {
-
-        return cards.stream().mapToInt(card -> card.getCardNumber().getScore()).sum();
     }
 }

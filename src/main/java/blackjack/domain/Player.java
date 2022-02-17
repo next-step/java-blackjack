@@ -10,6 +10,6 @@ public class Player extends Person {
     }
 
     public CardAddible getCards() {
-        return cards;
+        return cards; //2장 셋팅한 카드
     }
 }

@@ -26,8 +26,8 @@ public class Game {
         return new Player(name, handOutCards());
     }
 
-    private static Cards handOutCards() {
-        return new Cards(CardDeck.pop(PASS_CARD_NUMBER));
+    private static State handOutCards() {
+        return new State(CardDeck.pop(PASS_CARD_NUMBER));
     }
 
     public List<Player> getPlayers() {
@@ -38,4 +38,7 @@ public class Game {
         return dealer;
     }
 
+    public void addCard(Player player) {
+        player.getCards().addCard(CardDeck.pop());
+    }
 }

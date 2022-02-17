@@ -21,10 +21,10 @@ public class CardDeck {
     public CardDeck() {
     }
 
-    public static List<Card> pop(int count) {
+    public static Cards pop(int count) {
         List<Card> newCards = new ArrayList<>(cards.subList(0, count));
         cards = cards.subList(count, cards.size()-count);
-        return newCards;
+        return new Cards(newCards);
     }
 
     public static Card pop() {

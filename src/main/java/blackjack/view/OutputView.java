@@ -1,6 +1,8 @@
 package blackjack.view;
 
 import blackjack.domain.Card;
+import blackjack.domain.CardAddible;
+import blackjack.domain.Cards;
 import blackjack.domain.Dealer;
 import blackjack.domain.Game;
 import blackjack.domain.Person;
@@ -23,8 +25,9 @@ public class OutputView {
             .collect(Collectors.joining(JOIN_DELIMITER)));
     }
 
-    public static void printCurrentCardsState(final String name, final List<Card> cards) {
-        System.out.printf(CURRENT_STATE_MESSAGE, name, cards.stream().map(Card::toString)
+
+    public static void printCurrentCardsState(final String name, final CardAddible cards) {
+        System.out.printf(CURRENT_STATE_MESSAGE, name, cards.cards().getCards().stream().map(Card::toString)
             .collect(Collectors.joining(JOIN_DELIMITER)));
     }
 
@@ -34,6 +37,6 @@ public class OutputView {
     }
 
     public static void printDealerCard(final Dealer dealer){
-        System.out.println(dealer.getName()+DELIMITER+ dealer.getCards().cards().get(DEALER_FIRST_CARD_INDEX));
+        System.out.println(dealer.getName()+DELIMITER+ dealer.getCards().cards().getCards().get(DEALER_FIRST_CARD_INDEX));
     }
 }
