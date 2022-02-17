@@ -33,8 +33,8 @@ public class Game {
         blackJack.dealerPhase();
 
         UserStats userStats = UserStats.of(blackJack.getGameUser());
-
         OutputView.printTotalScore(userStats.convertTotalScore());
+        OutputView.printTotalResult(userStats.convertTotalResult());
     }
 
     private List<String> getPlayerName() {

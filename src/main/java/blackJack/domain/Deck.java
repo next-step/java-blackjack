@@ -11,7 +11,7 @@ public class Deck {
     private static final String JQK_REGEX = "[JQK]";
     private static final int JQK_SCORE = 10;
     private static final int ACE_BONUS_SCORE = 11;
-    private static final int MATCH_SCORE = 21;
+    public static final int MATCH_SCORE = 21;
 
     private Deck() {
         this.deck = new ArrayList<>();

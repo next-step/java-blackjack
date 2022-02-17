@@ -69,8 +69,11 @@ public class BlackJack {
             OutputView.printRequestAdditionalCardDrawFormat(player);
             if (InputView.readYN()) {
                 player.appendToDeck(gameCard.drawCard());
+                OutputView.printPlayerStatus(player);
+                continue;
             }
             OutputView.printPlayerStatus(player);
+            break;
         }
     }
 }

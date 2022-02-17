@@ -108,20 +108,16 @@
     - [x] User에게 Card 전달하기
     - [x] Player는 총 score가 21이하일 경우, 1장의 카드를 추가로 받을 수 있다. 
 - [x] UserStats - User별 승/패에 대한 정보
-  - [] GameUser를 인자로 받아 User별, 승/패 정보를 계산한다.
-    - [x] convertTotalScore()
-    - [ ] convertTotalResult()
-- [ ] Score 
-  - [ ] 승 횟수
-  - [ ] 패배 횟수 
-  - [ ] 전체 경기 횟수
+  - [x] GameUser를 인자로 받아 User별, 승/패 정보를 계산한다.
+    - [x] User별 Deck의 score를 출력하기 위한 String을 반환할 수 있다. convertTotalScore()
+    - [x] User별 최종 승/패를 출력하기 위한 String을 반환할 수 있다. convertTotalResult()
+  - [x] User별 Deck의 score가 21을 초과할 경우, 승/패를 계산할 수 있다.
+    - [x] Dealer의 score가 21을 초과할 경우, Player가 승리한다.
+    - [x] Dealer의 score가 21을 초과하지 않고, Player의 score가 21을 초과하는 경우, Dealer가 승리한다.
 - [x] Game - 전체적인 게임을 진행할 Controller 
   - [x] 이름의 배열을 BlackJack에 전달한다.
   - [x] 싱글턴 패턴 적용
 - [x] UserName - 게임 참여자의 이름
-- [] InputParser - String -> List<String>의 이름의 배열로 반환한다.
-  - [] 이름의 중복을 확인한다.
-  - [] 이름의 공백을 확인한다.
 - [x] InputView
   - [x] 게임에 참여할 이름을 입력받는다.
 - [x] OutputView
