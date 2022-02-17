@@ -53,6 +53,7 @@ public class BlackJack {
     private void drawEachPlayer(Player player) {
         while (player.isDrawable() && getPlayerRequest(player)) {
             player.drawCard(deck.spreadCard());
+            OutputView.printEachCardInfo(player);
         }
     }
 
