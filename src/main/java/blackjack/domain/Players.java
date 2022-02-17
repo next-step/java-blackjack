@@ -1,5 +1,7 @@
 package blackjack.domain;
 
+import blackjack.dto.CardInfo;
+import blackjack.dto.NameInfo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,4 +25,13 @@ public class Players {
     public void initializeDeck(Deck deck) {
         players.stream().forEach(player -> player.initializeDeck(deck));
     }
+
+    public List<NameInfo> getPlayersName(){
+        return players.stream().map(Person::mapToNameInfo).collect(Collectors.toList());
+    }
+
+    public List<CardInfo> openCards(){
+        return players.stream().map(Player::openCards).collect(Collectors.toList());
+    }
+
 }
