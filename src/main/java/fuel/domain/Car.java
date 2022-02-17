@@ -2,13 +2,25 @@ package fuel.domain;
 
 public abstract class Car {
 
+    private final double distance;
+    private final String carName;
+
+    public Car(final double distance, final String carName) {
+        this.distance = distance;
+        this.carName = carName;
+    }
+
     abstract double getDistancePerLiter();
 
-    abstract double getTripDistance();
+    protected double getTripDistance() {
+        return distance;
+    }
 
-    abstract String getName();
+    protected String getName() {
+        return carName;
+    }
 
-    double getChargeQuantity() {
+    protected double getChargeQuantity() {
         return getTripDistance() / getDistancePerLiter();
     }
 }
