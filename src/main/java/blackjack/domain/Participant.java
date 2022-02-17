@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 abstract public class Participant {
 
+    private static final String COLON = " : ";
+
     protected final String name;
     protected final ParticipantCards cards;
     protected int winScore, loseScore;
@@ -20,11 +22,19 @@ abstract public class Participant {
     }
 
     public final void judgeScore(int maxScore) {
-        if(sumCardScore() == maxScore){
+        if (sumCardScore() == maxScore) {
             winScore++;
             return;
         }
         loseScore++;
+    }
+
+    public final String getName() {
+        return name;
+    }
+
+    public final String holdingInfo() {
+        return name + COLON + cards.toString();
     }
 
     public final int sumCardScore() {
@@ -32,4 +42,8 @@ abstract public class Participant {
     }
 
     public abstract void drawCardMultiple(Deck deck, int number);
+
+    public abstract void drawCardContinue(Deck deck);
+
+    public abstract String scoreResult();
 }

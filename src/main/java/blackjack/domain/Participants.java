@@ -6,19 +6,20 @@ import java.util.List;
 
 public class Participants {
 
+    private static final String COMMA = ", ";
+
     private final List<Participant> participants;
     private final Deck deck;
-    private int targetIndex;
 
     private Participants(List<Participant> participants) {
         this.deck = Deck.create();
         this.participants = new ArrayList<>(participants);
-        this.targetIndex = 0;
     }
 
     public static Participants from(Players players, Dealer dealer) {
-        List<Participant> participants = new ArrayList<>(players.getPlayers());
+        List<Participant> participants = new ArrayList<>();
         participants.add(dealer);
+        participants.addAll(players.getPlayers());
         return new Participants(participants);
     }
 
@@ -28,18 +29,20 @@ public class Participants {
         }
     }
 
-    public void drawCard(Participant participant) {
-
+    public void drawCardContinue(int number) {
+        for (Participant participant : participants) {
+            participant.drawCardContinue(deck);
+        }
     }
 
-    public void judgeScore(){
+    public void judgeScore() {
         int maxScore = calculateMaxScore();
-        for(Participant participant : participants){
+        for (Participant participant : participants) {
             participant.judgeScore(maxScore);
         }
     }
 
-    private int calculateMaxScore(){
+    private int calculateMaxScore() {
         return participants.stream()
             .mapToInt(participant -> participant.sumCardScore())
             .max()
@@ -48,21 +51,20 @@ public class Participants {
             });
     }
 
-    public boolean isNext(){
-        return targetIndex > participants.size();
-    }
-
-    public void nextTarget(){
-        if(!isNext())
-            return;
-        targetIndex ++;
-    }
-
-    public Participant getTarget() {
-        return participants.get(targetIndex);
-    }
-
     public List<Participant> getParticipants() {
         return Collections.unmodifiableList(participants);
+    }
+
+    public String participantsNames() {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < participants.size(); i++) {
+            sb.append(participants.get(i).getName());
+            if (i != participants.size() - 1) {
+                sb.append(COMMA);
+            }
+        }
+
+        return sb.toString();
     }
 }

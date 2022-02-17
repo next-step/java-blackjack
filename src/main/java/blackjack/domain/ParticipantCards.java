@@ -6,6 +6,8 @@ import java.util.List;
 
 public class ParticipantCards {
 
+    private static final String COMMA = ", ";
+
     private final List<Card> cards;
 
     public ParticipantCards(List<Card> cards) {
@@ -23,5 +25,18 @@ public class ParticipantCards {
 
     public List<Card> getCards() {
         return Collections.unmodifiableList(cards);
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < cards.size(); i++) {
+            sb.append(cards.get(i).toString());
+            if (i != cards.size() - 1) {
+                sb.append(COMMA);
+            }
+        }
+
+        return sb.toString();
     }
 }
