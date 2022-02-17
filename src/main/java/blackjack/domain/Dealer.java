@@ -19,8 +19,8 @@ public class Dealer {
         List<GamePlayer> players = gamePlayers.getAllPlayers();
 
         players.forEach(player -> {
-            player.receiveCard(cardPack.remove());
-            player.receiveCard(cardPack.remove());
+            player.receiveCard(cardPack.pick());
+            player.receiveCard(cardPack.pick());
         });
     }
 
@@ -36,7 +36,7 @@ public class Dealer {
 
     private void playerGameProcess(final GamePlayer player) {
         while (player.isContinue() && InputView.getPlayerChoice(player)) {
-            player.receiveCard(cardPack.remove());
+            player.receiveCard(cardPack.pick());
             OutputView.printCardStatus(player);
         }
 
@@ -46,7 +46,7 @@ public class Dealer {
     private void dealerGameProcess(final GamePlayer dealer) {
         while (dealer.isLowerThanBound()) {
             OutputView.printDealerAcceptCard();
-            dealer.receiveCard(cardPack.remove());
+            dealer.receiveCard(cardPack.pick());
         }
     }
 }

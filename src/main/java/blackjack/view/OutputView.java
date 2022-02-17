@@ -29,8 +29,7 @@ public class OutputView {
     public static void printCardAllStatus(GamePlayers gamePlayers) {
         List<GamePlayer> players = gamePlayers.getAllPlayers();
 
-        players.stream()
-                .forEach(player -> System.out.println(String.format(CARDS_LOG, player.getName(), getPlayerCardStatus(player))));
+        players.forEach(player -> System.out.println(String.format(CARDS_LOG, player.getName(), getPlayerCardStatus(player))));
         System.out.println();
     }
 

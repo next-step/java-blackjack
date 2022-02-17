@@ -36,11 +36,11 @@ public class DealerPlayer extends GamePlayer {
     private String getGameResultWord(final int winCount, final int loseCount) {
         final StringBuilder resultWord = new StringBuilder();
         if (winCount > 0) {
-            resultWord.append(winCount + WIN);
+            resultWord.append(winCount).append(WIN);
         }
 
         if (loseCount > 0) {
-            resultWord.append(loseCount + LOSE);
+            resultWord.append(loseCount).append(LOSE);
         }
 
         return resultWord.toString();

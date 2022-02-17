@@ -36,7 +36,7 @@ public class InputView {
     private static List<String> splitPlayerName(String input) {
         String[] split = input.split(DELIMITER);
         return Arrays.stream(split)
-            .map(name -> name.trim())
+            .map(String::trim)
             .filter(name -> !name.isEmpty())
             .collect(Collectors.toList());
     }

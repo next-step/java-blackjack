@@ -25,13 +25,13 @@ public class Cards {
     }
 
     public int calculateCards() {
-        final int sum = getSumAllElement();
+        final int sumOfCards = getSumOfCards();
         final int aceCount = getAceCount();
 
-        if (sum > BLACK_JACK && aceCount > 0) {
-            return getBestSumWithAce(sum);
+        if (sumOfCards > BLACK_JACK && aceCount > 0) {
+            return getBestSumWithAce(sumOfCards);
         }
-        return sum;
+        return sumOfCards;
     }
 
     private int getAceCount() {
@@ -40,7 +40,7 @@ public class Cards {
             .count();
     }
 
-    private int getSumAllElement() {
+    private int getSumOfCards() {
         return cards.stream()
             .map(Card::getCardType)
             .mapToInt(CardType::getPoint)
