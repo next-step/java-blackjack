@@ -23,6 +23,10 @@ public class OutputView {
         System.out.println();
     }
 
+    public static void printEachCardInfo(Player player) {
+        System.out.printf("%s : %s\n", player.name(), collectPlayerCard(player));
+    }
+
     private static String collectPlayerNames(List<Player> candiates) {
         return candiates.stream()
             .map(Player::name)
@@ -36,10 +40,6 @@ public class OutputView {
 
     private static String makeCardInfo(Card card) {
         return String.join("", card.message(), card.suit());
-    }
-
-    public static void printEachCardInfo(Player player) {
-        System.out.printf("%s : %s\n", player.name(), collectPlayerCard(player));
     }
 
     private static String collectPlayerCard(Player player) {
