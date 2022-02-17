@@ -66,7 +66,7 @@
 
 ## 기능 구현 사항
 
-- [ ] 사람 이름 입력받기(`Input.getPlayerNames`)
+- [x] 사람 이름 입력받기(`InputView.getPlayerNames`)
 - [x] 카드는 문양값(`Suit`)과 숫자값(`Denomination`)을 가진다 (Card)
     - [x] 문양값(`Suit`)과 숫자값(`Denomination`)은 `enum`으로 구현한다
 - [x] 카드리스트를 가진 일급 컬렉션 Deck 구현
@@ -77,6 +77,6 @@
 - [x] 카드 숫자를 계산한다 (`Player.calculateScore()`)
 - [x] 딜러가 플레이어에게 카드 배분한다 (`Dealer.allocateCard()`)
 - [x] 딜러의 처음 받은 2장의 카드 합계가 16이하라면 카드 한 장을 추가로 받는다 (`Dealer.addOneMoreCard`)
-- [ ] 카드 추가 여부 묻기 (`Input.askAddCard()`)
+- [x] 카드 추가 여부 묻기 (`InputView.askAddCard()`)
 - [x] 우승자를 찾는다 (`Judgement.findWinner()`)
 - [x] 최종 승패 계산하기 (`Judgement.judgeResult()`)

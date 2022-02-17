@@ -16,7 +16,7 @@ public class Player {
         this.cards = new ArrayList<>();
     }
 
-    protected int calculateScore() {
+    public int calculateScore() {
         int score = cards.stream().mapToInt(card -> card.getDenomination().getCount()).sum();
         long aceCount = cards.stream().filter(card -> card.getDenomination().isAce()).count();
         for (int i = 0; i < aceCount; i++) {
@@ -25,14 +25,14 @@ public class Player {
         return score;
     }
 
-    private int adjustScore(int score) {
+    public int adjustScore(int score) {
         if (score + TEN <= BUST_THRESHOLD) {
             score += TEN;
         }
         return score;
     }
 
-    protected void receiveCard(Card card) {
+    public void receiveCard(Card card) {
         cards.add(card);
     }
 

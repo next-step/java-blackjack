@@ -18,4 +18,12 @@ public class Card {
         return denomination;
     }
 
+    public String getDenomiationCountstring(){
+        return denomination.getCountString();
+    }
+
+    public String getSuitName(){
+        return suit.getName();
+    }
+
 }
