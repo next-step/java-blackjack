@@ -8,15 +8,15 @@ import java.util.stream.Collectors;
 public class Players {
 
     private List<Player> players = new ArrayList<>();
-    private String[] playernames;
+    private String[] playerNames;
 
-    public Players(String[] playernames) {
-        this.playernames = playernames;
+    public Players(String[] playerNames) {
+        this.playerNames = playerNames;
         init();
     }
 
     private void init() {
-        for (String playerName : playernames) {
+        for (String playerName : playerNames) {
             players.add(new Player(playerName));
         }
     }
