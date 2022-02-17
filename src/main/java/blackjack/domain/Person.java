@@ -1,8 +1,11 @@
 package blackjack.domain;
 
+import blackjack.dto.CardInfo;
+import blackjack.dto.NameInfo;
+
 public abstract class Person {
 
-    private static final int INIT_CARD_COUNT = 2;
+    public static final int INIT_CARD_COUNT = 2;
 
     protected final String userName;
     protected final Cards cards;
@@ -18,6 +21,8 @@ public abstract class Person {
 
     public abstract boolean canDrawCard();
 
+    public abstract CardInfo openCards();
+
     public int cardSize() {
         return cards.size();
     }
@@ -26,5 +31,9 @@ public abstract class Person {
         for (int i = 0; i < INIT_CARD_COUNT; i++) {
             cards.add(deck.drawCard());
         }
+    }
+
+    public NameInfo mapToNameInfo() {
+        return new NameInfo(userName);
     }
 }
