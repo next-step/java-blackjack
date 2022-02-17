@@ -8,8 +8,10 @@ import blackjack.domain.participant.Player;
 import blackjack.util.Parser;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class BlackJackApplication {
 
@@ -22,8 +24,38 @@ public class BlackJackApplication {
             .map(name -> new Player(name, new Hands(deck.dealInitCards())))
             .collect(Collectors.toList());
 
-        participants.add(new Dealer(new Hands(game.dealCards())));
+        OutputView.printInitProgress(combine(dealer, players));
 
-        OutputView.printInitProgress(participants);
+        drawCardsIfWant(deck, players);
+        drawCardIfCan(deck, dealer);
+
+    }
+
+    private static void drawCardsIfWant(final Deck deck, final List<Participant> players) {
+        players.forEach(player -> additionalDraw(deck, player));
+    }
+
+    private static void additionalDraw(final Deck deck, final Participant player) {
+        while (player.canDraw() && isAgree(player)) {
+            player.addCard(deck.draw());
+            OutputView.printParticipantsStatus(Collections.singletonList(player));
+        }
+    }
+
+    private static boolean isAgree(final Participant player) {
+        return InputView.inputDrawFlag(player.getName()).equalsIgnoreCase("y");
+    }
+
+    private static void drawCardIfCan(final Deck deck, final Participant dealer) {
+        if (dealer.canDraw()) {
+            dealer.addCard(deck.draw());
+            OutputView.printDealerDraw();
+        }
+    }
+
+    private static List<Participant> combine(final Participant dealer, final List<Participant> participants) {
+        return Collections.unmodifiableList(
+            Stream.concat(Stream.of(dealer), participants.stream())
+                .collect(Collectors.toList()));
     }
 }

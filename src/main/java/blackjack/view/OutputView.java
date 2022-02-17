@@ -42,4 +42,7 @@ public class OutputView {
         return participant.getCardNames().stream()
             .collect(Collectors.joining(DELIMITER));
     }
+    public static void printDealerDraw() {
+        System.out.println(DEALER_DRAW_MESSAGE);
+    }
 }
