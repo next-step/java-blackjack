@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Player {
 
-
     protected final CardBundle cardBundle;
     private final String name;
 
