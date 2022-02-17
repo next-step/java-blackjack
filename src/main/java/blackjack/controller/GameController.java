@@ -15,7 +15,7 @@ public class GameController {
     public void start() {
         final CardPack cardPack = CardPack.create();
         final Dealer dealer = new Dealer(cardPack);
-        final GamePlayers gamePlayers = new GamePlayers(getConsoleNames());
+        final GamePlayers gamePlayers = GamePlayers.makePlayers(getConsoleNames());
 
         dealer.initializeGame(gamePlayers);
         printInitialStatus(gamePlayers);
