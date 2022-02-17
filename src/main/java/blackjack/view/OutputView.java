@@ -1,8 +1,7 @@
 package blackjack.view;
 
-import blackjack.domain.card.Card;
-import blackjack.domain.gameplayer.GamePlayers;
 import blackjack.domain.gameplayer.GamePlayer;
+import blackjack.domain.gameplayer.GamePlayers;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,16 +23,7 @@ public class OutputView {
     }
 
     public static void printCardStatus(GamePlayer player) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        List<Card> cards = player.getCards();
-        for (Card card : cards) {
-
-            stringBuilder.append(card.getCardType().getName())
-                .append(card.getCardSymbol().getSymbol())
-                .append(COMMA);
-        }
-        System.out.println(String.format(CARDS_LOG, player.getName(), stringBuilder.toString()));
+        System.out.println(String.format(CARDS_LOG, player.getName(), getPlayerCardStatus(player)));
     }
 
     public static void printDealerAcceptCard() {
@@ -44,12 +34,14 @@ public class OutputView {
         List<GamePlayer> players = gamePlayers.getAllPlayers();
 
         for (GamePlayer player : players) {
-            String cardNameWithSymbol = player.getCards().stream()
-                .map(card -> card.getCardType().getName() + card.getCardSymbol().getSymbol())
-                .collect(Collectors.joining(COMMA));
-
-            System.out.println(String.format(RESULT_CARDS_LOG, player.getName(), cardNameWithSymbol, player.getScore()));
+            System.out.println(String.format(RESULT_CARDS_LOG, player.getName(), getPlayerCardStatus(player), player.getScore()));
         }
+    }
+
+    private static String getPlayerCardStatus(GamePlayer gamePlayer) {
+        return gamePlayer.getCards().stream()
+            .map(card -> card.getCardType().getName() + card.getCardSymbol().getSymbol())
+            .collect(Collectors.joining(COMMA));
     }
 
     public static void printGameResult(GamePlayers gamePlayers) {
