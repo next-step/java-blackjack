@@ -28,4 +28,8 @@ public class BlackJack {
         Deck deck = new Deck(cardFactory.createCards());
         return new BlackJack(candidates, deck);
     }
+
+    public void runGame() {
+
+    }
 }
