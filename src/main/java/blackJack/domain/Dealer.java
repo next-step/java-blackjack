@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Dealer implements User {
 
-    private static final String DEALER_DEFAULT_NAME = "dealer";
+    private static final String DEALER_DEFAULT_NAME = "딜러";
     private static final int ADDITIONAL_CARD_DRAW_SCORE_THRESHOLD = 16;
 
     private final Deck deck;
@@ -44,6 +44,10 @@ public class Dealer implements User {
     }
 
     public String convertStatus() {
-        return String.format("%s: %s", userName.getName(), deck.convertDeckFormat());
+        return String.format("%s 카드: %s", userName.getName(), deck.convertDeckFormat());
+    }
+
+    public int getScore() {
+        return deck.getScore();
     }
 }

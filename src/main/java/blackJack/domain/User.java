@@ -13,4 +13,6 @@ public interface User {
     void appendToDeck(List<Card> cards);
 
     String convertStatus();
+
+    int getScore();
 }

@@ -1,6 +1,7 @@
 package blackJack.controller;
 
 import blackJack.domain.BlackJack;
+import blackJack.domain.UserStats;
 import blackJack.util.Util;
 import blackJack.view.InputView;
 import blackJack.view.OutputView;
@@ -31,7 +32,9 @@ public class Game {
         blackJack.playerPhase();
         blackJack.dealerPhase();
 
+        UserStats userStats = UserStats.of(blackJack.getGameUser());
 
+        OutputView.printTotalScore(userStats.convertTotalScore());
     }
 
     private List<String> getPlayerName() {

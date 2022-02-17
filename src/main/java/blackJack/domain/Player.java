@@ -41,4 +41,8 @@ public class Player implements User {
     public String convertStatus() {
         return String.format("%s카드: %s", userName.getName(), deck.convertDeckFormat());
     }
+
+    public int getScore() {
+        return deck.getScore();
+    }
 }

@@ -45,4 +45,8 @@ public class OutputView {
     public static void printDealerAdditionalCardDraw() {
         System.out.println(PRINT_DEALER_ADDITIONAL_CARD_DRAW);
     }
+
+    public static void printTotalScore(String totalScore) {
+        System.out.println(totalScore);
+    }
 }

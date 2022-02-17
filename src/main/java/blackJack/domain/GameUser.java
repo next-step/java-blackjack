@@ -31,4 +31,12 @@ public class GameUser {
         players.add(user);
         return this;
     }
+
+    public List<User> getUsers() {
+        List<User> user = new ArrayList<>();
+        user.add(dealer);
+        user.addAll(players);
+
+        return user;
+    }
 }
