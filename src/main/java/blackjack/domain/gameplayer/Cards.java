@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Cards {
 
-    private static final int BLACK_JACK_BOUND = 22;
+    private static final int BLACK_JACK = 21;
 
     private final List<Card> cards;
 
@@ -28,7 +28,7 @@ public class Cards {
         final int sum = getSumAllElement();
         final int aceCount = getAceCount();
 
-        if (sum >= BLACK_JACK_BOUND && aceCount > 0) {
+        if (sum > BLACK_JACK && aceCount > 0) {
             return getBestSumWithAce(sum);
         }
         return sum;
@@ -52,11 +52,11 @@ public class Cards {
         final int higherAcePoint = CardType.ACE.getPoint();
 
         int aceCount = getAceCount();
-        int point = sum;
+        int totalPoint = sum;
 
-        while (aceCount-- > 0 && point >= BLACK_JACK_BOUND) {
-            point = point - higherAcePoint + lowerAcePoint;
+        while (aceCount-- > 0 && totalPoint > BLACK_JACK) {
+            totalPoint = totalPoint - higherAcePoint + lowerAcePoint;
         }
-        return point;
+        return totalPoint;
     }
 }
