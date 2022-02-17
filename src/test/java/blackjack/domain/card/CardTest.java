@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CardTest {
+
     @DisplayName("카드 객체 생성 테스트")
     @Test
     void createCardTest() {

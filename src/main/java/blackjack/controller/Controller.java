@@ -1,15 +1,21 @@
 package blackjack.controller;
 
-import blackjack.domain.card.CardDeck;
 import blackjack.domain.Game;
-import blackjack.domain.state.Gameable;
-import blackjack.domain.player.Player;
-import blackjack.domain.state.State;
 import blackjack.domain.Winner;
+import blackjack.domain.card.CardDeck;
+import blackjack.domain.player.Player;
+import blackjack.domain.state.Gameable;
+import blackjack.domain.state.State;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
 public class Controller {
+
+    private static void initGame(Game game) {
+        OutputView.printStartMessage(game);
+        OutputView.printDealerCard(game.getDealer());
+        OutputView.printPlayerCard(game.getPlayers());
+    }
 
     public void run() {
         Game game = new Game(InputView.inputPlayers());
@@ -17,12 +23,6 @@ public class Controller {
         initGame(game);
         playGame(game);
         finishGame(game);
-    }
-
-    private static void initGame(Game game) {
-        OutputView.printStartMessage(game);
-        OutputView.printDealerCard(game.getDealer());
-        OutputView.printPlayerCard(game.getPlayers());
     }
 
     private void playGame(Game game) {

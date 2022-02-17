@@ -1,7 +1,7 @@
 package blackjack.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import blackjack.domain.card.CardDeck;
 import blackjack.domain.player.Player;
@@ -16,8 +16,8 @@ class PlayerTest {
     void createPlayer() {
         Player player = new Player("pobi", new State(CardDeck.pop(2), true));
         assertAll(
-            ()->assertThat(player.getName()).isEqualTo("pobi"),
-            ()->assertThat(player).isNotNull()
+            () -> assertThat(player.getName()).isEqualTo("pobi"),
+            () -> assertThat(player).isNotNull()
         );
     }
 }

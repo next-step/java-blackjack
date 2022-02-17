@@ -6,11 +6,18 @@ import java.util.List;
 
 public class Cards {
 
-    private final List<Card> cards;
     private final static int BLACKJACK = 21;
+    private final List<Card> cards;
 
     public Cards(final List<Card> cards) {
         this.cards = cards;
+    }
+
+    private static int getScoreToSum(final int score1, final int score2) {
+        if ((score2 == CardNumber.ACE.getScore()) && (score1 + CardNumber.ACE.getScore() > 21)) {
+            return 1;
+        }
+        return score2;
     }
 
     public void add(final Card card) {
@@ -31,13 +38,6 @@ public class Cards {
         return newCards.stream()
             .mapToInt(card -> card.getCardNumber().getScore())
             .reduce(0, (a, b) -> a + getScoreToSum(a, b));
-    }
-
-    private static int getScoreToSum(final int score1, final int score2) {
-        if ((score2 == CardNumber.ACE.getScore()) && (score1 + CardNumber.ACE.getScore() > 21)) {
-            return 1;
-        }
-        return score2;
     }
 
     public List<Card> getCards() {

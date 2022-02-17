@@ -7,8 +7,8 @@ import java.util.List;
 
 public class CardDeck {
 
-    private static List<Card> cards = new ArrayList<>();
     private static final int FIRST_INDEX = 0;
+    private static List<Card> cards = new ArrayList<>();
 
     static {
         Arrays.stream(CardNumber.values()).forEach(

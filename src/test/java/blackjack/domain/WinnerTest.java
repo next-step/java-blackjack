@@ -16,6 +16,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class WinnerTest {
+
     @DisplayName("딜러 게임 승패 여부 테스트")
     @Test
     void calculateDealerGameResultTest() {
