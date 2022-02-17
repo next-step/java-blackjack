@@ -22,8 +22,8 @@ public class Players {
             .collect(Collectors.toList());
     }
 
-    public Player findDealer() {
-        return players.stream()
+    public Dealer findDealer() {
+        return (Dealer) players.stream()
             .filter(Player::isDealer)
             .findFirst()
             .orElseThrow(() -> new IllegalArgumentException("[ERROR] 딜러가 존재하지 않습니다."));

@@ -14,12 +14,12 @@ public class PlayersTest {
     @Test
     void 딜러와_플레이어를_이용해_참가자를_구성할_수_있다() {
         //given
-        Dealer dealer =new Dealer();
+        Dealer dealer = new Dealer();
         List<Player> players = new ArrayList<>();
         players.add(new Player("Jason"));
         players.add(new Player("Pobi"));
         //when
-        Players createPlayers = new Players(dealer,players);
+        Players createPlayers = new Players(dealer, players);
         //then
         assertThat(createPlayers).isInstanceOf(Players.class);
     }
@@ -27,24 +27,24 @@ public class PlayersTest {
     @Test
     void 참가자들_중_딜러만_반환할_수_있다() {
         //given
-        Dealer dealer =new Dealer();
+        Dealer dealer = new Dealer();
         List<Player> players = new ArrayList<>();
         players.add(new Player("Jason"));
         players.add(new Player("Pobi"));
         //when
-        Players createPlayers = new Players(dealer,players);
+        Players createPlayers = new Players(dealer, players);
         //then
         assertThat(createPlayers.findDealer()).isEqualTo(dealer);
     }
 
     @Test
     void 참가자들_중_플레이어들만_반환할_수_있다() {
-        Dealer dealer =new Dealer();
+        Dealer dealer = new Dealer();
         List<Player> players = new ArrayList<>();
         players.add(new Player("Jason"));
         players.add(new Player("Pobi"));
         //when
-        Players createPlayers = new Players(dealer,players);
+        Players createPlayers = new Players(dealer, players);
         //then
         assertThat(createPlayers.findOnlyPlayers()).isEqualTo(players);
     }
@@ -52,7 +52,7 @@ public class PlayersTest {
     @Test
     void 참가자들_중_블랙잭이_있는지_확인할_수_있다() {
         //given
-        Dealer dealer =new Dealer();
+        Dealer dealer = new Dealer();
         dealer.drawCard(new Card(Suit.CLOVER, Number.ACE));
         dealer.drawCard(new Card(Suit.CLOVER, Number.KING));
         List<Player> players = new ArrayList<>();
@@ -63,7 +63,7 @@ public class PlayersTest {
         pobi.drawCard(new Card(Suit.SPADE, Number.EIGHT));
         pobi.drawCard(new Card(Suit.SPADE, Number.NINE));
         //when
-        Players createPlayers = new Players(dealer,players);
+        Players createPlayers = new Players(dealer, players);
         //then
         assertThat(createPlayers.hasBlackJack()).isTrue();
     }
