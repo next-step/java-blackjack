@@ -10,6 +10,8 @@ public class InputView {
     private static final String MORE_CARD_MESSAGE = "%s는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)";
     private static final String BLANK_EXCEPTION = "1명 이상의 플레이어 이름을 입력해주세요.";
     private static final String WRONG_ANSWER_EXCEPTION = "응답은 y 또는 n이어야 합니다.";
+    private static final String YES = "y";
+    private static final String NO = "n";
 
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -28,12 +30,12 @@ public class InputView {
         System.out.printf((MORE_CARD_MESSAGE) + "%n", playerName);
         String input = scanner.nextLine().trim();
         checkResponse(input);
-        return input.equals("y");
+        return input.equals(YES);
     }
 
     private static void checkResponse(String input) {
         checkBlank(input);
-        if (!input.equals("y") && !input.equals("n")) {
+        if (!input.equals(YES) && !input.equals(NO)) {
             throw new IllegalArgumentException(WRONG_ANSWER_EXCEPTION);
         }
     }

@@ -3,6 +3,7 @@ package blackjack.controller;
 import blackjack.domain.CardDeck;
 import blackjack.domain.Dealer;
 import blackjack.domain.Game;
+import blackjack.domain.GameResult;
 import blackjack.domain.Player;
 import blackjack.domain.Players;
 import blackjack.dto.PlayerDTO;
@@ -32,7 +33,7 @@ public class BlackJackController {
         dealerTurn(deck, dealer);
 
         printFinalResult(dealer, players);
-        printWinOrLose(game);
+        printWinOrLose(dealer, players);
     }
 
 
@@ -46,16 +47,18 @@ public class BlackJackController {
         OutputView.printCards(String.join(", ", playerNames), results);
     }
 
-    private void playerTurn(CardDeck deck,Players players) {
+    private void playerTurn(CardDeck deck, Players players) {
         for (Player player : players.get()) {
             askMoreCard(deck, player);
         }
     }
 
-    private void askMoreCard(CardDeck deck,Player player) {
+    private void askMoreCard(CardDeck deck, Player player) {
         while (!player.isBusted()) {
             boolean answer = InputView.askHitOrStand(player.getName());
-            if (!answer) break;
+            if (!answer) {
+                break;
+            }
 
             player.hit(deck);
             OutputView.printCard(PlayerDTO.from(player));
@@ -79,9 +82,10 @@ public class BlackJackController {
         OutputView.printGameResults(results);
     }
 
-    private void printWinOrLose(Game game) {
-        game.mapResults();
-        OutputView.printWinOrLose(game);
+    private void printWinOrLose(Dealer dealer, Players players) {
+        GameResult gameResult = new GameResult();
+        gameResult.mapResults(players, dealer);
+        OutputView.printWinOrLose(gameResult);
     }
 
 }

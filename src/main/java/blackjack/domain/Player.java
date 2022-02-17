@@ -1,5 +1,9 @@
 package blackjack.domain;
 
+import static blackjack.utils.Constant.LOSE;
+import static blackjack.utils.Constant.PUSH;
+import static blackjack.utils.Constant.WIN;
+
 import java.util.ArrayList;
 
 public class Player extends Participant {
@@ -20,5 +24,18 @@ public class Player extends Participant {
 
     public String getName() {
         return name;
+    }
+
+    public String getGameResult(Dealer dealer) {
+        if (isBusted()) {
+            return LOSE;
+        }
+        if (dealer.isBusted() || dealer.getScore() < getScore()) {
+            return WIN;
+        }
+        if (dealer.getScore() == getScore()) {
+            return PUSH;
+        }
+        return LOSE;
     }
 }

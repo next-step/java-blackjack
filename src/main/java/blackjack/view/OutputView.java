@@ -1,6 +1,10 @@
 package blackjack.view;
 
-import blackjack.domain.Game;
+import static blackjack.utils.Constant.LOSE;
+import static blackjack.utils.Constant.PUSH;
+import static blackjack.utils.Constant.WIN;
+
+import blackjack.domain.GameResult;
 import blackjack.dto.PlayerDTO;
 import blackjack.dto.FinalScoreDTO;
 import java.util.List;
@@ -9,9 +13,11 @@ import java.util.Map;
 public class OutputView {
 
     private static final String CARD_TAG = "카드: ";
+    private static final String DEALER_TAG = "딜러: ";
     private static final String RESULT_FLAG = " - 결과: ";
     private static final String RESULT_FIRST_DEAL = "딜러와 %s에게 2장의 카드를 나누었습니다.";
     private static final String DEALER_HIT_MESSAGE = "딜러는 16이하라 한장의 카드를 더 받았습니다.";
+    private static final String FINAL_RESULT_TITLE = "## 최종 승패";
 
     public static void printCards(String playerNames, List<PlayerDTO> results) {
         System.out.printf((RESULT_FIRST_DEAL) + "%n", playerNames);
@@ -47,17 +53,15 @@ public class OutputView {
         );
     }
 
-    public static void printWinOrLose(Game game) {
+    public static void printWinOrLose(GameResult gameResult) {
         System.out.println();
-        System.out.println("##최종 승패");
-        printDealerResult(game);
-        printPlayerResults(game.getPlayerResults());
+        System.out.println(FINAL_RESULT_TITLE);
+        printDealerResult(gameResult.getDealerResult());
+        printPlayerResults(gameResult.getPlayerResults());
     }
 
-    private static void printDealerResult(Game game) {
-        System.out.println(
-            "딜러: " + game.getDealerWin() + game.getDealerPush() + game.getDealerLose()
-        );
+    private static void printDealerResult(String results) {
+        System.out.println(DEALER_TAG + results);
     }
 
     private static void printPlayerResults(Map<String, String> results) {
