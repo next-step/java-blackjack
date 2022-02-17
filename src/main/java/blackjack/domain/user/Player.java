@@ -54,4 +54,8 @@ public class Player {
     public boolean isBlackJack() {
         return score() == BLACK_JACK_SCORE;
     }
+
+    public List<Card> getCardBundle() {
+        return cardBundle.getCards();
+    }
 }
