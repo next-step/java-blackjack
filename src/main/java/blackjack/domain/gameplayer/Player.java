@@ -15,7 +15,6 @@ public class Player extends GamePlayer {
 
     @Override
     public boolean isLowerThanBound() {
-        //여기가 문제입니다
         return isContinue();
     }
 
@@ -26,7 +25,7 @@ public class Player extends GamePlayer {
             .max(Integer::compareTo)
             .orElseThrow(NoSuchElementException::new);
 
-        if(this.getScore() == winnerScore){
+        if (this.getScore() == winnerScore){
             return WIN;
         }
         return LOSE;

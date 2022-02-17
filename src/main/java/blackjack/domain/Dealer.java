@@ -1,6 +1,5 @@
 package blackjack.domain;
 
-
 import blackjack.domain.card.CardPack;
 import blackjack.domain.gameplayer.GamePlayer;
 import blackjack.domain.gameplayer.GamePlayers;
@@ -42,7 +41,7 @@ public class Dealer {
             OutputView.printCardStatus(player);
         }
         if (!player.isContinue()) {
-            // 탈락
+
         }
         OutputView.printCardStatus(player);
     }

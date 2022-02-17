@@ -41,6 +41,6 @@ public class DealerPlayer extends GamePlayer {
             resultWord.append(loseCount + LOSE);
         }
 
-        return String.valueOf(resultWord.toString());
+        return resultWord.toString();
     }
 }

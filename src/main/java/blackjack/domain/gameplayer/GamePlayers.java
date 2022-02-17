@@ -1,8 +1,5 @@
 package blackjack.domain.gameplayer;
 
-import blackjack.domain.gameplayer.DealerPlayer;
-import blackjack.domain.gameplayer.GamePlayer;
-import blackjack.domain.gameplayer.Player;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
