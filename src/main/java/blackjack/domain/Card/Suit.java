@@ -6,9 +6,9 @@ public enum Suit {
     HEARTS("하트"),
     SPADES("스페이드");
 
-    private String value;
+    private final String value;
 
-    Suit(String value) {
+    Suit(final String value) {
         this.value = value;
     }
 
