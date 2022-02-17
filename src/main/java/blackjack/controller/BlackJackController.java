@@ -2,6 +2,7 @@ package blackjack.controller;
 
 import blackjack.domain.Dealer;
 import blackjack.domain.Deck;
+import blackjack.domain.GameResult;
 import blackjack.domain.Players;
 import blackjack.view.InputView;
 import blackjack.view.ResultView;
@@ -34,5 +35,13 @@ public class BlackJackController {
             dealer.drawOneCards(deck);
             resultView.dealerDrawCardPrint(dealer);
         }
+
+        resultView.playersGetTotalScore(dealer);
+        players.getPlayers().forEach(resultView::playersGetTotalScore);
+
+        resultView.gameResultMessagePrint();
+        GameResult gameResult = GameResult.calGameResult(dealer, players);
+        resultView.dealerGameResultPrint(gameResult);
+        resultView.playerGameResultPrint(gameResult);
     }
 }
