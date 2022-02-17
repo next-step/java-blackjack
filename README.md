@@ -68,12 +68,9 @@ RentCompany
 - [x] 생성 시 딜러와 플레이어를 생성하고 저장한다.
 - [x] 플레이어 이름 List<>를 받아서 플레이어를 생성하고 플레이어를 반환한다. (createPlayers)
 
-[GameController]
+[GameApplication]
 
-- [ ] Input에서 플레이어 이름 List를 받아 GameSetUp을 호출하여 카드 두장을 가진 List<Player>를 저장한다.
-- [ ] 카드 두 장을 가진 딜러를 저장한다.
-- [ ] 생성된 플레이어와 딜러를 ResultView에게 넘긴다.
-
+- [x] GameSetup의 Dealer와 List<Player>를 입력받고, 생성된 setup 내용을 ResultView에게 넘긴다.
 
 - [ ] 카드의 합이 21 이하인지 카드를 추가로 뽑을 것인지 질문한다.
 - [ ] 딜러에게 필요한 장수만큼 카드를 요구한다.
@@ -81,14 +78,14 @@ RentCompany
 
 [InputView]
 
--[ ] 플레이어 이름을 입력받아서 쉼표 기준으로 분리한 List<String>을 반환한다.
+-[x] 플레이어 이름을 입력받아서 쉼표 기준으로 분리한 List<String>을 반환한다.
 -[ ] 플레이어에게 카드를 추가로 받을 것인지 입력받는다.
     -[ ] y, n으로 입력 받는다.
 
-[OutputView]
+[ResultView]
 
--[ ] 딜러와 플레이어 List<>를 전달 받아 이름과 카드 목록을 출력한다.
-    -[ ] 처음 시작때 딜러는 1번째 카드를 비공개하고, 나머지 카드만 출력한다.
+-[x] 딜러와 플레이어 List<>를 전달 받아 이름과 카드 목록을 출력한다.
+    -[x] 처음 시작 때 딜러는 1장의 카드만 출력한다.
 -[ ] 딜러와 플레이어의 최종 승패를 출력한다.
 
 [GameFinish]
