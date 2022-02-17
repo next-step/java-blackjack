@@ -9,12 +9,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public abstract class Gamer {
+    private static final String ERROR_NOT_ENOUGH_CARD = "덱에 남아있는 카드가 없습니다.";
     private static final int TEN = 10;
     private static final int THRESHOLD = 21;
     private static final int INIT_CARD_COUNT = 2;
 
-    private List<Card> cardsBundle = new ArrayList<>();
-    private List<Card> cards;
+    private List<Card> cardsBundle = Cards.getCardList();
+    private List<Card> cards = new ArrayList<>();
     private String name;
 
     public Gamer(String name) {
@@ -24,18 +25,22 @@ public abstract class Gamer {
 
     public Gamer(String name, List<Card> cards) {
         this.name = name;
-        this.cards = cards;
+        for(Card card : cards) {
+            this.cards.add(card);
+        }
+        for(Card card : cards) {
+            cardsBundle.remove(card);
+        }
     }
 
     private List<Card> initSetting() {
-        cardsBundle = Cards.getCardList();
         Collections.shuffle(cardsBundle);
         this.cards = cardsBundle.stream()
             .limit(INIT_CARD_COUNT)
             .collect(Collectors.toList());
-        cardsBundle.remove(0);
-        cardsBundle.remove(0);
-        return Collections.unmodifiableList(this.cards);
+        removeCard();
+        removeCard();
+        return this.cards;
     }
 
     public int calcScore(Gamer player) {
@@ -61,8 +66,16 @@ public abstract class Gamer {
 
     public List<Card> addCard(List<Card> cards) {
         cards.add(cardsBundle.get(0));
-        cardsBundle.remove(0);
-        return Collections.unmodifiableList(cards);
+        removeCard();
+        return cards;
+    }
+
+    private void removeCard() {
+        try {
+            cardsBundle.remove(0);
+        } catch (RuntimeException runtimeException) {
+            throw new RuntimeException(ERROR_NOT_ENOUGH_CARD);
+        }
     }
 
     public boolean isBlackJack(Gamer player) {
@@ -74,7 +87,7 @@ public abstract class Gamer {
     }
 
     public List<Card> getCards() {
-        return Collections.unmodifiableList(cards);
+        return cards;
     }
 
     public String getName() {

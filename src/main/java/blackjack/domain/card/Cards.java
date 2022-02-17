@@ -16,7 +16,7 @@ public class Cards {
     }
 
     public static List<Card> getCardList() {
-        return Collections.unmodifiableList(cardList);
+        return cardList;
     }
 
 }
