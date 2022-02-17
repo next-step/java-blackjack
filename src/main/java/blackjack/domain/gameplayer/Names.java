@@ -16,7 +16,7 @@ public class Names {
         this.names = names;
     }
 
-    private void validateDuplicateNames(List<Name> names) {
+    private void validateDuplicateNames(final List<Name> names) {
         final Set<Name> set = new HashSet<>(names);
         if (set.size() != names.size()) {
             throw new IllegalArgumentException(DUPLICATE_NAMES);

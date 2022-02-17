@@ -1,7 +1,7 @@
 package blackjack.controller;
 
-import blackjack.domain.card.CardPack;
 import blackjack.domain.Dealer;
+import blackjack.domain.card.CardPack;
 import blackjack.domain.gameplayer.GamePlayers;
 import blackjack.domain.gameplayer.Name;
 import blackjack.domain.gameplayer.Names;
@@ -25,7 +25,12 @@ public class GameController {
     }
 
     private Names getConsoleNames() {
-        return convertStringsToNames(InputView.getPlayerName());
+        try {
+            return convertStringsToNames(InputView.getPlayerName());
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return getConsoleNames();
+        }
     }
 
     private Names convertStringsToNames(List<String> originNames) {
