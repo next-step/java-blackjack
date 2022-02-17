@@ -2,6 +2,7 @@ package blackjack.view;
 
 import blackjack.domain.card.Card;
 import blackjack.domain.gamer.Dealer;
+import blackjack.domain.gamer.Gamer;
 import blackjack.domain.matchInfo.DealerMatchResultInfo;
 import blackjack.domain.matchInfo.PlayerMatchResultInfo;
 import blackjack.domain.gamer.Player;
@@ -31,7 +32,7 @@ public class OutputView {
         System.out.println("딜러와 " + String.join(DELIMITER, players) + "에게 2장의 카드를 나누었습니다.");
     }
 
-    public static void printDealerCardsSetting(Dealer dealer, boolean flag) {
+    public static void printDealerCardsSetting(Gamer dealer, boolean flag) {
         System.out.print(dealer.getName() + ": ");
         printPlayerCards(dealer.getCards(), flag);
     }
@@ -64,7 +65,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printDealerCardSum(Dealer dealer) {
+    public static void printDealerCardSum(Gamer dealer) {
         printDealerCardsSetting(dealer, false);
         System.out.println("- 결과:" + dealer.calcScore(dealer));
 
@@ -82,7 +83,7 @@ public class OutputView {
         System.out.println(FINAL_GAME_RESULT);
     }
 
-    public static void printDealerMatchResult(Dealer dealer, DealerMatchResultInfo dealerMatchScoreInfo) {
+    public static void printDealerMatchResult(Gamer dealer, DealerMatchResultInfo dealerMatchScoreInfo) {
         System.out.format(
             MATCH_SCORE_INFO_FMT,
             dealer.getName(),

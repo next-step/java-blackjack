@@ -1,6 +1,7 @@
 package blackjack.domain.matchInfo;
 
 import blackjack.domain.gamer.Dealer;
+import blackjack.domain.gamer.Gamer;
 import blackjack.domain.gamer.Player;
 import java.util.Arrays;
 
@@ -31,7 +32,7 @@ public enum MatchResult {
             .orElseThrow(() -> new RuntimeException(WRONG_MATCH_SCORE_KEY_ERR_MSG));
     }
 
-    public static MatchResult calcMatchResult(Player player, Dealer dealer) {
+    public static MatchResult calcMatchResult(Gamer player, Gamer dealer) {
         if (player.isBust(player)) return LOSE;
         if (dealer.isBust(dealer)) return WIN;
 

@@ -1,6 +1,7 @@
 package blackjack.controller;
 
 import blackjack.domain.gamer.Dealer;
+import blackjack.domain.gamer.Gamer;
 import blackjack.domain.matchInfo.MatchResultBoard;
 import blackjack.domain.gamer.Player;
 import blackjack.domain.gamer.Players;
@@ -18,7 +19,7 @@ public class GameLauncher {
 
         OutputView.printCardsSetting(playerNames);
 
-        Dealer dealer = new Dealer();
+        Gamer dealer = new Dealer();
         OutputView.printDealerCardsSetting(dealer, true);
 
         Players players = new Players(playerNames);

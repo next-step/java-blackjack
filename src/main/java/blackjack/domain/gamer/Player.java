@@ -9,7 +9,7 @@ public class Player extends Gamer {
         super(name);
     }
 
-    public MatchResult getMatchResult(Player player, Dealer dealer) {
+    public MatchResult getMatchResult(Gamer player, Gamer dealer) {
         return MatchResult.calcMatchResult(player, dealer);
     }
 

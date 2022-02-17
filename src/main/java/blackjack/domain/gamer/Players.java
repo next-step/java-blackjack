@@ -21,7 +21,7 @@ public class Players {
         }
     }
 
-    public MatchResultBoard playMatch(Dealer dealer) {
+    public MatchResultBoard playMatch(Gamer dealer) {
         return new MatchResultBoard(players.stream()
             .collect(Collectors.toMap(player -> player, player -> player.getMatchResult(player, dealer))));
     }
