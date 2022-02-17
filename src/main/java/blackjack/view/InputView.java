@@ -1,6 +1,6 @@
 package blackjack.view;
 
-import blackjack.domain.Card.Player;
+import blackjack.domain.gamer.Player;
 import java.util.Scanner;
 
 public class InputView {

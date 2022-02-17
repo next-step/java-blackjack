@@ -1,5 +1,7 @@
-package blackjack.domain.Card;
+package blackjack.domain.gamer;
 
+import blackjack.domain.card.Card;
+import blackjack.domain.card.Cards;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,6 +12,10 @@ public abstract class Gamer {
     private static final int INIT_CARD_COUNT = 2;
     private List<Card> cardsAll = new ArrayList<>();
     private List<Card> cards = new ArrayList<>();
+
+    public void match() {
+
+    }
 
     public List<Card> initSetting() {
         cardsAll = Cards.getCardList();

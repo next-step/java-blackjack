@@ -1,11 +1,11 @@
 package blackjack.view;
 
-import blackjack.domain.Card.Card;
-import blackjack.domain.Card.Dealer;
-import blackjack.domain.Card.MatchInfo.DealerMatchScoreInfo;
-import blackjack.domain.Card.MatchInfo.PlayerMatchScoreInfo;
-import blackjack.domain.Card.Player;
-import blackjack.domain.Card.Players;
+import blackjack.domain.card.Card;
+import blackjack.domain.gamer.Dealer;
+import blackjack.domain.matchInfo.DealerMatchResultInfo;
+import blackjack.domain.matchInfo.PlayerMatchResultInfo;
+import blackjack.domain.gamer.Player;
+import blackjack.domain.gamer.Players;
 import java.util.List;
 
 public class OutputView {
@@ -82,24 +82,24 @@ public class OutputView {
         System.out.println(FINAL_GAME_RESULT);
     }
 
-    public static void printDealerMatchResult(Dealer dealer, DealerMatchScoreInfo dealerMatchScoreInfo) {
+    public static void printDealerMatchResult(Dealer dealer, DealerMatchResultInfo dealerMatchScoreInfo) {
         System.out.format(
             MATCH_SCORE_INFO_FMT,
             dealer.getName(),
             String.join(
                 DEALER_MATCH_SCORE_DELIMITER,
-                dealerMatchScoreInfo.getMatchScores()
+                dealerMatchScoreInfo.getMatchResult()
             )
         );
     }
 
-    public static void printPlayersMatchResult(List<PlayerMatchScoreInfo> playerMatchScoreInfos) {
-        for(PlayerMatchScoreInfo playerMatchScoreInfo : playerMatchScoreInfos) {
+    public static void printPlayersMatchResult(List<PlayerMatchResultInfo> playerMatchScoreInfos) {
+        for(PlayerMatchResultInfo playerMatchScoreInfo : playerMatchScoreInfos) {
             printPlayerMatchResult(playerMatchScoreInfo);
         }
     }
 
-    public static void printPlayerMatchResult(PlayerMatchScoreInfo playerMatchScoreInfo) {
-        System.out.println(playerMatchScoreInfo.getName() + ":" + playerMatchScoreInfo.getMatchScore());
+    public static void printPlayerMatchResult(PlayerMatchResultInfo playerMatchScoreInfo) {
+        System.out.println(playerMatchScoreInfo.getName() + ":" + playerMatchScoreInfo.getMatchResult());
     }
 }

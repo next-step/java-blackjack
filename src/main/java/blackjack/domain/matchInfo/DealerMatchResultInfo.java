@@ -1,12 +1,12 @@
-package blackjack.domain.Card.MatchInfo;
+package blackjack.domain.matchInfo;
 
 import java.util.List;
 import java.util.Objects;
 
-public class DealerMatchScoreInfo {
+public class DealerMatchResultInfo {
     private final List<String> matchScores;
 
-    public DealerMatchScoreInfo(List<String> matchScores) {
+    public DealerMatchResultInfo(List<String> matchScores) {
         this.matchScores = matchScores;
     }
 
@@ -25,7 +25,7 @@ public class DealerMatchScoreInfo {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        DealerMatchScoreInfo that = (DealerMatchScoreInfo) o;
+        DealerMatchResultInfo that = (DealerMatchResultInfo) o;
         return Objects.equals(matchScores, that.matchScores);
     }
 
@@ -34,7 +34,7 @@ public class DealerMatchScoreInfo {
         return Objects.hash(matchScores);
     }
 
-    public List<String> getMatchScores() {
+    public List<String> getMatchResult() {
         return matchScores;
     }
 

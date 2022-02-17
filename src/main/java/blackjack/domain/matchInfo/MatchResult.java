@@ -1,7 +1,7 @@
-package blackjack.domain.Card.MatchInfo;
+package blackjack.domain.matchInfo;
 
-import blackjack.domain.Card.Dealer;
-import blackjack.domain.Card.Player;
+import blackjack.domain.gamer.Dealer;
+import blackjack.domain.gamer.Player;
 import java.util.Arrays;
 
 public enum MatchResult {
@@ -25,16 +25,13 @@ public enum MatchResult {
     }
 
     private static MatchResult of(final int value) {
-        return Arrays.stream(
-            MatchResult.values()
-        ).filter(
-            result -> result.key == value
-        ).findFirst().orElseThrow(
-            () -> new RuntimeException(WRONG_MATCH_SCORE_KEY_ERR_MSG)
-        );
+        return Arrays.stream(MatchResult.values())
+            .filter(result -> result.key == value)
+            .findFirst()
+            .orElseThrow(() -> new RuntimeException(WRONG_MATCH_SCORE_KEY_ERR_MSG));
     }
 
-    public static MatchResult calcMatchScore(Player player, Dealer dealer) {
+    public static MatchResult calcMatchResult(Player player, Dealer dealer) {
         if (player.isBust(player)) return LOSE;
         if (dealer.isBust(dealer)) return WIN;
 
@@ -49,7 +46,7 @@ public enum MatchResult {
         throw new RuntimeException(UNREACHABLE_POINT_ERR_MSG);
     }
 
-    public MatchResult oppositeMatchScore() {
+    public MatchResult oppositeMatchResult() {
         return MatchResult.of(-key);
     }
 }

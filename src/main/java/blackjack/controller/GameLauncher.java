@@ -1,9 +1,9 @@
 package blackjack.controller;
 
-import blackjack.domain.Card.Dealer;
-import blackjack.domain.Card.MatchInfo.MatchResultBoard;
-import blackjack.domain.Card.Player;
-import blackjack.domain.Card.Players;
+import blackjack.domain.gamer.Dealer;
+import blackjack.domain.matchInfo.MatchResultBoard;
+import blackjack.domain.gamer.Player;
+import blackjack.domain.gamer.Players;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
@@ -37,8 +37,8 @@ public class GameLauncher {
 
         OutputView.printFinalGameResult();
         MatchResultBoard matchResultBoard = players.playMatch(dealer);
-        OutputView.printDealerMatchResult(dealer, matchResultBoard.getDealerMatchScoreInfo());
-        OutputView.printPlayersMatchResult(matchResultBoard.getPlayersMatchScoreInfo());
+        OutputView.printDealerMatchResult(dealer, matchResultBoard.getDealerMatchResultInfo());
+        OutputView.printPlayersMatchResult(matchResultBoard.getPlayersMatchResultInfo());
 
     }
 

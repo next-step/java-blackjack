@@ -1,6 +1,8 @@
-package blackjack.domain.Card;
+package blackjack.domain.gamer;
 
-import blackjack.domain.Card.MatchInfo.MatchResult;
+import blackjack.domain.card.Denomination;
+import blackjack.domain.card.Card;
+import blackjack.domain.matchInfo.MatchResult;
 import java.util.List;
 
 public class Player extends Gamer {
@@ -16,7 +18,7 @@ public class Player extends Gamer {
     }
 
     public MatchResult getMatchResult(Player player, Dealer dealer) {
-        return MatchResult.calcMatchScore(player, dealer);
+        return MatchResult.calcMatchResult(player, dealer);
     }
 
     public List<Card> getCards() {

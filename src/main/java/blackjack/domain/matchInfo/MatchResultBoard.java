@@ -1,6 +1,6 @@
-package blackjack.domain.Card.MatchInfo;
+package blackjack.domain.matchInfo;
 
-import blackjack.domain.Card.Player;
+import blackjack.domain.gamer.Player;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -13,24 +13,24 @@ public class MatchResultBoard {
         this.matchResultMap = matchResultMap;
     }
 
-    public List<PlayerMatchScoreInfo> getPlayersMatchScoreInfo() {
+    public List<PlayerMatchResultInfo> getPlayersMatchResultInfo() {
         return matchResultMap
             .entrySet()
             .stream()
             .map(map ->
-                new PlayerMatchScoreInfo(
+                new PlayerMatchResultInfo(
                     map.getKey().getName(),
                     map.getValue().getName()
                 ))
             .collect(Collectors.toList());
     }
 
-    public DealerMatchScoreInfo getDealerMatchScoreInfo() {
-        return new DealerMatchScoreInfo(
+    public DealerMatchResultInfo getDealerMatchResultInfo() {
+        return new DealerMatchResultInfo(
             matchResultMap
                 .values()
                 .stream()
-                .map(MatchResult::oppositeMatchScore)
+                .map(MatchResult::oppositeMatchResult)
                 .collect(Collectors.groupingBy(o -> o, Collectors.counting()))
                 .entrySet()
                 .stream()

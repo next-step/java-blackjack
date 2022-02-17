@@ -1,6 +1,6 @@
-package blackjack.domain.Card;
+package blackjack.domain.gamer;
 
-import blackjack.domain.Card.MatchInfo.MatchResultBoard;
+import blackjack.domain.matchInfo.MatchResultBoard;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,12 +1,12 @@
-package blackjack.domain.Card.MatchInfo;
+package blackjack.domain.matchInfo;
 
 import java.util.Objects;
 
-public class PlayerMatchScoreInfo {
+public class PlayerMatchResultInfo {
     private final String name;
     private final String matchScore;
 
-    public PlayerMatchScoreInfo(String name, String matchScore) {
+    public PlayerMatchResultInfo(String name, String matchScore) {
         this.name = name;
         this.matchScore = matchScore;
     }
@@ -15,7 +15,7 @@ public class PlayerMatchScoreInfo {
         return name;
     }
 
-    public String getMatchScore() {
+    public String getMatchResult() {
         return matchScore;
     }
 
@@ -35,7 +35,7 @@ public class PlayerMatchScoreInfo {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PlayerMatchScoreInfo that = (PlayerMatchScoreInfo) o;
+        PlayerMatchResultInfo that = (PlayerMatchResultInfo) o;
         return Objects.equals(name, that.name) && Objects.equals(matchScore,
             that.matchScore);
     }
