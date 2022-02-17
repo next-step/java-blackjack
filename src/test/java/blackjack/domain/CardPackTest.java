@@ -13,6 +13,7 @@ class CardPackTest {
     public void 초기_카드팩은_52장의_카드가_생성된다() {
         //given
         CardPack cardPack = CardPack.create();
+
         //when
         List<Card> cards = cardPack.getCardPack();
 
@@ -20,39 +21,15 @@ class CardPackTest {
         assertThat(cards.size()).isEqualTo(52);
     }
 
-//    @Test
-//    public void 각_심볼별_카드에는_12개의_카드가_존재한다() {
-//        //given
-//        List<String> cardMapKeys = new ArrayList<>(cardMap.keySet());
-//
-//        //when
-//        //then
-//        for (String symbol : cardMapKeys) {
-//            final int cardQuantity = cardMap.get(symbol).size();
-//            assertThat(cardQuantity).isEqualTo(12);
-//        }
-//    }
-//
-//    @Test
-//    public void 각_심볼별_카드의_종류는_Enum_CardType을_모두_포함한다() {
-//        //given
-//        List<String> cardMapKeys = new ArrayList<>(cardMap.keySet());
-//
-//        //when
-//        //then
-//        for (String symbol : cardMapKeys) {
-//            final List<Card> cards = cardMap.get(symbol);
-//
-//            List<String> cardNames = cards.stream()
-//                .map(Card::getName)
-//                .collect(Collectors.toList());
-//
-//            List<String> expectedCards = Arrays.stream(CardType.values())
-//                .map(x -> new Card(symbol, x.getName(), x.getPoint()))
-//                .map(Card::getName)
-//                .collect(Collectors.toList());
-//
-//            assertThat(cardNames).contains(expectedCards.toArray(new String[0]));
-//        }
-//    }
+    @Test
+    public void 카드팩에서_한장_빼온뒤에는_카드팩에_남아있는_재고가_하나_감소한다() {
+        //given
+        CardPack cardPack = CardPack.create();
+
+        //when
+        cardPack.remove();
+
+        //then
+        assertThat(cardPack.getCardPack().size()).isEqualTo(51);
+    }
 }
