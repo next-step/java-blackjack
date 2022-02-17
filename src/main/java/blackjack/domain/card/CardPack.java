@@ -13,7 +13,7 @@ public class CardPack {
         this.cardPack = cardPack;
     }
 
-    public static CardPack create() {
+    public static CardPack createWithShuffling() {
         final List<Card> cards = new ArrayList<>();
         for (final CardSymbol symbol : CardSymbol.values()) {
             Arrays.stream(CardType.values())
@@ -27,7 +27,7 @@ public class CardPack {
         return Collections.unmodifiableList(cardPack);
     }
 
-    public Card remove() {
+    public Card pick() {
         return cardPack.remove(0);
     }
 }
