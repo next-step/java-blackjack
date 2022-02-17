@@ -19,7 +19,7 @@ public class Card {
     }
 
     public String getCardName() {
-        return String.format(CARD_NAME_FORMAT, cardNumber.name(), suit.getName());
+        return String.format(CARD_NAME_FORMAT, cardNumber.getInitial(), suit.getName());
     }
 
     public int getCardScore() {
