@@ -12,16 +12,13 @@ public class GameController {
 
     public void start() {
         final CardPack cardPack = new CardPack();
-
         final Dealer dealer = new Dealer(cardPack);
-
         final GamePlayers gamePlayers = new GamePlayers(InputView.getPlayerName());
 
         dealer.initializeGame(gamePlayers);
         printInitialStatus(gamePlayers);
 
-        dealer.playGame(gamePlayers.getPlayers(), gamePlayers.getDealer());
-
+        dealer.playGame(gamePlayers);
         printFinalStatus(gamePlayers);
     }
 
