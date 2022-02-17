@@ -13,14 +13,13 @@ class CardDeckTest {
     }
 
     @Test
-    void 전달받은_개수만큼_카드를_뽑아서_반환한다() {
+    void 카드를_뽑으면_카드_목록에서_제거된다() {
+        //given
         CardDeck cardDeck = new CardDeck();
-        List<Card> initialCards = cardDeck.getCards();
-        List<Card> pickedCards = cardDeck.pickCards(5);
-
-        assertAll(
-            () -> assertThat(pickedCards).hasSize(5),
-            () -> assertThat(cardDeck.getCards()).hasSize(initialCards.size() - 5)
-        );
+        //when
+        Card pickedCard = cardDeck.pickOneCard();
+        //then
+        assertThat(cardDeck.getCards().contains(pickedCard)).isFalse();
     }
+
 }
