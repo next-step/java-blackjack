@@ -19,7 +19,7 @@ public class GameLauncher {
 
         OutputView.printCardsSetting(playerNames);
 
-        Gamer dealer = new Dealer();
+        Dealer dealer = new Dealer();
         OutputView.printDealerCardsSetting(dealer, true);
 
         Players players = new Players(playerNames);
@@ -28,8 +28,7 @@ public class GameLauncher {
             getCardOrNot(player);
         }
 
-        if (dealer.calcScore(dealer) < DEALER_SUM_LIMIT) {
-            dealer.addCard(dealer.getCards());
+        if (dealer.getCardOrNot(dealer)) {
             OutputView.printDealerAddCard();
         }
 
