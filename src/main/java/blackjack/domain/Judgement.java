@@ -32,10 +32,10 @@ public class Judgement {
     public Map<String, String> findWinners() {
         int dealerScore = playerScores.get(DEALER);
         playerScores.remove(DEALER);
+        playerResults.put(DEALER,"");
         playerScores.forEach((name, score) -> {
             playerResults.put(name, checkWinOrLose(dealerScore, score));
         });
-
         playerResults.put(DEALER, getDealerResult());
         return Collections.synchronizedMap(new LinkedHashMap<>(playerResults));
     }

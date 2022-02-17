@@ -23,7 +23,10 @@ public class OutputView {
     }
 
     public static void printPlayersCard(List<Player> players) {
-        players.forEach(OutputView::printJoinedCardInfo);
+        players.forEach(player -> {
+            printJoinedCardInfo(player);
+            printNextLine();
+        });
         printNextLine();
     }
 
@@ -42,19 +45,20 @@ public class OutputView {
         System.out.println(DEALER_RECEIVED_ONE_MORE_CARD);
     }
 
-    public static void printGameResult(List<Player> players) {
+    public static void printGameResult(List<Player> players, Map<String, String> results) {
         players.forEach(player -> {
             printJoinedCardInfo(player);
             System.out.println(RESULT_DELIMITER + player.calculateScore());
         });
+        printNextLine();
+        printFinalResult(results);
     }
 
-    public static void printFinalResult(Map<String, String> results) {
+    private static void printFinalResult(Map<String, String> results) {
         System.out.println(FINAL_RESULT);
         results.forEach((name, result) -> {
             System.out.println(name + COLON + result);
         });
-
     }
 
 }
