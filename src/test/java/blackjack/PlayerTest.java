@@ -3,10 +3,16 @@ package blackjack;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import blackjack.domain.Card;
+import blackjack.domain.CardNumber;
+import blackjack.domain.Cards;
+import blackjack.domain.Dealer;
+import blackjack.domain.Player;
+import blackjack.domain.Score;
+import blackjack.domain.Suit;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

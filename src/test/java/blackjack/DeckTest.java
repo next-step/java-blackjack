@@ -2,6 +2,10 @@ package blackjack;
 
 import static org.assertj.core.api.Assertions.*;
 
+import blackjack.domain.Card;
+import blackjack.domain.CardNumber;
+import blackjack.domain.Deck;
+import blackjack.domain.Suit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

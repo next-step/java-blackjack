@@ -1,4 +1,4 @@
-package blackjack;
+package blackjack.domain;
 
 public enum Suit {
     SPADE("스페이드"),
