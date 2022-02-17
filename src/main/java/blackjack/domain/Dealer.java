@@ -22,10 +22,6 @@ public class Dealer {
             player.receiveCard(cardPack.remove());
             player.receiveCard(cardPack.remove());
         });
-
-        for (final GamePlayer gamePlayer : players) {
-            System.out.println(gamePlayer.getName() + ", "+ gamePlayer.getScore());
-        }
     }
 
     public void playGame(final List<GamePlayer> players, final GamePlayer dealer) {
