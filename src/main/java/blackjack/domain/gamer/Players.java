@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 
 public class Players {
 
-    private List<Player> players = new ArrayList<>();
-    private String[] playerNames;
+    private final List<Player> players = new ArrayList<>();
+    private final String[] playerNames;
 
     public Players(String[] playerNames) {
         this.playerNames = playerNames;

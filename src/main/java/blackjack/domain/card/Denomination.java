@@ -15,10 +15,10 @@ public enum Denomination {
     QUEEN("Q", 10),
     KING("K", 10);
 
-    private String name;
-    private int value;
+    private final String name;
+    private final int value;
 
-    Denomination(String name, int value) {
+    Denomination(final String name, final int value) {
         this.name = name;
         this.value = value;
     }

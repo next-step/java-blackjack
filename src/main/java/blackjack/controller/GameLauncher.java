@@ -9,11 +9,10 @@ import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
 public class GameLauncher {
-    private static final int DEALER_SUM_LIMIT = 16;
+
     private static final int BLACK_JACK_SUM_LIMIT = 21;
 
     public void start() {
-        OutputView.requestPlayersName();
         String[] playerNames = InputView.readPlayerName();
         OutputView.printGamePlayer(playerNames);
 

@@ -5,15 +5,16 @@ import blackjack.domain.matchInfo.MatchResult;
 import java.util.List;
 
 public class Player extends Gamer {
-    public Player(String name) {
+
+    public Player(final String name) {
         super(name);
     }
 
-    public Player(String name, List<Card> cards) {
+    public Player(final String name, final List<Card> cards) {
         super(name, cards);
     }
 
-    public MatchResult getMatchResult(Gamer player, Gamer dealer) {
+    public MatchResult getMatchResult(final Gamer player, final Gamer dealer) {
         return MatchResult.calcMatchResult(player, dealer);
     }
 

@@ -1,7 +1,6 @@
 package blackjack.view;
 
 import blackjack.domain.gamer.Gamer;
-import blackjack.domain.gamer.Player;
 import java.util.Scanner;
 
 public class InputView {
@@ -9,6 +8,8 @@ public class InputView {
 
     public static final String[] readPlayerName() {
         Scanner scanner = new Scanner(System.in);
+        OutputView.requestPlayersName();
+
         try {
             String playerNames = scanner.nextLine();
             return playerNames.split(",");

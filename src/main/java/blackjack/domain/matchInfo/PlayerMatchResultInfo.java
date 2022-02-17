@@ -6,7 +6,7 @@ public class PlayerMatchResultInfo {
     private final String name;
     private final String matchScore;
 
-    public PlayerMatchResultInfo(String name, String matchScore) {
+    public PlayerMatchResultInfo(final String name, final String matchScore) {
         this.name = name;
         this.matchScore = matchScore;
     }

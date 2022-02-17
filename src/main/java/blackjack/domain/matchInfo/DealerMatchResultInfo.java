@@ -7,7 +7,7 @@ import java.util.Objects;
 public class DealerMatchResultInfo {
     private final List<String> matchScores;
 
-    public DealerMatchResultInfo(List<String> matchScores) {
+    public DealerMatchResultInfo(final List<String> matchScores) {
         this.matchScores = matchScores;
     }
 

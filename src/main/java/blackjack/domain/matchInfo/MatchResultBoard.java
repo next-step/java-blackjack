@@ -10,7 +10,7 @@ public class MatchResultBoard {
 
     private final Map<Player, MatchResult> matchResultMap;
 
-    public MatchResultBoard(Map<Player, MatchResult> matchResultMap) {
+    public MatchResultBoard(final Map<Player, MatchResult> matchResultMap) {
         this.matchResultMap = matchResultMap;
     }
 

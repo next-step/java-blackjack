@@ -6,7 +6,7 @@ import java.util.List;
 public class RentCompany {
     private static final String NEWLINE = System.getProperty("line.separator");
 
-    final List<Car> carLists = new ArrayList<>();
+    private final List<Car> carLists = new ArrayList<>();
 
     public static RentCompany create() {
         return new RentCompany();

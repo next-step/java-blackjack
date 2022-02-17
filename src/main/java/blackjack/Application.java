@@ -1,6 +1,5 @@
 package blackjack;
 
-
 import blackjack.controller.GameLauncher;
 
 public class Application {

@@ -14,7 +14,7 @@ public enum MatchResult {
     private final int key;
     private final String name;
 
-    MatchResult(int key, String name) {
+    MatchResult(final int key, final String name) {
         this.key = key;
         this.name = name;
     }
