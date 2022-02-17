@@ -1,5 +1,6 @@
 package blackjack.view;
 
+import blackjack.domain.GamePlayers;
 import blackjack.util.Parser;
 import java.util.HashSet;
 import java.util.List;
@@ -13,6 +14,8 @@ public class InputView {
     private static final String PLAYERS_INPUT_MESSAGE = "게임에 참여할 사람의 이름을 입력하세요. (쉼표 기준으로 분리)";
     private static final String EXIST_MIN_PLAYER = "최소한 1명의 플레이어가 있어야 합니다.";
     private static final String DUPLICATE_PLAYER = "중복되는 플레이어가 있습니다.";
+    private static final String QUESTION = "는 한장의 카드를 더 받겠습니까? (예는 y, 아니오는 n)";
+
     private static final Scanner scanner = new Scanner(System.in);
 
     private InputView() {
@@ -44,5 +47,11 @@ public class InputView {
         if (duple.size() != input.size()) {
             throw new IllegalArgumentException(DUPLICATE_PLAYER);
         }
+    }
+
+    public static String doQuestion(GamePlayers gamePlayers) {
+        System.out.println(gamePlayers.getPlayerName() + QUESTION);
+
+        return scanner.nextLine();
     }
 }
