@@ -1,6 +1,7 @@
 package blackjack.domain.matchInfo;
 
 import blackjack.domain.gamer.Player;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -14,7 +15,7 @@ public class MatchResultBoard {
     }
 
     public List<PlayerMatchResultInfo> getPlayersMatchResultInfo() {
-        return matchResultMap
+        return Collections.unmodifiableList(matchResultMap
             .entrySet()
             .stream()
             .map(map ->
@@ -22,7 +23,7 @@ public class MatchResultBoard {
                     map.getKey().getName(),
                     map.getValue().getName()
                 ))
-            .collect(Collectors.toList());
+            .collect(Collectors.toList()));
     }
 
     public DealerMatchResultInfo getDealerMatchResultInfo() {

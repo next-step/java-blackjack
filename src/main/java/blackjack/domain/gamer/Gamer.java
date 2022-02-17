@@ -17,10 +17,6 @@ public abstract class Gamer {
     private List<Card> cards;
     private String name;
 
-    public Gamer(List<Card> cards) {
-        this.cards = cards;
-    }
-
     public Gamer(String name) {
         this.name = name;
         this.cards = initSetting();
@@ -39,7 +35,7 @@ public abstract class Gamer {
             .collect(Collectors.toList());
         cardsBundle.remove(0);
         cardsBundle.remove(0);
-        return this.cards;
+        return Collections.unmodifiableList(this.cards);
     }
 
     public int calcScore(Gamer player) {
@@ -66,7 +62,7 @@ public abstract class Gamer {
     public List<Card> addCard(List<Card> cards) {
         cards.add(cardsBundle.get(0));
         cardsBundle.remove(0);
-        return cards;
+        return Collections.unmodifiableList(cards);
     }
 
     public boolean isBlackJack(Gamer player) {
@@ -78,7 +74,7 @@ public abstract class Gamer {
     }
 
     public List<Card> getCards() {
-        return cards;
+        return Collections.unmodifiableList(cards);
     }
 
     public String getName() {

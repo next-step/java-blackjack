@@ -1,5 +1,6 @@
 package blackjack.domain.matchInfo;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,8 +36,7 @@ public class DealerMatchResultInfo {
     }
 
     public List<String> getMatchResult() {
-        return matchScores;
+        return Collections.unmodifiableList(matchScores);
     }
-
 
 }
