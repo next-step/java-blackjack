@@ -15,13 +15,13 @@ class CardTest {
 
     @DisplayName("ACE이면 true 반환한다.")
     @Test
-    void Given에이스_When판단_Then참 () {
+    void Given에이스_When판단_Then참() {
         assertThat(new Card(Pattern.SPADE, Rank.ACE).isAce()).isTrue();
     }
 
     @DisplayName("ACE가 아니면 false를 반환한다.")
     @Test
-    void Given에이스_이외의_카드_When판단_Then거짓 () {
+    void Given에이스_이외의_카드_When판단_Then거짓() {
         assertThat(new Card(Pattern.SPADE, Rank.KING).isAce()).isFalse();
     }
 }
