@@ -39,9 +39,7 @@ public class Dealer {
             player.receiveCard(cardPack.remove());
             OutputView.printCardStatus(player);
         }
-        if (!player.isContinue()) {
 
-        }
         OutputView.printCardStatus(player);
     }
 
