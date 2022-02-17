@@ -5,7 +5,9 @@ import blackjack.domain.card.Deck;
 import blackjack.domain.user.Dealer;
 import blackjack.domain.user.Player;
 import blackjack.domain.user.Players;
+import blackjack.view.InputView;
 import blackjack.view.OutputView;
+import blackjack.domain.request.DrawRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,10 +34,31 @@ public class BlackJack {
 
     public void runGame() {
         spreadStartCards();
+        if (!players.hasBlackJack()) {
+            drawPlayers();
+        }
     }
 
     private void spreadStartCards() {
         players.drawStartCards(deck);
         OutputView.printAllPlayersCard(players);
+    }
+
+    private void drawPlayers() {
+        for (Player player : players.findOnlyPlayers()) {
+            drawEachPlayer(player);
+        }
+    }
+
+    private void drawEachPlayer(Player player) {
+        while (player.isDrawable() && getPlayerRequest(player)) {
+            player.drawCard(deck.spreadCard());
+        }
+    }
+
+    private boolean getPlayerRequest(Player player) {
+        String drawRequest = InputView.getDrawRequest(player);
+        return DrawRequest.valueOf(drawRequest)
+            .isDrawable();
     }
 }
