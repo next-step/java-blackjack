@@ -13,6 +13,7 @@ public class OutputView {
     private static final String CARDS_LOG = "%s: %s";
     private static final String DEALER_RECEIVE_ONE_CARD_MESSAGE = "딜러는 16이하라 한장의 카드를 더 받았습니다.";
     private static final String RESULT_CARDS_LOG = "%s카드: %s - 결과: %d";
+    private static final String RESULT_HEADER_LOG = "## 최종 승패";
     private static final String RESULT_GAME_LOG = "%s: %s";
 
     public static void printInitialMessage(GamePlayers gamePlayers) {
@@ -58,6 +59,7 @@ public class OutputView {
     }
 
     public static void printGameResult(GamePlayers gamePlayers) {
+        System.out.println(RESULT_HEADER_LOG);
         List<GamePlayer> players = gamePlayers.getAllPlayers();
         for (GamePlayer player : players) {
             System.out.println(String.format(RESULT_GAME_LOG, player.getName(), player.getGameResult(players)));
