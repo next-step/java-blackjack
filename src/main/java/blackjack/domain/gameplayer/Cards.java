@@ -3,14 +3,12 @@ package blackjack.domain.gameplayer;
 import blackjack.domain.card.Card;
 import blackjack.domain.card.CardType;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class Cards {
 
-    private static final int BLACK_JACK = 21;
-    private static final int LOSE = 22;
+    private static final int BLACK_JACK_BOUND = 22;
 
     private final List<Card> cards;
 
@@ -27,54 +25,38 @@ public class Cards {
     }
 
     public int calculateCards() {
-        final int aceCount = (int) cards.stream()
-            .map(Card::getCardType)
-            .filter(CardType::isAce)
-            .count();
+        final int sum = getSumAllElement();
+        final int aceCount = getAceCount();
 
-        if (aceCount == 0) {
-            return getPointExceptAce();
+        if (sum >= BLACK_JACK_BOUND && aceCount > 0) {
+            return getBestSumWithAce(sum);
         }
-        return getBestPointWithAce(aceCount);
+        return sum;
     }
 
-    private int getPointExceptAce() {
+    private int getAceCount() {
+        return (int) cards.stream()
+            .filter(card -> card.getCardType().isAce())
+            .count();
+    }
+
+    private int getSumAllElement() {
         return cards.stream()
             .map(Card::getCardType)
             .mapToInt(CardType::getPoint)
             .sum();
     }
 
-    private int getBestPointWithAce(final int aceCount) {
-        final List<Integer> sums = new ArrayList<>();
-        final int sumNotAce = cards.stream()
-            .map(Card::getCardType)
-            .filter(type -> !type.isAce())
-            .mapToInt(CardType::getPoint)
-            .sum();
+    private int getBestSumWithAce(final int sum) {
+        final int lowerAcePoint = CardType.ACE.getLowerAcePoint();
+        final int higherAcePoint = CardType.ACE.getPoint();
 
-        for (final int possibleSum : getSumsAce(aceCount)) {
-            sums.add(sumNotAce + possibleSum);
+        int aceCount = getAceCount();
+        int point = sum;
+
+        while (aceCount-- > 0 && point >= BLACK_JACK_BOUND) {
+            point = point - higherAcePoint + lowerAcePoint;
         }
-        return getMaxPoint(sums);
-    }
-
-    private List<Integer> getSumsAce(final int aceCount) {
-        int lowerPoint = CardType.ACE.getPoint();
-        int higherPoint = CardType.ACE.getLowerAcePoint();
-
-        for (int i = 1; i < aceCount; i++) {
-            lowerPoint += CardType.ACE.getLowerAcePoint();
-            higherPoint += CardType.ACE.getLowerAcePoint();
-        }
-        return new ArrayList<>(Arrays.asList(lowerPoint, higherPoint));
-    }
-
-    private int getMaxPoint(final List<Integer> sums) {
-        return sums.stream()
-            .filter(sum -> sum <= BLACK_JACK)
-            .mapToInt(Integer::intValue)
-            .max()
-            .orElse(LOSE);
+        return point;
     }
 }
