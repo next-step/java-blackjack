@@ -19,11 +19,13 @@ public class Dealer extends Player {
             player.receiveCard(popped);
         }
     }
+
     public void allocateCard(Player player) {
         Card popped = deck.popCard();
         player.receiveCard(popped);
 
     }
+
     public boolean addOneMoreCard() {
         int score = calculateScore();
         if (score <= SCORE_THRESHOLD) {

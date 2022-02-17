@@ -32,7 +32,7 @@ public class Judgement {
     public Map<String, String> findWinners() {
         int dealerScore = playerScores.get(DEALER);
         playerScores.remove(DEALER);
-        playerResults.put(DEALER,"");
+        playerResults.put(DEALER, "");
         playerScores.forEach((name, score) -> {
             playerResults.put(name, checkWinOrLose(dealerScore, score));
         });
