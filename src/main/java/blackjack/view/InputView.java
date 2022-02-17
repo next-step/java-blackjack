@@ -1,6 +1,6 @@
 package blackjack.view;
 
-import blackjack.domain.GamePlayer;
+import blackjack.domain.gameplayer.GamePlayer;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;

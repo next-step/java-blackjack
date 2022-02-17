@@ -2,7 +2,7 @@ package blackjack.view;
 
 import blackjack.domain.card.Card;
 import blackjack.domain.GamePlayers;
-import blackjack.domain.GamePlayer;
+import blackjack.domain.gameplayer.GamePlayer;
 import java.util.List;
 import java.util.stream.Collectors;
 
