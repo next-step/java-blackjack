@@ -20,14 +20,14 @@ public class Card {
         return cardValue;
     }
 
-    enum CardType {
+    public enum CardType {
         SPADE,
         CLOVER,
         HEART,
         DIAMOND
     }
 
-    enum CardValue {
+    public enum CardValue {
         ACE("A", currentScore -> currentScore < 15 ? 11 : 1),
         TWO("2", currentScore -> 2),
         THREE("3", currentScore -> 3),
