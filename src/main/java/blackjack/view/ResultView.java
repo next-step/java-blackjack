@@ -11,10 +11,10 @@ public class ResultView {
         List<String> playerNames = players.stream().map(Player::getName).collect(Collectors.toList());
         System.out.println("딜러와 " + String.join(", ", playerNames) + "에게 2장씩 나눠줬습니다.");
         System.out.println("딜러: " + openedCard.getDenomination().getValue() + openedCard.getShape().getName());
-        players.forEach(ResultView::printCardOf);
+        players.forEach(ResultView::printCardsOf);
     }
 
-    private static void printCardOf(Player player) {
+    public static void printCardsOf(Player player) {
         System.out.print(player.getName() + "카드: ");
         List<String> cardNames = player.getCards().stream()
             .map(card -> card.getDenomination().getValue() + card.getShape().getName())
