@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 public class Hands {
 
     private static final int DECISION_VALUE = 10;
-    private static final int ONE_ACE_VALUE = 1;
-    private static final int ELEVEN_ACE_VALUE = 11;
+    private static final int ACE_VALUE_1 = 1;
+    private static final int ACE_VALUE_11 = 11;
 
     private final List<Card> cards;
     private Score score;
@@ -17,10 +17,10 @@ public class Hands {
         this.cards = new ArrayList<>();
         this.score = new Score();
 
-        init(cards);
+        initAllField(cards);
     }
 
-    private void init(final List<Card> cards) {
+    private void initAllField(final List<Card> cards) {
         cards.forEach(this::add);
     }
 
@@ -38,14 +38,15 @@ public class Hands {
 
     private int getAceValue() {
         if (this.score.getValue() > DECISION_VALUE) {
-            return ONE_ACE_VALUE;
+            return ACE_VALUE_1;
         }
-        return ELEVEN_ACE_VALUE;
+        return ACE_VALUE_11;
     }
 
     public boolean isUnderScore(final int value) {
         return score.isUnder(value);
     }
+
     public int getScore() {
         return score.getValue();
     }
