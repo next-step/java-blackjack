@@ -20,11 +20,21 @@ public class Card {
         return cardValue;
     }
 
+    public String toString() {
+        return cardValue.number + cardType.name;
+    }
+
     public enum CardType {
-        SPADE,
-        CLOVER,
-        HEART,
-        DIAMOND
+        SPADE("스페이드"),
+        CLOVER("클로버"),
+        HEART("하트"),
+        DIAMOND("다이아몬드");
+
+        private final String name;
+
+        CardType(String name) {
+            this.name = name;
+        }
     }
 
     public enum CardValue {
@@ -50,7 +60,7 @@ public class Card {
             this.intUnaryOperator = intUnaryOperator;
         }
 
-        public boolean isEqualCardValue(Card card){
+        public boolean isEqualCardValue(Card card) {
             return this.equals(card.getCardValue());
         }
     }
