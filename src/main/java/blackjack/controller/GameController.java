@@ -22,8 +22,7 @@ public class GameController {
 
         dealer.playGame(gamePlayers.getPlayers(), gamePlayers.getDealer());
 
-        OutputView.printCardResult(gamePlayers);
-        OutputView.printGameResult(gamePlayers);
+        printFinalStatus(gamePlayers);
     }
 
     private void printInitialStatus(GamePlayers gamePlayers) {
@@ -34,5 +33,10 @@ public class GameController {
         for (GamePlayer player : players) {
             OutputView.printCardStatus(player);
         }
+    }
+
+    private void printFinalStatus(GamePlayers gamePlayers) {
+        OutputView.printCardResult(gamePlayers);
+        OutputView.printGameResult(gamePlayers);
     }
 }
