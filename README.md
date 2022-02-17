@@ -107,8 +107,14 @@
     - [x] GameCard에서 Card를 한 장 뽑기
     - [x] User에게 Card 전달하기
     - [x] Player는 총 score가 21이하일 경우, 1장의 카드를 추가로 받을 수 있다. 
-- [] UserStats - User별 승/패에 대한 정보
+- [x] UserStats - User별 승/패에 대한 정보
   - [] GameUser를 인자로 받아 User별, 승/패 정보를 계산한다.
+    - [x] convertTotalScore()
+    - [ ] convertTotalResult()
+- [ ] Score 
+  - [ ] 승 횟수
+  - [ ] 패배 횟수 
+  - [ ] 전체 경기 횟수
 - [x] Game - 전체적인 게임을 진행할 Controller 
   - [x] 이름의 배열을 BlackJack에 전달한다.
   - [x] 싱글턴 패턴 적용
@@ -124,6 +130,11 @@
 
 2월 17일 목요일까지
 
+### test
+
+```bash
+./gradlew clean check
+```
 
 ### git pull pair
 
