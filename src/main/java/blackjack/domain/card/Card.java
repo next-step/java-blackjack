@@ -12,12 +12,20 @@ public class Card {
         this.number = number;
     }
 
-    public int value() {
-        return number.score();
-    }
-
     public boolean isAce() {
         return number == Number.ACE;
+    }
+
+    public String message() {
+        return number.message();
+    }
+
+    public String suit() {
+        return suit.suit();
+    }
+
+    public int value() {
+        return number.score();
     }
 
     @Override
