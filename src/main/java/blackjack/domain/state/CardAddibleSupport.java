@@ -1,6 +1,10 @@
-package blackjack.domain;
+package blackjack.domain.state;
 
-public abstract class CardAddibleSupport implements CardAddible {
+import blackjack.domain.card.Card;
+import blackjack.domain.card.Cards;
+import blackjack.domain.state.Gameable;
+
+public abstract class CardAddibleSupport implements Gameable {
     Cards cards;
 
     public CardAddibleSupport(Cards cards) {
