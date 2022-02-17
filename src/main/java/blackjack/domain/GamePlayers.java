@@ -2,6 +2,8 @@ package blackjack.domain;
 
 public abstract class GamePlayers {
 
+    private static final int INIT_CNT = 2;
+
     protected final String playerName;
     protected final OwnCards ownCards;
 
@@ -16,6 +18,12 @@ public abstract class GamePlayers {
     }
 
     public abstract boolean isAvailDraw();
+
+    public void initOwnCards(Deck deck) {
+        for (int i = 0; i < INIT_CNT; i++) {
+            ownCards.addCard(deck.cardDraw());
+        }
+    }
 
     public String getPlayerName() {
         return playerName;
