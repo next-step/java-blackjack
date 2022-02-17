@@ -2,17 +2,39 @@ package blackJack.domain;
 
 import java.util.List;
 
-public interface User {
+public abstract class User {
 
-    List<Card> getDeck();
+    protected final Deck deck;
+    protected final UserName userName;
 
-    String getName();
+    protected User(Deck deck, UserName userName) {
+        this.deck = deck;
+        this.userName = userName;
+    }
 
-    void appendToDeck(Card card);
+    public List<Card> getDeck() {
+        return deck.getDeck();
+    }
 
-    void appendToDeck(List<Card> cards);
+    public String getName() {
+        return userName.getName();
+    }
 
-    String convertStatus();
+    public void appendToDeck(Card card) {
+        deck.append(card);
+    }
 
-    int getScore();
+    public void appendToDeck(List<Card> cards) {
+        cards.forEach(deck::append);
+    }
+
+    public String convertStatus() {
+        return String.format("%s 카드: %s", userName.getName(), deck.convertDeckFormat());
+    }
+
+    public int getScore() {
+        return deck.getScore();
+    }
+
+    public abstract boolean isCardDraw();
 }

@@ -66,7 +66,6 @@ public class UserStats {
         if (player.getScore() > Deck.MATCH_SCORE) {
             return true;
         }
-
         return player.getScore() < gameUser.getDealer().getScore();
     }
 }
