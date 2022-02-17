@@ -63,11 +63,6 @@ RentCompany
 - [x] 인스턴스 생성 시, 만들어진 52장의 카드로 멤버변수를 초기화한다.
 - [x] shuffle한 뒤 전달인자로 받은 수만큼 카드를 뽑아서 반환한다. (제거하면서 반환한다.)
 
-[GameSetup]
-
-- [x] 생성 시 딜러와 플레이어를 생성하고 저장한다.
-- [x] 플레이어 이름 List<>를 받아서 플레이어를 생성하고 플레이어를 반환한다. (createPlayers)
-
 [GameApplication]
 
 - [x] GameSetup의 Dealer와 List<Player>를 입력받고, 생성된 setup 내용을 ResultView에게 넘긴다.
