@@ -1,40 +1,58 @@
 package blackjack.controller;
 
 import blackjack.domain.Dealer;
+import blackjack.domain.Deck;
 import blackjack.domain.Participant;
-import blackjack.domain.Participants;
+import blackjack.domain.Player;
 import blackjack.domain.Players;
-import java.util.ArrayList;
-import java.util.List;
+import blackjack.ui.BlackjackInput;
+import blackjack.ui.BlackjackOutput;
 
 public class GameController {
 
+    private static final String DEALER_NAME = "dealer";
+    private static final int PLAYER_DRAW_SIZE = 1;
+    private static final int DEALER_DRAW_SIZE = 1;
+    private static final int FIRST_DRAW_SIZE = 2;
+
     public Participant start() {
-        // 사용자 입력
-        List<String> name = new ArrayList<>();
-        name.add("pobi");
-        name.add("jason");
+        Deck deck = Deck.create();
 
-        // Players 생성
-        Players players = Players.from(name);
+        // Players & 딜러 생성 -> 사용자 추가
+        Players players = BlackjackInput.inputPlayerName();
+        Dealer dealer = new Dealer(DEALER_NAME);
 
-        // 딜러 추가
-        Dealer dealer = new Dealer("dealer");
-
-        // 사용자 추가
-        Participants participants = Participants.from(players, dealer);
-
-        // 딜러 , 사용자 에게 카드 2장씩 분배
-        participants.drawCardMultiple(2);
-
-        // 사용자 1장씩 뽑기
-        participants.drawCardMultiple(1);
+        drawCardInit(deck, players, dealer);
+        drawCardMax(deck, players, dealer);
 
         // 사용자별 카드 최종 상태 출력
-
-        participants.judgeScore();
         // 최종 승패 출력
 
         return null;
+    }
+
+    private void drawCardInit(Deck deck, Players players, Dealer dealer) {
+        players.drawCardMultiple(deck, FIRST_DRAW_SIZE);
+        dealer.drawCardMultiple(deck, FIRST_DRAW_SIZE);
+    }
+
+    private void drawCardMax(Deck deck, Players players, Dealer dealer) {
+        drawPlayersCard(deck, players, PLAYER_DRAW_SIZE);
+        dealer.drawCardMultiple(deck, DEALER_DRAW_SIZE);
+    }
+
+    private void drawPlayersCard(Deck deck, Players players, int size) {
+        if(players.isTargetAvailable()){
+            return;
+        }
+
+        Player player = players.getTarget();
+        while (BlackjackInput.inputPlayerDraw()) {
+            player.drawCardMultiple(deck, size);
+            BlackjackOutput.printPlayerCard(player);
+        }
+
+        players.nextTargetIndex();
+        drawPlayersCard(deck, players, size);
     }
 }

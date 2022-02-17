@@ -18,7 +18,7 @@ public class ParticipantCards {
 
     public int sumCardScore() {
         return cards.stream()
-            .reduce(0, (x, y) -> x + y.getScore(x), Integer::sum);
+            .reduce(0, (x, y) -> x + y.calculateScore(x), Integer::sum);
     }
 
     public List<Card> getCards() {

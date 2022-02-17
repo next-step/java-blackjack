@@ -2,20 +2,21 @@ package blackjack.domain;
 
 import java.util.ArrayList;
 
-abstract public class Participant {
+public abstract class Participant {
 
     protected final String name;
     protected final ParticipantCards cards;
-    protected int winScore, loseScore;
+    protected int winScore;
+    protected int loseScore;
 
-    public Participant(String name, ParticipantCards cards, int winCount, int loseCount) {
+    Participant(String name, ParticipantCards cards, int winCount, int loseCount) {
         this.name = name;
         this.cards = cards;
         this.winScore = winCount;
         this.loseScore = loseCount;
     }
 
-    public Participant(String name) {
+    Participant(String name) {
         this(name, new ParticipantCards(new ArrayList<>()), 0, 0);
     }
 
@@ -32,4 +33,12 @@ abstract public class Participant {
     }
 
     public abstract void drawCardMultiple(Deck deck, int number);
+
+    public final String getName() {
+        return name;
+    }
+
+    public final ParticipantCards getCards() {
+        return cards;
+    }
 }

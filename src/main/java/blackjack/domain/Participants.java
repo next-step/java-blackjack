@@ -8,12 +8,10 @@ public class Participants {
 
     private final List<Participant> participants;
     private final Deck deck;
-    private int targetIndex;
 
     private Participants(List<Participant> participants) {
         this.deck = Deck.create();
         this.participants = new ArrayList<>(participants);
-        this.targetIndex = 0;
     }
 
     public static Participants from(Players players, Dealer dealer) {
@@ -26,10 +24,6 @@ public class Participants {
         for (Participant participant : participants) {
             participant.drawCardMultiple(deck, number);
         }
-    }
-
-    public void drawCard(Participant participant) {
-
     }
 
     public void judgeScore(){
@@ -46,20 +40,6 @@ public class Participants {
             .orElseThrow(() -> {
                 throw new IllegalStateException("최대값을 구할 수 없습니다.");
             });
-    }
-
-    public boolean isNext(){
-        return targetIndex > participants.size();
-    }
-
-    public void nextTarget(){
-        if(!isNext())
-            return;
-        targetIndex ++;
-    }
-
-    public Participant getTarget() {
-        return participants.get(targetIndex);
     }
 
     public List<Participant> getParticipants() {

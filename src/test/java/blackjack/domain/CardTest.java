@@ -32,7 +32,7 @@ class CardTest {
         Card card = new Card(CardType.SPADE, CardValue.KING);
 
         // when
-        int result = card.getScore(0);
+        int result = card.calculateScore(0);
 
         // then
         assertThat(result).isEqualTo(10);
@@ -46,7 +46,7 @@ class CardTest {
         Card card = new Card(CardType.SPADE, CardValue.ACE);
 
         // when
-        int result = card.getScore(currentScore);
+        int result = card.calculateScore(currentScore);
 
         // then
         assertThat(result).isEqualTo(1);
@@ -60,7 +60,7 @@ class CardTest {
         Card card = new Card(CardType.SPADE, CardValue.ACE);
 
         // when
-        int result = card.getScore(currentScore);
+        int result = card.calculateScore(currentScore);
 
         // then
         assertThat(result).isEqualTo(11);

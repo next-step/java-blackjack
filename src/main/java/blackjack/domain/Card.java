@@ -12,7 +12,7 @@ public class Card {
         this.cardValue = cardValue;
     }
 
-    public int getScore(int currentScore) {
+    public int calculateScore(int currentScore) {
         return this.cardValue.intUnaryOperator.applyAsInt(currentScore);
     }
 
