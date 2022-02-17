@@ -24,7 +24,10 @@ public class Dealer {
         });
     }
 
-    public void playGame(final List<GamePlayer> players, final GamePlayer dealer) {
+    public void playGame(GamePlayers gamePlayers) {
+        final List<GamePlayer> players = gamePlayers.getPlayers();
+        final GamePlayer dealer = gamePlayers.getDealer();
+
         for (final GamePlayer player : players) {
             playerGameProcess(player);
         }
