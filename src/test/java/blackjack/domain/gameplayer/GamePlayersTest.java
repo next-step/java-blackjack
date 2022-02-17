@@ -2,10 +2,6 @@ package blackjack.domain.gameplayer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import blackjack.domain.gameplayer.GamePlayer;
-import blackjack.domain.gameplayer.GamePlayers;
-import blackjack.domain.gameplayer.Name;
-import blackjack.domain.gameplayer.Names;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
