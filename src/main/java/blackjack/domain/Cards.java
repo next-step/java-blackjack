@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ParticipantCards {
+public class Cards {
 
     private final List<Card> cards;
 
-    public ParticipantCards(List<Card> cards) {
+    public Cards(List<Card> cards) {
         this.cards = new ArrayList<>(cards);
     }
 

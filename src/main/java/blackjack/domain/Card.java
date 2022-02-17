@@ -20,11 +20,25 @@ public class Card {
         return cardValue;
     }
 
+    public String getCardTypeName() {
+        return cardType.name;
+    }
+
+    public String getNumber(){
+        return cardValue.number;
+    }
+
     public enum CardType {
-        SPADE,
-        CLOVER,
-        HEART,
-        DIAMOND
+        SPADE("스페이드"),
+        CLOVER("클로버"),
+        HEART("하트"),
+        DIAMOND("다이아몬드");
+
+        private final String name;
+
+        CardType(String name) {
+            this.name = name;
+        }
     }
 
     public enum CardValue {

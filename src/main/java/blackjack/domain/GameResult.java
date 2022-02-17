@@ -4,36 +4,30 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Participants {
+public class GameResult {
 
     private final List<Participant> participants;
-    private final Deck deck;
 
-    private Participants(List<Participant> participants) {
-        this.deck = Deck.create();
+    private GameResult(List<Participant> participants) {
+        calculateGameResult(participants);
         this.participants = new ArrayList<>(participants);
     }
 
-    public static Participants from(Players players, Dealer dealer) {
-        List<Participant> participants = new ArrayList<>(players.getPlayers());
+    public static GameResult of(Dealer dealer, Players players) {
+        List<Participant> participants = new ArrayList<>();
         participants.add(dealer);
-        return new Participants(participants);
+        participants.addAll(players.getPlayers());
+        return new GameResult(participants);
     }
 
-    public void drawCardMultiple(int number) {
-        for (Participant participant : participants) {
-            participant.drawCardMultiple(deck, number);
-        }
-    }
-
-    public void judgeScore(){
-        int maxScore = calculateMaxScore();
-        for(Participant participant : participants){
+    private void calculateGameResult(List<Participant> participants) {
+        int maxScore = calculateMaxScore(participants);
+        for(Participant participant: participants){
             participant.judgeScore(maxScore);
         }
     }
 
-    private int calculateMaxScore(){
+    private int calculateMaxScore(List<Participant> participants){
         return participants.stream()
             .mapToInt(participant -> participant.sumCardScore())
             .max()

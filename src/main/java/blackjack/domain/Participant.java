@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public abstract class Participant {
 
     protected final String name;
-    protected final ParticipantCards cards;
+    protected final Cards cards;
     protected int winScore;
     protected int loseScore;
 
-    Participant(String name, ParticipantCards cards, int winCount, int loseCount) {
+    Participant(String name, Cards cards, int winCount, int loseCount) {
         this.name = name;
         this.cards = cards;
         this.winScore = winCount;
@@ -17,7 +17,7 @@ public abstract class Participant {
     }
 
     Participant(String name) {
-        this(name, new ParticipantCards(new ArrayList<>()), 0, 0);
+        this(name, new Cards(new ArrayList<>()), 0, 0);
     }
 
     public final void judgeScore(int maxScore) {
@@ -38,7 +38,15 @@ public abstract class Participant {
         return name;
     }
 
-    public final ParticipantCards getCards() {
+    public final Cards getCards() {
         return cards;
+    }
+
+    public int getWinScore() {
+        return winScore;
+    }
+
+    public int getLoseScore() {
+        return loseScore;
     }
 }

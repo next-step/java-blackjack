@@ -17,7 +17,7 @@ class ParticipantCardsTest {
         cards.add(new Card(CardType.CLOVER, CardValue.FIVE));
         cards.add(new Card(CardType.CLOVER, CardValue.ACE));
         cards.add(new Card(CardType.CLOVER, CardValue.TWO));
-        ParticipantCards participantCards = new ParticipantCards(cards);
+        Cards participantCards = new Cards(cards);
 
         int score = participantCards.sumCardScore();
 
@@ -30,7 +30,7 @@ class ParticipantCardsTest {
         List<Card> cards = new ArrayList<>();
         cards.add(new Card(CardType.CLOVER, CardValue.FIVE));
         cards.add(new Card(CardType.CLOVER, CardValue.TWO));
-        ParticipantCards participantCards = new ParticipantCards(cards);
+        Cards participantCards = new Cards(cards);
 
         int score = participantCards.sumCardScore();
 
@@ -46,7 +46,7 @@ class ParticipantCardsTest {
         cards.add(new Card(CardType.CLOVER, CardValue.FIVE));
         cards.add(new Card(CardType.CLOVER, CardValue.ACE));
         cards.add(new Card(CardType.CLOVER, CardValue.TWO));
-        ParticipantCards participantCards = new ParticipantCards(cards);
+        Cards participantCards = new Cards(cards);
 
         int score = participantCards.sumCardScore();
 
