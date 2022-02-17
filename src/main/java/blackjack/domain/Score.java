@@ -15,7 +15,21 @@ public enum Score {
         this.name = name;
     }
 
+    public int getKey() {
+        return key;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public static Score judge(Cards playerCards, Cards dealerCards) {
+        if (playerCards.isBust()) return LOSE;
+
+        if (playerCards.blackjack() && dealerCards.blackjack()) return DRAW;
+        if (playerCards.blackjack()) return WIN;
+        if (dealerCards.blackjack()) return LOSE;
+
         if (playerCards.totalScore() == dealerCards.totalScore()) {
             return DRAW;
         }
