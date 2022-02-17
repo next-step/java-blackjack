@@ -36,5 +36,6 @@ public class BlackJack {
 
     private void spreadStartCards() {
         players.drawStartCards(deck);
+        OutputView.printAllPlayersCard(players);
     }
 }
