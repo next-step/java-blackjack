@@ -5,7 +5,6 @@ import java.util.NoSuchElementException;
 
 public class Player extends GamePlayer {
 
-    private static final int BLACKJACK = 21;
     private static final String WIN = "승";
     private static final String LOSE = "패";
 
@@ -20,14 +19,14 @@ public class Player extends GamePlayer {
 
     @Override
     public String getGameResult(GamePlayers gamePlayers) {
-
         List<GamePlayer> allPlayers = gamePlayers.getAllPlayers();
         int winnerScore = allPlayers.stream()
+            .filter(GamePlayer::isContinue)
             .map(GamePlayer::getScore)
             .max(Integer::compareTo)
             .orElseThrow(NoSuchElementException::new);
 
-        if (this.getScore() == winnerScore){
+        if (this.getScore() == winnerScore && isContinue()){
             return WIN;
         }
         return LOSE;
