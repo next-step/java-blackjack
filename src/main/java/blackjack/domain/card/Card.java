@@ -3,6 +3,7 @@ package blackjack.domain.card;
 import java.util.Objects;
 
 public class Card {
+
     private final Pattern pattern;
     private final Rank rank;
 
@@ -12,7 +13,7 @@ public class Card {
     }
 
     public boolean isAce() {
-        return this.rank == Rank.ACE;
+        return rank == Rank.ACE;
     }
 
     public String getName() {
