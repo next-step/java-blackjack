@@ -36,6 +36,7 @@ public class BlackJack {
         spreadStartCards();
         if (!players.hasBlackJack()) {
             drawPlayers();
+            drawDealer();
         }
     }
 
@@ -61,5 +62,12 @@ public class BlackJack {
         String drawRequest = InputView.getDrawRequest(player);
         return DrawRequest.valueOf(drawRequest)
             .isDrawable();
+    }
+
+    private void drawDealer() {
+        Dealer dealer = players.findDealer();
+        while (dealer.isDrawable()) {
+            dealer.drawCard(deck.spreadCard());
+        }
     }
 }
