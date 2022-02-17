@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import blackjack.domain.card.Card;
 import blackjack.domain.card.Denomination;
 import blackjack.domain.card.Suit;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,5 +42,18 @@ class GamerTest {
         assertThat(player.addCard(player.getCards()).size()).isEqualTo(3);
     }
 
+    @Test
+    void 카드의_총합이_21이면_블랙잭이다() {
+        Gamer player = new Player("yang", Arrays.asList(new Card(Denomination.ACE, Suit.DIAMONDS),
+            new Card(Denomination.TEN, Suit.DIAMONDS)));
+        assertThat(player.isBlackJack(player)).isTrue();
+    }
+
+    @Test
+    void 카드의_총합이_21을_넘으면_버스트이다() {
+        Gamer player = new Player("yang", Arrays.asList(new Card(Denomination.FIVE, Suit.DIAMONDS),
+            new Card(Denomination.TEN, Suit.DIAMONDS), new Card(Denomination.TEN, Suit.CLUBS)));
+        assertThat(player.isBust(player)).isTrue();
+    }
 
 }
