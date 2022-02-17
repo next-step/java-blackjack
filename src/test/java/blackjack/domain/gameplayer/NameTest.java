@@ -1,8 +1,7 @@
 package blackjack.domain.gameplayer;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class NameTest {
@@ -15,7 +14,7 @@ class NameTest {
         //when
 
         //then
-        Assertions.assertThatThrownBy(() -> new Name(""))
+        assertThatThrownBy(() -> new Name(""))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage(PLAYER_NAME_ERROR_MESSAGE);
     }
