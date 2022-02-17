@@ -1,7 +1,9 @@
 package blackjack.domain;
 
 import blackjack.dto.CardInfo;
+import blackjack.dto.MatchInfo;
 import blackjack.dto.NameInfo;
+import blackjack.dto.ScoreInfo;
 
 public abstract class Person {
 
@@ -22,6 +24,10 @@ public abstract class Person {
     public abstract boolean canDrawCard();
 
     public abstract CardInfo openCards();
+
+    public ScoreInfo getScoreInfo() {
+        return new ScoreInfo(userName, cards.openCardAll(), cards.totalScore());
+    }
 
     public int cardSize() {
         return cards.size();

@@ -14,7 +14,7 @@ public class Player extends Person {
 
     @Override
     public boolean canDrawCard() {
-        return cards.isNearTwentyOne();
+        return !cards.blackjack() && !cards.isBust();
     }
 
     @Override

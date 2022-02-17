@@ -1,11 +1,12 @@
 package blackjack.domain;
 
 import blackjack.dto.CardInfo;
+import blackjack.dto.MatchInfo;
 import java.util.ArrayList;
 
 public class Dealer extends Person {
 
-    private static final int DEALER_DRAW_LIMIT = 16;
+    public static final int DEALER_DRAW_LIMIT = 16;
     private static final String DEALER_NAME = "딜러";
 
     public Dealer(String userName, Cards cards) {
