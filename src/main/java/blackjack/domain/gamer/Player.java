@@ -13,12 +13,4 @@ public class Player extends Gamer {
         return MatchResult.calcMatchResult(player, dealer);
     }
 
-    public boolean isBlackJack(Player player) {
-        return calcScore(player) == THRESHOLD;
-    }
-
-    public boolean isBust(Player player) {
-        return calcScore(player) > THRESHOLD;
-    }
-
 }

@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public abstract class Gamer {
-
     private static final int TEN = 10;
     private static final int THRESHOLD = 21;
     private static final int INIT_CARD_COUNT = 2;
@@ -59,6 +58,14 @@ public abstract class Gamer {
         cards.add(cardsAll.get(0));
         cardsAll.remove(0);
         return cards;
+    }
+
+    public boolean isBlackJack(Gamer player) {
+        return calcScore(player) == THRESHOLD;
+    }
+
+    public boolean isBust(Gamer player) {
+        return calcScore(player) > THRESHOLD;
     }
 
     public List<Card> getCards() {
