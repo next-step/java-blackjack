@@ -13,23 +13,32 @@ public abstract class Gamer {
     private static final int THRESHOLD = 21;
     private static final int INIT_CARD_COUNT = 2;
 
-    private List<Card> cardsAll = new ArrayList<>();
+    private List<Card> cardsBundle = new ArrayList<>();
     private List<Card> cards;
-    private final String name;
+    private String name;
+
+    public Gamer(List<Card> cards) {
+        this.cards = cards;
+    }
 
     public Gamer(String name) {
         this.name = name;
         this.cards = initSetting();
     }
 
+    public Gamer(String name, List<Card> cards) {
+        this.name = name;
+        this.cards = cards;
+    }
+
     private List<Card> initSetting() {
-        cardsAll = Cards.getCardList();
-        Collections.shuffle(cardsAll);
-        this.cards = cardsAll.stream()
+        cardsBundle = Cards.getCardList();
+        Collections.shuffle(cardsBundle);
+        this.cards = cardsBundle.stream()
             .limit(INIT_CARD_COUNT)
             .collect(Collectors.toList());
-        cardsAll.remove(0);
-        cardsAll.remove(0);
+        cardsBundle.remove(0);
+        cardsBundle.remove(0);
         return this.cards;
     }
 
@@ -55,8 +64,8 @@ public abstract class Gamer {
     }
 
     public List<Card> addCard(List<Card> cards) {
-        cards.add(cardsAll.get(0));
-        cardsAll.remove(0);
+        cards.add(cardsBundle.get(0));
+        cardsBundle.remove(0);
         return cards;
     }
 

@@ -23,9 +23,10 @@ public class Players {
     }
 
     public MatchResultBoard playMatch(Gamer dealer) {
-        return new MatchResultBoard(players.stream().collect(
-            Collectors.toMap(player -> player, player -> player.getMatchResult(player, dealer),
-                (player1, player2) -> player1, LinkedHashMap::new)));
+        return new MatchResultBoard(players.stream()
+            .collect(
+                Collectors.toMap(player -> player, player -> player.getMatchResult(player, dealer),
+                    (player1, player2) -> player1, LinkedHashMap::new)));
     }
 
     public List<Player> getPlayers() {
