@@ -1,5 +1,7 @@
 package blackjack.domain;
 
+import blackjack.dto.CardInfo;
+
 public class Player extends Person {
 
     public Player(String userName, Cards cards) {
@@ -13,6 +15,11 @@ public class Player extends Person {
     @Override
     public boolean canDrawCard() {
         return cards.isNearTwentyOne();
+    }
+
+    @Override
+    public CardInfo openCards() {
+        return new CardInfo(userName,cards.openCardAll());
     }
 
     public Score compareScore(Dealer dealer) {
