@@ -1,14 +1,11 @@
-package blackjack.domain;
-
-import java.util.List;
-import java.util.stream.Collectors;
+package blackjack.domain.card;
 
 public class Card {
 
     private final CardNumber cardNumber;
     private final CardPattern cardPattern;
 
-    public Card(CardNumber cardNumber, CardPattern cardPattern) {
+    public Card(final CardNumber cardNumber, final CardPattern cardPattern) {
         this.cardNumber = cardNumber;
         this.cardPattern = cardPattern;
     }
