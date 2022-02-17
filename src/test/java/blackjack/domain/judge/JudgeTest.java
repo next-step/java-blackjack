@@ -3,31 +3,31 @@ package blackjack.domain.judge;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import blackjack.domain.card.Card;
-import blackjack.domain.card.Hands;
 import blackjack.domain.card.Pattern;
 import blackjack.domain.card.Rank;
 import blackjack.domain.participant.Dealer;
 import blackjack.domain.participant.Player;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class JudgeTest {
 
-    private final Hands score16 = new Hands(Arrays.asList(
+    private final List<Card> score16 = Arrays.asList(
         new Card(Pattern.CLUB, Rank.TEN),
-        new Card(Pattern.HEART, Rank.SIX)));
+        new Card(Pattern.HEART, Rank.SIX));
 
-    private final Hands score21 = new Hands(Arrays.asList(
+    private final List<Card> score21 = Arrays.asList(
         new Card(Pattern.DIAMOND, Rank.ACE),
-        new Card(Pattern.HEART, Rank.TEN)));
+        new Card(Pattern.HEART, Rank.TEN));
 
-    private final Hands score26 = new Hands(Arrays.asList(
+    private final List<Card> score26 = Arrays.asList(
         new Card(Pattern.DIAMOND, Rank.TEN),
         new Card(Pattern.HEART, Rank.SIX),
-        new Card(Pattern.HEART, Rank.TEN)));
+        new Card(Pattern.HEART, Rank.TEN));
 
     private final Judge judge = new Judge();
 

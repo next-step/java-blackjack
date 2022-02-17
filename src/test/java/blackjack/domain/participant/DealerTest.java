@@ -16,9 +16,9 @@ class DealerTest {
     @Test
     void Given카드들_When점수_얻기_Then점수_합_반환() {
         final Dealer dealer = new Dealer(
-            new Hands(Arrays.asList(
+            Arrays.asList(
                 new Card(Pattern.CLUB, Rank.EIGHT),
-                new Card(Pattern.SPADE, Rank.EIGHT))));
+                new Card(Pattern.SPADE, Rank.EIGHT)));
 
         assertThat(dealer.getScore()).isEqualTo(16);
     }
@@ -27,9 +27,9 @@ class DealerTest {
     @Test
     void Given카드들_When점수가_17미만_Then참_반환() {
         final Dealer dealer = new Dealer(
-            new Hands(Arrays.asList(
+            Arrays.asList(
                 new Card(Pattern.CLUB, Rank.EIGHT),
-                new Card(Pattern.HEART, Rank.FIVE))));
+                new Card(Pattern.HEART, Rank.FIVE)));
 
         assertThat(dealer.canDraw()).isTrue();
     }
@@ -38,9 +38,9 @@ class DealerTest {
     @Test
     void Given카드들_When점수가_17이상_Then거짓_반환() {
         final Dealer dealer = new Dealer(
-            new Hands(Arrays.asList(
+            Arrays.asList(
                 new Card(Pattern.CLUB, Rank.TEN),
-                new Card(Pattern.HEART, Rank.ACE))));
+                new Card(Pattern.HEART, Rank.ACE)));
 
         assertThat(dealer.canDraw()).isFalse();
     }

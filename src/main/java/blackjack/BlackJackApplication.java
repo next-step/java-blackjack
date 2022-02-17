@@ -2,7 +2,6 @@ package blackjack;
 
 import blackjack.domain.judge.Judge;
 import blackjack.domain.card.Deck;
-import blackjack.domain.card.Hands;
 import blackjack.domain.participant.Dealer;
 import blackjack.domain.participant.Participant;
 import blackjack.domain.participant.Player;
@@ -20,9 +19,9 @@ public class BlackJackApplication {
         final Deck deck = new Deck();
 
         final List<String> playerNames = Parser.parse(InputView.inputPlayerNames());
-        final Participant dealer = new Dealer(new Hands(deck.dealCards()));
+        final Participant dealer = new Dealer(deck.dealCards());
         final List<Participant> players = playerNames.stream()
-            .map(name -> new Player(name, new Hands(deck.dealCards())))
+            .map(name -> new Player(name, deck.dealCards()))
             .collect(Collectors.toList());
 
         OutputView.printStartStatus(combine(dealer, players));
