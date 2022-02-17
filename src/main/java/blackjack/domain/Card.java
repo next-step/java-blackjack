@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Card {
 
-    private static final String CARD_NAME_FORMAT = "%d%s";
+    private static final String CARD_NAME_FORMAT = "%s%s";
 
     private final CardNumber cardNumber;
     private final Suit suit;

@@ -15,7 +15,8 @@ public class ResultView {
     private static final String PLAYER_FORMAT = "%s카드: %s";
 
     public static void shareCards(String dealerName, List<NameInfo> playerNames) {
-        String playersName = playerNames.stream().map(NameInfo::getPersonName)
+        String playersName = playerNames.stream()
+            .map(NameInfo::getPersonName)
             .collect(Collectors.joining(DELIMITER));
         System.out.println(String.format(INIT_SHARE_MESSAGE, dealerName, playersName, INIT_CARD_COUNT));
     }
