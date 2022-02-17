@@ -8,7 +8,7 @@ public class DealerPlayer extends GamePlayer {
     private static final String WIN = "승";
     private static final String LOSE = "패";
 
-    public DealerPlayer(String name) {
+    public DealerPlayer(final String name) {
         super(name);
     }
 
@@ -31,8 +31,8 @@ public class DealerPlayer extends GamePlayer {
         return getGameResultWord(winCount, loseCount);
     }
 
-    private String getGameResultWord(int winCount, int loseCount) {
-        StringBuilder resultWord = new StringBuilder("");
+    private String getGameResultWord(final int winCount, final int loseCount) {
+        final StringBuilder resultWord = new StringBuilder();
         if (winCount > 0) {
             resultWord.append(winCount + WIN);
         }

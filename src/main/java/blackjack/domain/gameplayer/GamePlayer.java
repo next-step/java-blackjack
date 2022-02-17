@@ -9,9 +9,9 @@ public abstract class GamePlayer {
     private static final int BLACK_JACK = 21;
 
     private final String name;
-    private Cards cards;
+    private final Cards cards;
 
-    public GamePlayer(String name) {
+    public GamePlayer(final String name) {
         this.name = name;
         this.cards = new Cards();
     }

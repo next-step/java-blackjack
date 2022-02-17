@@ -13,7 +13,7 @@ public class GamePlayers {
         this.players = makePlayers(players);
     }
 
-    public List<GamePlayer> makePlayers(List<String> playerNames) {
+    public List<GamePlayer> makePlayers(final List<String> playerNames) {
         final List<GamePlayer> players = playerNames.stream()
             .map(Player::new)
             .collect(Collectors.toList());

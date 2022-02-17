@@ -11,11 +11,11 @@ public class Dealer {
 
     private final CardPack cardPack;
 
-    public Dealer(CardPack cardPack) {
+    public Dealer(final CardPack cardPack) {
         this.cardPack = cardPack;
     }
 
-    public void initializeGame(GamePlayers gamePlayers) {
+    public void initializeGame(final GamePlayers gamePlayers) {
         List<GamePlayer> players = gamePlayers.getAllPlayers();
 
         players.forEach(player -> {
@@ -23,7 +23,7 @@ public class Dealer {
             player.receiveCard(cardPack.remove());
         });
 
-        for (GamePlayer gamePlayer : players) {
+        for (final GamePlayer gamePlayer : players) {
             System.out.println(gamePlayer.getName() + ", "+ gamePlayer.getScore());
         }
     }

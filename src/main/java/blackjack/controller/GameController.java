@@ -13,7 +13,7 @@ public class GameController {
     public void start() {
         final CardPack cardPack = new CardPack();
 
-        Dealer dealer = new Dealer(cardPack);
+        final Dealer dealer = new Dealer(cardPack);
 
         final GamePlayers gamePlayers = new GamePlayers(InputView.getPlayerName());
 
