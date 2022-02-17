@@ -2,13 +2,15 @@ package blackjack.domain.person;
 
 import blackjack.domain.card.Card;
 import blackjack.domain.card.CardDeck;
+import blackjack.domain.card.Denomination;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Dealer extends Person {
 
     private static final int FIRST_INDEX = 0;
-    private static final int INITIAL_PICK_NUMBER = 1;
+    private static final int INITIAL_PICK_NUMBER = 2;
+    private static final int DEALER_MAXIMUM_SUM = 16;
 
     private final CardDeck cardDeck = new CardDeck();
 
