@@ -53,7 +53,6 @@ public class Controller {
             if (yesOrNo.equals("y")) {
                 gameable.addCard(CardDeck.pop());
                 OutputView.printCurrentCardsState(player.getName(), player.getCards());
-                System.out.println(player.getCards().cards().sumScore());
                 gameable = gameable.judge();
             }
             if (yesOrNo.equals("n")) {
