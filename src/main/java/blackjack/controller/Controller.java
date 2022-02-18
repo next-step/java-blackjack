@@ -11,18 +11,17 @@ import blackjack.view.OutputView;
 
 public class Controller {
 
+    public void run() {
+        Game game = new Game(InputView.inputPlayers());
+        initGame(game);
+        playGame(game);
+        finishGame(game);
+    }
+
     private static void initGame(Game game) {
         OutputView.printStartMessage(game);
         OutputView.printDealerCard(game.getDealer());
         OutputView.printPlayerCard(game.getPlayers());
-    }
-
-    public void run() {
-        Game game = new Game(InputView.inputPlayers());
-
-        initGame(game);
-        playGame(game);
-        finishGame(game);
     }
 
     private void playGame(Game game) {
@@ -30,6 +29,22 @@ public class Controller {
         if (game.giveCardToDealer()) {
             OutputView.printMessageToGiveCardToDealer();
         }
+    }
+
+    private void receive(Player player) {
+        Gameable gameable = player.getCards();
+        String yesOrNo = "";
+        do {
+            yesOrNo = InputView.inputYesOrNo(player.getName());
+            if (yesOrNo.equals("y")) {
+                gameable.addCard(CardDeck.pop());
+                OutputView.printCurrentCardsState(player.getName(), player.getCards());
+                gameable = gameable.judge();
+            }
+            if (yesOrNo.equals("n")) {
+                gameable = new State(gameable.cards(), false);
+            }
+        } while (gameable.isEnd());
     }
 
     private void finishGame(Game game) {
@@ -44,23 +59,5 @@ public class Controller {
             )
         );
     }
-
-    public void receive(Player player) {
-        Gameable gameable = player.getCards();
-        String yesOrNo = "";
-        do {
-            yesOrNo = InputView.inputYesOrNo(player.getName());
-            if (yesOrNo.equals("y")) {
-                gameable.addCard(CardDeck.pop());
-                OutputView.printCurrentCardsState(player.getName(), player.getCards());
-                System.out.println(player.getCards().cards().sumScore());
-                gameable = gameable.judge();
-            }
-            if (yesOrNo.equals("n")) {
-                gameable = new State(gameable.cards(), false);
-            }
-        } while (gameable.isEnd());
-    }
-
 
 }
