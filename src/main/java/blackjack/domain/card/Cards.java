@@ -15,7 +15,7 @@ public class Cards {
     }
 
     private static int getScoreToSum(final int score, final int compareScore) {
-        if ((compareScore == CardNumber.ACE.getScore()) && (score + CardNumber.ACE.getScore() > 21)) {
+        if ((compareScore == CardNumber.ACE.getScore()) && (score + CardNumber.ACE.getScore() > BLACKJACK)) {
             return 1;
         }
         return compareScore;

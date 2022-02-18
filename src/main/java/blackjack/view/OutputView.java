@@ -17,7 +17,9 @@ public class OutputView {
     private static final String GIVE_CARD_TO_DEALER_MESSAGE = "\n딜러는 16 이하라 한장의 카드를 더 받았습니다\n";
     private static final String DELIMITER = " : ";
     private static final String JOIN_DELIMITER = ", ";
-    private static final int DEALER_FIRST_CARD_INDEX = 0;
+    private static final String GAME_MESSAGE = "%s : %d승 %d패%n";
+    private static final int FIRST_CARD_INDEX = 0;
+    private static final int SECOND_CARD_INDEX = 1;
 
     public static void printStartMessage(final Game game) {
         System.out.printf(START_MESSAGE, game.getPlayers().stream()
@@ -51,7 +53,7 @@ public class OutputView {
 
     public static void printDealerCard(final Dealer dealer) {
         System.out.println(dealer.getName() + DELIMITER + dealer.getDealerCard()
-            .get(DEALER_FIRST_CARD_INDEX));
+            .get(FIRST_CARD_INDEX));
     }
 
     public static void printPlayerCard(final List<Player> players) {
@@ -64,6 +66,6 @@ public class OutputView {
     }
 
     public static void printGameWinOrLose(Person person, List<Integer> gameResult) {
-        System.out.printf("%s : %d승 %d패%n", person.getName(), gameResult.get(0), gameResult.get(1));
+        System.out.printf(GAME_MESSAGE, person.getName(), gameResult.get(FIRST_CARD_INDEX), gameResult.get(SECOND_CARD_INDEX));
     }
 }

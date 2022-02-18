@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 public class Winner {
 
     private final int BLACKJACK = 21;
+    private final int NUMBER_ZERO = 0;
     private final Game game;
 
     public Winner(final Game game) {
@@ -34,7 +35,7 @@ public class Winner {
 
     private int convertZeroScore(final int score) {
         if (score > BLACKJACK) {
-            return 0;
+            return NUMBER_ZERO;
         }
         return score;
     }

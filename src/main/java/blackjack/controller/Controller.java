@@ -11,6 +11,10 @@ import blackjack.view.OutputView;
 
 public class Controller {
 
+    private static final String BLANK = "";
+    private static final String YES_MESSAGE = "y";
+    private static final String NO_MESSAGE = "y";
+
     public void run() {
         Game game = new Game(InputView.inputPlayers());
         initGame(game);
@@ -33,15 +37,15 @@ public class Controller {
 
     private void receive(Player player) {
         Gameable gameable = player.getCards();
-        String yesOrNo = "";
+        String yesOrNo = BLANK;
         do {
             yesOrNo = InputView.inputYesOrNo(player.getName());
-            if (yesOrNo.equals("y")) {
+            if (yesOrNo.equals(YES_MESSAGE)) {
                 gameable.addCard(CardDeck.pop());
                 OutputView.printCurrentCardsState(player.getName(), player.getCards());
                 gameable = gameable.judge();
             }
-            if (yesOrNo.equals("n")) {
+            if (yesOrNo.equals(NO_MESSAGE)) {
                 gameable = new State(gameable.cards(), false);
             }
         } while (gameable.isEnd());
