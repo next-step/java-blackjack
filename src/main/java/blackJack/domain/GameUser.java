@@ -2,6 +2,7 @@ package blackJack.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameUser {
 
@@ -38,5 +39,9 @@ public class GameUser {
         user.addAll(players);
 
         return user;
+    }
+
+    public List<String> convertPlayersName () {
+        return players.stream().map(User::getName).collect(Collectors.toList());
     }
 }
