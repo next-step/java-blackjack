@@ -17,6 +17,9 @@ public class Player extends Person {
         return cards;
     }
 
+    public Gameable getCards() {
+        return cards;
+    }
 
     public List<Card> getPlayerCard(){
         return cards.getCards();
