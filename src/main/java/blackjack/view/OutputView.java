@@ -27,7 +27,7 @@ public class OutputView {
 
     public static void printCurrentCardsState(final String name, final Gameable cards) {
         System.out.printf(CURRENT_STATE_MESSAGE, name,
-            cards.cards().getCards().stream().map(Card::toString)
+            cards.getCards().stream().map(Card::toString)
                 .collect(Collectors.joining(JOIN_DELIMITER)));
     }
 
@@ -37,18 +37,20 @@ public class OutputView {
     }
 
     public static void printGameResults(Dealer dealer, List<Player> players) {
-        printResult(dealer.getName(), dealer.getCards().cards().getCards(),
-            dealer.getCards().cards().sumScore()
+        printResult(
+            dealer.getName(),
+            dealer.getDealerCard(),
+            dealer.getDealerScore()
         );
 
         players.forEach(player -> printResult(player.getName(),
-            player.getCards().cards().getCards(),
-            player.getCards().cards().sumScore())
+            player.getPlayerCard(),
+            player.getPlayerScore())
         );
     }
 
     public static void printDealerCard(final Dealer dealer) {
-        System.out.println(dealer.getName() + DELIMITER + dealer.getCards().cards().getCards()
+        System.out.println(dealer.getName() + DELIMITER + dealer.getDealerCard()
             .get(DEALER_FIRST_CARD_INDEX));
     }
 
