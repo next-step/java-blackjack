@@ -1,15 +1,8 @@
-package blackjack;
+package blackjack.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import blackjack.domain.Card;
-import blackjack.domain.CardNumber;
-import blackjack.domain.Cards;
-import blackjack.domain.Dealer;
-import blackjack.domain.Player;
-import blackjack.domain.Score;
-import blackjack.domain.Suit;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -42,7 +35,7 @@ class PlayerTest {
 
     @Test
     void 카드점수_확인_테스트() {
-        assertThat(player.getTotalScore()).isEqualTo(13);
+        assertThat(player.totalScore()).isEqualTo(13);
     }
 
     @ParameterizedTest
