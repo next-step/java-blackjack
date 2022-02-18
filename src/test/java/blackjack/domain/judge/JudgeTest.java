@@ -76,7 +76,7 @@ class JudgeTest {
     @Test
     void Given플레이어_딜러_점수When딜러_21_초과_The플레이어_승리() {
         final Dealer dealer = new Dealer(score26);
-        final Player player = new Player("jason", score16);
+        final Player player = new Player("jason", score21);
 
         assertThat(judge.getWinOrLose(dealer, Arrays.asList(player))).isEqualTo(playerWin);
     }
