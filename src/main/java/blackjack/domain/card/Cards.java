@@ -1,6 +1,5 @@
 package blackjack.domain.card;
 
-import blackjack.domain.state.Gameable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -15,7 +14,8 @@ public class Cards {
     }
 
     private static int getScoreToSum(final int score, final int compareScore) {
-        if ((compareScore == CardNumber.ACE.getScore()) && (score + CardNumber.ACE.getScore() > BLACKJACK)) {
+        if ((compareScore == CardNumber.ACE.getScore()) && (score + CardNumber.ACE.getScore()
+            > BLACKJACK)) {
             return 1;
         }
         return compareScore;

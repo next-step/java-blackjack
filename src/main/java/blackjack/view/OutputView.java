@@ -66,6 +66,7 @@ public class OutputView {
     }
 
     public static void printGameWinOrLose(Person person, List<Integer> gameResult) {
-        System.out.printf(GAME_MESSAGE, person.getName(), gameResult.get(FIRST_CARD_INDEX), gameResult.get(SECOND_CARD_INDEX));
+        System.out.printf(GAME_MESSAGE, person.getName(), gameResult.get(FIRST_CARD_INDEX),
+            gameResult.get(SECOND_CARD_INDEX));
     }
 }

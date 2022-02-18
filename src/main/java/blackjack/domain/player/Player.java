@@ -21,11 +21,11 @@ public class Player extends Person {
         return cards;
     }
 
-    public List<Card> getPlayerCard(){
+    public List<Card> getPlayerCard() {
         return cards.getCards();
     }
 
-    public int getPlayerScore(){
+    public int getPlayerScore() {
         return cards.getTotalScore();
     }
 }

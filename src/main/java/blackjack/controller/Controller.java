@@ -15,17 +15,17 @@ public class Controller {
     private static final String YES_MESSAGE = "y";
     private static final String NO_MESSAGE = "y";
 
+    private static void initGame(Game game) {
+        OutputView.printStartMessage(game);
+        OutputView.printDealerCard(game.getDealer());
+        OutputView.printPlayerCard(game.getPlayers());
+    }
+
     public void run() {
         Game game = new Game(InputView.inputPlayers());
         initGame(game);
         playGame(game);
         finishGame(game);
-    }
-
-    private static void initGame(Game game) {
-        OutputView.printStartMessage(game);
-        OutputView.printDealerCard(game.getDealer());
-        OutputView.printPlayerCard(game.getPlayers());
     }
 
     private void playGame(Game game) {

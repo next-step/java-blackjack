@@ -17,11 +17,11 @@ public class Dealer extends Person {
         return cards;
     }
 
-    public List<Card> getDealerCard(){
+    public List<Card> getDealerCard() {
         return cards.getCards();
     }
 
-    public int getDealerScore(){
+    public int getDealerScore() {
         return cards.getTotalScore();
     }
 }
