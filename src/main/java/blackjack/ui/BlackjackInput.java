@@ -1,5 +1,6 @@
 package blackjack.ui;
 
+import blackjack.domain.Participant;
 import blackjack.domain.Players;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -8,8 +9,8 @@ public class BlackjackInput {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public static boolean inputPlayerDraw(){
-        System.out.println("한장의 카드를 더 받겠습니까? (예는 y, 아니오는 n)");
+    public static boolean inputPlayerDraw(Participant participant){
+        System.out.println(participant.getName() + "는 한장의 카드를 더 받겠습니까? (예는 y, 아니오는 n)");
         String input = SCANNER.next();
         return input.equals("y");
     }

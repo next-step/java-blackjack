@@ -44,12 +44,12 @@ public class GameController {
     }
 
     private void drawPlayersCard(Deck deck, Players players, int size) {
-        if (players.isTargetAvailable()) {
+        if (!players.isTargetAvailable()) {
             return;
         }
 
         Player player = players.getTarget();
-        while (BlackjackInput.inputPlayerDraw()) {
+        while (BlackjackInput.inputPlayerDraw(player)) {
             player.drawCardMultiple(deck, size);
             BlackjackOutput.printParticipantCard(player);
         }
