@@ -2,7 +2,7 @@ package blackjack.domain.state;
 
 import blackjack.domain.card.Cards;
 
-public abstract class StateSupport extends CardAddibleSupport {
+public abstract class StateSupport extends CardSupport {
 
     boolean end;
 

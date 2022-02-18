@@ -2,12 +2,13 @@ package blackjack.domain.state;
 
 import blackjack.domain.card.Card;
 import blackjack.domain.card.Cards;
+import java.util.List;
 
-public abstract class CardAddibleSupport implements Gameable {
+public abstract class CardSupport implements Gameable {
 
     Cards cards;
 
-    public CardAddibleSupport(Cards cards) {
+    public CardSupport(Cards cards) {
         this.cards = cards;
     }
 
@@ -20,4 +21,15 @@ public abstract class CardAddibleSupport implements Gameable {
     public void addCard(Card card) {
         cards.add(card);
     }
+
+    @Override
+    public List<Card> getCards() {
+        return cards.getCards();
+    }
+
+    @Override
+    public int getTotalScore() {
+        return cards.sumScore();
+    }
+
 }
