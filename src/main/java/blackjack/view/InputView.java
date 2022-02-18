@@ -28,7 +28,8 @@ public class InputView {
         private final String choice;
 
         private final boolean decision;
-        Answer(String choice, boolean decision) {
+
+        Answer(final String choice, final boolean decision) {
             this.choice = choice;
             this.decision = decision;
         }
@@ -48,8 +49,9 @@ public class InputView {
 
     private InputView() {}
 
-    public static boolean drawChoice(NameInfo activePlayerNameInfo) {
-        System.out.format(MESSAGE_CHOICE_DECISION, activePlayerNameInfo.getPersonName(), Answer.YES.choice, Answer.NO.choice);
+    public static boolean drawChoice(final NameInfo activePlayerNameInfo) {
+        System.out.format(MESSAGE_CHOICE_DECISION, activePlayerNameInfo.getPersonName(),
+            Answer.YES.choice, Answer.NO.choice);
         return Answer.of(SCANNER.nextLine()).getDecision();
     }
 
