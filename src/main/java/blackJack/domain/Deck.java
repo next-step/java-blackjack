@@ -1,6 +1,5 @@
 package blackJack.domain;
 
-import blackJack.util.Util;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,8 +7,6 @@ import java.util.stream.Collectors;
 public class Deck {
 
     private final List<Card> deck;
-    private static final String JQK_REGEX = "[JQK]";
-    private static final int JQK_SCORE = 10;
     private static final int ACE_BONUS_SCORE = 11;
     public static final int MATCH_SCORE = 21;
 
@@ -38,28 +35,28 @@ public class Deck {
     }
 
     public int getScore() {
-        int score = 0;
-        int count = 0;
-        for (Card card : deck) {
-            String number = card.getCardNumber();
-            if (Util.isNumber(number)) {
-                score += Integer.parseInt(number);
-            }
-            if (number.matches(JQK_REGEX)) {
-                score += JQK_SCORE;
-            }
-            if (number.equals("A")) {
-                score += 1;
-                count += 1;
-            }
-        }
-        return calculateAceScore(score, count);
+        int aceCount = calculateAceCount();
+        int score = calculateDefaultScore();
+
+        return calculateAceScore(score, aceCount);
     }
 
     public String convertDeckFormat() {
         return deck.stream()
             .map(card -> String.format("%s%s", card.getCardNumber(), card.getCardType()))
             .collect(Collectors.joining(", "));
+    }
+
+    private int calculateDefaultScore() {
+        return deck.stream()
+            .mapToInt(Card::calculateCardScore)
+            .sum();
+    }
+
+    private int calculateAceCount() {
+        return (int) deck.stream()
+            .filter(card -> "A".equals(card.getCardNumber()))
+            .count();
     }
 
     private int calculateAceScore(int score, int count) {

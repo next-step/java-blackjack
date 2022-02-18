@@ -5,10 +5,12 @@ import java.util.List;
 
 public class CardNumber {
 
+    public static final int ACE_INDEX = 0;
+
     public static final List<String> CARD_NUMBER_LIST = Arrays.asList("A", "2", "3", "4", "5", "6",
         "7", "8", "9", "10", "J", "Q", "K");
 
-    private String cardNumber;
+    private final String cardNumber;
 
     private CardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
