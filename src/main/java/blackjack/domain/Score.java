@@ -1,5 +1,7 @@
 package blackjack.domain;
 
+import java.util.Arrays;
+
 public enum Score {
     WIN(1, "승"),
     DRAW(0, "무"),
@@ -10,7 +12,7 @@ public enum Score {
     private final int key;
     private final String name;
 
-    Score(int key, String name) {
+    Score(final int key, final String name) {
         this.key = key;
         this.name = name;
     }
@@ -23,12 +25,20 @@ public enum Score {
         return name;
     }
 
-    public static Score judge(Cards playerCards, Cards dealerCards) {
-        if (playerCards.isBust()) return LOSE;
+    public static Score judge(final Cards playerCards, final Cards dealerCards) {
+        if (playerCards.isBust()) {
+            return LOSE;
+        }
 
-        if (playerCards.blackjack() && dealerCards.blackjack()) return DRAW;
-        if (playerCards.blackjack()) return WIN;
-        if (dealerCards.blackjack()) return LOSE;
+        if (playerCards.blackjack() && dealerCards.blackjack()) {
+            return DRAW;
+        }
+        if (playerCards.blackjack()) {
+            return WIN;
+        }
+        if (dealerCards.blackjack()) {
+            return LOSE;
+        }
 
         if (playerCards.totalScore() == dealerCards.totalScore()) {
             return DRAW;
@@ -43,5 +53,13 @@ public enum Score {
         }
 
         throw new RuntimeException(UNDETECTABLE_EXCEPTION_OCCURRED);
+    }
+
+    public Score oppositeScore() {
+        return Score.of(-key);
+    }
+
+    public String getName() {
+        return name;
     }
 }

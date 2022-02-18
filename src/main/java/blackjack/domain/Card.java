@@ -9,7 +9,7 @@ public class Card {
     private final CardNumber cardNumber;
     private final Suit suit;
 
-    public Card(CardNumber cardNumber, Suit suit) {
+    public Card(final CardNumber cardNumber, final Suit suit) {
         this.cardNumber = cardNumber;
         this.suit = suit;
     }

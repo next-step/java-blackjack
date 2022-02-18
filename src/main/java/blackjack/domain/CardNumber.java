@@ -1,7 +1,5 @@
 package blackjack.domain;
 
-import java.util.Arrays;
-
 public enum CardNumber {
 
     ACE("A", 1),
@@ -21,16 +19,9 @@ public enum CardNumber {
     private final String initial;
     private final int score;
 
-    CardNumber(String initial, int score) {
+    CardNumber(final String initial, final int score) {
         this.initial = initial;
         this.score = score;
-    }
-
-    public static CardNumber of(final String initial) {
-        return Arrays.stream(values())
-            .filter(cardNumber -> cardNumber.initial == initial)
-            .findFirst()
-            .orElseThrow(IllegalArgumentException::new);
     }
 
     public boolean isAce() {

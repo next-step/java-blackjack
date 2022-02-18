@@ -17,7 +17,7 @@ public class Deck {
     }
 
     public static Deck create() {
-        List<Card> cards = createEntireCards();
+        final List<Card> cards = createEntireCards();
         Collections.shuffle(cards);
         return new Deck(cards);
     }

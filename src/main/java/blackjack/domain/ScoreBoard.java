@@ -25,10 +25,11 @@ public class ScoreBoard {
         );
     }
 
-    public List<MatchInfo> getPlayersMatchInfo() {
-        return scoreMap.entrySet().stream()
-            .map(map -> new MatchInfo(map.getKey().userName, map.getValue().getName()))
-            .collect(Collectors.toList());
+    private String dealerResultFormat(final Map<Score, Long> countingMap) {
+        return countingMap.entrySet().stream()
+            .sorted(Map.Entry.comparingByKey())
+            .map(map -> String.format(SCORE_RESULT_FORMAT, map.getValue(), map.getKey().getName()))
+            .collect(Collectors.joining(DELIMITER));
     }
 
 }

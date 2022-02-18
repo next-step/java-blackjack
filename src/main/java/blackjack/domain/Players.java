@@ -1,7 +1,6 @@
 package blackjack.domain;
 
 import blackjack.dto.CardInfo;
-import blackjack.dto.MatchInfo;
 import blackjack.dto.NameInfo;
 import blackjack.dto.ScoreInfo;
 import java.util.ArrayList;
@@ -14,14 +13,14 @@ public class Players {
 
     private final List<Player> players;
 
-    private int activePlayerIdx;
+    private int activePlayerIndex;
 
-    public Players(List<Player> players) {
+    public Players(final List<Player> players) {
         this.players = players;
-        this.activePlayerIdx = 0;
+        this.activePlayerIndex = 0;
     }
 
-    public static Players create(List<String> names) {
+    public static Players create(final List<String> names) {
         return new Players(
             names.stream()
                 .map(name -> new Player(name, new Cards(new ArrayList<>())))
@@ -29,28 +28,16 @@ public class Players {
         );
     }
 
-    public void initializeDeck(Deck deck) {
+    public void initializeDeck(final Deck deck) {
         players.stream().forEach(player -> player.initializeDeck(deck));
-    }
-
-    public List<NameInfo> getPlayersName(){
-        return players.stream().map(Person::mapToNameInfo).collect(Collectors.toList());
-    }
-
-    public List<CardInfo> openCards(){
-        return players.stream().map(Player::openCards).collect(Collectors.toList());
     }
 
     public boolean checkActivePlayerCanDrawCard() {
         return getActivePlayer().canDrawCard();
     }
 
-    private Player getActivePlayer() {
-        return players.get(activePlayerIdx);
-    }
-
-    public NameInfo getActivePlayerNameInfo() {
-        return new NameInfo(getActivePlayer().userName);
+    public void drawCardToActivePlayer(final Deck deck) {
+        getActivePlayer().drawCard(deck);
     }
 
     public void drawCardToActivePlayer(Deck deck) {
@@ -62,24 +49,37 @@ public class Players {
         return new CardInfo(player.userName, player.cards.openCardAll());
     }
 
-    public void nextActivePlayer() {
-        activePlayerIdx++;
-    }
-
-    public boolean hasActivePlayer() {
-        return activePlayerIdx < players.size();
-    }
-
-    public List<ScoreInfo> getScoreInfo() {
-        return players.stream().map(Player::getScoreInfo).collect(Collectors.toList());
-    }
-
-    public ScoreBoard match(Dealer dealer) {
-        Map<Player, Score> map = new LinkedHashMap<>();
-        for (Player player: players) {
+    public ScoreBoard match(final Dealer dealer) {
+        final Map<Player, Score> map = new LinkedHashMap<>();
+        for (Player player : players) {
             map.put(player, player.compareScore(dealer));
         }
 
         return new ScoreBoard(map);
+    }
+
+    public CardInfo getActivePlayerCardInfo() {
+        final Player player = getActivePlayer();
+        return new CardInfo(player.userName, player.cards.openCardAll());
+    }
+
+    public NameInfo getActivePlayerNameInfo() {
+        return new NameInfo(getActivePlayer().userName);
+    }
+
+    public List<NameInfo> nameInfos() {
+        return players.stream().map(Person::nameInfo).collect(Collectors.toList());
+    }
+
+    public List<CardInfo> openCards() {
+        return players.stream().map(Player::openCards).collect(Collectors.toList());
+    }
+
+    public List<ScoreInfo> scoreInfos() {
+        return players.stream().map(Player::scoreInfo).collect(Collectors.toList());
+    }
+
+    private Player getActivePlayer() {
+        return players.get(activePlayerIndex);
     }
 }

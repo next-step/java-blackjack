@@ -24,7 +24,7 @@ public class Dealer extends Person {
 
     @Override
     public CardInfo openCards() {
-        return new CardInfo(userName,cards.openCardOne());
+        return new CardInfo(userName, cards.openCardOne());
     }
 
 }

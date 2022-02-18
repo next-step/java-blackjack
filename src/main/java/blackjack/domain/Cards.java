@@ -12,7 +12,7 @@ public class Cards {
     private static final String CARD_SIZE_ZERO_ERROR = "카드가 존재하지 않습니다.";
     private final List<Card> cards;
 
-    public Cards(List<Card> cards) {
+    public Cards(final List<Card> cards) {
         this.cards = cards;
     }
 
@@ -21,7 +21,9 @@ public class Cards {
     }
 
     public int totalScore() {
-        int score = cards.stream().mapToInt(Card::getCardScore).sum();
+        final int score = cards.stream()
+            .mapToInt(Card::getCardScore)
+            .sum();
 
         if (hasAce() && score <= LIMITED_ACE_SCORE) {
             return score + ADDITION_ACE_SCORE;
@@ -41,11 +43,13 @@ public class Cards {
         if (cards.isEmpty()) {
             throw new RuntimeException(CARD_SIZE_ZERO_ERROR);
         }
-        return Arrays.asList(cards.get(0).getCardName());
+        return Arrays.asList(cards.get(FRONT).getCardName());
     }
 
     public List<String> openCardAll() {
-        return cards.stream().map(Card::getCardName).collect(Collectors.toList());
+        return cards.stream()
+            .map(Card::getCardName)
+            .collect(Collectors.toList());
     }
 
     public boolean isBust() {
