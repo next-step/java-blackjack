@@ -1,6 +1,8 @@
 package blackjack.domain.player;
 
+import blackjack.domain.card.Card;
 import blackjack.domain.state.Gameable;
+import java.util.List;
 
 public class Player extends Person {
 
@@ -11,7 +13,16 @@ public class Player extends Person {
         this.cards = cards;
     }
 
-    public Gameable getCards() {
+    public Gameable getCar경ds() {
         return cards;
+    }
+
+
+    public List<Card> getPlayerCard(){
+        return cards.getCards();
+    }
+
+    public int getPlayerScore(){
+        return cards.getTotalScore();
     }
 }
