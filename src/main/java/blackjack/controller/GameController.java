@@ -27,29 +27,30 @@ public class GameController {
         showGameResult();
     }
 
-    private void setUpPerson(Deck deck) {
+    private void setUpPerson(final Deck deck) {
         ResultView.margin();
 
         players.initializeDeck(deck);
         dealer.initializeDeck(deck);
 
-        ResultView.shareCards(dealer.mapToNameInfo().getPersonName(), players.getPlayersName());
+        ResultView.shareCards(dealer.nameInfo().getPersonName(), players.nameInfos());
         ResultView.openCardInfo(dealer.openCards(), players.openCards());
     }
 
-    private void play(Deck deck) {
+    private void play(final Deck deck) {
         ResultView.margin();
 
         playersJudgment(deck);
         dealerJudgment(deck);
 
-        ResultView.scoreboard(dealer.getScoreInfo());
-        ResultView.scoreboard(players.getScoreInfo());
+        ResultView.scoreboard(dealer.scoreInfo());
+        ResultView.scoreboard(players.scoreInfos());
     }
 
     private void showGameResult() {
         ScoreBoard scoreBoard = players.match(dealer);
-        ResultView.matchResult(scoreBoard.getDealerMatchInfo(dealer), scoreBoard.getPlayersMatchInfo());
+        ResultView.matchResult(scoreBoard.dealerMatches(dealer),
+            scoreBoard.playerMatches());
     }
 
     private void playersJudgment(Deck deck) {
@@ -58,20 +59,21 @@ public class GameController {
         }
     }
 
-    private void activePlayerJudgement(Deck deck) {
-        while (players.checkActivePlayerCanDrawCard() && InputView.drawChoice(players.getActivePlayerNameInfo())) {
+    private void activePlayerJudgement(final Deck deck) {
+        while (players.checkActivePlayerCanDrawCard() && InputView.drawChoice(
+            players.getActivePlayerNameInfo())) {
             players.drawCardToActivePlayer(deck);
-            ResultView.playerCardsInfo(players.getActivePlayerCardsInfo());
+            ResultView.playerCardsInfo(players.getActivePlayerCardInfo());
         }
         players.nextActivePlayer();
     }
 
-    private void dealerJudgment(Deck deck) {
+    private void dealerJudgment(final Deck deck) {
         ResultView.margin();
 
         while (dealer.canDrawCard()) {
             dealer.drawCard(deck);
-            ResultView.dealerDrawDecision(dealer.mapToNameInfo(), DEALER_DRAW_LIMIT);
+            ResultView.dealerDrawDecision(dealer.nameInfo(), DEALER_DRAW_LIMIT);
         }
 
         ResultView.margin();
