@@ -1,6 +1,7 @@
 package blackjack.dto;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ScoreInfo {
 
@@ -24,5 +25,23 @@ public class ScoreInfo {
 
     public int getScore() {
         return score;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ScoreInfo scoreInfo = (ScoreInfo) o;
+        return score == scoreInfo.score && Objects.equals(name, scoreInfo.name)
+            && Objects.equals(cardNames, scoreInfo.cardNames);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, cardNames, score);
     }
 }
