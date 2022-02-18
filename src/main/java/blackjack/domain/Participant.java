@@ -32,7 +32,7 @@ public abstract class Participant {
         return cards.sumCardScore();
     }
 
-    public abstract void drawCardMultiple(Deck deck, int number);
+    public abstract boolean drawCardMultiple(Deck deck, int number);
 
     public final String getName() {
         return name;

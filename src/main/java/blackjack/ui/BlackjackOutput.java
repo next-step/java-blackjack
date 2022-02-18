@@ -12,6 +12,7 @@ public class BlackjackOutput {
     private static final String COMMA = ", ";
     private static final String DEALER_NAME = "딜러와 ";
     private static final String ENTER = "\n";
+    private static final String DEALER_DRAW = "딜러는 16이하라 한장의 카드를 더 받았습니다.";
 
     public static void printDrawCard(Players players) {
         String playerName = players.getPlayers().stream()
@@ -42,6 +43,24 @@ public class BlackjackOutput {
         System.out.println(stringBuilder);
     }
 
+    public static void printAllCardWithSum(Players players, Dealer dealer){
+        players.getPlayers().stream()
+            .forEach(BlackjackOutput::printParticipantCardWithSum);
+        printParticipantCardWithSum(dealer);
+        System.out.println(ENTER);
+    }
+
+    public static void printParticipantCardWithSum(Participant player) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder
+            .append(player.getName())
+            .append("카드: ")
+            .append(getCardStatus(player))
+            .append(" - 결과: ")
+            .append(player.sumCardScore());
+        System.out.println(stringBuilder);
+    }
+
     private static String getCardStatus(Participant player){
         return player
             .getCards()
@@ -51,6 +70,9 @@ public class BlackjackOutput {
             .collect(Collectors.joining(COMMA));
     }
 
+    public static void printDealerDraw() {
+        System.out.println(DEALER_DRAW + ENTER);
+    }
 
     public static void printFinalResult(GameResult gameResult){
         System.out.println("## 최종승패");

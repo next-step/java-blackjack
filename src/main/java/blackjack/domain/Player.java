@@ -8,7 +8,8 @@ public class Player extends Participant{
     }
 
     @Override
-    public void drawCardMultiple(Deck deck, int number) {
+    public boolean drawCardMultiple(Deck deck, int number) {
         cards.addCards(deck.drawMultiple(number));
+        return true;
     }
 }

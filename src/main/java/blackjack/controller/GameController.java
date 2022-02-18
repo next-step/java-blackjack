@@ -38,9 +38,12 @@ public class GameController {
 
     private void drawCardFinal(Deck deck, Players players, Dealer dealer) {
         drawPlayersCard(deck, players, PLAYER_DRAW_SIZE);
-        dealer.drawCardMultiple(deck, DEALER_DRAW_SIZE);
+        boolean isDraw = dealer.drawCardMultiple(deck, DEALER_DRAW_SIZE);
+        if(isDraw){
+            BlackjackOutput.printDealerDraw();
+        }
 
-        BlackjackOutput.printAllCard(players, dealer);
+        BlackjackOutput.printAllCardWithSum(players, dealer);
     }
 
     private void drawPlayersCard(Deck deck, Players players, int size) {

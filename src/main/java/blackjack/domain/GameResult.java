@@ -29,7 +29,7 @@ public class GameResult {
 
     private int calculateMaxScore(List<Participant> participants){
         return participants.stream()
-            .mapToInt(participant -> participant.sumCardScore())
+            .mapToInt(Participant::sumCardScore)
             .max()
             .orElseThrow(() -> {
                 throw new IllegalStateException("최대값을 구할 수 없습니다.");
