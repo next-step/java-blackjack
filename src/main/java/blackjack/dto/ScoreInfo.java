@@ -9,7 +9,7 @@ public class ScoreInfo {
     private final List<String> cardNames;
     private final int score;
 
-    public ScoreInfo(String name, List<String> cardNames, int score) {
+    public ScoreInfo(final String name, final List<String> cardNames, final int score) {
         this.name = name;
         this.cardNames = cardNames;
         this.score = score;

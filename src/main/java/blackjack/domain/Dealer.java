@@ -9,7 +9,7 @@ public class Dealer extends Person {
     public static final int DEALER_DRAW_LIMIT = 16;
     private static final String DEALER_NAME = "딜러";
 
-    public Dealer(String userName, Cards cards) {
+    public Dealer(final String userName,final Cards cards) {
         super(userName, cards);
     }
 

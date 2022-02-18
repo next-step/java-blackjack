@@ -11,7 +11,7 @@ public abstract class Person {
     final String userName;
     final Cards cards;
 
-    public Person(String userName, Cards cards) {
+    public Person(final String userName,final Cards cards) {
         this.userName = userName;
         this.cards = cards;
     }

@@ -21,7 +21,13 @@ public class Player extends Person {
         return cards.totalScore();
     }
 
-    public Score compareScore(Dealer dealer) {
-        return Score.judge(cards, dealer.cards);
+    @Override
+    public boolean canDrawCard() {
+        return !cards.blackjack() && !cards.isBust();
+    }
+
+    @Override
+    public CardInfo openCards() {
+        return new CardInfo(userName, cards.openCardAll());
     }
 }

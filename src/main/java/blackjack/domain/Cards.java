@@ -33,7 +33,7 @@ public class Cards {
         return score;
     }
 
-    public void add(Card drawCard) {
+    public void add(final Card drawCard) {
         cards.add(drawCard);
     }
 
