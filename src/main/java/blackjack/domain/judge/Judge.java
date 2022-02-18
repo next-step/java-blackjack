@@ -28,7 +28,7 @@ public class Judge {
     }
 
     private String getWinOrLosePerPlayer(final int playerScore, final int dealerScore) {
-        if (playerScore < LIMIT_SCORE && dealerScore > LIMIT_SCORE) {
+        if (playerScore <= LIMIT_SCORE && dealerScore > LIMIT_SCORE) {
             return PLAYER_WIN;
         }
         if (playerScore > LIMIT_SCORE || playerScore <= dealerScore) {
