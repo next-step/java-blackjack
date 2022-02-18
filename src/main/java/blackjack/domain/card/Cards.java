@@ -1,5 +1,6 @@
 package blackjack.domain.card;
 
+import blackjack.domain.state.Gameable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -13,11 +14,11 @@ public class Cards {
         this.cards = cards;
     }
 
-    private static int getScoreToSum(final int score1, final int score2) {
-        if ((score2 == CardNumber.ACE.getScore()) && (score1 + CardNumber.ACE.getScore() > 21)) {
+    private static int getScoreToSum(final int score, final int compareScore) {
+        if ((compareScore == CardNumber.ACE.getScore()) && (score + CardNumber.ACE.getScore() > 21)) {
             return 1;
         }
-        return score2;
+        return compareScore;
     }
 
     public void add(final Card card) {
