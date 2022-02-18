@@ -40,13 +40,12 @@ public class Players {
         getActivePlayer().drawCard(deck);
     }
 
-    public void drawCardToActivePlayer(Deck deck) {
-        getActivePlayer().drawCard(deck);
+    public void nextActivePlayer() {
+        activePlayerIndex++;
     }
 
-    public CardInfo getActivePlayerCardsInfo() {
-        Player player = getActivePlayer();
-        return new CardInfo(player.userName, player.cards.openCardAll());
+    public boolean hasActivePlayer() {
+        return activePlayerIndex < players.size();
     }
 
     public ScoreBoard match(final Dealer dealer) {

@@ -8,8 +8,8 @@ public abstract class Person {
 
     public static final int INIT_CARD_COUNT = 2;
 
-    protected final String userName;
-    protected final Cards cards;
+    final String userName;
+    final Cards cards;
 
     public Person(String userName, Cards cards) {
         this.userName = userName;
@@ -34,10 +34,8 @@ public abstract class Person {
         return new NameInfo(userName);
     }
 
-    public void initializeDeck(Deck deck) {
-        for (int i = 0; i < INIT_CARD_COUNT; i++) {
-            cards.add(deck.drawCard());
-        }
+    public ScoreInfo scoreInfo() {
+        return new ScoreInfo(userName, cards.openCardAll(), cards.totalScore());
     }
 
     public abstract boolean canDrawCard();

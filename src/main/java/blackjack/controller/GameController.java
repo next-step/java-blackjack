@@ -53,7 +53,7 @@ public class GameController {
             scoreBoard.playerMatches());
     }
 
-    private void playersJudgment(Deck deck) {
+    private void playersJudgment(final Deck deck) {
         while (players.hasActivePlayer()) {
             activePlayerJudgement(deck);
         }

@@ -10,6 +10,8 @@ public class Cards {
     private static final int LIMITED_ACE_SCORE = 11;
     private static final int REFERENCE_POINT = 21;
     private static final String CARD_SIZE_ZERO_ERROR = "카드가 존재하지 않습니다.";
+    private static final int FRONT = 0;
+
     private final List<Card> cards;
 
     public Cards(final List<Card> cards) {

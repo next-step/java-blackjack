@@ -17,12 +17,11 @@ public enum Score {
         this.name = name;
     }
 
-    public int getKey() {
-        return key;
-    }
-
-    public String getName() {
-        return name;
+    public static Score of(final int key) {
+        return Arrays.stream(values())
+            .filter(score -> score.key == key)
+            .findFirst()
+            .orElseThrow(() -> new RuntimeException("존재하지 않는 키입니다."));
     }
 
     public static Score judge(final Cards playerCards, final Cards dealerCards) {
