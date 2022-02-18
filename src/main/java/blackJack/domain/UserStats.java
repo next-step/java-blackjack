@@ -22,7 +22,6 @@ public class UserStats {
 
     public String convertTotalScore() {
         List<User> users = gameUser.getUsers();
-
         return users.stream().map(
             user -> String.format(
                 TOTAL_SCORE_FORMAT,
