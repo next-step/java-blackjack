@@ -1,5 +1,8 @@
-package blackjack.domain.card;
+package blackjack.domain.cards;
 
+import blackjack.domain.card.Card;
+import blackjack.domain.card.Denomination;
+import blackjack.domain.card.Shape;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,7 +21,7 @@ public class CardDeck {
 
     private List<Card> createCardDeck() {
         List<Card> cards = new ArrayList<>();
-        for(Shape shape : Shape.values()) {
+        for (Shape shape : Shape.values()) {
             cards.addAll(DenominationByShape(shape));
         }
         return cards;
@@ -39,7 +42,7 @@ public class CardDeck {
     }
 
     private void validateEmptyCardDeck() {
-        if(cards.isEmpty()) {
+        if (cards.isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 카드를 모두 사용해 카드를 뽑을 수 없습니다.");
         }
     }
