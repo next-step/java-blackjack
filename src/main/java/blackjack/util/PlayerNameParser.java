@@ -10,6 +10,9 @@ public class PlayerNameParser {
     private static final String NAME_SPLIT_REGEX = ",";
     private static final String EMPTY_NAME_EXCEPTION_MESSAGE = "[ERROR] 플레이어의 이름을 빈 값으로 지정할 수 없습니다.";
 
+    private PlayerNameParser() {
+    }
+    
     public static List<String> parse(final String input) {
         checkNameIsEmpty(() -> input.endsWith(NAME_SPLIT_REGEX));
 
