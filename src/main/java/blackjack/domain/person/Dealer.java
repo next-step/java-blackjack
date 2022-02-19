@@ -1,21 +1,21 @@
 package blackjack.domain.person;
 
 import blackjack.domain.card.Card;
-import blackjack.domain.card.CardDeck;
-import blackjack.domain.card.Denomination;
+import blackjack.domain.cards.CardDeck;
+import blackjack.domain.cards.DealerCards;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dealer extends Person {
+public class Dealer {
 
-    private static final int FIRST_INDEX = 0;
     private static final int INITIAL_PICK_NUMBER = 2;
-    private static final int DEALER_MAXIMUM_SUM = 16;
+    private static final int FIRST_INDEX = 0;
 
     private final CardDeck cardDeck = new CardDeck();
+    private final DealerCards dealerCards;
 
     public Dealer() {
-        this.cards.addAll(getInitialPickedCards());
+        this.dealerCards = new DealerCards(getInitialPickedCards());
     }
 
     public List<Card> getInitialPickedCards() {
@@ -30,27 +30,11 @@ public class Dealer extends Person {
         return cardDeck.pickOneCard();
     }
 
+    public DealerCards getDealerCards() {
+        return dealerCards;
+    }
+
     public Card getOpenedCard() {
-        return cards.get(FIRST_INDEX);
-    }
-
-    public int getSumOfCards() {
-        return cards.stream()
-            .mapToInt(card -> card.getDenomination().getValue())
-            .sum();
-    }
-
-    @Override
-    public void addCard(Card card) {
-        cards.add(card);
-        if (card.getDenomination().equals(Denomination.ACE) && sum < 10) {
-            sum += 11;
-            return;
-        }
-        sum += card.getDenomination().getValue();
-    }
-
-    public boolean canGetCard() {
-        return sum <= DEALER_MAXIMUM_SUM;
+        return dealerCards.getCardByIndex(FIRST_INDEX);
     }
 }
