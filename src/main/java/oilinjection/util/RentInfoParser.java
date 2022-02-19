@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import oilinjection.domain.vo.RentInfo;
 
-public class Parser {
+public class RentInfoParser {
 
     private static final String RESERVATION_DELIMITER = ",";
     private static final String INFO_DELIMITER = ":";
