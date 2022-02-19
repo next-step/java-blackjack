@@ -9,16 +9,14 @@ public class RentCompany {
 
     private final List<Car> cars;
 
-    public RentCompany(List<Car> cars) {
-        this.cars = cars;
+    public RentCompany() {
+        this.cars = new ArrayList<>();
     }
 
-    public static RentCompany create(int distance) {
-        List<Car> cars = new ArrayList<>();
+    public void receive(final int distance) {
         cars.add(new Avante(distance));
         cars.add(new K5(distance));
         cars.add(new Sonata(distance));
-        return new RentCompany(cars);
     }
 
     public Map<String, Double> generateChargeQuantityByName() {

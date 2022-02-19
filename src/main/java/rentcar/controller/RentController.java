@@ -7,7 +7,8 @@ import rentcar.view.ReportView;
 public class RentController {
 
     public void start() {
-        RentCompany rentCompany = RentCompany.create(InputView.getTripDistance());
+        RentCompany rentCompany = new RentCompany();
+        rentCompany.receive(InputView.getTripDistance());
 
         ReportView.generateReport(rentCompany.generateChargeQuantityByName());
     }
