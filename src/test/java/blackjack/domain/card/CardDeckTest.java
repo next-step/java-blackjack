@@ -1,7 +1,11 @@
 package blackjack.domain.card;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import blackjack.domain.cards.CardDeck;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class CardDeckTest {
@@ -22,4 +26,18 @@ class CardDeckTest {
         assertThat(cardDeck.getCards().contains(pickedCard)).isFalse();
     }
 
+    @Test
+    void 카드덱이_비면_카드를_뽑을_수_없다() {
+        //given
+        CardDeck cardDeck = new CardDeck() {
+            @Override
+            public List<Card> createCardDeck() {
+                return new ArrayList<>();
+            }
+        };
+        //when, then
+        assertThatThrownBy(cardDeck::pickOneCard)
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("[ERROR] 카드덱이 비어 카드를 뽑을 수 없습니다.");
+    }
 }

@@ -19,7 +19,7 @@ public class CardDeck {
         cards = createCardDeck();
     }
 
-    private List<Card> createCardDeck() {
+    public List<Card> createCardDeck() {
         List<Card> cards = new ArrayList<>();
         for (Shape shape : Shape.values()) {
             cards.addAll(DenominationByShape(shape));
@@ -43,7 +43,7 @@ public class CardDeck {
 
     private void validateEmptyCardDeck() {
         if (cards.isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] 카드를 모두 사용해 카드를 뽑을 수 없습니다.");
+            throw new IllegalArgumentException("[ERROR] 카드덱이 비어 카드를 뽑을 수 없습니다.");
         }
     }
 
