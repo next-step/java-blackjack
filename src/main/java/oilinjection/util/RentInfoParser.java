@@ -15,6 +15,9 @@ public class RentInfoParser {
     private static final String INPUT_FORMAT_REGEX = "[a-zA-z0-9]+:[0-9]+";
     private static final String INVALID_FORMAT_EXCEPTION_MESSAGE = "[ERROR] 입력 형식이 맞지 않습니다(eg.${carType}:${tripDistance})";
 
+    private RentInfoParser() {
+    }
+
     public static List<RentInfo> parse(final String input) {
 
         final String[] rentInfos = input.split(RESERVATION_DELIMITER);
