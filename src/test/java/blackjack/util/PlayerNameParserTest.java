@@ -2,6 +2,7 @@ package blackjack.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +17,12 @@ class PlayerNameParserTest {
     @Test
     void Given유효한값_When파싱_Then이름_반환() {
         final List<String> names = PlayerNameParser.parse(" json, pobi ");
-        assertThat(names).isEqualTo(Arrays.asList("json","pobi"));
+
+        final List<String> expected = Arrays.asList("pobi", "json");
+        assertAll(
+            () -> assertThat(names).hasSize(2),
+            () -> assertThat(names).containsAll(expected)
+        );
     }
 
     @DisplayName("플레이어의 이름이 하나라도 빈 값이면 예외를 발생시칸다.")

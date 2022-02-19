@@ -1,6 +1,7 @@
 package oilinjection.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,8 +27,13 @@ class RentInfoParserTest {
     @Test
     void 정상_입력2() {
         final String input = "car1:200,car2:300";
-        final List<RentInfo> rents = Arrays.asList(new RentInfo("car1", 200), new RentInfo("car2", 300));
-        assertThat(RentInfoParser.parse(input)).isEqualTo(rents);
+        final List<RentInfo> expected = Arrays.asList(new RentInfo("car1", 200), new RentInfo("car2", 300));
+
+        final List<RentInfo> actual = RentInfoParser.parse(input);
+        assertAll(
+            () -> assertThat(actual).hasSize(2),
+            () -> assertThat(actual).containsAll(expected)
+        );
     }
 
     @DisplayName("입력이 빈 값이면 예외가 발생한다.")
