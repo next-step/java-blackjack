@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public abstract class Participant {
 
+    private static final int SCORE_CRITERIA = 21;
+
     protected final String name;
     protected final Cards cards;
     protected int winScore;
@@ -20,8 +22,9 @@ public abstract class Participant {
         this(name, new Cards(new ArrayList<>()), 0, 0);
     }
 
-    public final void judgeScore(int maxScore) {
-        if(sumCardScore() == maxScore){
+    public final void judgeScore(int crieriaScore) {
+        int userScore = sumCardScore() - SCORE_CRITERIA;
+        if (userScore == crieriaScore) {
             winScore++;
             return;
         }

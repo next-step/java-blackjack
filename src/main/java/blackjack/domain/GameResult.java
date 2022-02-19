@@ -6,11 +6,13 @@ import java.util.List;
 
 public class GameResult {
 
+    private static final int SCORE_CRITERIA = 21;
+
     private final List<Participant> participants;
 
     private GameResult(List<Participant> participants) {
-        calculateGameResult(participants);
         this.participants = new ArrayList<>(participants);
+        calculateGameResult(this.participants);
     }
 
     public static GameResult of(Dealer dealer, Players players) {
@@ -21,16 +23,17 @@ public class GameResult {
     }
 
     private void calculateGameResult(List<Participant> participants) {
-        int maxScore = calculateMaxScore(participants);
+        int criteria = calculateCriteria(participants);
         for(Participant participant: participants){
-            participant.judgeScore(maxScore);
+            participant.judgeScore(criteria);
         }
     }
 
-    private int calculateMaxScore(List<Participant> participants){
+    private int calculateCriteria(List<Participant> participants){
         return participants.stream()
             .mapToInt(Participant::sumCardScore)
-            .max()
+            .map(score-> Math.abs(score - SCORE_CRITERIA))
+            .min()
             .orElseThrow(() -> {
                 throw new IllegalStateException("최대값을 구할 수 없습니다.");
             });
