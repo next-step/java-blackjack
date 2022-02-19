@@ -30,11 +30,11 @@ public class Dealer {
         return cardDeck.pickOneCard();
     }
 
-    public DealerCards getDealerCards() {
-        return dealerCards;
-    }
-
     public Card getOpenedCard() {
         return dealerCards.getCardByIndex(FIRST_INDEX);
+    }
+
+    public DealerCards getDealerCards() {
+        return dealerCards;
     }
 }

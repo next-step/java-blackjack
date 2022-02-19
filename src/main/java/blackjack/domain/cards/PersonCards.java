@@ -26,6 +26,8 @@ public abstract class PersonCards implements Cards {
         return sum;
     }
 
+    abstract boolean canReceiveMoreCard();
+
     private void updateSumByDenomination(Denomination denomination) {
         if (canAddBiggerValueByAce(denomination)) {
             sum += 11;
@@ -46,8 +48,6 @@ public abstract class PersonCards implements Cards {
     private void initSum() {
         this.cards.forEach(card -> updateSumByDenomination(card.getDenomination()));
     }
-
-    abstract boolean canReceiveMoreCard();
 
     public List<Card> getCards() {
         return new ArrayList<>(cards);

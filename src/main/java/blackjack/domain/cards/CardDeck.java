@@ -19,6 +19,14 @@ public class CardDeck {
         cards = createCardDeck();
     }
 
+    public Card pickOneCard() {
+        validateEmptyCardDeck();
+        Collections.shuffle(cards);
+        Card pickedCard = cards.get(FIRST_INDEX);
+        cards.remove(FIRST_INDEX);
+        return pickedCard;
+    }
+
     public List<Card> createCardDeck() {
         List<Card> cards = new ArrayList<>();
         for (Shape shape : Shape.values()) {
@@ -31,14 +39,6 @@ public class CardDeck {
         return Arrays.stream(Denomination.values())
             .map(denomination -> new Card(shape, denomination))
             .collect(Collectors.toList());
-    }
-
-    public Card pickOneCard() {
-        validateEmptyCardDeck();
-        Collections.shuffle(cards);
-        Card pickedCard = cards.get(FIRST_INDEX);
-        cards.remove(FIRST_INDEX);
-        return pickedCard;
     }
 
     private void validateEmptyCardDeck() {
