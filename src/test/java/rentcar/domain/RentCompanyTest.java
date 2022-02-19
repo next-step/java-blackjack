@@ -16,7 +16,7 @@ class RentCompanyTest {
         cars.add(new K5(260));
         cars.add(new Sonata(150));
 
-        RentCompany rentCompany = new RentCompany(cars);
+        RentCompany rentCompany = new RentCompany();
 
         Map<String, Double> chargeQuantityByName = rentCompany.generateChargeQuantityByName();
 
