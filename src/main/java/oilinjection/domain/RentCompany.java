@@ -11,6 +11,7 @@ public class RentCompany {
 
     private static final String QUANTITY_OVER_EXCEPTION_MESSAGE_FORMAT = "[ERROR] %s의 예약 가능한 차량이 없습니다.";
     private static final String REPORT_FORMAT = "%s : %.0f리터%n";
+    private static final String NO_TYPE_EXCEPTION_MESSAGE_FORMAT = "[ERROR] %s 자동차는 회사에 존재하지 않습니다.";
 
     private final List<Car> rents;
 
@@ -46,7 +47,11 @@ public class RentCompany {
     }
 
     private RentCar findRentCar(final String type) {
-        return RentCar.valueOf(type.toUpperCase());
+        try {
+            return RentCar.valueOf(type.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(String.format(NO_TYPE_EXCEPTION_MESSAGE_FORMAT, type));
+        }
     }
 
     public String createReport() {

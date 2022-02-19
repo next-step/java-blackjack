@@ -26,6 +26,18 @@ class RentCompanyTest {
         assertDoesNotThrow(() -> rentCompany.acceptReservation(reservation));
     }
 
+    @DisplayName("렌트카 회사에서 갖고 있지 않은 자동차 종류에 관한 예약이 들어올 경우 예외 처리한다. ")
+    @Test
+    void givenWrongTypeOfCar_whenReservation_thenException() {
+        final List<RentInfo> reservation = Arrays.asList(
+            new RentInfo("avante", 200D),
+            new RentInfo("K6", 100D));
+
+        final RentCompany rentCompany = new RentCompany();
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> rentCompany.acceptReservation(reservation));
+    }
+
     @DisplayName("소유하고 있는 렌트카보다 많은 수를 예약하면 예외를 발생시킨다.")
     @Test
     void 소유한_렌트카_수보다_많은_예약() {
