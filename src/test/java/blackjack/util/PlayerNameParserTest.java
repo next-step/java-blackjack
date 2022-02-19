@@ -10,12 +10,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class ParserTest {
+class PlayerNameParserTest {
 
     @DisplayName("플레이어의 이름을 정상적으로 반환한다.")
     @Test
     void Given유효한값_When파싱_Then이름_반환() {
-        final List<String> names = Parser.parse(" json, pobi ");
+        final List<String> names = PlayerNameParser.parse(" json, pobi ");
         assertThat(names).isEqualTo(Arrays.asList("json","pobi"));
     }
 
@@ -24,6 +24,6 @@ class ParserTest {
     @ParameterizedTest
     void Given빈_값_When파싱_Then예외_발생(String input) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> Parser.parse(input));
+            .isThrownBy(() -> PlayerNameParser.parse(input));
     }
 }

@@ -5,7 +5,7 @@ import blackjack.domain.card.Deck;
 import blackjack.domain.participant.Dealer;
 import blackjack.domain.participant.Participant;
 import blackjack.domain.participant.Player;
-import blackjack.util.Parser;
+import blackjack.util.PlayerNameParser;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 import java.util.Collections;
@@ -18,7 +18,7 @@ public class BlackJackApplication {
     public static void main(String[] args) {
         final Deck deck = new Deck();
 
-        final List<String> playerNames = Parser.parse(InputView.inputPlayerNames());
+        final List<String> playerNames = PlayerNameParser.parse(InputView.inputPlayerNames());
         final Participant dealer = new Dealer(deck.dealCards());
         final List<Participant> players = playerNames.stream()
             .map(name -> new Player(name, deck.dealCards()))
