@@ -1,13 +1,13 @@
 package blackjack.controller;
 
+import blackjack.domain.cards.DealerCards;
+import blackjack.domain.cards.PlayerCards;
 import blackjack.domain.game.GameResult;
 import blackjack.domain.person.Dealer;
 import blackjack.domain.person.Player;
 import blackjack.view.InputView;
 import blackjack.view.ResultView;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class BlackJackGame {
 
@@ -27,8 +27,9 @@ public class BlackJackGame {
     }
 
     private void giveDealerCard() {
-        if (dealer.canGetCard()) {
-            dealer.addCard(dealer.getPickedCard());
+        final DealerCards dealerCards = dealer.getDealerCards();
+        if (dealerCards.canReceiveMoreCard()) {
+            dealerCards.addCard(dealer.getPickedCard());
             ResultView.printDealerReceiveCard();
         }
     }
@@ -40,30 +41,14 @@ public class BlackJackGame {
     }
 
     private void askPlayer(Player player) {
-        while (player.canHit() && InputView.isHit(player)) {
-            player.addCard(dealer.getPickedCard());
+        final PlayerCards playerCards = player.getPlayerCards();
+        while (playerCards.canReceiveMoreCard() && InputView.isHit(player)) {
+            playerCards.addCard(dealer.getPickedCard());
         }
     }
 
     private void printGameResult() {
-        ResultView.printDealerAndPlayerCardResult(dealer, players);
-        ResultView.printGameResult(getGameResult());
-    }
-
-    private GameResult getGameResult() {
-        Map<String, String> playerResult = new HashMap<>();
-        int dealerWin = 0;
-        int dealerSum = dealer.getSumOfCards();
-
-        for (Player player : players) {
-            if (player.getSumOfCards() < dealerSum) {
-                dealerWin++;
-                playerResult.put(player.getName(), "패");
-                continue;
-            }
-            playerResult.put(player.getName(), "승");
-        }
-
-        return new GameResult(playerResult, dealerWin, players.size() - dealerWin);
+        ResultView.printDealerAndPlayerCardResult(dealer.getDealerCards(), players);
+        ResultView.printGameResult(new GameResult(dealer.getDealerCards().getSumOfCards(), players));
     }
 }
