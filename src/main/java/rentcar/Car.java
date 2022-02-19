@@ -3,11 +3,9 @@ package rentcar;
 public abstract class Car implements MotorVehicle {
 
     protected final double distance;
-    protected final String name;
 
-    public Car(double distance, String name) {
+    public Car(double distance) {
         this.distance = distance;
-        this.name = name;
     }
 
     @Override
@@ -19,7 +17,5 @@ public abstract class Car implements MotorVehicle {
         return distance;
     }
 
-    public String getName() {
-        return name;
-    }
+    public abstract String getName();
 }

@@ -5,7 +5,12 @@ public class Avante extends Car {
     private static final int DISTANCE_PER_LITER = 15;
 
     public Avante(double distance) {
-        super(distance, "Avante");
+        super(distance);
+    }
+
+    @Override
+    public String getName() {
+        return "Avante";
     }
 
     @Override
