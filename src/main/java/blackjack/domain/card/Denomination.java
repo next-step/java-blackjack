@@ -24,10 +24,6 @@ public enum Denomination {
         this.value = value;
     }
 
-    public String getSign() {
-        return sign;
-    }
-
     public int getValue() {
         return value;
     }
