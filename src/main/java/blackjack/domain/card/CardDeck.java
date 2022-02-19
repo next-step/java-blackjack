@@ -31,10 +31,17 @@ public class CardDeck {
     }
 
     public Card pickOneCard() {
+        validateEmptyCardDeck();
         Collections.shuffle(cards);
         Card pickedCard = cards.get(FIRST_INDEX);
         cards.remove(FIRST_INDEX);
         return pickedCard;
+    }
+
+    private void validateEmptyCardDeck() {
+        if(cards.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 카드를 모두 사용해 카드를 뽑을 수 없습니다.");
+        }
     }
 
     public List<Card> getCards() {
