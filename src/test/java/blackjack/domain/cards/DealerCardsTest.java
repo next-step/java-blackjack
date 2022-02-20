@@ -1,7 +1,6 @@
 package blackjack.domain.cards;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import blackjack.domain.card.Card;
 import blackjack.domain.card.Denomination;
@@ -24,7 +23,7 @@ class DealerCardsTest {
     }
 
     @Test
-    void 숫자합이_10_초과일_때_ACE는_1점으로_sum에_업데이트된다() {
+    void 카드들의_숫자합이_10_초과일_때_ACE는_1점으로_sum에_업데이트된다() {
         DealerCards dealerCards = new DealerCards(Arrays.asList(
             new Card(Shape.HEART, Denomination.KING),
             new Card(Shape.HEART, Denomination.KING)
@@ -36,7 +35,7 @@ class DealerCardsTest {
     }
 
     @Test
-    void 숫자합이_10_이하일_때_ACE는_11점으로_sum에_업데이트된다() {
+    void 카드들의_숫자합이_10_이하일_때_ACE는_11점으로_sum에_업데이트된다() {
         DealerCards dealerCards = new DealerCards(Arrays.asList(
             new Card(Shape.HEART, Denomination.TWO),
             new Card(Shape.HEART, Denomination.THREE)
@@ -45,5 +44,15 @@ class DealerCardsTest {
         dealerCards.addCard(new Card(Shape.HEART, Denomination.ACE));
 
         assertThat(dealerCards.getSumOfCards()).isEqualTo(16);
+    }
+
+    @Test
+    void 카드들의_숫자합이_16을_초과하면_카드를_더_받을_수_없다() {
+        DealerCards dealerCards = new DealerCards(Arrays.asList(
+            new Card(Shape.HEART, Denomination.KING),
+            new Card(Shape.HEART, Denomination.ACE)
+        ));
+
+        assertThat(dealerCards.canReceiveMoreCard()).isFalse();
     }
 }
