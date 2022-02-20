@@ -15,7 +15,7 @@ public class CardPack {
         this.cardPack = create();
     }
 
-    public List<Card> create() {
+    private List<Card> create() {
         final List<Card> cards = new ArrayList<>();
         for (final CardSymbol symbol : CardSymbol.values()) {
             Arrays.stream(CardType.values())
