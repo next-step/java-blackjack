@@ -45,7 +45,6 @@ public class BlackJackGame {
 
     private void dealerGameProcess(final GamePlayer dealer) {
         while (dealer.isLowerThanBound()) {
-            OutputView.printDealerAcceptCard();
             dealer.receiveCard(cardPack.pick());
         }
     }

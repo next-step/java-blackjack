@@ -2,6 +2,7 @@ package blackjack.controller;
 
 import blackjack.domain.BlackJackGame;
 import blackjack.domain.card.CardPack;
+import blackjack.domain.gameplayer.GamePlayer;
 import blackjack.domain.gameplayer.GamePlayers;
 import blackjack.domain.gameplayer.Name;
 import blackjack.domain.gameplayer.Names;
@@ -12,6 +13,8 @@ import java.util.stream.Collectors;
 
 public class GameController {
 
+    private static final int initialCardSize = 2;
+
     public void start() {
         final CardPack cardPack = new CardPack();
         final BlackJackGame dealer = new BlackJackGame(cardPack);
@@ -21,6 +24,8 @@ public class GameController {
         printInitialStatus(gamePlayers);
 
         dealer.playGame(gamePlayers);
+//        printPlayerMessage(gamePlayers);
+        printDealerMessage(gamePlayers);
         printFinalStatus(gamePlayers);
     }
 
@@ -50,6 +55,19 @@ public class GameController {
 
     private void printCardAllStatus(GamePlayers gamePlayers) {
         OutputView.printCardAllStatus(gamePlayers);
+    }
+
+    private void printDealerMessage(GamePlayers gamePlayers) {
+        GamePlayer dealer = gamePlayers.getDealer();
+        int dealerReceiveCount = dealer.getCards().size() - initialCardSize;
+        OutputView.printDealerAcceptCard(dealerReceiveCount);
+    }
+
+    private void printPlayerMessage(GamePlayers gamePlayers) {
+        List<GamePlayer> players = gamePlayers.getPlayers();
+        for (GamePlayer player : players) {
+//            OutputView.printCardStatus(player);
+        }
     }
 
     private void printFinalStatus(GamePlayers gamePlayers) {
