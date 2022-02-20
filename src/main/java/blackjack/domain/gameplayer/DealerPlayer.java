@@ -34,7 +34,6 @@ public class DealerPlayer extends GamePlayer {
 
     private int findWinnerCount(int dealerScore, List<GamePlayer> players) {
         return (int) players.stream()
-            .filter(player -> player.getName() != DEALER)
             .filter(player -> player.isContinue() && player.getScore() < dealerScore)
             .count();
     }
