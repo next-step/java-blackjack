@@ -3,8 +3,6 @@ package blackjack.domain.person;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import blackjack.domain.card.Card;
-import blackjack.domain.card.Denomination;
-import blackjack.domain.card.Shape;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,17 +16,17 @@ class DealerTest {
     }
 
     @Test
-    void 딜러가_생성되면_카드를_두장_가지고_있어야_한다() {
+    void 딜러는_초기화를_위해_두장의_카드를_반환한다() {
         //when then
-        assertThat(dealer.getCards()).hasSize(2);
+        assertThat(dealer.getInitialPickedCards()).hasSize(2);
     }
 
     @Test
-    void 딜러는_받은_카드_1장을_목록에_추가해야_한다() {
+    void 딜러는_오픈용_카드를_반환한다() {
         //given
-        dealer.addCard(new Card(Shape.HEART, Denomination.NINE));
+        Card actual = dealer.getDealerCards().getCards().get(0);
 
         //when then
-        assertThat(dealer.getCards()).hasSize(3);
+        assertThat(dealer.getOpenedCard()).isEqualTo(actual);
     }
 }
