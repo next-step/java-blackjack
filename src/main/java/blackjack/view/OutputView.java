@@ -59,9 +59,22 @@ public class OutputView {
 
     public static void printGameResult(GamePlayers gamePlayers) {
         System.out.println(RESULT_HEADER_LOG);
-        List<GamePlayer> players = gamePlayers.getAllPlayers();
+
+        dealerPlayerResult(gamePlayers);
+        generalPlayerResult(gamePlayers);
+    }
+
+    private static void dealerPlayerResult(GamePlayers gamePlayers) {
+        GamePlayer dealer = gamePlayers.getDealer();
+        List<GamePlayer> players = gamePlayers.getPlayers();
+        System.out.println(String.format(RESULT_GAME_LOG, dealer.getName(), dealer.getGameResult(players)));
+    }
+
+    private static void generalPlayerResult(GamePlayers gamePlayers) {
+        List<GamePlayer> players = gamePlayers.getPlayers();
+        List<GamePlayer> AllPlayer = gamePlayers.getAllPlayers();
         for (GamePlayer player : players) {
-            System.out.println(String.format(RESULT_GAME_LOG, player.getName(), player.getGameResult(gamePlayers)));
+            System.out.println(String.format(RESULT_GAME_LOG, player.getName(), player.getGameResult(AllPlayer)));
         }
     }
 }
