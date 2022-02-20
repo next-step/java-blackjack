@@ -54,8 +54,9 @@ public class Cards {
         int aceCount = getAceCount();
         int totalPoint = sum;
 
-        while (aceCount-- > 0 && totalPoint > BLACK_JACK) {
+        while (aceCount > 0 && totalPoint > BLACK_JACK) {
             totalPoint = totalPoint - higherAcePoint + lowerAcePoint;
+            aceCount--;
         }
         return totalPoint;
     }
