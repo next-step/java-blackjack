@@ -56,4 +56,22 @@ public class RentCarTest {
         final Car sonata = RentCar.rent(name, 200D);
         assertThat(sonata).isEqualTo(new Sonata(200D));
     }
+
+    @DisplayName("갖고 있는 자동차의 개수 내의 범위라면, 예약할 수 있음을 의미하는 거짓을 반환한다.")
+    @Test
+    void givenUnderCount_whenImpossibleReservation_thenFalse() {
+        final int underCount = 1;
+        assertThat(RentCar.AVANTE.isImpossibleReservation(underCount)).isFalse();
+        assertThat(RentCar.SONATA.isImpossibleReservation(underCount)).isFalse();
+        assertThat(RentCar.K5.isImpossibleReservation(underCount)).isFalse();
+    }
+
+    @DisplayName("갖고 있는 자동차의 개수를 넘는다면, 예약할 수 없음을 의미하는 참을 반환한다.")
+    @Test
+    void givenOverCount_whenImpossibleReservation_thenTrue() {
+        final int overCount = 3;
+        assertThat(RentCar.AVANTE.isImpossibleReservation(overCount)).isTrue();
+        assertThat(RentCar.SONATA.isImpossibleReservation(overCount)).isTrue();
+        assertThat(RentCar.K5.isImpossibleReservation(overCount)).isTrue();
+    }
 }
