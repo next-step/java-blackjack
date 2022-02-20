@@ -40,12 +40,28 @@ public class GameController {
     }
 
     private void printInitialStatus(GamePlayers gamePlayers) {
+        printInitialMessage(gamePlayers);
+        printCardAllStatus(gamePlayers);
+    }
+
+    private void printInitialMessage(GamePlayers gamePlayers) {
         OutputView.printInitialMessage(gamePlayers);
+    }
+
+    private void printCardAllStatus(GamePlayers gamePlayers) {
         OutputView.printCardAllStatus(gamePlayers);
     }
 
     private void printFinalStatus(GamePlayers gamePlayers) {
+        printCardResult(gamePlayers);
+        printGameResult(gamePlayers);
+    }
+
+    private void printCardResult(GamePlayers gamePlayers) {
         OutputView.printCardResult(gamePlayers);
+    }
+
+    private void printGameResult(GamePlayers gamePlayers) {
         OutputView.printGameResult(gamePlayers);
     }
 }
