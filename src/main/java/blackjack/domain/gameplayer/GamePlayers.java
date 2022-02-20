@@ -21,7 +21,7 @@ public class GamePlayers {
             .map(Player::new)
             .collect(Collectors.toList());
 
-        players.add(FRONT, new DealerPlayer());
+        players.add(FRONT, new Dealer());
 
         return new ArrayList<>(players);
     }

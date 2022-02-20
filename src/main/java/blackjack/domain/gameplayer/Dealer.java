@@ -2,17 +2,17 @@ package blackjack.domain.gameplayer;
 
 import java.util.List;
 
-public class DealerPlayer extends GamePlayer {
+public class Dealer extends GamePlayer {
 
     private static final String DEALER = "딜러";
     private static final int DEALER_BOUND = 16;
     private static final String DealerResult = "%d승 %d패";
 
-    public DealerPlayer() {
+    public Dealer() {
         this(new Name(DEALER));
     }
 
-    public DealerPlayer(final Name name) {
+    public Dealer(final Name name) {
         super(name);
     }
 
