@@ -6,8 +6,7 @@ public class DealerPlayer extends GamePlayer {
 
     private static final String DEALER = "딜러";
     private static final int DEALER_BOUND = 16;
-    private static final String WIN = "승";
-    private static final String LOSE = "패";
+    private static final String DealerResult = "%d승 %d패";
 
     public DealerPlayer() {
         this(new Name(DEALER));
@@ -23,31 +22,20 @@ public class DealerPlayer extends GamePlayer {
     }
 
     @Override
-    public String getGameResult(GamePlayers gamePlayers) {
-        List<GamePlayer> players = gamePlayers.getPlayers();
+    public String getGameResult(List<GamePlayer> players) {
         int winCount = 0;
-        int loseCount = 0;
-
-        for (GamePlayer gamePlayer : players) {
-            if (isContinue() && this.getScore() > gamePlayer.getScore()) {
-                winCount++;
-                continue;
-            }
-            loseCount++;
+        if (isContinue()) {
+            winCount = findWinnerCount(getScore(), players);
         }
-        return getGameResultWord(winCount, loseCount);
+        int loseCount = players.size() - winCount;
+
+        return String.format(DealerResult, winCount, loseCount);
     }
 
-    private String getGameResultWord(final int winCount, final int loseCount) {
-        final StringBuilder resultWord = new StringBuilder();
-        if (winCount > 0) {
-            resultWord.append(winCount).append(WIN);
-        }
-
-        if (loseCount > 0) {
-            resultWord.append(loseCount).append(LOSE);
-        }
-
-        return resultWord.toString();
+    private int findWinnerCount(int dealerScore, List<GamePlayer> players) {
+        return (int) players.stream()
+            .filter(player -> player.getName() != DEALER)
+            .filter(player -> player.isContinue() && player.getScore() < dealerScore)
+            .count();
     }
 }
