@@ -32,4 +32,17 @@ class BlackJackGameTest {
             assertThat(cards.size()).isEqualTo(2);
         }
     }
+
+    @Test
+    public void 카드분배후_남아있는_카드의_개수는_그만큼_차감된다() {
+        //given
+        GamePlayers gamePlayers = new GamePlayers(new Names(Arrays.asList(new Name("pobi"), new Name("jason"))));
+        BlackJackGame dealer = new BlackJackGame(cardPack);
+
+        //when
+        dealer.initializeGame(gamePlayers);
+
+        //then
+        assertThat(cardPack.getCardPack().size()).isEqualTo(46);
+    }
 }
