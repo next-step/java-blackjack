@@ -7,13 +7,15 @@ import java.util.List;
 
 public class CardPack {
 
+    private static final int FRONT = 0;
+
     private final List<Card> cardPack;
 
     private CardPack(List<Card> cardPack) {
         this.cardPack = cardPack;
     }
 
-    public static CardPack createWithShuffling() {
+    public static CardPack create() {
         final List<Card> cards = new ArrayList<>();
         for (final CardSymbol symbol : CardSymbol.values()) {
             Arrays.stream(CardType.values())
@@ -28,6 +30,6 @@ public class CardPack {
     }
 
     public Card pick() {
-        return cardPack.remove(0);
+        return cardPack.remove(FRONT);
     }
 }

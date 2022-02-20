@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class GameController {
 
     public void start() {
-        final CardPack cardPack = CardPack.createWithShuffling();
+        final CardPack cardPack = CardPack.create();
         final Dealer dealer = new Dealer(cardPack);
         final GamePlayers gamePlayers = GamePlayers.makePlayers(getConsoleNames());
 
