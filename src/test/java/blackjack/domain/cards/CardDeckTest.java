@@ -1,9 +1,9 @@
-package blackjack.domain.card;
+package blackjack.domain.cards;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import blackjack.domain.cards.CardDeck;
+import blackjack.domain.card.Card;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
