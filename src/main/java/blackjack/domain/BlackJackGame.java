@@ -49,4 +49,8 @@ public class BlackJackGame {
             dealer.receiveCard(cardPack.pick());
         }
     }
+
+    public CardPack getCardPack() {
+        return this.cardPack;
+    }
 }
