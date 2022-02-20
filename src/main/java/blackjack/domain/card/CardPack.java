@@ -9,7 +9,7 @@ public class CardPack {
 
     private final List<Card> cardPack;
 
-    public CardPack(List<Card> cardPack) {
+    private CardPack(List<Card> cardPack) {
         this.cardPack = cardPack;
     }
 
