@@ -25,14 +25,14 @@ public class DealerPlayer extends GamePlayer {
     public String getGameResult(List<GamePlayer> players) {
         int winCount = 0;
         if (isContinue()) {
-            winCount = findWinnerCount(getScore(), players);
+            winCount = findWinCount(getScore(), players);
         }
         int loseCount = players.size() - winCount;
 
         return String.format(DealerResult, winCount, loseCount);
     }
 
-    private int findWinnerCount(int dealerScore, List<GamePlayer> players) {
+    private int findWinCount(int dealerScore, List<GamePlayer> players) {
         return (int) players.stream()
             .filter(player -> player.isContinue() && player.getScore() < dealerScore)
             .count();
