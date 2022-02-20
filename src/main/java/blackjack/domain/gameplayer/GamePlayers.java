@@ -7,6 +7,9 @@ import java.util.stream.Collectors;
 
 public class GamePlayers {
 
+    private static final String DEALER = "딜러";
+    private static final int FRONT = 0;
+
     private final List<GamePlayer> players;
 
     public GamePlayers(final List<GamePlayer> players) {
@@ -18,17 +21,22 @@ public class GamePlayers {
             .map(Player::new)
             .collect(Collectors.toList());
 
-        players.add(0, new DealerPlayer(new Name("딜러")));
+        players.add(FRONT, new DealerPlayer());
 
         return new GamePlayers(new ArrayList<>(players));
     }
 
     public GamePlayer getDealer() {
-        return players.get(0);
+        return players.stream()
+            .filter(player -> player.getName().equals(DEALER))
+            .findAny()
+            .orElseThrow(NullPointerException::new);
     }
 
     public List<GamePlayer> getPlayers() {
-        return Collections.unmodifiableList(players.subList(1, players.size()));
+        return players.stream()
+            .filter(player -> player != getDealer())
+            .collect(Collectors.toList());
     }
 
     public List<GamePlayer> getAllPlayers() {
