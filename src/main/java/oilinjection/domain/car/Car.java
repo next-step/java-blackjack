@@ -14,12 +14,8 @@ public abstract class Car {
 
     public abstract String getType();
 
-    double getTripDistance() {
-        return this.tripDistance;
-    }
-
     public double getChargeQuantity() {
-        return Math.ceil(getTripDistance() / getDistancePerLiter());
+        return Math.ceil(tripDistance / getDistancePerLiter());
     }
 
     @Override
