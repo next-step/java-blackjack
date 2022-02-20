@@ -12,14 +12,14 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-class DealerTest {
+class BlackJackGameTest {
 
-    CardPack cardPack = CardPack.create();
+    CardPack cardPack = new CardPack();
 
     @Test
     public void 게임초기_딜러는_플레이어들에게_카드를_2장씩_배분한다() {
         //given
-        GamePlayers gamePlayers = GamePlayers.makePlayers(new Names(Arrays.asList(new Name("pobi"), new Name("jason"))));
+        GamePlayers gamePlayers = new GamePlayers(new Names(Arrays.asList(new Name("pobi"), new Name("jason"))));
         BlackJackGame dealer = new BlackJackGame(cardPack);
 
         //when

@@ -14,8 +14,7 @@ class DealerPlayerTest {
     @Test
     public void 딜러는_카드의합이_16이하면_카드를_받을수있는_조건이_된다() {
         //given
-        GamePlayers gamePlayers = GamePlayers.makePlayers(new Names(
-            Arrays.asList(new Name("pobi"), new Name("jason"))));
+        GamePlayers gamePlayers = new GamePlayers(new Names(Arrays.asList(new Name("pobi"), new Name("jason"))));
         GamePlayer dealer = gamePlayers.getDealer();
 
         //when
@@ -28,8 +27,7 @@ class DealerPlayerTest {
     @Test
     public void 딜러는_카드의합이_16초과면_카드를_받을수없다() {
         //given
-        GamePlayers gamePlayers = GamePlayers.makePlayers(new Names(
-            Arrays.asList(new Name("pobi"), new Name("jason"))));
+        GamePlayers gamePlayers = new GamePlayers(new Names(Arrays.asList(new Name("pobi"), new Name("jason"))));
         GamePlayer dealer = gamePlayers.getDealer();
 
         //when
@@ -43,8 +41,7 @@ class DealerPlayerTest {
     @Test
     public void 딜러플레이어의_최종승패는_올바르게_계산된다_2승을출력() {
         //given
-        GamePlayers gamePlayers = GamePlayers.makePlayers(new Names(
-            Arrays.asList(new Name("pobi"), new Name("jason"))));
+        GamePlayers gamePlayers = new GamePlayers(new Names(Arrays.asList(new Name("pobi"), new Name("jason"))));
         List<GamePlayer> players = gamePlayers.getPlayers();
         GamePlayer dealer = gamePlayers.getDealer();
         dealer.receiveCard(new Card(CardSymbol.DIAMOND, CardType.ACE));
@@ -52,17 +49,16 @@ class DealerPlayerTest {
         players.get(1).receiveCard(new Card(CardSymbol.CLOVER, CardType.FOUR));
 
         //when
-        String dealerResult = dealer.getGameResult(gamePlayers);
+        String dealerResult = dealer.getGameResult(gamePlayers.getPlayers());
 
         //then
-        assertThat(dealerResult).isEqualTo("2승");
+        assertThat(dealerResult).isEqualTo("2승 0패");
     }
 
     @Test
     public void 딜러플레이어의_최종승패는_올바르게_계산된다_1승1패를출력() {
         //given
-        GamePlayers gamePlayers = GamePlayers.makePlayers(new Names(
-            Arrays.asList(new Name("pobi"), new Name("jason"))));
+        GamePlayers gamePlayers = new GamePlayers(new Names(Arrays.asList(new Name("pobi"), new Name("jason"))));
         List<GamePlayer> players = gamePlayers.getPlayers();
         GamePlayer dealer = gamePlayers.getDealer();
         dealer.receiveCard(new Card(CardSymbol.DIAMOND, CardType.SIX));
@@ -70,9 +66,9 @@ class DealerPlayerTest {
         players.get(1).receiveCard(new Card(CardSymbol.CLOVER, CardType.FOUR));
 
         //when
-        String dealerResult = dealer.getGameResult(gamePlayers);
+        String dealerResult = dealer.getGameResult(gamePlayers.getPlayers());
 
         //then
-        assertThat(dealerResult).isEqualTo("1승1패");
+        assertThat(dealerResult).isEqualTo("1승 1패");
     }
 }

@@ -15,7 +15,7 @@ class GamePlayersTest {
         List<String> names = Arrays.asList("pobi", "jason");
 
         //when
-        GamePlayers gamePlayers = GamePlayers.makePlayers(new Names(Arrays.asList(new Name("pobi"), new Name("jason"))));
+        GamePlayers gamePlayers = new GamePlayers(new Names(Arrays.asList(new Name("pobi"), new Name("jason"))));
         List<String> players = gamePlayers.getPlayers().stream()
             .map(GamePlayer::getName)
             .collect(Collectors.toList());
