@@ -37,5 +37,5 @@ public abstract class GamePlayer {
 
     public abstract boolean isLowerThanBound();
 
-    public abstract String getGameResult(final GamePlayers gamePlayers);
+    public abstract String getGameResult(final List<GamePlayer> gamePlayers);
 }
