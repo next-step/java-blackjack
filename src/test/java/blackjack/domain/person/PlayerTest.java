@@ -19,20 +19,21 @@ class PlayerTest {
         ));
 
         //then
-        assertThat(player.getCards()).hasSize(2);
+        assertThat(player.getPlayerCards().getCards()).hasSize(2);
     }
 
     @Test
-    void 플레이어는_받은_카드_1장을_목록에_추가해야_한다() {
+    void ACE는_1과_11점_두가지_모두_가능하다() {
         //given
         Player player = new Player("kim", Arrays.asList(
             new Card(Shape.SPADE, Denomination.KING),
-            new Card(Shape.SPADE, Denomination.KING)
+            new Card(Shape.SPADE, Denomination.ACE)
         ));
-        player.addCard(new Card(Shape.HEART, Denomination.KING));
 
-        //when then
-        assertThat(player.getCards()).hasSize(3);
+        //when
+        int actual = player.getPlayerCards().getSumOfCards();
+
+        //then
+        assertThat(actual).isEqualTo(21);
     }
-
 }
