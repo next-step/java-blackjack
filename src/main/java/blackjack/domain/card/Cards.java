@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Cards {
 
@@ -15,11 +16,14 @@ public class Cards {
 
     public Cards() {
         this(Arrays.stream(Pattern.values())
-            .flatMap(pattern ->
-                Arrays.stream(Rank.values())
-                    .map(rank -> new Card(pattern, rank))
-                    .collect(Collectors.toList()).stream())
+            .flatMap(Cards::makeCardsByPattern)
             .collect(Collectors.toList()));
+    }
+
+    private static Stream<Card> makeCardsByPattern(Pattern pattern) {
+        return Arrays.stream(Rank.values())
+            .map(rank -> new Card(pattern, rank))
+            .collect(Collectors.toList()).stream();
     }
 
     private Cards(final List<Card> cards) {
