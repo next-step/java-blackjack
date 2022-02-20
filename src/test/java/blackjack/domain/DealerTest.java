@@ -20,7 +20,7 @@ class DealerTest {
     public void 게임초기_딜러는_플레이어들에게_카드를_2장씩_배분한다() {
         //given
         GamePlayers gamePlayers = GamePlayers.makePlayers(new Names(Arrays.asList(new Name("pobi"), new Name("jason"))));
-        Dealer dealer = new Dealer(cardPack);
+        BlackJackGame dealer = new BlackJackGame(cardPack);
 
         //when
         dealer.initializeGame(gamePlayers);

@@ -1,6 +1,6 @@
 package blackjack.controller;
 
-import blackjack.domain.Dealer;
+import blackjack.domain.BlackJackGame;
 import blackjack.domain.card.CardPack;
 import blackjack.domain.gameplayer.GamePlayers;
 import blackjack.domain.gameplayer.Name;
@@ -14,7 +14,7 @@ public class GameController {
 
     public void start() {
         final CardPack cardPack = CardPack.create();
-        final Dealer dealer = new Dealer(cardPack);
+        final BlackJackGame dealer = new BlackJackGame(cardPack);
         final GamePlayers gamePlayers = GamePlayers.makePlayers(getConsoleNames());
 
         dealer.initializeGame(gamePlayers);

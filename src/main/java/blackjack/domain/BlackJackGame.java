@@ -7,11 +7,11 @@ import blackjack.view.InputView;
 import blackjack.view.OutputView;
 import java.util.List;
 
-public class Dealer {
+public class BlackJackGame {
 
     private final CardPack cardPack;
 
-    public Dealer(final CardPack cardPack) {
+    public BlackJackGame(final CardPack cardPack) {
         this.cardPack = cardPack;
     }
 
