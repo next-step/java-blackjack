@@ -5,12 +5,15 @@ import java.util.List;
 
 public class RentCompany {
 
+    private final Report report = new Report();
     private final List<Car> cars;
-    private final Report report;
 
     public RentCompany() {
-        this.cars = new ArrayList<>();
-        this.report = new Report();
+        this(new ArrayList<>());
+    }
+
+    public RentCompany(final List<Car> cars) {
+        this.cars = cars;
     }
 
     public void receive(final int distance) {

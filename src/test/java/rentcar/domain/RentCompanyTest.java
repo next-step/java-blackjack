@@ -2,7 +2,6 @@ package rentcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -16,12 +15,12 @@ class RentCompanyTest {
         cars.add(new K5(260));
         cars.add(new Sonata(150));
 
-        RentCompany rentCompany = new RentCompany();
+        RentCompany rentCompany = new RentCompany(cars);
 
-        Map<String, Double> chargeQuantityByName = rentCompany.generateChargeQuantityByName();
+        Report report = rentCompany.generateChargeQuantityByName();
 
-        Assertions.assertThat(chargeQuantityByName.get("Avante")).isEqualTo(20);
-        Assertions.assertThat(chargeQuantityByName.get("K5")).isEqualTo(20);
-        Assertions.assertThat(chargeQuantityByName.get("Sonata")).isEqualTo(15);
+        Assertions.assertThat(report.getReport().get("Avante")).isEqualTo(20);
+        Assertions.assertThat(report.getReport().get("K5")).isEqualTo(20);
+        Assertions.assertThat(report.getReport().get("Sonata")).isEqualTo(15);
     }
 }
