@@ -21,12 +21,9 @@ public class RentCompany {
 
     public void acceptReservation(final List<RentInfo> rentInfos) {
         validateIsPossibleReservation(rentInfos);
-
-        final List<Car> rentCars = rentInfos.stream()
+        rents.addAll(Collections.unmodifiableList(rentInfos.stream()
             .map(this::rent)
-            .collect(Collectors.toList());
-
-        rents.addAll(Collections.unmodifiableList(rentCars));
+            .collect(Collectors.toList())));
     }
 
     private Car rent(RentInfo rentInfo) {
@@ -50,7 +47,8 @@ public class RentCompany {
         try {
             return RentCar.valueOf(type.toUpperCase());
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(String.format(NO_TYPE_EXCEPTION_MESSAGE_FORMAT, type));
+            throw new IllegalArgumentException(
+                String.format(NO_TYPE_EXCEPTION_MESSAGE_FORMAT, type));
         }
     }
 
