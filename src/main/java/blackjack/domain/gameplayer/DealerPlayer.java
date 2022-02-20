@@ -4,9 +4,14 @@ import java.util.List;
 
 public class DealerPlayer extends GamePlayer {
 
+    private static final String DEALER = "딜러";
     private static final int DEALER_BOUND = 16;
     private static final String WIN = "승";
     private static final String LOSE = "패";
+
+    public DealerPlayer() {
+        this(new Name(DEALER));
+    }
 
     public DealerPlayer(final Name name) {
         super(name);
