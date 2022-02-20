@@ -99,7 +99,9 @@ class PlayerTest {
         String jasonResult = players.get(1).getGameResult(gamePlayers);
 
         //then
-        assertThat(pobiResult).isEqualTo("승");
-        assertThat(jasonResult).isEqualTo("패");
+        org.junit.jupiter.api.Assertions.assertAll(
+            () -> assertThat(pobiResult).isEqualTo("승"),
+            () -> assertThat(jasonResult).isEqualTo("패")
+        );
     }
 }
