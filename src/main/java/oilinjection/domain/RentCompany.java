@@ -32,12 +32,12 @@ public class RentCompany {
 
     private void validateIsPossibleReservation(final List<RentInfo> rentInfos) {
         rentInfos.stream()
-            .collect(Collectors.groupingBy(RentInfo::getType, Collectors.summingInt(x -> 1)))
+            .collect(Collectors.groupingBy(RentInfo::getType, Collectors.counting()))
             .forEach(this::validatePerCarType);
     }
 
-    private void validatePerCarType(final String type, final int count) {
-        if (findRentCar(type).isImpossibleReservation(count)) {
+    private void validatePerCarType(final String type, final long count) {
+        if (findRentCar(type).isImpossibleReservation((int)count)) {
             throw new IllegalArgumentException(
                 String.format(QUANTITY_OVER_EXCEPTION_MESSAGE_FORMAT, type));
         }
