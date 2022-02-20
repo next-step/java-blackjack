@@ -4,12 +4,10 @@ import blackjack.domain.BlackJackGame;
 import blackjack.domain.card.CardPack;
 import blackjack.domain.gameplayer.GamePlayer;
 import blackjack.domain.gameplayer.GamePlayers;
-import blackjack.domain.gameplayer.Name;
 import blackjack.domain.gameplayer.Names;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GameController {
 
@@ -31,19 +29,16 @@ public class GameController {
 
     private Names getConsoleNames() {
         try {
-            return convertStringsToNames(InputView.getPlayerName());
+            return convertStringToNames(InputView.getPlayerName());
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             return getConsoleNames();
         }
     }
 
-    private Names convertStringsToNames(List<String> originNames) {
-        return new Names(originNames.stream()
-            .map(Name::new)
-            .collect(Collectors.toList()));
+    private Names convertStringToNames(String names) {
+        return new Names(names);
     }
-
     private void printInitialStatus(GamePlayers gamePlayers) {
         printInitialMessage(gamePlayers);
         printCardAllStatus(gamePlayers);
