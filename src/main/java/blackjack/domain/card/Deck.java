@@ -15,9 +15,7 @@ public class Deck {
     }
 
     public Card draw() {
-        final Card card = cards.draw();
-        cards.remove(card);
-        return card;
+        return cards.draw();
     }
 
     public List<Card> dealCards() {

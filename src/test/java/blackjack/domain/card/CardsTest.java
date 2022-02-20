@@ -42,9 +42,7 @@ class CardsTest {
                     .collect(Collectors.toList()).stream())
             .collect(Collectors.toList());
 
-        for (Card card : cards) {
-            sut = sut.remove(card);
-        }
+        IntStream.range(0, 52).forEach(i -> sut.draw());
 
         // When & Then
         assertThatExceptionOfType(IllegalArgumentException.class)
@@ -57,7 +55,6 @@ class CardsTest {
         // When
         final Set<Card> cards = IntStream.range(0, 52).mapToObj(i -> {
                 Card card = sut.draw();
-                sut.remove(card);
                 return card;
             })
             .collect(Collectors.toSet());

@@ -33,17 +33,14 @@ public class Cards {
     public Card draw() {
         checkDeckIsEmpty();
         Collections.shuffle(cards);
-        return cards.get(SELECTED_CARD);
+        final Card drawCard = cards.get(SELECTED_CARD);
+        cards.remove(drawCard);
+        return drawCard;
     }
 
     private void checkDeckIsEmpty() {
         if (cards.isEmpty()) {
             throw new IllegalArgumentException(EMPTY_DECK_EXCEPTION_MESSAGE);
         }
-    }
-
-    public Cards remove(final Card card) {
-        cards.remove(card);
-        return new Cards(cards);
     }
 }
