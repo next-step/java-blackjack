@@ -11,18 +11,18 @@ public class CardPack {
 
     private final List<Card> cardPack;
 
-    private CardPack(List<Card> cardPack) {
-        this.cardPack = cardPack;
+    public CardPack() {
+        this.cardPack = create();
     }
 
-    public static CardPack create() {
+    public List<Card> create() {
         final List<Card> cards = new ArrayList<>();
         for (final CardSymbol symbol : CardSymbol.values()) {
             Arrays.stream(CardType.values())
                 .forEach(type -> cards.add(new Card(symbol, type)));
         }
         Collections.shuffle(cards);
-        return new CardPack(new ArrayList<>(cards));
+        return new ArrayList<>(cards);
     }
 
     public List<Card> getCardPack() {

@@ -13,9 +13,9 @@ import java.util.stream.Collectors;
 public class GameController {
 
     public void start() {
-        final CardPack cardPack = CardPack.create();
+        final CardPack cardPack = new CardPack();
         final BlackJackGame dealer = new BlackJackGame(cardPack);
-        final GamePlayers gamePlayers = GamePlayers.makePlayers(getConsoleNames());
+        final GamePlayers gamePlayers = new GamePlayers(getConsoleNames());
 
         dealer.initializeGame(gamePlayers);
         printInitialStatus(gamePlayers);

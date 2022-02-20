@@ -12,18 +12,18 @@ public class GamePlayers {
 
     private final List<GamePlayer> players;
 
-    public GamePlayers(final List<GamePlayer> players) {
-        this.players = players;
+    public GamePlayers(final Names names) {
+        this.players = makePlayers(names);
     }
 
-    public static GamePlayers makePlayers(final Names names) {
+    public static List<GamePlayer> makePlayers(final Names names) {
         final List<GamePlayer> players = names.getNames().stream()
             .map(Player::new)
             .collect(Collectors.toList());
 
         players.add(FRONT, new DealerPlayer());
 
-        return new GamePlayers(new ArrayList<>(players));
+        return new ArrayList<>(players);
     }
 
     public GamePlayer getDealer() {
