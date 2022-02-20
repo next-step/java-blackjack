@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import blackjack.domain.card.Card;
 import blackjack.domain.card.CardSymbol;
 import blackjack.domain.card.CardType;
+import blackjack.domain.card.Cards;
 import org.junit.jupiter.api.Test;
 
 class CardsTest {
