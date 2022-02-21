@@ -11,7 +11,7 @@ public class Avante extends Car {
 
     @Override
     double getDistancePerLiter() {
-        return this.DISTANCE_PER_LITER;
+        return DISTANCE_PER_LITER;
     }
 
     @Override
