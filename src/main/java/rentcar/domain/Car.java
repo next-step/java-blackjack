@@ -8,7 +8,9 @@ public abstract class Car {
         this.distance = distance;
     }
 
-    abstract double getTripDistance();
+    public double getTripDistance() {
+        return this.distance;
+    }
 
     abstract double getDistancePerLiter();
 
