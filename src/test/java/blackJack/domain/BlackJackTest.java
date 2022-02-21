@@ -3,6 +3,7 @@ package blackJack.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
@@ -17,7 +18,7 @@ class BlackJackTest {
         BlackJack blackJack = BlackJack.from(userNames);
         GameUser gameUser = GameUser.from(userNames);
 
-        List<String> blackJackUserNames = blackJack.getPlayers().stream()
+        List<String> blackJackUserNames = blackJack.getGamePlayers().stream()
             .map(Player::getName)
             .collect(Collectors.toList());
 
@@ -31,14 +32,14 @@ class BlackJackTest {
 
     @Test
     void GameCard를_가진다() {
-        BlackJack blackJack = BlackJack.from(Arrays.asList());
+        BlackJack blackJack = BlackJack.from(Collections.emptyList());
 
-        assertThat(blackJack.getGameCard().size()).isEqualTo(GAME_CARD_SIZE);
+        assertThat(blackJack.getGameCard().getGameCard().size()).isEqualTo(GAME_CARD_SIZE);
     }
 
     @Test
     void GameCard를_섞을_수_있다() {
-        BlackJack blackJack = BlackJack.from(Arrays.asList());
+        BlackJack blackJack = BlackJack.from(Collections.emptyList());
         GameCard gameCard = GameCard.create();
 
         assertThat(blackJack.getGameCard()).isNotEqualTo(gameCard.getGameCard());

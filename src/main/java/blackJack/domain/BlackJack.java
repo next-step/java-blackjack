@@ -1,7 +1,5 @@
 package blackJack.domain;
 
-import blackJack.view.InputView;
-import blackJack.view.OutputView;
 import java.util.List;
 
 public class BlackJack {
@@ -19,18 +17,6 @@ public class BlackJack {
 
     public static BlackJack from(List<String> userNames) {
         return new BlackJack(userNames);
-    }
-
-    public GameUser getGameUser() {
-        return gameUser;
-    }
-
-    public List<Player> getPlayers() {
-        return gameUser.getPlayers();
-    }
-
-    public List<Card> getGameCard() {
-        return gameCard.getGameCard();
     }
 
     private void cardShuffle() {
@@ -51,29 +37,23 @@ public class BlackJack {
             .forEach(player -> player.appendToDeck(gameCard.drawCard(INITIAL_DRAW_CARD_COUNT)));
     }
 
-    public void dealerPhase() {
-        if (gameUser.getDealer().isCardDraw()) {
-            gameUser.getDealer().additionalCardDraw(gameCard.drawCard());
-            OutputView.printDealerAdditionalCardDraw();
-        }
+    public GameUser getGameUser() {
+        return gameUser;
     }
 
-    public void playerPhase() {
-        for (Player player : gameUser.getPlayers()) {
-            useTurn(player);
-        }
+    public GameCard getGameCard() {
+        return gameCard;
     }
 
-    private void useTurn(Player player) {
-        while (player.isCardDraw()) {
-            OutputView.printRequestAdditionalCardDrawFormat(player);
-            if (InputView.readYN()) {
-                player.appendToDeck(gameCard.drawCard());
-                OutputView.printPlayerStatus(player);
-                continue;
-            }
-            OutputView.printPlayerStatus(player);
-            break;
-        }
+    public List<Player> getGamePlayers() {
+        return gameUser.getPlayers();
+    }
+
+    public Dealer getGameDealer() {
+        return gameUser.getDealer();
+    }
+
+    public Card drawGameCard() {
+        return gameCard.drawCard();
     }
 }

@@ -1,6 +1,7 @@
 package blackJack.controller;
 
 import blackJack.domain.BlackJack;
+import blackJack.domain.Player;
 import blackJack.domain.UserStats;
 import blackJack.util.Util;
 import blackJack.view.InputView;
@@ -36,8 +37,34 @@ public class Game {
     }
 
     private void goPhase() {
-        blackJack.playerPhase();
-        blackJack.dealerPhase();
+        playerPhase();
+        dealerPhase();
+    }
+
+    private void playerPhase() {
+        for (Player player : blackJack.getGamePlayers()) {
+            useTurn(player);
+        }
+    }
+
+    private void useTurn(Player player) {
+        while (player.isCardDraw()) {
+            OutputView.printRequestAdditionalCardDrawFormat(player);
+            if (InputView.readYN()) {
+                player.appendToDeck(blackJack.drawGameCard());
+                OutputView.printPlayerStatus(player);
+                continue;
+            }
+            OutputView.printPlayerStatus(player);
+            break;
+        }
+    }
+
+    private void dealerPhase() {
+        if (blackJack.getGameDealer().isCardDraw()) {
+            blackJack.getGameDealer().additionalCardDraw(blackJack.drawGameCard());
+            OutputView.printDealerAdditionalCardDraw();
+        }
     }
 
     private void summarize() {
