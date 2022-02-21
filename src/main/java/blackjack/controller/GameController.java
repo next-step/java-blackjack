@@ -1,6 +1,5 @@
 package blackjack.controller;
 
-import blackjack.domain.BlackJackGame;
 import blackjack.domain.card.CardPack;
 import blackjack.domain.gameplayer.GamePlayer;
 import blackjack.domain.gameplayer.GamePlayers;
@@ -11,19 +10,14 @@ import java.util.List;
 
 public class GameController {
 
-    private static final int initialCardSize = 2;
-
     public void start() {
         final CardPack cardPack = new CardPack();
-        final BlackJackGame dealer = new BlackJackGame(cardPack);
         final GamePlayers gamePlayers = new GamePlayers(getConsoleNames());
 
-        dealer.initializeGame(gamePlayers);
+        initializeGame(gamePlayers, cardPack);
         printInitialStatus(gamePlayers);
 
-        dealer.playGame(gamePlayers);
-//        printPlayerMessage(gamePlayers);
-        printDealerMessage(gamePlayers);
+        playGame(gamePlayers, cardPack);
         printFinalStatus(gamePlayers);
     }
 
@@ -39,6 +33,16 @@ public class GameController {
     private Names convertStringToNames(String names) {
         return new Names(names);
     }
+
+    public void initializeGame(final GamePlayers gamePlayers, final CardPack cardPack) {
+        List<GamePlayer> players = gamePlayers.getAllPlayers();
+
+        players.forEach(player -> {
+            player.receiveCard(cardPack.pick());
+            player.receiveCard(cardPack.pick());
+        });
+    }
+
     private void printInitialStatus(GamePlayers gamePlayers) {
         printInitialMessage(gamePlayers);
         printCardAllStatus(gamePlayers);
@@ -52,16 +56,29 @@ public class GameController {
         OutputView.printCardAllStatus(gamePlayers);
     }
 
-    private void printDealerMessage(GamePlayers gamePlayers) {
-        GamePlayer dealer = gamePlayers.getDealer();
-        int dealerReceiveCount = dealer.getCards().size() - initialCardSize;
-        OutputView.printDealerAcceptCard(dealerReceiveCount);
+    public void playGame(GamePlayers gamePlayers, CardPack cardPack) {
+        final List<GamePlayer> players = gamePlayers.getPlayers();
+        final GamePlayer dealer = gamePlayers.getDealer();
+
+        for (final GamePlayer player : players) {
+            playerGameProcess(player, cardPack);
+        }
+        dealerGameProcess(dealer, cardPack);
     }
 
-    private void printPlayerMessage(GamePlayers gamePlayers) {
-        List<GamePlayer> players = gamePlayers.getPlayers();
-        for (GamePlayer player : players) {
-//            OutputView.printCardStatus(player);
+    private void playerGameProcess(final GamePlayer player, CardPack cardPack) {
+        while (player.isContinue() && InputView.getPlayerChoice(player)) {
+            player.receiveCard(cardPack.pick());
+            OutputView.printCardStatus(player);
+        }
+
+        OutputView.printCardStatus(player);
+    }
+
+    private void dealerGameProcess(final GamePlayer dealer, CardPack cardPack) {
+        while (dealer.isLowerThanBound()) {
+            dealer.receiveCard(cardPack.pick());
+            OutputView.printDealerAcceptCard();
         }
     }
 

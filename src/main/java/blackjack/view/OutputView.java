@@ -37,10 +37,8 @@ public class OutputView {
         System.out.println(String.format(CARDS_LOG, player.getName(), getPlayerCardStatus(player)));
     }
 
-    public static void printDealerAcceptCard(int dealerReceiveCount) {
-        for (int i = 0; i < dealerReceiveCount; i++) {
-            System.out.println(DEALER_RECEIVE_ONE_CARD_MESSAGE);
-        }
+    public static void printDealerAcceptCard() {
+        System.out.println(DEALER_RECEIVE_ONE_CARD_MESSAGE);
     }
 
     public static void printCardResult(GamePlayers gamePlayers) {
