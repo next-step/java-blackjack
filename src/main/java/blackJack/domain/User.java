@@ -21,11 +21,11 @@ public abstract class User {
     }
 
     public void appendToDeck(Card card) {
-        deck.append(card);
+        deck.getDeck().add(card);
     }
 
     public void appendToDeck(List<Card> cards) {
-        cards.forEach(deck::append);
+        cards.forEach(card -> deck.getDeck().add(card));
     }
 
     public String convertStatus() {

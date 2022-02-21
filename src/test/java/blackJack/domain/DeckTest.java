@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
@@ -19,16 +20,16 @@ class DeckTest {
     void Card의_배열을_가지고_있다() {
         Deck deck = Deck.create();
         Card card = Card.of("스페이드", "3");
-        deck.append(card);
-        assertThat(deck.getDeck()).isEqualTo(Arrays.asList(card));
+        deck.getDeck().add(card);
+        assertThat(deck.getDeck()).isEqualTo(Collections.singletonList(card));
     }
 
 
     static Stream<Arguments> generateNormalDeck() {
         return Stream.of(
-            arguments(Arrays.asList(Card.of("다이아몬드", "3")), 3),
-            arguments(Arrays.asList(Card.of("다이아몬드", "9")), 9),
-            arguments(Arrays.asList(Card.of("스페이드", "10")), 10)
+            arguments(Collections.singletonList(Card.of("다이아몬드", "3")), 3),
+            arguments(Collections.singletonList(Card.of("다이아몬드", "9")), 9),
+            arguments(Collections.singletonList(Card.of("스페이드", "10")), 10)
         );
     }
 
@@ -43,9 +44,9 @@ class DeckTest {
 
     static Stream<Arguments> generateCharTypeDeck() {
         return Stream.of(
-            arguments(Arrays.asList(Card.of("다이아몬드", "J")), 10),
-            arguments(Arrays.asList(Card.of("스페이드", "Q")), 10),
-            arguments(Arrays.asList(Card.of("하트", "K")), 10)
+            arguments(Collections.singletonList(Card.of("다이아몬드", "J")), 10),
+            arguments(Collections.singletonList(Card.of("스페이드", "Q")), 10),
+            arguments(Collections.singletonList(Card.of("하트", "K")), 10)
         );
     }
 
@@ -60,7 +61,7 @@ class DeckTest {
 
     static Stream<Arguments> generateAceDeck() {
         return Stream.of(
-            arguments(Arrays.asList(Card.of("다이아몬드", "3")), 3),
+            arguments(Collections.singletonList(Card.of("다이아몬드", "3")), 3),
             arguments(Arrays.asList(
                 Card.of("하트", "3"),
                 Card.of("스페이드", "A"),

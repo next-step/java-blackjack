@@ -6,9 +6,10 @@ import java.util.stream.Collectors;
 
 public class Deck {
 
-    private final List<Card> deck;
     private static final int ACE_BONUS_SCORE = 11;
     public static final int MATCH_SCORE = 21;
+
+    private final List<Card> deck;
 
     private Deck() {
         this.deck = new ArrayList<>();
@@ -26,12 +27,10 @@ public class Deck {
         return new Deck(deck);
     }
 
-    public void append(Card card) {
-        deck.add(card);
-    }
-
-    public List<Card> getDeck() {
-        return deck;
+    public String convertDeckFormat() {
+        return deck.stream()
+            .map(card -> String.format("%s%s", card.getCardNumber(), card.getCardType()))
+            .collect(Collectors.joining(", "));
     }
 
     public int getScore() {
@@ -41,22 +40,16 @@ public class Deck {
         return calculateAceScore(score, aceCount);
     }
 
-    public String convertDeckFormat() {
-        return deck.stream()
-            .map(card -> String.format("%s%s", card.getCardNumber(), card.getCardType()))
-            .collect(Collectors.joining(", "));
+    private int calculateAceCount() {
+        return (int) deck.stream()
+            .filter(Card::isAce)
+            .count();
     }
 
     private int calculateDefaultScore() {
         return deck.stream()
-            .mapToInt(Card::calculateCardScore)
+            .mapToInt(Card::getCardScore)
             .sum();
-    }
-
-    private int calculateAceCount() {
-        return (int) deck.stream()
-            .filter(card -> "A".equals(card.getCardNumber()))
-            .count();
     }
 
     private int calculateAceScore(int score, int count) {
@@ -68,5 +61,9 @@ public class Deck {
             resultScore += (ACE_BONUS_SCORE - 1);
         }
         return resultScore;
+    }
+
+    public List<Card> getDeck() {
+        return deck;
     }
 }
