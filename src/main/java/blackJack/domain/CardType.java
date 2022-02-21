@@ -1,18 +1,11 @@
 package blackJack.domain;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class CardType {
 
-    public static final List<String> CARD_TYPE_LIST = Arrays.asList("다이아몬드", "하트", "클로버", "스페이드");
-
-    private String cardType;
+    private final Suit suit;
 
     private CardType(String cardType) {
-        this.cardType = cardType;
-
-        validateCardNumberRange();
+        this.suit = Suit.from(cardType);
     }
 
     public static CardType from(String cardType) {
@@ -20,12 +13,6 @@ public class CardType {
     }
 
     public String getType() {
-        return cardType;
-    }
-
-    private void validateCardNumberRange() {
-        if (!CARD_TYPE_LIST.contains(cardType)) {
-            throw new RuntimeException("[ERROR] CardType 범위인 String을 입력해주세요.");
-        }
+        return suit.getName();
     }
 }

@@ -1,8 +1,5 @@
 package blackJack.domain;
 
-import static blackJack.domain.CardNumber.ACE_INDEX;
-import static blackJack.domain.CardNumber.CARD_NUMBER_LIST;
-
 public class Card {
 
     private static final String JQK_REGEX = "[JQK]";
@@ -35,7 +32,7 @@ public class Card {
         if (number.matches(JQK_REGEX)) {
             return JQK_SCORE;
         }
-        if (number.equals(CARD_NUMBER_LIST.get(ACE_INDEX))) {
+        if (number.equals(TrumpNumber.ACE.getTrumpNumber())) {
             return ACE_SCORE;
         }
 

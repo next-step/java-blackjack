@@ -1,7 +1,5 @@
 package blackJack.domain;
 
-import static blackJack.domain.CardNumber.CARD_NUMBER_LIST;
-import static blackJack.domain.CardType.CARD_TYPE_LIST;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,8 +35,8 @@ public class GameCard {
     }
 
     private void generateGameCard() {
-        CARD_TYPE_LIST.forEach(
-            type -> CARD_NUMBER_LIST.forEach(
+        Suit.getSuits().forEach(
+            type -> TrumpNumber.trumpNumbers().forEach(
                 number -> gameCard.add(Card.of(type, number))
             )
         );

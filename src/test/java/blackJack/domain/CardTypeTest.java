@@ -22,10 +22,8 @@ class CardTypeTest {
     @DisplayName("유효하지 않는 CardType 범위로 인스턴스가 생성될때, RuntimeException 발생한다.")
     @ParameterizedTest
     @ValueSource(strings = {"네모", "세모", "동그라미"})
-    void givenInValidCardTypeRange_WhenCreateInstance_ThenThrowRuntimeException(
-        String type) {
+    void givenInValidCardTypeRange_WhenCreateInstance_ThenThrowRuntimeException(String type) {
         assertThatThrownBy(() -> CardType.from(type))
             .isInstanceOf(RuntimeException.class);
-
     }
 }
