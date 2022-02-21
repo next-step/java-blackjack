@@ -28,4 +28,22 @@ class DealerTest {
         assertThat(dealer.getDeck())
             .isEqualTo(Arrays.asList(card));
     }
+
+    @Test
+    void 기준값_이하일경우_isCardDraw가_참이다() {
+        Dealer dealer = Dealer.create();
+        dealer.appendToDeck(Card.of("다이아몬드", "10"));
+        dealer.appendToDeck(Card.of("하트", "5"));
+
+        assertThat(dealer.isCardDraw()).isTrue();
+    }
+
+    @Test
+    void 기준값_이상일경우_isCardDraw가_거짓이다() {
+        Dealer dealer = Dealer.create();
+        dealer.appendToDeck(Card.of("다이아몬드", "10"));
+        dealer.appendToDeck(Card.of("하트", "10"));
+
+        assertThat(dealer.isCardDraw()).isFalse();
+    }
 }
