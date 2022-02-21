@@ -13,7 +13,7 @@ public class CardPack {
         this.cardPack = cardPack;
     }
 
-    public static CardPack createWithShuffling() {
+    public static CardPack create() {
         final List<Card> cards = new ArrayList<>();
         for (final CardSymbol symbol : CardSymbol.values()) {
             Arrays.stream(CardType.values())

@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 class DealerTest {
 
-    CardPack cardPack = CardPack.createWithShuffling();
+    CardPack cardPack = CardPack.create();
 
     @Test
     public void 게임초기_딜러는_플레이어들에게_카드를_2장씩_배분한다() {
