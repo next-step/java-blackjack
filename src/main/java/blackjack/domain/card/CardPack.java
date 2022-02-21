@@ -7,8 +7,9 @@ import java.util.List;
 
 public class CardPack {
 
-    private final List<Card> cardPack;
+    private static final int PICKED_CARD_INDEX = 0;
     private static final List<Card> cards = new ArrayList<>();
+    private final List<Card> cardPack;
 
     static {
         for (final CardSymbol symbol : CardSymbol.values()) {
@@ -27,7 +28,7 @@ public class CardPack {
     }
 
     public Card pick() {
-        return cardPack.remove(0);
+        return cardPack.remove(PICKED_CARD_INDEX);
     }
 
     public List<Card> getCardPack() {
