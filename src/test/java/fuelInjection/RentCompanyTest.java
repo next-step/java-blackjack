@@ -6,7 +6,7 @@ import fuelInjection.domain.Avante;
 import fuelInjection.domain.Car;
 import fuelInjection.domain.K5;
 import fuelInjection.domain.Sonata;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +27,7 @@ public class RentCompanyTest {
     void Car의_List에_Sonata를_추가할_수_있다() {
         RentCompany company = RentCompany.create();
         Sonata sonata = new Sonata(TEMP_DISTANCE);
-        List<Car> cars = Arrays.asList(sonata);
+        List<Car> cars = Collections.singletonList(sonata);
 
         company.addCar(sonata);
         assertThat(company.getRentCars().equals(cars))
@@ -38,7 +38,7 @@ public class RentCompanyTest {
     void Car의_List에_Avante를_추가할_수_있다() {
         RentCompany company = RentCompany.create();
         Avante avante = new Avante(TEMP_DISTANCE);
-        List<Car> cars = Arrays.asList(avante);
+        List<Car> cars = Collections.singletonList(avante);
 
         company.addCar(avante);
         assertThat(company.getRentCars().equals(cars))
@@ -49,7 +49,7 @@ public class RentCompanyTest {
     void Car의_List에_K5를_추가할_수_있다() {
         RentCompany company = RentCompany.create();
         K5 k5 = new K5(TEMP_DISTANCE);
-        List<Car> cars = Arrays.asList(k5);
+        List<Car> cars = Collections.singletonList(k5);
 
         company.addCar(k5);
         assertThat(company.getRentCars().equals(cars))
@@ -57,7 +57,7 @@ public class RentCompanyTest {
     }
 
     @Test
-    public void report() throws Exception {
+    public void report() {
         RentCompany company = RentCompany.create(); // factory method를 사용해 생성
         company.addCar(new Sonata(150));
         company.addCar(new K5(260));
