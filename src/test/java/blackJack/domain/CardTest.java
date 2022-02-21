@@ -34,4 +34,21 @@ class CardTest {
             Arrays.asList(card.getCardType(), card.getCardNumber()))
             .isEqualTo(cardParameter);
     }
+
+    static Stream<Arguments> generateCardTypeAndAceNumber() {
+        return Stream.of(
+            Arguments.of(Arrays.asList("다이아몬드", "A")),
+            Arguments.of(Arrays.asList("하트", "A")),
+            Arguments.of(Arrays.asList("클로버", "A")),
+            Arguments.of(Arrays.asList("스페이드", "A")),
+            Arguments.of(Arrays.asList("클로버", "A"))
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("generateCardTypeAndAceNumber")
+    void 에이스일결우_isAce가_참이다(List<String> cardParameter) {
+        Card card = Card.of(cardParameter.get(0), cardParameter.get(1));
+        assertThat(card.isAce()).isTrue();
+    }
 }
