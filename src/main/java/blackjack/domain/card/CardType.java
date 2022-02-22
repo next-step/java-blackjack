@@ -17,11 +17,10 @@ public enum CardType {
 
     private final String name;
     private final int point;
-    private int lowerAcePoint;
+    private final int lowerAcePoint;
 
     CardType(String name, int point) {
-        this.name = name;
-        this.point = point;
+        this(name, point, 0);
     }
 
     CardType(String name, int point, int lowerAcePoint) {
