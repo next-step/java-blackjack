@@ -29,7 +29,7 @@ public class Cards {
         final int aceCount = countAceCard();
 
         if (sumOfCards > BLACK_JACK && aceCount > 0) {
-            return getBestSumWithAce(sumOfCards);
+            return calculateBestSumWithAce(sumOfCards);
         }
         return sumOfCards;
     }
@@ -47,7 +47,7 @@ public class Cards {
             .count();
     }
 
-    private int getBestSumWithAce(final int sum) {
+    private int calculateBestSumWithAce(final int sum) {
         final int lowerAcePoint = CardType.ACE.getLowerAcePoint();
         final int higherAcePoint = CardType.ACE.getPoint();
 
