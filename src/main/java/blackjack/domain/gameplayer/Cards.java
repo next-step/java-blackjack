@@ -48,13 +48,14 @@ public class Cards {
     }
 
     private int calculateBestSumWithAce(final int sum) {
+        final int MIN_ACE_COUNT = 0;
         final int lowerAcePoint = CardType.ACE.getLowerAcePoint();
         final int higherAcePoint = CardType.ACE.getPoint();
 
         int aceCount = countAceCard();
         int totalPoint = sum;
 
-        while (aceCount > 0 && totalPoint > BLACK_JACK) {
+        while (aceCount >  MIN_ACE_COUNT && totalPoint > BLACK_JACK) {
             totalPoint = totalPoint - higherAcePoint + lowerAcePoint;
             aceCount--;
         }
