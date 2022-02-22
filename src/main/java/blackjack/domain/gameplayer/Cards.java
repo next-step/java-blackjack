@@ -26,7 +26,7 @@ public class Cards {
 
     public int calculateCards() {
         final int sumOfCards = getSumOfCards();
-        final int aceCount = getAceCount();
+        final int aceCount = countAceCard();
 
         if (sumOfCards > BLACK_JACK && aceCount > 0) {
             return getBestSumWithAce(sumOfCards);
@@ -41,7 +41,7 @@ public class Cards {
             .sum();
     }
 
-    private int getAceCount() {
+    private int countAceCard() {
         return (int) cards.stream()
             .filter(card -> card.getCardType().isAce())
             .count();
@@ -51,7 +51,7 @@ public class Cards {
         final int lowerAcePoint = CardType.ACE.getLowerAcePoint();
         final int higherAcePoint = CardType.ACE.getPoint();
 
-        int aceCount = getAceCount();
+        int aceCount = countAceCard();
         int totalPoint = sum;
 
         while (aceCount-- > 0 && totalPoint > BLACK_JACK) {
