@@ -34,17 +34,17 @@ public class Cards {
         return sumOfCards;
     }
 
-    private int getAceCount() {
-        return (int) cards.stream()
-            .filter(card -> card.getCardType().isAce())
-            .count();
-    }
-
     private int getSumOfCards() {
         return cards.stream()
             .map(Card::getCardType)
             .mapToInt(CardType::getPoint)
             .sum();
+    }
+
+    private int getAceCount() {
+        return (int) cards.stream()
+            .filter(card -> card.getCardType().isAce())
+            .count();
     }
 
     private int getBestSumWithAce(final int sum) {
