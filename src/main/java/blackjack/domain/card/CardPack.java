@@ -13,7 +13,7 @@ public class CardPack {
     private List<Card> cards;
 
     public CardPack() {
-        this.cards = cardPack;
+        this.cards = new ArrayList<>(cardPack);
     }
 
     private static List<Card> create() {
