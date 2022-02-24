@@ -34,17 +34,30 @@ class CardPackTest {
     }
 
     @Test
+    public void 카드팩_생성초기_카드팩은_셔플되어지지_않은_상태다() {
+        //given
+        CardPack cardPack = new CardPack();
+        List<Card> originCards = cardPack.getCards();
+
+        //when
+        final List<Card> cards = new ArrayList<>();
+        for (final CardSymbol symbol : CardSymbol.values()) {
+            Arrays.stream(CardType.values())
+                .forEach(type -> cards.add(new Card(symbol, type)));
+        }
+
+        //then
+        assertThat(originCards).containsExactlyInAnyOrder(cards.toArray(new Card[0]));
+    }
+
+    @Test
     public void 카드가_정상적으로_셔플되어진다() {
         //given
         CardPack cardPack = new CardPack();
 
         //when
-        List<Card> originCards = new ArrayList<>();
-        for (final CardSymbol symbol : CardSymbol.values()) {
-            Arrays.stream(CardType.values())
-                .forEach(type -> originCards.add(new Card(symbol, type)));
-        }
-
+        List<Card> originCards = cardPack.getCards();
+        cardPack.shuffle();
         List<Card> shuffleCards = cardPack.getCards();
 
         //then
