@@ -10,10 +10,10 @@ public class CardPack {
     private static final int FRONT = 0;
     private static final List<Card> cardPack = create();
 
-    private final List<Card> cards;
+    private List<Card> cards;
 
     public CardPack() {
-        this.cards = shuffle(cardPack);
+        this.cards = cardPack;
     }
 
     private static List<Card> create() {
@@ -25,9 +25,9 @@ public class CardPack {
         return new ArrayList<>(cards);
     }
 
-    private List<Card> shuffle(List<Card> cards) {
+    public void shuffle() {
         Collections.shuffle(cards);
-        return new ArrayList<>(cards);
+        this.cards = new ArrayList<>(cards);
     }
 
     public List<Card> getCards() {

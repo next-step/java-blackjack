@@ -12,6 +12,7 @@ public class GameController {
 
     public void start() {
         final CardPack cardPack = new CardPack();
+        cardPack.shuffle();
         final GamePlayers gamePlayers = new GamePlayers(getConsoleNames());
 
         initializeGame(gamePlayers, cardPack);
