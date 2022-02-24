@@ -47,7 +47,7 @@ class CardPackTest {
         }
 
         //then
-        assertThat(originCards).containsExactlyInAnyOrder(cards.toArray(new Card[0]));
+        assertThat(originCards).containsExactly(cards.toArray(new Card[0]));
     }
 
     @Test
