@@ -30,11 +30,11 @@ public class CardPack {
         return new ArrayList<>(cards);
     }
 
-    public List<Card> getCardPack() {
-        return Collections.unmodifiableList(cardPack);
+    public List<Card> getCards() {
+        return new ArrayList<>(cards);
     }
 
     public Card pick() {
-        return cardPack.remove(FRONT);
+        return cards.remove(FRONT);
     }
 }

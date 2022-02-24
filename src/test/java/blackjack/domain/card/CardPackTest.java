@@ -15,7 +15,7 @@ class CardPackTest {
         CardPack cardPack = new CardPack();
 
         //when
-        List<Card> cards = cardPack.getCardPack();
+        List<Card> cards = cardPack.getCards();
 
         //then
         assertThat(cards.size()).isEqualTo(52);
@@ -30,7 +30,7 @@ class CardPackTest {
         cardPack.pick();
 
         //then
-        assertThat(cardPack.getCardPack().size()).isEqualTo(51);
+        assertThat(cardPack.getCards().size()).isEqualTo(51);
     }
 
     @Test
@@ -45,7 +45,7 @@ class CardPackTest {
                 .forEach(type -> originCards.add(new Card(symbol, type)));
         }
 
-        List<Card> shuffleCards = cardPack.getCardPack();
+        List<Card> shuffleCards = cardPack.getCards();
 
         //then
         assertThat(originCards).doesNotContainSequence(shuffleCards.toArray(new Card[0]));
