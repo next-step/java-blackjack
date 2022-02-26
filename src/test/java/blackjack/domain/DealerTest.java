@@ -1,6 +1,6 @@
 package blackjack.domain;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 import blackjack.domain.card.CardDeck;
@@ -19,5 +19,7 @@ class DealerTest {
             () -> assertThat(dealer.getName()).isEqualTo("딜러"),
             () -> assertThat(dealer).isNotNull()
         );
+
     }
+
 }

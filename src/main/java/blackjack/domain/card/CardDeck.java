@@ -11,6 +11,10 @@ public class CardDeck {
     private static List<Card> cards = new ArrayList<>();
 
     static {
+        cards = new ArrayList<>();
+    }
+
+    public static void makeCardDeck(){
         Arrays.stream(CardNumber.values()).forEach(
             cardNumber -> Arrays.stream(CardPattern.values()).forEach(
                 cardPattern -> cards.add(new Card(cardNumber, cardPattern))

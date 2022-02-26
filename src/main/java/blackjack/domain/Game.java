@@ -33,6 +33,7 @@ public class Game {
     }
 
     private static State handOutCards() {
+        CardDeck.makeCardDeck();
         return new State(CardDeck.pop(PASS_CARD_NUMBER), true);
     }
 

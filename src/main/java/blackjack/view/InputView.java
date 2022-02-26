@@ -14,6 +14,7 @@ public class InputView {
 
     public static List<String> inputPlayers() {
         String players = getInputValueWithMessage(PARTICIPANTS_MESSAGE);
+
         return Arrays.stream(players.split(SPLIT_DELIMITER))
             .map(String::trim)
             .collect(Collectors.toList());
