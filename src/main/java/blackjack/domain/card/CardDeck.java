@@ -8,19 +8,21 @@ import java.util.List;
 public class CardDeck {
 
     private static final int FIRST_INDEX = 0;
-    private static List<Card> cards = new ArrayList<>();
+    private static List<Card> cards;
 
     static {
         cards = new ArrayList<>();
     }
 
     public static void makeCardDeck(){
+        List<Card> oldCards = new ArrayList<>();
         Arrays.stream(CardNumber.values()).forEach(
             cardNumber -> Arrays.stream(CardPattern.values()).forEach(
-                cardPattern -> cards.add(new Card(cardNumber, cardPattern))
+                cardPattern -> oldCards.add(new Card(cardNumber, cardPattern))
             )
         );
-        Collections.shuffle(cards);
+        Collections.shuffle(oldCards);
+        cards = new ArrayList<>(oldCards);
     }
 
     public static Cards pop(final int count) {

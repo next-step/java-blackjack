@@ -10,6 +10,7 @@ class CardDeckTest {
     @Test
     @DisplayName("CardDeck 생성 테스트")
     void createCardDeckTest() {
+        CardDeck.makeCardDeck();
         assertThat(CardDeck.getCards().size()).isEqualTo(48);
     }
 }
