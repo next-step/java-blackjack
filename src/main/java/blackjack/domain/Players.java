@@ -78,6 +78,9 @@ public class Players {
     }
 
     private Player getActivePlayer() {
+        if (activePlayerIndex >= players.size()) {
+            throw new RuntimeException("해당 플레이어를 찾지 못했습니다.");
+        }
         return players.get(activePlayerIndex);
     }
 }
