@@ -22,7 +22,7 @@ public class Players {
 
     public static Players create(final List<String> names) {
         final List<Player> players = names.stream()
-            .map(name -> new Player(name, new Cards(new ArrayList<>())))
+            .map(name -> new Player(name))
             .collect(Collectors.toList());
         return new Players(players);
     }
