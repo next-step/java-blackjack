@@ -21,11 +21,10 @@ public class Players {
     }
 
     public static Players create(final List<String> names) {
-        return new Players(
-            names.stream()
-                .map(name -> new Player(name, new Cards(new ArrayList<>())))
-                .collect(Collectors.toList())
-        );
+        final List<Player> players = names.stream()
+            .map(name -> new Player(name, new Cards(new ArrayList<>())))
+            .collect(Collectors.toList());
+        return new Players(players);
     }
 
     public void initializeDeck(final Deck deck) {
