@@ -1,6 +1,5 @@
 package blackjack.domain;
 
-import blackjack.domain.CardNumber;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
