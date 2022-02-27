@@ -25,8 +25,23 @@ public class Cards {
         cards.add(card);
     }
 
-    public boolean sum() {
-        return sumScore() >= BLACKJACK;
+
+    public boolean isBust() {
+        final int cardSum = sumScore();
+        return cardSum > BLACKJACK;
+    }
+
+    public boolean isBlackJack() {
+        final int cardSum = sumScore();
+        return cardSum == BLACKJACK;
+    }
+
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public int getTotalScore() {
+        return sumScore();
     }
 
     public int sumScore() {
@@ -39,9 +54,5 @@ public class Cards {
         return newCards.stream()
             .mapToInt(card -> card.getCardNumber().getScore())
             .reduce(0, (a, b) -> a + getScoreToSum(a, b));
-    }
-
-    public List<Card> getCards() {
-        return cards;
     }
 }
