@@ -3,7 +3,7 @@ package blackjack.domain;
 import blackjack.domain.card.CardDeck;
 import blackjack.domain.player.Dealer;
 import blackjack.domain.player.Player;
-import blackjack.domain.state.State;
+import blackjack.domain.state.Hit;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,26 +32,22 @@ public class Game {
         return new Player(name, handOutCards());
     }
 
-    private static State handOutCards() {
+    private static Hit handOutCards() {
         CardDeck.makeCardDeck();
-        return new State(CardDeck.pop(PASS_CARD_NUMBER), true);
+        return new Hit(CardDeck.pop(PASS_CARD_NUMBER));
     }
 
     public boolean giveCardToDealer() {
         if (dealer.getCards().cards().sumScore() <= DEALER_THRESHOLD) {
-            dealer.getCards().addCard(CardDeck.pop());
+            dealer.getCards().cards().add(CardDeck.pop());
             return true;
         }
         return false;
     }
 
-    public int getTotalScoreOfPlayer(Player player) {
-        return player.getCards().cards().sumScore();
-    }
-
     public List<Integer> getScoresOfPlayers() {
         return players.stream()
-            .mapToInt(this::getTotalScoreOfPlayer)
+            .mapToInt(Player::getTotalScoreOfPlayer)
             .boxed().collect(Collectors.toList());
     }
 
