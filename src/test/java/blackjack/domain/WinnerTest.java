@@ -9,7 +9,7 @@ import blackjack.domain.card.CardPattern;
 import blackjack.domain.card.Cards;
 import blackjack.domain.player.Dealer;
 import blackjack.domain.player.Player;
-import blackjack.domain.state.State;
+import blackjack.domain.state.Hit;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -21,19 +21,19 @@ class WinnerTest {
     @Test
     void calculateDealerGameResultTest() {
         Dealer dealer = new Dealer("딜러",
-            new State(new Cards(Arrays.asList(
+            new Hit(new Cards(Arrays.asList(
                 new Card(CardNumber.ACE, CardPattern.CLOVER),
                 new Card(CardNumber.NINE, CardPattern.CLOVER))
-            ), true));
+            )));
         List<Player> players = Arrays.asList(
-            new Player("pobi", new State(new Cards(Arrays.asList(
+            new Player("pobi", new Hit(new Cards(Arrays.asList(
                 new Card(CardNumber.TWO, CardPattern.HEART),
                 new Card(CardNumber.THREE, CardPattern.DIAMOND))
-            ), true)),
-            new Player("jason", new State(new Cards(Arrays.asList(
+            ))),
+            new Player("jason", new Hit(new Cards(Arrays.asList(
                 new Card(CardNumber.ACE, CardPattern.DIAMOND),
                 new Card(CardNumber.TWO, CardPattern.CLOVER))
-            ), true))
+            )))
         );
 
         Game game = new Game(dealer, players);
@@ -49,19 +49,19 @@ class WinnerTest {
     @Test
     void calculatePlayerGameResultTest() {
         Dealer dealer = new Dealer("딜러",
-            new State(new Cards(Arrays.asList(
+            new Hit(new Cards(Arrays.asList(
                 new Card(CardNumber.ACE, CardPattern.CLOVER),
                 new Card(CardNumber.NINE, CardPattern.CLOVER))
-            ), true));
+            )));
         List<Player> players = Arrays.asList(
-            new Player("pobi", new State(new Cards(Arrays.asList(
+            new Player("pobi", new Hit(new Cards(Arrays.asList(
                 new Card(CardNumber.TWO, CardPattern.HEART),
                 new Card(CardNumber.THREE, CardPattern.DIAMOND))
-            ), true)),
-            new Player("jason", new State(new Cards(Arrays.asList(
+            ))),
+            new Player("jason", new Hit(new Cards(Arrays.asList(
                 new Card(CardNumber.ACE, CardPattern.DIAMOND),
                 new Card(CardNumber.TWO, CardPattern.CLOVER))
-            ), true))
+            )))
         );
 
         Game game = new Game(dealer, players);
