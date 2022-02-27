@@ -28,7 +28,7 @@ public class Players {
     }
 
     public void initializeDeck(final Deck deck) {
-        players.stream().forEach(player -> player.initializeDeck(deck));
+        players.forEach(player -> player.initializeDeck(deck));
     }
 
     public boolean checkActivePlayerCanDrawCard() {
