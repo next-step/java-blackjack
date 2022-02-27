@@ -4,20 +4,13 @@ public class Sonata extends PassengerCar {
 
     private static final int MILEAGE = 10;
 
-    private final int distance;
-
     public Sonata(final int distance) {
-        this.distance = distance;
+        super(distance);
     }
 
     @Override
     public double getDistancePerLiter() {
         return MILEAGE;
-    }
-
-    @Override
-    public double getTripDistance() {
-        return distance;
     }
 
     @Override
