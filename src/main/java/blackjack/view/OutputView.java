@@ -29,7 +29,7 @@ public class OutputView {
 
     public static void printCurrentCardsState(final String name, final Gameable cards) {
         System.out.printf(CURRENT_STATE_MESSAGE, name,
-            cards.getCards().stream().map(Card::toString)
+            cards.cards().getCards().stream().map(Card::toString) //TODO: 디미터 위반
                 .collect(Collectors.joining(JOIN_DELIMITER)));
     }
 

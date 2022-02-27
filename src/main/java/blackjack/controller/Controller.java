@@ -5,7 +5,6 @@ import blackjack.domain.Winner;
 import blackjack.domain.card.CardDeck;
 import blackjack.domain.player.Player;
 import blackjack.domain.state.Gameable;
-import blackjack.domain.state.State;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
@@ -13,7 +12,7 @@ public class Controller {
 
     private static final String BLANK = "";
     private static final String YES_MESSAGE = "y";
-    private static final String NO_MESSAGE = "y";
+    private static final String NO_MESSAGE = "n";
 
     private static void initGame(Game game) {
         OutputView.printStartMessage(game);
@@ -38,17 +37,17 @@ public class Controller {
     private void receive(Player player) {
         Gameable gameable = player.getCards();
         String yesOrNo = BLANK;
-        do {
+        while(!gameable.isEnd()){
             yesOrNo = InputView.inputYesOrNo(player.getName());
             if (yesOrNo.equals(YES_MESSAGE)) {
-                gameable.addCard(CardDeck.pop());
+                gameable.cards().add(CardDeck.pop());
                 OutputView.printCurrentCardsState(player.getName(), player.getCards());
-                gameable = gameable.judge();
+                gameable = gameable.draw();
             }
             if (yesOrNo.equals(NO_MESSAGE)) {
-                gameable = new State(gameable.cards(), false);
+                gameable = gameable.stay();
             }
-        } while (gameable.isEnd());
+        }
     }
 
     private void finishGame(Game game) {

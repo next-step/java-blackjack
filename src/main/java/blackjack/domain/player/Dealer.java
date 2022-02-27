@@ -18,10 +18,10 @@ public class Dealer extends Person {
     }
 
     public List<Card> getDealerCard() {
-        return cards.getCards();
+        return cards.cards().getCards();
     }
 
     public int getDealerScore() {
-        return cards.getTotalScore();
+        return cards.cards().getTotalScore();
     }
 }

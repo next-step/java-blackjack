@@ -13,19 +13,19 @@ public class Player extends Person {
         this.cards = cards;
     }
 
-    public Gameable getCar경ds() {
-        return cards;
-    }
-
     public Gameable getCards() {
         return cards;
     }
 
     public List<Card> getPlayerCard() {
-        return cards.getCards();
+        return cards.cards().getCards();
     }
 
     public int getPlayerScore() {
-        return cards.getTotalScore();
+        return cards.cards().getTotalScore();
+    }
+
+    public int getTotalScoreOfPlayer() {
+        return cards.cards().sumScore();
     }
 }
