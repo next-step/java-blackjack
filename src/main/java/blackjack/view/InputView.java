@@ -47,7 +47,8 @@ public class InputView {
 
     }
 
-    private InputView() {}
+    private InputView() {
+    }
 
     public static boolean drawChoice(final NameInfo activePlayerNameInfo) {
         System.out.format(MESSAGE_CHOICE_DECISION, activePlayerNameInfo.getPersonName(),

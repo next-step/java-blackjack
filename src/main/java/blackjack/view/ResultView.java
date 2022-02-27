@@ -28,7 +28,8 @@ public class ResultView {
             String.format(INIT_SHARE_MESSAGE, dealerName, playersName, INIT_CARD_COUNT));
     }
 
-    public static void openCardInfo(final CardInfo dealerCardInfo, final List<CardInfo> playerCardsInfo) {
+    public static void openCardInfo(final CardInfo dealerCardInfo,
+        final List<CardInfo> playerCardsInfo) {
         System.out.println(
             String.format(DEALER_FORMAT, dealerCardInfo.getPersonName(), join(dealerCardInfo)));
 
@@ -67,7 +68,8 @@ public class ResultView {
                 Collectors.joining(DELIMITER)), scoreInfo.getScore());
     }
 
-    public static void matchResult(final MatchInfo dealerMatchInfo, final List<MatchInfo> playersMatchInfo) {
+    public static void matchResult(final MatchInfo dealerMatchInfo,
+        final List<MatchInfo> playersMatchInfo) {
         System.out.println(MATCH_RESULT_MESSAGE);
         printMatchResult(dealerMatchInfo);
         printMatchResult(playersMatchInfo);
