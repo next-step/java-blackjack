@@ -48,12 +48,12 @@ public class Players {
     }
 
     public ScoreBoard match(final Dealer dealer) {
-        final Map<Player, Score> map = new LinkedHashMap<>();
+        final Map<Player, Score> result = new LinkedHashMap<>();
         for (Player player : players) {
-            map.put(player, player.compareScore(dealer));
+            result.put(player, player.compareScore(dealer));
         }
 
-        return new ScoreBoard(map);
+        return new ScoreBoard(result);
     }
 
     public CardInfo getActivePlayerCardInfo() {
