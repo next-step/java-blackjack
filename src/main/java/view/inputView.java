@@ -18,9 +18,6 @@ public class inputView {
     public static boolean inputIsMoreCard() {
         Scanner scanner = new Scanner(System.in);
         String answer = scanner.nextLine();
-        if (answer.equals("y")){
-            return true;
-        }
-        return false;
+        return answer.equals("y");
     }
 }

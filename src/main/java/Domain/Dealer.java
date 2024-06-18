@@ -10,8 +10,4 @@ public class Dealer extends Participant{
         super(name, ParticipantCardList);
     }
     boolean firstOpen = true ;
-
-    public String firstOpenCard(){
-        return getOneCardName(ParticipantCardList.get(0));
-    }
 }

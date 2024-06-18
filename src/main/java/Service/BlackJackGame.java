@@ -3,12 +3,8 @@ package Service;
 import Domain.Dealer;
 import Domain.Participant;
 import Domain.Player;
-import Domain.TrumpCard;
-
-import javax.net.ssl.CertPathTrustManagerParameters;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class BlackJackGame {
 

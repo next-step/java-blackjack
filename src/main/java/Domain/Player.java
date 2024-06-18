@@ -52,18 +52,6 @@ public class Player extends Participant{
         return -1;
     }
 
-    public String firstOpenCard(){
-        String cardInfos = "";
-        for(TrumpCard trumpCard : ParticipantCardList){
-            cardInfos += getOneCardName(trumpCard);
-            cardInfos += ", ";
-        }
-        return cardInfos ;
-    }
-
-    public int getBettingPrice() {
-        return bettingPrice;
-    }
     public void setPlayerResult(){
         playerResult = "승";
     }
