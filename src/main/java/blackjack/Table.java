@@ -17,9 +17,8 @@ public class Table {
     public Map<String, Boolean> result() {
         return players.stream()
                 .collect(Collectors.toMap(
-                 player -> player.getName(),
+                        Player::getName,
                         player -> dealer.isWin(player)
                 ));
     }
-
 }

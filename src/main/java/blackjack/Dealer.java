@@ -1,18 +1,13 @@
 package blackjack;
 
-public class Dealer {
+public class Dealer extends Player {
     private final Deck deck;
-    private Player player;
-
-    public Player getPlayer() {
-        return player;
-    }
-
     private Integer cardCount;
 
+
     public Dealer(){
+        super("dealer");
         deck = new Deck();
-        player = new Player("Dealer");
         cardCount = 0;
     }
 
@@ -22,6 +17,11 @@ public class Dealer {
     }
 
     public boolean isWin(Player player) {
-        return player.getSum() > this.player.getSum();
+        int dealerSum = getSum();
+        int playerSum =  player.getSum();
+        if(dealerSum == playerSum) {
+            return this.getCount() < player.getCount();
+        }
+        return dealerSum < playerSum;
     }
 }

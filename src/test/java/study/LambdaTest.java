@@ -32,12 +32,12 @@ class LambdaTest {
 
     @Test
     void sumAllEven() {
-        final int result = sumAll(numbers, number -> (double) number > 3.5);
+        final int result = sumAll(numbers, number ->  number > 3.5);
         assertThat(result).isEqualTo(12);
     }
 
-    private int sumAll(List<Integer> numbers, Conditional conditional) {
-        return numbers.stream().filter(number -> conditional.test(number)).reduce(0, Integer::sum);
+    private int sumAll(List<Integer> numbers, Predicate<Integer> conditional) {
+        return numbers.stream().filter(conditional).reduce(0, Integer::sum);
     }
 
     interface Conditional {

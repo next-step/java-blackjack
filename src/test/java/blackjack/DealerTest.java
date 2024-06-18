@@ -9,9 +9,8 @@ public class DealerTest {
     @Test
     void 카드_합이_n이상_검사(){
         final Dealer dealer = new Dealer();
-        final Player player = dealer.getPlayer();
-        dealer.deal(player);
-        Integer actual =  player.getSum();
+        dealer.deal(dealer);
+        Integer actual =  dealer.getSum();
         assertThat(actual).isLessThan(11);
     }
 

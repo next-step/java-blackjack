@@ -22,6 +22,10 @@ public class Card {
         return number.getNumber();
     }
 
+    public String toString() {
+        return getNumber().toString() + suit.getSuitName();
+    }
+
     public CardSuit getSuit() {
         return suit;
     }
